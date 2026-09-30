@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Website Security Check — Is Your Site Safe?</title>
+<meta name="description" content="Free website security check in plain English: Mozilla's security grade for your site plus your certificate's expiry date. No signup, no ads. From Site Health Watch.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px}
+  label.f-label{display:block;font-weight:700;margin-bottom:8px;font-size:15px}
+  .row{display:flex;gap:10px}
+  input[type=text]{flex:1;min-width:0;font-size:16px;padding:12px 14px;border:1px solid var(--line);
+    border-radius:8px;color:var(--ink)}
+  input[type=text]:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+  button.check{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:12px 22px;
+    font-size:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+  button.check:hover{background:#0f2c3c}
+  button.check:disabled{opacity:.55;cursor:wait}
+  .hint{font-size:13px;color:var(--slate);margin:10px 0 0}
+  #results{margin-top:22px}
+  .verdict{border-radius:12px;padding:22px;border:1px solid var(--line)}
+  .verdict.secured{background:var(--green-tint);border-color:#bfe0cc}
+  .verdict.partial{background:var(--amber-tint);border-color:#ecd9a8}
+  .verdict.unprotected{background:var(--red-tint);border-color:#eec2bf}
+  .verdict h2{margin:0 0 6px;font-size:22px}
+  .verdict.secured h2{color:var(--green)} .verdict.partial h2{color:var(--amber)}
+  .verdict.unprotected h2{color:var(--red)}
+  .verdict p{margin:0;font-size:16px}
+  .gradebadge{display:inline-block;font-size:34px;font-weight:700;color:var(--teal);
+    border:2px solid var(--teal);border-radius:10px;padding:2px 14px;margin:12px 0 0;background:#fff}
+  .scanned{margin-top:12px;font-size:13px;color:var(--slate)}
+  .checks{margin:18px 0 0;padding:0;list-style:none}
+  .checks li{border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px;background:#fff}
+  .check-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+  .check-head strong{font-size:16px}
+  .pill{font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:999px}
+  .pill.pass{background:var(--green-tint);color:var(--green)}
+  .pill.warn{background:var(--amber-tint);color:var(--amber)}
+  .pill.fail{background:var(--red-tint);color:var(--red)}
+  .pill.info{background:var(--paper);color:var(--slate)}
+  .explain{margin:4px 0 0;font-size:15px;color:var(--ink)}
+  .fix{margin:12px 0 0;border-top:1px dashed var(--line);padding-top:12px}
+  .fix p{font-size:14px;margin:0 0 8px}
+  .fix .note{font-size:13px;color:var(--slate)}
+  .attrib{font-size:12px;color:var(--slate);margin-top:10px}
+  .cta{margin:30px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .explainer{margin:36px 0 0;font-size:15.5px;color:var(--ink)}
+  .explainer h2{font-size:20px;color:var(--teal)}
+  .explainer p{max-width:68ch}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  .spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;
+    border-radius:50%;animation:spin .7s linear infinite;vertical-align:-3px;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .error{background:var(--red-tint);border:1px solid #eec2bf;color:var(--red);border-radius:10px;
+    padding:16px;font-size:15px;margin-top:18px}
+  .scanning{background:var(--paper);border:1px solid var(--line);border-radius:10px;
+    padding:16px;font-size:15px;margin-top:18px;color:var(--slate)}
+  @media (max-width:560px){
+    h1{font-size:25px}
+    .row{flex-direction:column}
+    button.check{width:100%}
+    .tool{padding:18px}
+  }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="speed.html">Website speed</a> &middot; <a href="index.html">Email deliverability</a> &middot; <strong>Website security</strong></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Is your website safe?</h1>
+    <p class="lede">That little padlock in the browser is a promise to your customers — and it can break silently. This check runs Mozilla's own security scan against your site and reads your certificate's expiry date, then tells you in plain English what's protecting your visitors and what isn't. Free, no signup, no ads.</p>
+
+    <div class="tool">
+      <label class="f-label" for="domain">Your website domain</label>
+      <div class="row">
+        <input type="text" id="domain" name="domain" inputmode="url" autocomplete="off"
+               placeholder="acmeplumbing.com" aria-describedby="domain-hint">
+        <button class="check" id="go">Check my site</button>
+      </div>
+      <p class="hint" id="domain-hint">Just the domain — no https, no www needed. The scan runs on Mozilla's servers and reflects what the public internet sees; nothing is stored.</p>
+      <div id="results" aria-live="polite"></div>
+    </div>
+
+    <div class="cta">
+      <h2>Security is 6 of our 40 checks</h2>
+      <p>The full Site Health Watch audit also checks your website's speed, mobile experience, and SEO — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" href="mailto:dadusa01@gmail.com?subject=Site%20Health%20Watch%20%E2%80%94%20full%20audit%20request&body=Hi%2C%20I%20ran%20the%20free%20security%20check%20and%20I%27d%20like%20the%20full%2040-point%20audit.%20My%20website%20is%3A%20">$199 — Get the full audit</a>
+    </div>
+
+    <div class="explainer">
+      <h2>What does "website security" actually mean?</h2>
+      <p>The padlock in the browser's address bar means one specific thing: the connection between your visitor and your site is encrypted, so nobody on the same wifi can read or alter what's passing through. That encryption is powered by a <strong>certificate</strong> — a digital ID card for your domain, issued by a trusted authority, with an expiry date. When it lapses, browsers show visitors a full-page "not secure" warning, and most of them leave. Certificates from free providers last only 90 days, which is why expiry sneaks up on busy owners.</p>
+      <p>Beyond the padlock, your site sends a set of behind-the-scenes instructions with every page — security headers. They tell browsers things like "always use the encrypted connection, even if someone tries to downgrade it," "never let another site embed this page invisibly," and "only load code from sources I approve." <strong>Mozilla's HTTP Observatory</strong> grades all of this on an A+ to F scale, the way a building inspector grades a property: it doesn't just check the front door, it checks the locks on every window.</p>
+      <p>Most small-business sites land in the C to F range — not because the owner did anything wrong, but because the platform or host ships weak defaults and nobody ever tightened them. The fixes are usually small configuration changes, not rebuilds. This check gives you Mozilla's grade, how many of its checks passed, and your certificate's exact expiry date. The item-by-item breakdown of which settings failed lives on Mozilla's full report, linked in your results — and naming and fixing each one, verified against your live site, is exactly what the full 40-point audit does.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* Pure logic below — DOM wiring is inside init(), guarded so this file's
+   functions can be exercised in Node for testing. */
+
+/* Mozilla HTTP Observatory v2 API (free, keyless, CORS-enabled).
+   NOTE: the old v1 endpoint (http-observatory.security.mozilla.org/api/v1)
+   was shut down by Mozilla on 2024-10-31; v2 returns the scan synchronously,
+   so no poll loop is needed. One scan per host per minute is served fresh;
+   more frequent requests return the cached result. */
+const OBS_SCAN = "https://observatory-api.mdn.mozilla.net/api/v2/scan?host=";
+/* crt.sh certificate-transparency search (free, keyless, CORS-enabled). */
+const CRTSH = "https://crt.sh/?q=%25.";
+
+function normalizeHost(raw) {
+  let d = String(raw || "").trim().toLowerCase();
+  if (!d) return "";
+  if (d.includes("@")) d = d.split("@").pop();
+  d = d.replace(/^[a-z][a-z0-9+.-]*:\/\//, "").split("/")[0].split(":")[0].split("?")[0].split("#")[0];
+  d = d.replace(/\.$/, "");
+  if (!/^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/.test(d)) return "";
+  if (d.length > 253) return "";
+  return d;
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
+function fetchWithTimeout(url, opts, ms) {
+  const ctrl = new AbortController();
+  const t = setTimeout(function () { ctrl.abort(); }, ms);
+  const p = fetch(url, Object.assign({}, opts, { signal: ctrl.signal }));
+  return p.then(function (res) { clearTimeout(t); return res; },
+               function (err) { clearTimeout(t); throw err; });
+}
+
+/* ---- Observatory v2 ---- */
+
+async function runObservatory(host) {
+  /* Resolves to the scan object, or throws {kind} where kind is one of:
+     "unscannable" (422: bad host / unreachable), "service" (5xx),
+     "network" (fetch failed / timed out). */
+  let res;
+  try {
+    res = await fetchWithTimeout(OBS_SCAN + encodeURIComponent(host), { method: "POST" }, 120000);
+  } catch (e) {
+    const err = new Error("network"); err.kind = "network"; throw err;
+  }
+  let body = null;
+  try { body = await res.json(); } catch (e) { /* non-JSON */ }
+  if (res.status === 422 || (body && body.error)) {
+    const err = new Error((body && body.message) || "unscannable");
+    err.kind = "unscannable"; err.apiError = body && body.error; throw err;
+  }
+  if (!res.ok || !body || typeof body.grade !== "string") {
+    const err = new Error("service"); err.kind = "service"; err.status = res.status; throw err;
+  }
+  return body;
+}
+
+var GRADE_BAND = {
+  "A+": "secured", "A": "secured", "A-": "secured",
+  "B+": "partial", "B": "partial", "B-": "partial",
+  "C+": "partial", "C": "partial", "C-": "partial",
+  "D+": "unprotected", "D": "unprotected", "D-": "unprotected",
+  "E": "unprotected", "F": "unprotected"
+};
+
+function gradeExplained(grade) {
+  var band = GRADE_BAND[grade] || "partial";
+  if (band === "secured") {
+    return "This is the top tier Mozilla awards. Your site's protective settings — " +
+           "the behind-the-scenes instructions that guard visitors — are in excellent shape.";
+  }
+  if (band === "partial") {
+    return "Your site is on the secure connection, but Mozilla found several protective " +
+           "settings missing or weak. The padlock works; the deeper defenses need tightening.";
+  }
+  return "Mozilla found significant gaps in your site's protective settings. The padlock " +
+         "may work, but the deeper defenses that stop real attacks are largely absent.";
+}
+
+function interpretScan(scan) {
+  var grade = scan.grade;
+  var band = GRADE_BAND[grade] || "partial";
+  var failed = typeof scan.tests_failed === "number" ? scan.tests_failed : null;
+  var total = typeof scan.tests_quantity === "number" ? scan.tests_quantity : null;
+  var passed = typeof scan.tests_passed === "number" ? scan.tests_passed : null;
+  return { grade: grade, band: band, failed: failed, passed: passed, total: total,
+           score: scan.score, detailsUrl: scan.details_url, scannedAt: scan.scanned_at,
+           statusCode: scan.status_code };
+}
+
+/* ---- crt.sh certificate lookup ---- */
+
+function issuerShortName(issuerName) {
+  var m = String(issuerName || "").match(/(?:^|,)\s*O=([^,]+)/);
+  if (m) return m[1].trim();
+  var c = String(issuerName || "").match(/(?:^|,)\s*CN=([^,]+)/);
+  return c ? c[1].trim() : "your certificate authority";
+}
+
+function certCoversHost(cert, host) {
+  var names = String(cert.name_value || "").split("\n").map(function (n) { return n.trim().toLowerCase(); });
+  if (cert.common_name) names.push(String(cert.common_name).trim().toLowerCase());
+  var h = host.toLowerCase();
+  for (var i = 0; i < names.length; i++) {
+    var n = names[i];
+    if (n === h) return true;
+    if (n.charAt(0) === "*" && n.slice(1) === h.slice(h.indexOf("."))) return true;
+  }
+  return false;
+}
+
+function pickCert(certs, host, nowMs) {
+  /* Newest currently-valid cert covering the host, or null. */
+  var best = null;
+  for (var i = 0; i < certs.length; i++) {
+    var c = certs[i];
+    if (!c || !c.not_after || !c.not_before) continue;
+    if (!certCoversHost(c, host)) continue;
+    var nb = Date.parse(c.not_before + "Z");
+    var na = Date.parse(c.not_after + "Z");
+    if (isNaN(nb) || isNaN(na)) continue;
+    if (nb > nowMs || na <= nowMs) continue;
+    if (!best || na > best._na) { c._na = na; best = c; }
+  }
+  return best;
+}
+
+async function fetchCert(host) {
+  /* Resolves to {issuer, notAfterMs, daysLeft, commonName} | {none:true} |
+     throws {kind:"network"} when crt.sh can't be reached. */
+  let res;
+  try {
+    res = await fetchWithTimeout(CRTSH + encodeURIComponent(host) + "&output=json", {}, 45000);
+  } catch (e) {
+    const err = new Error("network"); err.kind = "network"; throw err;
+  }
+  if (!res.ok) { const err = new Error("network"); err.kind = "network"; throw err; }
+  let arr = null;
+  try { arr = await res.json(); } catch (e) { const err = new Error("network"); err.kind = "network"; throw err; }
+  if (!Array.isArray(arr) || arr.length === 0) return { none: true };
+  var now = Date.now();
+  var best = pickCert(arr, host, now);
+  if (!best) {
+    /* Certs exist but none currently valid for this host — check for expired ones
+       to report "expired" instead of "missing". */
+    var expiredBest = null;
+    for (var i = 0; i < arr.length; i++) {
+      var c = arr[i];
+      if (!c || !c.not_after || !certCoversHost(c, host)) continue;
+      var na = Date.parse(c.not_after + "Z");
+      if (isNaN(na) || na > now) continue;
+      if (!expiredBest || na > expiredBest._na) { c._na = na; expiredBest = c; }
+    }
+    if (expiredBest) {
+      return { issuer: issuerShortName(expiredBest.issuer_name), notAfterMs: expiredBest._na,
+               daysLeft: Math.floor((expiredBest._na - now) / 86400000),
+               commonName: expiredBest.common_name, expired: true };
+    }
+    return { none: true };
+  }
+  return { issuer: issuerShortName(best.issuer_name), notAfterMs: best._na,
+           daysLeft: Math.floor((best._na - now) / 86400000),
+           commonName: best.common_name, expired: false };
+}
+
+function formatDate(ms) {
+  var d = new Date(ms);
+  var months = ["January","February","March","April","May","June","July","August",
+                "September","October","November","December"];
+  return months[d.getUTCMonth()] + " " + d.getUTCDate() + ", " + d.getUTCFullYear();
+}
+
+function formatScannedAt(iso) {
+  var ms = Date.parse(iso);
+  if (isNaN(ms)) return "";
+  var mins = Math.round((Date.now() - ms) / 60000);
+  if (mins < 2) return "scanned just now";
+  if (mins < 60) return "scanned " + mins + " minutes ago";
+  var hours = Math.round(mins / 60);
+  if (hours < 48) return "scanned " + hours + " hours ago";
+  return "scanned on " + formatDate(ms);
+}
+
+/* ---- verdict + rendering ---- */
+
+function buildVerdict(scanInfo, cert) {
+  /* scanInfo: interpretScan() output. cert: fetchCert() output or null (unknown). */
+  var certBad = cert && (cert.expired || cert.none);
+  var certWarn = cert && !cert.expired && !cert.none && cert.daysLeft <= 30;
+  var cls, h, p;
+  if (cert && cert.expired) {
+    cls = "unprotected";
+    h = "Your certificate has expired.";
+    p = "Visitors to your site are likely seeing a full-page security warning right now. " +
+        "This is the single most urgent fix on this page — everything else can wait until the padlock works again.";
+  } else if (scanInfo.band === "secured" && !certBad && !certWarn) {
+    cls = "secured";
+    h = "You're in good shape.";
+    p = "Mozilla grades your site's security " + scanInfo.grade + " — the top tier — " +
+        (cert && !cert.none
+          ? "and your certificate is valid until " + formatDate(cert.notAfterMs) + "."
+          : "and your site answers on the secure connection.");
+  } else if (scanInfo.band === "unprotected" || certBad) {
+    cls = "unprotected";
+    h = "Your site has security gaps.";
+    p = "Mozilla grades your site " + scanInfo.grade +
+        (scanInfo.failed !== null && scanInfo.total !== null
+          ? " — " + scanInfo.failed + " of " + scanInfo.total + " security checks need work"
+          : "") + ". " +
+        (cert && cert.none
+          ? "We also couldn't find a valid security certificate for your domain, so the padlock itself may not be working."
+          : "The gaps below are worth closing before a customer — or an attacker — notices them first.");
+  } else {
+    cls = "partial";
+    h = "A few gaps to close.";
+    p = "Mozilla grades your site " + scanInfo.grade +
+        (scanInfo.failed !== null && scanInfo.total !== null
+          ? " — " + scanInfo.failed + " of " + scanInfo.total + " security checks need work"
+          : "") + ". " +
+        (certWarn
+          ? "Your certificate is also getting close to expiry (" + formatDate(cert.notAfterMs) + ")."
+          : "Your certificate is fine; the gaps below are configuration fixes, not rebuilds.");
+  }
+  return { cls: cls, h: h, p: p };
+}
+
+function renderResults(scanInfo, cert, certState, host) {
+  /* certState: "ok" | "missing" | "unknown" (crt.sh unreachable). */
+  var v = buildVerdict(scanInfo, certState === "ok" ? cert : (certState === "missing" ? { none: true } : null));
+  var html = '<div class="verdict ' + v.cls + '"><h2>' + esc(v.h) + '</h2><p>' + esc(v.p) + '</p>' +
+    '<div><span class="gradebadge" title="Mozilla HTTP Observatory grade">Grade: ' + esc(scanInfo.grade) + '</span></div>';
+  var scannedNote = scanInfo.scannedAt ? formatScannedAt(scanInfo.scannedAt) : "";
+  html += '<p class="scanned">Graded by <strong>Mozilla&rsquo;s HTTP Observatory</strong>' +
+          (scannedNote ? " (" + esc(scannedNote) + ")" : "") +
+          ' — the scan runs on Mozilla&rsquo;s servers and reflects what the public internet sees.</p></div>';
+
+  html += '<ul class="checks">';
+
+  /* Row 1 — Mozilla grade detail */
+  var pillCls = scanInfo.band === "secured" ? "pass" : (scanInfo.band === "partial" ? "warn" : "fail");
+  var pillTxt = scanInfo.band === "secured" ? "PASS" : (scanInfo.band === "partial" ? "NEEDS WORK" : "GAPS FOUND");
+  html += '<li><div class="check-head"><span class="pill ' + pillCls + '">' + pillTxt + '</span>' +
+    '<strong>Mozilla&rsquo;s security grade</strong></div>' +
+    '<p class="explain">' + esc(gradeExplained(scanInfo.grade)) + '</p>';
+  if (scanInfo.passed !== null && scanInfo.total !== null) {
+    html += '<p class="explain">Score: <strong>' + esc(String(scanInfo.score)) + '</strong> — ' +
+      esc(String(scanInfo.passed)) + ' of ' + esc(String(scanInfo.total)) +
+      ' individual checks passed.</p>';
+  }
+  html += '<div class="fix"><p class="note">The item-by-item breakdown of which protective settings failed ' +
+    'lives on <a href="' + esc(scanInfo.detailsUrl || "https://developer.mozilla.org/en-US/observatory") +
+    '" target="_blank" rel="noopener">Mozilla&rsquo;s full report for ' + esc(host) + '</a> ' +
+    '(opens in a new tab). Naming each gap and fixing it against your live site is what the full 40-point audit does.</p></div></li>';
+
+  /* Row 2 — HTTPS reachability */
+  html += '<li><div class="check-head"><span class="pill pass">PASS</span>' +
+    '<strong>Secure connection (HTTPS)</strong></div>' +
+    '<p class="explain">Your site answers on the encrypted HTTPS connection — the padlock can appear for visitors. ' +
+    'If it didn&rsquo;t, Mozilla&rsquo;s scan would have failed outright.</p></li>';
+
+  /* Row 3 — certificate */
+  if (certState === "ok") {
+    var cPill, cTxt, cExplain, cFix;
+    if (cert.expired) {
+      cPill = "fail"; cTxt = "EXPIRED";
+      cExplain = "Your certificate expired on " + formatDate(cert.notAfterMs) + ". Until it's replaced, " +
+        "browsers warn visitors away — this costs you customers every day it sits.";
+      cFix = "Ask your hosting company to install a new certificate today — most hosts do this free " +
+        "and automatically. Then ask them to confirm auto-renewal is switched on, so it never lapses silently again.";
+    } else if (cert.daysLeft <= 30) {
+      cPill = "warn"; cTxt = "EXPIRING SOON";
+      cExplain = "Your certificate is valid, but it expires on " + formatDate(cert.notAfterMs) +
+        " — only " + cert.daysLeft + (cert.daysLeft === 1 ? " day" : " days") +
+        " left. Issued by " + cert.issuer + ".";
+      cFix = "Ask your host to confirm the certificate auto-renews. Certificates from free providers last " +
+        "only 90 days, so expiry sneaks up fast.";
+    } else {
+      cPill = "pass"; cTxt = "VALID";
+      cExplain = "Your certificate is valid until " + formatDate(cert.notAfterMs) +
+        " (" + cert.daysLeft + " days left). Issued by " + cert.issuer + ".";
+      cFix = null;
+    }
+    html += '<li><div class="check-head"><span class="pill ' + cPill + '">' + cTxt + '</span>' +
+      '<strong>Security certificate (the padlock)</strong></div>' +
+      '<p class="explain">' + esc(cExplain) + '</p>';
+    if (cFix) {
+      html += '<div class="fix"><p><strong>Fix:</strong> ' + esc(cFix) + '</p>' +
+        '<p class="note">Certificates expire — the real fix is making sure yours renews itself, and having ' +
+        'someone watch it. Our $79/mo monitoring watches this and 39 other things monthly so nothing ' +
+        'lapses silently. <span class="attrib">Generated by Site Health Watch.</span></p></div>';
+    }
+    html += '</li>';
+  } else if (certState === "missing") {
+    html += '<li><div class="check-head"><span class="pill fail">MISSING</span>' +
+      '<strong>Security certificate (the padlock)</strong></div>' +
+      '<p class="explain">No valid public certificate found for this domain. The padlock may not be working ' +
+      'at all — visitors could be seeing "not secure" warnings.</p>' +
+      '<div class="fix"><p><strong>Fix:</strong> Ask your hosting company to install a certificate — most ' +
+      'offer free ones (Let&rsquo;s Encrypt) and it&rsquo;s usually a single setting. ' +
+      '<span class="attrib">Generated by Site Health Watch.</span></p></div></li>';
+  } else {
+    html += '<li><div class="check-head"><span class="pill info">UNKNOWN</span>' +
+      '<strong>Security certificate (the padlock)</strong></div>' +
+      '<p class="explain">The certificate registry couldn&rsquo;t be reached right now, so we couldn&rsquo;t ' +
+      'read your expiry date. Mozilla&rsquo;s grade above is unaffected. Try the check again in a few minutes, ' +
+      'or ask your host when your certificate renews.</p></li>';
+  }
+
+  return html + '</ul>';
+}
+
+function unscannableMessage(err, host) {
+  var apiErr = err && err.apiError;
+  if (apiErr === "invalid-hostname-lookup") {
+    return "<strong>" + esc(host) + "</strong> couldn't be found on the internet. Check the spelling and try again.";
+  }
+  var msg = err && err.message && err.message !== "unscannable" ? err.message : "";
+  return "Mozilla's scanner couldn't evaluate <strong>" + esc(host) + "</strong>" +
+    (msg ? " (" + esc(msg) + ")" : "") +
+    ". It may be offline, blocking automated scans, or not on the secure connection. " +
+    "If the site loads fine in your browser, try again in a few minutes.";
+}
+
+function init() {
+  var input = document.getElementById("domain");
+  var go = document.getElementById("go");
+  var out = document.getElementById("results");
+  async function run() {
+    var host = normalizeHost(input.value);
+    if (!host) {
+      out.innerHTML = '<div class="error">That doesn\'t look like a domain. ' +
+        'Try something like <strong>acmeplumbing.com</strong>.</div>';
+      return;
+    }
+    go.disabled = true;
+    go.innerHTML = '<span class="spinner"></span>Scanning…';
+    out.innerHTML = '<div class="scanning">Mozilla is scanning your site — this usually takes under a minute. ' +
+      'Leave this tab open; nothing is stored.</div>';
+    try {
+      var scanP = runObservatory(host);
+      var certP = fetchCert(host).then(function (c) { return { state: "ok", cert: c }; },
+        function () { return { state: "unknown", cert: null }; });
+      var scan = await scanP;
+      var scanInfo = interpretScan(scan);
+      var certRes = await certP;
+      var certState = certRes.state;
+      var cert = certRes.cert;
+      if (certState === "ok" && cert && cert.none) certState = "missing";
+      out.innerHTML = renderResults(scanInfo, cert, certState, host);
+    } catch (e) {
+      if (e && e.kind === "unscannable") {
+        out.innerHTML = '<div class="error">' + unscannableMessage(e, host) + '</div>';
+      } else if (e && e.kind === "service") {
+        out.innerHTML = '<div class="error">Mozilla&rsquo;s scanner is having trouble right now. ' +
+          'Try again in a few minutes — nothing was stored.</div>';
+      } else {
+        out.innerHTML = '<div class="error">Couldn&rsquo;t reach the scanning service. Check your ' +
+          'connection and try again — nothing was stored.</div>';
+      }
+    }
+    go.disabled = false;
+    go.textContent = "Check my site";
+  }
+  go.addEventListener("click", run);
+  input.addEventListener("keydown", function (e) { if (e.key === "Enter") run(); });
+}
+
+if (typeof document !== "undefined" && document.getElementById) {
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+}
+
+if (typeof module !== "undefined") {
+  module.exports = { normalizeHost: normalizeHost, interpretScan: interpretScan,
+    gradeExplained: gradeExplained, issuerShortName: issuerShortName,
+    certCoversHost: certCoversHost, pickCert: pickCert, buildVerdict: buildVerdict,
+    renderResults: renderResults, unscannableMessage: unscannableMessage,
+    formatDate: formatDate, formatScannedAt: formatScannedAt, GRADE_BAND: GRADE_BAND };
+}
+</script>
+</body>
+</html>
