@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Website Speed Test — Plain-English Results</title>
+<meta name="description" content="Free website speed test with plain-English results: how many seconds your site takes on a phone, the 3 biggest slowdowns translated out of jargon, and one-line fixes. No signup, no ads. From Site Health Watch.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px}
+  label.f-label{display:block;font-weight:700;margin-bottom:8px;font-size:15px}
+  .row{display:flex;gap:10px}
+  input[type=text]{flex:1;min-width:0;font-size:16px;padding:12px 14px;border:1px solid var(--line);
+    border-radius:8px;color:var(--ink)}
+  input[type=text]:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+  button.check{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:12px 22px;
+    font-size:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+  button.check:hover{background:#0f2c3c}
+  button.check:disabled{opacity:.55;cursor:wait}
+  .hint{font-size:13px;color:var(--slate);margin:10px 0 0}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;
+    background:#fff;margin:0 0 14px}
+  .seg label{position:relative}
+  .seg input{position:absolute;opacity:0}
+  .seg span{display:inline-block;padding:7px 18px;border-radius:999px;font-size:14px;
+    font-weight:700;color:var(--slate);cursor:pointer}
+  .seg input:checked+span{background:var(--teal);color:#fff}
+  .seg input:focus-visible+span{outline:2px solid var(--teal);outline-offset:2px}
+  #results{margin-top:22px}
+  .verdict{border-radius:12px;padding:22px;border:1px solid var(--line)}
+  .verdict.secured{background:var(--green-tint);border-color:#bfe0cc}
+  .verdict.partial{background:var(--amber-tint);border-color:#ecd9a8}
+  .verdict.unprotected{background:var(--red-tint);border-color:#eec2bf}
+  .verdict h2{margin:0 0 6px;font-size:22px}
+  .verdict.secured h2{color:var(--green)} .verdict.partial h2{color:var(--amber)}
+  .verdict.unprotected h2{color:var(--red)}
+  .verdict p{margin:0;font-size:16px}
+  .stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:14px}
+  .stats div strong{display:block;font-size:26px;color:var(--teal);line-height:1.2}
+  .stats div span{font-size:13px;color:var(--slate)}
+  .fieldnote{margin-top:12px;font-size:14px;background:#fff;border:1px solid var(--line);
+    border-radius:8px;padding:10px 14px}
+  .measured{margin-top:12px;font-size:13px;color:var(--slate)}
+  .checks{margin:18px 0 0;padding:0;list-style:none}
+  .checks li{border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px;background:#fff}
+  .check-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+  .check-head strong{font-size:16px}
+  .pill{font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:999px}
+  .pill.pass{background:var(--green-tint);color:var(--green)}
+  .pill.warn{background:var(--amber-tint);color:var(--amber)}
+  .pill.fail{background:var(--red-tint);color:var(--red)}
+  .explain{margin:4px 0 0;font-size:15px;color:var(--ink)}
+  .fixline{margin:8px 0 0;font-size:14px;color:var(--ink);border-top:1px dashed var(--line);padding-top:10px}
+  .fixline strong{color:var(--teal)}
+  .cta{margin:30px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .explainer{margin:36px 0 0;font-size:15.5px;color:var(--ink)}
+  .explainer h2{font-size:20px;color:var(--teal)}
+  .explainer p{max-width:68ch}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  .spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;
+    border-radius:50%;animation:spin .7s linear infinite;vertical-align:-3px;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .error{background:var(--red-tint);border:1px solid #eec2bf;color:var(--red);border-radius:10px;
+    padding:16px;font-size:15px;margin-top:18px}
+  @media (max-width:560px){
+    h1{font-size:25px}
+    .row{flex-direction:column}
+    button.check{width:100%}
+    .tool{padding:18px}
+  }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <strong>Website speed</strong> &middot; <a href="index.html">Email deliverability</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>How fast is your website, really?</h1>
+    <p class="lede">Not a score out of 100 — the number that actually matters: how many seconds your homepage takes to show up on a visitor's phone. Paste your address and get the verdict in plain English, the 3 biggest slowdowns translated out of jargon, and a one-line fix for each. Free, no signup, no ads.</p>
+
+    <div class="tool">
+      <div class="seg" role="radiogroup" aria-label="Test on">
+        <label><input type="radio" name="strategy" value="mobile" checked><span>Mobile</span></label>
+        <label><input type="radio" name="strategy" value="desktop"><span>Desktop</span></label>
+      </div>
+      <label class="f-label" for="url">Your website address</label>
+      <div class="row">
+        <input type="text" id="url" name="url" inputmode="url" autocomplete="off"
+               placeholder="acmeplumbing.com" aria-describedby="url-hint">
+        <button class="check" id="go">Test my speed</button>
+      </div>
+      <p class="hint" id="url-hint">Your homepage address is fine — https is added automatically. We run Google's own speed test against your page; nothing is stored.</p>
+      <div id="results" aria-live="polite"></div>
+    </div>
+
+    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" href="mailto:dadusa01@gmail.com?subject=Site%20Health%20Watch%20%E2%80%94%20full%20audit%20request&body=Hi%2C%20I%20ran%20the%20free%20speed%20check%20and%20I%27d%20like%20the%20full%2040-point%20audit.%20My%20website%20is%3A%20">$199 — Get the full audit</a>
+    </div>
+
+    <div class="explainer">
+      <h2>What does "website speed" actually mean?</h2>
+      <p>When this check says your site takes 4.2 seconds, it means one thing: the moment your main content — the headline, the hero image, the reason the visitor came — becomes visible on a typical phone. Google calls this measurement Largest Contentful Paint. A score out of 100 sounds precise but tells you nothing about your business; seconds tell you whether a customer waits or leaves.</p>
+      <p>Google's published research found that more than half of mobile visitors abandon a page that takes longer than 3 seconds to load. That 2017 benchmark is still the industry's reference point, and phones have not gotten more patient since. Every extra second quietly costs you quotes, bookings, and sales — silently, because bounced visitors never complain.</p>
+      <p>The usual culprits are ordinary, not exotic: photos uploaded straight from a camera (often several times larger than any screen needs), plugins that each load their own code, chat widgets and trackers, and budget hosting that is slow to answer. None of this means your site is "bad" — Google's own homepage lands in the 50s on their 100-point scale. It means there is measurable, fixable waste, and this check names the three biggest pieces of it.</p>
+      <p>This tool runs Google's own PageSpeed test against the address you enter — the same engine behind PageSpeed Insights, without the engineer-only jargon. No signup, no ads, nothing stored, and the results are yours to keep. Speed is the first thing visitors feel; if you'd like the other 39 checks — security, email, mobile, SEO — measured the same plain way, that's what the full audit is for.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* Pure logic below — DOM wiring is inside init(), guarded so this file's
+   functions can be exercised in Node for testing. */
+
+/* STAGING: paste the free PageSpeed API key here (Google Cloud console, no
+   billing required; restrict by HTTP referrer to the GitHub Pages domain).
+   Until a key is installed, the check shows an honest staging notice —
+   it never fabricates speed results. */
+const PSI_API_KEY = "";
+const PSI_ENDPOINT = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
+
+/* Verdict bands = Google's Core Web Vitals LCP thresholds, cited in copy. */
+function verdictFor(lcpSec) {
+  if (lcpSec < 2.5) return "fast";
+  if (lcpSec <= 4) return "warn";
+  return "slow";
+}
+
+const VERDICTS = {
+  fast: { cls: "secured",     h: "Fast enough.",
+          p: "Your homepage shows its main content in {s} seconds on {dev} — inside Google's 2.5-second bar. Most visitors will stick around." },
+  warn: { cls: "partial",     h: "Slower than it should be.",
+          p: "Your homepage takes {s} seconds to show its main content on {dev}. Google's research found more than half of mobile visitors leave after 3 seconds — you're in the danger zone." },
+  slow: { cls: "unprotected", h: "Too slow — you're losing visitors.",
+          p: "Your homepage takes {s} seconds to show its main content on {dev}. More than half of mobile visitors leave after 3 seconds (Google's published benchmark), so a large share of your traffic never sees your page." }
+};
+
+const DEVICE_LABEL = {
+  mobile:  "a typical phone on a 4G connection",
+  desktop: "a desktop computer"
+};
+
+function normalizeUrl(raw) {
+  let u = String(raw || "").trim();
+  if (!u) return "";
+  if (/\s/.test(u)) return ""; /* spaces never belong in a website address */
+  if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(u)) u = "https://" + u;
+  try {
+    const p = new URL(u);
+    if (p.protocol !== "http:" && p.protocol !== "https:") return "";
+    if (p.username || u.indexOf("@") !== -1) return ""; /* not a website address */
+    /* Chrome leniently percent-encodes spaces into hosts instead of throwing,
+       so enforce a real dotted-hostname shape explicitly. */
+    if (!/^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/i.test(p.hostname)) return "";
+    return p.toString();
+  } catch (e) { return ""; }
+}
+
+function buildPsiUrl(url, strategy) {
+  const q = new URLSearchParams();
+  q.set("url", url);
+  q.set("strategy", strategy === "desktop" ? "desktop" : "mobile");
+  q.append("category", "performance");
+  q.append("category", "accessibility");
+  q.append("category", "seo");
+  if (PSI_API_KEY) q.set("key", PSI_API_KEY);
+  return PSI_ENDPOINT + "?" + q.toString();
+}
+
+/* Plain-English translations of PageSpeed "opportunity" audits.
+   Each entry: [headline, why-it-matters, one-line fix]. {s} = seconds saved. */
+const OPP_MAP = {
+  "server-response-time": [
+    "Your server is slow to answer.",
+    "Every visitor waits while your hosting server thinks. Google recommends the first response arrive in under 0.8 seconds.",
+    "Ask your host about caching or a faster plan — this one usually lives with the hosting company, not your website."
+  ],
+  "render-blocking-resources": [
+    "Files are blocking your page from showing.",
+    "Your page waits to download stylesheets and scripts before showing anything — visitors stare at a blank screen meanwhile.",
+    "A developer can defer these files so the page shows first and loads them after. Ask for \u201cdefer non-critical CSS and JavaScript\u201d."
+  ],
+  "uses-responsive-images": [
+    "Your images are bigger than visitors' screens need.",
+    "Phones download the same giant images as desktops — often several times more data than any screen can show.",
+    "Serve smaller versions to phones. Ask your developer or platform about \u201cresponsive images\u201d."
+  ],
+  "modern-image-formats": [
+    "Your images use older, heavier formats.",
+    "Formats like WebP and AVIF look identical to JPEG or PNG at roughly half the file size.",
+    "Convert images to WebP — most website platforms now do this automatically. Ask yours."
+  ],
+  "uses-optimized-images": [
+    "Your images could be compressed further.",
+    "Photos are saved at higher quality than screens can display — wasted kilobytes on every single visit.",
+    "Run images through a compressor before uploading, or install an image-optimization plugin."
+  ],
+  "uses-text-compression": [
+    "Your server isn't compressing its files.",
+    "Text-based files can shrink by roughly 70% in transit. Your server is sending them full-size.",
+    "Turn on gzip or Brotli compression on your hosting — usually a single setting."
+  ],
+  "unused-javascript": [
+    "Your pages load code they never use.",
+    "Plugins and themes pile up JavaScript that downloads on every page, even when nothing on the page needs it.",
+    "Remove unused plugins or apps, or ask a developer to split the code so each page loads only what it needs."
+  ],
+  "unused-css-rules": [
+    "Your pages load styling they never use.",
+    "Themes ship styling for every possible layout, and visitors download all of it on every page.",
+    "A developer can remove the unused styling or load it only where it's needed."
+  ],
+  "duplicated-javascript": [
+    "The same code is downloaded more than once.",
+    "Different plugins each bundle their own copy of common libraries — visitors pay the download cost repeatedly.",
+    "Consolidate plugins, or ask a developer to deduplicate the bundles."
+  ],
+  "legacy-javascript": [
+    "Extra code is shipped for very old browsers.",
+    "Your site sends modern phones bonus code meant for browsers from years ago.",
+    "Ask your developer about serving modern JavaScript to modern browsers."
+  ],
+  "efficient-animated-content": [
+    "Animated images are far heavier than video.",
+    "A GIF can be 5 to 10 times larger than the same animation saved as a video file.",
+    "Replace GIFs with short looping videos (MP4 or WebM)."
+  ],
+  "unsized-images": [
+    "Images without set dimensions make the page jump.",
+    "While images load, text shifts around — visitors lose their place and mis-tap.",
+    "Set width and height on every image. Many platforms do this automatically now."
+  ],
+  "font-display": [
+    "Your fonts block text from appearing.",
+    "Visitors see blank space where text should be until custom fonts finish loading.",
+    "Ask for \u201cfont-display: swap\u201d so text shows immediately in a fallback font."
+  ],
+  "third-party-summary": [
+    "Outside widgets are slowing your page.",
+    "Chat boxes, review widgets, trackers, and social feeds each add their own downloads — often costing more than your own content.",
+    "Keep only the widgets that earn their keep; delay the rest until after the page shows."
+  ],
+  "unminified-css": [
+    "Your code files carry unnecessary bulk.",
+    "Extra spaces and comments in code files add up across every visit.",
+    "Minification strips it automatically — most platforms have a one-click setting."
+  ],
+  "unminified-javascript": [
+    "Your code files carry unnecessary bulk.",
+    "Extra spaces and comments in code files add up across every visit.",
+    "Minification strips it automatically — most platforms have a one-click setting."
+  ],
+  "preload-lcp-image": [
+    "Your main image starts loading late.",
+    "The biggest thing on the page — usually the hero image — isn't requested until everything else is already underway.",
+    "Add a preload hint for that one image so the browser fetches it first."
+  ],
+  "prioritize-lcp-image": [
+    "Your main image starts loading late.",
+    "The biggest thing on the page — usually the hero image — isn't requested until everything else is already underway.",
+    "Add a preload hint for that one image so the browser fetches it first."
+  ],
+  "non-composited-animations": [
+    "Some animations force constant repainting.",
+    "Certain animations make the phone redraw the screen every frame, which feels janky on slower devices.",
+    "A developer can switch these to smoother, GPU-friendly animations."
+  ]
+};
+
+function firstSentence(text) {
+  const t = String(text || "").replace(/\s+/g, " ").trim();
+  const m = t.match(/^(.+?[.!?])(\s|$)/);
+  return m ? m[1] : t.slice(0, 160);
+}
+
+function describeOpportunity(id, audit) {
+  const savingsMs = audit && audit.details ? audit.details.overallSavingsMs : 0;
+  const savingsSec = Math.round((savingsMs / 1000) * 10) / 10;
+  const mapped = OPP_MAP[id];
+  if (mapped) {
+    return { id: id, title: mapped[0], savingsSec: savingsSec,
+             why: mapped[1].replace(/\{s\}/g, String(savingsSec)),
+             fix: mapped[2].replace(/\{s\}/g, String(savingsSec)) };
+  }
+  /* Unknown audit id: fall back to Google's own title + first sentence of
+     its description — real data, never invented copy. */
+  return { id: id, title: (audit && audit.title) || "A slowdown Google flagged",
+           savingsSec: savingsSec,
+           why: firstSentence(audit && audit.description) ||
+                "Google's test flagged this as costing load time.",
+           fix: null };
+}
+
+function parsePsi(j) {
+  const lr = j && j.lighthouseResult;
+  if (!lr || !lr.audits) { const e = new Error("no-lighthouse"); throw e; }
+  const audits = lr.audits;
+  const lcp = audits["largest-contentful-paint"];
+  if (!lcp || typeof lcp.numericValue !== "number") { const e = new Error("no-lcp"); throw e; }
+  const tbw = audits["total-byte-weight"];
+  const opps = Object.keys(audits)
+    .map(function (id) { return { id: id, a: audits[id] }; })
+    .filter(function (o) {
+      return o.a && o.a.details && o.a.details.type === "opportunity" &&
+             typeof o.a.details.overallSavingsMs === "number" &&
+             o.a.details.overallSavingsMs >= 100;
+    })
+    .sort(function (x, y) { return y.a.details.overallSavingsMs - x.a.details.overallSavingsMs; })
+    .slice(0, 3)
+    .map(function (o) { return describeOpportunity(o.id, o.a); });
+  let fieldCategory = null;
+  try {
+    const m = j.loadingExperience && j.loadingExperience.metrics &&
+              j.loadingExperience.metrics.LARGEST_CONTENTFUL_PAINT_MS;
+    if (m && typeof m.category === "string") fieldCategory = m.category;
+  } catch (e) { /* field data optional */ }
+  return {
+    lcpSec: Math.round((lcp.numericValue / 1000) * 10) / 10,
+    weightMb: (tbw && typeof tbw.numericValue === "number")
+      ? Math.round((tbw.numericValue / 1048576) * 10) / 10 : null,
+    opportunities: opps,
+    fieldCategory: fieldCategory
+  };
+}
+
+async function runPsi(url, strategy) {
+  const res = await fetch(buildPsiUrl(url, strategy));
+  let body = null;
+  try { body = await res.json(); } catch (e) { /* non-JSON error page */ }
+  if (!res.ok) {
+    const msg = body && body.error && body.error.message ? String(body.error.message) : "";
+    const err = new Error(msg || ("http " + res.status));
+    err.psiStatus = res.status;
+    throw err;
+  }
+  return parsePsi(body);
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
+const FIELD_LABEL = { FAST: "Good", AVERAGE: "Needs improvement", SLOW: "Poor" };
+
+function renderResults(data, url, strategy) {
+  const v = VERDICTS[verdictFor(data.lcpSec)];
+  const dev = DEVICE_LABEL[strategy] || DEVICE_LABEL.mobile;
+  let html = '<div class="verdict ' + v.cls + '"><h2>' + v.h + '</h2>' +
+    '<p>' + esc(v.p.replace(/\{s\}/g, String(data.lcpSec)).replace(/\{dev\}/g, dev)) + '</p>' +
+    '<div class="stats">' +
+    '<div><strong>' + esc(String(data.lcpSec)) + 's</strong><span>for the main content to show</span></div>' +
+    '<div><strong>' + (data.weightMb === null ? "&mdash;" : esc(String(data.weightMb)) + ' MB') +
+    '</strong><span>total page weight</span></div>' +
+    '</div>';
+  if (data.fieldCategory && FIELD_LABEL[data.fieldCategory]) {
+    html += '<div class="fieldnote"><strong>Real-world check:</strong> actual Chrome visitors see ' +
+            '<strong>' + FIELD_LABEL[data.fieldCategory].toLowerCase() + '</strong> ' +
+            'load times on this page. (Google\u2019s field data, when available.)</div>';
+  }
+  html += '<p class="measured">Measured just now with Google\u2019s PageSpeed test on ' + esc(dev) + '.</p></div>';
+
+  if (data.opportunities.length) {
+    html += '<ul class="checks">';
+    for (const o of data.opportunities) {
+      html += '<li><div class="check-head">' +
+        '<span class="pill warn">SAVES ~' + esc(String(o.savingsSec)) + 's</span>' +
+        '<strong>' + esc(o.title) + '</strong></div>' +
+        '<p class="explain">' + esc(o.why) + '</p>' +
+        (o.fix ? '<p class="fixline"><strong>Fix:</strong> ' + esc(o.fix) + '</p>' : '') +
+        '</li>';
+    }
+    html += '</ul>';
+  } else {
+    html += '<ul class="checks"><li><div class="check-head">' +
+      '<span class="pill pass">PASS</span><strong>No major slowdowns found</strong></div>' +
+      '<p class="explain">Google\u2019s test found nothing worth flagging in the automated scan — ' +
+      'this page is lean on the items measured.</p></li></ul>';
+  }
+  return html;
+}
+
+function friendlyError(e, url) {
+  if (e && (e.message === "no-lighthouse" || e.message === "no-lcp")) {
+    return "Google\u2019s test couldn\u2019t load that page — some sites block automated tests. " +
+           "Try your plain homepage address.";
+  }
+  const status = e && e.psiStatus;
+  const msg = e && e.message ? String(e.message) : "";
+  if (status === 429 || /quota exceeded/i.test(msg)) {
+    return "We\u2019ve hit today\u2019s free limit on Google\u2019s speed test — please try again " +
+           "tomorrow. (Nothing was stored.)";
+  }
+  if (status === 403) {
+    return "The speed check\u2019s API key isn\u2019t working right now — we\u2019re on it. " +
+           "Please try again later.";
+  }
+  if (status === 400) {
+    return "That address didn\u2019t work in Google\u2019s test. Check the spelling and try " +
+           "your homepage.";
+  }
+  if (e instanceof TypeError) {
+    return "Couldn\u2019t reach Google\u2019s speed-test service. Check your connection and try " +
+           "again — nothing was stored.";
+  }
+  return "Something went wrong running the test. Try again in a minute — nothing was stored.";
+}
+
+function init() {
+  const input = document.getElementById("url");
+  const go = document.getElementById("go");
+  const out = document.getElementById("results");
+  function currentStrategy() {
+    const el = document.querySelector('input[name="strategy"]:checked');
+    return el ? el.value : "mobile";
+  }
+  async function run() {
+    const url = normalizeUrl(input.value);
+    const strategy = currentStrategy();
+    if (!url) {
+      out.innerHTML = '<div class="error">That doesn\u2019t look like a website address. ' +
+                      'Try something like <strong>acmeplumbing.com</strong>.</div>';
+      return;
+    }
+    if (!PSI_API_KEY) {
+      out.innerHTML = '<div class="error"><strong>Staging note:</strong> the speed check is ' +
+        'built and ready, but the free Google API key hasn\u2019t been installed yet — so this ' +
+        'page shows no results rather than fake ones. The key is a 10-minute, $0 setup.</div>';
+      return;
+    }
+    go.disabled = true;
+    go.innerHTML = '<span class="spinner"></span>Testing\u2026';
+    out.innerHTML = "";
+    try {
+      const data = await runPsi(url, strategy);
+      out.innerHTML = renderResults(data, url, strategy);
+    } catch (e) {
+      out.innerHTML = '<div class="error">' + esc(friendlyError(e, url)) + '</div>';
+    }
+    go.disabled = false;
+    go.textContent = "Test my speed";
+  }
+  go.addEventListener("click", run);
+  input.addEventListener("keydown", function (e) { if (e.key === "Enter") run(); });
+}
+
+if (typeof document !== "undefined" && document.getElementById) {
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+}
+
+if (typeof module !== "undefined") {
+  module.exports = { normalizeUrl: normalizeUrl, verdictFor: verdictFor,
+    describeOpportunity: describeOpportunity, buildPsiUrl: buildPsiUrl,
+    parsePsi: parsePsi, friendlyError: friendlyError, renderResults: renderResults,
+    VERDICTS: VERDICTS };
+}
+</script>
+</body>
+</html>
