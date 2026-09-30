@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Email Deliverability Check — Is Your Business Email Going to Spam?</title>
+<meta name="description" content="Free check: does your domain have SPF, DKIM and DMARC set up? Paste your domain, get a plain-English verdict in seconds — no signup, no ads. From Site Health Watch.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px}
+  label.f-label{display:block;font-weight:700;margin-bottom:8px;font-size:15px}
+  .row{display:flex;gap:10px}
+  input[type=text]{flex:1;min-width:0;font-size:16px;padding:12px 14px;border:1px solid var(--line);
+    border-radius:8px;color:var(--ink)}
+  input[type=text]:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+  button.check{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:12px 22px;
+    font-size:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+  button.check:hover{background:#0f2c3c}
+  button.check:disabled{opacity:.55;cursor:wait}
+  .hint{font-size:13px;color:var(--slate);margin:10px 0 0}
+  #results{margin-top:22px}
+  .verdict{border-radius:12px;padding:22px;border:1px solid var(--line)}
+  .verdict.secured{background:var(--green-tint);border-color:#bfe0cc}
+  .verdict.partial{background:var(--amber-tint);border-color:#ecd9a8}
+  .verdict.unprotected{background:var(--red-tint);border-color:#eec2bf}
+  .verdict h2{margin:0 0 6px;font-size:22px}
+  .verdict.secured h2{color:var(--green)} .verdict.partial h2{color:var(--amber)}
+  .verdict.unprotected h2{color:var(--red)}
+  .verdict p{margin:0;font-size:16px}
+  .checks{margin:18px 0 0;padding:0;list-style:none}
+  .checks li{border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px;background:#fff}
+  .check-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+  .check-head strong{font-size:16px}
+  .pill{font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:999px}
+  .pill.pass{background:var(--green-tint);color:var(--green)}
+  .pill.warn{background:var(--amber-tint);color:var(--amber)}
+  .pill.fail{background:var(--red-tint);color:var(--red)}
+  .explain{margin:4px 0 0;font-size:15px;color:var(--ink)}
+  .evidence{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--slate);
+    background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 10px;
+    margin:10px 0 0;word-break:break-all}
+  .fix{margin:12px 0 0;border-top:1px dashed var(--line);padding-top:12px}
+  .fix p{font-size:14px;margin:0 0 8px}
+  .snippet{display:flex;gap:8px;align-items:flex-start;background:var(--paper);
+    border:1px solid var(--line);border-radius:8px;padding:10px;margin-bottom:8px}
+  .snippet code{flex:1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;
+    word-break:break-all;color:var(--ink)}
+  .copybtn{background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 12px;
+    font-size:13px;font-weight:700;color:var(--teal);cursor:pointer;white-space:nowrap}
+  .copybtn:hover{border-color:var(--teal)}
+  .fix .note{font-size:13px;color:var(--slate)}
+  .attrib{font-size:12px;color:var(--slate);margin-top:10px}
+  .cta{margin:30px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .explainer{margin:36px 0 0;font-size:15.5px;color:var(--ink)}
+  .explainer h2{font-size:20px;color:var(--teal)}
+  .explainer p{max-width:68ch}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  .spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;
+    border-radius:50%;animation:spin .7s linear infinite;vertical-align:-3px;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .error{background:var(--red-tint);border:1px solid #eec2bf;color:var(--red);border-radius:10px;
+    padding:16px;font-size:15px;margin-top:18px}
+  @media (max-width:560px){
+    h1{font-size:25px}
+    .row{flex-direction:column}
+    button.check{width:100%}
+    .tool{padding:18px}
+  }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="speed.html">Website speed</a> &middot; <strong>Email deliverability</strong></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Is your business email going to spam?</h1>
+    <p class="lede">Quotes, invoices, and appointment confirmations can land in spam without a single error message. Three behind-the-scenes records — SPF, DKIM, and DMARC — tell Gmail and Outlook your email is really from you. Paste your domain and see, in plain English, whether yours are set up. Free, no signup, no ads.</p>
+
+    <div class="tool">
+      <label class="f-label" for="domain">Your website domain</label>
+      <div class="row">
+        <input type="text" id="domain" name="domain" inputmode="url" autocomplete="off"
+               placeholder="acmeplumbing.com" aria-describedby="domain-hint">
+        <button class="check" id="go">Check my domain</button>
+      </div>
+      <p class="hint" id="domain-hint">Just the domain — no https, no www needed. We only read public DNS records; nothing is stored.</p>
+      <div id="results" aria-live="polite"></div>
+    </div>
+
+    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's speed, security, mobile experience, and SEO — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" href="mailto:dadusa01@gmail.com?subject=Site%20Health%20Watch%20%E2%80%94%20full%20audit%20request&body=Hi%2C%20I%20ran%20the%20free%20email%20check%20and%20I%27d%20like%20the%20full%2040-point%20audit.%20My%20domain%20is%3A%20">$199 — Get the full audit</a>
+    </div>
+
+    <div class="explainer">
+      <h2>What are SPF, DKIM, and DMARC, in plain English?</h2>
+      <p>Think of them as three stamps on every email you send. <strong>SPF</strong> is a public list, kept in your domain's DNS records, naming which mail servers are allowed to send email for you. When Gmail gets a message claiming to be from your business, it checks the list. <strong>DKIM</strong> is a digital signature your mail server adds to each message — like a wax seal that proves the email wasn't altered in transit. <strong>DMARC</strong> is your written instruction to inbox providers: here's what to do with mail that fails the first two checks — deliver it, quarantine it, or reject it — and where to send you reports about it.</p>
+      <p>When any of the three are missing, two bad things happen quietly. First, your real email looks more suspicious, so more of it lands in spam — the quotes and invoices your customers never see. Second, anyone can send email pretending to be your domain, and inbox providers have no instruction to stop it.</p>
+      <p>The fix is three small entries in your domain's DNS settings — the same place your website's address lives, usually your registrar like GoDaddy or Cloudflare. This check shows you exactly which ones are missing and gives you the lines to paste. If you'd rather not touch DNS yourself, that's exactly what the full audit's fix briefs are for.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">© 2026 Site Health Watch · Every small business deserves the truth about its website — measured, not guessed.</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* Pure logic below — DOM wiring is inside init(), guarded so this file's
+   functions can be exercised in Node for testing. */
+const DOH = "https://dns.google/resolve";
+const cache = new Map();
+
+async function doh(name, type) {
+  const key = type + ":" + name.toLowerCase();
+  if (cache.has(key)) return cache.get(key);
+  const res = await fetch(DOH + "?name=" + encodeURIComponent(name) + "&type=" + type);
+  if (!res.ok) throw new Error("network");
+  const j = await res.json();
+  cache.set(key, j);
+  return j;
+}
+
+/* DNS-over-HTTPS returns TXT rdata as quoted chunks: "\"v=spf1 ...\" \"...\"" */
+function joinTxt(data) {
+  const parts = [];
+  const re = /"((?:[^"\\]|\\.)*)"/g;
+  let m;
+  while ((m = re.exec(data)) !== null) parts.push(m[1]);
+  return parts.length ? parts.join("") : String(data);
+}
+
+function txtRecords(resp) {
+  if (!resp || resp.Status !== 0 || !resp.Answer) return [];
+  return resp.Answer.filter(a => a.type === 16).map(a => joinTxt(a.data));
+}
+
+function normalizeDomain(raw) {
+  let d = String(raw || "").trim().toLowerCase();
+  if (!d) return "";
+  if (d.includes("@")) d = d.split("@").pop();
+  d = d.replace(/^[a-z]+:\/\//, "").split("/")[0].split(":")[0].split("?")[0];
+  if (d.startsWith("www.")) d = d.slice(4);
+  d = d.replace(/\.$/, "");
+  try { d = new URL("https://" + d).hostname; } catch (e) { return ""; }
+  if (!/^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/.test(d)) return "";
+  return d;
+}
+
+async function checkDomain(domain) {
+  /* Returns { rows: [mx, spf, dkim, dmarc], verdict } — throws on NXDOMAIN/network. */
+  const apex = await doh(domain, "MX").catch(e => { throw e; });
+  if (apex.Status === 3) throw new Error("nxdomain");
+
+  const rows = {};
+
+  // 1. MX
+  const mxHosts = (apex.Status === 0 && apex.Answer ? apex.Answer : [])
+    .filter(a => a.type === 15)
+    .map(a => String(a.data).replace(/^\d+\s+/, "").replace(/\.$/, ""));
+  rows.mx = mxHosts.length
+    ? { status: "pass", title: "Mail server (MX)",
+        explain: "Your domain has a mail server — you can receive email here. It runs through " +
+                 mxHosts.slice(0, 2).join(", ") + (mxHosts.length > 2 ? ", and others" : "") + ".",
+        evidence: mxHosts.join(", ") }
+    : { status: "fail", title: "Mail server (MX)",
+        explain: "No mail server found for this domain. Email sent to addresses at this domain may bounce — check with whoever set up your email.",
+        evidence: "No MX records returned." };
+
+  // 2. SPF
+  const apexTxt = txtRecords(await doh(domain, "TXT"));
+  const spf = apexTxt.find(t => t.toLowerCase().startsWith("v=spf1"));
+  if (!spf) {
+    rows.spf = { status: "fail", title: "SPF",
+      explain: "No SPF record found. Inbox providers can't tell which servers are allowed to send for you, so your mail looks more suspicious.",
+      evidence: "No TXT record starting with v=spf1.",
+      fix: { host: "@", type: "TXT",
+             value: "v=spf1 include:_spf.google.com ~all",
+             note: "This starter covers Google Workspace. On Microsoft 365 use v=spf1 include:spf.protection.outlook.com ~all instead. Ask your email provider which one matches yours — the wrong include can break sending." } };
+  } else {
+    const lower = spf.toLowerCase();
+    const tail = lower.trim().split(/\s+/).pop();
+    const lookups = (lower.match(/\binclude:/g) || []).length +
+                    (lower.match(/\bredirect=/g) || []).length +
+                    (lower.match(/\bexists:/g) || []).length;
+    if (tail !== "-all" && tail !== "~all") {
+      rows.spf = { status: "warn", title: "SPF",
+        explain: "You have SPF, but it ends without a firm policy (" + tail + "). That tells inbox providers to accept mail even from servers you didn't approve.",
+        evidence: spf,
+        fix: { host: "@", type: "TXT",
+               value: spf.replace(/\s+\S+\s*$/, " ~all"),
+               note: "Same record, with ~all at the end so unapproved servers are treated as suspicious. Only make this change if the servers listed are really all of yours." } };
+    } else if (lookups > 8) {
+      rows.spf = { status: "warn", title: "SPF",
+        explain: "Your SPF record is valid but triggers " + lookups + " extra DNS lookups — the hard limit is 10, and past it SPF silently stops working.",
+        evidence: spf,
+        fix: null,
+        note: "Ask your email provider about flattening includes (replacing include: entries with their IP ranges) before you hit the limit." };
+    } else {
+      rows.spf = { status: "pass", title: "SPF",
+        explain: "SPF is set up" + (tail === "-all" ? " with a strict policy" : "") + " — it tells Gmail and Outlook which servers may send email for your domain.",
+        evidence: spf };
+    }
+  }
+
+  // 3. DKIM — probe common selectors
+  const selectors = ["default", "google", "selector1", "selector2", "k1", "everlydkim", "mail", "dkim"];
+  let dkimHit = null;
+  for (const s of selectors) {
+    const r = txtRecords(await doh(s + "._domainkey." + domain, "TXT"));
+    const hit = r.find(t => t.toLowerCase().startsWith("v=dkim1"));
+    if (hit) { dkimHit = { selector: s, record: hit }; break; }
+  }
+  rows.dkim = dkimHit
+    ? { status: "pass", title: "DKIM",
+        explain: "DKIM signing key found (selector \"" + dkimHit.selector + "\") — your mail server signs outgoing email so inbox providers can verify it wasn't tampered with.",
+        evidence: dkimHit.record.slice(0, 120) + (dkimHit.record.length > 120 ? "…" : "") }
+    : { status: "fail", title: "DKIM",
+        explain: "No DKIM key found under the 8 most common selectors. Your outgoing mail is probably unsigned, which makes it look less trustworthy.",
+        evidence: "Checked: " + selectors.map(s => s + "._domainkey").join(", ") + " — no v=DKIM1 record.",
+        fix: null,
+        note: "DKIM is switched on inside your email provider, not by pasting a record by hand. In Google Workspace: Admin console → Apps → Google Workspace → Gmail → Authenticate email → generate a new record, then paste the TXT value it gives you into your DNS." };
+
+  // 4. DMARC
+  const dmTxt = txtRecords(await doh("_dmarc." + domain, "TXT"));
+  const dmarc = dmTxt.find(t => t.toLowerCase().startsWith("v=dmarc1"));
+  if (!dmarc) {
+    rows.dmarc = { status: "fail", title: "DMARC",
+      explain: "No DMARC policy. You've given inbox providers no instruction for handling fakes of your domain — impersonating emails get delivered like normal mail.",
+      evidence: "No TXT record at _dmarc." + domain + ".",
+      fix: { host: "_dmarc", type: "TXT",
+             value: "v=DMARC1; p=none; rua=mailto:dmarc@" + domain,
+             note: "Start at p=none (watch-only — you'll get reports, nothing gets blocked). Do NOT jump straight to p=reject: a strict policy with a misconfigured SPF or DKIM silently stops your real invoices from arriving." } };
+  } else {
+    const pm = dmarc.match(/;\s*p\s*=\s*([^;\s]+)/i);
+    const p = pm ? pm[1].toLowerCase() : "";
+    if (p === "reject") {
+      rows.dmarc = { status: "pass", title: "DMARC",
+        explain: "DMARC is set to reject — inbox providers throw away mail that fails your SPF/DKIM checks. This is the strictest setting.",
+        evidence: dmarc };
+    } else if (p === "quarantine") {
+      rows.dmarc = { status: "pass", title: "DMARC",
+        explain: "DMARC is set to quarantine — fakes of your domain go to spam instead of the inbox.",
+        evidence: dmarc };
+    } else {
+      rows.dmarc = { status: "warn", title: "DMARC",
+        explain: "DMARC exists but is set to p=none — monitoring only. You get reports, but fakes of your domain are still delivered normally.",
+        evidence: dmarc,
+        fix: null,
+        note: "Once your reports show SPF and DKIM passing for your real mail, step up to p=quarantine, then p=reject." };
+    }
+  }
+
+  const list = [rows.mx, rows.spf, rows.dkim, rows.dmarc];
+  const fails = list.filter(r => r.status === "fail").length;
+  const warns = list.filter(r => r.status === "warn").length;
+  let verdict;
+  if (rows.mx.status === "fail" || fails >= 3) verdict = "unprotected";
+  else if (fails === 0 && warns === 0) verdict = "secured";
+  else verdict = "partial";
+  return { rows: list, verdict: verdict };
+}
+
+const VERDICTS = {
+  secured:     { h: "You're protected.", p: "All 4 email authentication checks pass. Gmail and Outlook see your mail as legitimate — your quotes and invoices have the best chance of reaching the inbox." },
+  partial:     { h: "Partly protected.", p: "Some checks pass and some need work. Until the gaps below are fixed, more of your email is likely to land in spam — and impersonators have an easier time faking your domain." },
+  unprotected: { h: "Not protected.", p: "Your domain is missing most email authentication. Inbox providers can't verify your mail is really from you, so more of it lands in spam — and anyone can send email pretending to be your business." }
+};
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+function renderResults(data, domain) {
+  const v = VERDICTS[data.verdict];
+  const pill = { pass: ["pass", "PASS"], warn: ["warn", "NEEDS WORK"], fail: ["fail", "MISSING"] };
+  let html = '<div class="verdict ' + data.verdict + '"><h2>' + v.h + '</h2><p>' + v.p + '</p></div><ul class="checks">';
+  for (const r of data.rows) {
+    html += '<li><div class="check-head"><span class="pill ' + pill[r.status][0] + '">' + pill[r.status][1] + '</span>' +
+            '<strong>' + esc(r.title) + '</strong></div>' +
+            '<p class="explain">' + esc(r.explain) + '</p>' +
+            '<div class="evidence">' + esc(r.evidence) + '</div>';
+    if (r.fix) {
+      html += '<div class="fix"><p><strong>Fix it:</strong> add this DNS record at your registrar (usually where your website lives — GoDaddy, Cloudflare, etc.):</p>' +
+        '<div class="snippet"><code>Host: ' + esc(r.fix.host) + ' &nbsp;·&nbsp; Type: ' + esc(r.fix.type) + '<br>' + esc(r.fix.value) + '</code>' +
+        '<button class="copybtn" data-copy="' + esc(r.fix.value).replace(/"/g, "&quot;") + '">Copy</button></div>' +
+        '<p class="note">' + esc(r.fix.note) + '</p>' +
+        '<p class="attrib">Generated by Site Health Watch — want all 40 checks?</p></div>';
+    } else if (r.note) {
+      html += '<div class="fix"><p class="note">' + esc(r.note) + '</p></div>';
+    }
+    html += '</li>';
+  }
+  return html + '</ul>';
+}
+
+function init() {
+  const input = document.getElementById("domain");
+  const go = document.getElementById("go");
+  const out = document.getElementById("results");
+  async function run() {
+    const domain = normalizeDomain(input.value);
+    if (!domain) {
+      out.innerHTML = '<div class="error">That doesn\'t look like a domain. Try something like <strong>acmeplumbing.com</strong>.</div>';
+      return;
+    }
+    go.disabled = true;
+    go.innerHTML = '<span class="spinner"></span>Checking…';
+    out.innerHTML = "";
+    try {
+      const data = await checkDomain(domain);
+      out.innerHTML = renderResults(data, domain);
+    } catch (e) {
+      out.innerHTML = e.message === "nxdomain"
+        ? '<div class="error"><strong>' + esc(domain) + '</strong> doesn\'t appear to exist. Check the spelling and try again.</div>'
+        : '<div class="error">Couldn\'t reach the DNS lookup service. Check your connection and try again — nothing was stored.</div>';
+    }
+    go.disabled = false;
+    go.textContent = "Check my domain";
+  }
+  go.addEventListener("click", run);
+  input.addEventListener("keydown", e => { if (e.key === "Enter") run(); });
+  out.addEventListener("click", e => {
+    const btn = e.target.closest(".copybtn");
+    if (!btn) return;
+    const val = btn.getAttribute("data-copy");
+    const done = () => { btn.textContent = "Copied"; setTimeout(() => btn.textContent = "Copy", 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(val).then(done).catch(() => fallbackCopy(val, done));
+    } else fallbackCopy(val, done);
+  });
+  function fallbackCopy(val, done) {
+    const ta = document.createElement("textarea");
+    ta.value = val; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+}
+
+if (typeof document !== "undefined" && document.getElementById) {
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+}
+
+if (typeof module !== "undefined") module.exports = { checkDomain, normalizeDomain, VERDICTS };
+</script>
+</body>
+</html>
