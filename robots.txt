@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dusa89.github.io/site-health-tools/sitemap.xml
