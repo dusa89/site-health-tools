@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free AI Visibility Check — Does ChatGPT Recommend Your Business?</title>
+<meta name="description" content="Free AI visibility check (waitlist): does ChatGPT recommend your business or your competitor? See the exact question, the verbatim answer, and who got named. No signup, no ads. From Site Health Watch.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px}
+  label.f-label{display:block;font-weight:700;margin-bottom:8px;font-size:15px}
+  .row{display:flex;gap:10px}
+  input[type=text]{flex:1;min-width:0;font-size:16px;padding:12px 14px;border:1px solid var(--line);
+    border-radius:8px;color:var(--ink)}
+  input[type=text]:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+  button.check{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:12px 22px;
+    font-size:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+  button.check:hover{background:#0f2c3c}
+  button.check:disabled{opacity:.55;cursor:wait}
+  .hint{font-size:13px;color:var(--slate);margin:10px 0 0}
+  #results{margin-top:22px}
+  .verdict{border-radius:12px;padding:22px;border:1px solid var(--line)}
+  .verdict.secured{background:var(--green-tint);border-color:#bfe0cc}
+  .verdict.partial{background:var(--amber-tint);border-color:#ecd9a8}
+  .verdict.unprotected{background:var(--red-tint);border-color:#eec2bf}
+  .verdict h2{margin:0 0 6px;font-size:22px}
+  .verdict.secured h2{color:var(--green)} .verdict.partial h2{color:var(--amber)}
+  .verdict.unprotected h2{color:var(--red)}
+  .verdict p{margin:0;font-size:16px}
+  .checks{margin:18px 0 0;padding:0;list-style:none}
+  .checks li{border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px;background:#fff}
+  .check-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+  .check-head strong{font-size:16px}
+  .pill{font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:999px}
+  .pill.pass{background:var(--green-tint);color:var(--green)}
+  .pill.warn{background:var(--amber-tint);color:var(--amber)}
+  .pill.fail{background:var(--red-tint);color:var(--red)}
+  .explain{margin:4px 0 0;font-size:15px;color:var(--ink)}
+  .evidence{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--slate);
+    background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 10px;
+    margin:10px 0 0;word-break:break-all}
+  .fix{margin:12px 0 0;border-top:1px dashed var(--line);padding-top:12px}
+  .fix p{font-size:14px;margin:0 0 8px}
+  .snippet{display:flex;gap:8px;align-items:flex-start;background:var(--paper);
+    border:1px solid var(--line);border-radius:8px;padding:10px;margin-bottom:8px}
+  .snippet code{flex:1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;
+    word-break:break-all;color:var(--ink)}
+  .copybtn{background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 12px;
+    font-size:13px;font-weight:700;color:var(--teal);cursor:pointer;white-space:nowrap}
+  .copybtn:hover{border-color:var(--teal)}
+  .fix .note{font-size:13px;color:var(--slate)}
+  .attrib{font-size:12px;color:var(--slate);margin-top:10px}
+  .cta{margin:30px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .explainer{margin:36px 0 0;font-size:15.5px;color:var(--ink)}
+  .explainer h2{font-size:20px;color:var(--teal)}
+  .explainer p{max-width:68ch}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  .spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;
+    border-radius:50%;animation:spin .7s linear infinite;vertical-align:-3px;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .error{background:var(--red-tint);border:1px solid #eec2bf;color:var(--red);border-radius:10px;
+    padding:16px;font-size:15px;margin-top:18px}
+  @media (max-width:560px){
+    h1{font-size:25px}
+    .row{flex-direction:column}
+    button.check{width:100%}
+    .tool{padding:18px}
+  }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="speed.html">Website speed</a> &middot; <a href="index.html">Email deliverability</a> &middot; <a href="security.html">Website security</a> &middot; <strong>AI visibility</strong></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Does AI recommend your business — or your competitor?</h1>
+    <p class="lede">Customers are skipping Google and asking ChatGPT, Gemini, and Perplexity things like "who's the best plumber near me?" If the AI names your competitor and not you, you never hear the phone <em>not</em> ring. Our free check shows the exact question, the AI's word-for-word answer, and which businesses it named. Free, no signup, no ads.</p>
+
+    <div class="tool">
+      <div class="verdict partial">
+        <h2>This check is still being built — join the waitlist</h2>
+        <p>When it launches, you'll paste your business name and trade, and get: <strong>(1)</strong> the exact question we asked the AI, <strong>(2)</strong> its word-for-word answer, and <strong>(3)</strong> every competitor it named instead of you. Nothing hidden behind a signup wall. Leave your email and you're first in line the day it goes live — and the full audit below already answers this by hand today.</p>
+      </div>
+      <form id="waitlist" style="margin-top:18px">
+        <label class="f-label" for="wl-email">Email me when the AI visibility check launches</label>
+        <div class="row">
+          <input type="text" id="wl-biz" placeholder="Your business name (e.g. Acme Plumbing)" aria-label="Business name">
+          <input type="text" id="wl-email" placeholder="you@yourbusiness.com" aria-label="Email address">
+          <button class="check" type="submit">Notify me</button>
+        </div>
+        <p class="hint">One email, the day it launches. No newsletter, no spam — and honestly, we check these ourselves.</p>
+      </form>
+      <div id="wl-done"></div>
+    </div>
+
+    <div class="cta">
+      <h2>AI visibility is check #11 of 40</h2>
+      <p>The full Site Health Watch audit answers this exact question by hand against your live business today — which AI assistants mention you, what they say, and who they're recommending instead — along with speed, security, mobile, email, and SEO. Every finding verified, delivered within 24 hours.</p>
+      <a class="btn" href="mailto:dadusa01@gmail.com?subject=Site%20Health%20Watch%20%E2%80%94%20full%20audit%20request&body=Hi%2C%20I%27d%20like%20the%20full%2040-point%20audit.%20My%20business%20is%3A%20">$199 — Get the full audit</a>
+    </div>
+
+    <div class="explainer">
+      <h2>Why "who does AI recommend?" is the question owners can't see</h2>
+      <p>Search changed in 2026. A growing share of customers — especially under 40 — never open Google at all. They ask an AI assistant which plumber, roofer, or dentist to call, and they call the first name it gives. There is no results page to scroll. If you're not named, you don't exist in that conversation, and unlike a bad Google ranking, nobody tells you it's happening.</p>
+      <p>That makes the existing options frustrating. The big free grader in this space gives you a one-time score behind an email gate and hides the actual questions and answers. Real AI-visibility monitoring starts around $25 a month and the serious tools run close to $100 — priced for agencies, not for the shop owner who just wants to know one thing: when someone asks for what I sell, does the machine say my name?</p>
+      <p>Our check is being built around that one question, and we're building it the same way as the other three free checks on this site: show the actual evidence, in plain English, with nothing held back. The exact prompt we ran. The AI's verbatim answer. Every competitor it named instead of you. Then one clear next step if the answer is bad news: the $199 full audit, where a human verifies the same finding against your live site along with 39 other checks and tells you what to fix, in 24 hours.</p>
+      <p>Until the automated check launches, the waitlist above is the fastest way in — one email the day it goes live. If you'd rather have the answer this week, the full audit already covers it.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">© 2026 Site Health Watch · Every small business deserves the truth about its website — measured, not guessed.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('waitlist').addEventListener('submit', function(e){
+  e.preventDefault();
+  var biz = document.getElementById('wl-biz').value.trim();
+  var email = document.getElementById('wl-email').value.trim();
+  var done = document.getElementById('wl-done');
+  if (!email || email.indexOf('@') < 1) {
+    done.innerHTML = '<div class="error" style="margin-top:14px"><strong>We need a real email address</strong> — that\\u2019s the whole point of a waitlist.</div>';
+    return;
+  }
+  var subject = encodeURIComponent('Site Health Watch — AI visibility check waitlist');
+  var body = encodeURIComponent('Please notify me when the free AI visibility check launches.\n\nBusiness: ' + (biz || '(not given)') + '\nEmail: ' + email + '\n');
+  done.innerHTML = '<p class="hint" style="margin-top:14px;font-size:14px"><strong>You\\u2019re on the list.</strong> Your email app should have opened with the waitlist note addressed to us — just press send. If it didn\\u2019t open, email <strong>dadusa01@gmail.com</strong> with the subject \\u201cAI visibility check waitlist\\u201d.</p>';
+  window.location.href = 'mailto:dadusa01@gmail.com?subject=' + subject + '&body=' + body;
+});
+</script>
+</body>
+</html>
