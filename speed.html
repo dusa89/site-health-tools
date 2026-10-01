@@ -137,7 +137,7 @@
     <div class="cta">
       <h2>Speed is check #1 of 40</h2>
       <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO — every finding verified against your live site, delivered within 24 hours.</p>
-      <a class="btn" href="mailto:dadusa01@gmail.com?subject=Site%20Health%20Watch%20%E2%80%94%20full%20audit%20request&body=Hi%2C%20I%20ran%20the%20free%20speed%20check%20and%20I%27d%20like%20the%20full%2040-point%20audit.%20My%20website%20is%3A%20">$199 — Get the full audit</a>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site%20Health%20Watch%20%E2%80%94%20full%20audit%20request&body=Hi%2C%20I%20ran%20the%20free%20speed%20check%20and%20I%27d%20like%20the%20full%2040-point%20audit.%20My%20website%20is%3A%20">$199 — Get the full audit</a>
     </div>
 
     <div class="explainer">
@@ -506,6 +506,27 @@ if (typeof module !== "undefined") {
     parsePsi: parsePsi, friendlyError: friendlyError, renderResults: renderResults,
     VERDICTS: VERDICTS };
 }
+</script>
+<script>
+/* SHW funnel beacon — counts $199 CTA and waitlist clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  window.shwPing=ping;
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
 </script>
 </body>
 </html>
