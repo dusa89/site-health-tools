@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Broken Link Checker — Find Dead Links on Your Website</title>
+<meta name="description" content="Free broken link checker in plain English: we click through your homepage's links and images and show you every dead end. No signup, no ads. From Site Health Watch.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px}
+  label.f-label{display:block;font-weight:700;margin-bottom:8px;font-size:15px}
+  .row{display:flex;gap:10px}
+  input[type=text]{flex:1;min-width:0;font-size:16px;padding:12px 14px;border:1px solid var(--line);
+    border-radius:8px;color:var(--ink)}
+  input[type=text]:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+  button.check{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:12px 22px;
+    font-size:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+  button.check:hover{background:#0f2c3c}
+  button.check:disabled{opacity:.55;cursor:wait}
+  .hint{font-size:13px;color:var(--slate);margin:10px 0 0}
+  #results{margin-top:22px}
+  .verdict{border-radius:12px;padding:22px;border:1px solid var(--line)}
+  .verdict.secured{background:var(--green-tint);border-color:#bfe0cc}
+  .verdict.partial{background:var(--amber-tint);border-color:#ecd9a8}
+  .verdict.unprotected{background:var(--red-tint);border-color:#eec2bf}
+  .verdict h2{margin:0 0 6px;font-size:22px}
+  .verdict.secured h2{color:var(--green)} .verdict.partial h2{color:var(--amber)}
+  .verdict.unprotected h2{color:var(--red)}
+  .verdict p{margin:0;font-size:16px}
+  .scanned{margin-top:12px;font-size:13px;color:var(--slate)}
+  .checks{margin:18px 0 0;padding:0;list-style:none}
+  .checks li{border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px;background:#fff}
+  .check-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+  .check-head strong{font-size:16px}
+  .pill{font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:999px}
+  .pill.pass{background:var(--green-tint);color:var(--green)}
+  .pill.warn{background:var(--amber-tint);color:var(--amber)}
+  .pill.fail{background:var(--red-tint);color:var(--red)}
+  .pill.info{background:var(--paper);color:var(--slate)}
+  .explain{margin:4px 0 0;font-size:15px;color:var(--ink)}
+  .evidence{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--slate);
+    background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 10px;
+    margin:10px 0 0;word-break:break-all}
+  .fix{margin:12px 0 0;border-top:1px dashed var(--line);padding-top:12px}
+  .fix p{font-size:14px;margin:0 0 8px}
+  .fix .note{font-size:13px;color:var(--slate)}
+  .attrib{font-size:12px;color:var(--slate);margin-top:10px}
+  .cta{margin:30px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .explainer{margin:36px 0 0;font-size:15.5px;color:var(--ink)}
+  .explainer h2{font-size:20px;color:var(--teal)}
+  .explainer p{max-width:68ch}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  .spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;
+    border-radius:50%;animation:spin .7s linear infinite;vertical-align:-3px;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .error{background:var(--red-tint);border:1px solid #eec2bf;color:var(--red);border-radius:10px;
+    padding:16px;font-size:15px;margin-top:18px}
+  .scanning{background:var(--paper);border:1px solid var(--line);border-radius:10px;
+    padding:16px;font-size:15px;margin-top:18px;color:var(--slate)}
+  @media (max-width:560px){
+    h1{font-size:25px}
+    .row{flex-direction:column}
+    button.check{width:100%}
+    .tool{padding:18px}
+  }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="speed.html">Website speed</a> &middot; <a href="index.html">Email deliverability</a> &middot; <a href="security.html">Website security</a> &middot; <strong>Broken links</strong> &middot; <a href="ai-visibility.html">AI visibility</a> (waitlist)</nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Does your website have broken links?</h1>
+    <p class="lede">Every dead link on your site is a door that opens onto an empty room. A visitor clicks, lands on an error page, and leaves — and most owners never find out, because nobody complains, they just don't come back. Paste your homepage below and we'll click through it for you: up to 6 internal links and every image, checked live. Free, no signup, no ads.</p>
+
+    <div class="tool">
+      <label class="f-label" for="url">Your website address</label>
+      <div class="row">
+        <input type="text" id="url" name="url" inputmode="url" autocomplete="off"
+               placeholder="acmeplumbing.com" aria-describedby="url-hint">
+        <button class="check" id="go">Check my site</button>
+      </div>
+      <p class="hint" id="url-hint">Your homepage is fine — https://acmeplumbing.com. We only read public pages; nothing is stored.</p>
+      <div id="results" aria-live="polite"></div>
+    </div>
+
+    <div class="cta">
+      <h2>Broken links are check #14 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's speed, security, mobile experience, email, and SEO — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_links" href="mailto:dadusa01@gmail.com?subject=Site%20Health%20Watch%20%E2%80%94%20full%20audit%20request&body=Hi%2C%20I%20ran%20the%20free%20broken-link%20check%20and%20I%27d%20like%20the%20full%2040-point%20audit.%20My%20website%20is%3A%20">$199 — Get the full audit</a>
+    </div>
+
+    <div class="explainer">
+      <h2>Where broken links come from (and why owners never notice)</h2>
+      <p>A broken link is simply a link that points somewhere that no longer exists. They creep in four ways: a page gets deleted and nobody updates the links pointing to it; a redesign changes your page addresses; someone typed the link wrong when the page was built; or an image got moved or renamed and the page still points at the old location. None of these feel like mistakes at the time — the damage shows up months later, one bounced visitor at a time.</p>
+      <p>It costs you twice. First, the human cost: a customer clicks "Book appointment," hits an error page, and calls your competitor instead. Second, the search-engine cost: Google's crawlers trip over dead ends too, and a site full of them reads as unmaintained. You would never leave your shop's front door jammed — but most small-business sites are carrying dead links the owner has never seen, because owners click their own sites far less than their customers do.</p>
+      <p>This check does the clicking for you. It loads your homepage, follows up to 6 of your internal links, and tries to load every image on the page — then shows you exactly which ones failed, with the link text and address, so you or your web person can fix each one in minutes. It checks your own pages only; links pointing to other websites are the other site's problem to fix. Broken links are one of the 40 checks in our full audit, which re-verifies everything by hand against your live site.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* Pure logic below — DOM wiring is inside init(), guarded so this file's
+   functions can be exercised in Node for testing. */
+
+/* Link targets are checked through the AllOrigins public proxy (free, keyless,
+   CORS-enabled): its /get endpoint returns the TARGET's real status code in
+   status.http_code, which is what decides broken vs working. Images are
+   checked natively by the browser (Image onload/onerror) — no proxy needed. */
+var PROXY = "https://api.allorigins.win/get?url=";
+var LINKS_CAP = 6;
+var IMAGES_CAP = 12;
+
+function normalizeUrl(raw) {
+  var u = String(raw || "").trim();
+  if (!u) return "";
+  if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(u)) u = "https://" + u;
+  var parsed;
+  try { parsed = new URL(u); } catch (e) { return ""; }
+  if (parsed.protocol !== "http:" && parsed.protocol !== "https:") return "";
+  if (parsed.hostname.indexOf(".") < 0) return "";
+  return parsed.toString();
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
+function fetchWithTimeout(url, ms) {
+  var ctrl = new AbortController();
+  var t = setTimeout(function () { ctrl.abort(); }, ms);
+  var p = fetch(url, { signal: ctrl.signal });
+  return p.then(function (res) { clearTimeout(t); return res; },
+               function (err) { clearTimeout(t); throw err; });
+}
+
+async function proxyGet(targetUrl, ms) {
+  /* Resolves {httpCode, contentType, contents}; throws {kind:"network"} after one retry. */
+  var lastErr = null;
+  for (var attempt = 0; attempt < 2; attempt++) {
+    try {
+      var res = await fetchWithTimeout(PROXY + encodeURIComponent(targetUrl), ms || 45000);
+      var j = await res.json();
+      var st = (j && j.status) || {};
+      return { httpCode: st.http_code || 0, contentType: st.content_type || "",
+               contents: (j && j.contents) || "" };
+    } catch (e) { lastErr = e; }
+  }
+  var err = new Error("network"); err.kind = "network"; throw err;
+}
+
+function extractLinks(doc, pageUrl) {
+  var out = [], seen = {};
+  var pageHost;
+  try { pageHost = new URL(pageUrl).hostname; } catch (e) { return out; }
+  var anchors = doc.querySelectorAll("a[href]");
+  for (var i = 0; i < anchors.length; i++) {
+    if (out.length >= LINKS_CAP) break;
+    var raw = anchors[i].getAttribute("href");
+    if (!raw || raw.charAt(0) === "#" || /^(mailto|tel|sms|javascript):/i.test(raw)) continue;
+    var abs;
+    try { abs = new URL(raw, pageUrl); } catch (e) { continue; }
+    if (abs.protocol !== "http:" && abs.protocol !== "https:") continue;
+    if (abs.hostname !== pageHost) continue;
+    abs.hash = "";
+    var key = abs.toString();
+    if (key === pageUrl || seen[key]) continue;
+    seen[key] = true;
+    var text = (anchors[i].textContent || "").replace(/\s+/g, " ").trim().slice(0, 80) || "(link with no text)";
+    out.push({ url: key, text: text });
+  }
+  return out;
+}
+
+function extractImages(doc, pageUrl) {
+  var out = [], seen = {};
+  var imgs = doc.querySelectorAll("img");
+  for (var i = 0; i < imgs.length; i++) {
+    if (out.length >= IMAGES_CAP) break;
+    var raw = imgs[i].getAttribute("src") || imgs[i].getAttribute("data-src");
+    if (!raw || raw.indexOf("data:") === 0) continue;
+    var abs;
+    try { abs = new URL(raw, pageUrl); } catch (e) { continue; }
+    if (abs.protocol !== "http:" && abs.protocol !== "https:") continue;
+    var key = abs.toString();
+    if (seen[key]) continue;
+    seen[key] = true;
+    out.push({ url: key, alt: (imgs[i].getAttribute("alt") || "").trim().slice(0, 80) });
+  }
+  return out;
+}
+
+function classifyStatus(code) {
+  if (code >= 200 && code < 400) return "ok";
+  if (!code) return "unknown";
+  return "broken";
+}
+
+function checkImage(url, ms) {
+  /* Native browser check: resolves "ok" | "broken" | "slow". Browser-only. */
+  return new Promise(function (resolve) {
+    var done = false;
+    var img = new Image();
+    var t = setTimeout(function () { if (!done) { done = true; resolve("slow"); } }, ms || 15000);
+    img.onload = function () { if (!done) { done = true; clearTimeout(t); resolve("ok"); } };
+    img.onerror = function () { if (!done) { done = true; clearTimeout(t); resolve("broken"); } };
+    img.src = url;
+  });
+}
+
+function plural(n, one, many) { return n === 1 ? one : many; }
+
+function buildVerdict(r) {
+  /* r: {homeDown, homeCode, linksChecked, imagesChecked, brokenLinks[], brokenImages[], slowImages[]} */
+  if (r.homeDown) {
+    return { cls: "unprotected", h: "Your homepage isn't loading.",
+      p: "Your homepage itself returned an error (status " + r.homeCode + "), so there was nothing to click through. " +
+         "Visitors are hitting this right now — this outranks everything else on the page." };
+  }
+  var issues = r.brokenLinks.length + r.brokenImages.length;
+  if (issues === 0) {
+    return { cls: "secured", h: "No broken links found.",
+      p: "We checked " + r.linksChecked + " " + plural(r.linksChecked, "link", "links") + " and " +
+         r.imagesChecked + " " + plural(r.imagesChecked, "image", "images") +
+         " on your homepage — everything loaded. Link rot creeps in over time (redesigns, deleted pages, typos), " +
+         "so this is worth re-running every few months." };
+  }
+  var noun = issues === 1 ? "dead end" : "dead ends";
+  if (issues <= 2) {
+    return { cls: "partial", h: "A couple of cracks to fix.",
+      p: "We found " + issues + " " + noun + " on your homepage — small dead ends that cost you visitors. " +
+         "The fixes below are usually quick: update the link or remove it." };
+  }
+  return { cls: "unprotected", h: "Your site has dead ends.",
+    p: "We found " + issues + " " + noun + " on your homepage. Every one is a visitor hitting an error " +
+       "page instead of your business. Work through the list below — each fix takes minutes." };
+}
+
+function statusLabel(code) {
+  if (code === 404) return "404 — page not found";
+  if (code === 410) return "410 — page permanently removed";
+  if (code === 403) return "403 — access refused";
+  if (code === 500) return "500 — server error";
+  if (code >= 500) return code + " — server error";
+  if (code >= 400) return code + " — not loading";
+  return "status " + code;
+}
+
+function renderResults(r, pageUrl) {
+  var v = buildVerdict(r);
+  var html = '<div class="verdict ' + v.cls + '"><h2>' + esc(v.h) + '</h2><p>' + esc(v.p) + '</p>' +
+    '<p class="scanned">Checked live just now: your homepage plus ' + r.linksChecked + " " +
+    plural(r.linksChecked, "link", "links") + " and " + r.imagesChecked + " " +
+    plural(r.imagesChecked, "image", "images") +
+    ". Nothing was stored. <span class=\"attrib\">Generated by Site Health Watch.</span></p></div>";
+  html += '<ul class="checks">';
+
+  /* Row 1 — internal links */
+  var linkPill, linkTxt;
+  if (r.homeDown) { linkPill = "fail"; linkTxt = "SITE DOWN"; }
+  else if (r.brokenLinks.length > 0) { linkPill = "fail"; linkTxt = r.brokenLinks.length + " BROKEN"; }
+  else if (r.linksChecked === 0) { linkPill = "info"; linkTxt = "NO LINKS FOUND"; }
+  else { linkPill = "pass"; linkTxt = "ALL WORKING"; }
+  html += '<li><div class="check-head"><span class="pill ' + linkPill + '">' + linkTxt + '</span>' +
+    '<strong>Internal links</strong></div>';
+  if (r.homeDown) {
+    html += '<p class="explain">Your homepage returned ' + statusLabel(r.homeCode) + ' — fix that first, then re-run this check.</p>';
+  } else if (r.linksChecked === 0) {
+    html += '<p class="explain">We didn&rsquo;t find any internal links on your homepage to follow. If your homepage really has no links to your own pages, that&rsquo;s its own problem — visitors have nowhere to go.</p>';
+  } else {
+    html += '<p class="explain">We followed ' + r.linksChecked + " " + plural(r.linksChecked, "link", "links") +
+      ' from your homepage to your own pages' +
+      (r.brokenLinks.length === 0 ? " — every one loaded." : ":") + '</p>';
+    for (var i = 0; i < r.brokenLinks.length; i++) {
+      var b = r.brokenLinks[i];
+      html += '<div class="evidence">&ldquo;' + esc(b.text) + '&rdquo;<br>' + esc(b.url) +
+        '<br>' + esc(statusLabel(b.code)) + '</div>';
+    }
+    if (r.brokenLinks.length > 0) {
+      html += '<div class="fix"><p><strong>Fix:</strong> open your homepage in your site editor, find the link text shown above, and point it at the right page — or remove the link if that page is gone for good.</p>' +
+        '<p class="note">If the page moved, ask your web person about a redirect from the old address to the new one — that fixes the link everywhere at once.</p></div>';
+    }
+  }
+  html += '</li>';
+
+  /* Row 2 — images */
+  var imgPill, imgTxt;
+  if (r.brokenImages.length > 0) { imgPill = "fail"; imgTxt = r.brokenImages.length + " MISSING"; }
+  else if (r.slowImages.length > 0) { imgPill = "warn"; imgTxt = "COULDN\u2019T CONFIRM " + r.slowImages.length; }
+  else if (r.imagesChecked === 0) { imgPill = "info"; imgTxt = "NO IMAGES FOUND"; }
+  else { imgPill = "pass"; imgTxt = "ALL LOADING"; }
+  html += '<li><div class="check-head"><span class="pill ' + imgPill + '">' + imgTxt + '</span>' +
+    '<strong>Images</strong></div>';
+  if (r.imagesChecked === 0) {
+    html += '<p class="explain">No images found on your homepage. That&rsquo;s unusual — most homepages have at least a logo.</p>';
+  } else {
+    html += '<p class="explain">We tried to load ' + r.imagesChecked + " " +
+      plural(r.imagesChecked, "image", "images") + " from your homepage" +
+      (r.brokenImages.length === 0 && r.slowImages.length === 0 ? " — every one loaded." : ":") + '</p>';
+    for (var j = 0; j < r.brokenImages.length; j++) {
+      var bi = r.brokenImages[j];
+      html += '<div class="evidence">' + (bi.alt ? "&ldquo;" + esc(bi.alt) + "&rdquo;<br>" : "") +
+        esc(bi.url) + '<br>image failed to load</div>';
+    }
+    for (var k = 0; k < r.slowImages.length; k++) {
+      var si = r.slowImages[k];
+      html += '<div class="evidence">' + (si.alt ? "&ldquo;" + esc(si.alt) + "&rdquo;<br>" : "") +
+        esc(si.url) + '<br>took too long to confirm</div>';
+    }
+    if (r.brokenImages.length > 0) {
+      html += '<div class="fix"><p><strong>Fix:</strong> re-upload the image in your site editor, or delete the broken image block. ' +
+        'A missing image usually means the file was renamed or deleted after the page was built.</p></div>';
+    }
+    if (r.slowImages.length > 0 && r.brokenImages.length === 0) {
+      html += '<div class="fix"><p class="note">We couldn&rsquo;t confirm ' +
+        plural(r.slowImages.length, "this image", "these images") +
+        " within 15 seconds — it may just be slow, or your connection. Try the check again on wifi.</p></div>";
+    }
+  }
+  html += '</li>';
+
+  /* Row 3 — scope note */
+  html += '<li><div class="check-head"><span class="pill info">SCOPE</span>' +
+    '<strong>What this check covers</strong></div>' +
+    '<p class="explain">Your homepage, up to 6 links to your own pages, and every image on the page. ' +
+    'Links pointing to other websites aren&rsquo;t checked — those are the other site&rsquo;s problem to fix. ' +
+    'The full 40-point audit re-verifies all of this by hand, across your whole site.</p></li>';
+
+  return html + '</ul>';
+}
+
+function init() {
+  var input = document.getElementById("url");
+  var go = document.getElementById("go");
+  var out = document.getElementById("results");
+  function setProgress(msg) {
+    out.innerHTML = '<div class="scanning">' + esc(msg) + ' Leave this tab open; nothing is stored.</div>';
+  }
+  async function run() {
+    var pageUrl = normalizeUrl(input.value);
+    if (!pageUrl) {
+      out.innerHTML = '<div class="error">That doesn\'t look like a website address. ' +
+        'Try something like <strong>acmeplumbing.com</strong>.</div>';
+      return;
+    }
+    go.disabled = true;
+    go.innerHTML = '<span class="spinner"></span>Checking…';
+    try {
+      setProgress("Loading your homepage…");
+      var home = await proxyGet(pageUrl, 45000);
+      var homeCode = home.httpCode;
+      if (classifyStatus(homeCode) === "broken" || homeCode === 0 ||
+          home.contentType.toLowerCase().indexOf("html") < 0) {
+        var code = homeCode || "unknown";
+        out.innerHTML = renderResults({ homeDown: true, homeCode: code, linksChecked: 0,
+          imagesChecked: 0, brokenLinks: [], brokenImages: [], slowImages: [] }, pageUrl);
+        return;
+      }
+      var doc = new DOMParser().parseFromString(home.contents, "text/html");
+      var links = extractLinks(doc, pageUrl);
+      var images = extractImages(doc, pageUrl);
+      setProgress("Checking " + links.length + " " + plural(links.length, "link", "links") +
+        " and " + images.length + " " + plural(images.length, "image", "images") + "…");
+      var linkChecks = links.map(function (l) {
+        return proxyGet(l.url, 45000).then(function (r) {
+          return { text: l.text, url: l.url, code: r.httpCode };
+        }, function () { return { text: l.text, url: l.url, code: 0 }; });
+      });
+      var imgChecks = images.map(function (im) {
+        return checkImage(im.url, 15000).then(function (st) {
+          return { alt: im.alt, url: im.url, state: st };
+        });
+      });
+      var linkResults = await Promise.all(linkChecks);
+      var imgResults = await Promise.all(imgChecks);
+      var brokenLinks = linkResults.filter(function (x) { return classifyStatus(x.code) === "broken"; });
+      var unknownLinks = linkResults.filter(function (x) { return classifyStatus(x.code) === "unknown"; });
+      var brokenImages = imgResults.filter(function (x) { return x.state === "broken"; });
+      var slowImages = imgResults.filter(function (x) { return x.state === "slow"; });
+      var r = { homeDown: false, homeCode: homeCode, linksChecked: links.length,
+        imagesChecked: images.length, brokenLinks: brokenLinks,
+        brokenImages: brokenImages, slowImages: slowImages };
+      var html = renderResults(r, pageUrl);
+      if (unknownLinks.length > 0) {
+        html += '<p class="hint">Note: ' + unknownLinks.length + " " +
+          plural(unknownLinks.length, "link", "links") +
+          ' couldn&rsquo;t be reached through the lookup service just now — they&rsquo;re not counted as broken. Re-run the check to confirm them.</p>';
+      }
+      out.innerHTML = html;
+    } catch (e) {
+      out.innerHTML = '<div class="error">Couldn&rsquo;t reach the page-lookup service just now ' +
+        '(it&rsquo;s a free shared service and gets busy). Check the address and try again in a few minutes — nothing was stored.</div>';
+    }
+    go.disabled = false;
+    go.textContent = "Check my site";
+  }
+  go.addEventListener("click", run);
+  input.addEventListener("keydown", function (e) { if (e.key === "Enter") run(); });
+}
+
+if (typeof document !== "undefined" && document.getElementById) {
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+}
+
+if (typeof module !== "undefined") {
+  module.exports = { normalizeUrl: normalizeUrl, classifyStatus: classifyStatus,
+    buildVerdict: buildVerdict, renderResults: renderResults,
+    statusLabel: statusLabel, extractLinks: extractLinks, extractImages: extractImages,
+    LINKS_CAP: LINKS_CAP, IMAGES_CAP: IMAGES_CAP };
+}
+</script>
+<script>
+/* SHW funnel beacon — counts $199 CTA and waitlist clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  window.shwPing=ping;
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
