@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Free AI Visibility Check — Does ChatGPT Recommend Your Business?</title>
-<meta name="description" content="Free AI visibility check (waitlist): does ChatGPT recommend your business or your competitor? See the exact question, the verbatim answer, and who got named. No signup, no ads. From Site Health Watch.">
+<meta name="description" content="Free AI visibility check: see the exact question we'd ask an AI assistant about your trade, its word-for-word answer, and which competitors it named instead of you. No signup, no ads. From Site Health Watch.">
 <style>
   :root{
     --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
@@ -27,47 +27,37 @@
   .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
   .tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px}
   label.f-label{display:block;font-weight:700;margin-bottom:8px;font-size:15px}
-  .row{display:flex;gap:10px}
-  input[type=text]{flex:1;min-width:0;font-size:16px;padding:12px 14px;border:1px solid var(--line);
+  .field{margin-bottom:14px}
+  .field input{width:100%;font-size:16px;padding:12px 14px;border:1px solid var(--line);
     border-radius:8px;color:var(--ink)}
-  input[type=text]:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
-  button.check{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:12px 22px;
-    font-size:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+  .field input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+  .frow{display:flex;gap:10px}
+  .frow .field{flex:1;min-width:0;margin-bottom:0}
+  button.check{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:14px 26px;
+    font-size:16px;font-weight:700;cursor:pointer;width:100%;margin-top:16px}
   button.check:hover{background:#0f2c3c}
   button.check:disabled{opacity:.55;cursor:wait}
   .hint{font-size:13px;color:var(--slate);margin:10px 0 0}
   #results{margin-top:22px}
   .verdict{border-radius:12px;padding:22px;border:1px solid var(--line)}
   .verdict.secured{background:var(--green-tint);border-color:#bfe0cc}
-  .verdict.partial{background:var(--amber-tint);border-color:#ecd9a8}
   .verdict.unprotected{background:var(--red-tint);border-color:#eec2bf}
   .verdict h2{margin:0 0 6px;font-size:22px}
-  .verdict.secured h2{color:var(--green)} .verdict.partial h2{color:var(--amber)}
+  .verdict.secured h2{color:var(--green)}
   .verdict.unprotected h2{color:var(--red)}
-  .verdict p{margin:0;font-size:16px}
-  .checks{margin:18px 0 0;padding:0;list-style:none}
-  .checks li{border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px;background:#fff}
-  .check-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
-  .check-head strong{font-size:16px}
-  .pill{font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:999px}
-  .pill.pass{background:var(--green-tint);color:var(--green)}
-  .pill.warn{background:var(--amber-tint);color:var(--amber)}
-  .pill.fail{background:var(--red-tint);color:var(--red)}
-  .explain{margin:4px 0 0;font-size:15px;color:var(--ink)}
-  .evidence{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--slate);
-    background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 10px;
-    margin:10px 0 0;word-break:break-all}
-  .fix{margin:12px 0 0;border-top:1px dashed var(--line);padding-top:12px}
-  .fix p{font-size:14px;margin:0 0 8px}
-  .snippet{display:flex;gap:8px;align-items:flex-start;background:var(--paper);
-    border:1px solid var(--line);border-radius:8px;padding:10px;margin-bottom:8px}
-  .snippet code{flex:1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;
-    word-break:break-all;color:var(--ink)}
-  .copybtn{background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 12px;
-    font-size:13px;font-weight:700;color:var(--teal);cursor:pointer;white-space:nowrap}
-  .copybtn:hover{border-color:var(--teal)}
-  .fix .note{font-size:13px;color:var(--slate)}
-  .attrib{font-size:12px;color:var(--slate);margin-top:10px}
+  .verdict p{margin:0 0 10px;font-size:16px}
+  .verdict p:last-child{margin-bottom:0}
+  .qbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;margin:18px 0 0}
+  .qbox .qlabel{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--slate);margin-bottom:6px}
+  .qbox .qtext{font-size:16px;font-style:italic}
+  .answer{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;margin:12px 0 0}
+  .answer .alabel{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--slate);margin-bottom:6px}
+  .answer .atext{font-size:15px;white-space:pre-wrap}
+  .namedlist{margin:12px 0 0;padding:0;list-style:none}
+  .namedlist li{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;
+    margin-bottom:8px;font-size:15px}
+  .namedlist li.you{border-color:var(--green);background:var(--green-tint);font-weight:700}
+  .honesty{font-size:13px;color:var(--slate);margin:14px 0 0}
   .cta{margin:30px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
   .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
   .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
@@ -86,11 +76,19 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   .error{background:var(--red-tint);border:1px solid #eec2bf;color:var(--red);border-radius:10px;
     padding:16px;font-size:15px;margin-top:18px}
+  .staging{background:var(--amber-tint);border:1px solid #ecd9a8;color:var(--ink);border-radius:10px;
+    padding:16px;font-size:15px;margin-top:18px}
+  .wlrow{display:flex;gap:10px;margin-top:12px}
+  .wlrow input{flex:1;min-width:0;font-size:16px;padding:12px 14px;border:1px solid var(--line);
+    border-radius:8px;color:var(--ink)}
+  .wlrow button{background:#fff;border:1px solid var(--teal);border-radius:8px;padding:12px 18px;
+    font-size:15px;font-weight:700;color:var(--teal);cursor:pointer;white-space:nowrap}
   @media (max-width:560px){
     h1{font-size:25px}
-    .row{flex-direction:column}
-    button.check{width:100%}
+    .frow{flex-direction:column}
+    .frow .field{margin-bottom:14px}
     .tool{padding:18px}
+    .wlrow{flex-direction:column}
   }
 </style>
 </head>
@@ -115,23 +113,26 @@
 <main>
   <div class="wrap">
     <h1>Does AI recommend your business — or your competitor?</h1>
-    <p class="lede">Customers are skipping Google and asking ChatGPT, Gemini, and Perplexity things like "who's the best plumber near me?" If the AI names your competitor and not you, you never hear the phone <em>not</em> ring. Our free check shows the exact question, the AI's word-for-word answer, and which businesses it named. Free, no signup, no ads.</p>
+    <p class="lede">Customers are skipping Google and asking AI assistants things like "who's the best plumber near me?" If the AI names your competitor and not you, you never hear the phone <em>not</em> ring. This free check asks an AI the exact question a customer would ask, then shows you its word-for-word answer and every business it named. Free, no signup, no ads.</p>
 
     <div class="tool">
-      <div class="verdict partial">
-        <h2>This check is still being built — join the waitlist</h2>
-        <p>When it launches, you'll paste your business name and trade, and get: <strong>(1)</strong> the exact question we asked the AI, <strong>(2)</strong> its word-for-word answer, and <strong>(3)</strong> every competitor it named instead of you. Nothing hidden behind a signup wall. Leave your email and you're first in line the day it goes live — and the full audit below already answers this by hand today.</p>
-      </div>
-      <form id="waitlist" style="margin-top:18px">
-        <label class="f-label" for="wl-email">Email me when the AI visibility check launches</label>
-        <div class="row">
-          <input type="text" id="wl-biz" placeholder="Your business name (e.g. Acme Plumbing)" aria-label="Business name">
-          <input type="text" id="wl-email" placeholder="you@yourbusiness.com" aria-label="Email address">
-          <button class="check" type="submit">Notify me</button>
+      <div class="frow">
+        <div class="field">
+          <label class="f-label" for="biz">Your business name</label>
+          <input type="text" id="biz" placeholder="Acme Plumbing" autocomplete="off">
         </div>
-        <p class="hint">One email, the day it launches. No newsletter, no spam — and honestly, we check these ourselves.</p>
-      </form>
-      <div id="wl-done"></div>
+        <div class="field">
+          <label class="f-label" for="trade">Your trade</label>
+          <input type="text" id="trade" placeholder="plumber" autocomplete="off">
+        </div>
+      </div>
+      <div class="field" style="margin-top:14px">
+        <label class="f-label" for="town">Your town</label>
+        <input type="text" id="town" placeholder="North Las Vegas, NV" autocomplete="off">
+      </div>
+      <button class="check" id="go">Check my AI visibility</button>
+      <p class="hint">We ask the AI one realistic customer question about your trade and town. Nothing is stored.</p>
+      <div id="results" aria-live="polite"></div>
     </div>
 
     <div class="cta">
@@ -144,8 +145,7 @@
       <h2>Why "who does AI recommend?" is the question owners can't see</h2>
       <p>Search changed in 2026. A growing share of customers — especially under 40 — never open Google at all. They ask an AI assistant which plumber, roofer, or dentist to call, and they call the first name it gives. There is no results page to scroll. If you're not named, you don't exist in that conversation, and unlike a bad Google ranking, nobody tells you it's happening.</p>
       <p>That makes the existing options frustrating. The big free grader in this space gives you a one-time score behind an email gate and hides the actual questions and answers. Real AI-visibility monitoring starts around $25 a month and the serious tools run close to $100 — priced for agencies, not for the shop owner who just wants to know one thing: when someone asks for what I sell, does the machine say my name?</p>
-      <p>Our check is being built around that one question, and we're building it the same way as the other three free checks on this site: show the actual evidence, in plain English, with nothing held back. The exact prompt we ran. The AI's verbatim answer. Every competitor it named instead of you. Then one clear next step if the answer is bad news: the $199 full audit, where a human verifies the same finding against your live site along with 39 other checks and tells you what to fix, in 24 hours.</p>
-      <p>Until the automated check launches, the waitlist above is the fastest way in — one email the day it goes live. If you'd rather have the answer this week, the full audit already covers it.</p>
+      <p>This check is built around that one question, the same way as the other free checks on this site: show the actual evidence, in plain English, with nothing held back. The exact question we asked. The AI's verbatim answer. Every business it named instead of you. One honest caveat, stated on the results: the answer comes from what the AI learned during training, not a live web search — so it can be out of date, and brand-new or very small shops are less likely to appear. Treat it as a signal, not gospel. If the answer is bad news, the $199 full audit above is the one clear next step: a human verifies the same finding against your live business, along with 39 other checks, and tells you what to fix, in 24 hours.</p>
     </div>
   </div>
 </main>
@@ -158,21 +158,249 @@
 </footer>
 
 <script>
-document.getElementById('waitlist').addEventListener('submit', function(e){
-  e.preventDefault();
-  var biz = document.getElementById('wl-biz').value.trim();
-  var email = document.getElementById('wl-email').value.trim();
-  var done = document.getElementById('wl-done');
-  if (!email || email.indexOf('@') < 1) {
-    done.innerHTML = '<div class="error" style="margin-top:14px"><strong>We need a real email address</strong> — that\\u2019s the whole point of a waitlist.</div>';
-    return;
+"use strict";
+/* Pure logic below — DOM wiring is inside init(), guarded so this file's
+   functions can be exercised in Node for testing. */
+
+/* STAGING: paste a free Gemini API key here (Google AI Studio, $0; restrict the
+   key by HTTP referrer to the GitHub Pages domain so only this site can use it).
+   Until a key is installed, the check shows an honest staging notice — it never
+   fabricates AI answers. */
+const GEMINI_API_KEY = "";
+const GEMINI_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent";
+const MIN_SECONDS_BETWEEN_RUNS = 20;
+
+function buildQuestion(trade, town) {
+  return "Who is the best " + trade + " near me?";
+}
+
+function buildPrompt(biz, trade, town) {
+  return "You are helping a small business owner see what AI assistants tell " +
+    "customers about their trade. A customer in " + town + " asks an AI assistant: " +
+    "\"Who is the best " + trade + " near me?\" Answer exactly as a helpful AI " +
+    "assistant would: recommend the top 3 to 5 specific businesses by name, with " +
+    "one sentence on each about why. Base names only on what you know from " +
+    "training — if you are not confident about real business names in " + town + ", " +
+    "say so plainly and give the kind of answer you would give (for example, how " +
+    "to choose). Then, on its own final line, write exactly: NAMES: name1 | name2 | " +
+    "name3 (the business names you recommended, or NONE if you named none).";
+}
+
+function normName(s) {
+  return String(s || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ")
+    .replace(/\s+/g, " ").trim();
+}
+
+function significantTokens(s) {
+  const stop = { the:1, a:1, an:1, of:1, and:1, "&":1, co:1, company:1, llc:1,
+                 inc:1, ltd:1, services:1, service:1 };
+  return normName(s).split(" ").filter(function (t) { return t && !stop[t]; });
+}
+
+function namesMatch(biz, candidate) {
+  /* True when the owner's business name and a named business look like the
+     same business: exact normalized match, or every significant token of one
+     appears in the other (catches "Acme Plumbing" vs "Acme Plumbing LLC"). */
+  const b = normName(biz), c = normName(candidate);
+  if (!b || !c) return false;
+  if (b === c) return true;
+  const bt = significantTokens(biz), ct = significantTokens(candidate);
+  if (!bt.length || !ct.length) return false;
+  const inCt = bt.every(function (t) { return ct.indexOf(t) !== -1; });
+  const inBt = ct.every(function (t) { return bt.indexOf(t) !== -1; });
+  return inCt || inBt;
+}
+
+function parseAnswer(text) {
+  /* Returns {answer, names[]} — names from the trailing NAMES: line. */
+  const m = String(text || "").match(/^NAMES:\s*(.+)$/im);
+  let names = [];
+  if (m) {
+    const raw = m[1].trim();
+    if (!/^none$/i.test(raw)) {
+      names = raw.split("|").map(function (n) { return n.trim(); })
+        .filter(function (n) { return n.length > 0; });
+    }
   }
-  var subject = encodeURIComponent('Site Health Watch — AI visibility check waitlist');
-  var body = encodeURIComponent('Please notify me when the free AI visibility check launches.\n\nBusiness: ' + (biz || '(not given)') + '\nEmail: ' + email + '\n');
-  done.innerHTML = '<p class="hint" style="margin-top:14px;font-size:14px"><strong>You\\u2019re on the list.</strong> Your email app should have opened with the waitlist note addressed to us — just press send. If it didn\\u2019t open, email <strong>dadusa01@gmail.com</strong> with the subject \\u201cAI visibility check waitlist\\u201d.</p>';
-  if (window.shwPing) window.shwPing('waitlist_ai');
-  window.location.href = 'mailto:dadusa01@gmail.com?subject=' + subject + '&body=' + body;
-});
+  const answer = String(text || "").replace(/^NAMES:\s*.+$/im, "").trim();
+  return { answer: answer, names: names };
+}
+
+async function askGemini(prompt) {
+  const url = GEMINI_ENDPOINT + "?key=" + encodeURIComponent(GEMINI_API_KEY);
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.7, maxOutputTokens: 700 }
+    })
+  });
+  let body = null;
+  try { body = await res.json(); } catch (e) { /* non-JSON */ }
+  if (!res.ok) {
+    const msg = body && body.error && body.error.message ? String(body.error.message) : "";
+    const err = new Error(msg || ("http " + res.status));
+    err.geminiStatus = res.status;
+    throw err;
+  }
+  try {
+    return body.candidates[0].content.parts.map(function (p) { return p.text || ""; }).join("");
+  } catch (e) {
+    const err = new Error("no-text");
+    throw err;
+  }
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
+function renderResults(biz, trade, town, parsed) {
+  const question = buildQuestion(trade, town);
+  const namedIdx = parsed.names.findIndex(function (n) { return namesMatch(biz, n); });
+  const named = namedIdx !== -1;
+  let html;
+  if (named) {
+    html = '<div class="verdict secured"><h2>Good news — the AI named your business.</h2>' +
+      "<p>When we asked about " + esc(trade) + " in " + esc(town) + ", the AI put " +
+      "<strong>" + esc(parsed.names[namedIdx]) + "</strong> on its shortlist. " +
+      "You're in the conversation customers are having with AI assistants.</p></div>";
+  } else {
+    html = '<div class="verdict unprotected"><h2>The AI didn\u2019t name your business.</h2>' +
+      "<p>When we asked about " + esc(trade) + " in " + esc(town) + ", the AI recommended " +
+      (parsed.names.length ? parsed.names.length + " businesses" : "businesses") +
+      " — and <strong>" + esc(biz) + "</strong> wasn't one of them. " +
+      "Customers asking AI for what you sell are hearing your competitors' names instead of yours.</p></div>";
+  }
+  html += '<div class="qbox"><div class="qlabel">THE EXACT QUESTION WE ASKED</div>' +
+    '<div class="qtext">\u201c' + esc(question) + "\u201d</div></div>";
+  html += '<div class="answer"><div class="alabel">THE AI\u2019S WORD-FOR-WORD ANSWER</div>' +
+    '<div class="atext">' + esc(parsed.answer || "(The AI returned an empty answer.)") + "</div></div>";
+  if (parsed.names.length) {
+    html += '<ul class="namedlist">';
+    parsed.names.forEach(function (n, i) {
+      const isYou = i === namedIdx;
+      html += '<li class="' + (isYou ? "you" : "") + '">' + esc(n) +
+        (isYou ? " — that's you" : "") + "</li>";
+    });
+    html += "</ul>";
+  } else {
+    html += '<p class="honesty">The AI didn\u2019t name specific businesses in its answer ' +
+      "(or we couldn't parse its list) — the word-for-word answer above is still exactly what it said.</p>";
+  }
+  html += '<p class="honesty"><strong>How to read this:</strong> the answer comes from what the AI ' +
+    "learned during training — not a live web search — so it can be out of date, and brand-new or " +
+    "very small shops are less likely to appear. Treat it as a signal, not gospel. The full audit " +
+    "below verifies the same question by hand against your live business.</p>";
+  return html;
+}
+
+function friendlyError(e) {
+  const status = e && e.geminiStatus;
+  const msg = e && e.message ? String(e.message) : "";
+  if (e && e.message === "no-text") {
+    return "The AI didn't return an answer this time. Try again in a minute — nothing was stored.";
+  }
+  if (status === 400 && /API key/i.test(msg)) {
+    return "The AI check's API key isn't working right now — we're on it. Please try again later.";
+  }
+  if (status === 429 || /quota|rate limit|resource exhausted/i.test(msg)) {
+    return "We've hit the free AI quota for now — please try again in a little while. (Nothing was stored.)";
+  }
+  if (e instanceof TypeError) {
+    return "Couldn't reach the AI service. Check your connection and try again — nothing was stored.";
+  }
+  return "Something went wrong asking the AI. Try again in a minute — nothing was stored.";
+}
+
+function init() {
+  const bizEl = document.getElementById("biz");
+  const tradeEl = document.getElementById("trade");
+  const townEl = document.getElementById("town");
+  const go = document.getElementById("go");
+  const out = document.getElementById("results");
+  let lastRunAt = 0;
+
+  function stagingNotice() {
+    out.innerHTML = '<div class="staging"><strong>Launching very soon:</strong> the AI visibility check is ' +
+      "built and ready, but its free Google API key hasn't been installed yet — so this page shows no " +
+      "results rather than fake ones. The key is a $0 setup, and the day it lands this box becomes the " +
+      "live check.</div>" +
+      '<div class="staging" style="margin-top:12px"><strong>Want first dibs?</strong> Email us and you\u2019ll ' +
+      "be first in line the day it goes live — and the full audit below already answers this question " +
+      "by hand today." +
+      '<div class="wlrow"><input type="text" id="wl-email" placeholder="you@yourbusiness.com" aria-label="Email address">' +
+      '<button type="button" id="wl-go">Notify me</button></div>' +
+      '<div id="wl-done"></div></div>';
+    const wlGo = document.getElementById("wl-go");
+    wlGo.addEventListener("click", function () {
+      const email = document.getElementById("wl-email").value.trim();
+      const done = document.getElementById("wl-done");
+      if (!email || email.indexOf("@") < 1) {
+        done.innerHTML = '<p class="hint" style="color:var(--red)"><strong>We need a real email address</strong> ' +
+          "\u2014 that's the whole point of a waitlist.</p>";
+        return;
+      }
+      const biz = bizEl.value.trim();
+      const subject = encodeURIComponent("Site Health Watch — AI visibility check waitlist");
+      const body = encodeURIComponent("Please notify me when the free AI visibility check launches.\n\nBusiness: " +
+        (biz || "(not given)") + "\nEmail: " + email + "\n");
+      done.innerHTML = '<p class="hint" style="margin-top:10px"><strong>You\u2019re on the list.</strong> ' +
+        "Your email app should have opened with the waitlist note addressed to us — just press send.</p>";
+      if (window.shwPing) window.shwPing("waitlist_ai");
+      window.location.href = "mailto:dadusa01@gmail.com?subject=" + subject + "&body=" + body;
+    });
+  }
+
+  async function run() {
+    const biz = bizEl.value.trim();
+    const trade = tradeEl.value.trim();
+    const town = townEl.value.trim();
+    if (!biz || !trade || !town) {
+      out.innerHTML = '<div class="error">Give us all three — your <strong>business name</strong>, your ' +
+        "<strong>trade</strong> (like \u201cplumber\u201d), and your <strong>town</strong> — and we'll ask the AI.</div>";
+      return;
+    }
+    if (!GEMINI_API_KEY) { stagingNotice(); return; }
+    const now = Date.now();
+    if (now - lastRunAt < MIN_SECONDS_BETWEEN_RUNS * 1000) {
+      out.innerHTML = '<div class="error">Easy — one check every ' + MIN_SECONDS_BETWEEN_RUNS +
+        " seconds, so the free quota lasts for everyone. Try again in a moment.</div>";
+      return;
+    }
+    lastRunAt = now;
+    go.disabled = true;
+    go.innerHTML = '<span class="spinner"></span>Asking the AI\u2026';
+    out.innerHTML = "";
+    try {
+      const text = await askGemini(buildPrompt(biz, trade, town));
+      out.innerHTML = renderResults(biz, trade, town, parseAnswer(text));
+    } catch (e) {
+      out.innerHTML = '<div class="error">' + esc(friendlyError(e)) + "</div>";
+    }
+    go.disabled = false;
+    go.textContent = "Check my AI visibility";
+  }
+
+  go.addEventListener("click", run);
+  [bizEl, tradeEl, townEl].forEach(function (el) {
+    el.addEventListener("keydown", function (e) { if (e.key === "Enter") run(); });
+  });
+}
+
+if (typeof document !== "undefined" && document.getElementById) {
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+}
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { buildPrompt: buildPrompt, buildQuestion: buildQuestion, normName: normName,
+    significantTokens: significantTokens, namesMatch: namesMatch, parseAnswer: parseAnswer,
+    friendlyError: friendlyError };
+}
 </script>
 <script>
 /* SHW funnel beacon — counts $199 CTA and waitlist clicks (anonymous aggregate, no cookies, no personal data).
