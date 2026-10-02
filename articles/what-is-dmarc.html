@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is DMARC? The Email Rule That Stops Impostors From Using Your Name — Plain-English Guide</title>
+<meta name="description" content="DMARC is the one record that tells Gmail and Outlook what to do with fake email sent "from" your business. The three policy settings explained in plain English, plus how to check yours free.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> (waitlist) &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What is DMARC &mdash; and does your business have it?</h1>
+    <p class="lede">Somewhere in a note from your IT person, or a security alert you didn&rsquo;t fully read, you saw the word DMARC. Here is what it actually is, why it matters more than the two records you may already have, and the one setting that decides whether fake email from &ldquo;your business&rdquo; reaches your customers or dies quietly.</p>
+    <div class="article">
+
+      <p>SPF and DKIM are the two checks inbox providers run on your outgoing mail. SPF asks: is this mail server allowed to send for this domain? DKIM asks: does the message carry the domain&rsquo;s unbroken signature? Useful &mdash; but neither one answers the question that actually matters: <strong>what should the inbox provider do with a message that fails the checks?</strong> That instruction is DMARC. It is the third record, the one that turns the other two from observations into a decision.</p>
+      <h2>The three settings, in plain English</h2>
+      <p>Your DMARC record has a policy line, and it is one of three words. <strong>p=none</strong> means &ldquo;watch and report only.&rdquo; Impostor mail still gets delivered; you just get a daily report about it. Think of it as a security camera: it records the break-in but doesn&rsquo;t lock the door. <strong>p=quarantine</strong> means mail that fails the checks goes to the spam folder. <strong>p=reject</strong> means it gets blocked outright &mdash; it never reaches anyone&rsquo;s inbox.</p>
+      <p>Here is the uncomfortable part: most small businesses that have a DMARC record at all are sitting on <strong>p=none</strong>, and many have no DMARC record whatsoever. Both states mean the same thing for your customers &mdash; a fake invoice or phishing email sent &ldquo;from&rdquo; your business address lands in their inbox just like your real ones.</p>
+      <h2>The daily report nobody reads</h2>
+      <p>DMARC records can include a report address &mdash; rua, the technical name &mdash; where inbox providers send a daily digest of every server on earth that sent mail claiming to be your domain. Legitimate ones are yours: your email host, your newsletter tool. The ones you don&rsquo;t recognize are the impostors. The policy setting does the blocking work for you, but the reports are how you find out who was trying. Our free email check reads your DMARC record and tells you which policy you are actually on, plus whether the report address is set.</p>
+      <h2>One honest catch</h2>
+      <p>DMARC does not work alone &mdash; it leans on SPF or DKIM to pass a message. If neither of those is set up, DMARC has nothing to align with, and moving straight to &ldquo;reject&rdquo; can block your own legitimate mail. The order matters: SPF and DKIM first, DMARC set to &ldquo;none&rdquo; to watch, then tighten the dial once the reports show only your real senders. That sequencing is exactly what the free check walks you through.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain. Five seconds later you get a verdict &mdash; protected, partially protected, or unprotected &mdash; including your actual DMARC policy setting, in plain English.</p>
+        <a class="toolbtn" href="../index.html">Run the free email deliverability check</a>
+      </div>
+    <div class="cta">
+      <h2>DMARC setup is check #9 of 40</h2>
+      <p>The full Site Health Watch audit also checks your SPF and DKIM records, your website&rsquo;s speed, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours, with the exact records to paste in.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+DMARC+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
