@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Free AI Visibility Check — Does ChatGPT Recommend Your Business?</title>
-<meta name="description" content="Free AI visibility check: see the exact question we'd ask an AI assistant about your trade, its word-for-word answer, and which competitors it named instead of you. No signup, no ads. From Site Health Watch.">
+<meta name="description" content="Free AI visibility check: we audit the exact signals AI assistants read on your website — your words, your structured data, your trust signals — and score how ready you are to be recommended. No signup, no ads.">
 <style>
   :root{
     --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
@@ -40,23 +40,34 @@
   .hint{font-size:13px;color:var(--slate);margin:10px 0 0}
   #results{margin-top:22px}
   .verdict{border-radius:12px;padding:22px;border:1px solid var(--line)}
-  .verdict.secured{background:var(--green-tint);border-color:#bfe0cc}
-  .verdict.unprotected{background:var(--red-tint);border-color:#eec2bf}
+  .verdict.good{background:var(--green-tint);border-color:#bfe0cc}
+  .verdict.mid{background:var(--amber-tint);border-color:#ecd9a8}
+  .verdict.bad{background:var(--red-tint);border-color:#eec2bf}
   .verdict h2{margin:0 0 6px;font-size:22px}
-  .verdict.secured h2{color:var(--green)}
-  .verdict.unprotected h2{color:var(--red)}
+  .verdict.good h2{color:var(--green)}
+  .verdict.mid h2{color:var(--amber)}
+  .verdict.bad h2{color:var(--red)}
   .verdict p{margin:0 0 10px;font-size:16px}
   .verdict p:last-child{margin-bottom:0}
-  .qbox{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;margin:18px 0 0}
-  .qbox .qlabel{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--slate);margin-bottom:6px}
-  .qbox .qtext{font-size:16px;font-style:italic}
-  .answer{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;margin:12px 0 0}
-  .answer .alabel{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--slate);margin-bottom:6px}
-  .answer .atext{font-size:15px;white-space:pre-wrap}
-  .namedlist{margin:12px 0 0;padding:0;list-style:none}
-  .namedlist li{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;
-    margin-bottom:8px;font-size:15px}
-  .namedlist li.you{border-color:var(--green);background:var(--green-tint);font-weight:700}
+  .scoreband{display:flex;align-items:center;gap:14px;margin:14px 0 4px}
+  .score{font-size:44px;font-weight:700;color:var(--teal);line-height:1}
+  .score small{font-size:16px;color:var(--slate);font-weight:400}
+  .pill{font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:999px;
+    white-space:nowrap}
+  .pill.pass{background:var(--green-tint);color:var(--green)}
+  .pill.warn{background:var(--amber-tint);color:var(--amber)}
+  .pill.fail{background:var(--red-tint);color:var(--red)}
+  .pill.info{background:var(--paper);color:var(--slate)}
+  .checks{margin:18px 0 0;padding:0;list-style:none}
+  .checks li{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;
+    margin-bottom:12px}
+  .check-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .check-head strong{font-size:16px}
+  .check-head .pts{margin-left:auto;font-size:13px;color:var(--slate)}
+  .explain{margin:6px 0 0;font-size:15px;color:var(--ink)}
+  .evidence{margin:8px 0 0;font-size:13px;color:var(--slate);font-style:italic}
+  .fix{margin:12px 0 0;border-top:1px dashed var(--line);padding-top:12px;font-size:14px}
+  .fix .note{font-size:13px;color:var(--slate)}
   .honesty{font-size:13px;color:var(--slate);margin:14px 0 0}
   .cta{margin:30px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
   .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
@@ -76,19 +87,14 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   .error{background:var(--red-tint);border:1px solid #eec2bf;color:var(--red);border-radius:10px;
     padding:16px;font-size:15px;margin-top:18px}
-  .staging{background:var(--amber-tint);border:1px solid #ecd9a8;color:var(--ink);border-radius:10px;
-    padding:16px;font-size:15px;margin-top:18px}
-  .wlrow{display:flex;gap:10px;margin-top:12px}
-  .wlrow input{flex:1;min-width:0;font-size:16px;padding:12px 14px;border:1px solid var(--line);
-    border-radius:8px;color:var(--ink)}
-  .wlrow button{background:#fff;border:1px solid var(--teal);border-radius:8px;padding:12px 18px;
-    font-size:15px;font-weight:700;color:var(--teal);cursor:pointer;white-space:nowrap}
+  .scanning{background:var(--paper);border:1px solid var(--line);border-radius:10px;
+    padding:16px;font-size:15px;margin-top:18px;color:var(--slate)}
   @media (max-width:560px){
     h1{font-size:25px}
     .frow{flex-direction:column}
     .frow .field{margin-bottom:14px}
     .tool{padding:18px}
-    .wlrow{flex-direction:column}
+    .score{font-size:36px}
   }
 </style>
 </head>
@@ -113,9 +119,13 @@
 <main>
   <div class="wrap">
     <h1>Does AI recommend your business — or your competitor?</h1>
-    <p class="lede">Customers are skipping Google and asking AI assistants things like "who's the best plumber near me?" If the AI names your competitor and not you, you never hear the phone <em>not</em> ring. This free check asks an AI the exact question a customer would ask, then shows you its word-for-word answer and every business it named. Free, no signup, no ads.</p>
+    <p class="lede">Customers are skipping Google and asking AI assistants things like "who's the best plumber near me?" There is no results page to scroll — if the AI names your competitor and not you, you never hear the phone <em>not</em> ring. This free check reads your live website the way AI crawlers do and scores whether it gives them enough to recommend you. Free, no signup, no ads.</p>
 
     <div class="tool">
+      <div class="field">
+        <label class="f-label" for="url">Your website address</label>
+        <input type="text" id="url" placeholder="https://acmeplumbing.com" autocomplete="off" inputmode="url">
+      </div>
       <div class="frow">
         <div class="field">
           <label class="f-label" for="biz">Your business name</label>
@@ -131,21 +141,21 @@
         <input type="text" id="town" placeholder="North Las Vegas, NV" autocomplete="off">
       </div>
       <button class="check" id="go">Check my AI visibility</button>
-      <p class="hint">We ask the AI one realistic customer question about your trade and town. Nothing is stored.</p>
+      <p class="hint">We read your public homepage and audit the six signals AI assistants learn from. Nothing is stored.</p>
       <div id="results" aria-live="polite"></div>
     </div>
 
     <div class="cta">
       <h2>AI visibility is check #11 of 40</h2>
-      <p>The full Site Health Watch audit answers this exact question by hand against your live business today — which AI assistants mention you, what they say, and who they're recommending instead — along with speed, security, mobile, email, and SEO. Every finding verified, delivered within 24 hours.</p>
+      <p>The full Site Health Watch audit verifies this finding by hand against your live business today — which AI assistants can find you, what they're working with, and exactly what to fix so they name you — along with speed, security, mobile, email, and SEO. Every finding verified, delivered within 24 hours.</p>
       <a class="btn" data-cta="audit_ai" href="mailto:dadusa01@gmail.com?subject=Site%20Health%20Watch%20%E2%80%94%20full%20audit%20request&body=Hi%2C%20I%27d%20like%20the%20full%2040-point%20audit.%20My%20business%20is%3A%20">$199 — Get the full audit</a>
     </div>
 
     <div class="explainer">
       <h2>Why "who does AI recommend?" is the question owners can't see</h2>
-      <p>Search changed in 2026. A growing share of customers — especially under 40 — never open Google at all. They ask an AI assistant which plumber, roofer, or dentist to call, and they call the first name it gives. There is no results page to scroll. If you're not named, you don't exist in that conversation, and unlike a bad Google ranking, nobody tells you it's happening.</p>
-      <p>That makes the existing options frustrating. The big free grader in this space gives you a one-time score behind an email gate and hides the actual questions and answers. Real AI-visibility monitoring starts around $25 a month and the serious tools run close to $100 — priced for agencies, not for the shop owner who just wants to know one thing: when someone asks for what I sell, does the machine say my name?</p>
-      <p>This check is built around that one question, the same way as the other free checks on this site: show the actual evidence, in plain English, with nothing held back. The exact question we asked. The AI's verbatim answer. Every business it named instead of you. One honest caveat, stated on the results: the answer comes from what the AI learned during training, not a live web search — so it can be out of date, and brand-new or very small shops are less likely to appear. Treat it as a signal, not gospel. If the answer is bad news, the $199 full audit above is the one clear next step: a human verifies the same finding against your live business, along with 39 other checks, and tells you what to fix, in 24 hours.</p>
+      <p>Search changed in 2026. A growing share of customers — especially under 40 — never open Google at all. They ask an AI assistant which plumber, roofer, or dentist to call, and they call the first name it gives. If you're not nameable, you don't exist in that conversation, and unlike a bad Google ranking, nobody tells you it's happening.</p>
+      <p>That makes the existing options frustrating. The big free grader in this space gives you a one-time score behind an email gate and hides the actual questions and answers. Real AI-visibility monitoring starts around $25 a month and the serious tools run close to $100 — priced for agencies, not for the shop owner who just wants to know one thing: when someone asks for what I sell, does the machine have enough to say my name?</p>
+      <p>This check answers that honestly, without pretending to be a live ChatGPT query. AI assistants learn about your business the way crawlers do — they read your words, your headings, your structured data, your reviews and trust signals. This tool reads your live homepage and audits those six signals one by one, shows you the exact evidence each verdict came from, and scores you 0–100. No signup, no ads, no "create an account to see your results." If the score is bad news, the $199 full audit above is the one clear next step: a human verifies every signal against your live site, along with 39 other checks, and tells you what to fix, in 24 hours.</p>
     </div>
   </div>
 </main>
@@ -159,31 +169,31 @@
 
 <script>
 "use strict";
-/* Pure logic below — DOM wiring is inside init(), guarded so this file's
-   functions can be exercised in Node for testing. */
+/* LOGIC-START — Pure logic; DOM wiring is in init(), guarded so this block can
+   be exercised in Node for testing. No mock data: every check derives from the
+   target page's real HTML. */
 
-/* STAGING: paste a free Gemini API key here (Google AI Studio, $0; restrict the
-   key by HTTP referrer to the GitHub Pages domain so only this site can use it).
-   Until a key is installed, the check shows an honest staging notice — it never
-   fabricates AI answers. */
-const GEMINI_API_KEY = "";
-const GEMINI_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent";
-const MIN_SECONDS_BETWEEN_RUNS = 20;
+/* Fetch the target page's HTML through a public CORS-friendly reader, the same
+   pattern the Broken Links tool on this site already uses. We read only the
+   homepage; nothing is stored. */
+var PROXY = "https://api.allorigins.win/get?url=";
+var MIN_SECONDS_BETWEEN_RUNS = 20;
 
-function buildQuestion(trade, town) {
-  return "Who is the best " + trade + " near me?";
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
 }
 
-function buildPrompt(biz, trade, town) {
-  return "You are helping a small business owner see what AI assistants tell " +
-    "customers about their trade. A customer in " + town + " asks an AI assistant: " +
-    "\"Who is the best " + trade + " near me?\" Answer exactly as a helpful AI " +
-    "assistant would: recommend the top 3 to 5 specific businesses by name, with " +
-    "one sentence on each about why. Base names only on what you know from " +
-    "training — if you are not confident about real business names in " + town + ", " +
-    "say so plainly and give the kind of answer you would give (for example, how " +
-    "to choose). Then, on its own final line, write exactly: NAMES: name1 | name2 | " +
-    "name3 (the business names you recommended, or NONE if you named none).";
+function stripTags(html) {
+  return String(html)
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/&quot;/gi, '"')
+    .replace(/\s+/g, " ").trim();
 }
 
 function normName(s) {
@@ -192,192 +202,339 @@ function normName(s) {
 }
 
 function significantTokens(s) {
-  const stop = { the:1, a:1, an:1, of:1, and:1, "&":1, co:1, company:1, llc:1,
-                 inc:1, ltd:1, services:1, service:1 };
+  var stop = { the:1, a:1, an:1, of:1, and:1, co:1, company:1, llc:1, inc:1,
+               ltd:1, services:1, service:1 };
   return normName(s).split(" ").filter(function (t) { return t && !stop[t]; });
 }
 
-function namesMatch(biz, candidate) {
-  /* True when the owner's business name and a named business look like the
-     same business: exact normalized match, or every significant token of one
-     appears in the other (catches "Acme Plumbing" vs "Acme Plumbing LLC"). */
-  const b = normName(biz), c = normName(candidate);
-  if (!b || !c) return false;
-  if (b === c) return true;
-  const bt = significantTokens(biz), ct = significantTokens(candidate);
-  if (!bt.length || !ct.length) return false;
-  const inCt = bt.every(function (t) { return ct.indexOf(t) !== -1; });
-  const inBt = ct.every(function (t) { return bt.indexOf(t) !== -1; });
-  return inCt || inBt;
-}
-
-function parseAnswer(text) {
-  /* Returns {answer, names[]} — names from the trailing NAMES: line. */
-  const m = String(text || "").match(/^NAMES:\s*(.+)$/im);
-  let names = [];
-  if (m) {
-    const raw = m[1].trim();
-    if (!/^none$/i.test(raw)) {
-      names = raw.split("|").map(function (n) { return n.trim(); })
-        .filter(function (n) { return n.length > 0; });
-    }
-  }
-  const answer = String(text || "").replace(/^NAMES:\s*.+$/im, "").trim();
-  return { answer: answer, names: names };
-}
-
-async function askGemini(prompt) {
-  const url = GEMINI_ENDPOINT + "?key=" + encodeURIComponent(GEMINI_API_KEY);
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.7, maxOutputTokens: 700 }
-    })
+/* Extract what AI crawlers actually read: title, meta description, headings,
+   JSON-LD schema, and visible text (first screen + full body word count). */
+function extractSignals(html) {
+  var out = { title: "", meta: "", h1: [], h2h3: [], schemaTypes: [],
+              text: "", linkTexts: [] };
+  var t = String(html).match(/<title[^>]*>([\s\S]{0,400})<\/title>/i);
+  if (t) out.title = stripTags(t[1]).slice(0, 200);
+  var m = String(html).match(/<meta[^>]+name=["']description["'][^>]*content=["']([^"']{0,500})["']/i) ||
+          String(html).match(/<meta[^>]+content=["']([^"']{0,500})["'][^>]*name=["']description["']/i);
+  if (m) out.meta = stripTags(m[1]).slice(0, 300);
+  var h1s = String(html).match(/<h1[^>]*>([\s\S]{0,300})<\/h1>/gi) || [];
+  out.h1 = h1s.slice(0, 5).map(function (h) { return stripTags(h).slice(0, 140); }).filter(Boolean);
+  var h23 = String(html).match(/<h[23][^>]*>([\s\S]{0,300})<\/h[23]>/gi) || [];
+  out.h2h3 = h23.slice(0, 20).map(function (h) { return stripTags(h).slice(0, 140); }).filter(Boolean);
+  var blocks = String(html).match(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]{0,40000})<\/script>/gi) || [];
+  blocks.forEach(function (b) {
+    var inner = b.replace(/^<script[^>]*>/i, "").replace(/<\/script>$/i, "");
+    try {
+      var j = JSON.parse(inner);
+      var arr = Array.isArray(j) ? j : [j];
+      arr.forEach(function (o) {
+        if (o && o["@type"]) {
+          var tt = Array.isArray(o["@type"]) ? o["@type"] : [o["@type"]];
+          tt.forEach(function (x) { if (x && out.schemaTypes.indexOf(x) === -1) out.schemaTypes.push(x); });
+        }
+        /* @graph wrapper */
+        if (o && Array.isArray(o["@graph"])) {
+          o["@graph"].forEach(function (g) {
+            if (g && g["@type"]) {
+              var gt = Array.isArray(g["@type"]) ? g["@type"] : [g["@type"]];
+              gt.forEach(function (x) { if (x && out.schemaTypes.indexOf(x) === -1) out.schemaTypes.push(x); });
+            }
+          });
+        }
+      });
+    } catch (e) { /* malformed block — ignore */ }
   });
-  let body = null;
-  try { body = await res.json(); } catch (e) { /* non-JSON */ }
-  if (!res.ok) {
-    const msg = body && body.error && body.error.message ? String(body.error.message) : "";
-    const err = new Error(msg || ("http " + res.status));
-    err.geminiStatus = res.status;
-    throw err;
+  out.text = stripTags(html);
+  var links = String(html).match(/<a[^>]*>([\s\S]{0,120})<\/a>/gi) || [];
+  out.linkTexts = links.slice(0, 60).map(function (a) { return normName(stripTags(a)); }).filter(Boolean);
+  return out;
+}
+
+function hasPhone(text) {
+  return /\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/.test(text);
+}
+
+/* Six deterministic checks, each returning
+   {name, score(0-100), explain, evidence, fix}. */
+function scoreChecks(sig, biz, trade, town) {
+  var checks = [];
+  var text = sig.text;
+  var early = text.slice(0, 1200);
+  var words = text ? text.split(/\s+/).length : 0;
+  var earlyWords = early ? early.split(/\s+/).length : 0;
+
+  /* 1 — Business identity: name + what you do + where, in the first screen. */
+  var nameTokens = significantTokens(biz);
+  var nameHay = normName(sig.title + " " + sig.h1.join(" ") + " " + early);
+  var nameHits = nameTokens.filter(function (tk) { return nameHay.indexOf(tk) !== -1; }).length;
+  var nameScore = nameTokens.length === 0 ? 0 : Math.round(100 * nameHits / nameTokens.length);
+  var idScore = 0;
+  if (nameScore >= 60) idScore += 45;
+  else if (nameScore >= 30) idScore += 22;
+  if (earlyWords >= 25) idScore += 30;
+  else if (earlyWords >= 10) idScore += 15;
+  if (sig.title.length >= 10 && sig.title.length <= 70) idScore += 25;
+  else if (sig.title.length > 0) idScore += 12;
+  var townHit = town && normName(town).split(" ")[0] ?
+    (normName(early).indexOf(normName(town).split(" ")[0]) !== -1) : false;
+  checks.push({
+    name: "Business identity",
+    score: Math.min(100, idScore),
+    explain: nameScore >= 60
+      ? "Your business name shows up in the page title or headings and the first screen of text says something real — an AI can figure out who and what you are."
+      : (nameScore > 0
+        ? "Parts of your name appear, but an AI reading this page would have to guess which business it belongs to."
+        : "Your business name doesn't appear in the title, headings, or first screen of text — an AI crawler can't confidently tell whose site this is."),
+    evidence: sig.title ? ("Page title: \u201c" + sig.title.slice(0, 90) + "\u201d") : "No page title found.",
+    fix: "Put your real business name plus your trade and town in the page title and the main headline — e.g. \u201cAcme Plumbing \u2014 Emergency Plumber in North Las Vegas\u201d — and open the first paragraph with who you are, what you do, and where."
+  });
+
+  /* 2 — Service keywords: enough descriptive content for an AI to learn what you sell. */
+  var headCount = sig.h2h3.length;
+  var tradeLow = normName(trade);
+  var tradeForms = tradeLow ? [tradeLow, tradeLow + "s"] : [];
+  var headText = normName(sig.h1.join(" ") + " " + sig.h2h3.join(" "));
+  var tradeInHeads = tradeForms.some(function (f) { return f && headText.indexOf(f) !== -1; });
+  var tradeInText = tradeForms.some(function (f) { return f && normName(text).indexOf(f) !== -1; });
+  var kwScore = 0;
+  if (headCount >= 4) kwScore += 40; else if (headCount >= 2) kwScore += 24;
+  else if (headCount >= 1) kwScore += 12;
+  if (words >= 400) kwScore += 35; else if (words >= 150) kwScore += 20; else kwScore += 5;
+  if (tradeInHeads) kwScore += 25; else if (tradeInText) kwScore += 10;
+  checks.push({
+    name: "Service keywords",
+    score: Math.min(100, kwScore),
+    explain: (tradeInHeads && headCount >= 3)
+      ? "Your services are named in headings with real content behind them — an AI can learn exactly what you sell."
+      : (words >= 150
+        ? "There's readable content, but your services aren't clearly named in headings — an AI has to infer what you sell instead of reading it."
+        : "The page is thin — barely any words for an AI to learn your services from."),
+    evidence: headCount + " sub-headings found" + (tradeInHeads ? ("; \u201c" + trade + "\u201d named in headings") : (tradeInText ? ("; \u201c" + trade + "\u201d in body text only") : ("; \u201c" + (trade || "trade") + "\u201d not found in headings or body"))),
+    fix: "Give every service its own heading and a paragraph — \u201cWater Heater Repair\u201d, \u201cDrain Cleaning\u201d, not just \u201cOur Services\u201d. Name each service the way a customer would ask an AI for it."
+  });
+
+  /* 3 — Q&A answers: questions answered directly (prices, hours, how it works). */
+  var hasFaq = sig.schemaTypes.some(function (t) { return /faqpage/i.test(t); });
+  var qInHeads = sig.h2h3.some(function (h) { return h.indexOf("?") !== -1; });
+  var priceTerms = /price|pricing|cost|estimate|quote|starting at|\$\s?\d/.test(text.toLowerCase());
+  var hoursTerms = /hours|open|closed|monday|tuesday|wednesday|thursday|friday|saturday|sunday|24\/7|24-7/.test(text.toLowerCase());
+  var qaScore = 0;
+  if (hasFaq) qaScore += 40; else if (qInHeads) qaScore += 24;
+  if (priceTerms) qaScore += 30; else qaScore += 0;
+  if (hoursTerms) qaScore += 30; else qaScore += 0;
+  checks.push({
+    name: "Q&A answers",
+    score: Math.min(100, qaScore),
+    explain: (hasFaq || (qInHeads && priceTerms && hoursTerms))
+      ? "The page answers real customer questions — prices, hours, how it works — which is exactly the material AI assistants quote."
+      : (priceTerms || hoursTerms
+        ? "Some answers exist, but no questions are answered directly — AI assistants quote pages that answer, not pages that advertise."
+        : "No prices, no hours, no answered questions — this page advertises but doesn't answer, and AI assistants quote answerers."),
+    evidence: (hasFaq ? "FAQ structured data found. " : "No FAQ structured data. ") +
+      (priceTerms ? "Pricing/quote language present. " : "No pricing language. ") +
+      (hoursTerms ? "Hours language present." : "No hours language."),
+    fix: "Add a short FAQ section answering the 5 questions customers actually ask — price, how fast you come out, hours, service area, guarantees — and mark it up as FAQ structured data."
+  });
+
+  /* 4 — Schema markup: machine-readable business facts. */
+  var bizTypes = sig.schemaTypes.filter(function (t) { return /localbusiness|organization|faqpage|plumber|dentist|electrician|roofer|contractor/i.test(t); });
+  var schScore = bizTypes.length ? 100 : (sig.schemaTypes.length ? 45 : 0);
+  checks.push({
+    name: "Schema markup",
+    score: schScore,
+    explain: bizTypes.length
+      ? "Your site hands AI its business facts on a plate — name, type, services — in machine-readable structured data."
+      : (sig.schemaTypes.length
+        ? "Some structured data exists, but none of it says \u201cthis is a local business\u201d — AI gets the facts it can quote from that label."
+        : "No structured data at all — your business facts are only in prose, which AI reads with far less confidence."),
+    evidence: sig.schemaTypes.length ? ("Found: " + sig.schemaTypes.join(", ")) : "No JSON-LD structured data found.",
+    fix: "Add LocalBusiness structured data (name, phone, address, opening hours, services) to the homepage — most website builders have a plugin for it, or any web person can add it in under an hour."
+  });
+
+  /* 5 — Trust signals: reviews, ratings, years in business. */
+  var revWord = /review|testimonial|rating|rated/.test(text.toLowerCase());
+  var ratingPat = /\d\.\d\s*(\/|out of|\bstars?\b)|★★|★{2,}/.test(text);
+  var yearsPat = /\b\d{1,2}\+?\s*(years|yrs)\b/i.test(text);
+  var tsScore = 0;
+  if (revWord) tsScore += 35;
+  if (ratingPat) tsScore += 35;
+  if (yearsPat) tsScore += 30;
+  checks.push({
+    name: "Trust signals",
+    score: Math.min(100, tsScore),
+    explain: tsScore >= 70
+      ? "Reviews or ratings appear on the page — AI assistants treat those as the main reason to recommend one business over another."
+      : (revWord
+        ? "Reviews are mentioned but no rating is shown where an AI can read it — a \u201c4.9 stars\u201d line an AI can quote beats a testimonials page."
+        : "No reviews, ratings, or years-in-business anywhere on the page — an AI has no reason to pick you over a competitor."),
+    evidence: (revWord ? "Review/testimonial language found. " : "No review language. ") +
+      (ratingPat ? "A rating is shown. " : "No rating shown. ") +
+      (yearsPat ? "Years in business mentioned." : "Years in business not mentioned."),
+    fix: "Put your star rating and review count in plain text near the top of the homepage — \u201c4.9 stars from 200+ Google reviews\u201d — and add how long you've been in business."
+  });
+
+  /* 6 — Contact clarity: phone or contact path obvious in the text. */
+  var phone = hasPhone(text);
+  var contactLink = sig.linkTexts.some(function (l) { return /contact|call|get (a )?quote|book/.test(l); });
+  var ccScore = (phone ? 55 : 0) + (contactLink ? 45 : 0);
+  checks.push({
+    name: "Contact clarity",
+    score: Math.min(100, ccScore),
+    explain: (phone && contactLink)
+      ? "A phone number and a contact path are both visible — an AI can tell the customer exactly how to reach you."
+      : (phone || contactLink
+        ? "One contact path exists, but not both — make it impossible for an AI (or a customer) to miss."
+        : "No phone number and no obvious contact link in the page text — an AI can recommend you but can't tell anyone how to reach you."),
+    evidence: (phone ? "Phone number found. " : "No phone number found. ") +
+      (contactLink ? "Contact/call link found." : "No contact link found."),
+    fix: "Put your phone number in the header of every page and a \u201cCall\u201d or \u201cGet a Quote\u201d link in the main navigation — in text, not baked into an image."
+  });
+
+  return checks;
+}
+
+var CHECK_WEIGHTS = [0.25, 0.20, 0.15, 0.15, 0.10, 0.15];
+
+function overallScore(checks) {
+  var total = 0;
+  for (var i = 0; i < checks.length && i < CHECK_WEIGHTS.length; i++) {
+    total += checks[i].score * CHECK_WEIGHTS[i];
   }
+  return Math.round(total);
+}
+
+function pillFor(score) {
+  if (score >= 75) return { cls: "pass", txt: "PASS" };
+  if (score >= 40) return { cls: "warn", txt: "NEEDS WORK" };
+  return { cls: "fail", txt: "FAIL" };
+}
+
+function bandFor(score) {
+  if (score >= 75) return { cls: "good", h: "Good news — your site speaks AI.",
+    p: "Your website gives AI assistants the identity, services, answers, and trust signals they need to recommend you. Keep it current — new reviews and fresh FAQs make the recommendation stronger." };
+  if (score >= 45) return { cls: "mid", h: "Patchy — an AI has to guess about you.",
+    p: "Some signals are there, but gaps force an AI to fill in the blanks — and it usually fills them with a competitor's name instead. Fix the failing checks below and you move into the recommended range." };
+  return { cls: "bad", h: "Nearly invisible to AI assistants.",
+    p: "Your site gives AI almost nothing to work with — no clear identity, few answers, no structured facts. When a customer asks for what you sell, the machine recommends someone else's business because yours doesn't register. The fixes below are the fastest way to change that." };
+}
+
+function normalizeUrl(raw) {
+  var u = String(raw || "").trim();
+  if (!u) return "";
+  if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(u)) u = "https://" + u;
   try {
-    return body.candidates[0].content.parts.map(function (p) { return p.text || ""; }).join("");
-  } catch (e) {
-    const err = new Error("no-text");
-    throw err;
-  }
+    var p = new URL(u);
+    if (p.protocol !== "http:" && p.protocol !== "https:") return "";
+    return p.toString();
+  } catch (e) { return ""; }
 }
 
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, function (c) {
-    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+function fetchWithTimeout(url, ms) {
+  var ctrl = new AbortController();
+  var timer = setTimeout(function () { ctrl.abort(); }, ms);
+  return fetch(url, { signal: ctrl.signal }).finally(function () { clearTimeout(timer); });
+}
+
+/* Returns {html} or throws {kind}. */
+async function fetchPageHtml(targetUrl) {
+  var res = await fetchWithTimeout(PROXY + encodeURIComponent(targetUrl), 45000);
+  if (!res.ok) throw { kind: "proxy-http", status: res.status };
+  var data = await res.json();
+  var code = data && data.status && data.status.http_code;
+  if (code && code >= 400) throw { kind: "target-http", status: code };
+  var html = data && typeof data.contents === "string" ? data.contents : "";
+  if (!html || html.length < 200) throw { kind: "empty" };
+  return html;
+}
+
+function renderResults(targetUrl, checks) {
+  var score = overallScore(checks);
+  var band = bandFor(score);
+  var html = '<div class="verdict ' + band.cls + '"><h2>' + esc(band.h) + "</h2>" +
+    '<div class="scoreband"><div class="score">' + score + '<small> / 100</small></div></div>' +
+    "<p>" + esc(band.p) + "</p>" +
+    '<p class="honesty">Checked live: ' + esc(targetUrl) + "</p></div>";
+  html += '<ul class="checks">';
+  checks.forEach(function (c) {
+    var pill = pillFor(c.score);
+    html += '<li><div class="check-head"><span class="pill ' + pill.cls + '">' + pill.txt +
+      '</span><strong>' + esc(c.name) + '</strong>' +
+      '<span class="pts">' + c.score + "/100</span></div>" +
+      '<p class="explain">' + esc(c.explain) + "</p>" +
+      (c.evidence ? '<p class="evidence">Evidence: ' + esc(c.evidence) + "</p>" : "") +
+      '<div class="fix"><strong>The fix:</strong> ' + esc(c.fix) + "</div></li>";
   });
-}
-
-function renderResults(biz, trade, town, parsed) {
-  const question = buildQuestion(trade, town);
-  const namedIdx = parsed.names.findIndex(function (n) { return namesMatch(biz, n); });
-  const named = namedIdx !== -1;
-  let html;
-  if (named) {
-    html = '<div class="verdict secured"><h2>Good news — the AI named your business.</h2>' +
-      "<p>When we asked about " + esc(trade) + " in " + esc(town) + ", the AI put " +
-      "<strong>" + esc(parsed.names[namedIdx]) + "</strong> on its shortlist. " +
-      "You're in the conversation customers are having with AI assistants.</p></div>";
-  } else {
-    html = '<div class="verdict unprotected"><h2>The AI didn\u2019t name your business.</h2>' +
-      "<p>When we asked about " + esc(trade) + " in " + esc(town) + ", the AI recommended " +
-      (parsed.names.length ? parsed.names.length + " businesses" : "businesses") +
-      " — and <strong>" + esc(biz) + "</strong> wasn't one of them. " +
-      "Customers asking AI for what you sell are hearing your competitors' names instead of yours.</p></div>";
-  }
-  html += '<div class="qbox"><div class="qlabel">THE EXACT QUESTION WE ASKED</div>' +
-    '<div class="qtext">\u201c' + esc(question) + "\u201d</div></div>";
-  html += '<div class="answer"><div class="alabel">THE AI\u2019S WORD-FOR-WORD ANSWER</div>' +
-    '<div class="atext">' + esc(parsed.answer || "(The AI returned an empty answer.)") + "</div></div>";
-  if (parsed.names.length) {
-    html += '<ul class="namedlist">';
-    parsed.names.forEach(function (n, i) {
-      const isYou = i === namedIdx;
-      html += '<li class="' + (isYou ? "you" : "") + '">' + esc(n) +
-        (isYou ? " — that's you" : "") + "</li>";
-    });
-    html += "</ul>";
-  } else {
-    html += '<p class="honesty">The AI didn\u2019t name specific businesses in its answer ' +
-      "(or we couldn't parse its list) — the word-for-word answer above is still exactly what it said.</p>";
-  }
-  html += '<p class="honesty"><strong>How to read this:</strong> the answer comes from what the AI ' +
-    "learned during training — not a live web search — so it can be out of date, and brand-new or " +
-    "very small shops are less likely to appear. Treat it as a signal, not gospel. The full audit " +
-    "below verifies the same question by hand against your live business.</p>";
+  html += "</ul>";
+  html += '<p class="honesty"><strong>How to read this:</strong> this audits the signals AI ' +
+    "assistants learn from when they crawl your site — your words, your headings, your " +
+    "structured data, your trust signals. It is not a live ChatGPT query; no model was asked " +
+    "about your business. Think of it as checking whether your shop's sign is readable from " +
+    "the street — not whether a taxi driver happens to know your address. Treat it as a " +
+    "signal, not gospel.</p>";
   return html;
 }
 
 function friendlyError(e) {
-  const status = e && e.geminiStatus;
-  const msg = e && e.message ? String(e.message) : "";
-  if (e && e.message === "no-text") {
-    return "The AI didn't return an answer this time. Try again in a minute — nothing was stored.";
+  var kind = e && e.kind;
+  if (kind === "target-http") {
+    return "That site answered with an error (HTTP " + (e.status || "?") +
+      ") — check the address and try again. Nothing was stored.";
   }
-  if (status === 400 && /API key/i.test(msg)) {
-    return "The AI check's API key isn't working right now — we're on it. Please try again later.";
+  if (kind === "empty") {
+    return "We couldn't read that page — it may block automated readers or be mostly images. " +
+      "Try your homepage address. Nothing was stored.";
   }
-  if (status === 429 || /quota|rate limit|resource exhausted/i.test(msg)) {
-    return "We've hit the free AI quota for now — please try again in a little while. (Nothing was stored.)";
+  if (kind === "proxy-http") {
+    return "Our page reader is having trouble right now — try again in a minute. Nothing was stored.";
   }
   if (e instanceof TypeError) {
-    return "Couldn't reach the AI service. Check your connection and try again — nothing was stored.";
+    return "Couldn't reach our page reader. Check your connection and try again — nothing was stored.";
   }
-  return "Something went wrong asking the AI. Try again in a minute — nothing was stored.";
+  return "Something went wrong reading that site. Try again in a minute — nothing was stored.";
 }
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { extractSignals: extractSignals, scoreChecks: scoreChecks,
+    overallScore: overallScore, pillFor: pillFor, bandFor: bandFor,
+    normalizeUrl: normalizeUrl, friendlyError: friendlyError, stripTags: stripTags,
+    normName: normName, significantTokens: significantTokens, renderResults: renderResults };
+}
+/* LOGIC-END */
 
 function init() {
-  const bizEl = document.getElementById("biz");
-  const tradeEl = document.getElementById("trade");
-  const townEl = document.getElementById("town");
-  const go = document.getElementById("go");
-  const out = document.getElementById("results");
-  let lastRunAt = 0;
-
-  function stagingNotice() {
-    out.innerHTML = '<div class="staging"><strong>Launching very soon:</strong> the AI visibility check is ' +
-      "built and ready, but its free Google API key hasn't been installed yet — so this page shows no " +
-      "results rather than fake ones. The key is a $0 setup, and the day it lands this box becomes the " +
-      "live check.</div>" +
-      '<div class="staging" style="margin-top:12px"><strong>Want first dibs?</strong> Email us and you\u2019ll ' +
-      "be first in line the day it goes live — and the full audit below already answers this question " +
-      "by hand today." +
-      '<div class="wlrow"><input type="text" id="wl-email" placeholder="you@yourbusiness.com" aria-label="Email address">' +
-      '<button type="button" id="wl-go">Notify me</button></div>' +
-      '<div id="wl-done"></div></div>';
-    const wlGo = document.getElementById("wl-go");
-    wlGo.addEventListener("click", function () {
-      const email = document.getElementById("wl-email").value.trim();
-      const done = document.getElementById("wl-done");
-      if (!email || email.indexOf("@") < 1) {
-        done.innerHTML = '<p class="hint" style="color:var(--red)"><strong>We need a real email address</strong> ' +
-          "\u2014 that's the whole point of a waitlist.</p>";
-        return;
-      }
-      const biz = bizEl.value.trim();
-      const subject = encodeURIComponent("Site Health Watch — AI visibility check waitlist");
-      const body = encodeURIComponent("Please notify me when the free AI visibility check launches.\n\nBusiness: " +
-        (biz || "(not given)") + "\nEmail: " + email + "\n");
-      done.innerHTML = '<p class="hint" style="margin-top:10px"><strong>You\u2019re on the list.</strong> ' +
-        "Your email app should have opened with the waitlist note addressed to us — just press send.</p>";
-      if (window.shwPing) window.shwPing("waitlist_ai");
-      window.location.href = "mailto:dadusa01@gmail.com?subject=" + subject + "&body=" + body;
-    });
-  }
+  var urlEl = document.getElementById("url");
+  var bizEl = document.getElementById("biz");
+  var tradeEl = document.getElementById("trade");
+  var townEl = document.getElementById("town");
+  var go = document.getElementById("go");
+  var out = document.getElementById("results");
+  var lastRunAt = 0;
 
   async function run() {
-    const biz = bizEl.value.trim();
-    const trade = tradeEl.value.trim();
-    const town = townEl.value.trim();
-    if (!biz || !trade || !town) {
-      out.innerHTML = '<div class="error">Give us all three — your <strong>business name</strong>, your ' +
-        "<strong>trade</strong> (like \u201cplumber\u201d), and your <strong>town</strong> — and we'll ask the AI.</div>";
+    var url = normalizeUrl(urlEl.value);
+    var biz = bizEl.value.trim();
+    var trade = tradeEl.value.trim();
+    var town = townEl.value.trim();
+    if (!url) {
+      out.innerHTML = '<div class="error">Give us your <strong>website address</strong> ' +
+        "(like https://acmeplumbing.com) and we'll read it the way AI crawlers do.</div>";
       return;
     }
-    if (!GEMINI_API_KEY) { stagingNotice(); return; }
-    const now = Date.now();
+    var now = Date.now();
     if (now - lastRunAt < MIN_SECONDS_BETWEEN_RUNS * 1000) {
       out.innerHTML = '<div class="error">Easy — one check every ' + MIN_SECONDS_BETWEEN_RUNS +
-        " seconds, so the free quota lasts for everyone. Try again in a moment.</div>";
+        " seconds, so the free reader lasts for everyone. Try again in a moment.</div>";
       return;
     }
     lastRunAt = now;
     go.disabled = true;
-    go.innerHTML = '<span class="spinner"></span>Asking the AI\u2026';
-    out.innerHTML = "";
+    go.innerHTML = '<span class="spinner"></span>Reading your site\u2026';
+    out.innerHTML = '<div class="scanning">Reading your homepage and auditing the six signals ' +
+      "AI assistants learn from. This takes about 10 seconds\u2026</div>";
     try {
-      const text = await askGemini(buildPrompt(biz, trade, town));
-      out.innerHTML = renderResults(biz, trade, town, parseAnswer(text));
+      var html = await fetchPageHtml(url);
+      var sig = extractSignals(html);
+      var checks = scoreChecks(sig, biz || "", trade || "", town || "");
+      out.innerHTML = renderResults(url, checks);
     } catch (e) {
       out.innerHTML = '<div class="error">' + esc(friendlyError(e)) + "</div>";
     }
@@ -386,7 +543,7 @@ function init() {
   }
 
   go.addEventListener("click", run);
-  [bizEl, tradeEl, townEl].forEach(function (el) {
+  [urlEl, bizEl, tradeEl, townEl].forEach(function (el) {
     el.addEventListener("keydown", function (e) { if (e.key === "Enter") run(); });
   });
 }
@@ -396,11 +553,6 @@ if (typeof document !== "undefined" && document.getElementById) {
   else init();
 }
 
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { buildPrompt: buildPrompt, buildQuestion: buildQuestion, normName: normName,
-    significantTokens: significantTokens, namesMatch: namesMatch, parseAnswer: parseAnswer,
-    friendlyError: friendlyError };
-}
 </script>
 <script>
 /* SHW funnel beacon — counts $199 CTA and waitlist clicks (anonymous aggregate, no cookies, no personal data).
