@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do I Need SSL for a Small Business Website? — Plain-English Answer for Owners</title>
+<meta name="description" content="Do I need SSL for a small business website if it's just a brochure? The three cases where it's not optional, what Google and Chrome actually do about it, and the free 2026 reality.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> (waitlist) &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do I need SSL for a small business website?</h1>
+    <p class="lede">Your site is just a brochure &mdash; nobody is typing card numbers into it. So do you actually need SSL, the padlock encryption thing? The short answer is yes, and not for the reason most people tell you. Here is the honest version.</p>
+    <div class="article">
+
+      <p>SSL is the encryption behind the padlock &mdash; it runs on a certificate, a digital ID card for your domain, that turns your plain http address into https. You do not need to understand the cryptography. You need to know when it is required and what happens if you skip it.</p>
+      <h2>The three cases where it is not optional</h2>
+      <p><strong>1. You collect anything on a form.</strong> A name, an email, a phone number &mdash; anything. Since 2018, Chrome labels every page without encryption as &ldquo;Not secure&rdquo; in plain text next to the address, on every page, not just checkout pages. The visitor filling in your quote form sees that flag and most of them stop typing. It is not that encryption is technically required for a contact form; it is that the warning is automatic and you cannot turn it off for your visitors.</p>
+      <p><strong>2. You take payments on the site.</strong> If a card number is ever typed on your pages, the payment-industry rules require that data to travel encrypted &mdash; that is not a recommendation, it is a compliance requirement. If your checkout hands off to Stripe or Square, the handoff page still needs to be secure.</p>
+      <p><strong>3. You want Google to take you seriously.</strong> Google has treated HTTPS as a ranking signal since 2014 &mdash; a light one, not a magic switch, but real. And there is a quieter effect: Google&rsquo;s own tools grade unencrypted pages down, and an unencrypted page can never reach the top grades on any reputable security or performance scan, which is what sophisticated partners and customers increasingly check.</p>
+      <h2>&ldquo;But my site is just a brochure&rdquo;</h2>
+      <p>This is the most common objection, and here is the honest answer: even a pure brochure site benefits, because the certificate is free and the warning is automatic. There is no trade-off to weigh anymore &mdash; it is not a paid upsell, it is a checkbox. The brochure sites that still lack it are not saving money; they are running with a &ldquo;Not secure&rdquo; flag on every page and usually just never had someone tick the box.</p>
+      <h2>What it costs in 2026</h2>
+      <p>The standard certificates are free &mdash; providers like Let&rsquo;s Encrypt issue them at no cost, valid for 90 days at a time, and most reputable hosts offer them as a one-click toggle that also handles the renewals. Paid certificates exist, but for a standard small-business site they buy you nothing the free one does not. If your host wants to charge you a monthly fee for basic SSL, that is the kind of line item our audit cost guide warns about &mdash; it is worth a second look at what you are actually paying for.</p>
+      <h2>Make sure it is actually working</h2>
+      <p>Having a certificate and having it set up correctly are two different things &mdash; expired certificates, mixed content, and missing header protections are the quiet breakers. Our free security check reads your certificate&rsquo;s exact expiry date and runs Mozilla&rsquo;s own scan against your site, then tells you in plain English what is protecting your visitors and what is not.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain. You get your certificate&rsquo;s exact expiry date, whether https is actually working across the site, and Mozilla&rsquo;s A+&ndash;F grade translated into plain English.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>
+    <div class="cta">
+      <h2>SSL is one of our 40 checks</h2>
+      <p>The full Site Health Watch audit also checks your website&rsquo;s speed, mobile experience, email, broken links, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+SSL+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
