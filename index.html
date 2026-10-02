@@ -249,20 +249,40 @@ async function checkDomain(domain) {
     }
   }
 
-  // 3. DKIM — probe common selectors
-  const selectors = ["default", "google", "selector1", "selector2", "k1", "everlydkim", "mail", "dkim"];
-  let dkimHit = null;
-  for (const s of selectors) {
-    const r = txtRecords(await doh(s + "._domainkey." + domain, "TXT"));
-    const hit = r.find(t => t.toLowerCase().startsWith("v=dkim1"));
-    if (hit) { dkimHit = { selector: s, record: hit }; break; }
+  // 3. DKIM — probe common selectors in parallel. Selectors are not
+  //    enumerable, so a fixed list is the honest maximum a client-side check
+  //    can do. Names cover the big providers: Google (google), Microsoft 365
+  //    (selector1/2/3), SendGrid (s1/s2), Mailchimp (k1/k2), Constant Contact
+  //    (cm), Everlytic (everlydkim), Zoho (zoho), Mandrill (mandrill).
+  const selectors = ["default", "google", "selector1", "selector2", "selector3",
+                     "s1", "s2", "k1", "k2", "everlydkim", "cm", "mail",
+                     "mxvault", "dkim", "zoho", "mandrill"];
+  /* Many providers (notably Microsoft 365) publish the selector as a CNAME to
+     their own domain. Google's DNS API sometimes answers with the CNAME (type
+     5) but no TXT, so follow it and read the TXT at the target. */
+  async function probeSelector(s) {
+    const name = s + "._domainkey." + domain;
+    let resp = null;
+    try { resp = await doh(name, "TXT"); } catch (e) { return null; }
+    const direct = txtRecords(resp).find(t => t.toLowerCase().startsWith("v=dkim1"));
+    if (direct) return { selector: s, record: direct };
+    const answers = resp && resp.Answer ? resp.Answer : [];
+    const cname = answers.find(a => a.type === 5 && a.data);
+    if (!cname) return null;
+    const target = String(cname.data).replace(/\.$/, "");
+    let tResp = null;
+    try { tResp = await doh(target, "TXT"); } catch (e) { return null; }
+    const via = txtRecords(tResp).find(t => t.toLowerCase().startsWith("v=dkim1"));
+    return via ? { selector: s + " (via " + target + ")", record: via } : null;
   }
+  const probes = await Promise.all(selectors.map(probeSelector));
+  const dkimHit = probes.find(Boolean) || null;
   rows.dkim = dkimHit
     ? { status: "pass", title: "DKIM",
         explain: "DKIM signing key found (selector \"" + dkimHit.selector + "\") — your mail server signs outgoing email so inbox providers can verify it wasn't tampered with.",
         evidence: dkimHit.record.slice(0, 120) + (dkimHit.record.length > 120 ? "…" : "") }
     : { status: "fail", title: "DKIM",
-        explain: "No DKIM key found under the 8 most common selectors. Your outgoing mail is probably unsigned, which makes it look less trustworthy.",
+        explain: "No DKIM key found under the 16 most common selectors. Your outgoing mail is probably unsigned, which makes it look less trustworthy.",
         evidence: "Checked: " + selectors.map(s => s + "._domainkey").join(", ") + " — no v=DKIM1 record.",
         fix: null,
         note: "DKIM is switched on inside your email provider, not by pasting a record by hand. In Google Workspace: Admin console → Apps → Google Workspace → Gmail → Authenticate email → generate a new record, then paste the TXT value it gives you into your DNS." };
