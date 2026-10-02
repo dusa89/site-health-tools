@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Free Website Security Check — Is Your Site Safe?</title>
-<meta name="description" content="Free website security check in plain English: Mozilla's security grade for your site plus your certificate's expiry date. No signup, no ads. From Site Health Watch.">
+<meta name="description" content="Free website security check in plain English: Mozilla's security grade, a live HTTPS test from your own browser, and your certificate's expiry date. No signup, no ads. From Site Health Watch.">
 <style>
   :root{
     --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
@@ -111,7 +111,7 @@
 <main>
   <div class="wrap">
     <h1>Is your website safe?</h1>
-    <p class="lede">That little padlock in the browser is a promise to your customers — and it can break silently. This check runs Mozilla's own security scan against your site and reads your certificate's expiry date, then tells you in plain English what's protecting your visitors and what isn't. Free, no signup, no ads.</p>
+    <p class="lede">That little padlock in the browser is a promise to your customers — and it can break silently. This check tests the secure connection live from your own browser, runs Mozilla's own security scan against your site, and reads your certificate's expiry date — then tells you in plain English what's protecting your visitors and what isn't. Free, no signup, no ads.</p>
 
     <div class="tool">
       <label class="f-label" for="domain">Your website domain</label>
@@ -134,7 +134,7 @@
       <h2>What does "website security" actually mean?</h2>
       <p>The padlock in the browser's address bar means one specific thing: the connection between your visitor and your site is encrypted, so nobody on the same wifi can read or alter what's passing through. That encryption is powered by a <strong>certificate</strong> — a digital ID card for your domain, issued by a trusted authority, with an expiry date. When it lapses, browsers show visitors a full-page "not secure" warning, and most of them leave. Certificates from free providers last only 90 days, which is why expiry sneaks up on busy owners.</p>
       <p>Beyond the padlock, your site sends a set of behind-the-scenes instructions with every page — security headers. They tell browsers things like "always use the encrypted connection, even if someone tries to downgrade it," "never let another site embed this page invisibly," and "only load code from sources I approve." <strong>Mozilla's HTTP Observatory</strong> grades all of this on an A+ to F scale, the way a building inspector grades a property: it doesn't just check the front door, it checks the locks on every window.</p>
-      <p>Most small-business sites land in the C to F range — not because the owner did anything wrong, but because the platform or host ships weak defaults and nobody ever tightened them. The fixes are usually small configuration changes, not rebuilds. This check gives you Mozilla's grade, how many of its checks passed, and your certificate's exact expiry date. The item-by-item breakdown of which settings failed lives on Mozilla's full report, linked in your results — and naming and fixing each one, verified against your live site, is exactly what the full 40-point audit does.</p>
+      <p>Most small-business sites land in the C to F range — not because the owner did anything wrong, but because the platform or host ships weak defaults and nobody ever tightened them. The fixes are usually small configuration changes, not rebuilds. This check gives you Mozilla's grade, a live test of the secure connection from your own browser — the way a customer actually visits — how many of its checks passed, and your certificate's exact expiry date. The item-by-item breakdown of which settings failed lives on Mozilla's full report, linked in your results — and naming and fixing each one, verified against your live site, is exactly what the full 40-point audit does.</p>
     </div>
   </div>
 </main>
@@ -324,6 +324,27 @@ function formatDate(ms) {
   return months[d.getUTCMonth()] + " " + d.getUTCDate() + ", " + d.getUTCFullYear();
 }
 
+/* ---- direct browser HTTPS probe ----
+   The visitor's own browser attempts a real TLS handshake with the host
+   (fetch in no-cors mode: the response body is opaque, but a failed TLS
+   handshake — expired or self-signed certificate, no HTTPS listener at all —
+   rejects the promise). Free, keyless, no CORS issue, no backend: it is the
+   same check a customer's browser performs, measured live.
+   Resolves {https: bool, http: bool}. http is only probed when https fails. */
+async function probeHttps(host) {
+  async function tryScheme(scheme) {
+    try {
+      await fetchWithTimeout(scheme + "://" + host + "/", { mode: "no-cors", redirect: "follow" }, 20000);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  var https = await tryScheme("https");
+  var http = https ? false : await tryScheme("http");
+  return { https: https, http: http };
+}
+
 function formatScannedAt(iso) {
   var ms = Date.parse(iso);
   if (isNaN(ms)) return "";
@@ -337,16 +358,25 @@ function formatScannedAt(iso) {
 
 /* ---- verdict + rendering ---- */
 
-function buildVerdict(scanInfo, cert) {
-  /* scanInfo: interpretScan() output. cert: fetchCert() output or null (unknown). */
+function buildVerdict(scanInfo, cert, probe) {
+  /* scanInfo: interpretScan() output. cert: fetchCert() output or null (unknown).
+     probe: probeHttps() output ({https, http}), or null when not run. */
   var certBad = cert && (cert.expired || cert.none);
   var certWarn = cert && !cert.expired && !cert.none && cert.daysLeft <= 30;
+  /* No secure connection at all from a real browser: outranks everything but an expired cert. */
+  var noHttps = probe && probe.https === false && probe.http === true;
   var cls, h, p;
   if (cert && cert.expired) {
     cls = "unprotected";
     h = "Your certificate has expired.";
     p = "Visitors to your site are likely seeing a full-page security warning right now. " +
         "This is the single most urgent fix on this page — everything else can wait until the padlock works again.";
+  } else if (noHttps) {
+    cls = "unprotected";
+    h = "Your site isn't on the secure connection.";
+    p = "We tried the secure connection from your own browser just now and it failed — the plain, " +
+        "unencrypted site answered instead. Visitors may be seeing \"not secure\" warnings, or reaching " +
+        "you without the padlock's protection. This outranks everything else on this page: fix this first.";
   } else if (scanInfo.band === "secured" && !certBad && !certWarn) {
     cls = "secured";
     h = "You're in good shape.";
@@ -378,9 +408,10 @@ function buildVerdict(scanInfo, cert) {
   return { cls: cls, h: h, p: p };
 }
 
-function renderResults(scanInfo, cert, certState, host) {
-  /* certState: "ok" | "missing" | "unknown" (crt.sh unreachable). */
-  var v = buildVerdict(scanInfo, certState === "ok" ? cert : (certState === "missing" ? { none: true } : null));
+function renderResults(scanInfo, cert, certState, host, probe) {
+  /* certState: "ok" | "missing" | "unknown" (crt.sh unreachable).
+     probe: probeHttps() output ({https, http}). */
+  var v = buildVerdict(scanInfo, certState === "ok" ? cert : (certState === "missing" ? { none: true } : null), probe);
   var html = '<div class="verdict ' + v.cls + '"><h2>' + esc(v.h) + '</h2><p>' + esc(v.p) + '</p>' +
     '<div><span class="gradebadge" title="Mozilla HTTP Observatory grade">Grade: ' + esc(scanInfo.grade) + '</span></div>';
   var scannedNote = scanInfo.scannedAt ? formatScannedAt(scanInfo.scannedAt) : "";
@@ -406,11 +437,29 @@ function renderResults(scanInfo, cert, certState, host) {
     '" target="_blank" rel="noopener">Mozilla&rsquo;s full report for ' + esc(host) + '</a> ' +
     '(opens in a new tab). Naming each gap and fixing it against your live site is what the full 40-point audit does.</p></div></li>';
 
-  /* Row 2 — HTTPS reachability */
-  html += '<li><div class="check-head"><span class="pill pass">PASS</span>' +
-    '<strong>Secure connection (HTTPS)</strong></div>' +
-    '<p class="explain">Your site answers on the encrypted HTTPS connection — the padlock can appear for visitors. ' +
-    'If it didn&rsquo;t, Mozilla&rsquo;s scan would have failed outright.</p></li>';
+  /* Row 2 — HTTPS reachability: measured live from the visitor's own browser,
+     not inferred from Mozilla's scan. */
+  if (probe && probe.https) {
+    html += '<li><div class="check-head"><span class="pill pass">PASS</span>' +
+      '<strong>Secure connection (HTTPS)</strong></div>' +
+      '<p class="explain">Your site answered on the encrypted HTTPS connection just now — checked ' +
+      'live from your own browser, the way a customer visits. The padlock can appear for visitors.</p></li>';
+  } else if (probe && probe.http) {
+    html += '<li><div class="check-head"><span class="pill fail">NOT SECURE</span>' +
+      '<strong>Secure connection (HTTPS)</strong></div>' +
+      '<p class="explain">We tried the secure connection from your browser just now and it failed — ' +
+      'but the plain, unencrypted site answered. Visitors may be reaching you without the padlock&rsquo;s ' +
+      'protection, or seeing &ldquo;not secure&rdquo; warnings.</p>' +
+      '<div class="fix"><p><strong>Fix:</strong> Ask your hosting company to install a security ' +
+      'certificate — most offer free ones and it&rsquo;s usually a single setting. ' +
+      '<span class="attrib">Generated by Site Health Watch.</span></p></div></li>';
+  } else {
+    html += '<li><div class="check-head"><span class="pill info">COULDN&rsquo;T VERIFY</span>' +
+      '<strong>Secure connection (HTTPS)</strong></div>' +
+      '<p class="explain">Your browser couldn&rsquo;t reach this site just now, even though Mozilla&rsquo;s ' +
+      'scanner could — public wifi, a VPN, or a browser extension sometimes blocks the test. Don&rsquo;t ' +
+      'read this as a failure; Mozilla&rsquo;s grade above is unaffected.</p></li>';
+  }
 
   /* Row 3 — certificate */
   if (certState === "ok") {
@@ -488,19 +537,23 @@ function init() {
     }
     go.disabled = true;
     go.innerHTML = '<span class="spinner"></span>Scanning…';
-    out.innerHTML = '<div class="scanning">Mozilla is scanning your site — this usually takes under a minute. ' +
+    out.innerHTML = '<div class="scanning">Checking the secure connection from your browser and ' +
+      'running Mozilla&rsquo;s scan — this usually takes under a minute. ' +
       'Leave this tab open; nothing is stored.</div>';
     try {
       var scanP = runObservatory(host);
       var certP = fetchCert(host).then(function (c) { return { state: "ok", cert: c }; },
         function () { return { state: "unknown", cert: null }; });
+      var probeP = probeHttps(host).then(function (p) { return p; },
+        function () { return { https: false, http: false }; });
       var scan = await scanP;
       var scanInfo = interpretScan(scan);
       var certRes = await certP;
+      var probe = await probeP;
       var certState = certRes.state;
       var cert = certRes.cert;
       if (certState === "ok" && cert && cert.none) certState = "missing";
-      out.innerHTML = renderResults(scanInfo, cert, certState, host);
+      out.innerHTML = renderResults(scanInfo, cert, certState, host, probe);
     } catch (e) {
       if (e && e.kind === "unscannable") {
         out.innerHTML = '<div class="error">' + unscannableMessage(e, host) + '</div>';
@@ -529,6 +582,7 @@ if (typeof module !== "undefined") {
     gradeExplained: gradeExplained, issuerShortName: issuerShortName,
     certCoversHost: certCoversHost, pickCert: pickCert, buildVerdict: buildVerdict,
     renderResults: renderResults, unscannableMessage: unscannableMessage,
+    probeHttps: probeHttps,
     formatDate: formatDate, formatScannedAt: formatScannedAt, GRADE_BAND: GRADE_BAND };
 }
 </script>
