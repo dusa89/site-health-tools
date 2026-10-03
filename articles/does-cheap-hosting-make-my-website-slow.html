@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does Cheap Hosting Make My Website Slow? — Site Health Watch</title>
+<meta name="description" content="You are paying $3 a month for hosting and wondering if that is why your site crawls. The honest answer: sometimes — and there is one number that tells you whether your host is the problem or a convenient excuse.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Does cheap hosting make my website slow?</h1>
+    <p class="lede">You are paying about three dollars a month for hosting, your website crawls, and somebody told you to buy a forty-dollar plan. The honest answer is more useful than the sales pitch: cheap hosting sometimes makes your site slow, and there is one specific number that tells you whether your host is the problem or a convenient excuse for something else.</p>
+    <div class="article">
+
+      <p>First, the distinction that settles most of this argument. A slow website has <strong>two different kinds of slow</strong>. The first is front-end slow: photos that are far bigger than they need to be, too many plugins, autoplay video. That is the stuff on your page, and it is the most common cause on small-business sites (<a href="why-is-my-website-so-slow.html">the four usual culprits we covered here</a>). The second is server slow: your server itself taking too long to answer the very first request. Your hosting sets the floor; everything else stacks on top of it. If the server takes two seconds just to answer, no amount of image-shrinking gets you under two seconds.</p>
+      <h2>The one number that tells you which problem you have</h2>
+      <p>The measurement is called Time to First Byte — how long before your server sends back the first signal. It is the server&rsquo;s own speed, stripped of images, plugins, and everything else. Here is how to read it: under about 200 milliseconds is healthy, and anything over half a second is worth investigating. (There is no official Google threshold — Wix&rsquo;s October 2026 hosting guide says exactly that — but the 200ms / 500ms band is the working rule.) Our free speed check shows you this number for your own site in about ten seconds.</p>
+      <p>The diagnostic is beautifully simple. <strong>If your server answers fast but your page is still slow, it is not your host.</strong> It is your images, your plugins, your page — the fixable stuff, and fixing it costs little or nothing. <strong>If the server itself takes a second or more to answer, no front-end fix can save you.</strong> That is the floor your speed can never go below, and it is exactly when a hosting change is the right move.</p>
+      <h2>What cheap shared hosting actually does to you</h2>
+      <p>Shared hosting is an apartment building: your website shares one server with hundreds of other websites, splitting the same processor and memory. At 3 a.m. when nobody else is awake, it is fine. When a neighbor&rsquo;s site gets a traffic spike, your site gets slower — you did nothing, and there is nothing you can do about it.</p>
+      <p>The 2026 benchmarks put real numbers on it. Independent testing found managed WordPress hosting answering in <strong>50 to 200 milliseconds</strong>, while budget shared hosting typically answered in <strong>400 to 900 milliseconds</strong> — and Lighthouse scores from the same testing showed a gap of more than 30 points, almost entirely from that server-response difference. (Source: wpseoai.com&rsquo;s 2026 managed-hosting analysis.) GoDaddy&rsquo;s own managed WordPress product recorded roughly <strong>half the response time of its own shared product</strong> in 2026 benchmarks — the same company, two different stacks, twice the speed.</p>
+      <p>Distance matters too, and this one is physics, not pricing. A server in the same city answers in under 50 milliseconds; halfway across the world, closer to 300. Each request pays that toll. The fix is not buying servers in every country — a CDN (a content delivery network) puts copies of your site near your visitors and solves the distance problem for almost nothing. (Source: Wix&rsquo;s October 2026 hosting and SEO guide.)</p>
+      <h2>The honest caveats the sales pages skip</h2>
+      <p>Here is where I have to be straight with you, because the hosting industry survives on upgrades that change nothing. <strong>Caveat one: a bloated site on expensive hosting is still slow.</strong> The same 2026 analysis that measured the hosting gap states it plainly — a poorly optimized WordPress site on a premium managed host will still underperform a lean, well-optimized site on a mid-tier shared plan. If you have not shrunk your images and trimmed your plugins, the forty-dollar plan just gives you a faster server delivering the same overweight page.</p>
+      <p><strong>Caveat two: most upgrades are theater.</strong> One 2026 breakdown put it bluntly — identical sites on VPS hosting load 15 to 35 percent faster than on shared hosting, which sounds impressive until you realize that is often about 200 milliseconds shaved off a two-second load. Your expensive new processor spends most of its time waiting on network physics, not computing. (Source: techbusinessnews.com.au, 2026.)</p>
+      <p><strong>Caveat three: the benchmark numbers are marketing.</strong> A September 2026 hosting investigation found one provider advertising ~5-millisecond response times — real numbers — that collapsed to roughly <strong>2.5 seconds on checkout pages under actual load</strong>, because the 5ms figure measured fully cached pages while the checkout could not be cached. Same host, same site, two completely different numbers. &ldquo;Fastest hosting&rdquo; is a test condition, not a promise. (Source: speedvitals.com, September 2026.)</p>
+      <h2>The decision order that wastes no money</h2>
+      <p>So here is the honest order of operations. <strong>Step 1: measure.</strong> Run the free speed check below and look at the server-response number, not just the headline score. <strong>Step 2: if the server answers fast, fix the front end first</strong> — shrink the photos, cut the plugin count, turn off the autoplay video. That is free, and it fixes most small-business sites. (Your bar for the headline number: under 2.5 seconds is good, per <a href="how-fast-should-my-website-load.html">Google&rsquo;s own bar</a>.) <strong>Step 3: move hosts only when the number proves it.</strong> Server answers in 800 milliseconds or more? Consistently? Then and only then does the upgrade buy you something — and you will know exactly how much, because you measured the floor.</p>
+      <p>Cheap hosting is not automatically your problem. But when it is, it is the only problem — nothing else you fix will matter until it does.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Our free speed check shows your server&rsquo;s response time and your page&rsquo;s headline number, in plain English, about 10 seconds, free. If the server is the slow part, you will see it named right there.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>
+    <div class="cta">
+      <h2>Server response is one of our 40 checks</h2>
+      <p>The full Site Health Watch audit covers your website&rsquo;s speed, security, mobile experience, email, and SEO &mdash; every finding verified against your live site, delivered within 24 hours, including the exact server-response number for your site.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+hosting+and+website+speed+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
