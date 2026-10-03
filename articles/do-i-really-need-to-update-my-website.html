@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do I Really Need to Update My Website? — Site Health Watch</title>
+<meta name="description" content="That red update badge has been sitting on your dashboard for months. Why plugin updates are lock replacements, what attackers do within 48 hours of a patch, and the update order that won't break your site.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do I really need to update my website?</h1>
+    <p class="lede">That little red badge on your WordPress dashboard has been sitting there for months. The site works fine. Nothing looks broken. So you keep clicking past it. Here is what that badge actually is: a list of locks that the burglars already know are broken. And here is what happens after you ignore it.</p>
+    <div class="article">
+
+      <p>First, the reframe that makes everything else make sense. A website update is almost never about features. When a plugin maker finds a security hole, they fix it and ship the fix as an &ldquo;update.&rdquo; But the announcement — and the patch itself — tells the entire internet exactly where the hole was in the <em>old</em> version. Hackers read the same announcements you skip. (Source: interdata-vn&rsquo;s 2026 breakdown of why sites get hacked: developers release the patch, attackers learn the hole&rsquo;s exact location, then they scan the internet for sites that have not updated yet.) So every day you sit on an old version of a plugin, you are not sitting on a working website. You are sitting on a publicly documented vulnerability.</p>
+      <h2>The 48-hour wave</h2>
+      <p>Here is what &ldquo;patched&rdquo; looks like from the attacker&rsquo;s side. A flaw gets disclosed; the fix ships; and automated bots immediately start scanning the whole internet for websites still running the broken version. The scale is hard to believe until you see the numbers. In 2026, security firm Wordfence reported blocking <strong>8.7 million attack attempts in about 48 hours</strong> against websites running two WordPress plugins — GutenKit and Hunk Companion — whose vulnerabilities had been <strong>fixed more than a year earlier</strong>. The sites being hit were not hit because anyone cared about them; they were hit because their software was old. (Source: TechRadar&rsquo;s 2026 security report.) The same pattern repeated with fresher flaws: in September 2026, researchers disclosed critical vulnerabilities (severity 9.8 out of 10) in Elementor Pro — a plugin on more than five million sites — and in Super Forms, and within weeks there were more than 440,000 recorded exploit attempts, even though patches had shipped in mid-August 2026. Many owners simply had not applied them. (Source: WebProNews, September 2026.) The Events Calendar, on over 600,000 sites, had two 9.8-rated flaws disclosed in late August 2026 that let attackers in with no login at all. (Source: cybersecuritynews.com, September 2026.) And WooCommerce&rsquo;s Wholesale Lead Capture plugin had a critical flaw whose patch existed for months while Wordfence kept blocking over 100,000 exploit attempts — because attackers kept scanning for sites still running the old version. (Source: the420.in, September 2026.)</p>
+      <h2>They are not targeting you. They are targeting your version number.</h2>
+      <p>This is the part most owners get backwards. Nobody is sitting in a basement picking your bakery, your law firm, or your plumbing shop. The bots do not know what you do and do not care. As one 2026 writeup of the WooCommerce attacks put it: once an exploit becomes public, criminals automate scans across thousands of websites and attack anything that responds as vulnerable — <em>they do not necessarily need to know whether the website is valuable before trying</em>. Your site is not special to them. Your <em>outdated version</em> is what raises your hand.</p>
+      <h2>The two numbers that end the argument</h2>
+      <p>A long-running Wordfence study, summarized in Kinsta&rsquo;s 2026 security comparison, found that vulnerable plugins and themes account for <strong>55.9 percent of every known backdoor</strong> on hacked WordPress sites — while only 36.7 percent of hacks came from an outdated WordPress core itself. In other words, the core team keeps its house clean; the break-ins come through the add-ons. The same study found that <strong>61.5 percent of hacked website owners did not even know their site was compromised</strong>. And a 2026 cleanup review of 40,000 WordPress sites found 70 percent were vulnerable to hacking, with 83 percent of the vulnerable ones running outdated plugins or themes. (Source: reliqus.com&rsquo;s 2026 malware-removal guide.) The badge you keep ignoring is not an annoyance. Statistically, it is the single biggest thing standing between your site and a break-in.</p>
+      <h2>What &ldquo;hacked&rdquo; actually looks like for a small business</h2>
+      <p>Forget the Hollywood version. A hacked small-business site almost never looks hacked. It quietly grows pages selling knockoff drugs or payday loans — hidden from you, visible to Google, which then slaps your whole site with the red &ldquo;dangerous&rdquo; warning and drops you out of search. (That is the warning <a href="why-does-google-say-my-website-is-dangerous.html">we covered here</a>.) Or visitors get silently redirected to scam pages, and they blame you. Or the infection spreads sideways on shared hosting: one compromised site on your server can contaminate neighboring sites, including yours, even if your own software was fine. You find out when a customer calls, or when your site vanishes from Google, or never.</p>
+      <h2>The update order that does not break your site</h2>
+      <p>The reason owners postpone updates is real: occasionally an update breaks a layout or a feature. Here is the order professionals use, and it makes the fear irrelevant: <strong>1. Back up first.</strong> A full backup before any update means the worst case is a ten-minute restore, not a crisis. <strong>2. Update in order: WordPress core, then plugins, then the theme.</strong> Do not batch-click fifty updates at once — do them in that sequence so you know what caused a problem if one appears. <strong>3. Turn on auto-updates for minor releases.</strong> WordPress&rsquo;s automatic updates are not a gimmick; Sucuri&rsquo;s annual hacked-website data shows auto-updates have had a material impact on infection rates. <strong>4. Replace abandoned plugins.</strong> If a plugin&rsquo;s developer has not shipped an update in over a year, treat it as dead weight — security auditors call it the single biggest predictor of a future breach in their own audit data, and inactive plugins are just as exploitable as active ones. (Sources: acuteseo.com&rsquo;s 2026 audit guide; medium.com/@interdatavn, January 2026.) Twenty minutes, once a month, with a backup underneath — that is the whole job.</p>
+      <h2>The honest check you can run today</h2>
+      <p>Log into your site right now and look at the dashboard. Count how many items want updates, and look at the oldest date. If anything on the list is more than a few months behind — or if a plugin shows the developer has not touched it in over a year — that is your answer to the headline question. The update button is the cheapest security product ever sold, and the burglars already read the announcement.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Our free security check tests your certificate and protection headers live and names what is missing &mdash; about 20 seconds, free. If the scan flags outdated software on the checklist below, start with step one of the update order above.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>
+    <div class="cta">
+      <h2>Updates are one of our 40 checks</h2>
+      <p>The full Site Health Watch audit covers your website&rsquo;s security, speed, mobile experience, email, and SEO &mdash; every finding verified against your live site, delivered within 24 hours, including the exact update order for your site.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+updating+your+website+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
