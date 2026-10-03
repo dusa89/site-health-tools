@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Do My Contact Form Emails Go to Spam? — Site Health Watch</title>
+<meta name="description" content="Your contact form submits fine — but the quote requests never reach your inbox. Why web servers fail email authentication, the From-vs-Reply-To trap, and the four fixes in order.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why do my contact form emails go to spam?</h1>
+    <p class="lede">A customer fills out your contact form, hits send, and waits for your call. You never got the email — it landed in your spam folder, or vanished entirely. You look like the business that ghosts people, and you never even knew they wrote. This one has four causes, and they are all fixable this week.</p>
+    <div class="article">
+
+      <p>Here is what usually happens: the customer tells you later, in person, that they wrote to you twice and you never answered. You check your email. There is nothing in the inbox — but your spam folder has a graveyard of their messages, or the hosting account has them sitting in a quarantine you never open. The form is not broken. The <em>email</em> is broken — specifically, the way your website sends email looks, to every mailbox provider on earth, exactly like a forgery.</p>
+      <h2>The first problem: your website pretends to be the customer</h2>
+      <p>Most contact forms are set up this way by default: the visitor types their address into the form, and the form puts <em>their</em> address in the email's From field. But the email does not actually come from the visitor — it is sent by your website's server. So a message claiming to be from [email protected] arrives from your web host. That mismatch has a name in the security world: <strong>spoofing</strong>. It is the signature move of phishing attacks, and it is one of the fastest ways to get flagged by a spam filter. (Source: WPForms&rsquo; 2026 deliverability guide.) The correct setup feels backwards but is simple: the From address should be <em>your</em> address, on <em>your</em> domain, and the visitor's address goes in the Reply-To field. You still reply to the customer with one click — you just stop impersonating them.</p>
+      <h2>The second problem: your web server was never introduced to anyone</h2>
+      <p>The three email-authentication records — SPF, DKIM, DMARC — are your domain&rsquo;s list of who is allowed to send as you. When you set up business email (Google Workspace, Microsoft 365, your host&rsquo;s mail), those records name your email provider. But contact-form mail usually does not come from your email provider. WordPress and most site builders send through the web server itself, using PHP&rsquo;s built-in mail function — no authentication, no signature, no logging. Your SPF record does not list the web server, nothing signs the message with DKIM, and it fails every check. As one 2026 deliverability review put it, this setup &ldquo;is behind most &lsquo;WordPress emails going to spam&rsquo; problems.&rdquo; (Source: mahatosoft.com&rsquo;s 2026 guide.) There is also the neighbors problem: on shared hosting, hundreds of sites share one server. If one of them sends spam or gets hacked, the whole server&rsquo;s address can land on a blocklist — and your forms stop delivering even though you did nothing wrong.</p>
+      <h2>The third problem: the enforcement world changed under you</h2>
+      <p>Until recently, a failing contact-form email would probably limp into the spam folder. Then the rules hardened. In February 2024, Google and Yahoo started requiring sender authentication for bulk mail — SPF, DKIM, DMARC, aligned with the From domain. Microsoft joined in May 2025 with the same bar for Outlook addresses, rejecting non-compliant mail outright. And in November 2025, Gmail escalated further: non-compliant mail now gets permanently rejected — hard 550 errors, not quiet filtering. (Sources: WP Mail SMTP&rsquo;s 2026 explainer; mailercloud.com&rsquo;s 2026 reference.) These rules technically target senders above 5,000 emails a day, but the filters use the same signals for everyone: one 2026 analysis found that mail missing SPF, DKIM, or DMARC loses up to 76 percent of its inbox placement even at low volume. Your six contact-form emails a day are not exempt from the math.</p>
+      <h2>The fix, in order of leverage</h2>
+      <p><strong>1. Fix the From field.</strong> Set the form to send from your own address on your own domain (something like [email protected]), and put the visitor&rsquo;s address in Reply-To. This single change eliminates the spoofing flag on almost every form we have seen.</p>
+      <p><strong>2. Route the website through real email, not the web server.</strong> Install an SMTP plugin (WP Mail SMTP or FluentSMTP are the common ones) and connect it to your actual mail provider — or a transactional service like Brevo, Postmark, or Amazon SES. After that, order emails, password resets, and form notifications pass SPF and DKIM like the rest of your mail. (Source: mahatosoft.com&rsquo;s 2026 guide.)</p>
+      <p><strong>3. Test like a filter.</strong> Submit your own form, send the notification to a Gmail address you control, and open it with &ldquo;Show original.&rdquo; The Authentication-Results header states plainly what passed and what failed — spf=pass, dkim=pass, dmarc=pass. The specific wording tells you exactly which record to fix. (Source: skynethosting.net&rsquo;s 2026 deliverability guide.)</p>
+      <p><strong>4. If it still fails, check the blocklists.</strong> Look up your domain and your sending IP at Spamhaus and MXToolbox. If the server&rsquo;s address is listed — especially on shared hosting — the fix is at the host, not in your form. Fix the cause first (a hacked form or compromised mailbox), because a listed server gets relisted within days otherwise.</p>
+      <h2>The honest check you can run today</h2>
+      <p>Submit your own contact form right now and watch where the email lands — inbox, spam, or nowhere. If it is not in the inbox within a minute, open the form&rsquo;s notification settings and read the From field: if it contains a placeholder for the <em>visitor&rsquo;s</em> email, you found the problem before lunch. Fix the From field, then make the SMTP change this weekend. This is one of those rare problems where the fix is measured in hours and the cost of ignoring it is measured in lost customers who think you ignored <em>them</em>. <a href="why-are-my-emails-suddenly-going-to-spam.html">Our spam-foldering guide</a> covers the same authentication story for your regular email, and <a href="what-is-dmarc.html">the DMARC guide</a> explains the policy that locks impostors out.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain. Five seconds later you get a verdict &mdash; protected, partially protected, or unprotected &mdash; plus the exact DNS lines to fix whatever is missing. No signup, no ads.</p>
+        <a class="toolbtn" href="../index.html">Run the free email deliverability check</a>
+      </div>
+    <div class="cta">
+      <h2>Email is one of our 40 checks</h2>
+      <p>The full Site Health Watch audit also checks your website&rsquo;s speed, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+contact+form+emails+going+to+spam+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
