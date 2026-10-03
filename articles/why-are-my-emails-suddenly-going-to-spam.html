@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Are My Emails Suddenly Going to Spam? — A Plain-English Fix Guide</title>
+<meta name="description" content="Your email was fine, now customers say quotes never arrived. The 4 things that actually break overnight — a silent SPF limit, blocklists, bulk-sender rules, unsigned new tools — and a free check that finds it.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why are my emails suddenly going to spam?</h1>
+    <p class="lede">Last month your quotes landed in inboxes. This month customers swear they never arrived. Nothing feels different on your end &mdash; but something changed underneath your email, and it is almost always one of four things.</p>
+    <div class="article">
+
+      <p>When working email turns into spam-folder email overnight, owners blame the wrong thing first: the words in the message, the subject line, some imagined filter with a grudge. In our experience it is almost never the words. Spam-foldering that starts <em>suddenly</em> means something <em>changed</em> &mdash; a new tool, a broken record, a listing, or a rule that got stricter. Here are the four real causes, in the order we see them.</p>
+      <h2>1. A new tool quietly broke your SPF record</h2>
+      <p>This is the most common one. Your SPF record lists which services may send mail as you, and it has a hard ceiling: no more than 10 outside lookups. Every service you add &mdash; the newsletter tool, the CRM, the booking system &mdash; costs lookups. The record that worked for years breaks the week you add one more, SPF starts returning errors instead of passes, and inbox providers treat the errors like failures. Worse: nothing tells you. Email keeps &ldquo;sending&rdquo; fine from your side; it just stops arriving.</p>
+      <h2>2. Your domain or mail server landed on a blocklist</h2>
+      <p>Enough recipients marking your bulk mail as spam &mdash; or a spammer sharing your host&rsquo;s mail server &mdash; can get your sending address listed. Free blocklist checkers will tell you which list you&rsquo;re on in seconds. Getting off is usually a removal request plus a few days of clean sending <em>after</em> the underlying cause is fixed &mdash; which is why you check for cause #1 first.</p>
+      <h2>3. Gmail and Yahoo tightened the rules for bulk senders</h2>
+      <p>Since 2024, Gmail and Yahoo require anyone sending bulk mail &mdash; newsletters, coupon blasts, appointment reminders to a list &mdash; to authenticate properly and to offer one-click unsubscribe. These are enforced automatically, not announced to you personally. If your mailing-list mail suddenly started bouncing to spam while your one-to-one replies still land fine, this is the first place to look.</p>
+      <h2>4. A service you forgot about is sending unsigned mail</h2>
+      <p>The invoice tool, the review-request app, the old scheduler &mdash; any of them can send as your domain without your DKIM signature. Your DMARC record can include a reporting address, and the reports it collects are the detective&rsquo;s file: they list exactly which services are failing authentication, by name. Most owners have never opened one; it usually names the culprit in the first page.</p>
+      <h2>Don&rsquo;t guess &mdash; measure</h2>
+      <p>All four causes leave fingerprints in your public DNS records, and you can read them in seconds. Our free deliverability check tests your SPF, DKIM, and DMARC live and tells you in plain English which piece broke &mdash; including the lookup-count warning from cause #1. No signup, no ads.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain. Five seconds later you get a verdict &mdash; protected, partially protected, or unprotected &mdash; plus the exact DNS lines to fix whatever is missing.</p>
+        <a class="toolbtn" href="../index.html">Run the free email deliverability check</a>
+      </div>
+    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website&rsquo;s speed, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+emails+going+to+spam+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
