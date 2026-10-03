@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Are My Business Emails Being Blacklisted? — Getting Off the List, Step by Step</title>
+<meta name="description" content="Your quotes and invoices are vanishing: your domain landed on an email blacklist. What blacklists are, the three ways legitimate businesses get listed, how to check for free, and the exact order of operations to get off.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why are my business emails being blacklisted?</h1>
+    <p class="lede">A customer calls: &ldquo;I never got your quote.&rdquo; You check sent mail &mdash; it went out fine. The problem is not your inbox. Somewhere, your business name got put on a list, and now other people&rsquo;s email systems are quietly throwing your messages away. Here is what that list is, how you got on it, and how to get off.</p>
+    <div class="article">
+
+      <p>An <strong>email blacklist</strong> is a shared list that mail servers check before accepting your messages. Major blacklists are consulted by Yahoo, AOL, Microsoft, and thousands of corporate email systems: if your domain or your sending IP is on one, your mail does not land in spam &mdash; it gets refused at the door. This is a different problem from <a href="why-are-my-emails-suddenly-going-to-spam.html">emails going to the spam folder</a>. The spam folder is one inbox&rsquo;s filter having doubts. A blacklist is the whole postal service turning your truck around.</p>
+      <h2>The three ways a legitimate business lands on one</h2>
+      <p><strong>1. Something on your side is sending spam without you.</strong> This is the most common cause for small businesses, and the one nobody suspects. A hacked email account, an infected office computer, or a compromised login starts firing out spam in your name. The blacklist sees spam coming from your address and lists <em>you</em>. Everything looks normal in your inbox the whole time.</p>
+      <p><strong>2. A list you should not have mailed.</strong> A purchased or scraped list, or one big sudden blast to thousands of addresses, hits spam traps (fake addresses maintained to catch exactly this) and complaint spikes. Google&rsquo;s bulk-sender line is a complaint rate of 0.30 percent &mdash; cross it and you are in the danger zone. One reckless campaign can do more damage than a year of good sending.</p>
+      <p><strong>3. Guilt by association.</strong> If you send through a shared hosting server or a shared email-service IP pool, a spammer on the same IP can get the whole neighborhood listed &mdash; including you. Missing or broken authentication (SPF, DKIM, DMARC) makes it worse: your mail looks forged, and forged-looking mail gets treated like the real thing. (We explain the three records here: <a href="what-is-dmarc.html">what SPF, DKIM, and DMARC actually do</a>.)</p>
+      <h2>The tiers &mdash; not all blacklists are equal</h2>
+      <p>There are hundreds of blacklists. The ones that actually hurt are few, and knowing which one listed you tells you how bad it is.</p>
+      <p><strong>Spamhaus SBL/DBL &mdash; serious.</strong> Used by Yahoo, AOL, Microsoft, and most corporate filters. A listing here blocks real mail and needs a real fix: your network owner or ISP submits the removal request after the cause is fixed, and it typically takes one to three days.</p>
+      <p><strong>SpamCop &mdash; self-clearing.</strong> Automatic release about 24 hours after the last spam report, if nothing new hits. Do not pay anyone to rush it &mdash; there is no faster door.</p>
+      <p><strong>Spamhaus PBL/XBL self-service lists &mdash; usually fast.</strong> These often clear within hours once the underlying problem (usually a compromised machine or a misconfigured router) is fixed.</p>
+      <p><strong>Minor lists (Barracuda and friends) &mdash; days.</strong> A self-service portal, a form, and a few days of waiting, provided you fixed the cause first.</p>
+      <p>One hard rule that applies everywhere: <strong>Spamhaus removals are free.</strong> Anyone offering to get you delisted for a fee is running a scam. The official channels cost nothing.</p>
+      <h2>Check whether you are actually listed &mdash; free</h2>
+      <p>Run your domain <em>and</em> your sending IP through the free lookup at <a href="https://mxtoolbox.com/blacklists.aspx">mxtoolbox.com/blacklists.aspx</a>. It checks the major lists and names exactly which one flagged you. If your host gives you a shared IP, check that IP too &mdash; that is how the guilt-by-association case shows up. Your bounce logs can also name the list: Yahoo, for example, returns an error code like 553 5.7.1 [BL22] with &ldquo;Spamhaus SBL&rdquo; in it &mdash; the exact list is right there in the code.</p>
+      <h2>The order of operations to get off</h2>
+      <p>The universal rule first, because getting it backwards is how businesses get relisted: <strong>fix the cause before you ask for removal.</strong> Every major blacklist operator ignores repeated delisting requests when the underlying behavior has not changed. Delisting is step five, not step one.</p>
+      <p><strong>1. Pause bulk sending.</strong> The moment you spot the damage, stop campaigns. Every message you send while flagged adds fresh complaints. Keep one-to-one replies flowing; shut off the blasts.</p>
+      <p><strong>2. Find the root cause.</strong> Pull your bounce logs and recent sends and look for what changed: a new list, a volume spike, a compromised account. Google Postmaster Tools shows your domain&rsquo;s reputation and complaint rate directly.</p>
+      <p><strong>3. Clean the list.</strong> Verify every address and drop the invalid ones. Hard bounces from dead addresses are the fastest way to push your complaint rate over Google&rsquo;s 0.30 percent line.</p>
+      <p><strong>4. Fix authentication.</strong> Confirm SPF and DKIM pass and align with your visible From domain, publish a DMARC record, add valid reverse DNS (PTR) for your sending IP, and send over TLS. These are Google and Yahoo&rsquo;s baseline requirements for bulk senders in 2026 &mdash; mail that fails them now gets rejected outright, not quietly filtered.</p>
+      <p><strong>5. Request delisting through the official channel</strong> &mdash; with the cause already fixed. Follow each operator&rsquo;s process exactly; incomplete requests get rejected.</p>
+      <p><strong>6. Warm back up slowly and verify.</strong> Bring volume back gradually, watch deliverability for a few weeks, and run inbox placement tests across Gmail, Outlook, and Yahoo before returning to full sending. One relapse puts you right back on the list.</p>
+      <h2>Staying off it</h2>
+      <p>Never buy an email list &mdash; a purchased list is the single most common on-ramp to a blacklist. Set a free monitoring alert (MXToolbox and Sender Score both offer them) so you hear about the next listing before your customers do. And keep your authentication current: a domain that was clean in 2024 can fail the 2026 baseline if nothing was updated. Inboxes do not forget, and neither do blacklists.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Our free email check tests your authentication (SPF, DKIM, DMARC) live &mdash; the most common reason legitimate mail gets treated as forged, and step 4 above. It does not check blacklists directly; use the free MXToolbox lookup above for that.</p>
+        <a class="toolbtn" href="../index.html">Run the free email deliverability check</a>
+      </div>
+    <div class="cta">
+      <h2>Blacklist recovery is one of our 40 checks</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, website speed, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+email+blacklists+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
