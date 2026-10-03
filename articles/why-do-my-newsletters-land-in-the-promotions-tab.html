@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Do My Newsletters Keep Landing in the Promotions Tab? — Site Health Watch</title>
+<meta name="description" content="Your newsletter says 99% delivered but open rates keep slipping. Gmail filed most of it in the Promotions tab, where a quarter of users never look. Why the tab is not spam, what pushes mail there, and the five fixes in leverage order.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why do my newsletters keep landing in the Promotions tab?</h1>
+    <p class="lede">Your monthly newsletter goes out to 240 people who all asked for it. The email report says 99% delivered and a 17% open rate — and both numbers are honest. But &ldquo;delivered&rdquo; never promised the Primary inbox. Most of your newsletter went to the Promotions tab, where a quarter of Gmail users never look at all.</p>
+    <div class="article">
+
+      <p>This is the quietest problem in email marketing, because nothing looks broken. No bounces, no spam-folder alarms, no error codes. Google accepted your mail — dotdigital&rsquo;s 2026 analysis puts the global acceptance rate at 99.21% — and then silently filed it where most people browse past it. Research from Mailmend finds roughly 57.8% of Gmail mail reaches the Primary inbox while 37.7% gets routed to Promotions. The two numbers your provider shows you — delivered and opened — never tell you which tab you landed in. (Source: WeProms&rsquo; August 2026 field note summarizing both datasets.)</p>
+      <h2>Promotions is not spam — and that is exactly the trap</h2>
+      <p>The Promotions tab is still the inbox. Nobody flagged you, nobody complained, and your authentication records are probably fine. That distinction matters: SPF, DKIM, and DMARC decide whether Gmail <em>trusts</em> your mail or rejects it outright — they do not pick the tab. <a href="why-does-gmail-reject-my-business-email.html">Our Gmail-rejection guide</a> covers the three authentication records and what the error codes mean; tab placement is a separate decision made later, by a different part of the machine. (Source: OutreachMagic&rsquo;s 2026 deliverability FAQ.)</p>
+      <p>And the tab has a real cost. Mailmend&rsquo;s 2026 data puts Primary-inbox open rates about 30% above Promotions placement — and a full 25% of Gmail users never open the Promotions tab at all. Here is the nuance most vendors skip: among the people who <em>do</em> check the tab, read rates are nearly identical — 22% in Primary versus 19.2% in Promotions. The problem is not that Promotions readers ignore you; it is the quarter of your list that never walks past the door. Two honesty labels: Mailmend sells inbox-placement services, so treat its numbers as directional rather than gospel — but the pattern holds across independent sources. Validity reports that 90.8% of Gmail users say the tab sorting is accurate. The classifier is not confused about your newsletter. It is reading it correctly. (Sources: Mailmend&rsquo;s 2026 Promotions-vs-Primary statistics; Validity via Yespo&rsquo;s 2026 Gmail-tabs guide.)</p>
+      <h2>Why your newsletter looks like a promo to Gmail</h2>
+      <p>Gmail&rsquo;s classifier weighs roughly a hundred signals, and your newsletter is checking nearly all of the promo boxes: a heavy HTML template with a banner image and thin text, four or more links plus a row of social icons, the word &ldquo;sale&rdquo; or &ldquo;offer&rdquo; in the subject line, an unsubscribe footer — which is legally required and <em>also</em> one of the strongest promo signals — sent in bulk through a marketing platform, to a list with a history of low opens. Any one of those is a nudge; together they are a verdict. (Sources: Mailmend&rsquo;s Promotions-tab guide; SecurityBoulevard, April 2026; Yespo&rsquo;s Gmail-tabs guide.)</p>
+      <p>The ground also shifted under everyone around the same time. Placement ratios that used to run about 50/50 between Primary and Promotions moved to roughly 25/75 after Q3 2024, and Klaviyo&rsquo;s measured inbox placement fell 13.24 points between Q1 2024 and Q1 2026. Newsletters that used to reach Primary on the strength of an engaged list now need the same engagement against a stricter classifier. (Source: Mailmend&rsquo;s 2026 Klaviyo placement data — same directional-numbers caveat as above.)</p>
+      <h2>The two-stream rule — the fix that matters most</h2>
+      <p>Before touching the newsletter, separate your mail into two streams and never mix them again. Stream one is person-to-person mail: quotes, follow-ups, answers to customer questions, scheduling. That mail must never ride the newsletter tool, wear the newsletter template, or come from the newsletter address. A quote that arrives looking like a blast gets filed like one — and a quote filed in Promotions costs you jobs, not just opens. Stream two is the newsletter. Send stream one from you, as a person, in plain text, with one link at most. This is the highest-leverage change in the whole article and it costs nothing.</p>
+      <h2>Fix the newsletter itself — five moves in leverage order</h2>
+      <p><strong>1. Prune the dead weight.</strong> Engagement history drives the classifier: a list where 60% never opens tells Gmail your mail is ignorable. Anyone who has not opened in 6 to 9 months gets one &ldquo;still want these?&rdquo; note, then gets cut. A smaller list that opens beats a big list that sleeps — and it keeps you under the 0.3% complaint ceiling that triggers the real penalties, which <a href="why-are-my-emails-suddenly-going-to-spam.html">our spam-suddenness guide</a> covers in detail.</p>
+      <p><strong>2. Send from a person, not a department.</strong> &ldquo;Mike from Lakeside Plumbing&rdquo; reads as correspondence; &ldquo;Marketing Team&rdquo; reads as a broadcast. Put the subscriber&rsquo;s first name in the subject or opening line where you genuinely know it — the classifier responds to signals that the message was written to someone, not blasted at everyone. (Source: TouchBasePro&rsquo;s 2026 Promotions-tab guide.)</p>
+      <p><strong>3. Calm the template down.</strong> Mostly text, 2 to 3 links maximum, no social-icon strip, and one small image at most — or none. The working rule from email designers is about 60% text to 40% images as the outer limit; plain people-to-people mail carries far less imagery than that, and the classifier knows it. Big banner images with a thin strip of text are the single strongest &ldquo;this is an ad&rdquo; signal you control. (Sources: Yespo&rsquo;s Gmail-tabs guide; TouchBasePro&rsquo;s 80/20 text-to-image guideline.)</p>
+      <p><strong>4. Ask once a quarter — not every issue.</strong> One short note asking engaged readers to drag your newsletter into Primary, or add your address to their Google Contacts, does move the needle for the people who care about you. Begging in every footer trains everyone to ignore the ask. (Source: SecurityBoulevard, April 2026.)</p>
+      <p><strong>5. Accept the tab for true promos.</strong> Here is the reality check: a 20%-off coupon email <em>is</em> promotional content, and no template trickery changes what it is. Chasing Primary for a sale blast is the wrong fight — and aggressive tricks can damage the sender reputation that your person-to-person mail depends on. Make the promo content good enough that the roughly 20% who check Promotions daily come looking for it. That is a different, winnable game. (Sources: Growleady&rsquo;s 2026 Promotions-tab guide; TouchBasePro citing Validity/Return Path daily-check data.)</p>
+      <h2>What you can honestly expect</h2>
+      <p>Nobody can promise you Primary placement — not your email platform, not a consultant, and not this guide. The classifier reads on the order of a hundred signals, and Unspam&rsquo;s 2026 benchmark put average Gmail Primary placement under 52% even for compliant senders. Vendor case studies claiming 50 to 100% email-revenue lifts from Primary placement exist — they are vendor case studies, read them that way — but the direction is right even if the exact multiples are optimistic. (Sources: Mailmend&rsquo;s 2026 placement data; Unspam&rsquo;s 2026 Email Deliverability Benchmark via its September 2026 walkthrough.)</p>
+      <p>The honest play is to fix what is measurable: open rates broken out by provider, not blended into one feel-good number; tab placement tested with a seed list of real Gmail addresses before each campaign; and a list that keeps shrinking toward the people who actually read. Do that for two quarters and the classifier starts reading you the way your readers already do — as mail worth opening.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain. Five seconds later you get a verdict &mdash; protected, partially protected, or unprotected &mdash; plus the exact DNS lines to fix whatever is missing. No signup, no ads.</p>
+        <a class="toolbtn" href="../index.html">Run the free email deliverability check</a>
+      </div>
+    <div class="cta">
+      <h2>Tab placement is one of 40 checks</h2>
+      <p>The full Site Health Watch audit also checks your website&rsquo;s speed, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+newsletters+land+in+the+Promotions+tab+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
