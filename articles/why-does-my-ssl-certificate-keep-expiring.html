@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My SSL Certificate Keep Expiring? — The Renewal Loop, Explained</title>
+<meta name="description" content="Your padlock keeps disappearing and coming back. Why free certificates only last 90 days, the silent ways auto-renewal breaks, and why the industry is making certificates even shorter.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why does my SSL certificate keep expiring?</h1>
+    <p class="lede">The padlock was there on Tuesday. Wednesday morning a customer calls: your website says &ldquo;not secure.&rdquo; You fixed this exact problem three months ago. Here is why it keeps coming back &mdash; and why the industry is making the cycle shorter, not longer.</p>
+    <div class="article">
+
+      <p>The certificate is not a one-time purchase. It is a subscription that has to renew itself &mdash; and free certificates, the kind most small-business hosts install, only last 90 days. That means your site has to renew successfully four times a year, every year, with nobody watching. Miss one renewal and the padlock becomes a warning overnight. (If the warning is already up on your site, start with <a href="why-does-my-website-say-not-secure.html">why your site says &ldquo;not secure&rdquo;</a> to find out which of the three causes is yours.)</p>
+      <h2>Why the renewal you set up keeps breaking</h2>
+      <p><strong>Something changed and the renewal check stopped working.</strong> Automatic renewal works by the certificate provider proving, each time, that you still control the domain &mdash; a tiny validation file served from your website, or a record in your DNS settings. Move hosts, point the domain through a new security service, change DNS providers, or let a firewall start blocking that validation file, and the check fails. Nobody emails you &ldquo;renewal is broken.&rdquo; You just find out at expiry &mdash; usually from a customer.</p>
+      <p><strong>The warning emails go to an inbox nobody reads.</strong> Expiry notices go to whatever address is on file &mdash; often the web designer&rsquo;s old address, or an admin@ mailbox nobody opens. The one email that mattered died in a dead inbox.</p>
+      <p><strong>Someone did it by hand and forgot.</strong> If your certificate was installed manually, there is no auto-anything. It is a calendar event someone has to remember four times a year, forever. People remember it twice, then life happens.</p>
+      <h2>The industry is making certificates shorter, not longer</h2>
+      <p>This is not your host being difficult. In April 2025, the CA/Browser Forum &mdash; the industry body that sets the rules for certificate authorities &mdash; approved a schedule to shorten public certificates: a maximum of 200 days for certificates issued from March 2026, 100 days from March 2027, and 47 days from March 2029. Apple, Google, Microsoft, and Mozilla all voted in favor.</p>
+      <p>The reasoning is straightforward: a stolen or mis-issued certificate is dangerous only while it is valid, and browsers have never been good at revoking bad ones. Expiry is the real kill switch &mdash; so the industry is making everything expire sooner.</p>
+      <p>The honest upshot for a business owner: hand-renewing is dying. Certificates that renew themselves &mdash; with somebody watching to make sure the automation keeps working &mdash; are the only strategy that survives this schedule. If your renewal already breaks at 90 days, it will not get better on its own.</p>
+      <h2>What to actually do</h2>
+      <p>First, find out your real expiry date &mdash; not the date you think it is. Our free security check reads your live certificate and prints the exact date it expires, plus tests your protection headers (the behind-the-scenes instructions explained <a href="what-the-padlock-means.html">here</a>).</p>
+      <p>Then ask your host one question: &ldquo;Is my certificate set to renew automatically &mdash; and where does a failure notice go?&rdquo; If the answer is vague, you have found the problem.</p>
+      <p>And put a calendar reminder 14 days before every expiry &mdash; or have someone watch it for you. A lapsed certificate is the cheapest problem in this whole guide to prevent, and the most expensive one to discover through a customer&rsquo;s phone call. This is exactly what our $79/month Site Health Watch plan covers: we check your certificate&rsquo;s expiry every month along with 40 other things, so you hear about it from us before a customer hears about it from their browser.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Twenty seconds later you get your live certificate&rsquo;s exact expiry date and a plain-English read on your protection headers &mdash; no signup, no ads.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>
+    <div class="cta">
+      <h2>Certificate expiry is one of our 40 checks</h2>
+      <p>The full Site Health Watch audit also checks your security headers, website speed, mobile experience, email, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+expiring+SSL+certificates+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
