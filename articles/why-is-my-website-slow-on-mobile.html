@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Is My Website Slow on Phones but Fast on My Computer? — Site Health Watch</title>
+<meta name="description" content="Your site loads fine on your office computer but crawls on phones — and Google's own speed test scores you lower on mobile on purpose. Why the test is harder, why your mobile site is the one Google ranks, and the three things that hit phones hardest.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why is my website slow on phones but fast on my computer?</h1>
+    <p class="lede">Your site opens instantly on your office computer, then crawls when a customer taps it on their phone. Here is the uncomfortable part: part of that gap is on purpose &mdash; Google's own speed test grades phones harder &mdash; and the phone version is the one Google uses to rank you.</p>
+    <div class="article">
+
+      <h2>The test is rigged against phones. Deliberately.</h2>
+      <p>When you run Google's PageSpeed Insights, the desktop tab and the mobile tab are not the same test. The desktop test runs on something like your office computer on a fast wired connection &mdash; full speed, no handicap. The mobile test deliberately slows everything down: it simulates a mid-tier Android phone with its processor throttled (roughly 4 times slower) on a sluggish 4G connection &mdash; about 1.6 megabits per second with 150 milliseconds of latency. That is the tool's documented setup, and it is why a mobile score in the 50s or 60s can be perfectly healthy while the desktop tab shows 95. Same website, two different grading curves.</p>
+      <p>That also means the raw score is not the number to obsess over. Google's ranking systems read the <em>field</em> measurements &mdash; what real visitors on real phones actually experience, taken at the 75th percentile &mdash; not the simulated lab score. The score tells you how you did against the simulated phone. The field data tells you how your customers are really doing. Both are shown in the same report, side by side.</p>
+
+      <h2>Why the phone version is the one that counts</h2>
+      <p>Google finished moving all of search to mobile-first indexing in October 2023 (Google Search Central). That means the mobile version of your site &mdash; not the desktop one &mdash; is what Google reads to decide what your pages are about and where they rank. If the phone version is slow, broken, or stripped down, that is the version being judged.</p>
+      <p>And the phone version is where the customers are. StatCounter's global figures for July 2026 put mobile at 52.57% of all web traffic, with desktop at 45.93% &mdash; and for local service businesses, where customers search on the move, mobile routinely runs to 70% or more of sessions. Checking your site on your office computer is like taste-testing the soup at the supplier instead of at the table.</p>
+
+      <h2>The three things that hit phones hardest</h2>
+      <p><strong>Desktop-sized photos on a 6-inch screen.</strong> The number-one cause, again. Most website builders upload the full-size image and shrink it on screen, so the phone still downloads the whole thing. The median mobile web page hit 2,362 kilobytes in July 2025 (HTTP Archive's 2025 Web Almanac), nearly triple what it was a decade earlier &mdash; and on a throttled phone connection, every kilobyte costs.</p>
+      <p><strong>Everything loading at once.</strong> JavaScript alone accounts for a median 632 kilobytes of that mobile page weight. Chat widgets, review popups, cookie banners, and full-screen signup boxes all pile on before the phone can show the actual page &mdash; and on mobile they are worse, because they often cover the whole screen on a 6-inch display.</p>
+      <p><strong>Video and animation that phones can't shortcut.</strong> Autoplay background video and entrance animations are the heaviest elements on most small-business pages. On a desktop with a fast processor they glide; on a throttled mid-tier phone each one is a tax on every frame. Only 48% of mobile websites passed Google's Core Web Vitals bar in 2025 (Web Almanac 2025) &mdash; the desktop number was 56%. The gap is exactly this: phones fail first.</p>
+
+      <h2>What actually moves the needle</h2>
+      <p>Don't chase a perfect mobile score &mdash; chase the real measurements. The fix list is short: shrink images to the size they are actually shown at (your builder probably has a &ldquo;responsive images&rdquo; setting that does this automatically); move anything non-essential off the first screen &mdash; chat widgets, popups, below-the-fold video; and if you must have a video background, replace it with a still image on mobile. Then measure again. Google's own bar is public: the main content visible in under 2.5 seconds is good, 2.5 to 4 seconds needs work, over 4 seconds is poor.</p>
+      <p>And run the test as your customers live it, not as your office shows it. Our free speed check runs Google's own test against your homepage and reports the mobile result in plain English &mdash; seconds, not jargon, plus the three biggest slowdowns with a one-line fix each. No signup, no ads, about ten seconds.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>
+      <p>One more thing worth knowing: if you want the full picture of why your site behaves this way, <a href="why-is-my-website-so-slow.html">our plain-English guide to website speed</a> covers the four general causes &mdash; this article is its mobile twin.</p>
+    <div class="cta">
+      <h2>Mobile speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+mobile+speed+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
