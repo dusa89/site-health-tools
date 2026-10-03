@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does One Extra Second of Load Time Cost Your Business? — Plain-English Guide</title>
+<meta name="description" content="What does one extra second of website load time actually cost a small business? The 53% abandonment stat, Deloitte's 0.1-second finding, honest caveats, and simple illustration math.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What does one extra second of load time actually cost your business?</h1>
+    <p class="lede">Nobody spends seconds &mdash; you spend customers. The research on what a slow website costs is better than you might expect, and the math for a one-person business is simple enough to do on a napkin.</p>
+    <div class="article">
+
+      <p>Every guide about website speed talks in seconds. Owners do not spend seconds &mdash; they spend <strong>customers</strong>. So here is the question translated into the currency you actually care about: if your website takes one second longer to load, how many visitors leave, how many never call, and what does that cost you? The research on this is better than you might expect &mdash; and more honest than the headlines make it sound.</p>
+      <h2>The headline number: 53% gone at three seconds</h2>
+      <p>Google published this one back in January 2017, on its own AdSense blog, and the industry still quotes it because nothing has contradicted it: <strong>53% of mobile site visits are abandoned if the page takes longer than 3 seconds to load</strong>. That was DoubleClick&rsquo;s research, and it holds up as the industry reference. A follow-up Google benchmark study found the cost climbs fast &mdash; as page load time goes from 1 second to 7 seconds, the likelihood of a visitor abandoning the page rises <strong>113%</strong>. Read that again: the same visitor, the same page, just six seconds slower &mdash; and abandoning more than doubles.</p>
+      <h2>The tenth-of-a-second money finding</h2>
+      <p>The study that changed how the industry talks about speed came from Deloitte and Google in March 2020, titled &ldquo;Milliseconds Make Millions.&rdquo; Over four weeks they measured mobile sites across retail, travel, luxury, and lead-generation brands in Europe and the US, isolating speed from everything else. Their finding: <strong>a mere 0.1-second improvement in mobile load time raised retail conversions 8.4% and average order value 9.2%</strong>; travel conversions rose 10.1%. On lead-generation pages &mdash; the category closest to a plumber&rsquo;s &ldquo;call us&rdquo; page &mdash; the bounce rate improved 8.3%.</p>
+      <p>Think about what that means in reverse. A tenth of a second &mdash; the blink-and-miss gap between &ldquo;fast&rdquo; and &ldquo;slightly less fast&rdquo; &mdash; was worth nearly a tenth of a retail site&rsquo;s conversions. Nobody is claiming your plumbing site gains exactly 8.4% from shaving 0.1 seconds. The point is finer than that: speed moves customer behavior at a scale of seconds and tenths of seconds that no owner would guess by feel.</p>
+      <h2>The honest caveats</h2>
+      <p>Both big studies lean toward ecommerce and travel &mdash; sites where a visitor can buy in two clicks. Your business probably earns its money one phone call or one quote form at a time, and the studies&rsquo; exact percentages will not map onto your books one-to-one. Also note the dates: 2017 and 2020. Human impatience has not gotten <em>better</em> since then, and the average mobile landing page still takes around 22 seconds to fully load (Google&rsquo;s 2017 benchmark figure, still widely cited) against an expectation of under 3. Treat the numbers as the direction and scale of the effect, not as a promise about your site.</p>
+      <h2>The illustration: one slower second, one month</h2>
+      <p>Say 200 people a month find your site &mdash; a modest local-services number. Say your homepage takes 5 seconds to appear on a phone, where Google&rsquo;s good band ends at 2.5. The research above says a meaningful share of those 200 never wait to see what you offer: they hit back, and the person they called instead loaded in 2 seconds. If your normal close rate on website visitors is 10%, losing even a fifth of the patient remainder to impatience costs you 4 jobs a month. At a few hundred dollars a job &mdash; and that is <em>illustration math, not a measured figure for your business</em> &mdash; one extra second of load time is a four-figure line item on your monthly ledger, and nobody sends you a bill for it. It just quietly never arrives.</p>
+      <h2>What to do about it</h2>
+      <p>Do not buy anything and do not hire anyone yet. The order is: measure first, then fix the biggest rocks, then measure again. The four usual culprits &mdash; oversized photos, too many loading files, autoplay video, and cheap hosting answering slowly &mdash; are covered in plain English in our guide on <a href="why-is-my-website-so-slow.html">why websites get slow</a>, including the hosting question (<a href="does-cheap-hosting-make-my-website-slow.html">is cheap hosting the cause?</a>) and the phone question (<a href="why-is-my-website-slow-on-mobile.html">why it crawls on phones</a>). Start by getting your number: our free speed check runs Google&rsquo;s own test against your homepage and gives you the verdict in seconds, plus the three biggest slowdowns in owner-English.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. That number is the first line of the math above.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>
+    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+cost+of+slow+load+times+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
