@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does Gmail Reject My Business Email? — Site Health Watch</title>
+<meta name="description" content="Your emails to Gmail customers bounce or vanish. Since February 2024, Gmail, Yahoo, and Outlook have required three authentication records — and since late 2025, they reject non-compliant mail outright. What changed, what the error codes mean, and the fix.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why does Gmail reject my business email?</h1>
+    <p class="lede">Your quote went to a Gmail customer and came back with a cold error code — or worse, it never came back at all, and you only found out when the customer called someone else. It is almost never your message. It is your domain&rsquo;s missing paperwork — and since late 2025, Gmail rejects it instead of delivering it.</p>
+    <div class="article">
+
+      <p>This one usually breaks the same way: a customer you have emailed for years suddenly stops answering. You check — your last three quotes went to their Gmail, and Gmail said no. Nothing on your end changed. That is exactly the signature of what changed on <em>their</em> end.</p>
+      <h2>What changed — in plain dates</h2>
+      <p>In February 2024, Google and Yahoo started requiring senders to authenticate their email: at minimum, SPF or DKIM set up correctly, for everyone sending to Gmail or Yahoo addresses. Anyone sending 5,000 or more emails a day to Gmail faces the full rulebook — SPF and DKIM both passing, a DMARC record published, the From address matching one of them, the spam-complaint rate kept under 0.3%, and one-click unsubscribe on marketing mail. Microsoft joined in May 2025 with the same 5,000-a-day threshold for Outlook, Hotmail, and Live addresses. And as of November 2025, Gmail hardened enforcement further: non-compliant bulk mail is now permanently rejected at the door — 550 errors — instead of temporarily deferred. (Sources: PowerDMARC&rsquo;s 2026 bulk-sender rules guide; Greg Pabijan-Morawski&rsquo;s September 2026 deliverability guide; Warmy&rsquo;s 2026 SPF, DKIM and DMARC guide.)</p>
+      <h2>But I don&rsquo;t send 5,000 emails a day</h2>
+      <p>Probably not — and the full bulk rulebook may never name you. But here is the part owners miss: the enforcement wave landed on everyone. Gmail treats unauthenticated domains the same way at every volume — your mail is more likely to be refused or spam-foldered, and the direction of travel is stricter, not looser. And there is a sticky clause worth knowing: once a domain crosses the 5,000-a-day line, Google applies the bulk requirements permanently — even if you send less later. If you ever run a launch, a holiday push, or a big announcement list, get the records right <em>before</em> you send, not after.</p>
+      <h2>The three stamps, in one paragraph</h2>
+      <p>The rules name three records you may have met in our other guides: SPF, the public list of servers allowed to send as you; DKIM, the signature your server adds to each message; and DMARC, your written instruction for what inbox providers should do with fakes of your domain. <a href="is-my-business-email-going-to-spam.html">Our first email guide</a> explains all three in plain English, and <a href="what-is-dmarc.html">the DMARC guide</a> covers the policy that stops impostors. If your mail is being rejected, these three records are the first things to check.</p>
+      <h2>What the error codes actually mean</h2>
+      <p>If a bounced email shows one of these, the failure is authentication — not your subject line: <strong>550-5.7.26</strong> means Gmail found a DMARC alignment failure (a code that started appearing with the November 2025 escalation); <strong>421-4.7.32</strong> means SPF or DKIM alignment failed; <strong>550-5.7.1</strong> means an SPF hard fail; and Outlook&rsquo;s signature is <strong>550 5.7.515</strong> — &ldquo;Access denied, sending domain does not meet the required authentication level.&rdquo; Any of these is your cue to check the records, not rewrite the message.</p>
+      <h2>The spam-rate rule nobody watches</h2>
+      <p>The 0.3% complaint ceiling deserves its own warning. Send a newsletter to 300 people and one of them marks it spam — you have already crossed the line. Keep lists to people who asked to hear from you, make unsubscribing genuinely one click, and watch your complaint rate in Google Postmaster Tools before Gmail has to tell you about it. A purchased list of &ldquo;local businesses&rdquo; is the fastest way to fail this check.</p>
+      <h2>The fix</h2>
+      <p>Do not rewrite your emails — authenticate your domain. Run our free deliverability check: it reads your public records and tells you in plain English which of the three stamps is missing, with the exact DNS lines to paste in. Then publish DMARC at <strong>p=none</strong> first and read the reports for a few weeks before tightening anything — the reports show every service sending as your domain, including the ones you forgot about. And if your domain is already flagged, <a href="why-are-my-business-emails-being-blacklisted.html">our blacklisting guide</a> explains the way out.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain. Five seconds later you get a verdict &mdash; protected, partially protected, or unprotected &mdash; plus the exact DNS lines to fix whatever is missing. No signup, no ads.</p>
+        <a class="toolbtn" href="../index.html">Run the free email deliverability check</a>
+      </div>
+    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website&rsquo;s speed, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+Gmail+rejects+business+email+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
