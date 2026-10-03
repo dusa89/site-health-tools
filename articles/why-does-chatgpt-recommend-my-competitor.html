@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does ChatGPT Recommend My Competitor and Not Me? — Site Health Watch</title>
+<meta name="description" content="A customer asks ChatGPT who to hire and it names your competitor — never you. Why AI assistants recommend who they recommend, what the data says moves the needle, and the 4 free fixes.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why does ChatGPT recommend my competitor and not me?</h1>
+    <p class="lede">A customer sits down and asks ChatGPT for a recommendation &mdash; &ldquo;who is a good plumber near me?&rdquo; The assistant names three businesses, explains why each one fits, and the customer calls one of them. Your competitor is on that list. You are not. You ranked on page one of Google. It did not matter, in that moment, at all.</p>
+    <div class="article">
+
+      <p>That scenario is not hypothetical anymore. It is how a growing share of customers shop: they skip the search page and ask an AI assistant for a direct recommendation. The assistant answers in full sentences, names a few businesses, and the customer picks one and stops looking. If you are never named, you are not losing a click &mdash; you are losing the whole conversation, and you will never know it happened.</p>
+      <h2>ChatGPT does not rank your website. It reads its sources.</h2>
+      <p>Here is the part most owners miss. An AI assistant does not score your site the way Google does &mdash; there is no ranked list of ten blue links. It reads sources across the web, synthesizes them, and writes an answer in its own words. Sometimes it cites those sources; sometimes it just names a brand. Either way, the recommendation comes from what it could find <em>about</em> you, not from your homepage.</p>
+      <p>And your own website is a surprisingly small slice of what it reads. An Azoma analysis of millions of shopping-agent citations (published August 2026) found ChatGPT&rsquo;s sources split 41 percent earned media &mdash; articles, news, features &mdash; 37 percent retailer listings, 19 percent user-generated content like reviews and forums, and just 3 percent the brand&rsquo;s own website. McKinsey&rsquo;s October 2025 analysis said the same thing from a different angle: a brand&rsquo;s own site is only 5 to 10 percent of the sources an AI cites, while publishers, user content, and affiliates make up more than 65 percent. That is why your competitor can win this game without a better website than yours.</p>
+      <h2>The three things your competitor has that you probably do not</h2>
+      <p><strong>1. Other sites talk about them.</strong> This is the big one, and it dwarfs everything else. SEO Sherpa&rsquo;s 2026 analysis found that earned media &mdash; press, trade outlets, local news, podcasts &mdash; drives 82 percent of AI references. Your competitor got named in a local news piece, a &ldquo;best of&rdquo; roundup, a trade association directory, or a customer&rsquo;s detailed community post. Each of those is a citation surface: one more page an AI can read and quote. A business with no mentions outside its own website is, to the assistant, a rumor. A business mentioned in five independent places is a fact.</p>
+      <p><strong>2. They show up on more platforms.</strong> The same analysis found brands active on four or more platforms are 2.8 times more likely to appear in ChatGPT&rsquo;s answers. That is not four social media accounts posting the same promo &mdash; it is LinkedIn, YouTube, review sites, directories: distinct places with distinct content the assistant can draw on. One more note from that research: 44.2 percent of citations come from the first 30 percent of an article, so pages that state the key facts up front get quoted far more than pages that bury the answer.</p>
+      <p><strong>3. Their information is easy to quote.</strong> AI assistants favor sources they can lift verbatim: clear sentences stating the trade, the town, the service; structured data; reviews that describe actual work (&ldquo;replaced our water heater same-day&rdquo;) instead of generic praise. Research on generative-engine optimization (Aggarwal et al., KDD 2024) found that adding evidence &mdash; citations, direct quotes, statistics &mdash; to a page can boost its visibility in AI answers by up to 40 percent, the single largest lever measured. Your competitor&rsquo;s reviews page reads like an evidence file. Yours reads like a brochure.</p>
+      <h2>Four free fixes, in order of leverage</h2>
+      <p><strong>1. Claim and complete your Google Business Profile.</strong> Real category, real services, real photos, real hours &mdash; and reply to every review, because review replies are additional citable text attached to your name. Cost: zero.</p>
+      <p><strong>2. Get mentioned somewhere that is not your website.</strong> A local news &ldquo;new business&rdquo; blurb, a charity sponsorship with a press mention, a trade association listing, a podcast appearance, even a thorough customer post on Reddit or Nextdoor. One earned mention beats a month of website tweaks, because earned media is 82 percent of what AI cites. Think like a publicist, not a webmaster.</p>
+      <p><strong>3. Make your name, address, and phone identical everywhere.</strong> Directories, Yelp, Angi, Facebook, your site &mdash; same spelling, same punctuation. Conflicting listings make the assistant unsure you are one business at all. This is free, boring, and disproportionately effective.</p>
+      <p><strong>4. Put a quotable answer on your own site.</strong> One page that answers the exact question customers ask the assistant &mdash; &ldquo;who is the most reliable electrician in Summerlin?&rdquo; &mdash; with the answer in the first paragraph, in plain sentences, with your trade, your town, and your evidence. You are writing for the AI&rsquo;s highlighter, not for a poetry contest.</p>
+      <h2>The honest check you can run today</h2>
+      <p>Do not trust anyone&rsquo;s score about this &mdash; run the experiment yourself. Open ChatGPT, Perplexity, and Claude, each with browsing on, and ask the question the way a real customer would ask it: your trade, your town, natural phrasing. Note who gets named and what sources get cited. Run the same questions again in a few months after you have worked the fixes above. One more piece of honesty: AI training data updates slowly, so think in months, not days. Every fix above also helps your Google ranking today, so none of the work is wasted either way.</p>
+      <p>If you want the full picture of this new front page, <a href="does-chatgpt-recommend-my-business.html">our companion guide to AI visibility</a> walks through how assistants choose who to name and what a real check has to show you &mdash; the verbatim answer, the exact question, and the competitors who were named instead.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Enter your business name, trade, and town. The check asks the same question a customer would, shows the verbatim answer, and tells you whether you were named &mdash; and which competitors were. Free.</p>
+        <a class="toolbtn" href="../ai-visibility.html">Run the free AI visibility check</a>
+      </div>
+    <div class="cta">
+      <h2>AI visibility is one of our 40 checks</h2>
+      <p>The full Site Health Watch audit also checks your website&rsquo;s speed, security, mobile experience, email, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_ai" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+ChatGPT+recommends+my+competitor+and+I%27d+like+the+full+40-point+audit.+My+business+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
