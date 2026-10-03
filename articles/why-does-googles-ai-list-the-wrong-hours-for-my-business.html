@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does Google's AI List the Wrong Hours for My Business? — Site Health Watch</title>
+<meta name="description" content="Your website and Google Business Profile say you close at 6. Google's AI answer says 5. Where the AI is getting the old data — and the five fixes, in leverage order, that overwrite it.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why does Google's AI list the wrong hours for my business?</h1>
+    <p class="lede">Your website says you close at 6. Your Google Business Profile says 6. But when a customer asks Google's AI when you close, the answer comes back 5 &mdash; from a directory you forgot existed, scraped in 2022, that you cannot remember ever signing up for. This is not a glitch. It is how the AI works.</p>
+    <div class="article">
+
+      <p>Here is the uncomfortable fact first: the AI does not learn about your business from your website and your Google profile alone. A September 2026 piece on LinkedIn put it bluntly &mdash; owners keep updating the two places they control, and the AI keeps answering from the dozens of places they don't. Google itself says business information can come from official websites, licensed third-party data, user contributions, business owners, reviews, photos, and Google's own interactions with the business. Your two updates are two votes. The web is casting hundreds more.</p>
+      <p>This is the wrongest-feeling part of the AI era for a business owner: being quoted incorrectly by a machine that sounds certain. And it is common. In a 2026 survey by travel concierge company Greetwell, more than half of people who used AI for trip planning hit at least one bad recommendation &mdash; and the single most common failure, at 27 percent, was incorrect prices, hours, or other business details. Ten percent were sent to a business that was permanently closed.</p>
+      <h2>Where the old data is coming from</h2>
+      <p>The AI reads the whole web about you, not the curated version. A BrightLocal 2026 analysis found 415 different directories feeding AI answers. One 2022 scrape of your site by a coupon directory. A holiday-hours post on your Facebook page from three years ago. A Yellow Pages listing your previous owner created under a slightly different name. A review where a customer complained you closed early, which the AI treats as a fact about your hours. All of it is &ldquo;sourced material&rdquo; to the model, and the model does not check dates the way you would.</p>
+      <p>The damage is not theoretical. Data Axle's nationwide study of 1,000 U.S. consumers (April 2026) found that 66 percent &mdash; nearly seven in ten &mdash; had visited or tried to visit a business only to find its online information was wrong: an address that led nowhere, hours that had changed, details that did not reflect reality. Eighty-five percent said incorrect information affects whether they come back, including 37 percent who said it affects them significantly. In an AI answer, the wrong hour is not a small typo on a listings page &mdash; it is stated as fact, in a confident sentence, at the exact moment a customer is deciding whether to drive over.</p>
+      <h2>Five fixes, in order of leverage</h2>
+      <p><strong>1. Set special and holiday hours on your Google Business Profile first.</strong> Most wrong-hours answers come from seasonal changes nobody recorded. Google's own AI trusts your Business Profile above everything else &mdash; so the profile must hold the truth, including the upcoming holidays, not just this week's regular hours. This is the highest-leverage 10 minutes in local search.</p>
+      <p><strong>2. Put the hours in plain text on your website's contact page.</strong> Not inside an image, not inside a JavaScript widget, not only on Google. The AI reads text; a phone-number graphic is invisible to it. One sentence &mdash; &ldquo;Monday through Friday, 8 a.m. to 6 p.m.&rdquo; &mdash; in the HTML, on every page footer, costs nothing.</p>
+      <p><strong>3. Kill the zombies: search your business name plus your old phone number.</strong> Anything from before a number change, an address move, or a rebrand is a zombie listing feeding the AI. Claim the listing where you can, request removal where you cannot, and where a directory will not remove it, update the fields to the truth. Expect the AI to need weeks to months to stop quoting the old version.</p>
+      <p><strong>4. Make name, address, and phone identical everywhere.</strong> Conflicting versions make the AI unsure which is current, so it picks one &mdash; sometimes the wrong one. Same spelling, same punctuation, same suite format, on every directory that matters. Boring, free, and disproportionately effective.</p>
+      <p><strong>5. Check the AI's answer monthly and screenshot it.</strong> Ask the way a customer would: &ldquo;what time does [your business] close today?&rdquo; Write down what it says and where it cites. When it is wrong, fix the source it cites first, not your website. These systems update slowly &mdash; think in months, not days &mdash; and every fix above also helps your regular Google ranking, so none of the work is wasted.</p>
+      <h2>The one thing you cannot fix &mdash; and what to do instead</h2>
+      <p>You cannot force the AI to forget what it read. No button, no form, no appeal makes ChatGPT or Google's AI un-read a page. What you can do is outnumber the bad data: every correct, current, consistent listing is another vote for the truth, and the AI answers by majority of evidence. The businesses that win this game are not the ones with the best website. They are the ones whose whole web agrees.</p>
+      <p>If the AI is not naming your business at all &mdash; wrong hours are only the version of this where you show up &mdash; start with <a href="why-doesnt-googles-ai-mention-my-business.html">why Google's AI never mentions your business</a>, and see <a href="does-my-google-business-profile-decide-what-ai-says.html">why your Business Profile is the AI's favorite source</a> for the full leverage story.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Enter your business name, trade, and town. The check asks the same question a customer would, shows the verbatim answer, and tells you whether you were named &mdash; and which competitors were. Free.</p>
+        <a class="toolbtn" href="../ai-visibility.html">Run the free AI visibility check</a>
+      </div>
+    <div class="cta">
+      <h2>Wrong data everywhere is one of our 40 checks</h2>
+      <p>The full Site Health Watch audit also checks your website&rsquo;s speed, security, mobile experience, email, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_ai" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+wrong+AI+listings+and+I%27d+like+the+full+40-point+audit.+My+business+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
