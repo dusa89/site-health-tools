@@ -41,6 +41,11 @@
   .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
     font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
   .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
   footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
     font-size:13px;color:var(--slate)}
   footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
@@ -71,6 +76,7 @@
     <p class="lede">Your site opens instantly on your office computer, then crawls when a customer taps it on their phone. Here is the uncomfortable part: part of that gap is on purpose &mdash; Google's own speed test grades phones harder &mdash; and the phone version is the one Google uses to rank you.</p>
     <div class="article">
 
+
       <h2>The test is rigged against phones. Deliberately.</h2>
       <p>When you run Google's PageSpeed Insights, the desktop tab and the mobile tab are not the same test. The desktop test runs on something like your office computer on a fast wired connection &mdash; full speed, no handicap. The mobile test deliberately slows everything down: it simulates a mid-tier Android phone with its processor throttled (roughly 4 times slower) on a sluggish 4G connection &mdash; about 1.6 megabits per second with 150 milliseconds of latency. That is the tool's documented setup, and it is why a mobile score in the 50s or 60s can be perfectly healthy while the desktop tab shows 95. Same website, two different grading curves.</p>
       <p>That also means the raw score is not the number to obsess over. Google's ranking systems read the <em>field</em> measurements &mdash; what real visitors on real phones actually experience, taken at the 75th percentile &mdash; not the simulated lab score. The score tells you how you did against the simulated phone. The field data tells you how your customers are really doing. Both are shown in the same report, side by side.</p>
@@ -93,6 +99,7 @@
         <a class="toolbtn" href="../speed.html">Run the free speed check</a>
       </div>
       <p>One more thing worth knowing: if you want the full picture of why your site behaves this way, <a href="why-is-my-website-so-slow.html">our plain-English guide to website speed</a> covers the four general causes &mdash; this article is its mobile twin.</p>
+
     <div class="cta">
       <h2>Mobile speed is check #1 of 40</h2>
       <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
