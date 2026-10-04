@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who Is Responsible for My Website's Security — Me or My Host? — Plain-English Guide</title>
+<meta name="description" content="Your host says it's your developer's job; your developer says it's your host's job. Where the security line actually sits, how it moves with managed vs shared hosting, and the 3 gaps where 'I thought they had it' costs businesses.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Who is responsible for my website's security — me or my host?</h1>
+    <p class="lede">Your host says it's your developer's job; your developer says it's your host's job. The real line is shared — and the documented failure mode is both sides assuming the other has it covered. Here is who owns what, how the line moves with your hosting plan, and the 3 gaps where 'I thought they had it' costs businesses.</p>
+    <div class="article">
+
+      <p>Here is a scene that plays out in small businesses every week. Something goes wrong with the website &mdash; a hack, a warning, a broken update &mdash; and the owner calls the web host. The host says: &ldquo;That is your developer&rsquo;s job.&rdquo; The owner calls the developer. The developer says: &ldquo;That is your host&rsquo;s job.&rdquo; And the person whose business is offline is the one standing in the middle, paying both of them, with no idea who is actually responsible. This guide draws the line &mdash; plainly, for the person who did not build the thing and should not have to.</p>
+      <h2>The short answer: it is shared &mdash; and that is exactly the danger</h2>
+      <p>Website security is a shared responsibility: the host owns the infrastructure, and you (or your developer, acting for you) own the application &mdash; your site itself. That division is not the problem. The problem is the failure mode a security writer named in March 2026: <strong>&ldquo;The failure mode is both sides assuming the other has it covered.&rdquo;</strong> Every gap below is a place where an owner assumed &ldquo;someone&rdquo; had it, and nobody did.</p>
+      <p>Think of it as a building and an apartment. Your host owns the <strong>building</strong>: the servers, the network, the locks on the front door of the data center. You own the <strong>apartment</strong>: everything inside your four walls &mdash; your site&rsquo;s software, your logins, your content, your backups. A perfect building does not stop a burglary if you left your own door unlocked.</p>
+      <h2>What your host actually covers</h2>
+      <p>The honest version: it depends on your plan, and the line moves a lot. On <strong>managed WordPress hosting</strong>, the host takes on the heavy maintenance: automatic WordPress core updates, regular backups you can restore in a few clicks, and real-time security monitoring (that is WordPress.com&rsquo;s own description of its managed plans, November 2025). On <strong>cheap shared hosting</strong>, the coverage is basic server-level security &mdash; and the host&rsquo;s own comparison says to expect more work and &ldquo;to troubleshoot on your own.&rdquo; Read that sentence twice: on the cheapest plans, the host is telling you plainly that most of the maintenance is yours.</p>
+      <p>And no plan makes you immune. Even with the best hosting, the owner-side duties below still belong to you: strong passwords, reputable plugins, HTTPS, and real backups are still your responsibility on every plan. The host secures the building. Nobody but you can lock your apartment.</p>
+      <h2>The three gaps where &ldquo;I thought they had it&rdquo; costs businesses</h2>
+      <p><strong>Gap 1: updates.</strong> This is the big one. A 2026 managed-vs-shared hosting guide put it bluntly: roughly <strong>60% of WordPress sites get hacked through outdated software</strong> (a hosting-industry figure &mdash; treat the exact number as directional, but the direction is uncontested). On shared hosting, updating WordPress, your plugins, and your themes is <em>your</em> job, and it is the job most likely to be forgotten for two years. Your host does not update your plugins. Nobody does, unless someone is assigned to it. (<a href="do-i-really-need-to-update-my-website.html">Here is what the updates actually do, and what breaks when they are skipped.</a>)</p>
+      <p><strong>Gap 2: backups you cannot actually restore.</strong> Many hosts say &ldquo;backups included,&rdquo; and many owners take that as done. The three questions that matter: how often, how long are they kept, and can <em>you</em> restore one in a few clicks? A backup stored on the same hacked server, or one you need a support ticket and three days to access, is not a backup &mdash; it is a rumor. After an incident is the worst possible time to discover this. (<a href="what-should-i-do-if-my-website-gets-hacked.html">And if the worst already happened, here is the recovery playbook.</a>)</p>
+      <p><strong>Gap 3: logins and access.</strong> This one was never the host&rsquo;s. Your admin usernames, your passwords, who still has access from two developers ago &mdash; credential security lives entirely on your side of the line, and weak or stolen credentials are one of the most common ways in. (<a href="why-does-my-website-keep-getting-login-attempts.html">Here is what the attacks look like, and the lock-down that stops them.</a>)</p>
+      <h2>Why the line matters: the stakes in 2026</h2>
+      <p>Verizon&rsquo;s 2026 Breach Impact Study &mdash; built from about 70,000 cyber-insurance claims &mdash; put the <strong>median breach impact for small businesses at roughly $38,000</strong>, and named business interruption the single largest loss driver: not the cleanup bill, but the days the business cannot operate. (Insurance-claims data skews toward businesses that have insurance, so treat the number as directional for an uninsured shop &mdash; the shape of it is what matters: the cost is mostly <em>being down</em>, which is exactly what the blame-tennis game prolongs.) The longer host and developer point at each other, the longer you are paying that price.</p>
+      <h2>The 10-minute check that settles it</h2>
+      <p>Do not guess where your line is &mdash; ask. Send your host (or your developer) these three questions: <strong>1.</strong> What exactly do you patch and update automatically, and what is on me? <strong>2.</strong> Are backups offsite, how far back do they go, and can I restore one myself right now? <strong>3.</strong> Do you scan for malware and alert me, or only respond when I call? Their answers draw your line in writing.</p>
+      <p>Then measure the apartment side yourself. Our free security check runs Mozilla&rsquo;s own scan against your live site and translates it out of engineer-speak &mdash; the certificate, the behind-the-scenes header instructions, what is protecting your visitors and what is not. Whatever side of the line each finding falls on, you will know it in plain English, in about 20 seconds.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain. You get Mozilla&rsquo;s A+&ndash;F grade translated into plain English, your certificate&rsquo;s exact expiry date, and which protections are missing &mdash; the owner-side half of the line, measured for you.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>
+    <div class="cta">
+      <h2>Security responsibility is one of our 40 checks</h2>
+      <p>The full Site Health Watch audit maps every finding to who should fix it — you, your developer, or your host — alongside all 40 trust signals: speed, security, mobile, email, SEO, and AI visibility. Every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+website+security+responsibility+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
