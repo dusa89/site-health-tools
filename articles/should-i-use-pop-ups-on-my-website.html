@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should I Use Pop-Ups on My Website? — Plain-English Guide</title>
+<meta name="description" content="Pop-ups convert 3-5% on average (top ones far higher) — but Google has demoted mobile pages for intrusive full-screen pop-ups since 2017. The benchmarks, the rules, the honest caveat, and the fix in leverage order.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should I use pop-ups on my website?</h1>
+    <p class="lede">Pop-ups genuinely convert &mdash; the average is 3&ndash;5% and the best ones far exceed that. But a full-screen pop-up on a mobile search landing page can get the page demoted by Google, and it trains visitors to close your brand on reflex. Here are the numbers, the rules, and what to do instead.</p>
+    <div class="article">
+
+      <p>Every small-business owner has been sold the same pitch: &ldquo;just add a pop-up and watch your email list grow.&rdquo; And honestly, it is not a lie &mdash; pop-ups really do convert. But the pop-up your vendor installed is a full-screen demand that slams shut in front of every visitor the second your page loads on their phone, and <em>that</em> pop-up is quietly doing two kinds of damage: Google can demote the page for it, and the visitors you want most &mdash; the ones arriving from a search, phone in hand &mdash; close it on reflex without reading a word.</p>
+      <h2>Yes, pop-ups work &mdash; the benchmarks</h2>
+      <p>The numbers are not shy. An analysis of 2 billion pop-up impressions (citing the widely-quoted Sumo benchmark) put the average pop-up conversion rate at 3.09%, with the top-performing pop-ups converting 28% of viewers. That is comfortably above the average email click-through rate across industries (~2.61%, per Mailchimp) &mdash; which is exactly why vendors love the pitch.</p>
+      <p>More recent data confirms the range, with a methodology caveat. HelloBar&rsquo;s current benchmarking puts average pop-up conversion at 3&ndash;5%, the top 10% at 9% and above, and the top 1% past 12&ndash;15% &mdash; but notes it depends entirely on what the pop-up <em>asks for</em>: an email-for-10%-off pop-up can run 5&ndash;10%, while exit-intent pop-ups usually land at 2&ndash;4%. A 2026 roundup of vendor studies reported top-10% figures of 57.7% (Wisepops) and 42.35% (OptiMonk). The spread across studies is not a contradiction; it is a methodology difference &mdash; some count every display, some count only pop-ups that received engagement. Do not benchmark yourself against any single number. Benchmark against your own previous results for the same pop-up type.</p>
+      <h2>The catch: Google penalizes the wrong kind</h2>
+      <p>Google launched its mobile intrusive-interstitial demotion in January 2017, and it is still active in 2026. It is not a penalty in the remove-your-site sense &mdash; it devalues the page so it ranks worse. The target is specific: a full-screen pop-up that covers the main content <strong>immediately when a visitor arrives from a mobile Google search</strong>, a standalone interstitial they must dismiss before seeing anything, or a layout that looks like the whole page is the pop-up with the real content shoved underneath. Some sites reportedly dropped ten-plus spots in a day when it first went live.</p>
+      <p>Two things make this urgent for a local business. First, mobile-first indexing means Google judges the <em>mobile</em> version of your site &mdash; and your customers are overwhelmingly mobile. Second, the demotion applies to the page people land on from search results, which for a small business is usually the most valuable page it owns: the homepage or the service page that was supposed to ring the phone.</p>
+      <p>The exemptions are narrow: cookie consent notices, age gates, and login dialogs on content that is not publicly indexable are fine. Everything else that blocks the screen on arrival is a risk. Industry guidance distilled from Google&rsquo;s rules: if you need something on the landing page, use a banner that takes up a reasonable amount of screen space (Search Engine Journal suggests a maximum of about 15%) instead of a full-screen overlay.</p>
+      <h2>The honest caveat: the pop-up is not the problem, the ambush is</h2>
+      <p>Here is what the data actually says when you read past the pitch. The gap between a 2% pop-up and a 10% pop-up is almost never the design &mdash; it is the <strong>targeting plus the offer</strong>. A pop-up that appears after someone has read half your page, offering something specific (a seasonal maintenance checklist, a first-visit discount), outperforms an instant full-screen demand every time. The best-performing pop-ups in every study share the same traits: right context, right timing, one clear offer, one ask, easy to close.</p>
+      <p>So the real cost of the default full-screen pop-up is not the conversions it misses &mdash; it is the visitors it trains. A customer arriving from search gets your pop-up before your content, closes it on reflex, and now associates your name with an interruption. You converted 3% and annoyed 97%, on the page that was supposed to make you look like the professional choice.</p>
+      <h2>The fix, in leverage order</h2>
+      <p><strong>First, kill the load-time full-screen on mobile.</strong> This is the one Google can demote you for and the one visitors hate most. If a vendor set it to fire instantly for everyone, change it or disable it &mdash; this single change costs you nothing and removes the ranking risk.</p>
+      <p><strong>Second, move to delayed or exit-intent triggers.</strong> Let people actually see your content first: fire after 30&ndash;60 seconds, after 50% scroll, or when they are about to leave (exit-intent typically converts 2&ndash;4%, but on visitors who were already leaving, so it is pure bonus). These patterns are low-risk in practice and still capture the people who were engaged enough to stay.</p>
+      <p><strong>Third, one pop-up, one ask, one offer.</strong> &ldquo;Get 10% off your first service &mdash; enter your email&rdquo; beats a wall of three newsletter forms, a survey, and a coupon stack. And on mobile, use a slim banner, not a screen-filler &mdash; it sidesteps the interstitial rules and does not fight the visitor&rsquo;s thumb.</p>
+      <p><strong>Fourth, measure against yourself, not a vendor&rsquo;s brochure.</strong> Track each pop-up&rsquo;s conversion rate and your bounce rate on the same pages. If a pop-up converts 4% but the page&rsquo;s bounce rate climbed 10 points, do the math on which one bought the phones ringing.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Heavy pop-ups, chat bubbles, and widget stacks are also one of the top reasons small-business sites load slowly on phones. The free speed check grades your site&rsquo;s mobile experience and names what is slowing it down. Free, ten seconds.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>
+    <div class="cta">
+      <h2>Mobile experience is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your mobile experience alongside all 40 trust signals &mdash; pop-up weight, intrusive interstitials, speed on phones, security, email authentication, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+pop-ups+and+mobile+experience+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
