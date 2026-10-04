@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can a Blind Customer Actually Use My Website? — A Plain-English Guide</title>
+<meta name="description" content="A screen reader doesn't look at your site — it reads the code underneath. The five code-level things that decide whether a blind customer can use your website: alt text, heading order, form labels, link text, and keyboard access.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Can a blind customer actually use my website?</h1>
+    <p class="lede">A screen reader never sees your design — it reads the code underneath and speaks it out loud. Here are the five things in that code that decide whether a blind customer can use your site, and why none of them change how it looks.</p>
+    <div class="article">
+
+      <p>Picture your customer browsing your website with the screen off. They are not guessing &mdash; they are listening, because they are blind, and the software reading your site out loud is called a <strong>screen reader</strong>. Now ask the uncomfortable question: could they actually use your website?</p>
+      <p>Here is what most business owners get wrong about this: a screen reader does not look at your site. It reads the <em>code underneath</em> &mdash; the headings, the labels, the order of things &mdash; and turns that into a spoken summary. Your site does not fail blind customers because it looks bad. It fails them because the code tells a different story than the pixels do.</p>
+      <h2>1. Your images are invisible without alt text</h2>
+      <p>A sighted visitor sees your product photo, your team picture, the before-and-after shots. A screen reader hears only the image&rsquo;s <strong>alt text</strong> &mdash; the short description you (or your web developer) wrote in the code. If there is none, the reader announces the file name instead: &ldquo;image, IMG_3421_final_FINAL dot jaypeg.&rdquo; Your product is invisible, your team is invisible, your portfolio is invisible. Decorative graphics should be marked so they are skipped quietly; every image that carries meaning needs a real description.</p>
+      <h2>2. Headings are the table of contents</h2>
+      <p>Blind users don&rsquo;t read a page top to bottom &mdash; they jump from heading to heading, the way a sighted reader scans. That only works if the code has real headings, in order: one main heading, then sections, then subsections. Plenty of small-business sites cheat here: the &ldquo;headings&rdquo; are just bold, oversized text that looks like a heading but is tagged as a plain paragraph. The screen reader sails right past it. Skipping from heading level 1 to heading level 5 has the same effect &mdash; the reader&rsquo;s outline becomes nonsense.</p>
+      <h2>3. Form fields must say what they are</h2>
+      <p>This is where the money breaks. Your contact form, your quote-request form, your booking form &mdash; a sighted visitor sees &ldquo;Name&rdquo; next to the box. If the label exists only visually and isn&rsquo;t wired into the code, the screen reader announces &ldquo;edit, blank&rdquo; and your blind customer has to guess what goes in each box. Name? Email? Phone? They are filling out your lead form blindfolded. Plenty of businesses never hear about this &mdash; the prospect just gives up and calls the competitor whose form announced itself properly.</p>
+      <h2>4. &ldquo;Click here&rdquo; is meaningless out loud</h2>
+      <p>One of the testers&rsquo; favorite complaints: a page with forty links, every one of them announced as &ldquo;click here.&rdquo; Sighted readers see the sentence around the link and know where it goes. A blind customer pulling up a list of your links hears &ldquo;click here&rdquo; forty times and learns nothing. Links should describe their destination: &ldquo;view our service-area map,&rdquo; not &ldquo;click here.&rdquo; This costs you nothing and changes nothing about how the site looks.</p>
+      <h2>5. The keyboard has to reach everything</h2>
+      <p>Many blind users &mdash; and plenty of sighted ones with limited mobility &mdash; navigate with the keyboard alone, pressing Tab to move through the page. The focus has to move in the same order a sighted eye follows, and it has to be visible. If your dropdown menu only opens on mouse hover, if your pop-up can&rsquo;t be closed without a mouse, if Tab jumps from the header to the footer and skips the whole middle of the page &mdash; those customers are locked out of whatever sits behind the lock.</p>
+      <h2>The honest part</h2>
+      <p>You may have seen ads for accessibility widgets &mdash; a small toolbar that promises to make any site compliant in one click. Here&rsquo;s the tester&rsquo;s rule of thumb, stated as judgment: your prettiest page is probably your worst one, and no toolbar can fix what the underlying code gets wrong. Automated widgets don&rsquo;t add the alt text you never wrote, don&rsquo;t label the form fields you never labeled, and don&rsquo;t fix the heading order &mdash; those are code problems, and they take a person looking at the actual code. We said the same in our guide on accessibility lawsuits: the protection comes from the fixes, not the widget.</p>
+      <h2>What to do about it</h2>
+      <p>The good news: the five problems above are all cheap to find and cheap to fix &mdash; they are editing and labeling work, not a rebuild. Our free accessibility check scans your pages the way a tester&rsquo;s software does and lists every barrier in plain English, with the exact evidence for each one. Find out where you stand before a tester &mdash; or a lawyer &mdash; tells you.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get a plain-English verdict — whether a tester's software would find the barriers that show up in real complaints, with the exact evidence for each one.</p>
+        <a class="toolbtn" href="../accessibility.html">Run the free Accessibility check</a>
+      </div>
+    <div class="cta">
+      <h2>Accessibility is check #9 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 trust signals — speed, security, email, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_a11y" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+a+blind+customer+can+use+my+website+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
