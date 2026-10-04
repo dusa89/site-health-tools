@@ -474,9 +474,24 @@ function init() {
       return;
     }
     if (!PSI_API_KEY) {
-      out.innerHTML = '<div class="error"><strong>Staging note:</strong> the speed check is ' +
-        'built and ready, but the free Google API key hasn\u2019t been installed yet — so this ' +
-        'page shows no results rather than fake ones. The key is a 10-minute, $0 setup.</div>';
+      /* Key not installed yet: honest holding state in owner-English.
+         No internal jargon, no fake numbers — one audit CTA, links to the checks that ARE live. */
+      out.innerHTML =
+        '<div class="fieldnote"><strong>This check is still being switched on.</strong> ' +
+        'It runs on Google\u2019s live speed test, and that connection isn\u2019t live yet — ' +
+        'so instead of guessing at your numbers, we\u2019d rather show you nothing than something fake. ' +
+        'Three other free checks are running right now: ' +
+        '<a href="index.html">is your business email going to spam?</a>, ' +
+        '<a href="security.html">is your website safe?</a>, and ' +
+        '<a href="ai-visibility.html">does ChatGPT recommend your business?</a>.</div>' +
+        '<div class="cta">' +
+        '<h2>Speed is check #1 of 40</h2>' +
+        '<p>The full Site Health Watch audit also checks your email authentication, security, ' +
+        'mobile experience, and SEO — every finding verified against your live site, ' +
+        'delivered within 24 hours.</p>' +
+        '<a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site%20Health%20Watch%20%E2%80%94%20full%20audit%20request&body=Hi%2C%20I%20ran%20the%20free%20speed%20check%20and%20I%27d%20like%20the%20full%2040-point%20audit.%20My%20website%20is%3A%20">' +
+        '$199 — Get the full audit</a>' +
+        '</div>';
       return;
     }
     go.disabled = true;
