@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Free Website Speed Test — Plain-English Results</title>
-<meta name="description" content="Free website speed test with plain-English results: how many seconds your site takes on a phone, the 3 biggest slowdowns translated out of jargon, and one-line fixes. No signup, no ads. From Site Health Watch.">
+<meta name="description" content="Free website speed check with plain-English results: how quickly your server answers, how heavy your homepage is, and what that means for your visitors. No signup, no ads. From Site Health Watch.">
 <style>
   :root{
     --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
@@ -117,10 +117,10 @@
 <main>
   <div class="wrap">
     <h1>How fast is your website, really?</h1>
-    <p class="lede">Not a score out of 100 — the number that actually matters: how many seconds your homepage takes to show up on a visitor's phone. Paste your address and get the verdict in plain English, the 3 biggest slowdowns translated out of jargon, and a one-line fix for each. Free, no signup, no ads.</p>
+    <p class="lede">A rough, honest first look — how quickly your server answers, how heavy your homepage's code is, and what that means for the visitors who leave without ever complaining. Plain English, no score out of 100, no signup, no ads.</p>
 
     <div class="tool">
-      <div class="seg" role="radiogroup" aria-label="Test on">
+      <div class="seg" id="strategy-seg" role="radiogroup" aria-label="Test on">
         <label><input type="radio" name="strategy" value="mobile" checked><span>Mobile</span></label>
         <label><input type="radio" name="strategy" value="desktop"><span>Desktop</span></label>
       </div>
@@ -130,7 +130,7 @@
                placeholder="acmeplumbing.com" aria-describedby="url-hint">
         <button class="check" id="go">Test my speed</button>
       </div>
-      <p class="hint" id="url-hint">Your homepage address is fine — https is added automatically. We run Google's own speed test against your page; nothing is stored.</p>
+      <p class="hint" id="url-hint">Your homepage address is fine — https is added automatically. We time how fast your page's code downloads through a free test reader; nothing is stored.</p>
       <div id="results" aria-live="polite"></div>
     </div>
 
@@ -145,7 +145,7 @@
       <p>When this check says your site takes 4.2 seconds, it means one thing: the moment your main content — the headline, the hero image, the reason the visitor came — becomes visible on a typical phone. Google calls this measurement Largest Contentful Paint. A score out of 100 sounds precise but tells you nothing about your business; seconds tell you whether a customer waits or leaves.</p>
       <p>Google's published research found that more than half of mobile visitors abandon a page that takes longer than 3 seconds to load. That 2017 benchmark is still the industry's reference point, and phones have not gotten more patient since. Every extra second quietly costs you quotes, bookings, and sales — silently, because bounced visitors never complain.</p>
       <p>The usual culprits are ordinary, not exotic: photos uploaded straight from a camera (often several times larger than any screen needs), plugins that each load their own code, chat widgets and trackers, and budget hosting that is slow to answer. None of this means your site is "bad" — Google's own homepage lands in the 50s on their 100-point scale. It means there is measurable, fixable waste, and this check names the three biggest pieces of it.</p>
-      <p>This tool runs Google's own PageSpeed test against the address you enter — the same engine behind PageSpeed Insights, without the engineer-only jargon. No signup, no ads, nothing stored, and the results are yours to keep. Speed is the first thing visitors feel; if you'd like the other 39 checks — security, email, mobile, SEO — measured the same plain way, that's what the full audit is for.</p>
+      <p>Right now this page runs a rough check: it times how fast your homepage's code downloads and measures how heavy it is, through a free test reader — and it says so on the results, in plain words. That's an honest first signal, not the full picture: it doesn't download your images or render the page the way a phone does. The full Google lab test (the seconds your main content takes to appear on a real phone, plus the biggest slowdowns translated into plain English) switches on here as soon as our PageSpeed connection is installed. Either way: no signup, no ads, nothing stored, and the results are yours to keep. Speed is the first thing visitors feel; if you'd like the other 39 checks — security, email, mobile, SEO — measured the same plain way, that's what the full audit is for.</p>
     </div>
   </div>
 </main>
@@ -164,8 +164,8 @@
 
 /* STAGING: paste the free PageSpeed API key here (Google Cloud console, no
    billing required; restrict by HTTP referrer to the GitHub Pages domain).
-   Until a key is installed, the check shows an honest staging notice —
-   it never fabricates speed results. */
+   Until a key is installed, the page runs the keyless rough check below —
+   it never fabricates lab results. */
 const PSI_API_KEY = "";
 const PSI_ENDPOINT = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
 
@@ -457,10 +457,161 @@ function friendlyError(e, url) {
   return "Something went wrong running the test. Try again in a minute — nothing was stored.";
 }
 
+/* ---- Keyless rough check (runs while no PageSpeed key is installed) ----
+   Measures, through the same free reader-proxy chain the other tools use:
+   1) how long the page's HTML takes to download (proxy round trip),
+   2) how heavy the HTML is, 3) image / script / stylesheet counts.
+   Bands are OUR rough-check bands (proxy-inflated, so generous) \u2014 never
+   presented as Google's lab numbers. */
+function nowMs() {
+  if (typeof performance !== "undefined" && typeof performance.now === "function") return performance.now();
+  return Date.now();
+}
+
+function fetchWithTimeout(url, ms) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(function () { ctrl.abort(); }, ms);
+  return fetch(url, { signal: ctrl.signal }).finally(function () { clearTimeout(timer); });
+}
+
+async function roughFetch(targetUrl) {
+  const t0 = nowMs();
+  let lastErr = null;
+  try {
+    const r1 = await fetchWithTimeout("https://api.allorigins.win/get?url=" + encodeURIComponent(targetUrl), 45000);
+    if (r1.ok) {
+      const d = await r1.json();
+      const html = d && typeof d.contents === "string" ? d.contents : "";
+      if (html && html.length >= 200) return { html: html, ms: nowMs() - t0 };
+      throw { kind: "empty" };
+    }
+    lastErr = { kind: "proxy-http", status: r1.status };
+  } catch (e) { lastErr = e; }
+  try {
+    const r2 = await fetchWithTimeout("https://api.cors.lol/?url=" + encodeURIComponent(targetUrl), 45000);
+    if (r2.ok) {
+      const t = await r2.text();
+      if (t && t.length >= 200) return { html: t, ms: nowMs() - t0 };
+      throw { kind: "empty" };
+    }
+    throw { kind: "proxy-http", status: r2.status };
+  } catch (e) { lastErr = e; }
+  throw lastErr || { kind: "proxy-http" };
+}
+
+function countMatches(html, re) {
+  const m = String(html).match(re);
+  return m ? m.length : 0;
+}
+
+function analyzeRough(html, ms) {
+  const bytes = (typeof TextEncoder !== "undefined")
+    ? new TextEncoder().encode(String(html)).length
+    : String(html).length;
+  return {
+    ms: ms,
+    sec: Math.round((ms / 1000) * 10) / 10,
+    kb: Math.round(bytes / 102.4) / 10,
+    images: countMatches(html, /<img[\s>]/gi),
+    scripts: countMatches(html, /<script[\s>][^>]*src\s*=/gi),
+    styles: countMatches(html, /<link[\s>][^>]*rel\s*=\s*["']?stylesheet/gi)
+  };
+}
+
+function roughCheck(url) {
+  return roughFetch(url).then(function (r) { return analyzeRough(r.html, r.ms); });
+}
+
+function roughBand(ms) {
+  if (ms <= 3000) return "quick";
+  if (ms <= 6000) return "okay";
+  return "slow";
+}
+
+const ROUGH_VERDICTS = {
+  quick: { cls: "secured", h: "Looks quick.",
+    p: "Your homepage\u2019s code downloaded in {s} seconds \u2014 a healthy first signal. (This rough check includes our test reader\u2019s own overhead, so your visitors\u2019 real number is lower.)" },
+  okay: { cls: "partial", h: "Could be quicker.",
+    p: "Your homepage\u2019s code took {s} seconds to download. Visitors on slow connections feel every second \u2014 and Google\u2019s published research found more than half of mobile visitors leave after 3 seconds." },
+  slow: { cls: "unprotected", h: "Slow \u2014 this is costing you visitors.",
+    p: "Your homepage\u2019s code took {s} seconds just to download, before a single image. More than half of mobile visitors leave after 3 seconds (Google\u2019s published benchmark) \u2014 a large share of your traffic never sees your page." }
+};
+
+function roughRow(pillCls, pillText, title, explain, fix) {
+  return '<li><div class="check-head">' +
+    '<span class="pill ' + pillCls + '">' + esc(pillText) + '</span>' +
+    '<strong>' + esc(title) + '</strong></div>' +
+    '<p class="explain">' + esc(explain) + '</p>' +
+    '<p class="fixline"><strong>Fix:</strong> ' + esc(fix) + '</p></li>';
+}
+
+function renderRough(data, url) {
+  const band = roughBand(data.ms);
+  const v = ROUGH_VERDICTS[band];
+  const files = data.scripts + data.styles;
+  let html = '<div class="verdict ' + v.cls + '"><h2>' + v.h + '</h2>' +
+    '<p>' + esc(v.p.replace(/\{s\}/g, String(data.sec))) + '</p>' +
+    '<div class="stats">' +
+    '<div><strong>' + esc(String(data.sec)) + 's</strong><span>to download your page\u2019s code</span></div>' +
+    '<div><strong>' + esc(String(data.kb)) + ' KB</strong><span>page code weight</span></div>' +
+    '<div><strong>' + esc(String(data.images)) + '</strong><span>images referenced</span></div>' +
+    '</div>' +
+    '<div class="fieldnote"><strong>A rough check, honestly labeled:</strong> this timed our free test reader ' +
+    'downloading your page\u2019s code, so it includes the reader\u2019s own overhead \u2014 your visitors\u2019 real ' +
+    'number is lower. It doesn\u2019t download your images or render the page the way a phone does. ' +
+    'That\u2019s exactly what Google\u2019s lab test measures \u2014 it switches on here the moment our ' +
+    'PageSpeed connection is installed.</div>' +
+    '<p class="measured">Checked just now: ' + esc(url) + '</p></div>';
+
+  html += '<ul class="checks">';
+  html += roughRow(band === "quick" ? "pass" : band === "okay" ? "warn" : "fail",
+    band === "quick" ? "PASS" : band === "okay" ? "WATCH" : "FAIL",
+    "How fast your server answers.",
+    "Your homepage\u2019s code took " + data.sec + " seconds to download through our test reader.",
+    "If this is often high, your hosting plan is the first suspect \u2014 ask your host about caching, or whether a faster plan exists.");
+  const wPill = data.kb > 1000 ? "fail" : data.kb > 200 ? "warn" : "pass";
+  html += roughRow(wPill, wPill === "pass" ? "PASS" : wPill === "warn" ? "HEAVY" : "VERY HEAVY",
+    "How heavy your page\u2019s code is.",
+    "Your homepage carries " + data.kb + " KB of code \u2014 before a single image. The photos and graphics your visitors actually see pile on top of this.",
+    "As a rule of thumb, lean pages carry under ~200 KB of code. Bloated themes and page builders are the usual culprits.");
+  const iPill = data.images > 25 ? "fail" : data.images > 10 ? "warn" : "pass";
+  html += roughRow(iPill, iPill === "pass" ? "PASS" : "MANY IMAGES",
+    "Images on the page.",
+    "Your page references " + data.images + " images. Photos are the number-one reason pages feel slow \u2014 and this count doesn\u2019t include background images baked into the design.",
+    "Shrink photos before uploading, and serve smaller versions to phones.");
+  const fPill = files > 25 ? "fail" : files > 12 ? "warn" : "pass";
+  html += roughRow(fPill, fPill === "pass" ? "PASS" : "MANY FILES",
+    "Separate code files.",
+    files + " separate style and code files for a browser to fetch. Each one is its own download, and each one can delay the page showing.",
+    "Fewer files is faster \u2014 unused plugins, widgets, and trackers are the first things to cut.");
+  html += '</ul>';
+  return html;
+}
+
+function roughFriendlyError(e) {
+  const kind = e && e.kind;
+  if (kind === "empty") {
+    return "We could not read that page \u2014 it may block automated readers or return almost no content. " +
+           "Try your homepage address. Nothing was stored.";
+  }
+  if (kind === "proxy-http") {
+    return "Our test reader is having trouble right now \u2014 try again in a minute. Nothing was stored.";
+  }
+  if (e && e.name === "AbortError") {
+    return "That page took over 45 seconds to answer \u2014 that alone tells you something about its speed. Nothing was stored.";
+  }
+  if (e instanceof TypeError) {
+    return "Couldn\u2019t reach our test reader. Check your connection and try again \u2014 nothing was stored.";
+  }
+  return "Something went wrong running the check. Try again in a minute \u2014 nothing was stored.";
+}
+
 function init() {
   const input = document.getElementById("url");
   const go = document.getElementById("go");
   const out = document.getElementById("results");
+  const seg = document.getElementById("strategy-seg");
+  if (seg && !PSI_API_KEY) seg.style.display = "none"; /* the Mobile/Desktop choice only applies to the lab test */
   function currentStrategy() {
     const el = document.querySelector('input[name="strategy"]:checked');
     return el ? el.value : "mobile";
@@ -474,24 +625,19 @@ function init() {
       return;
     }
     if (!PSI_API_KEY) {
-      /* Key not installed yet: honest holding state in owner-English.
-         No internal jargon, no fake numbers — one audit CTA, links to the checks that ARE live. */
-      out.innerHTML =
-        '<div class="fieldnote"><strong>This check is still being switched on.</strong> ' +
-        'It runs on Google\u2019s live speed test, and that connection isn\u2019t live yet — ' +
-        'so instead of guessing at your numbers, we\u2019d rather show you nothing than something fake. ' +
-        'Three other free checks are running right now: ' +
-        '<a href="index.html">is your business email going to spam?</a>, ' +
-        '<a href="security.html">is your website safe?</a>, and ' +
-        '<a href="ai-visibility.html">does ChatGPT recommend your business?</a>.</div>' +
-        '<div class="cta">' +
-        '<h2>Speed is check #1 of 40</h2>' +
-        '<p>The full Site Health Watch audit also checks your email authentication, security, ' +
-        'mobile experience, and SEO — every finding verified against your live site, ' +
-        'delivered within 24 hours.</p>' +
-        '<a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site%20Health%20Watch%20%E2%80%94%20full%20audit%20request&body=Hi%2C%20I%20ran%20the%20free%20speed%20check%20and%20I%27d%20like%20the%20full%2040-point%20audit.%20My%20website%20is%3A%20">' +
-        '$199 — Get the full audit</a>' +
-        '</div>';
+      /* No PageSpeed key installed: run the keyless rough check instead of a
+         dead end. Honest bands, labeled rough — never fake lab numbers.
+         The full lab test takes over the moment a key is installed. */
+      go.disabled = true;
+      go.innerHTML = '<span class="spinner"></span>Checking\u2026';
+      out.innerHTML = "";
+      try {
+        out.innerHTML = renderRough(await roughCheck(url), url);
+      } catch (e) {
+        out.innerHTML = '<div class="error">' + esc(roughFriendlyError(e)) + '</div>';
+      }
+      go.disabled = false;
+      go.textContent = "Test my speed";
       return;
     }
     go.disabled = true;
@@ -519,7 +665,9 @@ if (typeof module !== "undefined") {
   module.exports = { normalizeUrl: normalizeUrl, verdictFor: verdictFor,
     describeOpportunity: describeOpportunity, buildPsiUrl: buildPsiUrl,
     parsePsi: parsePsi, friendlyError: friendlyError, renderResults: renderResults,
-    VERDICTS: VERDICTS };
+    VERDICTS: VERDICTS, roughBand: roughBand, countMatches: countMatches,
+    analyzeRough: analyzeRough, renderRough: renderRough,
+    roughFriendlyError: roughFriendlyError, ROUGH_VERDICTS: ROUGH_VERDICTS };
 }
 </script>
 <script>
