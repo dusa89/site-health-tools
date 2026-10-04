@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Software Need Updating? The 'Later' Habit That Hackers Count On</title>
+<meta name="description" content="That update badge isn't nagware — it's a patched hole with a public exploit. The 2026 numbers (11,334 WP vulnerabilities in 2025, 91% in plugins; the September 2026 Elementor/Super Forms crisis), what actually breaks when you update, and the five-minute discipline.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why does my website software need updating?</h1>
+    <p class="lede">That update badge isn't nagware — it's a patched hole, and the hole is public. The September 2026 Elementor crisis proves 'later' is the attacker's favorite window. Here's the honest math on what updates really risk versus what they prevent.</p>
+    <div class="article">
+
+      <p>There is a little red badge in your website's dashboard that says something needs updating. You click "later." Next week there are three badges. Next month you stop logging in at all. Then one morning the site redirects visitors to a gambling page, and you find out those badges were the last warnings anyone was going to give you.</p>
+      <p>This is the least exciting article on this site and the one that would have prevented a large fraction of the hacks we ever get emailed about. Not new features. Not redesigns. The software that runs your website has known holes in it, the holes are public, the fixes are free, and clicking "update" is the entire fix.</p>
+      <h2>Updates are not new features — they are patched holes</h2>
+      <p>When a developer finds a security hole in a plugin or theme, the sequence goes like this: they disclose it, a fix is released, and the hole becomes public knowledge. From that moment, every attacker on the internet knows exactly what the hole is and exactly which sites are vulnerable — every site that has not updated. According to the Patchstack State of WordPress Security report, 2025 produced 11,334 vulnerabilities in the WordPress ecosystem, and 91% of them were in plugins (via the 2026 Seven Squares roundup citing Patchstack). Wordfence's Q2 2026 threat report logged 182 high-threat vulnerabilities — the kind that can lead to full site compromise — and 149 vulnerabilities remained unpatched at the end of the quarter. The average WordPress site is attacked roughly once every 34 minutes, per Wordfence's 2026 reporting. The attack is not a person studying your site. It is a bot trying every known hole on every site it can reach, and an un-updated plugin is a hole with a sign on it.</p>
+      <h2>The September 2026 case study: two holes, six million sites</h2>
+      <p>In September 2026, Wordfence disclosed two critical vulnerabilities (CVSS 9.8 out of 10) in two widely used WordPress plugins — one in Elementor Pro, which runs on over 5 million sites, and one in Super Forms. Both allowed unauthenticated attackers — strangers who have never touched your site — to upload arbitrary files, the classic route to full site takeover. Wordfence blocked more than 190,000 exploit attempts against the Elementor bug alone and 250,000 against the other. Both were patched by mid-August 2026. The problem was never the availability of the fix. It was that many site owners had not applied it. The patch existed. The badges were sitting there. The attacks kept arriving anyway, because "later" is exactly the window attackers live in.</p>
+      <p><strong>The test:</strong> run our free security check on your site. If it flags outdated components, that is not a theory — it is a live hole with public exploit code. There is no partial credit for having updated "most" of them.</p>
+      <h2>What actually breaks when you update (and why it matters less than you think)</h2>
+      <p>The reason everyone clicks "later" is fear: the site works now, and updates change things. This is a real concern — an update can conflict with a theme or another plugin, and a busy business owner does not have a staging server to test on. But weigh the two risks honestly. The update risk is a layout glitch or a feature that needs re-adjusting, usually fixable, sometimes annoying. The no-update risk is the site serving spam, stealing its own visitors' card details, or disappearing from Google for "security reasons." One is a Tuesday afternoon. The other is a business emergency. And the fear is increasingly outdated: modern sites have automatic updates for minor security releases, and the plugin authors who matter ship fixes in hours. The days of every update being an adventure are mostly behind us.</p>
+      <h2>The five-minute discipline</h2>
+      <p><strong>1. Turn on automatic updates for minor releases.</strong> Every serious platform now offers this — it applies security patches automatically without asking. This one setting covers the majority of the holes without you ever touching the badge again.</p>
+      <p><strong>2. Once a month, handle the majors.</strong> Set a 15-minute calendar reminder. Update the theme and the plugins that don't auto-update. If something looks odd afterwards, you changed one thing at a time and you know exactly which update did it — <a href="what-should-i-do-if-my-website-gets-hacked.html">the hacked-response guide</a> is the fallback you hopefully never need.</p>
+      <p><strong>3. Delete what you don't use.</strong> A plugin you installed in 2021 and forgot is still code on your server, still carrying its own holes. The plugin-and-widget guide (<a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">here</a>) covers the audit. A plugin you deleted cannot be exploited.</p>
+      <p><strong>4. Back up before the big ones.</strong> A backup turns "the update broke something" from a crisis into a 10-minute rollback. Any host worth paying offers one-click backups; if yours doesn't, that's a signal about your host, not about updates.</p>
+      <p>And if you discover the updates have been pending for a year or more, don't update blindly from the dashboard — a year of skipped updates is the one case where a cautious approach beats enthusiasm. Get a developer to handle the catch-up once, then let the five-minute discipline keep you current from there.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Checks your site's software for known-vulnerable versions — outdated components with public exploit code are the holes this article is about. No signup.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>
+    <div class="cta">
+      <h2>Security is check #4 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 trust signals — security, speed, email, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+my+website+software+needs+updating+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
