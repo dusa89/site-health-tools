@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Do Customers Say They Never Got My Quote? — Plain-English Guide</title>
+<meta name="description" content="Your quote didn't bounce — it vanished. A third of tested email still lands in spam (Unspam 2026), DMARC adoption is falling, and inbox rules keep tightening. Why quotes disappear, and the fix in leverage order.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why do customers say they never got my quote?</h1>
+    <p class="lede">Your quote didn't bounce — it vanished. Roughly a third of tested email still lands in spam with no error back to you, and quotes are the mail least likely to survive. Here is why they disappear, the 2026 numbers, the honest caveat, and the fix in leverage order.</p>
+    <div class="article">
+
+      <p>You sent the quote. Two days pass, no reply. You assume the price was too high, or that they found someone cheaper. The job quietly goes to a competitor who followed up. But there is a cheaper explanation than any of those, and it is the one owners almost never check: your customer never saw the quote at all. Your email did not bounce. No error came back. It simply vanished between your send button and their inbox &mdash; and silence, in your business, sounds exactly like a &ldquo;no.&rdquo;</p>
+      <h2>The quietest failure in your business</h2>
+      <p>A newsletter that lands in spam costs you opens. A quote that lands in spam costs you a job. And here is what makes it brutal: an email that gets filtered into spam or rejected outright produces <em>no bounce and no error message you will notice</em>. You do not get a &ldquo;delivery failed&rdquo; notice the way you do for a typo&rsquo;d address. You get nothing. The only symptom is a customer who never calls back &mdash; which looks, from your side of the phone, identical to a lost deal.</p>
+      <p>This is not a rare edge case. Unspam&rsquo;s 2026 Email Deliverability Benchmark Report &mdash; built from every deliverability and seed-mailbox placement test run through its platform from January to September 2026, published September 2026 &mdash; found that 63% of tested email reached the primary inbox (up from 49% for full-year 2025), but roughly a third of tested mail <em>still</em> landed in spam. One in 3. Invisible. No error.</p>
+      <h2>Why quotes vanish: the three usual causes</h2>
+      <p><strong>1. Your domain mail is unauthenticated &mdash; and that is getting more common, not less.</strong> The same Unspam 2026 report found the one authentication signal that moved the wrong way: DMARC adoption <em>fell</em> from 59% of tested domains to 48%, the only authentication measure to decline. More than half of tested sending domains now have no DMARC policy at all. Our companion guides cover the three records &mdash; SPF, DKIM, and DMARC &mdash; but the point here is simpler: most small businesses send their highest-value mail (quotes, invoices) on domains that cannot prove the mail is really from them.</p>
+      <p><strong>2. The rules tightened under you while you were not looking.</strong> Google and Yahoo put bulk-sender rules in force on February 1, 2024: senders must authenticate (SPF and DKIM, with a DMARC record of at least p=none), offer one-click unsubscribe, and keep spam complaints under 0.3% &mdash; Google&rsquo;s published guidance says stay under 0.1% and never cross 0.3%. In November 2025 Google tightened enforcement again: non-compliant senders now face <em>permanent rejections</em>, not just spam-foldering. Microsoft joined with its own equivalent requirements for Outlook.com, Hotmail, and Live addresses, enforced from May 5, 2025 &mdash; non-compliant mail gets a hard 550 5.7.515 &ldquo;Access denied&rdquo; rejection. The rules were aimed at bulk senders (5,000+ a day to a given provider), but the plumbing they demand is the same plumbing your quote emails need.</p>
+      <p><strong>3. Forwarding and &ldquo;send mail as&rdquo; quietly break authentication.</strong> A lot of owners run their business address as a forwarder to a personal Gmail, or send their domain mail from inside Gmail with &ldquo;Send mail as.&rdquo; Forwarding is the classic quote-killer: the mail gets re-sent by a server that is not on your authorized list, the authentication check fails, and the quote slides into spam &mdash; or bounces off the new hard rejections. Our guide on the <a href="why-does-my-email-say-via-next-to-my-business-name.html">&ldquo;via&rdquo; tag</a> covers the visible version of this problem; this is the invisible one.</p>
+      <h2>The honest caveat: test data is not your inbox</h2>
+      <p>The Unspam numbers come from seed-mailbox placement tests &mdash; test accounts at each provider &mdash; not from real customers&rsquo; real inboxes, and the population skews toward senders who run deliverability tests. Your own numbers will differ. But the direction is what matters: a third of tested mail missing the inbox means &ldquo;they never saw it&rdquo; is not a paranoid theory, it is one of the most common things that can happen to an email. And quotes, sent from phones, forwarded inboxes, and unauthenticated domains, are exactly the mail least likely to make it through.</p>
+      <h2>The fix, in leverage order</h2>
+      <p><strong>First, check what your domain is actually telling inboxes.</strong> Run the free email deliverability check below: it reads your domain&rsquo;s SPF, DKIM, and DMARC records and tells you, in plain English, which of the three are missing. Ten seconds, no signup.</p>
+      <p><strong>Second, add the three records.</strong> SPF and DKIM come from your email provider (Google Workspace, Microsoft 365, or your host); DMARC is a single DNS record, and the minimum policy &mdash; p=none &mdash; already satisfies Google and Yahoo&rsquo;s requirements while you learn from the reports. This is a 10-minute job with your provider&rsquo;s instructions open, and it is the single highest-leverage email fix a small business can make.</p>
+      <p><strong>Third, stop forwarding your business mail.</strong> If your business address forwards to a personal inbox, switch to a real mailbox on your domain &mdash; and if you must send domain mail from Gmail, do it through your domain&rsquo;s outgoing mail server, not Gmail&rsquo;s &ldquo;Send mail as&rdquo; relay.</p>
+      <p><strong>Fourth, when a quote matters, confirm it landed.</strong> Until your authentication is clean, treat silence as a delivery problem before you treat it as a pricing problem. A 30-second follow-up text &mdash; &ldquo;Just sent the quote, did it land in your inbox?&rdquo; &mdash; rescues jobs that no discount ever would.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Quotes that never arrive cost you jobs — the free email check reads your domain&rsquo;s SPF, DKIM, and DMARC records and tells you, in plain English, whether your mail can prove it&rsquo;s really from you. Ten seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free Email deliverability check</a>
+      </div>
+    <div class="cta">
+      <h2>Email deliverability is check #2 of 40</h2>
+      <p>The full Site Health Watch audit checks your email authentication alongside all 40 trust signals — speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+lost+quote+emails+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
