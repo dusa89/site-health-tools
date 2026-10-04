@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do Those Chat Widgets and Booking Tools Slow Down My Website? — A Plain-English Guide</title>
+<meta name="description" content="Live chat, booking calendars, review widgets, social feeds: each one is "just one line of code" that makes every visitor's phone download and run someone else's software. Why embeds are the hidden speed tax on small-business sites, and the cheapest fix in website speed.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do those chat widgets and booking tools slow down my website?</h1>
+    <p class="lede">Every widget on your site is someone else's code running on your customer's phone. Here's why "just one line of code" becomes five, why Google's INP metric punishes exactly this, and the inventory that fixes it for free.</p>
+    <div class="article">
+
+      <p>It starts innocently. Someone suggests you add live chat to the website &mdash; &ldquo;it&rsquo;s just one line of code.&rdquo; Then the booking calendar for appointments. Then the widget that shows your Google reviews. Then the Instagram feed. Then the little chatbot that pops up and asks &ldquo;how can I help?&rdquo; Each one promised to take two minutes to install. Each one did. And then your website started feeling slow, and nobody can tell you which two-minute install did it.</p>
+      <p>Here is the part nobody at the widget company tells you: each of those embeds is someone else&rsquo;s code running on your page. When a customer opens your website, their phone has to call the chat company&rsquo;s servers, download the chat company&rsquo;s software, and run it &mdash; then do the same for the booking company, the reviews company, and the chatbot company. Your page cannot finish loading until all of that happens. You gave five different companies a key to your front door, and every visitor has to knock on all five doors before they can come in.</p>
+      <h2>The real cost is not the download &mdash; it&rsquo;s the thinking</h2>
+      <p>Each widget&rsquo;s files are small. That is the line you will hear: &ldquo;our script is only 80 kilobytes.&rdquo; The download is the cheap part. The expensive part is that your visitor&rsquo;s phone has to <em>run</em> that code &mdash; unpack it, start it, let it watch the page for new messages and new clicks. JavaScript runs on the phone&rsquo;s processor, and the phone your customers carry is not the laptop the widget was tested on. HTTP Archive&rsquo;s published measurements put this in perspective: mobile median Total Blocking Time is <strong>18 times higher</strong> than desktop (Web Almanac 2024). Blocking time is the phone busy running code instead of responding to your customer. The widgets did not look heavy in the demo. They are heavy on the phone in your customer&rsquo;s hand.</p>
+      <h2>Google now grades you on exactly this</h2>
+      <p>In March 2024, Google replaced an older responsiveness metric with <strong>Interaction to Next Paint</strong> (INP) as a Core Web Vital &mdash; one of the official measurements Google uses to judge your site. INP measures how long a page takes to react when a visitor taps a button or types in a field: under 200 milliseconds is good, over 500 is poor (Google&rsquo;s published thresholds). Heavy widget code running in the background is the classic INP killer &mdash; the phone is busy processing the chatbot&rsquo;s updates while your customer taps &ldquo;book appointment&rdquo; and waits. The Web Almanac&rsquo;s field data shows 97% of desktop sites score &ldquo;good&rdquo; on INP but only 74% of mobile sites do &mdash; the gap is real phones choking on real code.</p>
+      <h2>&ldquo;It&rsquo;s just one script tag&rdquo; is how you get five of them</h2>
+      <p>Here is the pattern we see on small-business sites: chat widget on every page, booking calendar on every page, review widget on every page, map embed on the contact page, Instagram feed in the footer. Five embeds, maybe six &mdash; and four of them are on pages where they make no sense. Your homepage visitor never opened the chat, never needed the booking calendar, and never looked at the footer feed &mdash; but their phone downloaded and ran all of it anyway. The rule of thumb: <strong>an embed should only run on the page where it earns its keep.</strong> The booking calendar belongs on the booking page. The chat belongs where people ask questions, not on every page of a five-page site.</p>
+      <h2>The two problems nobody prices in</h2>
+      <p><strong>You don&rsquo;t control their speed.</strong> Your website is now only as fast as the slowest vendor&rsquo;s server. When the chat company&rsquo;s servers have a bad day, your homepage has a bad day &mdash; and you will never get an alert about it, because the outage is on someone else&rsquo;s status page. We have seen businesses chase their own hosting for weeks when the culprit was a free reviews widget.</p>
+      <p><strong>Every widget is a data pipe to the vendor.</strong> The chat company, the booking company, the review widget &mdash; they all see your visitors, because their code runs in your visitors&rsquo; browsers. That is a privacy question and a compliance question (our accessibility article covers the legal side of what runs on your site), and it is worth asking before you add the sixth embed: who gets to watch my customers, and did they agree?</p>
+      <h2>What to do about it</h2>
+      <p>First, take inventory: open your site, right-click, and count what is running that you did not write &mdash; or ask your web person for the list of third-party scripts. Every embed you cannot name the purpose of is a candidate for removal. This is a familiar picture: HTTP Archive&rsquo;s 2025 Web Almanac found roughly 88% of websites now pull in web font files, with Google Fonts alone on about 54% of desktop sites &mdash; third-party code loading on almost every site on the internet, most of it added one &ldquo;just paste this&rdquo; at a time.</p>
+      <p>Then load each remaining embed only where it pays rent: the chat on the contact and pricing pages, the booking calendar on the booking page only, the map embed replaced with a static image that links to the map app. And ask the honest question about the chatbot popup &mdash; the one that appears before the visitor has read a word. If it is answering real questions, keep it. If it is scenery, it is scenery that costs you speed.</p>
+      <p>The good news: this is one of the cheapest fixes in website speed. Nobody rebuilds anything. You remove code, you don&rsquo;t write it. And the improvement is usually instant and visible, because the widgets were the traffic jam.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English — how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down, including any third-party widgets riding along.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>
+    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 trust signals — email authentication, security, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+chat+widgets+and+booking+tools+slowing+down+websites+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
