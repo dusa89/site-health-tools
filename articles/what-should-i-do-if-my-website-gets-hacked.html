@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Should I Do If My Website Gets Hacked? — Plain-English Guide</title>
+<meta name="description" content="The morning-you-find-out playbook: Patchstack counted 11,334 WordPress vulnerabilities in 2025, 91% in plugins, mass exploitation within ~5 hours. The 5-step recovery, and the 2 mistakes that bring the hack back.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What should I do if my website gets hacked?</h1>
+    <p class="lede">You were not targeted — you were scanned. Patchstack counted 11,334 WordPress vulnerabilities in 2025 (91% in plugins), with the worst exploited within ~5 hours. Here is the 5-step recovery playbook, and the 2 mistakes that guarantee the hack comes back.</p>
+    <div class="article">
+
+      <p>Almost nobody discovers their own hack. The discovery usually goes like this: a customer calls and says your site tried to download something onto their computer. Or you Google your business and see a warning under your link — <em>&ldquo;This site may be hacked.&rdquo;</em> Or you open your homepage and there are ads for things you have never sold, pages you never wrote, in languages you do not speak. Your first instinct will be to delete the weird thing and hope that is the end of it. It is not. That is the one move that guarantees it comes back.</p>
+      <h2>You were not targeted — you were scanned</h2>
+      <p>Here is the reframe that calms owners down: hackers did not choose you. Automated bots probe millions of websites every day looking for known holes, and they pounce fast. Security researchers at Patchstack reported that in 2025 the WordPress ecosystem alone saw <strong>11,334 newly disclosed vulnerabilities — up 42% from the year before</strong> — and the most heavily targeted ones were being attacked within about <strong>5 hours</strong> of disclosure. (Patchstack sells security tooling, so treat the exact figures as directional — but the trend is confirmed year after year: disclosure to mass exploitation is now measured in hours, not weeks.)</p>
+      <p>And here is the stat that tells you where the door almost always was: <strong>91% of those vulnerabilities were in plugins, 9% in themes, and only 6 in WordPress core itself</strong> — six, all low-severity. Your website almost certainly was not hacked because of WordPress. It was hacked because of something you <em>added</em> to WordPress: a contact-form plugin nobody updated, a page-builder theme from three owners ago. The attack surface is not the house. It is the 20 windows you installed and never locked.</p>
+      <h2>What it is actually costing you right now</h2>
+      <p>A hacked site bleeds in three ways at once. First, traffic: Google flags hacked pages with warnings or drops them from results entirely, and customers who see <a href="why-does-google-say-my-website-is-dangerous.html">a &ldquo;dangerous site&rdquo; warning</a> do not come back to check whether you fixed it. Second, trust: an Intuit writeup of cybersecurity survey data found <strong>64% of customers say they would stop doing business with a company that exposed their personal or financial information</strong>, and 40% of small-business attack victims experienced 8 or more hours of downtime. Third, survival: the oft-quoted National Cyber Security Alliance figure holds that <strong>60% of companies hit by a cyberattack are out of business within six months</strong> — that is an older survey cited in a ~2022 Intuit writeup, so read it as directional, but every incident report since has pointed the same direction. Every day the hack sits there, the bill grows.</p>
+      <h2>The 5-step recovery playbook</h2>
+      <p><strong>1. Stop the bleeding, but do not destroy the evidence.</strong> Put the site into maintenance mode (or ask your host to) so visitors stop hitting the hacked pages — that alone stops the trust damage from compounding. But do <em>not</em> start deleting files yet. The hacked files are the map: a professional (or a good scanner) reads them to find how the attacker got in. Deleting them first is like mopping a crime scene before the detective arrives.</p>
+      <p><strong>2. Find the door.</strong> Check three things: the list of admin users in your site (attackers add their own accounts — any name you do not recognize is a red flag), the plugins and theme (anything installed recently, updated never, or abandoned by its developer is suspect #1 — remember the 91% figure), and your file manager for recently changed files you did not change. If the hack shows up as <a href="why-is-my-website-showing-ads-i-didnt-put-there.html">ads you never placed</a> or <a href="why-is-my-website-redirecting-to-spam-sites.html">redirects to spam sites</a>, the injection is usually hiding in exactly these spots.</p>
+      <p><strong>3. Restore from a clean backup — the undo button.</strong> This is what backups are for: not accidents, <em>this</em>. Restore the most recent backup from <em>before</em> the hack, then verify the restored copy is clean before pointing visitors at it. If you have no backup, that is a separate emergency — a hosting company or a cleanup service can rebuild the site, but this is the moment most owners learn the $5-a-month backup lesson at $500-an-hour cleanup prices.</p>
+      <p><strong>4. Change every password and key.</strong> Assume the attacker copied them all: your site admin password, your hosting login, your FTP/SFTP credentials, your database password, your email. Change all of them, from a clean computer, and turn on two-factor authentication everywhere it is offered. Then delete the rogue admin accounts from step 2. Skipping this step is why &ldquo;we cleaned it and it came back&rdquo; is the most common sentence in hack cleanup.</p>
+      <p><strong>5. Patch everything, then prove you are clean.</strong> Update WordPress, the theme, and every plugin to current versions, and delete anything abandoned or unused — an unused plugin is a locked door nobody checks. Run a malware scan (your host or a security plugin) to confirm the restore is clean. If Google was showing a warning, go to Google Search Console and request a review — Google re-checks and lifts the flag once the site is verified clean, usually within days. That review request is how you get your search traffic back.</p>
+      <h2>The two mistakes that bring it back</h2>
+      <p><strong>Mistake 1: deleting the symptom.</strong> The weird page, the spammy ad, the redirect — those are what the attacker <em>put</em> on your site, not how they got in. Delete the symptom without closing the hole and the bot returns within hours. It is automated. It remembers your address.</p>
+      <p><strong>Mistake 2: ignoring it because &ldquo;the site still works.&rdquo;</strong> A hacked site usually keeps working fine for you — the spam pages are often hidden from the owner and shown only to Google and to visitors. While you see nothing wrong, your site is infecting customers&rsquo; computers and burning the domain reputation your business runs on. A hack you ignore is a hack you are hosting.</p>
+      <p>One reframe to carry with you: a hacked website is not a shame event — it is a maintenance gap, and the 91%-in-plugins figure says exactly where the gap was. <a href="do-i-really-need-to-update-my-website.html">Keeping the software updated</a> is the cheapest security product that exists. The owners who get hacked twice are the ones who cleaned the site and changed nothing; the ones who get hacked once are the ones who built a routine out of it. If you are not sure whether your site is already carrying something hidden, our free <a href="../security.html">security check</a> looks for the common signs in about 10 seconds.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free Plain-English Security Check looks for the common signs of a compromised site &mdash; hidden spam pages, blacklists, outdated software with known holes &mdash; translated out of jargon. Takes about 10 seconds, no signup.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>
+    <div class="cta">
+      <h2>Hack response is check #3 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's security posture alongside all 40 trust signals — speed, email, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+what+to+do+when+a+website+gets+hacked+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
