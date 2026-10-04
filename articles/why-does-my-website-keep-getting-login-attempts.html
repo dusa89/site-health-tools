@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Keep Getting Login Attempts? — Plain-English Guide</title>
+<meta name="description" content="Thousands of failed logins hitting your WordPress site at 3 a.m.? Wordfence blocked 18.2B brute-force attacks in Q2 2026; Verizon says 22% of breaches start with stolen credentials. The 3 attack types, why small sites are included, and the 6-step lock.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why does my website keep getting login attempts?</h1>
+    <p class="lede">Your security log shows thousands of failed logins from strangers around the world. Nobody is targeting you personally — bots sweep the entire internet. Here are the real 2026 numbers, the three attack types hitting your login box, and the 6-step lock that stops them.</p>
+    <div class="article">
+
+      <p>Sooner or later, almost every WordPress site owner sees it: you open your security plugin&rsquo;s log and there they are — <strong>hundreds or thousands of failed login attempts</strong> from IP addresses in countries you have never done business in, hammering your wp-admin page at 3 a.m. The first reaction is panic: <em>someone is targeting me.</em> The truth is both less personal and more serious. Nobody is targeting you. Bots are targeting <em>everyone</em> — and your little site is simply on the list.</p>
+      <h2>What the attack actually is</h2>
+      <p>A login attack is exactly what it sounds like: automated software trying username and password combinations against your website&rsquo;s login form until one works. No human is sitting at a keyboard guessing your password. A bot network is running through lists — sometimes millions of combinations — across hundreds of thousands of sites at once. Your site is one row in a spreadsheet.</p>
+      <p>There are three flavors, and all three hit the same login box:</p>
+      <p><strong>1. Classic brute force.</strong> The bot guesses common passwords against a known username — very often literally &ldquo;admin,&rdquo; which WordPress still ships as the default username on many installs. Short, common passwords fall in seconds.</p>
+      <p><strong>2. Dictionary attacks.</strong> The bot works through long lists of real passwords pulled from past data breaches. If your password is a dictionary word with a number tacked on, it is already on someone&rsquo;s list.</p>
+      <p><strong>3. Credential stuffing.</strong> The quietest and most successful. The bot takes email-and-password pairs stolen from <em>other</em> websites&rsquo; breaches and replays them against your site, betting that you reused the same login. You can have a strong password and still lose — because the password is strong on your site but identical on a site that leaked it.</p>
+      <h2>The real numbers</h2>
+      <p>The scale is hard to overstate. Wordfence, which runs one of the largest WordPress security networks, reported blocking <strong>18.2 billion brute-force login attacks in the second quarter of 2026 alone</strong> — up 13.8% from the quarter before — from <strong>106.2 million unique attacking IP addresses</strong>, averaging 171 attempts per IP. The quarter before that was 16 billion. (These are Wordfence&rsquo;s own network figures; they sell security software, so take the direction, not the decimal places — but the direction is a flood, and it is rising.)</p>
+      <p>The credential side is just as stark. Verizon&rsquo;s 2025 Data Breach Investigations Report found that <strong>compromised credentials were the initial way in for 22% of confirmed breaches</strong> — the single most common entry method tracked. And in their analysis of sign-in logs, a median of <strong>19% of all authentication attempts were credential stuffing</strong> — roughly one login attempt in five is not a real user. For small businesses the share was 12%: lower, but on the same internet, facing the same bots.</p>
+      <p>The modern versions are also getting sneakier. One hosting provider documented distributed campaigns that stretched <strong>2,160 hours — a full 90 days — at about one and a half attempts per IP address</strong>, so slow that no per-IP limit catches them. From any single address, it looks like someone mistyping a password once. The pattern only becomes visible when you can see across many sites at once — which is exactly what the attackers count on you not having.</p>
+      <h2>Why your small site is on the list</h2>
+      <p>Attackers do not pick victims by size. They sweep the entire internet, and <strong>a small business site with a weak login is cheaper to crack than a bank with a security team</strong>. You are not being singled out; you are being included. The economics are simple: test a million sites, a fraction fall over, and each one that does becomes a launchpad.</p>
+      <p>What happens after a break-in is where it gets expensive. The attacker&rsquo;s goal is rarely your website itself. A cracked admin account becomes a home for redirect hacks (our guide on <a href="why-is-my-website-redirecting-to-spam-sites.html">sites redirecting to spam</a> covers one version), hosted phishing pages, or spam-sending infrastructure — and once Google flags it, <a href="why-does-google-say-my-website-is-dangerous.html">your site gets the red warning page</a> and your customers stop coming. The break-in takes minutes; the cleanup and the lost trust take months.</p>
+      <h2>The 6-step lock</h2>
+      <p><strong>1. Delete the &ldquo;admin&rdquo; username.</strong> It is the first guess on every list. Create a new administrator account with an unusual username, log in as it, and delete the old &ldquo;admin&rdquo; account. This one change kills the cheapest attack class outright.</p>
+      <p><strong>2. Use a long, unique password — stored in a password manager, not your head.</strong> Unique matters more than clever: a password that exists only on your site cannot be credential-stuffed from another site&rsquo;s breach. If you have reused your site password anywhere else, assume the attackers already have it.</p>
+      <p><strong>3. Turn on two-factor authentication for every admin account.</strong> This is the single highest-leverage step. With 2FA on, a stolen password alone is useless — the attacker needs your phone too. WordPress does not include 2FA by default, so add it with a security plugin; it stops the vast majority of credential-dependent attacks cold.</p>
+      <p><strong>4. Add a limit on login attempts.</strong> A good security plugin (Wordfence&rsquo;s free tier is the common choice) locks out an IP after a few failures. Per the distributed-attack problem above this will not stop the slow ones — but it stops the loud ones, which are the majority of attempts, and it costs nothing.</p>
+      <p><strong>5. Disable XML-RPC if you do not use it.</strong> XML-RPC is a WordPress feature used by the Jetpack plugin and the WordPress mobile app. Attackers abuse it to bundle <em>hundreds</em> of password attempts into a single request, slipping past login limits. If your site does not use Jetpack or the mobile app, disabling XML-RPC removes a whole attack surface. A security plugin can do this with one toggle.</p>
+      <p><strong>6. Keep everything updated.</strong> Attackers pivot to login attacks partly because the other doors keep getting locked. Our guide on <a href="do-i-really-need-to-update-my-website.html">why website updates matter</a> covers the plugin-and-theme side — but note the asymmetry: updates close <em>software</em> holes; only steps 1&ndash;3 close the <em>login</em> hole, and software can be patched for you while your login habits cannot.</p>
+      <p>One last reframe: if your security log shows thousands of <em>blocked</em> attempts, that is the system working — those are the ones that failed. The number to worry about is a <strong>successful</strong> login you do not recognize. With the steps above in place, that number should stay at zero.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free security check scans your site the way attackers do &mdash; HTTPS setup, security headers, and certificate health &mdash; and reports in plain English. It will not see login attacks by itself, but a site with a weak login often has the other doors open too. Takes about 10 seconds, no signup.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>
+    <div class="cta">
+      <h2>Login security is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's login and access security alongside all 40 trust signals — speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+website+login+attacks+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
