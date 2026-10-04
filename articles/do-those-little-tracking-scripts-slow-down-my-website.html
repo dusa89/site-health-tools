@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do Those Little Tracking Scripts Slow Down My Website? — Plain-English Guide</title>
+<meta name="description" content="That 'tiny snippet' — Facebook Pixel, Google Analytics, chat widgets — loads files from other companies' servers. HTTP Archive: the typical mobile page runs 10 third-party scripts; ad-tagged pages do 3x the CPU work. The 4-step tag diet.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do those little tracking scripts slow down my website?</h1>
+    <p class="lede">That "tiny snippet" your marketing person pasted — Facebook Pixel, Google Analytics, the chat bubble — loads software from other companies' servers, and your customer's phone does all the work. A typical mobile page now carries 10 third-party scripts. Here is what they cost, in numbers, and the 4-step tag diet that fixes it.</p>
+    <div class="article">
+
+      <p>It usually happens like this. Your marketing person — or an agency, or you yourself three years ago — pastes a &ldquo;tiny snippet&rdquo; into your website. A Facebook Pixel. Google Analytics. A chat bubble. A heatmap tool. A review widget. Each one takes thirty seconds to install and each one is sold as free and harmless. Then, over the following months, your site gets slower. Nobody connects the two, because nobody thinks of a snippet of code as <em>weight</em>. But that is exactly what it is.</p>
+      <h2>The "tiny snippet" is not tiny</h2>
+      <p>Here is what that little line of code actually does. When a customer opens your page, the snippet reaches out to another company&rsquo;s servers and downloads <em>their</em> software onto your customer&rsquo;s phone. That software often reaches out to <em>more</em> servers and downloads <em>more</em> software. A single Pixel install can trigger a chain of a dozen files before it is done. And your page waits — or at least your customer&rsquo;s browser does the work — while all of it loads and runs.</p>
+      <p>Each tag is one more company whose servers your page now depends on. If their server is slow that day, your page is slow that day. And the tags stack up quietly: analytics from 2021, the Pixel from the ad campaign that ended in 2023, the chat widget nobody ever opens, the heatmap tool nobody has checked since install day. Every one of them is still there, still running, still costing milliseconds on every single visit.</p>
+      <h2>The real numbers</h2>
+      <p>The scale is bigger than most owners imagine. The HTTP Archive — which measures millions of real websites — found in its 2022 Web Almanac that <strong>the typical mobile page loads 10 third-party scripts</strong>, and one page in ten loads <strong>34 or more</strong>. That is 34 separate pieces of someone else&rsquo;s software running on your customer&rsquo;s phone before your page finishes its job. (Those are 2022 figures; pages have only gotten heavier since.)</p>
+      <p>The cost is not just bytes. Scripts run on your visitor&rsquo;s phone, and phones have a fraction of a desktop&rsquo;s processing power. The Archive&rsquo;s third-parties analysis found that pages carrying advertising tags had a <strong>median CPU load time of 1,500 milliseconds versus 500 milliseconds for pages without them — three times the processing work</strong>. Even the fastest sites were measurably dragged down. (2020 Almanac figures — the direction still holds; tags have not gotten lighter.)</p>
+      <p>The page-weight backdrop: Google&rsquo;s Lighthouse documentation, citing HTTP Archive data, puts the <strong>median network payload at 1,700&ndash;1,900 kilobytes</strong>. And a July 2026 write-up of HTTP Archive numbers reported the <strong>median mobile home page hit 2.6 MB in 2025</strong>, with mobile pages growing <strong>202.8% over the past decade</strong>. Meanwhile Google&rsquo;s long-standing benchmark still says <strong>53% of mobile visitors leave after 3 seconds</strong>. The tags are piling weight onto pages that were already too heavy.</p>
+      <p>Individual stories are even starker. Front-end engineer Parth Patel told USA Wire in September 2026 about a single third-party payment integration that pushed his page&rsquo;s 90th-percentile time-to-interactive from <strong>about 20.6 seconds to 33.4 seconds — a 14-second regression from one integration</strong>, approved on its business merits by people who never saw the performance cost. His line sums up the whole problem: <em>&ldquo;Every performance problem I&rsquo;ve traced back to its origin was a reasonable decision made by someone who had no way to see its cost.&rdquo;</em> That is a practitioner&rsquo;s reported case, not a lab study — but if you have ever approved a tag without asking what it costs in speed, you have lived it.</p>
+      <h2>Why the page looks done but feels frozen</h2>
+      <p>Here is the part that confuses owners. Your page can <em>look</em> fully loaded — text, photos, prices all visible — while your customer&rsquo;s browser is still busy running tag code. So the customer taps &ldquo;Book Now,&rdquo; nothing happens for a beat, they tap again, they lose trust. The page is not slow to <em>appear</em>; it is slow to <em>respond</em>. Google now measures exactly this under the name Interaction to Next Paint — in owner English: how fast your page reacts when someone tries to do something. Third-party tags are one of the top drags on it.</p>
+      <h2>The 4-step tag diet</h2>
+      <p><strong>1. Take inventory.</strong> List every tag on the site — analytics, pixels, chat, heatmaps, review widgets, popup tools. A tag manager&rsquo;s preview mode shows them, or our free <a href="../speed.html">speed check</a> will flag the third-party drag it sees. Most owners are surprised: the list is longer than they thought.</p>
+      <p><strong>2. Kill the dead ones.</strong> The &ldquo;we&rsquo;ll test it&rdquo; tags from three agencies ago. The heatmap nobody opens. The chat widget that has taken zero chats this year. If nobody is looking at the data, the tag is costing you speed for literally nothing. This step alone is the biggest win most sites ever get, and it takes an afternoon.</p>
+      <p><strong>3. Delay what survives.</strong> The tags you keep do not need to run before the customer sees your page. Load them <em>after</em> the page renders — deferred scripts, pixels that fire on the first scroll or click instead of on load. The customer sees your site instantly; the tags do their work a second later, invisibly.</p>
+      <p><strong>4. Consolidate the rest.</strong> Six separate snippets pasted by six different vendors becomes one tag-manager container that decides what fires, when, and on which pages. The blog post does not need the booking-flow pixel. Fewer tags firing on fewer pages is how the discipline sticks.</p>
+      <p>One reframe to carry with you: every tag on your site should have an owner, a purpose, and a renewal date. &ldquo;Someone pasted it in 2021&rdquo; is not a purpose. Put your tags on a diet and your site gets faster without changing a single photo — which is a cheaper fix than almost anything else in this guide series. Our pieces on <a href="why-is-my-website-so-slow.html">why sites get slow</a> and <a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">plugin and widget weight</a> cover the other half of the same problem, and <a href="what-does-one-extra-second-cost.html">what one extra second costs</a> puts the dollar figure on fixing it.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free Plain-English Speed Check runs your homepage the way a customer&rsquo;s phone sees it &mdash; and it flags the third-party drag slowing you down, translated out of jargon. Takes about 10 seconds, no signup.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>
+    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's speed alongside all 40 trust signals — security, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+tracking+scripts+slowing+down+websites+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
