@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Did My Email Stop Working When I Moved My Website? MX & DNS, Explained</title>
+<meta name="description" content="Your website moved and your email silently died. The four ways a site migration breaks MX/DNS records, how long the confusion lasts, and the honest fix plan — in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why did my email stop working when I moved my website?</h1>
+    <p class="lede">The new site looks great — and your email quietly died the day it launched. Here's the four ways a website move breaks your email, why nobody tells you for days, and the honest fix.</p>
+    <div class="article">
+
+      <p>You hired someone to move your website. The new site went live, it looks better, pages load faster — and then a customer asks why you never answered their email. You check: nothing in your inbox. Not in spam either. Your email simply stopped working the day the site moved, and nobody told you for a week.</p>
+      <p>This is one of the most common — and quietest — small business email disasters. It happens because your domain name, your website, and your email are three separate systems that happen to share one address book. Moving the website means editing that address book, and the email entries are the ones that get lost.</p>
+      <h2>Why moving a website can break the email</h2>
+      <p>When someone types your web address, the internet looks up your website's address in your domain's DNS records — the address book. Your email has its own entries in the same book, called MX records: they tell the world's mail servers where to deliver mail for your domain. Your spam-protection stamps (SPF, DKIM, DMARC — explained in <a href="what-is-dmarc.html">our DMARC guide</a>) live there too.</p>
+      <p>Move your website and someone has to edit that address book: point the website entries at the new host. In practice, the email entries are the casualties. A September 2026 case-study series from DNS specialists Lite14 documents the pattern exactly: a company moved its DNS to a new provider, the website records were recreated successfully, but nobody recreated the email records — and inbound email stopped immediately (lite14.net, September 16, 2026).</p>
+      <h2>The four ways it breaks</h2>
+      <p><strong>1. The new host's panel wiped your MX records.</strong> Most hosting control panels manage the whole DNS zone, not just the website. Importing your domain into the new panel can replace the entire address book with the host's defaults — including default mail entries that point at a mailbox on their server that nobody checks. This is the most common failure, and it is immediate.</p>
+      <p><strong>2. The records were edited in the wrong dashboard.</strong> The same Lite14 series documents case 12: a company added correct MX records to provider A's panel — nothing changed, because the domain's nameservers were actually pointing at provider B. Your domain can have DNS dashboards at your registrar, your old host, and your new host simultaneously. Only the one the nameservers point to matters. (lite14.net, September 16, 2026)</p>
+      <p><strong>3. Nobody tells you — for days.</strong> This is the part that costs real business. A wrong MX record does not bounce mail back to the sender right away. As DNS specialist dnsnotify documented in September 2026, senders keep retrying for days before they give up — and if the old mail server is still accepting mail for your domain, the message is delivered into a mailbox nobody reads. Your customers think you are ignoring them. You think nobody wrote.</p>
+      <p><strong>4. The stamps got left behind.</strong> Even when the MX records survive, the SPF/DKIM/DMARC records often do not — they were set up years ago and nobody remembers they exist. Your mail still goes out, but receiving servers now see unauthenticated mail from your domain and file it in spam. That is why <a href="why-does-gmail-reject-my-business-email.html">Gmail can start rejecting you</a> the same week a migration happens, and why the fix for <a href="is-my-business-email-going-to-spam.html">business email going to spam</a> starts with re-publishing those records.</p>
+      <h2>How long the confusion lasts</h2>
+      <p>Two timing facts set expectations honestly. First, DNS changes spread across the internet in <strong>minutes to a few hours, with up to 48 hours for the last stragglers</strong> — so for a day or two after any move, different customers can see different results (switchweb.co.uk, September 16, 2026). Second, Microsoft documents that MX changes specifically can take <strong>up to 72 hours to replicate to mail servers worldwide</strong> (Microsoft Learn, KB 2415053) — that is an outer bound, not a promise, but it means patience is part of the procedure, not a sign of failure.</p>
+      <p>The migration advice from people who do this daily is worth repeating: move the hosting first, confirm everything works, and transfer the domain separately later — never both at once, because when something breaks you cannot tell which change caused it (switchweb.co.uk, September 16, 2026).</p>
+      <h2>The honest fix plan</h2>
+      <p><strong>1. Check what the world actually sees.</strong> The tool below reads your domain's public records — MX, SPF, DKIM, DMARC — exactly the way the world's mail servers see them. Ten seconds, plain English, and it tells you which entry is missing or pointing at the wrong place.</p>
+      <p><strong>2. Before any future move: photograph the address book.</strong> Screenshot every DNS record at your current provider before anyone touches anything. The whole migration disaster above is a five-minute restore if you have the before picture.</p>
+      <p><strong>3. Lower the TTL a day before.</strong> The TTL is the "how long to remember this" timer on each record. Lowering it 24 hours before a move shortens the window where the old and new setups disagree.</p>
+      <p><strong>4. After the move, verify email independently of the website.</strong> The website loading is not proof the email works — they are different entries in the same book. Send yourself a test from an outside address (a personal Gmail works), reply to it, and check the deliverability tool again. If your <a href="why-do-my-contact-form-emails-go-to-spam.html">contact-form emails</a> were already landing in spam, fix the stamps before you move, not after.</p>
+      <p>If your email is already dead and the move was days ago, start with step 1. Nine times out of ten the MX records are simply gone or pointing at a mailbox on a host you just left — and restoring them brings everything back.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain. Five seconds later you get a verdict &mdash; protected, partially protected, or unprotected &mdash; plus the exact DNS lines to fix whatever is missing. No signup, no ads.</p>
+        <a class="toolbtn" href="../index.html">Run the free email deliverability check check</a>
+      </div>
+    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>The full Site Health Watch audit checks your domain's email records alongside all 40 trust signals — website speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+email+breaking+after+a+website+move+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
