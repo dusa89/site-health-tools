@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Is My Website Fast for Me But Slow for My Customers? — Plain-English Guide</title>
+<meta name="description" content="Your website lives in one physical city — your customers are everywhere else. What the server-distance tax does to load time (22 ms Virginia vs 380 ms Lagos, 2026 data), why you never see it, and the fixes in order of effort.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why is my website fast for me but slow for my customers?</h1>
+    <p class="lede">It's fast from your chair and slow from theirs — and the reason is geography, not their internet. One server in Virginia answers in 22 ms locally and 380 ms in Lagos (2026 measurements). Here is the distance tax, why your tests never show it, and the fixes in order of effort — starting with the free one.</p>
+    <div class="article">
+
+      <p>Here is a sentence every website owner has said at least once: &ldquo;It loads fine for me.&rdquo; Then a customer two time zones away says your site takes forever, and you assume they have bad internet. Here is the uncomfortable truth: you are both right. The website is fast <em>from your chair</em> and slow <em>from theirs</em> — and the reason is not their internet. It is geography.</p>
+      <h2>Your website lives in one physical place</h2>
+      <p>Every website sits on a server in a specific building in a specific city. When a visitor opens your site, their request travels across the internet to that building, and the answer travels back. That round trip is the <strong>distance tax</strong>, and it is pure physics — data in fiber-optic cable moves at roughly two-thirds the speed of light, so distance always costs time.</p>
+      <p>How big is the tax? In the first quarter of 2026, BlazingCDN measured a single origin server in Virginia (us-east-1) serving a response in <strong>22 milliseconds</strong> to a user in Virginia — and <strong>380 milliseconds</strong> to a user in Lagos, Nigeria. Same server. Same page. Same CDN. The Nigerian visitor's Time to First Byte was <strong>17 times worse</strong> — and that gap has barely moved since 2024. Your server might be in Ohio. Your customers are everywhere else. Every one of them pays the tax your office never sees.</p>
+      <h2>Why you never see what they see</h2>
+      <p>Your office is usually within a few hundred miles of your web host — sometimes in the same city. Your hosting dashboard, your developer, and every speed test you run default to nearby servers. You are always measuring the <em>shortest</em> trip. Meanwhile Google's 2016 finding still anchors the industry: <strong>53% of mobile visits are abandoned when a page takes longer than 3 seconds to load</strong> (an old number, but the industry still treats it as the line), and bounce probability climbs <strong>32% as load time goes from 1 second to 3</strong> (Google/SOASTA, 2017). The customers who bounce never complain — they just leave. The only people who tell you the site is slow are the ones who stayed long enough to be annoyed.</p>
+      <p>And most sites have no margin for this. As of September 2026, the median mobile page still takes <strong>7.9 seconds to fully load</strong> in HTTP Archive lab tests — measured under clean, close-by conditions. If the median site is already that heavy, a customer a continent away is getting the worst version of a page that was already marginal.</p>
+      <h2>The distance tax gets multiplied</h2>
+      <p>The 22-vs-380-millisecond gap is just the <em>first</em> byte. A typical page fires off dozens of separate requests — images, fonts, scripts, styles — and many of them pay the tax in sequence or in overlapping waves. That is why <a href="why-do-my-photos-slow-down-my-website.html">heavy images</a> hurt faraway visitors disproportionately: a photo that downloads in a blink from next door trickles through a long, congested pipe from overseas. It is also why a <a href="what-is-website-caching.html">cache</a> matters so much. A 2026 BlazingCDN study put median global Time to First Byte at roughly <strong>320 ms for pages served through a CDN versus ~820 ms without one</strong> — the CDN does not make the server faster, it shortens the trip by answering from a building much closer to the visitor. (That is a vendor-published study, so treat the exact numbers as directional — but the direction is uncontested, and it matches every independent measurement of CDN performance in 2026.)</p>
+      <p>One more honest note: roughly <strong>31% of websites sit behind a reverse proxy or CDN service, with Cloudflare alone covering about 26%</strong> (W3Techs — directional). That means most small-business sites are serving every visitor from one room in one city, paying the full distance tax on every load.</p>
+      <h2>The fixes, in order of effort</h2>
+      <p><strong>Fix 1: put the site behind a CDN (free).</strong> This is the entire point of a content delivery network — copies of your site's files sit on servers in hundreds of cities, and visitors get served from the nearest one instead of your origin. Cloudflare's free tier does this for a typical small-business site, and its $20-a-month Pro tier adds image optimization and better cache rules (vendor pricing — it moves, check before budgeting). If <a href="does-cheap-hosting-make-my-website-slow.html">your hosting is the weak link</a>, a CDN papers over part of that too: the origin gets hit less, and visitors feel the edge instead.</p>
+      <p><strong>Fix 2: turn caching on.</strong> A CDN only helps if it is allowed to answer from its copies — caching rules that are off, too short, or set to re-check every visit force every request back to your origin, and your faraway customers pay the full tax again. This is the most common reason a site &ldquo;has a CDN&rdquo; and is still slow abroad.</p>
+      <p><strong>Fix 3: test like a customer, not like an owner.</strong> Run your speed tests from the cities your customers actually live in. Most testing tools let you pick the test location — pick the farthest city you serve, not the nearest. <a href="why-is-my-website-slow-on-mobile.html">Test on a phone too</a>, while you are at it: the distance tax is worst on the device your customers actually use, on connections nothing like your office Wi-Fi. If you want someone else to do this honestly, our <a href="../speed.html">free speed check</a> measures your site from the customer's side of the trip, in plain English.</p>
+      <h2>The reframe to carry with you</h2>
+      <p>&ldquo;It loads fine for me&rdquo; is not evidence — it is the one measurement most guaranteed to flatter the site, taken from the one place the distance tax is zero. The customers who see the slow version are the ones farthest away, and farthest away often means the biggest untapped part of your market. The fix is not a rebuild. It is moving the copies closer to the people you are trying to reach.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>See what your site actually feels like from your customers' side — measured from their cities, on a phone, in plain English. No signup.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>
+    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 trust signals — speed, email, security, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+my+website+is+fast+for+me+but+slow+for+my+customers+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
