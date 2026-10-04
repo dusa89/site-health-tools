@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Is My Website Redirecting to Spam Sites? — Plain-English Guide</title>
+<meta name="description" content="Your website looks fine to you but customers get sent to gambling pages, prize scams, and spam sites. What the redirect hack is, the 2025-2026 numbers behind it, why it hides from owners, and what to do in the right order.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why is my website redirecting to spam sites?</h1>
+    <p class="lede">Customers say your website sends them to gambling pages and spam sites, but it looks perfectly normal on your laptop. That is exactly how the redirect hack is designed. Here is what it is, how common it is, why it hides from you, and what to do &mdash; in the right order.</p>
+    <div class="article">
+
+      <p>A customer calls you. They were on your website a minute ago, and now their phone is showing a gambling page &mdash; or an adult site, or a flashing &ldquo;you won a prize&rdquo; ad. You open your own website on your laptop. It looks completely normal. You scroll, you click around, everything is fine. So was the customer wrong? Probably not. This is one of the most common signs a small-business website has been hacked &mdash; and the hacker designed it so that <em>you</em> never see it.</p>
+      <h2>Your website is being used as a detour sign</h2>
+      <p>Here is what is happening in plain English. Someone broke into your website &mdash; not your computer, your website &mdash; and planted hidden code. That code watches visitors arrive and quietly sends some of them somewhere else: a spammy sports site, a casino, a fake prize page. Your site still looks the same to you, but a slice of your visitors gets rerouted to wherever the hacker is paid to send them.</p>
+      <p>This is not rare, and it is not aimed at you personally. GoDaddy&rsquo;s 2025 website-security threat report (published by the hosting company, so read it as one industry player&rsquo;s count) says its researchers detected 834,661 infected websites that year, and malicious redirects like this were 21.7% of what they found &mdash; the third-largest infection type, behind malware and SEO spam. One long-running campaign that the security firm Sucuri has tracked since 2017 infected almost 11,000 websites to redirect their traffic. Another Sucuri-observed campaign used a single malicious JavaScript file, popuplink.js, and at one point had up to 3,000 sites loading it (SC Media, August 2025). And this is still happening now: in September 2026, researchers at Netskope found more than 5,400 hacked websites &mdash; most of them small-business sites built on WordPress and PrestaShop &mdash; tricking visitors with fake &ldquo;prove you&rsquo;re human&rdquo; checkboxes that install malware (BleepingComputer, September 2026).</p>
+      <h2>How they get in: your old plugins, found by robots</h2>
+      <p>The uncomfortable part: nobody hacked <em>you</em>. Attackers run automated tools that scan enormous numbers of websites looking for known weak spots &mdash; usually a plugin or theme with a published security hole that the owner never updated (West County Computers, September 2026). WordPress itself is generally solid; it is the extras bolted onto it that let attackers in. Wordfence reported that plugin vulnerabilities made up 96% of the WordPress flaws it disclosed in 2024. When a plugin maker finds a hole they release an update &mdash; and until you install it, the automated scanners know exactly where to knock.</p>
+      <p>That is why a quiet website is a vulnerable website. The less often you touch it, the longer the hole stays open. Most owners discover the break-in from a customer complaint, months after it happened.</p>
+      <h2>Why your laptop shows nothing wrong</h2>
+      <p>This trips up a lot of owners. You check your site and it is fine &mdash; so the problem must be the customer&rsquo;s phone, right? Often not. A common strain of this malware checks <em>who</em> the visitor is before it fires: only phones, not laptops; only first-time visitors, not the owner who has a login cookie; only people arriving from Google, not people typing the address directly (MD Pabel&rsquo;s WordPress malware guides, 2026). The redirect can even fire just once per visitor, so it never happens twice on the same phone. It is built to be invisible to you specifically. The single most quoted diagnostic in the security world: one investigator found desktop requests to an infected site returned a clean &ldquo;everything&rsquo;s fine&rdquo; response while the exact same page, asked for by a phone&rsquo;s browser, answered with a redirect &mdash; the malicious rules were hiding in the site&rsquo;s server settings file.</p>
+      <h2>What it costs you (the part owners underestimate)</h2>
+      <p>The redirect itself is the small problem. The bigger ones arrive behind it. Google&rsquo;s safe-browsing systems blacklist hacked sites: in one Sucuri-tracked campaign, 17% of the infected websites were blacklisted by a Google service &mdash; which means Chrome and Google search started warning visitors away. Your customers remember the casino page, not your homepage. And if the same hidden code is also harvesting what visitors type into your contact or order forms, you may be handing customer data to the attacker. If you have been here before, note the difference from our guide on <a href="why-is-my-website-showing-ads-i-didnt-put-there.html">ads you didn&rsquo;t put on your site</a>: injected ads show <em>on</em> your pages; redirect malware carries your visitors <em>off</em> your site entirely &mdash; different mechanism, different fix.</p>
+      <h2>What to do &mdash; in the right order</h2>
+      <p><strong>First, confirm it.</strong> Borrow a phone you have never logged into your site with, turn off Wi-Fi, and visit your site from a fresh Google search click. If you see the redirect, it is your website, not the customer&rsquo;s phone. If Google has already flagged you, you will see Chrome&rsquo;s red warning page instead.</p>
+      <p><strong>Second, don&rsquo;t just delete the redirect.</strong> This is the mistake most owners make. The redirect is a symptom; the infection also leaves a hidden back door so the attacker can walk back in. Deleting the visible redirect without removing the back door gets you reinfected, sometimes within hours. A real cleanup replaces infected system files with clean copies and removes the back door &mdash; or this is the point to get a professional to do it.</p>
+      <p><strong>Third, close the hole.</strong> Update WordPress, every plugin, and every theme. Delete plugins and themes you are not actively using &mdash; an installed-but-inactive plugin is still a door. Change the passwords of every site user. Make someone &mdash; you, your host, or a service &mdash; responsible for doing this monthly, because the hole that let this attack in will not be the last one found.</p>
+      <p>One more honest note: a redirect infection does not mean your website is permanently ruined. Cleaned and updated properly, sites recover fully &mdash; the damage that lasts is the months of redirected visitors and any blacklisting in between, which is why speed of response matters.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free security check scans your site the way attackers do &mdash; HTTPS setup, security headers, and certificate health &mdash; and reports in plain English. It will not catch a hidden redirect on its own, but a hacked site often shows other failing checks too. Takes about 10 seconds, no signup.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>
+    <div class="cta">
+      <h2>Hidden malware is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 website health signals &mdash; security, speed, email authentication, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours. Including what&rsquo;s hiding on yours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+website+redirects+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
