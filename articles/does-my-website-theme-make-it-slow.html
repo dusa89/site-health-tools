@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does My Website Theme Make It Slow? — Plain-English Guide</title>
+<meta name="description" content="Your theme is a program, not paint — and it's usually the biggest one your visitors download. The 2.1M-site field data, the lab tests, the honest caveat (the theme sets the minimum, not the total), and the fix in leverage order.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Does my website theme make it slow?</h1>
+    <p class="lede">Yes, it can. Your theme is not decoration &mdash; it is the largest program your visitor&rsquo;s phone downloads and runs, and the tests say page-builder sites carry roughly 1.6 megabytes and half a second more than lean builds. Here is the data, the honest caveat, and the fix in leverage order.</p>
+    <div class="article">
+
+      <p>The short answer is yes &mdash; it can. Your website&rsquo;s theme is not a coat of paint. It is a program, and on most small-business sites it is the single largest program the visitor&rsquo;s phone has to download and run before your page appears. The design you fell in love with &mdash; the animations, the sliders, the fancy layouts &mdash; each one is code, and the phone pays for every line of it.</p>
+      <h2>What your theme actually ships</h2>
+      <p>The cleanest head-to-head test comes from Kinsta, which ran the same demo content on the same hosting and measured the difference the builder makes. The lightweight block-editor build loaded 905 kilobytes in 19 requests, loaded in 1.32 seconds, and scored 93 on mobile PageSpeed Insights. The identical site built with a popular page builder loaded 2.5 megabytes in 48 requests, loaded in 1.93 seconds, and scored 81. Same words, same pictures, same server &mdash; the theme machinery alone added roughly 1.6 megabytes and more than half a second.</p>
+      <p>Half a second matters more than it sounds. Google&rsquo;s published benchmark says 53% of mobile visitors leave a page that takes longer than 3 seconds to load &mdash; so a theme that pushes you from 2.4 seconds to 2.9 seconds can quietly put you on the wrong side of the line your customers already draw.</p>
+      <h2>The big-picture data: 2.1 million real sites</h2>
+      <p>Lab tests are one thing; the live internet is another. In May 2026, PageSpeed Matters matched HTTP Archive&rsquo;s builder detection against Chrome&rsquo;s real-visitor data (the Chrome UX Report) for about 2.1 million WordPress sites, and counted a site as passing only if all three Core Web Vitals &mdash; loading, interactivity, layout stability &mdash; were in the &ldquo;good&rdquo; range for real mobile visitors. Sites built on the block editor passed 41.5% of the time; sites built with a popular page builder passed 30.0% of the time. On loading speed alone, the builder population was good 44.8% of the time against 65.0% for the block editor.</p>
+      <p>One industry analysis of unoptimized builder pages put the median mobile load at 3.8 to 5.2 seconds &mdash; and after proper optimization (critical CSS, deferred JavaScript) the same pages reached 2.0 to 2.8 seconds. The weight is not destiny; it is debt, and debt can be paid down.</p>
+      <h2>The honest caveat: the theme sets the minimum, not the total</h2>
+      <p>Here is the part most &ldquo;your theme is killing your site&rdquo; pitches leave out, and the PageSpeed Matters researchers state it themselves: this data does not prove the builder <em>causes</em> the gap. Builder-built sites tend to have different owners, different plugin stacks, and different hosting than developer-built sites &mdash; and hosting and plugins move the numbers too.</p>
+      <p>The clearest illustration comes from a developer case study that rebuilt the same design two ways: as a page-builder site and as a custom theme. The custom theme scored 96 on mobile PageSpeed Insights against 62 for the builder, and loaded in 0.7 seconds against 3.6. But &mdash; and this is the important part &mdash; the custom build was still 2.81 megabytes and 63 requests, against 4.03 megabytes and 83 for the builder. Removing the theme overhead left the same oversized images and the same scripts in place. The theme sets the minimum page weight; your images, your fonts, your plugins, and your hosting decide the rest.</p>
+      <p>So do not let anyone sell you a theme swap as a miracle. If your site is slow, the theme is one of four suspects &mdash; the others are your images, your plugin stack, and your hosting. Measure first, then blame.</p>
+      <h2>The fix, in leverage order</h2>
+      <p><strong>First, measure what the theme is actually costing you.</strong> Run the free speed check and look at the page weight and the request count, not just the score. A small-business site that weighs 4 megabytes is carrying weight; the breakdown shows whether it is images, theme code, or plugins.</p>
+      <p><strong>Second, strip the theme down to what you use.</strong> Most page builders load the code for every widget they offer &mdash; sliders, accordions, galleries you never touched &mdash; on every page, whether that page uses them or not. Turn off the modules you do not use in the builder&rsquo;s settings. This costs nothing and can shave real seconds: the unoptimized builder pages in the analysis above went from 3.8&ndash;5.2 seconds down to 2.0&ndash;2.8 with exactly this kind of cleanup.</p>
+      <p><strong>Third, only then consider a lighter theme.</strong> If the cleanup did not move the needle, the theme itself is the floor &mdash; and a lightweight, well-coded theme (the industry&rsquo;s usual suspects are the minimal block themes and the lean theme frameworks) will lower the floor. But do this with a developer&rsquo;s help and a backup, because a theme change can quietly break layouts, menus, and custom content.</p>
+      <p><strong>Fourth, fix the other three suspects anyway.</strong> Compress your images to modern formats (the photos article covers this), audit the plugin stack (the plugins article covers this), and check whether your hosting is the bottleneck (the hosting article covers this). A lean theme on a $3 host with 6-megabyte photos is still a slow site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Your theme is only one suspect &mdash; the free speed check weighs your whole site, names every slowdown (theme code, images, plugins, hosting), and tells you which fix to make first. Ten seconds, no signup.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>
+    <div class="cta">
+      <h2>Website speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your site&rsquo;s speed alongside all 40 trust signals &mdash; theme weight, images, plugins, hosting, security, email authentication, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+website+themes+and+speed+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
