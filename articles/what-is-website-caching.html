@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is Website Caching — and Does It Make Your Site Faster? — Plain-English Guide</title>
+<meta name="description" content="Your site rebuilds every page from scratch for every visitor — caching stores it once and hands it out instantly. A 2016 UW study found perfect caching cut desktop load times 34%; a 2026 case study cut 340ms to 95ms. The three caches, the honest limits, and the free 5-minute fix.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What is website caching — and does it actually make my site faster?</h1>
+    <p class="lede">Most sites rebuild every page from scratch for every visitor. Caching stores the finished page once and hands it out like pastries off a tray — and it is the biggest free speed gain most small business sites have not turned on yet. The three caches, the real numbers, the honest limits.</p>
+    <div class="article">
+
+      <p>Your competitor&rsquo;s website opens the moment you tap it. Yours takes four seconds &mdash; same photos, same hosting price, same neighborhood customers. The difference between the two sites is often not better hosting and not better photos. It is a free setting, buried in your hosting panel, called <strong>caching</strong>. Most owners have never turned it on. Most of the ones who have could not explain what it does. Here is the plain-English version.</p>
+      <h2>Caching means your site stops doing its homework twice</h2>
+      <p>Every time someone visits your website without caching, your server does the same work from scratch: it asks the database what the page says, rebuilds the page line by line, and sends the whole thing down the wire &mdash; photos, styles, scripts, everything. Think of a diner cook who grills every breakfast to order, even the dishes that are identical for the thousandth time.</p>
+      <p>Caching is the cook making the morning pastries ahead of time. The first visitor still gets a fresh bake. Every visitor after that gets a finished pastry off the tray, in seconds. The page is saved &mdash; stored &mdash; once it is built, and handed out as-is until something changes. Same page, almost none of the work.</p>
+      <h2>The three caches, from closest to you to closest to them</h2>
+      <p><strong>1. Your visitor&rsquo;s browser cache.</strong> This is the one you control from your site&rsquo;s settings. When a browser downloads your logo, your stylesheet, your photos, it can keep copies for days or weeks instead of re-downloading them on every page. For a repeat visitor &mdash; and customers who check your hours and your phone number are repeat visitors &mdash; pages two through ten load almost instantly. If your site never told browsers &ldquo;keep this,&rdquo; every page visit re-downloads the same logo, the same menu, the same everything.</p>
+      <p><strong>2. Your server&rsquo;s page cache.</strong> This is the pastry tray itself: the server saves the finished page after building it once, and hands the saved copy to the next hundred visitors without asking the database again. On a self-reported 2026 case study of a content-heavy site, enabling layered page caching took average page load from 340 milliseconds to 95 milliseconds &mdash; a 72% cut &mdash; server response time from 115 milliseconds to 5&ndash;15 milliseconds (down 87%), and database work per request from 8&ndash;12 queries to <em>zero</em> on a cache hit. That was one site reporting its own numbers, crawled October 2026, so treat it as a direction, not a promise &mdash; but the mechanism is real.</p>
+      <p><strong>3. The CDN cache.</strong> A content delivery network keeps copies of your site on servers around the world, so a visitor in Miami downloads your page from a server in Miami instead of waiting on one in your hosting company&rsquo;s data center. Our companion guide on <a href="does-cheap-hosting-make-my-website-slow.html">cheap hosting</a> covers why the server&rsquo;s location and workload set the floor your speed can never go below; a CDN is the cheapest way to raise that floor, and the free tier of the biggest providers covers a small business&rsquo;s traffic entirely.</p>
+      <h2>The research number, and the honest asterisk on it</h2>
+      <p>Researchers at the University of Washington (Wang et al., published in the proceedings of the 2016 USENIX Annual Technical Conference) modeled what happens with a <em>perfect</em> cache &mdash; every file served from cache, nothing fetched fresh. Desktop page load times improved by about 34% versus no caching. On mobile, the median improvement was only about 13%.</p>
+      <p>That is not a small finding, and it is the one honest asterisk every speed article should carry: on phones, most of the loading time is not the network fetching files &mdash; it is the phone&rsquo;s own processor chewing through the page. Caching shortens the trip to the server, but it cannot speed up the phone itself. If your site is slow <em>on mobile</em>, caching helps, and our guide on <a href="why-is-my-website-slow-on-mobile.html">mobile slowness</a> covers the rest of the story: it is usually the work the page demands, not the journey of the files.</p>
+      <p>The second honest caveat: caching papers over a slow server, it does not cure it. A site with no page cache at all and a server that takes two seconds to answer will see caching do wonders for the headline number &mdash; because visitors stop waiting on that two-second answer &mdash; but the underlying weakness is still there, and the first visitor after every update pays it in full. Caching is leverage, not a foundation. The foundation is the hosting.</p>
+      <h2>What to actually do</h2>
+      <p><strong>First, check whether it is already on.</strong> Most modern hosting plans and most website builders enable page caching by default now &mdash; but many do not, and owners on older plans are often one toggle away from the biggest free speed gain available. It lives in your hosting panel under &ldquo;performance,&rdquo; &ldquo;caching,&rdquo; or &ldquo;speed settings,&rdquo; or in a plugin if you run WordPress. If you cannot find it in five minutes, your host&rsquo;s support chat can enable it in one sentence.</p>
+      <p><strong>Second, set the browser cache properly.</strong> Static things &mdash; your logo, your styles, your photos &mdash; should carry a &ldquo;keep this for a year&rdquo; header; pages that change should not. When done right, repeat visitors feel like your site got twice as fast overnight, and you touched nothing visible. A vendor page from a speed-optimization company claims cached pages load about 50% faster &mdash; take the exact number with the grain of salt a vendor number deserves, but the effect on repeat visits is the largest caching lever there is.</p>
+      <p><strong>Third, after any update, clear the cache.</strong> This is the one behavior that makes owners distrust caching: you change your phone number on the site, check your phone, and the old number is still there &mdash; because your browser, or the server, is serving the saved copy. Clear the cache (there is always a button labeled exactly that), wait a minute, reload. If the change appears, caching was the ghost, and it was doing its job exactly as designed.</p>
+      <p><strong>Finally, measure what matters.</strong> The free speed check below runs Google&rsquo;s own test against your homepage and shows you the server&rsquo;s answer time separately from the page&rsquo;s total load &mdash; the answer-time line is where caching shows up. Run it, turn caching on, run it again a day later. You will see the difference in seconds, not in jargon.</p>
+      <p>The <a href="why-is-my-website-so-slow.html">four usual culprits of slowness</a> are still the four usual culprits &mdash; heavy photos, too many files, autoplay video, cheap hosting. Caching does not replace fixing them. But it is the one fix that costs nothing, takes five minutes, and makes every visit after the first feel instant. Turn it on before you spend a dollar anywhere else.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, with the server&rsquo;s answer time broken out so you can see exactly what caching is doing for you.</p>
+        <a class="toolbtn" href="../speed.html">Run the free Website speed check</a>
+      </div>
+    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your speed alongside all 40 trust signals — email authentication, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+website+caching+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
