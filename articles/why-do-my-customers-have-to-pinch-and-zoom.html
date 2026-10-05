@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Do My Customers Have to Pinch and Zoom on My Website?</title>
+<meta name="description" content="Your buttons were sized for a mouse pointer, not a thumb — and some templates lock pinch-zoom off entirely. The 24-pixel standard, the zoom lock, and the 2-minute phone test.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Do My Customers Have to Pinch and Zoom on My Website?</h1>
+    <p class="lede">Watch a customer use your site on their phone: pinching to read the prices, tapping the wrong button twice, giving up. It is not their phone and it is not their eyesight — your site was built for a mouse. Here is the actual standard for tap targets, the template setting that locks zoom off, and how to check both in 2 minutes.</p>
+    <div class="article">
+
+      <p>One clarification before we start: if the problem is text your customers cannot read at all — tiny body copy, washed-out contrast — that is covered in our <a href="can-my-customers-actually-read-my-website.html">readability guide</a>, which includes a zoom test for reading text. <strong>This guide is about fingers, not eyes</strong>: buttons and links sized for a mouse pointer instead of a thumb, and the template setting that switches your visitors’ own pinch-zoom off. Different problem, different fix.</p>
+      <p><strong>The short answer:</strong> most small-business sites were designed on a desktop screen, where a precise arrow clicks things. On a phone, a fingertip — roughly a centimeter wide — does the clicking, and it misses small, crowded targets constantly. Worse, many templates disable pinch-zoom, taking away the one tool a customer with imperfect vision has. The fix is sizing targets for thumbs and unlocking zoom: template/CSS work measured in hours, not a rebuild.</p>
+
+      <h2>Your site was built for a mouse</h2>
+      <p>Picture how your site was made: somebody sat at a desk, looked at a big monitor, and nudged buttons into place with a mouse — a pointer about one pixel wide, infinitely precise. The "Book now" button looked fine. The phone number in the header looked fine. Then your customer opens the same page on a phone, and the clicking instrument is a fingertip roughly a centimeter across. The button that looked generous on the monitor is now a speck under a thumb, and the phone number sits one mis-tap away from the menu icon. The customer taps, hits the wrong thing, backs out, taps again, and quietly decides to call the competitor whose buttons they can actually hit.</p>
+      <p>This is not a theory about clumsy users. It is geometry: the input device changed and the targets did not. Every mis-tap costs a little patience, and a contact form that takes three attempts to submit is a contact form that does not get submitted.</p>
+
+      <h2>The zoom lock: the setting that takes away the magnifier</h2>
+      <p>Here is the part that surprises owners. Many website templates ship with a setting in the page’s code — the "viewport" tag — configured to disable pinch-zoom (technically <em>user-scalable=no</em> or a maximum scale of 1.0). The template makers did it to make sites feel "app-like": no accidental zooming, everything stays put. The side effect is that the visitor’s own magnifier is gone. A customer in their 60s who zooms every page they read — not because your text is small, but because their eyes are 60 — cannot zoom yours. The page simply refuses.</p>
+      <p>Nothing about this is visible to you on your desktop, which is why owners never notice it. The customer never complains either; they just leave. Disabling a visitor’s zoom to protect a design aesthetic is the template choosing its looks over your customer’s ability to use the page.</p>
+
+      <h2>The actual standard (it exists, and it has numbers)</h2>
+      <p>This is not a matter of taste — the web’s accessibility standard has rulers for it. WCAG 2.2, published by the W3C in October 2023, added Success Criterion 2.5.8, "Target Size (Minimum)," at Level AA: interactive targets — buttons, links, icons, form controls — should be at least <strong>24 by 24 CSS pixels</strong>. It comes with documented exceptions: a smaller target is acceptable if there is enough space around it that neighboring targets are not accidentally hit, if an equivalent larger target exists for the same action, if it is a link inside a sentence of text, if it is an unmodified browser control, or if the small size is genuinely essential.</p>
+      <p>The enhanced AAA version of the same rule, 2.5.5 "Target Size (Enhanced)," asks for <strong>44 by 44 CSS pixels</strong>. Apple’s Human Interface Guidelines tell app makers 44 points; Google’s Material guidance says 48 density-independent pixels. Notice the pattern: every serious ruler in the industry lands between 24 and 48, and your template’s 16-pixel icon buttons are below all of them. When your web person says "that’s just how the theme looks," these are the numbers that answer.</p>
+
+      <h2>The 2-minute self-test (do this on your phone today)</h2>
+      <p><strong>1. The thumb test.</strong> Open your homepage on your phone. Without zooming, try to tap every button and link with your thumb — the call button, the menu, the social icons, the form’s submit. Count the mis-taps and the ones you have to aim at carefully. Anything you have to aim at is too small.</p>
+      <p><strong>2. The zoom test.</strong> Now pinch to zoom in on a paragraph. If the page zooms, good — your template leaves the magnifier alone. If the page refuses to zoom, or snaps back, you have the zoom lock, and it needs to come off.</p>
+      <p><strong>3. The crowded-row test.</strong> Find anywhere two tappable things sit side by side — social icons, footer links, a phone number next to an email icon. Try to hit one without touching the other. If you cannot reliably, they need space between them, not just bigger sizes: separation counts as much as size.</p>
+      <p>Do the same on your contact or booking page, because that is the page where a mis-tap costs you money directly.</p>
+
+      <h2>The fix ladder (all small)</h2>
+      <p><strong>1. Take the zoom lock off.</strong> This is one setting in the template — the viewport tag — and it is the highest-leverage change on this page. Send your web person this sentence: "Please remove the user-scalable=no / maximum-scale setting from the viewport meta tag so visitors can pinch-zoom." Nothing about the design changes; the magnifier just works again.</p>
+      <p><strong>2. Size targets to the 24-pixel floor, with space.</strong> Buttons, icons, and links get enlarged or given breathing room until they meet the 24-by-24 minimum — 44 where it fits comfortably. This is CSS work: padding around small icons, larger tap areas on footer links, separating crowded rows. A competent web person does a typical small-business site in hours, not weeks.</p>
+      <p><strong>3. Stop designing at a desk.</strong> The durable fix is procedural: every future change gets checked on a real phone before it ships — the thumb test above, 2 minutes. Sites do not drift back to mouse-sized targets when somebody checks with a thumb.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t just make everything bigger at random.</strong> Blowing up font sizes and buttons without adjusting the layout breaks the design in new ways — overlapping text, buttons spilling off the screen. The work is measured: targets to the standard, spacing between neighbors, layout adjusted to fit. That is why it is a web person’s afternoon, not a settings toggle.</p>
+      <p><strong>Don’t assume your theme "handles mobile."</strong> "Mobile-friendly" in a theme’s marketing usually means the layout collapses to one column — it says nothing about tap target sizes or the zoom lock. The 2-minute test above is the only claim that matters, and it takes less time than reading the theme’s feature list.</p>
+
+      <h2>The bottom line</h2>
+      <p>Your customers pinch and zoom because the site was built for a mouse pointer and, in many cases, actively disables the zoom they would use to compensate. The industry standard is written down — 24 by 24 pixels minimum, 44 by 44 enhanced — and the fixes are a settings change plus an afternoon of CSS. The customers tapping the wrong button are not clumsy; they are using the device your business actually runs on, and the site should be built for it.</p>
+      <p class="meta">Tap-target dimensions and zoom behavior are described here as mechanics of how websites and standards work, not measured prescriptions. No visitor counts, percentages, timing figures, or revenue figures are claimed — only your own 2-minute phone test shows what mis-taps are costing you. WCAG criterion numbers and the October 2023 publication date are from the W3C’s published standard; platform guidance figures are Apple’s and Google’s published recommendations.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free accessibility check scans your site for the structural failures a thumb test can’t see — missing image descriptions, unlabeled forms, broken heading structure — in plain English, no signup.</p>
+        <a class="toolbtn" href="../accessibility.html">Run the free accessibility check</a>
+      </div>    <div class="cta">
+      <h2>Accessibility is check #9 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's accessibility alongside all 40 trust signals — speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_a11y" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=I+read+your+guide+on+pinch-and-zoom+and+tap+targets+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
