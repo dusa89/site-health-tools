@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does the Video on My Website Slow It Down?</title>
+<meta name="description" content="That YouTube video you embedded is loading its entire player every time someone opens your page — even if they never press play. Why video embeds slow sites, the click-to-play fix, and the autoplay trap.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Does the Video on My Website Slow It Down?</h1>
+    <p class="lede">You added a video to your website because it is good marketing — a customer testimonial, a walkthrough of your work, a welcome message. And your site has been slower ever since. The video is not "too big." The problem is how embeds work: a standard video embed loads the whole video player the moment the page opens, whether anyone presses play or not. It is one of the heaviest things a small-business page can carry, and the fix does not mean deleting the video.</p>
+    <div class="article">
+
+      <p>If you have read our <a href="why-do-my-photos-slow-down-my-website.html">guide on why photos slow sites down</a>, this is the same class of problem one weight class up. Photos are heavy luggage; an embedded video is heavy luggage that also unpacks a marching band. A photo just sits there. A video embed arrives with a full player: scripts, styles, and a running iframe, all downloaded before the visitor has seen anything. The two guides have different fixes — this one is about the player, not the picture.</p>
+      <p><strong>The short answer:</strong> yes — a normal video embed slows the page it sits on, every load, whether anyone watches or not. The fix is click-to-play: show a thumbnail image with a play button, and load the real video player only when someone clicks it. Most page builders and platforms now offer this as a lazy-load or "facade" option on video embeds, and it keeps the video while dropping the cost.</p>
+
+      <h2>Why an embed is not the same as a video</h2>
+      <p>When you paste a YouTube or Vimeo link into your page builder, it does not paste a picture of a video. It pastes an <strong>iframe</strong> — a window into another company's website, living inside yours. When your page loads, the browser does not just load your page: it also loads YouTube's (or Vimeo's) page inside that window. The video player, its controls, its scripts, its styles, its tracking — all of it, on every visit, before the visitor has done anything. The visitor pressing play later changes almost nothing about the initial cost; the player was already loaded.</p>
+      <p>It gets worse when the video is below the fold. A visitor who never scrolls down still paid the full download — unless your platform lazy-loads embeds, which loads offscreen content only when scrolled toward. Many platforms added this recently; older sites and older builder versions often do not have it on.</p>
+
+      <h2>The three common video setups, from cheapest to most expensive</h2>
+      <p><strong>1. A video linked as a thumbnail image.</strong> You upload a screenshot or poster image, link it to the video page. Cost: one image. This was the old-school solution and it is still the fastest possible option — the tradeoff is the visitor leaves your site to watch.</p>
+      <p><strong>2. Click-to-play embed (the facade).</strong> The embed shows a thumbnail with a play button; the real player loads only when clicked. Cost: one image until click, full player after. This is the sweet spot — the video stays on your page and the cost drops to near zero for the visitors who do not watch. YouTube itself documents this pattern, and most modern page builders have a setting for it: look for "lazy load," "facade," or "load player on click" on the video block.</p>
+      <p><strong>3. Autoplay background video.</strong> A video that plays silently behind the homepage hero, starting the moment the page loads. This is the most expensive thing on this page's menu: it downloads video data continuously while the visitor is trying to read, and there is no click to defer it — it starts whether anyone wants it or not. If your homepage has one and your site feels slow, this is the first suspect.</p>
+
+      <h2>How to tell if video is your problem: the 10-minute test</h2>
+      <p>You do not need to understand any of the above to check. Make a temporary copy or draft of the page, remove the video from the copy, and run our <a href="../speed.html">free speed check</a> on both versions. Same page, one difference — if the no-video version is clearly faster, the video is the cost, and click-to-play is the fix. Delete nothing permanent until you have compared; this test is why copies exist.</p>
+
+      <h2>The fix, in order</h2>
+      <p><strong>1. Turn on click-to-play or lazy loading for every embed.</strong> Check the video block settings in your page builder for "lazy load," "facade," or "load on click." One setting per video; the page keeps its video and sheds the per-visit player cost.</p>
+      <p><strong>2. Demote the hero video.</strong> If you have an autoplaying background video, try the homepage with a high-quality still image — or the same video behind a play button — for two weeks and watch your contact-form submissions. Most small businesses discover the video was decoration, not persuasion: nobody books a plumber because of a looping drone shot.</p>
+      <p><strong>3. Cap the count.</strong> One video per page is a marketing choice. Three embeds is a speed problem wearing a marketing costume. If the page has several videos, keep the one that earns its place and thumbnail-link the rest.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t self-host the video file.</strong> Uploading the raw video file to your own hosting (instead of YouTube/Vimeo) does not dodge the cost — your server now streams it, which is usually slower and can eat your hosting bandwidth. The platforms exist precisely so you do not have to do this.</p>
+      <p><strong>Don’t delete the testimonial video to fix the speed.</strong> The video is an asset; the embed is the cost. Click-to-play keeps the asset and drops the cost. Removing the video fixes the speed and loses the marketing — solve the right problem.</p>
+
+      <h2>The bottom line</h2>
+      <p>Video embeds are heavy because they load an entire player on every page view, watched or not — and autoplay background video is the heaviest version of all. The professional answer is not fewer videos; it is click-to-play: a thumbnail first, the real player only when clicked. Ten minutes in your builder settings, and your video stops taxing every visitor who never pressed play.</p>
+      <p class="meta">Video embeds and player loading are described here as mechanics of how websites work, not measured prescriptions. No load-time figures, percentages, visitor counts, or revenue figures are claimed — only your own speed test can show what the embed is costing your page. Platform features are described generically; setting names change, so use each platform’s help search rather than memorizing locations.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Run the free speed check on the page with the video, then on a copy with the video removed — one difference, honest answer. Takes about 10 seconds per run, no signup.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Site speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's speed alongside all 40 trust signals — speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=I+read+your+guide+on+video+embeds+slowing+down+my+site+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
