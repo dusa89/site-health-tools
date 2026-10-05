@@ -173,10 +173,40 @@
    be exercised in Node for testing. No mock data: every check derives from the
    target page's real HTML. */
 
-/* Fetch the target page's HTML through a public CORS-friendly reader, the same
-   pattern the Broken Links tool on this site already uses. We read only the
-   homepage; nothing is stored. */
-var PROXY = "https://api.allorigins.win/get?url=";
+/* Fetch the target page's HTML through public CORS-friendly readers. We read
+   only the homepage; nothing is stored.
+   FAILOVER CHAIN (2026-10-05): allorigins is the primary, codetabs the backup.
+   Added after allorigins degraded site-wide (HTTP 500/522 across targets for
+   30+ minutes) — a single free proxy is a single point of failure, and this
+   tool is dead without a working reader. First proxy to return readable HTML
+   wins. */
+var PROXIES = [
+  { name: "allorigins",
+    url: function (t) { return "https://api.allorigins.win/get?url=" + encodeURIComponent(t); },
+    parse: async function (res) {
+      /* allorigins wraps the fetch in JSON and faithfully reports the target's
+         status code — res.ok covers the proxy itself, status.http_code the target. */
+      if (!res.ok) return { ok: false, proxyDown: true };
+      var data = await res.json();
+      var code = data && data.status && data.status.http_code;
+      var html = data && typeof data.contents === "string" ? data.contents : "";
+      if (code && code >= 400) return { ok: false, targetError: code };
+      if (!html || html.length < 200) return { ok: false, proxyDown: true };
+      return { ok: true, html: html };
+    } },
+  { name: "codetabs",
+    url: function (t) { return "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(t); },
+    parse: async function (res) {
+      /* codetabs passes the raw body through and does not reliably surface the
+         target's status code, so a readable HTML body is the success signal.
+         Guard against proxy error pages (Cloudflare "error code:" bodies). */
+      var html = await res.text();
+      if (!res.ok || !html || html.length < 200 || html.indexOf("<") === -1 ||
+          html.indexOf("error code:") === 0) return { ok: false, proxyDown: true };
+      return { ok: true, html: html };
+    } }
+];
+var PROXY_TIMEOUT_MS = 30000;
 var MIN_SECONDS_BETWEEN_RUNS = 20;
 
 function esc(s) {
@@ -435,16 +465,23 @@ function fetchWithTimeout(url, ms) {
   return fetch(url, { signal: ctrl.signal }).finally(function () { clearTimeout(timer); });
 }
 
-/* Returns {html} or throws {kind}. */
+/* Returns the page HTML string, or throws {kind}. Tries each proxy in order; the
+   first readable HTML wins. A target error reported by allorigins is only
+   trusted when the backup proxy also fails to produce a readable page — a lone
+   error report from one flapping proxy is not proof the site is down. */
 async function fetchPageHtml(targetUrl) {
-  var res = await fetchWithTimeout(PROXY + encodeURIComponent(targetUrl), 45000);
-  if (!res.ok) throw { kind: "proxy-http", status: res.status };
-  var data = await res.json();
-  var code = data && data.status && data.status.http_code;
-  if (code && code >= 400) throw { kind: "target-http", status: code };
-  var html = data && typeof data.contents === "string" ? data.contents : "";
-  if (!html || html.length < 200) throw { kind: "empty" };
-  return html;
+  var targetErr = 0;
+  for (var i = 0; i < PROXIES.length; i++) {
+    var px = PROXIES[i];
+    var r;
+    try {
+      r = await px.parse(await fetchWithTimeout(px.url(targetUrl), PROXY_TIMEOUT_MS));
+    } catch (e) { continue; } /* network/timeout/parse blowup — try next proxy */
+    if (r.ok) return r.html;
+    if (r.targetError) targetErr = r.targetError;
+  }
+  if (targetErr) throw { kind: "target-http", status: targetErr };
+  throw { kind: "proxy-http" };
 }
 
 function renderResults(targetUrl, checks) {
@@ -496,7 +533,9 @@ if (typeof module !== "undefined" && module.exports) {
   module.exports = { extractSignals: extractSignals, scoreChecks: scoreChecks,
     overallScore: overallScore, pillFor: pillFor, bandFor: bandFor,
     normalizeUrl: normalizeUrl, friendlyError: friendlyError, stripTags: stripTags,
-    normName: normName, significantTokens: significantTokens, renderResults: renderResults };
+    normName: normName, significantTokens: significantTokens, renderResults: renderResults,
+    PROXIES: PROXIES, PROXY_TIMEOUT_MS: PROXY_TIMEOUT_MS,
+    fetchWithTimeout: fetchWithTimeout, fetchPageHtml: fetchPageHtml };
 }
 /* LOGIC-END */
 
@@ -529,7 +568,7 @@ function init() {
     go.disabled = true;
     go.innerHTML = '<span class="spinner"></span>Reading your site\u2026';
     out.innerHTML = '<div class="scanning">Reading your homepage and auditing the six signals ' +
-      "AI assistants learn from. This takes about 10 seconds\u2026</div>";
+      "AI assistants learn from. This usually takes about 10 seconds — up to a minute if our backup reader has to kick in\u2026</div>";
     try {
       var html = await fetchPageHtml(url);
       var sig = extractSignals(html);
