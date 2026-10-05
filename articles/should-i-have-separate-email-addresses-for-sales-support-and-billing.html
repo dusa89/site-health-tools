@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should I Have Separate Email Addresses for Sales, Support, and Billing?</title>
+<meta name="description" content="One inbox for everything looks simple until the quote request drowns under invoices and password resets. Role addresses, aliases vs mailboxes, and the 2-minute setup that keeps them free.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should I Have Separate Email Addresses for Sales, Support, and Billing?</h1>
+    <p class="lede">Right now, every email your business gets lands in one inbox: quote requests under invoices under password resets under "just checking in." It feels simple, but it is why replies get missed and nothing has an owner. Here is how role addresses work, why aliases make them free, and the three addresses worth setting up this week.</p>
+    <div class="article">
+
+      <p>First, what this guide is <em>not</em>: it is not about email authentication. SPF, DKIM, and DMARC records are published per domain, so every address you add — sales@, support@, anything@ — is covered by the same records you already set up. If authentication is the worry, see our <a href="what-is-dmarc.html">DMARC guide</a>. <strong>This guide is about organization</strong>: which addresses a small business should actually have, and why one inbox for everything quietly costs you replies.</p>
+      <p><strong>The short answer:</strong> yes — but not three full inboxes. Set up sales@, support@, and billing@ as <em>aliases</em> that forward into your existing inbox, sort them with filters, and you get the organization for free. Separate mailboxes only earn their cost when volume or staffing demands them.</p>
+
+      <h2>The problem with one inbox</h2>
+      <p>With everything in one place, every message competes for the same glance. A quote request from a hot lead sits under an invoice receipt, under a password-reset email, under a newsletter you never unsubscribed from. Nothing has an owner and nothing has a priority. Missed replies are rarely about laziness — they are about a sales inquiry looking exactly like everything else in the pile, and getting answered late or not at all.</p>
+      <p>Role addresses solve this by giving each kind of conversation its own front door. When a message arrives at <em>sales@</em>, you know what it is before you open it. That alone changes how fast it gets answered.</p>
+
+      <h2>Role addresses: a 1997 convention that still runs the internet</h2>
+      <p>There is an actual standard behind addresses like sales@ and support@. RFC 2142, published in 1997, documented the mailbox names that systems across the internet are expected to recognize: info@, sales@, support@, billing@, postmaster@, abuse@, and a few more. It is a convention, not a law — but because it is 1997 old, customers expect these addresses to exist, and other systems (helpdesk software, ticket routers, spam filters) are built to recognize them.</p>
+      <p>That age is the point: when a customer wants to pay an invoice, they will guess billing@ before they guess anything else. When something breaks, they guess support@. Matching the convention means customers find the right door without being told where it is.</p>
+
+      <h2>Aliases vs mailboxes (this is where it stays free)</h2>
+      <p>Two very different things hide behind "an email address":</p>
+      <p><strong>An alias</strong> is just a name that forwards to a real inbox. sales@ can forward to you. So can support@ and billing@. Your host's control panel, Google Workspace, and Microsoft 365 all support aliases, and they cost nothing to add — the mail still lands in your one mailbox, but it arrives <em>labeled</em> with which door it came through.</p>
+      <p><strong>A mailbox</strong> is a separate login with its own inbox, its own password, its own storage. Paid providers bill per user, so every mailbox is a recurring cost and a second place to check. Aliases are free; mailboxes are not.</p>
+      <p>That is the whole trick for a small shop: start with aliases. You get sorted, recognizable addresses at zero cost, and you only convert an alias into a real mailbox when there is a reason — enough support volume that it deserves its own helpdesk, a bookkeeper who needs billing@, a second salesperson.</p>
+
+      <h2>The three addresses worth setting up this week</h2>
+      <p><strong>1. sales@ — for anything that might become money.</strong> Quote requests, "do you service my area," pricing questions. This is the address that must never go stale. Sorting it separately is how the hot lead stops drowning under invoices.</p>
+      <p><strong>2. support@ — for anything already a customer.</strong> "My thing stopped working," "where is my order," follow-up questions. It also survives helpdesk software: most ticket systems are built to watch an inbox address, and when you grow into one, it will expect something like support@.</p>
+      <p><strong>3. billing@ — for money that already happened.</strong> Invoices, receipts, "I was charged twice." Customers trust invoices that come from billing@ the way they distrust them from mike@ — it signals the message is a system doing its job, not a person improvising.</p>
+      <p>Everything else can wait. info@ is a junk drawer; create it only if you want a public catch-all on the website.</p>
+
+      <h2>Why roles beat names</h2>
+      <p>mike@ dies the day Mike leaves. Every invoice, every bookmarked support thread, every "email Mike about this" note a customer kept — all of it breaks at once, and you get to tell every customer to use a new address. support@ and billing@ belong to the business, not the person. Staff change; the doors stay put, and the mail keeps arriving at the same addresses while you re-point the aliases behind them. Set it up this way once and you never migrate a public address again.</p>
+
+      <h2>The 2-minute setup (all free)</h2>
+      <p><strong>1. Create the three aliases.</strong> In your host's email panel or admin console, add sales@, support@, and billing@ as aliases/forwarders pointed at your main inbox. No new DNS records are needed — your domain's SPF, DKIM, and DMARC already cover them.</p>
+      <p><strong>2. Filter by recipient.</strong> Set up a filter or rule for each address: mail <em>to</em> sales@ gets one label/folder, support@ another, billing@ a third. The inbox is still one, but now each kind of mail wears its uniform.</p>
+      <p><strong>3. Put them where customers look.</strong> sales@ on the quote form, support@ on the contact page, billing@ at the bottom of invoices. An address nobody is told about is decoration.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t create addresses you never check.</strong> A support@ that nobody reads is worse than no support@ — it makes a promise ("we have support") and breaks it silently. Every address you publish is a promise; publish only the ones you keep.</p>
+      <p><strong>Don’t send your newsletter from support@ or billing@.</strong> Customers reply to support@ expecting a human who fixes things; an unsubscribe request or an angry reply landing in your ticket queue helps nobody. Newsletters have their own rules — see our <a href="should-i-send-my-newsletter-from-my-business-email.html">guide on newsletter sending</a>.</p>
+      <p><strong>Don’t hand customers your personal address as the business one.</strong> It works until it doesn’t — a name change, a role change, a departure — and then every address the customer saved is wrong. Roles are forever; names are temporary.</p>
+
+      <h2>The bottom line</h2>
+      <p>Separate addresses are not about looking corporate — they are about knowing what a message is before you open it, and about addresses that survive your staff changes. Three free aliases, three filters, ten minutes of setup: sales@ for what might become money, support@ for what already is a customer, billing@ for money that already happened. Start there, and promote an alias to a real mailbox only when the volume earns it.</p>
+      <p class="meta">Role-address conventions are described here as mechanics of how email addressing works, not measured prescriptions. RFC 2142 was published in 1997; alias and mailbox behavior follows standard mail-server mechanics. No visitor counts, percentages, or revenue figures are claimed.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Quotes that never arrive cost you jobs — the free email check reads your domain’s SPF, DKIM, and DMARC records and tells you, in plain English, whether your mail can prove it’s really from you. Ten seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free Email deliverability check</a>
+      </div>    <div class="cta">
+      <h2>Email deliverability is check #2 of 40</h2>
+      <p>The full Site Health Watch audit checks your email authentication alongside all 40 trust signals — speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+separate+sales%2Fsupport%2Fbilling+addresses+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
