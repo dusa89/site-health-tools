@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Will an Accessibility Widget Stop Me Getting Sued? — Plain-English Guide</title>
+<meta name="description" content="The one line of code that promises ADA compliance in 5 minutes: does it work? The documented 20% figure, why an overlay can't fix the code underneath, the FTC's $1M action, and the real fix ladder.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Will an accessibility widget stop me getting sued?</h1>
+    <p class="lede">The blue icon, the toolbar, the promise of instant compliance — and the documented fact that roughly 1 in 5 sued companies already had one installed.</p>
+    <div class="article">
+
+      <p>A sales email lands, or a banner ad catches your eye: "Make your website ADA-compliant in 5 minutes — one line of code, no developer needed." It sounds perfect: a little widget with the blue icon, a toolbar pops up, customers can enlarge text and change contrast, and you are protected. <strong>This guide is only about that promise</strong> — the overlay widgets, not the broader question of demand letters (covered in our <a href="can-my-website-get-me-sued.html">sued guide</a>). And the honest answer is: a widget is not the shield its marketing says it is.</p>
+      <h2>The one number that should end the debate</h2>
+      <p>In July 2026, UsableNet — one of the firms that tracks accessibility lawsuits — reported that <strong>roughly 20% of the companies sued over website accessibility already had an accessibility widget installed</strong>. One in five defendants paid for the very thing that was supposed to prevent the lawsuit, and it did not prevent it. That is a documented fact about lawsuits that actually happened, not a theory. If the widget were a reliable defense, that number would be near zero.</p>
+      <h2>Why a toolbar on top cannot fix what is underneath</h2>
+      <p>Think of it mechanically. An overlay widget adds a panel <em>on top of</em> your page — it lets a visitor zoom the text or strip the colors. But the barriers that get websites sued live <em>inside</em> the page's code: a checkout button with no name a screen reader can read, a form field with no label, a pop-up that traps keyboard users with no way out. A toolbar sitting on top of the page does not rewrite any of that. It is a coat of paint on a staircase with missing steps — the steps are still missing. This is not a statistic; it is how the products are built, and it is why testers using real screen readers keep flagging widget-equipped sites.</p>
+      <h2>The regulator has already weighed in</h2>
+      <p>In 2025 the FTC took action against accessiBe — the biggest name in accessibility overlays — in a $1 million settlement over deceptive claims that the product could make websites compliant with WCAG, the Web Content Accessibility Guidelines (version 2.1, level AA) that courts and testers treat as the de facto standard. The regulator's message was plain: claiming a widget equals compliance is a claim you cannot make. (And to be clear: this is not legal advice, and it is not about whether any particular company is guilty of anything — it is the documented record of what happened.)</p>
+      <h2>What actually reduces the risk</h2>
+      <p>The unglamorous answer is the real one. Risk goes down when the page itself is built right: images that mean something carry descriptions; every form field has a real label; color combinations a low-vision user can read; the whole site — menus, checkout, pop-ups — works by keyboard alone. That is a list of code fixes, not a purchase. Most of them are small individually; a competent web person can work through a typical small-business site in days, not months. A widget can still sit on top as a convenience for visitors — nobody is harmed by a text-resize button — but it is the decoration, not the defense.</p>
+      <h2>The ask-your-developer script</h2>
+      <p>You do not need to learn WCAG to get this handled. Send your web person this: "Please check my site against WCAG 2.1 AA basics — form labels, image descriptions, color contrast, and full keyboard navigation. I want the underlying code fixed, not an overlay widget on top." If a vendor pitches you a widget as the whole answer, ask one question: "If 20% of sued sites already had one of these, what is this protecting me from?" The honest vendors will talk about code fixes. The dishonest ones will change the subject.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free accessibility check scans your site for the exact structural failures widgets can't fix &mdash; missing image descriptions, unlabeled forms, bad heading structure &mdash; in plain English, no signup.</p>
+        <a class="toolbtn" href="../accessibility.html">Run the free accessibility check</a>
+      </div>
+    <div class="cta">
+      <h2>Accessibility is check #9 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's accessibility alongside all 40 trust signals — speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_a11y" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+accessibility+widgets+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
