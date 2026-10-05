@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What If My Customers Can't Tell Red From Green?</title>
+<meta name="description" content="Red for out of stock, green for in stock — what if a customer can't tell the difference? Why meaning carried by color alone fails real people, the 2-minute grayscale test that finds it, and the fix that costs nothing.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What If My Customers Can't Tell Red From Green?</h1>
+    <p class="lede">Roughly one in twelve men has red-green color vision deficiency. Not blindness — they see your website perfectly well. They just cannot tell your red "out of stock" dot from your green "in stock" dot. Your "required" fields glow red, your sale prices shout in red, your chart is a rainbow of colored slices — and a meaningful fraction of your customers are guessing at what all of it means. This is one of the easiest accessibility problems to find and one of the cheapest to fix.</p>
+    <div class="article">
+
+      <p>If you have read our <a href="can-my-customers-actually-read-my-website.html">guide on whether your customers can actually read your text</a>, this is the sibling problem that guide does not cover. That one was about contrast — light gray words on a white background that some eyes cannot read. This one is about <em>meaning</em>: places where the color itself carries information, and the words do not. You can have pitch-perfect contrast and still fail this, because the customer can read every word on the page and still not know which products are in stock.</p>
+      <p><strong>The short answer:</strong> never let color be the only thing that tells a customer something. Pair every meaningful color with a word, an icon, or a pattern — the green dot gets the words "In stock" next to it, the red error field gets an icon and a sentence, the chart gets labels. And the 2-minute test: view your key pages in grayscale. If anything becomes ambiguous in black and white, your color-blind customers were already lost.</p>
+
+      <h2>Where color carries meaning on small-business sites</h2>
+      <p>Run through your own site in your head and you will start spotting them everywhere:</p>
+      <p><strong>Stock and availability dots.</strong> Red dot: out of stock. Green dot: in stock. Sometimes yellow: low stock. This is the classic — the entire meaning lives in a colored circle the size of a pea. A customer with red-green color deficiency sees two identical gray dots.</p>
+      <p><strong>Form errors.</strong> The box turns red when something is wrong. Sometimes there is a message too; often the only signal is the red border, and the customer has to hunt field by field to find what failed.</p>
+      <p><strong>Required fields.</strong> Asterisks and labels in red, with no other marking. If you cannot see the red, every field looks optional — until the form rejects your submission.</p>
+      <p><strong>Sale prices and status banners.</strong> The sale price in red, the regular price in black. Or worse: a red "cancelled" tag and a green "confirmed" tag on booking and order pages — the customer is being told something consequential and the signal is color only.</p>
+      <p><strong>Charts and graphs.</strong> Pie slices, bar segments, and calendar heat maps where the legend says red means one thing and blue means another, and the slices themselves carry no labels. Even color-sighted customers squint at these.</p>
+      <p><strong>Links in body text.</strong> A link that is only visible because it is a different color — no underline, no bold — is invisible to anyone who cannot distinguish the two colors. They do not know a link is there at all.</p>
+
+      <h2>The rule, in plain English</h2>
+      <p>The web accessibility guidelines say it dryly: color must not be the only visual means of conveying information (it is WCAG success criterion 1.4.1, if you ever need the reference number for a web person). The plain-English version: <strong>whatever the color is saying, the words or shapes have to say it too.</strong> Green dot <em>plus</em> the words "In stock." Red error field <em>plus</em> an icon and the sentence "Card number is missing a digit." Red slice <em>plus</em> a label on the slice. Underlined links, always — not just a different color.</p>
+      <p>Notice what this does not require: it does not require removing color. Your reds and greens can stay — color is a fine <em>reinforcement</em>. The fix is addition, not subtraction. You are adding a second channel for the same message, and the second channel is the one everyone can read.</p>
+
+      <h2>The 2-minute test: grayscale</h2>
+      <p>You do not need a diagnosis tool for the first pass. Print your homepage, your product page, and your checkout page in black and white — or take screenshots and desaturate them, or just turn your phone's grayscale filter on. Now try to use the pages. Can you tell what is in stock? Can you find the error in a failed form? Can you spot the links in a paragraph? Anything that becomes ambiguous in grayscale was already ambiguous for the roughly one in twelve men (and a smaller share of women) with red-green color vision deficiency — and probably for a share of fully color-sighted customers glancing at their phone in bright sunlight, too.</p>
+      <p>The same principle works in reverse when you are evaluating a redesign: if a designer shows you a mockup and asks whether the red/green scheme is okay, ask what it looks like in grayscale. Designers who think in color first often have not considered this at all — now you know to ask.</p>
+
+      <h2>The three fixes, in order</h2>
+      <p><strong>1. Text next to every status color.</strong> This is the big one and it is almost free. "In stock" / "Out of stock" / "Only 3 left" written next to the dot. A sentence on the failed field. A label on each chart slice. If the color vanished entirely, nothing would be lost — that is the test you are aiming for.</p>
+      <p><strong>2. Icons and shapes, not just hues.</strong> A checkmark for good, an exclamation triangle for problems, a clock for pending. Shapes are readable in any light and by any eyes. Pairs of (color + icon) beat pairs of (color + color) every time.</p>
+      <p><strong>3. Underline your links; pattern your charts.</strong> Body-text links get an underline, period — it is the oldest convention on the web and the most reliable. For charts, use direct labels on each segment; when labels genuinely will not fit, use patterns (stripes, dots) alongside color, which most chart tools offer as an accessibility option.</p>
+
+      <h2>Why this one is worth doing even if lawsuits never enter the picture</h2>
+      <p>Our <a href="can-my-website-get-me-sued.html">lawsuit guide</a> covers the legal angle, and our <a href="will-an-accessibility-widget-stop-me-getting-sued.html">widget guide</a> explains why an overlay cannot fix this class of problem for you (a widget cannot rewrite your stock dots). But forget the legal argument for a moment: this is a conversion problem. Every ambiguous status color is a customer who hesitates, misreads, or gives up. Adding three words next to a dot is not compliance work — it is telling every customer, in plain language, whether they can buy the thing. The accessible version is also the clearer version for the other eleven out of twelve.</p>
+
+      <h2>The bottom line</h2>
+      <p>Color is decoration until it carries meaning — and the moment it does, it needs a partner. Words, icons, underlines, patterns: pick whichever fits the spot, and make sure the page still makes sense in black and white. Two minutes with a grayscale filter tells you where you stand; the fixes are the cheapest accessibility work on your whole site.</p>
+      <p class="meta">The "color alone" rule is WCAG success criterion 1.4.1, described here as mechanics. The prevalence figure is the widely published rough rate for red-green color vision deficiency (~1 in 12 men, ~1 in 200 women); no site-specific impact figures are claimed. The grayscale test is a practitioner heuristic — it finds problems cheaply but does not certify compliance. Fixes are maintenance judgment, not measured prescriptions.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. About ten seconds later you get the plain-English verdict on your site's accessibility — including the easy-to-miss failures like color-only meaning.</p>
+        <a class="toolbtn" href="../accessibility.html">Run the free accessibility check</a>
+      </div>    <div class="cta">
+      <h2>Accessibility is check #9 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 trust signals — speed, security, email, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_a11y" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+color-blind+customers+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
