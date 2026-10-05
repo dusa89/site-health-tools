@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do You Have Pages on Your Website Nobody Can Find?</title>
+<meta name="description" content="Some of your pages load perfectly fine — and nobody ever visits them. Not broken links: pages nothing on your site links to. What orphan pages are, how to find yours, and the fix that costs nothing.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do You Have Pages on Your Website Nobody Can Find?</h1>
+    <p class="lede">You paid for the page. Your web person built it, you approved the wording, and it is sitting on your website right now. But nobody visits it — not because it is broken, because it loads fine. It is because nothing on your website links to it: not the menu, not the homepage, not any other page. There is simply no path to it. These are called orphan pages, and nearly every small-business website that has been around a few years has some.</p>
+    <div class="article">
+
+      <p>If you have read our <a href="why-do-the-links-on-my-website-keep-breaking.html">guide on why links keep breaking</a>, this is the same problem seen from the other side of the mirror. That guide is about links that point at dead addresses. This one is about live addresses that no link points at. Both are invisible from the inside — your site looks fine to you either way — and this one is, if anything, easier to miss, because there is no error page to stumble over. The page works. It is just unreachable.</p>
+      <p><strong>The short answer:</strong> make a list of every page on your site, then check that each one can be reached by clicking from your homepage in 2 or 3 clicks. The pages you cannot reach are your orphans. Link the ones that matter from a real page or your menu; merge or delete the ones that are not worth a single link. Twenty minutes with your page list fixes years of quiet invisibility.</p>
+
+      <h2>What an orphan page looks like in real life</h2>
+      <p>They are never labeled. They look like normal pages, because they are. The usual suspects:</p>
+      <p><strong>The new service page that never made the menu.</strong> You added drain cleaning to your services, your web person published the page, and nobody added it to the navigation. It exists. The only way to reach it is typing the address directly — which no customer does.</p>
+      <p><strong>The campaign page.</strong> A landing page built for last year’s special offer, or for an ad campaign that ended. The ads stopped, the one link that ever pointed at it (the ad) is gone, and the page sits there, unlinked and unvisited.</p>
+      <p><strong>The page that lost its only link.</strong> Your testimonials page was linked from exactly one place — the old homepage layout. The redesign dropped that link. The testimonials page survived the redesign; its doorway did not.</p>
+      <p><strong>The uploaded file.</strong> A PDF menu, a price list, a brochure — uploaded to the site and linked once from an email or a social post, never from the website itself. Anyone who finds the old email can open it. Nobody browsing your site can.</p>
+
+      <h2>How pages get orphaned</h2>
+      <p><strong>Redesigns.</strong> The most common cause. A new menu gets built from scratch, and pages that were one click away in the old menu never get re-added. Our <a href="why-do-the-links-on-my-website-keep-breaking.html">broken-links guide</a> covers what redesigns do to links; this is what they do to pages.</p>
+      <p><strong>Publishing without navigating.</strong> Most platforms let you publish a page in two clicks. Adding it to the menu is a separate step, in a separate screen, that is easy to forget — especially when you publish in a hurry.</p>
+      <p><strong>Deleting the linker.</strong> Page A is only linked from page B. Page B gets deleted in a cleanup. Page A is now an orphan, and nothing about deleting B warned you.</p>
+
+      <h2>Why it costs you: humans and Google both travel by links</h2>
+      <p>Customers do not type web addresses. They click — the menu, a button, a link inside a paragraph. A page with no inbound links gets no human traffic, period, except from people who already know the exact address. That new service page you are proud of is, for all practical purposes, not on your website.</p>
+      <p>Google has the same constraint, mechanically. It discovers new pages by following links from pages it already knows about. A page that nothing links to is hard for it to find, tends to be crawled rarely, and often never gets indexed at all — which means it cannot show up in search results no matter how good its content is. (There is a search-engine side to link problems generally — our <a href="do-broken-links-hurt-seo.html">guide on broken links and rankings</a> covers the dead-link half of it.)</p>
+      <p>Note what this means for the check: a dead-link scan cannot find orphans. Our <a href="../broken-links.html">free broken-link checker</a> finds links that point at dead addresses — the opposite problem. Finding orphans takes a different method, and it is manual. Here it is.</p>
+
+      <h2>How to find your orphans: the list-compare</h2>
+      <p><strong>1. Get the full list of your pages.</strong> Your platform has a Pages list — WordPress, Shopify, Squarespace, and Wix all do. Most also generate a sitemap file automatically (usually at <em>yoursite.com/sitemap.xml</em>), which is the same list in a form Google reads. Either one works.</p>
+      <p><strong>2. For each page, ask: can I reach this by clicking from my homepage?</strong> Not by typing, not by searching — by clicking, the way a customer would. Two or three clicks deep is fine; a service page under a Services menu counts as reachable. The pages you cannot reach by clicking are your suspects.</p>
+      <p><strong>3. Cross-check with Google Search Console.</strong> It is free and a one-time setup, and its coverage report shows which of your pages Google has actually indexed. A page you care about that Google has never indexed is your priority orphan — it is invisible in search as well as in navigation.</p>
+      <p>Twenty minutes, one list, honest answers. Most owners find between 2 and 10 orphans on the first pass — pages they paid for and forgot.</p>
+
+      <h2>The fix, in order</h2>
+      <p><strong>1. Link what matters.</strong> The orphan that deserves visitors gets a real link: add it to the menu, or link it from the page a customer would naturally come from (the drain-cleaning page gets a link from the Services page and the homepage services list). One good link from a page people actually visit is worth more than ten footer links.</p>
+      <p><strong>2. Merge or delete what does not.</strong> Here is the honest test: if a page is not worth one link from your own site, it is probably not worth keeping. Fold its content into a live page, or delete it. A smaller site where every page is reachable beats a bigger site full of invisible pages.</p>
+      <p><strong>3. Put new pages on a leash.</strong> The cheapest fix is procedural: every time a page is published, adding it to the navigation (or deliberately deciding it is a campaign page with an end date) becomes part of publishing — not a separate step to remember later. Campaign pages get an end-of-life decision at birth: what happens to this page when the campaign ends.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t bury it in the footer.</strong> A footer crammed with 40 tiny links is where pages go to feel linked without being found. Almost nobody clicks footer links; adding your orphan there checks a box and changes nothing.</p>
+      <p><strong>Don’t rent traffic for a free problem.</strong> Buying ads to an orphan page is paying monthly for visitors to a page you could connect to your site once, for free. Fix the link first; advertise second.</p>
+
+      <h2>The bottom line</h2>
+      <p>Every page you paid for should be reachable — by your customers, clicking, and by Google, following links. The orphan check is the list-compare: every page on the list, reachable in a few clicks from the homepage. Link what earns a link, merge or delete the rest, and make navigation part of publishing so new orphans stop being born. It is the quietest cleanup on this site, and one of the highest-return.</p>
+      <p class="meta">Orphan pages and link-based discovery are described here as mechanics of how websites work, not measured prescriptions. No visitor counts, percentages, or revenue figures are claimed — only your own analytics can show what an unlinked page was costing you. Platform features are described generically; menu names change, so use each platform’s help search rather than memorizing locations.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address — about ten seconds later you get every dead link on your own pages. Then run this guide’s list-compare for the opposite problem: the live pages nothing links to.</p>
+        <a class="toolbtn" href="../broken-links.html">Run the free broken-link check</a>
+      </div>    <div class="cta">
+      <h2>Broken links are check #14 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 trust signals — speed, security, email, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_links" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+orphan+pages+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
