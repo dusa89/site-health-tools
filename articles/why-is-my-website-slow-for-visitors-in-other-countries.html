@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Is My Website Slow for Visitors in Other Countries?</title>
+<meta name="description" content="Your site loads in 1 second for you but takes 5+ seconds for customers overseas. The cause is geography, not your code — and a CDN is the fix. How to diagnose distance-based slowness in 10 minutes.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Is My Website Slow for Visitors in Other Countries?</h1>
+    <p class="lede">Your site loads in about a second for you. But a customer in another country waits 4, 5, sometimes 8 seconds — and never comes back. This is not a bug in your site. It is physics: your server is here and your visitor is there, and every byte has to cross the distance between them. The good news: it is the most fixable speed problem on this whole site, and the fix is free.</p>
+    <div class="article">
+
+      <p>If your site is fast for you but slow for your customers, there are two completely different causes — and this guide is about only one of them. The other cause is <strong>your own connection lying to you</strong> (you test on fast home wifi while customers are on phones) — we cover that in <a href="why-is-my-website-fast-for-me-but-slow-for-customers.html">why your site is fast for you but slow for customers</a>. <strong>This guide is about distance:</strong> your site is fast for everyone near you and slow for everyone far away. If that pattern matches, the problem is geography, not your code — and a CDN is the fix.</p>
+      <p><strong>The short answer:</strong> if your site is fast for visitors near you and slow for visitors far away, the problem is geography, not your code. Your server sits in one place; visitors in other countries wait for every request to travel there and back. A CDN (content delivery network) keeps copies of your site on servers around the world so visitors load it from the nearest one. One real-world measurement: a server in Virginia answered in 22ms locally but took 380ms from Lagos — a 17x gap caused by distance alone (BlazingCDN, 2026 diagnostic). Test your own site from a faraway location first, then read on.</p>
+
+      <h2>First: prove it is geography, not your site</h2>
+      <p>Before touching anything, run the 10-minute diagnosis. Speed problems have many causes (big images, slow hosting, bad plugins) — this test tells you whether <em>distance</em> is the one. You need your site to be fast from one place and slow from another:</p>
+      <ol>
+        <li><strong>Check where your visitors actually are.</strong> In your analytics, look at the locations report. If you have meaningful traffic from other countries or continents — even 10% — geography is on the table.</li>
+        <li><strong>Test from a faraway location.</strong> Use a free tool that lets you pick the test region (WebPageTest and GTmetrix both offer test locations — run the same page from a location near you and one near your faraway visitors). Do not compare your home-wifi load to a faraway test; compare two server-side tests, one near, one far.</li>
+        <li><strong>Read the pattern.</strong> Fast near you, slow far away = distance. Slow everywhere = something else (see our articles on image size, hosting, and plugin bloat).</li>
+      </ol>
+      <p>That pattern — fast nearby, slow far — is the fingerprint of distance. No amount of optimizing your images will fix it, because the slowness is not in your files. It is in the ocean between your server and your visitor.</p>
+
+      <h2>Why distance slows everything down</h2>
+      <p>Every time someone opens your site, their browser sends requests to your server and waits for answers. The waiting time for one round trip is called latency, and it is set by distance: signals travel fast, but continents are big. Real-world numbers from 2026: median response times around 18–25ms in Western Europe, 40–90ms in Southeast Asia, and 120–240ms in Sub-Saharan Africa for the same kind of request (BlazingCDN, Q1 2026). And a page load is not one request — it is dozens. If each round trip takes 300ms instead of 25ms, and your page needs 30 of them, distance alone added 8 seconds.</p>
+      <p>This is also why the numbers feel unfair: a one-second load becoming five seconds raises the bounce rate by about 90% (Google research, via BlazingCDN, 2026). Your faraway visitors are not impatient — your site is genuinely, measurably slower for them.</p>
+
+      <h2>The fix: a CDN keeps a copy near your visitor</h2>
+      <p>A CDN (content delivery network) stores copies of your site's files — images, stylesheets, scripts — on servers all over the world, called edge servers. When someone in another country opens your site, they get the files from the nearest edge server instead of your original server. The ocean crossing disappears.</p>
+      <p>The difference is dramatic and well-measured: without a CDN, intercontinental requests run 200–300ms or more; with edge-cached content, the same requests run 20–50ms (Medium explainer, November 2025). Well-run CDN setups target sub-25ms median response times on the same continent and under 80ms across continents for cached content (BlazingCDN FAQ, 2026). And here is the part that surprises people: <strong>a CDN is free to start.</strong> Cloudflare's free plan includes CDN service — you point your domain at it, and your static files start serving from the nearest edge server. No new hosting, no rebuild, no code changes.</p>
+
+      <h2>What a CDN does <em>not</em> fix</h2>
+      <p>Honest scope, because this article would be a lie without it:</p>
+      <ul>
+        <li><strong>Things that are not cached.</strong> A CDN speeds up the files it stores (images, CSS, JavaScript). Anything it has to fetch fresh from your server every time — logged-in pages, shopping carts, search results — still crosses the ocean. Those stay slow unless the underlying app is fast. Aim for a cache-hit ratio above 90% for your static content (BlazingCDN FAQ, 2026); the misses are where distance still bites.</li>
+        <li><strong>A bloated or slow site.</strong> A CDN makes a lean site fast everywhere. It makes a bloated site slightly less slow everywhere. Fix the big images and the heavy plugins first — distance multiplies whatever your page already weighs.</li>
+        <li><strong>A slow origin server.</strong> Making your server bigger does not fix distance — an uncached request still travels the full path (BlazingCDN FAQ, 2026). The CDN handles distance; your hosting handles the requests the CDN cannot cache. They are two different jobs.</li>
+      </ul>
+
+      <h2>What to ask your developer (copy-paste)</h2>
+      <p>If you have someone who looks after your site, send them this:</p>
+      <blockquote>"Our site is fast for local visitors but slow for visitors in [countries from your analytics]. I'd like us to (1) put the site behind a CDN — Cloudflare's free plan includes one — (2) confirm our cache-hit ratio is above 90% for static content, and (3) re-run the speed test from a test location near our faraway customers to confirm the improvement. If dynamic pages are still slow for them, let's talk about what can't be cached."</blockquote>
+      <p>No developer? Cloudflare's setup is designed for non-technical site owners: change your domain's nameservers to theirs, and the CDN starts working. Your host's help docs will walk you through it in about 20 minutes.</p>
+
+      <h2>The bottom line</h2>
+      <p>Slow-for-faraway-visitors is the most diagnosable speed problem there is: test near vs far, and the pattern tells you the answer in 10 minutes. If distance is the cause, a CDN — free to start — is the fix, and it is the rare speed fix that requires no redesign, no rebuild, and no code. Your faraway customers were never impatient. They were just far away.</p>
+      <p class="meta">Numbers cited: Virginia–Lagos latency gap and 2026 regional medians via BlazingCDN (2026); CDN vs no-CDN timings via Medium explainer (November 2025); edge-cache targets and 90%+ cache-hit-ratio guidance via BlazingCDN FAQ (2026); 1s&rarr;5s bounce research via Google, cited by BlazingCDN (2026). Cloudflare free-plan CDN is a longstanding product fact. Figures describe industry measurements, not guarantees for your site — run the near-vs-far test above for your own numbers.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free speed check measures your site from our test location — for the full geography picture, pair it with a far-region test from WebPageTest or GTmetrix as described above. Takes about 10 seconds, no signup.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Site speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's speed alongside all 40 trust signals — speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=I+read+your+guide+on+why+my+site+is+slow+for+visitors+in+other+countries+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
