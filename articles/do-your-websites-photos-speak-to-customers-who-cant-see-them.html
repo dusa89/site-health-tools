@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do Your Website’s Photos Speak to Customers Who Can’t See Them?</title>
+<meta name="description" content="Every photo on your website has a short text description — or it does not. Screen readers read that description aloud; Google uses it to understand the photo. What happens when it is missing, the file-name problem, and the 10-minute fix for your money photos.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do Your Website’s Photos Speak to Customers Who Can’t See Them?</h1>
+    <p class="lede">Your website is full of photos — the before-and-after gallery, the team photo, the truck, the finished work. To a visitor with good vision they tell the story better than paragraphs. But some of your visitors cannot see them: screen readers read websites aloud for blind and low-vision customers, and Google reads your photos the same way — through a short text description attached to each image. If that description was never written, both of them get nothing useful. The photo you are proudest of is, to them, invisible.</p>
+    <div class="article">
+
+      <p>If you read our <a href="can-a-blind-customer-actually-use-my-website.html">guide on what blind customers experience on your website</a>, this is the photo-sized version of that problem. That guide covers how a screen reader moves through a page. This one is about the single most common thing it finds missing: the text description on each image. And if you read our <a href="will-an-accessibility-widget-stop-me-getting-sued.html">piece on accessibility widgets</a>, you already know the punchline: <strong>no toolbar adds the image descriptions you never wrote.</strong> They are not generated, not guessed, not faked by any plugin — they only exist if you put them there.</p>
+      <p><strong>The short answer:</strong> yes — to a customer who cannot see them, your photos say whatever their file names say, which is usually nothing. Write one plain sentence per photo describing what it shows and why it matters, fix the money photos first (ten minutes), and both blind customers and Google's image search can finally see your work.</p>
+
+      <h2>What a customer hears when the description is missing</h2>
+      <p>A screen reader announces each image before reading its description. With no description written, it falls back to the file name — and business owners' file names are usually things like <em>IMG_4829-final2.jpg</em> or <em>dsc_0031.png</em>. So a blind customer scrolling your gallery hears, over and over: “image, IMG_4829-final2” — “image, dsc_0031” — “image, photo-3”. That is not an inconvenience; it is the whole point of the gallery, gone. The before-and-after that sells your work, the portfolio that proves you show up — none of it exists for this visitor.</p>
+      <p>With one plain sentence per photo, the same gallery becomes: “image, before and after of the oak kitchen cabinet refinishing we completed in March”. Now the customer is getting what everyone else gets. That is all the fix is — sentences. No redesign, no new photos, no developer.</p>
+
+      <h2>What Google hears is the same thing</h2>
+      <p>Google's crawlers cannot see your photos either. They read the same text description, plus the file name, plus the words around the photo. This is how photos end up in Google Images results — and Google Images is a quieter but real source of customers, especially for visual trades: flooring, remodeling, landscaping, auto detailing, hair. A search for a specific finish or style can surface your photo before your homepage.</p>
+      <p>But the mechanism cuts both ways. A photo with a good description and a descriptive file name is findable. A photo with <em>IMG_4829.jpg</em> and an empty description is a sealed box — Google knows there is an image and nothing more. The work in the photo might be exactly what a searcher wants; Google will never make the connection.</p>
+
+      <h2>The 2-minute self-test</h2>
+      <p>You do not need any tools. Open any page of your website, right-click an image, and look for an “inspect” option — the code panel will show something like <em>alt="..."</em> next to the image. If it is empty or missing, there is no description. Check three images: your homepage hero photo, one service-page photo, and one gallery photo. Most small-business owners find all three empty — because the description is not the photo, it is a text field, and nobody ever mentioned it at upload time. (If the words themselves are hard to read rather than the photos, that is a different fix — our <a href="can-my-customers-actually-read-my-website.html">readability guide</a> covers contrast and text size.)</p>
+      <p>Every platform has the field. WordPress shows an “Alt Text” box every time you upload an image. Shopify, Squarespace, and Wix each have their own version of it in the image settings. It was there when you uploaded every photo on your site. It is still there now — you can go back and fill it in without re-uploading anything.</p>
+
+      <h2>What a good description actually looks like</h2>
+      <p>One plain sentence: what the photo shows, plus why a customer cares. “Two-car garage floor coated in gray epoxy with a flake finish, completed last spring” beats every alternative. A few rules that cover nearly every photo:</p>
+      <p><strong>Do not start with “image of” or “picture of.”</strong> The screen reader already says “image” before reading your text. “Image of a kitchen” becomes “image, image of a kitchen.”</p>
+      <p><strong>Decorative images get an empty description — on purpose.</strong> The flourish under the headline, the background pattern, the icon next to the bullet point: if removing the image would change nothing about the message, set the description to nothing at all (an empty <em>alt=""</em>). That tells screen readers to skip it instead of announcing a meaningless file name. Decoration should be silent, not noise.</p>
+      <p><strong>Do not stuff keywords.</strong> Twelve photos all described as “plumber dallas tx best plumber dallas” is the oldest trick on the internet — Google treats it as spam, exactly like the keyword-stuffing era, and screen-reader users hear the same junk phrase twelve times. Describe the photo; the keywords take care of themselves.</p>
+      <p><strong>Do not copy the caption.</strong> If the photo has a visible caption underneath (“Our crew at the Johnson job”), the description should say what the caption does not — what is actually in the frame. Otherwise the screen reader reads the same line twice.</p>
+
+      <h2>Fix the money photos first</h2>
+      <p>You do not need to describe all 200 photos this weekend. Rank by money: the homepage hero image, the photos on your highest-traffic service pages, the product or portfolio photos a customer looks at right before contacting you. That is usually five to ten photos — about ten minutes of writing, and you have covered the images that matter. The rest get described whenever you touch those pages again. This is maintenance, not a project.</p>
+      <p>And rename the file while you are at it — or at least for new uploads. <em>garage-floor-epoxy-gray.jpg</em> is worth more than <em>IMG_4829.jpg</em> to both audiences. You cannot always rename old files cleanly on every platform, so treat this as a going-forward rule: descriptive file names from today, descriptions on the money photos this week.</p>
+
+      <h2>The bottom line</h2>
+      <p>Your photos do some of the hardest selling on your site — the proof of work, the quality of the finish, the face behind the business. Every photo without a description is that selling invisible to two audiences at once: customers who navigate by ear, and the search engine that cannot see images at all. The fix is one sentence per photo, starting with the five to ten that bring in money. Ten minutes, no tools, no redesign — and your photos finally speak for themselves, to everyone.</p>
+      <p class="meta">Descriptions are described here as mechanics — what screen readers announce, what search engines can read, where the field lives on each platform. No visitor counts, percentages, or revenue figures are claimed; the size of the effect varies by site. WCAG guideline 1.1.1 (non-text content) is the standard behind this; menu names change across platforms, so use each platform’s help search for “alt text” rather than memorizing locations.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>This guide is about the photos some of your visitors cannot see. There is a matching problem with the pages none of your visitors can reach — dead links your own site never shows you. Paste your website address and get every dead link on your own pages in about ten seconds.</p>
+        <a class="toolbtn" href="../broken-links.html">Run the free broken-link check</a>
+      </div>    <div class="cta">
+      <h2>Accessibility is check #9 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 trust signals — speed, security, email, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_a11y" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+image+descriptions+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
