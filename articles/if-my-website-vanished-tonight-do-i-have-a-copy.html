@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>If My Website Vanished Tonight, Do I Actually Have a Copy?</title>
+<meta name="description" content="Your host says it backs up your site. That is not the same thing as you having a copy. What a real backup is, the download-and-open test, and the infected-backup trap that re-hacks restored sites.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>If My Website Vanished Tonight, Do I Actually Have a Copy?</h1>
+    <p class="lede">Right now, your website exists in exactly one place: your hosting account. If that account vanished tonight — hacked, suspended, or the host's own disaster — could you put your site back up tomorrow? Most small businesses answer "my host backs it up" and stop thinking. Here is why that is not an answer, what a real backup actually is, and the two tests that prove yours works.</p>
+    <div class="article">
+
+      <p>First, what this guide is <em>not</em>: it is not about cleaning up a hacked site (see our <a href="what-should-i-do-if-my-website-gets-hacked.html">hacked-site guide</a>) and it is not about whose job security is (see <a href="who-is-responsible-for-my-websites-security.html">the responsibility guide</a>). <strong>This guide is about the copy</strong> — whether a working version of your website exists anywhere you control, and how to make sure it does.</p>
+      <p><strong>The short answer:</strong> a real backup is a copy of your site's files AND its database, stored somewhere you control, that you have personally downloaded and opened. Most businesses have none of those four things. The host's snapshot is a convenience, not a backup — and a backup you have never opened is a hope.</p>
+
+      <h2>The one question that settles it</h2>
+      <p>Forget everything about backup software for a minute. Answer this: if your hosting account disappeared tonight — not the website, the <em>account</em> — where would you get your website back from?</p>
+      <p>If your honest answer is "from my host," you do not have a backup. You have a feature of the thing you lost. When an account is suspended, cancelled, or caught in the host's own outage, its snapshots go with it. The host's backup exists for the host's convenience — quick restores when <em>their</em> systems glitch — and it can be unreachable exactly when you need it most. A backup only counts when it lives somewhere the disaster cannot reach.</p>
+
+      <h2>What a real backup actually contains</h2>
+      <p>A small-business website has two halves, and a backup missing either one does not restore:</p>
+      <p><strong>1. The files.</strong> Your theme, your plugins, your uploaded photos and documents — everything in the site's file folders. This is the part most people picture.</p>
+      <p><strong>2. The database.</strong> Your pages, posts, products, orders, and customer records. On the systems most small sites run on, all of that lives in a database, not in files. A "backup" of files alone restores a beautiful empty shell — your content, your orders, your customers are in the database.</p>
+      <p>This is the first test your current setup probably fails: ask whoever set up your backups whether the database is included and whether the copy is full (not incremental-only, where one corrupt link in the chain kills the whole restore). If they hesitate, you have your answer.</p>
+
+      <h2>The download-and-open test (two minutes, settles everything)</h2>
+      <p>Here is the whole discipline in one habit: <strong>download one backup yourself and open it.</strong> Not "trust the dashboard says backup complete" — download the file to your own computer and try to open it.</p>
+      <p>Why this matters: files corrupt silently. A backup job can report success for months while writing broken archives, and you find out during the disaster — the single worst moment to discover it. A downloaded zip you can open and peek inside is proof. A green checkmark in a dashboard is a promise. Keep the download somewhere off the host: your computer, an external drive, a cloud folder — anywhere the hosting account's fate does not decide.</p>
+      <p>Do this once and you will know more about your actual backup situation than most businesses ever learn. Do it every few months and the habit does the worrying for you.</p>
+
+      <h2>The trap: restoring an infected backup re-hacks you</h2>
+      <p>This is the mistake that turns one disaster into two. Your site gets hacked. You restore last week's backup. The site is clean for a day — then the hack is back. What happened: last week's backup was taken <em>after</em> the attacker got in. You restored the attacker along with your content.</p>
+      <p>The rule is simple and non-negotiable: <strong>clean first, restore second</strong> — or restore to a copy from before the breach. Keep more than one generation of backups precisely for this: if the newest copy is infected, you need an older clean one to fall back to. Two or three generations, rotated, beats one "latest" copy every time.</p>
+      <p>And if you do not know when the breach happened, assume the newest copy is suspect. That is exactly the situation multiple generations exist for.</p>
+
+      <h2>How often should it run?</h2>
+      <p>Not a technical question — a business one. Ask yourself: how much of my own work am I willing to redo by hand if tonight's copy is the last one?</p>
+      <p>A shop that takes online orders daily has a different answer than a brochure site touched twice a year. Daily edits want daily copies; a static site can go longer. The wrong answer is not "weekly" or "monthly" — it is the interval you chose by never choosing. Pick the interval by the work, write it down, and the backup schedule stops being something you think about.</p>
+      <p>One more mechanical note: automated beats manual every time. A backup that runs itself at 2 a.m. happens; a backup you meant to click "run" on does not. Whatever tool your host or your site software offers for scheduled backups, turn it on — then keep the download-and-open habit as the proof it works.</p>
+
+      <h2>What to ask your host or developer this week</h2>
+      <p><strong>1. "If my account were gone tomorrow, where is my site's copy?"</strong> The acceptable answers name a place you control. "Our snapshots" is not one.</p>
+      <p><strong>2. "Does the backup include the database, and can I download a full copy?"</strong> Both halves, downloadable, or it does not count.</p>
+      <p><strong>3. "How many generations do you keep, and for how long?"</strong> You want enough history to step back past a breach — not a single "latest."</p>
+      <p><strong>4. "Has a restore from this backup ever actually been tested?"</strong> Their answer to this one tells you everything about their confidence.</p>
+
+      <h2>The bottom line</h2>
+      <p>Backups are not a technical chore — they are the answer to one question: where does my website live besides my hosting account? A real answer has four parts: files plus database, stored where you control it, more than one generation deep, and opened by you at least once. The host's snapshot is a convenience. Your own downloaded copy is the backup. Two minutes to download and open it is the cheapest insurance your business will ever buy.</p>
+      <p class="meta">Backup mechanics are described here as how website copies work, not measured prescriptions. No visitor counts, percentages, breach statistics, or revenue figures are claimed. Retention windows and snapshot behavior vary by host — verify yours directly.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Hacked, suspended, or just gone — the free security check reads your site’s live signals and tells you, in plain English, where you stand. Ten seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free Security posture check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's security posture alongside all 40 trust signals — speed, email, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+website+backups+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
