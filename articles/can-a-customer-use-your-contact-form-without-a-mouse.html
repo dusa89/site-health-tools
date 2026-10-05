@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can a Customer Use Your Contact Form Without a Mouse?</title>
+<meta name="description" content="Your contact form is the money page — and it quietly fails for keyboard-only and screen-reader customers. The plain-English accessibility guide: the 2-minute Tab-key self-test, the 3 fixes (real labels, visible focus, errors that name the field), and the autofill bonus every visitor gets.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Can a Customer Use Your Contact Form Without a Mouse?</h1>
+    <p class="lede">Your contact form is the page your whole website is trying to get somebody to. Every service page, every ad, every Google listing ends there — at the quote request, the booking form, the "get in touch" button. Now imagine the customer who can't use a mouse: an injury, a tremor, a screen reader, or just a power user who never touches one. They land on your form, press Tab, and… nothing makes sense. The fields have no names. The cursor they can't see has gone somewhere they can't find. The form errors out in red with no explanation. They close the tab, and that quote request never arrives. You never find out. The good news: this is one of the easiest accessibility problems to fix on the whole site, and fixing it also makes the form better for every single visitor — including the ones on phones.</p>
+    <div class="article">
+
+      <p>If you're wondering <em>why</em> accessibility matters beyond forms, read our <a href="can-a-blind-customer-actually-use-my-website.html">plain-English guide to screen-reader users</a> first — this guide is the other half: the one page where accessibility directly decides whether you get the lead. And if you want the legal side of the question, our <a href="can-my-website-get-me-sued.html">guide to accessibility lawsuits</a> explains who actually gets sued and why.</p>
+      <p><strong>The short answer:</strong> your form needs three things — every field needs a <em>real, permanent label</em> (not gray placeholder text that vanishes), every focused field needs to <em>visibly show</em> it's focused, and every error needs to <em>name the field and say how to fix it</em>. Test it in 2 minutes with nothing but your Tab key (instructions below). Our <a href="../accessibility.html">free accessibility check</a> looks at your site the way a tester's software would and tells you what's missing in plain English.</p>
+
+      <h2>The 2-minute self-test (no tools, no account)</h2>
+      <p>Go to your contact form right now and try this:</p>
+      <ul>
+        <li><strong>1. Put your mouse down.</strong> Seriously — hands off it. Press <strong>Tab</strong>. Then Tab again. Keep going through the whole form.</li>
+        <li><strong>2. Watch for the highlight.</strong> Each press should move you to the next field, and you should be able to <em>see</em> which field you're on — a colored outline, a bold border, something. If you lose track of where you are, your keyboard customers are lost too.</li>
+        <li><strong>3. Read each field's name out loud.</strong> "Name, email, message" — every field should announce a clear name. If the only "name" is the gray placeholder text inside the box, it fails: placeholder text vanishes the moment someone starts typing, and screen readers often skip it entirely.</li>
+        <li><strong>4. Submit the form empty.</strong> Submit it with nothing filled in. Does the error say <em>which</em> fields are wrong and <em>what to do</em> ("Email is required — enter your email address")? Or does it just turn a box red and leave you guessing?</li>
+      </ul>
+      <p>If your form passes all four, you're ahead of most small-business sites. If it fails even one, the fixes below are the entire repair — and they're the kind of thing a web person does in an afternoon, not a rebuild.</p>
+
+      <h2>Fix 1: every field gets a real label</h2>
+      <p>The most common failure on small-business forms is the placeholder-as-label: the gray text inside the field (<em>Your name…</em>, <em>Email…</em>) is doing the job of a label. It's pretty, and it's broken three ways. First, it disappears the second someone types, so anyone who gets distracted mid-form forgets what the field was for. Second, many screen readers skip placeholder text, so a blind customer hears just "edit box, edit box, edit box" — three identical boxes with no names. Third, the gray-on-white text is often too faint to read comfortably, which costs you sighted visitors too.</p>
+      <p>The fix: put a permanent label <em>next to</em> (above or beside) every field — "Your name", "Email address", "What do you need?" — and tie it to the field properly (your web person knows the one-line change; ask for "a real label element on every input"). Keep the placeholder text too if you like how it looks — it can stay as a <em>hint</em> ("e.g. name@company.com"). Label names the field; placeholder hints at the format. Two jobs, two pieces of text.</p>
+
+      <h2>Fix 2: the focus you can see</h2>
+      <p>When a keyboard user presses Tab, the site is supposed to show a visible marker on whatever they're on — a colored ring or outline around the field. Here's the trap: some site themes deliberately <em>remove</em> that outline because the designer thought it was ugly. It looked cleaner. It also made the site unnavigable by keyboard, because without the marker, tabbing through the page is walking through a dark room.</p>
+      <p>The fix is one line of styling, and the good version is actually <em>better</em> looking than nothing: a clear, on-brand colored outline around the focused field. (Ask your web person for a "visible focus style on all form fields" — and tell them not to just delete the default outline; replace it with something that matches your site.) This one fix doesn't just help keyboard users — it helps everyone on a phone with an external keyboard, a tablet, or a smart TV browser. All of them Tab.</p>
+
+      <h2>Fix 3: errors that name the field and the fix</h2>
+      <p>The red-box error is the accessibility failure hiding in plain sight. The form rejects something, a box turns red, and the customer is left to guess: <em>which</em> field is wrong, and <em>what</em> exactly does it want? A red outline communicates one bit of information — "something is wrong somewhere" — and it communicates it in a color some of your customers can't distinguish (roughly 1 in 12 men has some form of color-vision deficiency, and "the red one" means nothing to them).</p>
+      <p>The fix is words, not colors: every error should say the field's name and the required fix — "Phone number is required — enter a 10-digit phone number" — placed right next to the field it describes, plus a one-line summary at the top of the form for people who submit from the bottom. This helps your sighted, mouse-using customers too: nobody has ever been frustrated by an error message that told them exactly what to do.</p>
+
+      <h2>The bonus: fixing this makes the form better for everyone</h2>
+      <p>Here's the part nobody expects. The same changes that fix keyboard accessibility also fix the form for your <em>ordinary</em> visitors:</p>
+      <ul>
+        <li><strong>Autofill starts working.</strong> When fields are properly labeled with their purpose (name, email, phone), browsers and phones offer to fill them in automatically — one tap instead of ten keystrokes on a phone keyboard. Unlabeled fields defeat autofill, and every keystroke on a phone is a chance to abandon the form. This alone is worth the fix.</li>
+        <li><strong>Errors stop costing you leads.</strong> The customer who gets a clear "enter a 10-digit phone number" fixes it and submits. The customer who gets a red box goes to a competitor. Clear errors are a conversion fix wearing an accessibility costume.</li>
+        <li><strong>Every customer gets the same form.</strong> There is no separate "accessible version" to maintain, no plugin to buy, no second codebase. One good form serves the keyboard user, the screen-reader user, the phone user, and the power user — which is why this is the highest-leverage accessibility fix on a small-business site.</li>
+      </ul>
+
+      <h2>What about the rest of the site?</h2>
+      <p>The form is the money page, so it goes first — but the same three principles run everywhere: labels on everything clickable, visible focus on every interactive element, and feedback in words rather than colors alone. Our <a href="../accessibility.html">free accessibility check</a> scans your site the way a tester's software would and reports what's missing in plain English, with the evidence for each finding. And if the legal question is on your mind, the <a href="can-my-website-get-me-sued.html">lawsuit guide</a> covers which businesses actually get demand letters — and it's rarely the ones who fixed their forms.</p>
+
+      <h2>The bottom line</h2>
+      <p>An unlabeled, unfocused, unclear form is a door that only opens for some of your customers — and you never see the ones it turned away. Tab through your own form today. If you get lost, your keyboard customers are lost, and the fix is three small changes, not a rebuild. The forms that convert best are the forms everyone can use. That's not a coincidence.</p>
+      <p class="meta">No statistics are cited in this guide: form-failure rates vary wildly by site and no honest industry-wide figure exists for small-business forms. The fixes above are interface mechanics (labels, focus styles, error text) and maintenance judgment, not measured prescriptions — run the 2-minute Tab test on your own form and let what you find set your priority.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>About 10 seconds, no signup — our free check scans your site the way a tester's software would and reports what's missing in plain English, with the evidence for each finding.</p>
+        <a class="toolbtn" href="../accessibility.html">Run the free accessibility check</a>
+      </div>    <div class="cta">
+      <h2>Accessibility is check #9 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 trust signals — speed, security, email, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_a11y" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+a+customer+can+use+your+contact+form+without+a+mouse+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
