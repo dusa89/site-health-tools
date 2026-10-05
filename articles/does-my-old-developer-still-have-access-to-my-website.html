@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does My Old Developer Still Have Access to My Website?</title>
+<meta name="description" content="The project is over but the keys are still in his pocket. The accounts to check — website admin, hosting, domain, email, Google, payments — and how to take them back without a fight.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Does My Old Developer Still Have Access to My Website?</h1>
+    <p class="lede">The website works, the invoice is paid, and you parted on decent terms. Then one evening it hits you: somewhere out there is a list of logins you never got back. This is not a betrayal story. Nobody stole anything. It is just what happens when a handoff ends without a checklist — the keys stay in the other guy's pocket, and nobody notices until something goes wrong.</p>
+    <div class="article">
+
+      <p><strong>The short answer:</strong> assume yes until you check. Most web projects end with the developer holding logins to half a dozen accounts in your name — and most owners never ask for them back, because asking feels awkward and the site works fine either way. The fix is not a confrontation. It is a checklist, done once, in an afternoon.</p>
+
+      <h2>The keys he probably still holds</h2>
+      <p>A typical build hands a developer access to far more than the website itself. Walk through these and mark the ones you are not sure about:</p>
+      <ul>
+        <li><strong>Your website's admin account.</strong> In WordPress this is the Users list — anyone listed as Administrator can change anything. Old agencies often leave a spare admin account "just in case." If your developer's name is on that list, so is his key.</li>
+        <li><strong>The hosting control panel.</strong> This is the account at your web host — the place where the whole site can be copied, deleted, or pointed at a different server. Whoever can log in here can undo the website in minutes.</li>
+        <li><strong>FTP / SFTP credentials.</strong> These are file-transfer logins that bypass the website's admin screen entirely and reach the raw files. They were handed out to upload the site and are almost never revoked afterward.</li>
+        <li><strong>The domain registrar.</strong> This is the account where your domain name lives — GoDaddy, Cloudflare, Google Domains, wherever it was bought. Whoever controls the registrar controls the name itself: they can point it anywhere, let it expire, or lock you out of renewal. Of everything on this list, <em>this</em> is the one that matters most.</li>
+        <li><strong>Business email admin.</strong> If the developer set up your email, he may be the administrator on the account — which means he can reset anyone's password, including yours.</li>
+        <li><strong>Google properties.</strong> Google Analytics, Search Console, and your Google Business Profile each have their own user lists. Analytics tells you who visits; Search Console controls how Google sees the site; the Business Profile is what customers find on the map. All three can have stale owners from years ago.</li>
+        <li><strong>Social media pages.</strong> Facebook pages, Instagram business accounts, LinkedIn company pages — each with roles that survive long after the working relationship.</li>
+        <li><strong>The payment processor.</strong> Stripe, PayPal, and Square accounts have team-member lists too. A former developer with processor access can see your money movement.</li>
+        <li><strong>Email marketing and other services.</strong> The newsletter account, the review widget, the booking calendar — every service with a login is a key somebody might still hold.</li>
+      </ul>
+      <p>None of this requires malice to be a problem. An old login becomes a problem when it is phished, when a shared password leaks somewhere else, or when a well-meaning ex-helper "fixes" something he was never asked to touch.</p>
+
+      <h2>How to take them back, in order</h2>
+      <p>Do the two that can end your business first:</p>
+      <ul>
+        <li><strong>1. The registrar.</strong> Log in, confirm the account is in your name with your email and your payment method, and remove anyone else. Then turn on two-factor authentication. This is the one account that should have exactly one owner: you.</li>
+        <li><strong>2. The hosting panel.</strong> Same treatment — your name, your email, your password, two-factor on. Change any shared passwords while you are in there.</li>
+      </ul>
+      <p>Then work through the rest:</p>
+      <ul>
+        <li><strong>3. The website admin list.</strong> Log into your website as an administrator, open the Users list, and look at everyone with full admin rights. Anyone who no longer works with you gets removed — or demoted to a lower role if they still help occasionally. If he stays on call for emergencies, an editor-level account is plenty; full admin is not a standing privilege.</li>
+        <li><strong>4. Rotate the shared passwords.</strong> Every password the developer ever knew — hosting, FTP, email, services — gets changed to something new that only you know. A password is only yours if nobody else has ever seen it.</li>
+        <li><strong>5. Rotate API keys and disconnect old apps.</strong> If the site connects to other services (payment processors, email tools, calendars), check each service's list of connected apps and API keys, and revoke anything you do not recognize. This is the quiet one people miss.</li>
+        <li><strong>6. Check the email forwarding rules.</strong> This is the sneakiest item on the list: an inbox rule that silently forwards a copy of every incoming email to an outside address. It takes thirty seconds to check and it is the classic leftover. Look in your email settings for forwarding addresses and filter rules you did not create.</li>
+        <li><strong>7. Turn on two-factor everywhere.</strong> Registrar, hosting, email, payment processor, social accounts. Two-factor turns a stolen password from a break-in into a dead end.</li>
+        <li><strong>8. Write it down.</strong> One sheet — physical or digital — listing every account, who has access, and when it was last reviewed. The reason this problem recurs is that access is invisible; the list makes it visible.</li>
+      </ul>
+      <p>This is the companion piece to the <a href="should-i-give-my-web-developer-my-passwords.html">question of whether to hand passwords over in the first place</a>. And if the handoff conversation feels uncomfortable, <a href="who-is-responsible-for-my-websites-security.html">remember who owns security</a> — it was always you, and reclaiming the keys is part of the job.</p>
+
+      <h2>The conversation, if you still talk</h2>
+      <p>The easiest version of this starts while everyone is still friendly: "Send me a list of every account and login you have for us, so I can file it away." Most developers will comply happily — they do not want the keys either. The list is a liability for them too: if something breaks a year later, the ex-developer with standing access is the first suspect. Framing it as housekeeping, not suspicion, gets the job done without burning a bridge you might need later.</p>
+
+      <h2>The bottom line</h2>
+      <p>Assume your former developer still has access to everything until you have checked. Start with the domain registrar and the hosting panel — the two accounts that can end the business — then work through the website's admin list, the shared passwords, the API keys, the email forwarding rules, and two-factor everywhere. It is one afternoon, it is pure housekeeping, and it is the cheapest security upgrade your website will ever get.</p>
+      <p class="meta">Account-access procedures are described here as mechanics of how web accounts work, not professional security advice. No statistics, breach figures, or percentages are claimed — only the accounts you control are. Platform features and setting locations are described generically; use each service's help search for the current steps.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Hacked, suspended, or just gone — the free security check reads your site’s live signals and tells you, in plain English, where you stand. Ten seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free Security posture check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your security posture alongside all 40 trust signals — speed, email, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+an+old+developer+still+has+access+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
