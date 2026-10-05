@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Are Your Links Telling Customers Where They Actually Go?</title>
+<meta name="description" content="'Click here' and 'learn more' describe your mouse, not your destination. Why vague link text costs you customers, how screen readers hear it, and the five-second test that fixes it.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Are Your Links Telling Customers Where They Actually Go?</h1>
+    <p class="lede">Almost every small-business website is full of links that say “click here,” “learn more,” or “read more.” Those words describe what the customer does with their mouse — they say nothing about where the link actually goes. For customers skimming your page, for blind customers using a screen reader, and for Google, vague link text is a broken promise. Here is why it matters and how to fix it in an afternoon.</p>
+    <div class="article">
+
+      <p>First, what this guide is <em>not</em>: it is not about links that no longer work (see our <a href="broken-links-costing-customers.html">broken-links guide</a>), what belongs on your <a href="what-should-my-websites-404-page-say.html">404 page</a>, or <a href="do-you-have-pages-on-your-website-nobody-can-find.html">pages nothing links to</a>. <strong>This guide is about the words on the links that work</strong> — whether the clickable text tells the customer where the link actually goes.</p>
+      <p><strong>The short answer:</strong> "click here," "learn more," and "read more" are the most common link texts on the internet, and they are also the worst. They describe the action, not the destination. Replace them with words that name where the link goes, and every reader — human and machine — instantly understands your site better. It takes an afternoon, it costs nothing, and nobody has to touch code.</p>
+
+      <h2>The problem with "click here"</h2>
+      <p>Picture yourself reading a page about water-heater replacement. Halfway down it says: "We offer same-day installation. <a href="#">Click here</a> for details." Details of what? The installation? The pricing? A booking form? You have no idea until you click — and every uncertain click is a small tax on trust. Multiply that tax across your whole site.</p>
+      <p>The link's text is the only information the reader gets about the destination <em>before deciding to click</em>. When that text says "click here," the reader must gamble. When it says "see same-day installation details," the reader knows exactly what they are getting. Same link. Same destination. Completely different customer experience.</p>
+
+      <h2>Blind customers hear your links out of order</h2>
+      <p>This is where vague links go from annoying to exclusionary. Many blind and low-vision customers browse with a screen reader, which can jump from link to link, reading only the link text aloud. A page with ten links that all say "learn more" is heard as ten identical mysteries: "learn more... learn more... learn more." The customer cannot tell them apart without visiting each one.</p>
+      <p>That is not a rare edge case — it is how a whole category of your customers experiences your site. Descriptive link text is one of the cheapest accessibility fixes that exists: no widgets, no plugins, just better words. (For the broader accessibility picture, see our <a href="can-a-blind-customer-actually-use-my-website.html">guide to screen-reader customers</a>.)</p>
+
+      <h2>Google reads your link text too</h2>
+      <p>Search engines use link text as one signal of what the linked page is about — both for links inside your own site and links from other sites pointing at you. When your services page links to a page with the text "our water-heater replacement service," Google gets a strong hint about what lives there. When the same link says "click here," you have handed the search engine nothing to work with.</p>
+      <p>Be honest about what this means and what it does not: better link text will not teleport you to the top of Google on its own. But link text is a signal you already produce on every page — you might as well make it say something true. And descriptive internal links genuinely help customers find pages, which is the part of this you can see working immediately.</p>
+
+      <h2>The five-second test</h2>
+      <p>Here is the whole discipline in one test. List every link on your homepage — your browser can do this, or there are free "list all links" tools — and read <em>only the link texts</em>, without the surrounding sentences. Score each one:</p>
+      <p><strong>1. Does it make sense alone?</strong> If "learn more" only makes sense next to the sentence above it, it fails. A good link — "download the 2026 price list" — is clear even if you read it with no context at all.</p>
+      <p><strong>2. Is it a verb plus an object?</strong> "See the price list," "book a free estimate," "read the roof-warranty guide." Verb tells the customer what happens; object tells them what they get. "Click here" fails because the verb is about their mouse, not your service.</p>
+      <p><strong>3. Would ten of them in a row still make sense?</strong> This is the screen-reader test. If you listed all your links and they all read differently and clearly, you are done. If they collapse into a chorus of "learn more," your customers cannot tell them apart either.</p>
+      <p>Run this on your homepage and your top three service pages. Most owners finish the test with a list of thirty or more links to rewrite — and rewriting is the easy part.</p>
+
+      <h2>How to rewrite them (the pattern)</h2>
+      <p>The fix is embarrassingly simple: <strong>use the destination page's own title, adjusted into a verb phrase.</strong> If the page is called "Water-Heater Replacement," the link becomes "read about water-heater replacement" or "see our water-heater replacement service." The title already describes the destination — your job is just to stop hiding it behind "click here."</p>
+      <p>A few common rewrites:</p>
+      <p>"Click here" on a pricing page &rarr; "See our pricing"<br>
+      "Learn more" under a service &rarr; "Read about [the service name]"<br>
+      "Read more" on a blog teaser &rarr; "Read the full guide: [guide title]"<br>
+      "Here" buried in a sentence &rarr; move the link onto the descriptive words themselves</p>
+      <p>One warning: do not overdo it. A link that says "click here to download our comprehensive 48-page PDF guide to residential water-heater replacement with full pricing tables and warranty comparisons" is a paragraph wearing a link costume. Keep the text specific but short — under about eight words.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Do not stuff keywords into link text.</strong> Repeating the same exact phrase on every link ("Las Vegas plumber," "Las Vegas plumber," "Las Vegas plumber") looks and reads like spam, and search engines have discounted obvious stuffing for years. Write for the human reading the link; the search benefit follows naturally.</p>
+      <p><strong>Do not link whole sentences.</strong> When a screen reader announces a link, it reads the entire linked text as one announcement. Linking a full paragraph forces a blind customer to listen to the whole thing before deciding. Link the shortest text that still names the destination.</p>
+      <p><strong>Do not promise what the page does not deliver.</strong> "Get a free estimate" pointing at a contact form with no estimate process is a lie that erodes the trust the whole exercise is building. Every rewritten link is a promise — make the destination keep it.</p>
+
+      <h2>The bottom line</h2>
+      <p>Your links are promises about destinations. "Click here" and "learn more" are blank promises — they ask the customer to gamble, they silence screen-reader users, and they waste a signal Google actually reads. The fix costs nothing and takes an afternoon: list your links, read them alone, and rewrite each one to name where it goes. The destination pages already have titles that say the right thing. Stop hiding them.</p>
+      <p class="meta">Link-text guidance here describes widely documented web mechanics, not measured outcomes. No visitor counts, rankings, conversion figures, or revenue figures are claimed.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Vague link text, dead links, orphan pages — the free link check reads your site’s live signals and tells you, in plain English, where you stand. Ten seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free Link health check</a>
+      </div>    <div class="cta">
+      <h2>Link health is check #14 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's link health alongside all 40 trust signals — speed, email, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_links" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+link+text+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
