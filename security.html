@@ -157,8 +157,16 @@
    so no poll loop is needed. One scan per host per minute is served fresh;
    more frequent requests return the cached result. */
 const OBS_SCAN = "https://observatory-api.mdn.mozilla.net/api/v2/scan?host=";
-/* crt.sh certificate-transparency search (free, keyless, CORS-enabled). */
-const CRTSH = "https://crt.sh/?q=%25.";
+/* crt.sh certificate-transparency search (free, keyless, CORS-enabled).
+   crt.sh's "%.host" wildcard only returns certs for names *under* the host,
+   never the host itself — so a cert issued exactly for the bare domain, or a
+   cert found only under the apex when the owner typed www., would be missed
+   (a wrong "no certificate" verdict). We therefore query every shape that
+   could hold a cert covering the typed host and merge the results; the
+   verdict still goes through certCoversHost(), so a wider net never changes
+   what "valid" means. */
+const CRTSH = "https://crt.sh/?q=";
+const CRTSH_WILD = "%25."; /* encoded "%." prefix for crt.sh wildcard searches */
 
 function normalizeHost(raw) {
   let d = String(raw || "").trim().toLowerCase();
@@ -244,6 +252,58 @@ function interpretScan(scan) {
 
 /* ---- crt.sh certificate lookup ---- */
 
+function certQueryHosts(host) {
+  /* Every crt.sh query shape that could hold a cert covering `host`.
+     Entries are {wild:boolean, name:string}: wild=true means the "%.name"
+     wildcard search (subdomains), wild=false the identity search (the name
+     itself). When the owner types www.<apex>, the apex pair is added because
+     the cert covering www.<apex> is almost always filed under the apex; the
+     parent-domain pair is added because a wildcard cert (e.g. *.example.com)
+     covering a typed subdomain is filed under the parent. */
+  var names = [host];
+  if (host.indexOf("www.") === 0) names.push(host.slice(4));
+  var dot = host.indexOf(".");
+  if (dot !== -1) names.push(host.slice(dot + 1));
+  var seen = {}, q = [];
+  names.forEach(function (n) {
+    if (!n || n.indexOf(".") === -1 || seen[n]) return;
+    seen[n] = true;
+    q.push({ wild: false, name: n }, { wild: true, name: n });
+  });
+  return q;
+}
+
+function certQueryUrl(q) {
+  return CRTSH + (q.wild ? CRTSH_WILD : "") + encodeURIComponent(q.name) + "&output=json";
+}
+
+async function fetchCertRows(queries) {
+  /* Fetch all query shapes in parallel; merge and dedupe by cert id.
+     Resolves to {rows, reached} — reached is how many shapes answered.
+     Throws {kind:"network"} only when NOTHING answered (total outage). */
+  var seen = {}, rows = [], reached = 0;
+  var jobs = queries.map(function (q, qi) {
+    return fetchWithTimeout(certQueryUrl(q), {}, 45000).then(function (res) {
+      if (!res.ok) throw new Error("bad status");
+      return res.json();
+    }).then(function (arr) {
+      reached++;
+      if (Array.isArray(arr)) {
+        for (var i = 0; i < arr.length; i++) {
+          var c = arr[i];
+          var key = (c && c.id !== undefined && c.id !== null) ? ("id-" + c.id) : ("noid-" + qi + "-" + i);
+          if (seen[key]) continue;
+          seen[key] = true;
+          rows.push(c);
+        }
+      }
+    }, function () { /* one shape failed — the others may still answer */ });
+  });
+  await Promise.all(jobs);
+  if (!reached) { const err = new Error("network"); err.kind = "network"; throw err; }
+  return rows;
+}
+
 function issuerShortName(issuerName) {
   var m = String(issuerName || "").match(/(?:^|,)\s*O=([^,]+)/);
   if (m) return m[1].trim();
@@ -282,24 +342,16 @@ function pickCert(certs, host, nowMs) {
 async function fetchCert(host) {
   /* Resolves to {issuer, notAfterMs, daysLeft, commonName} | {none:true} |
      throws {kind:"network"} when crt.sh can't be reached. */
-  let res;
-  try {
-    res = await fetchWithTimeout(CRTSH + encodeURIComponent(host) + "&output=json", {}, 45000);
-  } catch (e) {
-    const err = new Error("network"); err.kind = "network"; throw err;
-  }
-  if (!res.ok) { const err = new Error("network"); err.kind = "network"; throw err; }
-  let arr = null;
-  try { arr = await res.json(); } catch (e) { const err = new Error("network"); err.kind = "network"; throw err; }
-  if (!Array.isArray(arr) || arr.length === 0) return { none: true };
+  var rows = await fetchCertRows(certQueryHosts(host));
+  if (rows.length === 0) return { none: true };
   var now = Date.now();
-  var best = pickCert(arr, host, now);
+  var best = pickCert(rows, host, now);
   if (!best) {
     /* Certs exist but none currently valid for this host — check for expired ones
        to report "expired" instead of "missing". */
     var expiredBest = null;
-    for (var i = 0; i < arr.length; i++) {
-      var c = arr[i];
+    for (var i = 0; i < rows.length; i++) {
+      var c = rows[i];
       if (!c || !c.not_after || !certCoversHost(c, host)) continue;
       var na = Date.parse(c.not_after + "Z");
       if (isNaN(na) || na > now) continue;
@@ -581,6 +633,7 @@ if (typeof module !== "undefined") {
   module.exports = { normalizeHost: normalizeHost, interpretScan: interpretScan,
     gradeExplained: gradeExplained, issuerShortName: issuerShortName,
     certCoversHost: certCoversHost, pickCert: pickCert, buildVerdict: buildVerdict,
+    certQueryHosts: certQueryHosts, certQueryUrl: certQueryUrl, fetchCert: fetchCert,
     renderResults: renderResults, unscannableMessage: unscannableMessage,
     probeHttps: probeHttps,
     formatDate: formatDate, formatScannedAt: formatScannedAt, GRADE_BAND: GRADE_BAND };
