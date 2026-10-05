@@ -157,6 +157,9 @@
    status.http_code, which is what decides broken vs working. Images are
    checked natively by the browser (Image onload/onerror) — no proxy needed. */
 var PROXY = "https://api.allorigins.win/get?url=";
+/* Backup page reader (2026-10-05 failover — see proxyGet): codetabs passes the
+   raw body through, no JSON wrapper, no reliable target status code. */
+var PROXY2 = "https://api.codetabs.com/v1/proxy?quest=";
 var LINKS_CAP = 6;
 var IMAGES_CAP = 12;
 
@@ -186,17 +189,36 @@ function fetchWithTimeout(url, ms) {
 }
 
 async function proxyGet(targetUrl, ms) {
-  /* Resolves {httpCode, contentType, contents}; throws {kind:"network"} after one retry. */
-  var lastErr = null;
-  for (var attempt = 0; attempt < 2; attempt++) {
-    try {
-      var res = await fetchWithTimeout(PROXY + encodeURIComponent(targetUrl), ms || 45000);
+  /* Resolves {httpCode, contentType, contents}; throws {kind:"network"} when
+     every proxy fails.
+     FAILOVER (2026-10-05): tries allorigins first, then codetabs — added after
+     allorigins degraded site-wide (HTTP 500/522 across targets). codetabs does
+     not surface the target's status code, so a readable HTML body from it is
+     reported as httpCode 200 (the target demonstrably answered with a page);
+     anything else from codetabs is a proxy failure, never a verdict on the
+     target. Known edge: a large custom 404 page served via codetabs reads as
+     200 — accepted, documented, and far rarer than a total proxy outage. */
+  var perAttempt = ms || 30000;
+  try {
+    var res = await fetchWithTimeout(PROXY + encodeURIComponent(targetUrl), perAttempt);
+    if (res.ok) {
       var j = await res.json();
       var st = (j && j.status) || {};
-      return { httpCode: st.http_code || 0, contentType: st.content_type || "",
-               contents: (j && j.contents) || "" };
-    } catch (e) { lastErr = e; }
-  }
+      var contents = (j && j.contents) || "";
+      if (contents && contents.length >= 1) {
+        return { httpCode: st.http_code || 0, contentType: st.content_type || "",
+                 contents: contents };
+      }
+    }
+  } catch (e) { /* primary down — try backup */ }
+  try {
+    var res2 = await fetchWithTimeout(PROXY2 + encodeURIComponent(targetUrl), perAttempt);
+    var text = await res2.text();
+    if (res2.ok && text && text.length >= 200 && text.indexOf("<") !== -1 &&
+        text.indexOf("error code:") !== 0) {
+      return { httpCode: 200, contentType: "text/html", contents: text };
+    }
+  } catch (e2) { /* backup down too */ }
   var err = new Error("network"); err.kind = "network"; throw err;
 }
 
