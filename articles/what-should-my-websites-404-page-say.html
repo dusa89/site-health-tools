@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Should My Website's 404 Page Say?</title>
+<meta name="description" content="When a link breaks, your visitor lands on your 404 page — and most of them are dead ends. The three jobs a 404 page has (orient, reassure, reroute), what the default page gets wrong, and the 2-minute test to check yours.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Should My Website's 404 Page Say?</h1>
+    <p class="lede">Every website has broken links — yours does too, whether you know it yet or not. Old pages get deleted, other people’s sites change their addresses, customers mistype URLs, bookmarks go stale. The question almost nobody asks is: what does the visitor <em>see</em> when they hit one? On most small-business websites, they see a blank page that says “404 Not Found” and nothing else. That page is doing three jobs badly — or not at all — at the exact moment a customer was trying to give you their business.</p>
+    <div class="article">
+
+      <p>If you have not checked what your site looks like when a link breaks, read our <a href="how-often-should-i-check-my-website-for-broken-links.html">broken-link maintenance schedule</a> — the quarterly routine that catches the breaks in the first place. And our <a href="broken-links-costing-customers.html">guide to what broken links cost</a> explains why each one is a customer walking away. This guide is about the safety net underneath: the page they land on.</p>
+      <p><strong>The short answer:</strong> a good 404 page does three jobs — it tells the visitor what happened in plain words, it proves they are still in the right place, and it hands them the next step. Most default 404 pages do none of these: no navigation, no search box, no contact link, just an error code. You cannot prevent every broken link, but you can decide what happens when one breaks — and that decision takes one afternoon.</p>
+
+      <h2>The moment that matters</h2>
+      <p>Think about who lands on a 404 page. It is not a casual browser — it is someone who clicked something <em>because they wanted it</em>: a product, a price, your phone number, directions. They had intent. A dead-end 404 page takes that intent and gives it nowhere to go, so it goes to the back button — and usually to a competitor. A good 404 page catches that intent and reroutes it. The page is not a failure message; it is a rescue.</p>
+
+      <h2>The three jobs, in order</h2>
+      <p><strong>1. Orient — say what happened in human words.</strong> Never lead with “404.” Your customer does not know what a 404 is, and they should not have to. One plain sentence: “The page you’re looking for isn’t here anymore — it may have moved, or the link may be old.” That is the whole job of the headline. Technical jargon on an error page is the business telling the customer the problem is theirs.</p>
+      <p><strong>2. Reassure — prove they are still in the right place.</strong> The default server 404 page looks nothing like your website, which is exactly backwards: the moment a visitor is most confused is the moment you most need to look like yourself. Your 404 page should carry your logo, your colors, your header and footer. A visitor who still sees your brand thinks “the site hiccupped”; a visitor who sees a bare server page thinks “this business is gone.”</p>
+      <p><strong>3. Reroute — hand them the next step.</strong> This is the job most 404 pages skip entirely. At minimum, three things: a search box (so they can find what they wanted), your three to five most-wanted links (home, services or menu, pricing, contact — whatever your customers actually come for), and one human path forward (your phone number or a contact link). Do not make them hunt. The person is already annoyed; every click you demand is another reason to leave.</p>
+
+      <h2>What the default page gets wrong</h2>
+      <p>If you have never set a custom 404 page, your visitors are seeing whatever your hosting company or your website theme shipped by default. Pull it up right now (the 2-minute test below) and you will likely find: no navigation back into your site, no search, no contact information, and language written for a server administrator. It is the digital equivalent of a customer walking into your shop, asking for something, and the employee silently pointing at the door. Fixing it does not require a redesign — most website builders (WordPress, Squarespace, Wix, Shopify) let you set a custom 404 page in an afternoon, and any web person can do it in an hour.</p>
+
+      <h2>Three mistakes that make it worse</h2>
+      <ul>
+        <li><strong>The joke with no exit.</strong> Cute 404 pages (“oops, this page went on vacation!”) with no search box and no links. Humor is fine; humor <em>instead of</em> a way forward is still a dead end.</li>
+        <li><strong>Auto-redirecting everything to the homepage.</strong> Some sites send every bad URL to the home page. This confuses visitors (they clicked for one thing and landed somewhere else) and it hides the problem from you — your broken links never get found because they never visibly break. Redirect the links you <em>know</em> moved (old page → its replacement); leave a real 404 page for the ones you do not.</li>
+        <li><strong>The fake 404 (the one technical note).</strong> Some themes show a friendly “not found” page but quietly tell browsers and search engines “everything is fine here” (a 200 status instead of a 404). Search engines then keep the dead URL in their results forever. If your web person built the page, one sentence to them: “make sure it returns a real 404 status.” That is the entire technical requirement.</li>
+      </ul>
+
+      <h2>The 2-minute test (do this today)</h2>
+      <p>Type your website address, then a slash, then gibberish — yoursite.com/zzzqwerty — and hit enter. What do you see? If it is a bare error page with no navigation, you have the default. If it is your branded page with a search box and real links, you are already ahead of most small businesses. Either way, click every link on that page and make sure they work — a 404 page with broken links on it is its own special embarrassment.</p>
+
+      <h2>The order of operations</h2>
+      <p>To be clear about priorities: a good 404 page is the <em>second</em> fix, not the first. First, find and fix your actual broken links — the net does not replace the trapeze. But some breaks are outside your control (someone else’s site linked to a page you renamed; a customer typed the URL from a printed flyer), so the net has to exist regardless. Fix the links, then fix the landing. Our <a href="../broken-links.html">free broken-link check</a> finds the breaks; this page is about what happens after one slips through.</p>
+
+      <h2>The bottom line</h2>
+      <p>Your 404 page is the only page on your website designed for the moment something goes wrong. Design it for that moment: plain words, your brand, and a way forward. It will never be your most-visited page — but it may be the page that decides whether a frustrated visitor becomes a customer or a competitor’s.</p>
+      <p class="meta">This guide contains no statistics, because none are needed: the mechanism is verifiable on your own site in two minutes (the gibberish-URL test above). The soft-404 note (a 404 page should return an actual 404 HTTP status so search engines drop the dead URL) is standard web practice, stated as practice. “Most website builders let you set a custom 404 page in an afternoon” describes the feature’s existence in WordPress, Squarespace, Wix, and Shopify, not a measured time. No outcome is promised for any specific business; a good 404 page recovers some lost intent, not all of it.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Our free check scans your site for broken links right now — the breaks your 404 page has to catch. Takes about 10 seconds, and you get the full list.</p>
+        <a class="toolbtn" href="../broken-links.html">Run the free broken-link check</a>
+      </div>    <div class="cta">
+      <h2>Broken links are check #14 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 — speed, security, email, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_links" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+404+pages+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
