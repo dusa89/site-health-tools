@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do Those Review Widgets Slow Down My Website?</title>
+<meta name="description" content="That “see our reviews” widget pulls a whole third-party app into your page on every load — plus your social feeds and the map. Why review and social widgets slow sites, the screenshot fix, and how to keep the trust signals without the cost.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do Those Review Widgets Slow Down My Website?</h1>
+    <p class="lede">You added the review widget because social proof is good marketing — your best Google reviews, right there on the homepage, updating themselves. And the page has been slower ever since. The widget is not a picture of your reviews. It is a live window into another company’s servers, loaded on every single page view — and it usually brings friends: the Facebook feed, the Instagram grid, the embedded map. Trust signals are worth showing. They are not worth running four other companies’ software to show.</p>
+    <div class="article">
+
+      <p>If you have read our <a href="does-the-video-on-my-website-slow-it-down.html">guide on video embeds slowing sites down</a>, this is the same problem in a different costume — a visible embed that loads far more than it shows. And if you read <a href="do-those-chat-widgets-and-booking-tools-slow-down-my-website.html">the guide on chat widgets</a>, the difference is purpose: chat widgets are interactive tools doing a job; review widgets are pictures that hired a marching band. A screenshot of your reviews shows the same words for a fraction of the cost.</p>
+      <p><strong>The short answer:</strong> yes — review widgets, social feed embeds, and map embeds are some of the heaviest things on a typical small-business homepage, because each one is a third-party app loaded on every visit. The fix is not removing your reviews; it is replacing the live widgets with static versions — a screenshot of the reviews, a “get directions” link instead of the embedded map, a follow-us button instead of the live feed. The visitor sees the same trust signals; your page stops paying rent to four other companies.</p>
+
+      <h2>Why a review widget is not a picture of your reviews</h2>
+      <p>When you install a review widget, your page does not get a picture. It gets a <strong>script from the widget company</strong> — and on every page load, that script phones home, fetches your latest reviews from the widget company’s server, downloads the widget’s own styling and layout code, and builds the review display inside your page. Your page now depends on two extra companies responding quickly: the widget provider and, behind it, the review platform. If either one is slow, your page waits. The reviews are real and yours; the machinery showing them is rented, and you pay the rent on every visit.</p>
+      <p>The same applies to the rest of the trust-signal row:</p>
+      <ul>
+        <li><strong>Facebook/Instagram feed embeds.</strong> An iframe into Meta’s servers, living inside your page — your page loads a slice of another company’s website, with its styles, scripts, and tracking, to show posts most visitors will never scroll through.</li>
+        <li><strong>Google Maps embeds.</strong> An iframe running the full Maps application so visitors can see where you are — most of whom just needed your address and a “get directions” link.</li>
+        <li><strong>Badge widgets.</strong> Award and accreditation badges are fine as plain images; the <em>widget</em> versions are apps again. Images cost nothing; widgets cost a server call.</li>
+      </ul>
+      <p>Individually each one is manageable. Stacked — reviews plus feed plus map plus chat — they are four third-party apps arguing over your homepage, and the page feels it.</p>
+
+      <h2>How to tell if widgets are your problem: the 10-minute test</h2>
+      <p>Make a temporary copy or draft of the page, remove the review widget, the feed embeds, and the map from the copy, and run our <a href="../speed.html">free speed check</a> on both versions. Same page, one difference — if the no-widget version is clearly faster, the widgets are the cost. Delete nothing permanent until you have compared; this test is why copies exist.</p>
+
+      <h2>The fix, in order</h2>
+      <p><strong>1. Screenshot the reviews.</strong> Pick your four or five best reviews, screenshot them into one clean image, put the image on your homepage, and link it to your Google review profile so visitors can read the rest. The words on screen are identical to what the widget showed — the cost drops to one image. Refresh the screenshot every few months when you earn new standouts; five minutes, once a quarter.</p>
+      <p><strong>2. Demote the feeds.</strong> Replace the live Facebook/Instagram feed embed with a simple “Follow us” row of icons linking to your profiles. The feed was decoration — nobody books a dentist because of an embedded Instagram grid — and the links do the only job the feed was actually doing.</p>
+      <p><strong>3. Link the map, don’t embed it.</strong> Put your address as text and link it to your Google Maps listing. Visitors who need directions tap once and get the full Maps app on their phone — which is what they wanted anyway. The embedded map was a preview of a product everyone already has.</p>
+      <p><strong>4. Cap the count.</strong> If you genuinely need one live widget — a booking tool, say — one is a business choice. Three or four is a speed problem wearing a trust costume. One third-party embed per page, maximum.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t delete the reviews.</strong> The reviews are an asset; the widget is the cost. A homepage with no social proof converts worse, not better — keep the trust signals, change the delivery method. This is the same asset-vs-cost split as the video guide: fix the delivery, keep the marketing.</p>
+      <p><strong>Don’t chase the perfect widget.</strong> Every “we’re the fastest review widget” claim still means your page depends on someone else’s server. A faster widget is a faster rent payment; a screenshot is no rent at all.</p>
+
+      <h2>The bottom line</h2>
+      <p>Review widgets, social feed embeds, and map embeds are heavy because each one loads a third-party app on every page view — and they stack. The professional answer is static where possible: screenshot the reviews, link the feeds, link the map. The visitor sees exactly the same trust signals, and your homepage stops carrying four other companies’ software.</p>
+      <p class="meta">Widget and embed loading are described here as mechanics of how websites work, not measured prescriptions. No load-time figures, percentages, visitor counts, or revenue figures are claimed — only your own speed test can show what the widgets are costing your page. Platform features are described generically; setting names change, so use each platform’s help search rather than memorizing locations.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Run the free speed check on the page with the widgets, then on a copy with the widgets removed — one difference, honest answer. Takes about 10 seconds per run, no signup.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Site speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's speed alongside all 40 trust signals — speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=I+read+your+guide+on+review+widgets+slowing+down+my+site+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
