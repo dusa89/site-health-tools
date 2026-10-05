@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Did My Email Marketing Account Get Suspended? — Plain-English Guide</title>
+<meta name="description" content="Your email provider paused your account — not a blacklist, your own tool. Why providers suspend senders (shared IP pools), the three trigger numbers (bounce, complaint, unsubscribe thresholds, all sourced), and the 48-hour recovery drill.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why did my email marketing account get suspended?</h1>
+    <p class="lede">Sending paused, account under review — by your own provider. Why email tools suspend real businesses, the three trigger numbers, and the 48-hour recovery drill.</p>
+    <div class="article">
+
+      <p>You open your email tool to send the monthly newsletter and there it is: <strong>sending paused</strong>, or a support ticket saying your account is under review. You did not send spam. You imported a real customer list. But your own provider has decided you are the problem — and <strong>your provider suspending you is a completely different event from landing on a blacklist</strong>. This guide is about the provider-side suspension: why it happens, the three numbers that trigger it, and the recovery drill that gets you sending again.</p>
+      <p>First, the distinction, because mixing these up wastes weeks. A <a href="why-are-my-business-emails-being-blacklisted.html">blacklist</a> is external: third parties (Spamhaus, SpamCop) tell the world's inboxes to refuse your mail. A provider suspension is internal: MailerLite, HubSpot, or whoever you pay puts YOUR account on hold because your sending endangers THEIR infrastructure. And a third, different thing: Gmail's bulk-sender rules (more below) can throttle or reject your mail at the mailbox — that is the receiver's doing, not your provider's. Three locks, three keys.</p>
+      <h2>Why your provider is stricter than you expect</h2>
+      <p>Email tools share sending infrastructure across many accounts — one IP pool serves hundreds of businesses. So one sender blasting a dirty, bought, or scraped list does not just hurt themselves; they drag down deliverability for every neighbor on the pool (a list-hygiene guide from September 2026 puts it plainly: the platform restricts sending to "protect the neighborhood"). That is why the enforcement feels aggressive. Your provider is not judging your intentions; it is defending its own ability to deliver for everyone else. This is also why the suspension usually arrives as a surprise: you were fine until your numbers crossed a line, and nobody warns you the line exists until you are over it.</p>
+      <h2>The three numbers that suspend accounts</h2>
+      <p>Suspension is almost always about these three, in this order of danger. <strong>1. Spam complaints.</strong> The industry line is below 0.1% of recipients; 0.3% and above is the danger zone (cross-industry deliverability reference, github/aksingh-0704/let-szero). HubSpot's protection system suspends sending when spam reports exceed 0.1% (HubSpot Community). Note how small that is: on a 1,000-contact list, TWO spam complaints puts you on the wrong side of the line. <strong>2. Hard bounces.</strong> Permanent failures to invalid addresses: healthy is under 2%, sustained above 3% is danger territory (same reference); HubSpot suspends at hard bounces above 5%. <strong>3. Unsubscribes.</strong> HubSpot's threshold is above 5% — a number that usually means the list was never really opted in.</p>
+      <p>And then there is the mailbox-provider side, which is getting harsher independently of your tool. In February 2024 (announced October 2023), Gmail and Yahoo started enforcing bulk-sender rules on anyone sending 5,000+ messages a day to their users: SPF, DKIM, and DMARC authentication, one-click unsubscribe, and spam-complaint rates under 0.30% in Postmaster Tools, aiming under 0.10% (smtpedia.com's August 2026 compliance guide). Microsoft aligned Outlook with equivalent rules in May 2025, and Google escalated enforcement in November 2025 from temporary delays to permanent rejections (emailwarmup.com's 2026 guide). You may never send 5,000 emails — but the enforcement mood has spread downward, and every provider now watches the same signals.</p>
+      <h2>The behaviors that trigger it (the audit of your last 90 days)</h2>
+      <p>Suspensions rarely come from one bad send. They come from patterns: importing a list you bought, scraped, or "got from an old partner" (spam-trap addresses live in exactly these lists, and one trap hit can dent your reputation for weeks); never removing hard bounces (every re-send to a dead address is a fresh vote against you); emailing a stale list after months of silence (addresses decay — people leave jobs, inboxes close); and making unsubscribe hard to find (every recipient who cannot find the unsubscribe button uses the spam button instead, and the spam button counts 10x worse). GoHighLevel's published policy is a good mental model of the machinery: a pre-block warning at a 3% bounce rate, suspension at 5%, the first two blocks lasting 12 hours each, and a third block permanent pending manual review (help.gohighlevel.com). Your platform's numbers differ; the shape of the ladder does not.</p>
+      <h2>The test that shows you how close you are</h2>
+      <p>You do not have to guess where your account stands. Our free email check reads your domain's public DNS records the way Gmail sees them — authentication, blacklist status, and reputation signals, translated out of jargon. It will not tell you your complaint rate (only your provider and Postmaster Tools see that), but it shows whether your authentication is giving you a clean foundation or compounding the risk.</p>
+      <h2>The 48-hour recovery drill</h2>
+      <p>If you are suspended right now: <strong>First, stop sending.</strong> Every send during review is more evidence against you. <strong>Second, clean the list.</strong> Remove every hard bounce, every address that has never engaged, and anything you cannot prove opted in. This is the one move support teams actually check for. <strong>Third, send a re-engagement to the clean remainder</strong> — small, honest, with an obvious unsubscribe. <strong>Fourth, appeal with evidence:</strong> what you removed, what changed, and how you will keep bounces and complaints under the lines going forward. Support reviews are manual; "I cleaned 400 dead addresses and here is the policy I now follow" beats "please reactivate" every time. And going forward: suppress hard bounces automatically, never import a list you did not earn, prune the unengaged quarterly, and keep the unsubscribe link where a human can find it in one glance.</p>
+      <p>One honest caveat to close on: staying under the lines is not the same as inbox placement — a clean account with an unwanted newsletter still lands in spam, because recipient behavior is the final judge. What the recovery drill buys you is the right to compete: a provider that trusts you, authentication that passes, and numbers that never hand the suspension machine a reason. That is the foundation everything else in your email program stands on.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free Plain-English Email Check looks at your domain the way Gmail and Outlook see it &mdash; authentication, blacklist status, and reputation signals, translated out of jargon. Takes about 10 seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>
+    <div class="cta">
+      <h2>Email deliverability is check #2 of 40</h2>
+      <p>The full Site Health Watch audit checks your email deliverability alongside all 40 trust signals — speed, security, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+email+account+suspensions+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
