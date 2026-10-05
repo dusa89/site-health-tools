@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can My Customers Actually Read My Website?</title>
+<meta name="description" content="Most small-business websites fail a test their owners never run: light-gray text on a white page, body copy set too small, links that look like plain text. The WCAG contrast numbers, the 2-minute zoom-and-squint self-test, and the three fixes that make every word readable.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Can My Customers Actually Read My Website?</h1>
+    <p class="lede">Here is a test most website owners have never run on their own site: step back from the screen, or hand your phone to someone over 50, and read your homepage out loud. Light-gray paragraphs on a white background. Body text set at 12 pixels. Links that are the same color as the text around them. This is not a taste problem — it is a contrast and size problem, and it is the most common accessibility failure on small-business websites. Not the exotic kind. The kind where a customer with working eyesight simply gives up reading.</p>
+    <div class="article">
+
+      <p>If you have already read our <a href="can-a-blind-customer-actually-use-my-website.html">guide on screen-reader users</a> and <a href="can-a-customer-use-your-contact-form-without-a-mouse.html">the keyboard-only contact form test</a>, this is the third accessibility angle nobody talks about: the visual layer. Your site may survive a screen reader and a keyboard perfectly — and still quietly turn away the majority of visitors who read with their eyes, in bad lighting, on phones, past age 40.</p>
+      <p><strong>The short answer:</strong> readable text is a measurable thing, not a taste thing. Normal-size body text needs a contrast ratio of about 4.5:1 against its background; large text (roughly 24px and up) needs about 3:1. Those are the published WCAG guideline thresholds — the numbers the accessibility community and most government guidance use. And body text should be at least 16 pixels with comfortable line spacing. If your site fails either, the fix is an afternoon of CSS, not a redesign.</p>
+
+      <h2>Why this one hits your oldest customers first</h2>
+      <p>Contrast vision gets worse with age — that is biology, not opinion. After 40, the eye's lens yellows and less light reaches the retina, which means low-contrast text that a 25-year-old designer reads fine is genuinely harder for a 55-year-old customer. Now ask yourself who actually has the money for your services: for most local businesses — plumbers, dentists, contractors, clinics, advisors — the highest-value customers skew older. The designer who picked light-gray body text was probably half your best customer's age. The mismatch is not a theory; it is a demographic fact about who buys.</p>
+
+      <h2>The three failures (check yours in order)</h2>
+      <p><strong>1. Gray text on white.</strong> The classic. Body copy set in #999999, #aaaaaa, or any "subtle" gray on a white background fails the 4.5:1 test badly. Designers love it — it looks clean, minimal, premium. For anyone over 40, in sunlight, on a phone, it is a smear. The rule: body text should be at or near #333333 or darker on white. You do not need to measure it precisely — if you squint at the page and the paragraph dissolves before the headings do, the contrast is too low.</p>
+      <p><strong>2. Type set too small.</strong> Body copy at 12–13px was the desktop-era default and it still ships in many themes. On a phone it is unreadable for anyone without perfect near vision — and phones are where most first impressions now happen. The working floor: 16px for body text, with line spacing around 1.5 so lines do not crowd each other. Bigger is rarely wrong for body copy; the fear that "it will look less premium" is a designer problem, not a customer problem.</p>
+      <p><strong>3. Links that look like text.</strong> Links styled in your brand color with no underline, sitting inside body copy in a nearly identical tone. A sighted user scanning the page cannot tell what is clickable; a colorblind user cannot tell at all. The fix is older than the web: links should be distinguishable by something <em>other than color alone</em> — an underline, a bold weight, a border on hover. Every style guide says this; most small-business themes ignore it.</p>
+
+      <h2>The 2-minute self-test (do this today)</h2>
+      <p>You need your own site, a browser, and two minutes — no tools, no signup.</p>
+      <p><strong>Step 1 — the zoom test.</strong> Open your homepage, hold Ctrl (or Cmd on a Mac), and tap the plus key until the page reads 200%. Scroll through it slowly. If the layout collapses, text overlaps itself, or anything becomes unreachable, your site fails the most basic readability check — a low-vision user who needs 200% zoom just to read is lost. This single test catches more real problems than most automated scans.</p>
+      <p><strong>Step 2 — the squint test.</strong> Zoom back to 100%. Now literally squint, or step a few feet back from the screen. What survives? The headings should stay legible; the body copy will blur — but it should blur into <em>visible gray bars</em>, not vanish into the white. If a paragraph disappears entirely, its contrast is too low. Do this on your phone too, outdoors if you can: sunlight is the hardest test there is, and it is where your customers actually read.</p>
+      <p><strong>Step 3 — the link scan.</strong> Look at any paragraph with links in it, and ask: if the blue were gone, would I still know something here is clickable? If the answer is no, add underlines. It takes one line of CSS and it fixes the problem for every colorblind visitor too.</p>
+
+      <h2>The three fixes (all small)</h2>
+      <p><strong>1. Darken the body text.</strong> Move body copy to #333333 or darker on white backgrounds. This single change fixes the majority of contrast failures on typical small-business sites. It will not make the site "look cheap" — it will make it readable, which is the actual job of the words.</p>
+      <p><strong>2. Raise the floor on type size.</strong> 16px minimum for body text, 1.5 line height. On mobile this is the difference between reading and pinching-to-zoom for a large share of your visitors.</p>
+      <p><strong>3. Underline the links.</strong> In body copy, links get an underline (or a clearly distinct treatment beyond color alone). It is the oldest convention on the web because it works for everyone, including the colorblind.</p>
+      <p>None of this requires a designer. Any web person — or the theme settings in WordPress, Squarespace, or Wix — can do all three in an afternoon. If your site ships with a <a href="will-an-accessibility-widget-stop-me-getting-sued.html">widget overlay promising to fix accessibility</a>, note what we said there: overlays do not fix contrast and type size. These fixes do.</p>
+
+      <h2>What this does and does not buy you</h2>
+      <p>Readable text does not make you lawsuit-proof, and no single fix does (see <a href="can-my-website-get-me-sued.html">the lawsuit guide</a> for what actually triggers demand letters). What it does is simpler and more direct: every customer who can read your site without straining is a customer who stays one sentence longer, understands one more offer, and finds the phone number without giving up. You will never hear from the customers you lost to unreadable text — they just left. The self-test above takes two minutes. The fixes take an afternoon. There is no version of this that is not worth it.</p>
+
+      <h2>The bottom line</h2>
+      <p>Your website exists to be read. If the words fail the squint test, the design is decoration on an unreadable page. Darken the text, raise the size, underline the links — then hand your phone to the oldest person in the house and ask them to read it. That person is your quality gate.</p>
+      <p class="meta">No statistics are cited in this guide: readability-failure rates vary by site and no honest industry-wide figure exists for small-business websites. The 4.5:1 (normal text) and 3:1 (large text) figures are the published WCAG guideline thresholds, cited as guideline numbers. Age-related contrast decline is well-established ophthalmology, not a measured marketing claim. The fixes are interface mechanics and maintenance judgment, not measured prescriptions — run the 2-minute test on your own site and let what you find set your priority.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>About 10 seconds, no signup — our free check scans your site the way a tester's software would and reports what's missing in plain English, with the evidence for each finding.</p>
+        <a class="toolbtn" href="../accessibility.html">Run the free accessibility check</a>
+      </div>    <div class="cta">
+      <h2>Accessibility is check #9 of 40</h2>
+      <p>The full Site Health Watch audit checks all 40 trust signals — speed, security, email, mobile, SEO, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_a11y" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+customers+can+actually+read+my+website+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
