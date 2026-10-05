@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Contact Form Keep Getting Spam? — Plain-English Guide</title>
+<meta name="description" content="Crypto pitches and SEO spam through your contact form — not your emails going to spam, the junk coming in. The two kinds of form spam (bots vs humans), the free invisible honeypot + time-check layer, when to add Cloudflare Turnstile or reCAPTCHA, and the one thing nothing technical stops.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why does my contact form keep getting spam?</h1>
+    <p class="lede">Crypto pitches, SEO offers, random characters at 3am — through your form, not to your spam folder. The two kinds of form spam, the free invisible fix, and the one kind nothing technical stops.</p>
+    <div class="article">
+
+      <p>Every morning the same routine: three new "inquiries," and none of them are customers. A crypto promotion. An SEO agency pitching you in broken English. A message that is just random characters. Your contact form has become a spam inbox — and <strong>this is a completely different problem from your own contact-form emails landing in spam</strong>. That other problem (your replies going to the junk folder) is deliverability; this guide is about the junk coming IN through your form. Two problems, two fixes.</p>
+      <p>The good news first: form spam comes in two kinds, and each has a defense. Kind one is <strong>bots</strong> — automated scripts filling out every form on the internet, looking for a way in. Kind two is <strong>human spammers</strong> — real people pasting sales pitches by hand. The defenses work on kind one. Nothing technical stops kind two; that one needs a different answer (below).</p>
+      <h2>Layer 1: the honeypot — free, invisible, do it first</h2>
+      <p>The cheapest defense costs nothing and your visitors never see it: a <strong>honeypot field</strong>. It is an extra field on the form that humans cannot see but bots fill in anyway, because bots fill in everything. Any submission with that field filled gets thrown away. Done right, it has three rules. <strong>One:</strong> name it something believable, like "website" or "company" — never "honeypot," because smarter bots skip fields with that name. <strong>Two:</strong> do not hide it with a simple CSS trick alone; more advanced bots look for that pattern, and it must be marked properly (aria-hidden, removed from keyboard tab order) so screen readers and autofill do not trip it by accident. <strong>Three, and this is the one people get wrong:</strong> the check has to happen on the server — in the code that receives the form — not just in the visitor's browser. A browser-only check is a suggestion; a bot ignores suggestions (web guide, msangeetha.com, September 2026).</p>
+      <p>Pair it with a <strong>time check</strong>. A bot submits a form in milliseconds; a human needs at least several seconds to type a message. Anything that arrives faster than a human could possibly write is automation, and rejecting it catches the bots that slip past the honeypot. Both layers together are the standard first line — free, invisible to real customers, and they kill the majority of automated junk.</p>
+      <h2>Where the honeypot stops working</h2>
+      <p>Be honest about the limits so you do not waste money chasing the wrong layer. Bots that load the page in a full browser (headless browsers) can recognize hidden fields and leave them empty. And human spammers — the SEO pitch, the "dear business owner" template — are real people; no invisible field stops a person. A honeypot is a free first layer, not the whole defense (same September 2026 guide).</p>
+      <h2>Layer 2: only when the honeypot is not enough</h2>
+      <p>If spam is still getting through, the next step is a challenge layer — and it goes on <strong>only the forms being attacked</strong>, because it is the one defense that can annoy real customers. The two serious options: <strong>Cloudflare Turnstile</strong> — usually completely invisible to the visitor, privacy-focused, free for the vast majority of sites; and <strong>Google reCAPTCHA v3</strong> — also invisible and score-based, free up to 10,000 assessments a month, then usage-priced. The older checkbox-and-image-puzzle versions still exist but add visible friction, so they are the last resort, not the starting point (comparison, formgent.com, September 2026).</p>
+      <p>And the critical detail most setups get wrong: <strong>the verification has to run inside the form's own receiver.</strong> A check that only runs on the page does nothing against a spammer who never loads the page — who posts straight to the form's endpoint. The token must be verified on every request, before anything is sent, or it is decoration. One site documented exactly this failure: the spammer's requests never touched the page, so the page-level check never ran — moving the verification into the receiving function stopped the spam cold (dev.to, September 2026).</p>
+      <h2>The spam nothing technical stops</h2>
+      <p>Then there is kind two: a real human submitting a real sales pitch. No honeypot, CAPTCHA, or challenge can tell a genuine inquiry from a genuine pitch, because both come from a person. Every spam guide quietly admits this (formgent.com, September 2026). The defense is human: recognize the pattern (vague flattery, no mention of your actual business, a link to a service), and either ignore it or set up a filter that routes messages with those markers to a folder you check weekly instead of your inbox. It is a content problem, solved with judgment, not software.</p>
+      <h2>The ask-your-developer script</h2>
+      <p>You do not need to understand any of the above to get it fixed. Send your web person this: "My contact form is getting spam. Please add a honeypot field and a submission-time check to the form, verified on the server side. If that doesn't stop it, add Cloudflare Turnstile to that form only." That is the whole job, in priority order, and any competent developer can do layer 1 in under an hour. Do not accept "we installed a CAPTCHA on every form" as the first answer — that trades your customers' patience for the developer's convenience.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free security check scans your site the way attackers do &mdash; HTTPS setup, security headers, and certificate health &mdash; and reports in plain English. Form spam often means the rest of the front door is unlocked too. Takes about 10 seconds, no signup.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>
+    <div class="cta">
+      <h2>Form security is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's form and login security alongside all 40 trust signals — speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+contact+form+spam+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
