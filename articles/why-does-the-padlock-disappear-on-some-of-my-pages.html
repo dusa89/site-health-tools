@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does the Padlock Disappear on Some of My Pages?</title>
+<meta name="description" content="Your homepage shows the secure padlock but your booking or gallery page shows a warning — and you changed nothing. Mixed content explained in plain English: why pages load some pieces the old insecure way, what browsers do about it, and the fix ladder.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does the Padlock Disappear on Some of My Pages?</h1>
+    <p class="lede">Your homepage shows the secure indicator. Then you click to your booking page, your gallery, or a blog post — and the warning appears. You did not change anything between the two pages. You are not imagining it, and your certificate is probably not broken. There is a specific, common reason this happens page-to-page, it has a name — mixed content — and it is fixable.</p>
+    <div class="article">
+
+      <p>First, the distinction this guide is built on: this is not the whole site being insecure (<a href="why-does-my-website-say-not-secure.html">that guide is here</a>), it is not your certificate expiring (<a href="why-does-my-ssl-certificate-keep-expiring.html">that one is here</a>), and it is not the question of whether a small business needs a certificate at all (<a href="do-i-need-ssl.html">answered here</a>). This is the case where HTTPS works, the certificate is installed correctly, and <em>some</em> pages look fine while others lose the secure indicator. Browsers judge the whole page, not just the address bar — if any piece of the page arrives the old insecure way, the secure indicator goes. Here is what is happening and what to do about it.</p>
+      <p><strong>The short answer:</strong> the page is loading some of its pieces over the old insecure connection — an image, a script, a font, an embedded widget — left over from before your site switched to HTTPS. The browser sees the secure page dragging insecure pieces along and downgrades the whole page's rating. It is not a broken certificate. Buying a new certificate changes nothing. Fixing the old pieces fixes it.</p>
+
+      <h2>What "mixed content" actually is</h2>
+      <p>Your page is built from parts: the words, the photos, the fonts, the little programs that run the menu and the booking form, the map widget in the footer. When your site moved to HTTPS, the page itself started arriving over the secure connection. But the parts can still be fetched the old way — over plain HTTP — if their addresses were written that way back when the site was built. A secure page with insecure parts is called <strong>mixed content</strong>.</p>
+      <p>This is exactly why it happens page-to-page and not site-to-site. Your homepage's parts all point to secure addresses, so it shows secure. Your gallery page has one photo with an old <code>http://</code> address. Your booking page loads a script from an old address. Your blog loads a font the old way. Each of those pages is one bad part away from losing its rating — and you changed nothing, because the bad parts have been sitting there since the day the site switched to HTTPS.</p>
+      <p>The usual sources of the bad parts: your theme or plugins loading files over HTTP; embeds and outside services that do not use HTTPS; and — the most common one — old <code>http://</code> links still sitting in your site's database from before the switch. A site can be "on HTTPS" for years and still carry these.</p>
+
+      <h2>What the browser does about it</h2>
+      <p>Browsers evaluate the security of the entire page, not just the certificate. When a secure page includes insecure parts, browsers strip the secure indicator and may show a "Not Secure" warning instead — even though the certificate itself is installed correctly and valid. The UK government's domain guidance puts the reason plainly: the secure indicator becomes misleading, because only parts of the page are protected.</p>
+      <p>For the parts that can change what the page does — scripts, forms, embedded frames — the browser goes further than a warning: it blocks the insecure parts outright. That is when the page <em>breaks</em>: the booking form stops responding, the menu does nothing, the embedded widget shows a hole where it should be. For plain images, the browser may just warn — but even then, an attacker on the same network can use those unprotected images to track what your visitors look at.</p>
+      <p>One update worth knowing: Chrome replaced the padlock with a settings-style icon in 2023. If you are looking for a lock that is no longer there, you are not missing it — click the small icon left of the address and check whether it says the connection is secure. That panel is the real verdict now (<a href="what-the-padlock-means.html">what the indicator means, explained here</a>).</p>
+
+      <h2>Why this one hurts businesses most</h2>
+      <p>Mixed content has a nasty habit of striking the pages that earn you money. The pages with the most parts — booking widgets, photo galleries, embedded maps, contact forms with maps — are the pages most likely to carry one old insecure piece. So the customer journey reads: homepage looks trustworthy, click to book, the warning appears, the form behaves oddly. That is a conversion killer wearing a technical costume.</p>
+      <p>The second cost is quieter: while the indicator wobbles, visitors who do stay are using a page whose security the browser has explicitly downgraded. Anything they type on that page — a booking request, a contact form, card details on a checkout — travels on a page the browser itself does not trust.</p>
+
+      <h2>The fix ladder</h2>
+      <p><strong>Step 1 — confirm it.</strong> Open the page, press F12, open the Console tab, and reload. Any line that starts with "Mixed Content" names the culprit: an http image, script, or font on an https page. That list is your whole job description.</p>
+      <p><strong>Step 2 — make sure the site's own address is https.</strong> In your site settings (in WordPress, the site URL fields), the address must start with <code>https://</code>, not <code>http://</code>. Everything downstream keys off this.</p>
+      <p><strong>Step 3 — sweep the database.</strong> Replace the old <code>http://yourdomain.com</code> addresses with <code>https://yourdomain.com</code> everywhere they are stored. On WordPress, the standard way is a search-and-replace plugin built for the database — it exists precisely because the old addresses hide in dozens of places. This one step clears most mixed-content cases outright.</p>
+      <p><strong>Step 4 — turn on enforcement.</strong> Most hosting setups and security plugins have a "force HTTPS" or "fix insecure content" switch. This rewrites remaining insecure addresses on the fly as pages are served, which catches the stragglers from themes, plugins, and fonts.</p>
+      <p><strong>Step 5 — check the outsiders.</strong> If the Console list points at something you do not control — a booking widget, an embedded map, a font service loading over HTTP — that provider needs to be serving it securely. Reputable ones do; if yours does not, it is a reason to replace the provider, not to work around it.</p>
+      <p><strong>Step 6 — the belt.</strong> Once the indicator holds on every page, the advanced move is telling browsers to never accept the insecure version of your site at all (the HSTS header). That is developer or plugin work, and it belongs after the content itself is clean — enforcement on top of mixed content just produces confident-looking breakage.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don't buy a new certificate.</strong> The certificate is not the problem — a fresh one produces the exact same warning, because the warning is about the page's parts, not the certificate.</p>
+      <p><strong>Don't tell visitors to click past it.</strong> Every "just click advanced and proceed" instruction trains your customers to ignore security warnings — including the ones on other people's sites that are actually dangerous. And it does nothing for the customers who leave instead.</p>
+      <p><strong>Don't "allow" mixed content in the browser and call it fixed.</strong> Browsers let you disable the blocking, but that only changes what <em>your</em> screen shows. Every customer's browser still blocks it. It is a viewing setting, not a repair.</p>
+      <p><strong>Don't assume "mostly secure" is fine.</strong> The browser does not do partial credit. One insecure script is enough for the whole page to be downgraded — and for that script to be blocked, taking the page's functionality with it.</p>
+
+      <h2>The bottom line</h2>
+      <p>A padlock that appears on some pages and vanishes on others is almost never a certificate problem. It is a leftover problem: parts of your pages still addressed the old insecure way, sitting in the database since the day your site switched to HTTPS. Browsers rate the whole page, so one bad part downgrades everything — and the pages most likely to carry one are the ones your customers use to pay you. The fix is a sweep, not a purchase: find the old addresses in the Console, replace them, enforce HTTPS, and check the embeds. Then every page tells the same story.</p>
+      <p class="meta">Mixed content mechanics (HTTPS page loading HTTP resources; browsers evaluate the whole page, strip the indicator, warn, and block parts) per heartinternet.uk support docs, SiteGround KB (world.siteground.com), webxloo.com, and the UK government domain knowledge base (security.gov.uk — indicator becomes misleading; passive mixed content enables tracking), crawled/updated 2026. Browser behavior in 2026 (block display or warn on mixed secure/insecure content) per Adobe Target troubleshooting docs, updated Sep 28, 2026. Chrome replaced the padlock with a settings-style icon in 2023 (buildbyravirai.com 2026 HTTPS guide). Common causes (themes/plugins over HTTP, non-HTTPS embeds, old http:// links in the database) and fixes (force-HTTPS plugins, database search-and-replace to https) per SiteGround KB and heartinternet.uk. Diagnosis via F12 Console "Mixed Content" lines per buildbyravirai.com. All verified 2026-10-05. No traffic, conversion, or attack-frequency figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free security check grades your site’s certificate and headers in about ten seconds, in plain English — so you can see whether your HTTPS setup is really complete, or whether some pages are still dragging insecure pieces.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>The full Site Health Watch audit checks your security setup alongside all 40 trust signals — speed, mobile, email authentication, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+disappearing+padlock+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
