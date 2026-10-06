@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should I Let Customers Create Accounts on My Website?</title>
+<meta name="description" content="A customer account on your site feels like a feature. It is also a custody decision: you now hold a database of your customers' emails and passwords, and breach-notification laws in every state decide what a leak costs you. The case for guest checkout, and when accounts earn their risk.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should I Let Customers Create Accounts on My Website?</h1>
+    <p class="lede">Every 'create an account' button quietly signs you up for a second business you never applied to run: guarding a database of your customers' passwords. Here is what that custody actually obligates you to, why the people who measure breaches treat reused passwords as your problem, and the one rule that keeps accounts from costing you sales and liability at the same time.</p>
+    <div class="article">
+
+      <p>The account button looks like a convenience. To your customer it is: one login, saved addresses, order history. To you, quietly, it is something else — a new business you never applied to run. The moment someone creates an account on your website, you hold a small database of real people's emails and passwords. That database is now yours to protect, and the law in every state has opinions about what happens if you don't.</p>
+
+      <h2>What the button actually creates</h2>
+      <p>Think about what sits behind one customer account: a name, an email address, a password, maybe a home address, and the order history that connects them. Multiply that by every customer who ever signed up. You did not set out to run a password vault, but the account button made you one.</p>
+      <p>And the law treats it that way. The Federal Trade Commission's breach-response guidance puts it plainly: <strong>all fifty states, the District of Columbia, Puerto Rico, and the U.S. Virgin Islands have breach-notification laws</strong> requiring notification when personal information is exposed. This is not a big-company rule. California wrote the first such law in 2002 and Alabama closed out the patchwork in 2018, so the fifty-state net is complete — and your obligations attach to <strong>where your customers live, not where you are</strong>. A business in Nevada with customers in California and Arizona can owe duties under more than one state's law from a single breach.</p>
+      <p>None of this means accounts are forbidden. It means the account button is a custody decision, not a design decoration — and most owners make it without ever weighing the custody half.</p>
+      <p>If the worst happens anyway, <a href="what-should-i-do-if-my-website-gets-hacked.html">the post-breach playbook</a> covers the response side of this equation — this guide is about making the breach smaller before it ever happens.</p>
+
+      <h2>Why the custody half matters: the reused-password problem</h2>
+      <p>Here is the part owners underestimate. A Google/Harris Poll survey found that <strong>two in three people recycle the same password across multiple accounts</strong>, and just over half use one "favorite" password for most of what they log into. Identity telemetry from 2026 sharpens the picture: one firm observed that 1 in 5 logins used a weak, breached, or reused password, and Cloudflare's 2026 Threat Report found that <strong>63% of all human logins involve credentials already compromised elsewhere</strong>.</p>
+      <p>Translate that to your customer database. If your site is breached, the attacker does not just get your customers' logins to your store. They get email-and-password pairs that a meaningful share of those customers use <em>everywhere</em> — their email, their bank, their other accounts. Attackers know this; "credential stuffing" is the industry name for taking one site's leaked logins and trying them on every other site that matters, and it runs on automation, not skill. Your database becomes a keyring that fits locks you never issued. That is why the industry treats a customer-password breach as a serious event even when no card numbers were taken — and it is why the notification laws treat passwords as protected personal information.</p>
+
+      <h2>The business case against forcing accounts</h2>
+      <p>Now the sales half, because the account button also costs you money. Research firm Baymard found that <strong>19% of shoppers abandon their checkout when forced to create an account</strong> — the customer came to buy a product and was asked to sign up for a service first. Industry data from IMRG shows 59% of online orders come from guest customers, and ASOS reported a <strong>50% decrease in abandonment after removing its mandatory account-creation requirement</strong>.</p>
+      <p>The psychology is simple: an account is a commitment, and a commitment before the first purchase is friction. The shopper has not decided they like you yet; asking for the account asks them to decide that before they decide to buy. Guest checkout flips the order — buy first, become a customer, and <em>then</em> you invite the account, when they are already happy and the saved-address pitch lands.</p>
+
+      <h2>The rule: accounts are a custody decision, not a default</h2>
+      <p>Put both halves together and the rule writes itself: <strong>never require an account to buy; always offer guest checkout.</strong> Then invite account creation after the purchase is complete, when the benefit (saved addresses, order tracking, faster reorders) is real and the customer is already committed. This is the one change that cuts the sales cost and the custody cost at the same time: fewer forced accounts means more finished checkouts <em>and</em> a smaller database to protect.</p>
+      <p>Two related rules finish the picture. First: <strong>never store card data yourself.</strong> Your payment processor holds the card numbers — that is the processor's entire job, and keeping card data on your own site moves you into compliance territory that is expensive to maintain and catastrophic to fail. Your site should only ever hold what it needs. (Theft <em>at</em> checkout is the other half of the card story — <a href="why-did-my-customers-card-get-stolen-after-buying-from-my-site.html">the formjacking guide</a> covers that door; this one covers the vault after checkout.) Second: if you hold accounts at all, hold fewer passwords — modern login options like passkeys and sign-in-with-an-existing-account reduce the number of passwords your database has to guard, and two-factor on your own admin accounts closes the other end (<a href="should-i-turn-on-two-factor-for-my-business-email.html">the two-factor guide</a> covers that door).</p>
+      <p>The account button is not a no. It is a "do you need it, and do you want the job that comes with it?" For most small sites, the answer is: offer it, don't require it, and let the guest checkout do the selling first.</p>
+      <p class="meta">Breach-notification facts: all 50 states + DC + Puerto Rico + US Virgin Islands require notification per the FTC's Data Breach Response Guide (ftc.gov), verified 2026-10-06; 50-state patchwork completed 2018 (Alabama last, California 2002 first) per IAPP via pktech.net; ~20 states specify 30-60 day hard deadlines, remainder use "without unreasonable delay" (Privacy Rights Clearinghouse 2026 fifty-state survey via pktech.net), verified 2026-10-06; residency-based obligation trigger per Nevada SMB FAQ (cytranet.com, Oct 2026), verified 2026-10-06. Password-reuse facts: 2-in-3 reuse + 51% favorite-password (Google/Harris Poll 2019) via infosecurity-magazine, verified 2026-10-06; 1-in-5 logins weak/breached/reused (Push telemetry, last million logins) via The Hacker News Sep 2026 + Cloudflare 2026 Threat Report 63% (compromised-elsewhere credentials), verified 2026-10-06. Business facts: Baymard 19% abandon-on-forced-account (via Jul 2026 UX coverage), IMRG 59% guest orders / 52%-vs-64% conversion (via ecommpay), ASOS 50% abandonment drop after guest checkout (via fastercapital), verified 2026-10-06. Card-data and passkey guidance is provider-generic best practice, no brand claims. No breach-count totals, no revenue figures stated — none verified, deliberately omitted.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The check grades your site the way Mozilla does - including whether your pages and logins actually load over the secure connection, whether your customer-account pages set safe session behavior, and tells you exactly when your certificate expires. Plain English, free, no signup. Ten seconds, before the next account-button debate.</p>
+        <a class="toolbtn" href="../security.html">Run the free website security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>The full Site Health Watch audit checks your site against all 40 trust signals - security headers, hidden malware, speed, mobile, and AI visibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+customer+accounts+on+my+website+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
