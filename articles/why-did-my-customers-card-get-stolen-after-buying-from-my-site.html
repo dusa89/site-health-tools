@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Did My Customer’s Card Get Stolen After Buying From My Site? — The Invisible Checkout Thief</title>
+<meta name="description" content="A customer says their card was stolen right after buying from your website. Your site looks perfect, orders process normally, the padlock shows — but malicious code inside your checkout page may be silently copying every card number customers type. How checkout skimming works, the 3 checks that find it, and the structural fix.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Did My Customer’s Card Get Stolen After Buying From My Site? — The Invisible Checkout Thief</h1>
+    <p class="lede">A customer calls: their card was used fraudulently days after they bought from your website — and yours was the only new purchase. You open your site. It looks perfect. Orders are still coming in. Nothing looks wrong. But the theft may have happened inside your own checkout page, in a way designed to leave no trace you can see: a card skimmer, silently copying every card number, expiry date, and security code your customers type, while their orders complete normally. Here is how it works, how to find it, and how to kill it for good.</p>
+    <div class="article">
+
+      <p>First, where this guide sits among its siblings: this is not the visible redirect hack — <a href="why-is-my-website-redirecting-to-spam-sites.html">that guide</a> is for redirects everyone can see, including the owner. It is not the phone-only cloaked variant <a href="why-does-my-website-show-spam-only-on-phones.html">covered here</a>, which hides by picking its audience. And it is not the general hacked-site recovery walkthrough — <a href="what-should-i-do-if-my-website-gets-hacked.html">that is here</a>. This guide is about the one theft where the owner is the last person who could possibly notice: nothing looks broken, nobody complains about the site, and the only signal is a customer’s stolen card.</p>
+      <p><strong>The short answer:</strong> someone may have planted a card skimmer on your checkout page — code that watches customers type their payment details and sends a copy to the attacker. The purchase still completes. The site still looks fine. The padlock still shows. Three checks below, in order, will surface it; the last section covers the structural fix that makes your checkout unskimmable.</p>
+
+      <h2>How the theft works (and why nothing looks wrong)</h2>
+      <p>The attack has a name: <em>formjacking</em>, often called Magecart-style skimming after the criminal groups that pioneered it. The attacker gets code onto your checkout page — through a compromised plugin, a stolen admin password, or a hacked third-party tool your site loads. That code does one job: when a customer types their card number, expiry, and security code, it reads what they typed and quietly sends a copy to the attacker’s server. Then the real checkout runs exactly as normal. The customer gets their order confirmation. You get the sale. The attacker gets the card.</p>
+      <p>The most dangerous misconception is the padlock. A secure connection encrypts data <em>while it travels</em> — but a skimmer is already inside the page, reading the card <em>before</em> encryption happens. Security researchers put it plainly: both the legitimate connection to your store and the attacker’s connection to their server can be fully encrypted. The padlock proves nobody is eavesdropping on the road; it says nothing about who is sitting in the car.</p>
+      <p>This is not a historical curiosity. In June 2026, researchers at Sansec disclosed a skimming family that hides inside Stripe itself: the card-stealing code is stored in a Stripe customer’s metadata, delivered to checkout pages through Google Tag Manager, and the stolen card numbers are written back disguised as fake customer records — all traveling through Stripe’s own trusted domain, which stores allow by default. That campaign had been running since at least December 2025. Around April 2026, Confiant tracked “HexMage,” which hit more than 40 merchant websites across 15 countries and delivered its skimmer through the Ethereum blockchain so no attacker domain ever appeared in the injected code. And in September 2026, Cloud Security Alliance Labs reconstructed skimming rings run largely by autonomous AI agents: at least 27 retailers breached in three months, more than 600,000 card records stolen, at a cost to the operator of about $25.46 per target. The barrier to running this attack has collapsed.</p>
+
+      <h2>The 3 checks that surface it</h2>
+      <p>Run these in order. Skimmers are built to fire only on the checkout page and to hide from casual inspection — one variant researchers studied even switched itself off when it detected the site’s administrator was viewing the page.</p>
+      <p><strong>Check 1 — Compare what loads on checkout versus everywhere else.</strong> Open your checkout page and view the page source (right-click → View Page Source in most browsers). Skimmers often wait for words like “checkout” or “one page” in the address before activating, so compare the scripts on the checkout page against a normal product page. Look for any script you did not put there, or any reference to a domain you do not recognize — including lookalike domains that almost spell a real service’s name. On WordPress/WooCommerce sites, researchers have found skimmer code injected into the theme’s <code>functions.php</code> and even <code>wp-includes/functions.php</code>, replacing the normal card form with a custom one that steals as it collects.</p>
+      <p><strong>Check 2 — Watch the network during a test purchase.</strong> In your browser’s developer tools, open the Network tab and walk through a test checkout up to (but not past) the payment step. Every request your page makes is listed: look for any request to a domain you do not know, especially while card details are on screen. Sucuri’s researchers note this is one of the only reliable ways to catch modern skimmers, because they evade public scanners — the scripts run silently in the background and the checkout page otherwise behaves normally.</p>
+      <p><strong>Check 3 — Scan, but know what the scan can miss.</strong> Run a malware scan (Wordfence or Sucuri on WordPress; your host’s scanner otherwise). These catch known skimmer signatures and unauthorized file changes. But treat a clean scan as one data point, not a verdict: checkout-gated skimmers only activate on the payment page, which generic scans may never visit. If Check 1 or 2 found something the scanner missed, the checks are right and the scanner is blind to it. For stores that must follow card-industry rules, note that PCI DSS 4.0.1 explicitly requires merchants to keep an inventory of every script on payment pages and to detect unauthorized changes to them — Check 1 is, in effect, the manual version of that requirement.</p>
+
+      <h2>What to do if you find it</h2>
+      <p>Act in this order, and do not skip steps. A skimmer is evidence of a deeper break-in, not a surface blemish.</p>
+      <p><strong>1. Take the checkout offline first.</strong> Disable online payments immediately — a maintenance notice beats another day of stolen cards. Every hour a skimmer runs is more victims and more liability.</p>
+      <p><strong>2. Preserve evidence before you clean.</strong> Save a copy of the malicious code and note where it was (which file, which page). If this becomes a card-brand or law-enforcement matter, you will want to show what happened and when.</p>
+      <p><strong>3. Remove it everywhere at once.</strong> Like other persistent malware, skimmers are often planted in multiple locations — files, the database, sometimes server memory — so a single-file cleanup lets it come back. Scan files <em>and</em> database content, and clear every copy in the same pass.</p>
+      <p><strong>4. Close the door it came through.</strong> Change every admin and hosting password, remove admin accounts you do not recognize, update all software and plugins, and turn on two-factor authentication for every admin login. Attackers commonly enter through weak passwords and outdated plugins, then add rogue admin users.</p>
+      <p><strong>5. Tell your payment processor.</strong> Call the company that processes your cards and report a suspected compromise of your checkout. They have a playbook for this, and hearing it from you first is far better than hearing it from the card brands later.</p>
+      <p><strong>6. Notify affected customers.</strong> If cards were stolen through your site, the customers deserve to know so they can watch for fraud or replace their cards. This is also a legal obligation in many places — talk to a lawyer about your state’s breach-notification rules rather than guessing.</p>
+
+      <h2>The structural fix: stop handling card numbers at all</h2>
+      <p>Here is the move that makes your checkout unskimmable: <strong>do not collect card numbers on your own page.</strong> Use a hosted payment page — Stripe Checkout, PayPal, or your processor’s hosted form — where the customer is sent to the processor’s page to pay and returned to your site afterward. If card numbers never touch your page, a skimmer on your page has nothing to steal. It also shrinks your compliance burden dramatically, because the card data never enters your systems.</p>
+      <p>This is the single highest-leverage change a small store can make. Skimmers keep evolving — in 2026 alone, researchers watched them hide inside Stripe’s own infrastructure, inside Google Tag Manager, inside invisible page elements, and inside the blockchain — but every one of those attacks needs the same thing: a card number typed into <em>your</em> page. Take the card entry off your page and the entire attack class starves.</p>
+      <p>Layer the basics underneath: keep all software updated, require two-factor on every admin account, give staff the minimum access they need, and keep that inventory of which scripts load on your payment pages — then re-check it on a schedule, not once. One January 2026 study traced an active skimming network back to at least 2022: these campaigns persist for years, and a defense you check once is a defense with an expiry date.</p>
+
+      <h2>The bottom line</h2>
+      <p>If a customer’s card was stolen after buying from your site, do not reassure yourself with the padlock or the fact that the site “works fine.” A checkout skimmer is designed to be invisible to exactly those checks. Run the three checks — page-source comparison, a network-tab test purchase, and a malware scan — and if you find anything, take payments offline the same day. Then make the structural move: let the processor’s hosted page handle the card numbers, so there is nothing on your page left to steal. The 2026 skimming campaigns proved the attackers keep getting cheaper, quieter, and better hidden inside trusted services. The defense that does not depend on spotting them is the one that holds.</p>
+      <p class="meta">Stripe-hosted Magecart family (card-stealing code in Stripe customer metadata; loader via Google Tag Manager container GTM-P6KZMF63; stolen data disguised as fake customer records; active since at least Dec 2025) per Sansec, June 4 2026, via Cyber Security News; Google Firestore variant (document "tracking/captcha", project "braintree-payment-app") per Reflectiz. HexMage campaign (40+ merchant sites, 15+ countries; WooCommerce/PrestaShop/Magento/WordPress; Ethereum "EtherHiding" delivery; 20 Sepolia contracts, one owner wallet, 144 contracts Mar-Jul 2026) per Confiant via Cyber Security News, ~Apr 2026. SVG-onload skimmer (99 Magento stores; invisible 1x1-pixel SVG; "double-tap" fake payment overlay) via Cyber Security News, Apr 7 2026. AI-agent skimming rings (27+ retailers, 600,000+ card records, 100+ sites with skimmers, Jul-Sep 2026; ~$25.46 avg cost per target) per Cloud Security Alliance Labs, Sept 26 2026. Ongoing Magecart network (traced to Jan 2022; scripts tied to six payment network brands) per Silent Push, Jan 2026, via scantitan.com. Skimmer behavior (waits for "checkout"/"onepage"; evades public scanners; detectable via page source/network traffic; disguised as Facebook tracker/analytics; WordPress/WooCommerce prime target; admin-bar-aware variant) per Sucuri researcher Puja Srivastava via The Hacker News. HTTPS limitation (padlock encrypts in transit; in-page script reads before encryption; attacker connections can also be encrypted) per scantitan.com. WooCommerce injection points (theme functions.php, wp-includes/functions.php; replaced PayPal Advanced card form) per StorePro. PCI DSS 4.0.1 requirements 6.4.3 and 11.6.1 (payment-page script inventory and change detection) per Reflectiz. All verified 2026-10-06. No whole-web prevalence figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain — the check tests your certificate and protection headers live and names what is missing. About 20 seconds, free. If your checkout collects card numbers on your own page, that is the finding to fix first.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>The full Site Health Watch audit checks your security setup alongside all 40 trust signals — speed, mobile, email authentication, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+checkout+card+skimmer+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
