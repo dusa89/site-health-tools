@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Website Doesn’t Sell Anything — Do I Still Need Security?</title>
+<meta name="description" content="Your brochure site has no checkout and no customer data — so why would a hacker bother? Because they don’t want your site. They want your visitors, your Google listing, and your good name. What attackers actually do with a “worthless” site, in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>My Website Doesn’t Sell Anything — Do I Still Need Security?</h1>
+    <p class="lede">It is the most reasonable objection in website security, and nearly every brochure-site owner has said it: “My website is just my phone number and my services list. I don’t take payments online. Why would a hacker bother with me?” Fair question — and the answer is the part nobody tells you: hackers don’t want your website. They want your visitors, your Google listing, and your good name. Your quiet little brochure site is valuable real estate, and the break-in is automated — nobody picked you personally.</p>
+    <div class="article">
+
+      <p>First, where this guide sits. Our other security guides cover the padlock itself (<a href="what-the-padlock-means.html">what it means</a>, <a href="do-i-need-ssl.html">whether you need SSL</a>), the specific compromises (<a href="why-is-my-website-redirecting-to-spam-sites.html">mystery redirects</a>, <a href="why-is-my-website-showing-ads-i-didnt-put-there.html">ads you didn’t put there</a>, <a href="what-should-i-do-if-my-website-gets-hacked.html">what to do after a hack</a>), and the maintenance habits (<a href="why-does-my-website-software-need-updating.html">updates</a>, <a href="if-my-website-vanished-tonight-do-i-have-a-copy.html">backups</a>). This guide answers the objection underneath all of them — why a site with nothing to steal is still worth breaking into.</p>
+
+      <h2>Nobody targets you personally — that’s what makes it worse</h2>
+      <p>Forget the movie version: a hooded figure choosing your plumbing website. The real version is a bot scanning the entire internet for known holes in popular website software — especially plugins and themes — trying each one automatically. It is a numbers game: scan a million sites, and the unlocked ones open. Your site wasn’t chosen. It was found.</p>
+      <p>Security firms that clean up hacked sites for a living keep reporting the same pattern: the way in is almost never the website software itself, it is an outdated add-on. Sucuri’s hacked-website research has consistently named vulnerable plugins — not the core platform — as the prime attack vector, with WordPress the most common platform among infected sites simply because it runs so much of the web. One plugin you installed three years ago and forgot about is the open window. Nobody cased your business; the bot just rattled the handle.</p>
+
+      <h2>What they actually do with a “worthless” brochure site</h2>
+      <p>Once inside, the attacker doesn’t care about your phone number or your photo gallery. Here is the actual business model, in plain English:</p>
+      <p><strong>1. They borrow your Google reputation.</strong> Hidden spam pages get stuffed into your site — pages you never see, indexed by Google under <em>your</em> business’s name. Someone searches for you and finds gibberish. Your years of showing up in search start working for them instead of you.</p>
+      <p><strong>2. They wear your good name for scams.</strong> Fake login pages — banks, payment services, delivery companies — get hidden in your site’s folders, arriving with your domain on them. Sucuri researchers have documented compromised small-business sites hosting fake login pages for household names like eBay, PayPal, and FedEx. The victim trusts the link because it comes from a real business’s website. That real business is you.</p>
+      <p><strong>3. They redirect your visitors.</strong> Especially on phones, visitors get silently sent to scam or adult sites while your site looks perfectly normal to you (<a href="why-is-my-website-redirecting-to-spam-sites.html">the full guide</a>). You don’t notice. Your customers do — and they blame you.</p>
+      <p><strong>4. They draft your site as infrastructure.</strong> Your hosting account sends spam or helps attack other sites. When the hosting company notices, they don’t suspend the hacker — they suspend <em>your</em> account, because it’s your name on it.</p>
+      <p>Notice what’s missing from that list: the dramatic defaced homepage announcing “you’ve been hacked.” That’s the noisy minority. The profitable hacks are silent — which is why owners typically discover them months later, from a customer, their host, or <a href="why-does-google-say-my-website-is-dangerous.html">Google’s red warning screen</a>.</p>
+
+      <h2>The bill arrives in your name, not the hacker’s</h2>
+      <p>This is the part the objection misses. Even though you were never the target, every consequence lands on you:</p>
+      <p><strong>Google warns your customers away.</strong> Google’s Safe Browsing program flags the compromised site, and visitors see the red “dangerous” screen with your business name on it. That warning doesn’t say “a hacker did this” — it says your site is unsafe.</p>
+      <p><strong>Your host suspends or bills you.</strong> Cleanup — finding every hidden file, closing the hole, getting delisted — is your problem and your invoice, whether you do it or hire it out.</p>
+      <p><strong>Your domain’s reputation burns.</strong> A domain caught hosting phishing pages or sending spam gets distrusted, and that reputation is shared with your email — the same domain your quotes and invoices go out from (<a href="is-my-business-email-going-to-spam.html">why that matters</a>).</p>
+      <p>The uncomfortable math: preventing this costs almost nothing — the habits below are mostly free. Cleaning it up after Google has flagged you costs real money and weeks of lost trust. Prevention isn’t paranoia; it’s the cheaper option.</p>
+
+      <h2>You don’t need Fort Knox — you need the basics</h2>
+      <p>Nobody is asking a brochure site to hire a security team. The fix ladder, cheapest first:</p>
+      <p><strong>1. Updates — the single highest-leverage habit.</strong> That forgotten plugin is the open window; closing it is usually one click (<a href="why-does-my-website-software-need-updating.html">why “later” is the habit hackers count on</a>).</p>
+      <p><strong>2. Delete what you don’t use.</strong> Every installed plugin and theme is a door. If it isn’t earning its place on your site, remove it — deactivated isn’t the same as deleted.</p>
+      <p><strong>3. One strong, unique admin password — plus two-factor.</strong> Bots hammer login pages around the clock (<a href="why-does-my-website-keep-getting-login-attempts.html">those login attempts aren’t personal either</a>); a password used nowhere else plus a second factor stops them cold.</p>
+      <p><strong>4. Backups you can actually restore.</strong> If the worst happens, a clean copy turns a disaster into an afternoon (<a href="if-my-website-vanished-tonight-do-i-have-a-copy.html">the backup test</a>).</p>
+      <p><strong>5. Know who’s responsible for what.</strong> Your host secures the building; you secure your apartment — the split matters when something breaks (<a href="who-is-responsible-for-my-websites-security.html">the full breakdown</a>).</p>
+      <p>Five habits, no checkout required to justify them. The site doesn’t need to sell anything to be worth protecting — it needs to be <em>yours</em>, with your name on it, because that name is exactly what the attacker is borrowing.</p>
+
+      <h2>The bottom line</h2>
+      <p>“I don’t sell anything online” answers the wrong question. Hackers don’t break into brochure sites to steal — they break in to <em>use</em>: your search ranking, your domain’s trust, your hosting account. The attack is automated, the motive is your reputation, and the bill — Google’s warning, the suspended account, the burned domain — arrives in your name. The good news is the defense is boring and cheap: updates, fewer plugins, a real password with two-factor, and a backup. Start with knowing where you stand.</p>
+      <p class="meta">Sources, verified 2026-10-06: Sucuri hacked-website research — vulnerable plugins the prime attack vector, WordPress the most common platform among infected sites (via infosecurity-magazine.com coverage of the Hacked Website Trend report); Sucuri researchers on compromised WordPress sites hosting fake login pages for eBay, PayPal, FedEx, Halifax, Alibaba and others, typically hidden in wp-includes/wp-content (via scworld.com). Technique descriptions (SEO spam, silent redirects, injected ads, infrastructure abuse) are mechanics, not incident counts — no counts claimed. No invented stats.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The check grades your site the way Mozilla does, tests whether your pages actually load over the secure connection, and tells you exactly when your certificate expires — in plain English, free, no signup. Brochure site or not, it takes about 10 seconds to see where you stand.</p>
+        <a class="toolbtn" href="../security.html">Run the free website security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>The full Site Health Watch audit checks your site against all 40 trust signals — security headers, hidden malware, speed, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+a+brochure+site+needs+security+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
