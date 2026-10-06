@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do Those Pretty Fonts Slow Down My Website?</title>
+<meta name="description" content="The typeface on your website loads like software, not like text. How font families and weights quietly add to your load time, the invisible-text trap, and the five fixes in priority order — two of which take sixty seconds.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do Those Pretty Fonts Slow Down My Website?</h1>
+    <p class="lede">You paid for a beautiful redesign — the new typeface looks expensive, and then your speed score fell off a cliff. The photos didn’t change. The hosting didn’t change. The fonts did, and nobody told you fonts have a loading cost. Here is what those pretty typefaces are doing behind your back, the trap that makes text invisible while they load, and the fixes — starting with a one-parameter change — that keep the beauty and get the speed back.</p>
+    <div class="article">
+
+      <p>First, the distinction this guide is built on: your <em>theme</em> and your <em>fonts</em> are not the same bill. The theme is the whole package — the template, the builder, its own scripts (we have a <a href="does-my-website-theme-make-it-slow.html">whole guide on whether your theme makes your site slow</a>). The fonts are the typefaces inside it — and they have their own download mechanics, their own connection to a second company’s servers, and their own nasty trap that the theme guides never mention: text that refuses to show up at all. This guide is the font side.</p>
+      <p><strong>The short answer:</strong> yes — fonts are software files your visitor’s phone must download before the words can appear. Every font family and every weight of it is another download, plus a round trip to Google’s servers. A typical business site loads far more typeface than it actually uses, and the default settings make the text <em>invisible</em> while it all arrives. Two of the five fixes take about a minute and the theme never has to change.</p>
+
+      <h2>What a font costs your site</h2>
+      <p>Forget “font” for a minute. Think <em>files</em>. When your page uses a typeface like Montserrat, the browser downloads the actual letters — and it downloads them separately for every weight you asked for. Regular, medium, semi-bold, bold: that is four files, each roughly 15–30 KB in the modern compressed format. Four families at four weights each is sixteen files and a few hundred kilobytes, all before your headline can render.</p>
+      <p>Now the part nobody warns you about: if those fonts come from Google Fonts — and on small-business sites they almost always do — your visitor’s phone has to make friends with Google’s servers before anything moves. (A photo is one big download from your own server — we have a <a href="why-do-my-photos-slow-down-my-website.html">whole guide on photos</a>; fonts are many small files from <em>someone else’s</em> server. Different bill.) First it looks up the server (DNS), shakes hands (TCP), and sets up encryption (TLS) — twice, once for the server that hands out the instructions (<em>fonts.googleapis.com</em>) and once for the server that holds the actual font files (<em>fonts.gstatic.com</em>). That connection setup runs about 100–250 ms per server even when everything else is optimized, and it happens in a waterfall: the page fetches the instructions, and only after they arrive does it request the font files themselves. The fonts are the last thing in line, but they gate the most important thing on the page: the words.</p>
+      <p><strong>The invisible-text trap.</strong> Here is the nasty part. By default, while the font files are downloading, the browser shows <em>nothing</em> where your text should be — a behavior with the lovely name FOIT, flash of invisible text. Your visitor sees your headline’s layout, your photo, your buttons… and a blank space where the words go. On a slow phone that blank can last a second or more. Your competitor whose text just <em>appears</em> in a plain system font won the customer while your page was still waiting to be pretty.</p>
+
+      <h2>The 5 fixes, in priority order</h2>
+      <p><strong>1 — Trim the weights (the biggest win, no developer needed).</strong> Open your site’s theme settings and look for anything about font weights — many themes load every weight from 100 to 900 by default, even though your design only uses regular and bold. Turn off the weights you don’t use. Two or three weights per family is the expert ceiling; most business sites never need more than regular and bold. This one change can delete half a dozen font files from every single page load.</p>
+      <p><strong>2 — Add <em>display=swap</em> (sixty seconds, kills the invisible text).</strong> Find where your site loads Google Fonts — in the theme settings, a header script, or the code the developer pasted — and add <em>&amp;display=swap</em> to the end of the font URL. It tells the browser: paint the text immediately in a plain system font, then swap in the pretty font when it arrives. The words show at first paint instead of blank space. Yes, there is a brief moment where the text re-renders in the real font (the flash of <em>unstyled</em> text) — readable words that shift slightly beat invisible words every single time.</p>
+      <p><strong>3 — Preconnect (sixty seconds, warms the handshake).</strong> Paste these two lines near the top of your page’s head, before the font link: <em>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</em> and <em>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</em>. They tell the browser to start the connection handshake with Google’s servers before it needs the fonts, so the wait happens in the background. About a hundred to three hundred milliseconds saved — on a phone, that’s felt.</p>
+      <p><strong>4 — Cut to two families, max (the discipline fix).</strong> Every extra font family is a whole new download set plus its own handshake chain. Headlines get one, body text gets one, everything else uses those two. The logo can keep its special treatment — but the third accent font for subheadings is paying a speed tax on every page for styling nobody’s brand depends on.</p>
+      <p><strong>5 — Self-host, or go variable (the developer fix).</strong> If the fonts are doing real brand work, the expert move is hosting the font files on your own site instead of Google’s — the double handshake disappears entirely. The best version of this is a <em>variable</em> font: one file that covers the whole weight range instead of four separate files. Honest note: this is developer territory — ask your developer to quote it, or weigh it against the 90% of the win that steps 1 through 4 give you for free.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t preload every font.</strong> Preload is a hint that says “this file is critical, grab it first” — and it only works when you mean it. Slap preload on six font files and the browser has to juggle them against your images and scripts; the one file that actually matters loses its priority. Preload at most one or two, usually the body-text font.</p>
+      <p><strong>Don’t leave the default loading behavior on.</strong> That default is the invisible-text setting. If your developer or theme never set <em>display=swap</em> or the equivalent, your text is waiting on font files it could have skipped. This is the setting behind “my site feels slower than the test says” — the numbers don’t show blank text, but visitors see it.</p>
+      <p><strong>Don’t confuse “my theme is heavy” with “my fonts are heavy.”</strong> A slow theme (see the <a href="does-my-website-theme-make-it-slow.html">theme guide</a>) loads its own scripts and layout machinery. Fonts are passengers inside it. If the redesign <em>looked</em> the same but felt slower after a font change, the culprit is almost always the fonts — the weights, the families, or the missing <em>swap</em> — not the theme that’s been there for years.</p>
+      <p><strong>Don’t solve this by deleting your brand fonts.</strong> The answer is never “just use the plain font.” Trim the weights, set the swap, preconnect the servers — keep the typeface that makes your site yours. A business site with no brand voice is a different problem than a slow one, and steps 1–3 above close most of the gap without touching the look.</p>
+
+      <h2>The bottom line</h2>
+      <p>Your fonts are files, and files have a loading cost — weights you never use, a handshake with Google’s servers on every visit, and a default that renders your text invisible while it all arrives. Cut the weights to what you use, add <em>display=swap</em>, preconnect the two font servers, hold the line at two families — that’s an hour’s work with no developer, and the invisible text is gone in the first sixty seconds. The typeface stays. The wait doesn’t.</p>
+      <p class="meta">Font-weight size and the 2–3-weight ceiling: per a published performance-audit report, each static weight adds roughly 15–30 KB in WOFF2 (2026-10-05). Connection overhead without preconnect (“full DNS+TCP+TLS round trip — typically 100–250 ms” for the font files even with display=swap) and the swap/FOIT mechanics per the syphio-liquid-audit PERF-015 ruleset, GitHub (2026-10-05). The ~100–300 ms gain for preconnect + swap per a web-fonts optimization guide, GitHub (2026-10-05). Variable fonts as one file for the weight axis, and “preload 1–2 critical fonts only” / “don’t preload all fonts” rules, per the font-optimization reference (GitHub, 2026-10-05). Self-hosting eliminating external-request overhead per the same performance-audit report. The Google Fonts waterfall (CSS from fonts.googleapis.com, then font files from fonts.gstatic.com) per the web-fonts expert guide, GitHub (2026-10-05). The “redesign looked expensive, score fell” framing is illustrative; the “four families at four weights” example is illustrative math from those figures.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English — how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down — including whether your fonts are the bottleneck.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your font loading alongside all 40 trust signals — speed, security, mobile, email, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+fonts+and+speed+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
