@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Show Spam Only on Phones? — The Hack That Hides From You</title>
+<meta name="description" content="Your site looks perfect on your computer, but customers on phones get redirected to spam, fake shops, and scam apps. That is not a glitch — it is cloaked malware that shows you one thing and mobile visitors another. Why your checks missed it, the 3 mobile tests that surface it, and how to kill it for good.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Website Show Spam Only on Phones? — The Hack That Hides From You</h1>
+    <p class="lede">A customer tells you their phone sent them somewhere strange when they visited your website. You pull the site up on your laptop, and everything looks perfectly normal. So you dismiss it — phone glitch, bad ad, customer error. But it was not any of those. Your site has been hacked in a way designed to hide from you specifically: the malware checks who is visiting, shows you the real site, and redirects everyone on a phone to spam. Here is why your checks passed, how to catch it, and what to do next.</p>
+    <div class="article">
+
+      <p>First, where this guide sits among its siblings: it is not the ordinary redirect hack — <a href="why-is-my-website-redirecting-to-spam-sites.html">that guide</a> is for redirects everyone can see, including the owner. It is not the injected-ads problem <a href="why-is-my-website-showing-ads-i-didnt-put-there.html">covered here</a>, which is also visible to the owner. And it is not the general hacked-site recovery walkthrough — <a href="what-should-i-do-if-my-website-gets-hacked.html">that is here</a>. This guide is about the one variant where the owner is the LAST person to know: the malware picks its audience, and you are not in it.</p>
+      <p><strong>The short answer:</strong> your website is not fine. A class of malware — called <em>cloaking</em> — decides what to show based on the visitor’s device, browser, location, and where they came from. It shows the owner the clean site and redirects mobile visitors to spam. Your desktop spot-check is exactly what it was built to pass. Three tests below, in order, will surface it.</p>
+
+      <h2>Why your site looked fine: the malware picks its audience</h2>
+      <p>Think of it like a storefront with a bouncer. When you — the owner — visit from your laptop, you see your real website. When a customer visits on a phone, the malicious code checks the details of the visit (is this a mobile device? did they arrive from Google? is this a real person’s connection, not a security scanner’s?) and quietly sends them somewhere else: a fake shopping site, a scam app download, a “you won a prize” page.</p>
+      <p>The design is deliberate, and it has been the playbook for years. Google updated its guidelines with a mobile-specific example of the abuse: “desktop users receive a normal page, while mobile users are redirected to a completely different spam domain.” Google’s hacked-sites guidance says the same about how it behaves in the wild — the redirect can depend on referrer, user-agent, or device, so clicking your URL from search results redirects a visitor while you, typing the address directly into a desktop browser, see nothing wrong.</p>
+      <p>The scanners get fooled the same way you do. Phishing kits studied in September 2026 were found to show scam pages only to phones on home or mobile connections in the targeted country — while data-center scanners (where security companies’ automated checks run) got a blank page or something harmless (Geek Mamas, Sept 11 2026). Site malware uses the same audience-gating: clean to the people who check, dirty to the people who pay.</p>
+      <p>A Cloudflare client-side security report from September 2026 showed how sophisticated the gating has become: one “paid-mobile cloaker” campaign only fired when a long condition list matched — target host, narrow viewport, specific marketing tags, limited page-view window — disabled nine monitoring and analytics tools so nobody would notice, and carried a 325-entry IP list to hide from cloud systems, VPNs, and security researchers. These payloads, the report noted, are “written to wait for the right victim, then act in ways that would be easy to miss during a quick scan.” That is what you are up against: it is not a bug that looks like a glitch. It is software engineered to survive your attention.</p>
+
+      <h2>The 3 mobile checks that surface it</h2>
+      <p>Run these in order. Each one catches what the last one can miss.</p>
+      <p><strong>Check 1 — A real phone on a real mobile connection.</strong> Borrow a phone that is not yours — a friend’s, a family member’s — and open your site in its mobile browser with Wi-Fi OFF (cellular data on). Some cloaking code checks whether the phone is one it has “seen” before, and some checks the connection type. If the site misbehaves on that phone and not on yours, you have found your answer. A template-malware checklist published in September 2026 puts it plainly: a real phone surfaces mobile-only redirects that your desktop browser cannot.</p>
+      <p><strong>Check 2 — Search-and-click, not type-and-visit.</strong> On the phone, search your business name on Google and click your listing. Then, separately, type your web address directly into the browser’s address bar and visit. If the search click redirects but the direct visit does not, the malware is gating on the referrer — exactly the behavior Google describes. This is the most common owner-proof failure: they typed the address, saw a clean site, and concluded the customers were wrong.</p>
+      <p><strong>Check 3 — Ask a security scanner, but the right one.</strong> Run Sucuri’s free SiteCheck (sucuri.net) — but know what it can and cannot do: it checks the browser-visible code and blocklist status, not your server’s files, and a clean result from one device still does not prove safety. Its real value here is the blocklist half: if Google or others have already flagged your domain, that tells you the problem has been running long enough to get noticed. If SiteCheck is clean AND Check 1 found a redirect, that is not a contradiction — it is confirmation the malware hides from scanners too.</p>
+
+      <h2>Where the code hides (so your cleanup actually finishes it)</h2>
+      <p>Once the checks confirm it, the cleanup has to hit every hiding place at once — because this is the kind of infection that “comes back.” In October 2026, researchers at Sucuri disclosed “SC” malware that persists across at least eight locations at once — website files, the database, even shared server memory — and rebuilds any deleted component from the survivors on the next page load (ThaiCERT, Oct 2 2026). Cleaning one spot while eight others stand is why owners remove the hack three times and watch it return each morning.</p>
+      <p>On a WordPress site (where most small-business hacks land), the usual hiding places for cloaked redirects are: the <code>.htaccess</code> file at the site’s root (server-level redirect rules); the database, especially options tables and post content (redirect code survives file cleanups); theme files and <code>functions.php</code>; rogue JavaScript injected into the page footer or header; and Must-Use plugins, which don’t appear in the normal plugin list. The redirect code itself often contains a device check — code that reads the visitor’s user-agent string for “android”, “iphone”, or “mobile” before firing. If you find a user-agent check you didn’t write, you found the bouncer.</p>
+      <p>If you are not technical, give this paragraph to your host or developer: “The site has device-selective redirect malware. It needs a full-file + database scan, not a plugin sweep, and every backdoor must be cleared in the same pass — persistence-style malware rebuilds from surviving copies.” A competent host cleans this as a routine job; it is the partial cleanups that fail.</p>
+
+      <h2>Why you cannot ignore this: the Google half of the damage</h2>
+      <p>The spam redirects are the visible half. The invisible half is what Google does when it catches on. Google’s “sneaky redirects” guideline treats a mobile-only redirect to a spam domain as a violation — and the penalty for guideline violations runs up to manual action, including removal from Google’s index entirely (via Search Engine Land, on Google’s Webmaster blog). Your site can look perfect in your browser while Google quietly prepares to erase it from search results. The longer a cloaked hack runs, the deeper the hole: every week of spam redirects is a week of customers who will never trust the address again.</p>
+      <p>This is also why “it looked fine when I checked” is the most expensive sentence in small-business security. In the c/side Q2 2025 client-side attack report, 72,740 compromised websites were identified across campaigns that included mobile redirects — one vendor’s detection dataset, but a sense of the scale: your site is not special, and the malware is not personal. It is automated, and it banks on you checking from your laptop.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t declare it clean because it looked fine on your desktop.</strong> That check is the one the malware is designed to pass. Check 1 and Check 2 above are the actual tests.</p>
+      <p><strong>Don’t trust one clean scanner result.</strong> Scanners see one snapshot of one environment; selective payloads wait for conditions the scanner doesn’t match. A clean scan that conflicts with what a real phone shows means the phone is right.</p>
+      <p><strong>Don’t clean one spot and stop.</strong> Persistence-style infections rebuild from surviving copies. If the redirect returns after cleanup, the previous pass missed a hiding place — database, shared memory, or a file nobody looked at — not a new infection.</p>
+      <p><strong>Don’t keep the site live “until you get around to it.”</strong> While a cloaked redirect runs, Google may be watching, customers are being sent to scams in your name, and some of those scam pages are harvesting the visitors’ information — against your reputation. A temporary maintenance page beats a live hijack.</p>
+
+      <h2>The bottom line</h2>
+      <p>If your site looks clean on your laptop but misbehaves on phones, assume a cloaked hack until the three checks say otherwise: a real phone on cellular data, a search-and-click comparison against a direct visit, and a scanner run for blocklist status. The malware is not a glitch and it is not random — it is engineered to hide from exactly the person who owns the site. Check the way the victims see it, clean every hiding place in one pass, and get it done this week: Google treats mobile-only spam redirects as a violation, and the clock on that penalty runs whether you can see the problem or not.</p>
+      <p class="meta">Google sneaky-redirects guideline (desktop users shown normal page while mobile users redirected to a completely different spam domain = violation; manual action up to removal from index) and hacked-sites guidance (redirects can depend on referrer, user-agent, or device) per Google Webmaster blog, via Search Engine Land. Paid-mobile cloaker campaign (conditional script firing on target host + narrow viewport + UTM tags + page-count window; disabled 9 monitoring tools; 325-entry IP avoidance list; payloads "written to wait for the right victim") per Cloudflare client-side security report, Sept 2026, via hashe.com, Sept 17 2026. Mobile-redirect campaign scale (72,740 compromised websites in Q2 2025 client-side attack report, vendor detection dataset) per c/side via PropellerAds blog, Sept 2026. Phishing-kit cloaking (device/browser/country/connection gating; scanners get harmless content) per Geek Mamas, Sept 11 2026. Clean-scan limitation (one scan on one device does not prove safety; check files + runtime requests; real phone surfaces mobile-only redirects) per PropellerAds malware-in-landing-page checklist, Sept 2026. SC persistence malware (backdoor mesh across 8+ locations: files, database, shared memory; self-rebuilding) per Sucuri via ThaiCERT, Oct 2 2026. All verified 2026-10-06. No whole-web prevalence figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain — the check tests how your site behaves on phones: mobile rendering, speed, and the security signals Google watches. Takes about 5 seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free Mobile-friendliness check check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>The full Site Health Watch audit checks your security setup alongside all 40 trust signals — speed, mobile, email authentication, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+phone-only+spam+redirects+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
