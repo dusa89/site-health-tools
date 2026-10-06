@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Jump Around While It Loads?</title>
+<meta name="description" content="The page loads, then everything slides - and you click the wrong button. Google's layout-shift score (CLS) explained in plain English: the four things that make a page rearrange itself, why it costs you customers and search ranking, and the fix ladder.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Website Jump Around While It Loads?</h1>
+    <p class="lede">You open your own website. The page appears. Then, one by one, things slide: the text drops, the button you were about to tap leaps sideways, and you click the wrong thing. Your site is not slow - it arrived. It is unstable. Google has a name and a score for exactly this, it counts toward your search ranking, and the cause is almost always one of four ordinary things.</p>
+    <div class="article">
+
+      <p>First, the distinction this guide is built on: this is not a slow website (<a href="why-is-my-website-so-slow.html">that guide is here</a>), it is not a page that shows nothing at all (<a href="why-does-my-website-show-a-blank-white-screen.html">that one is here</a>), and it is not about how long your photos take to arrive (<a href="why-do-my-photos-slow-down-my-website.html">that one is here</a>). This is the page that loads and then <em>rearranges itself</em> - words sliding, buttons leaping, your place lost. Google measures it as one of the three Core Web Vitals, the set of scores it uses to judge page experience. Here is what the score is, the four things that cause it, and the fix ladder.</p>
+      <p><strong>The short answer:</strong> parts of your page are arriving late and the page has not reserved space for them. When a photo, a widget, or a font shows up after the text has already drawn, everything moves over to make room. The page was built assuming the pieces would all be there at once. They are not.</p>
+
+      <h2>The score Google keeps on your site</h2>
+      <p>Google calls this <strong>Cumulative Layout Shift (CLS)</strong>. It is not measured in seconds - it is a unitless score built from two things: how much of the screen was affected, and how far the content moved. The target Google publishes is a score of 0.1 or less on at least three-quarters of your page visits. Anything above 0.25 counts as poor. Only <em>unexpected</em> shifts count - movement that happens within half a second of you tapping something is expected, so it is excluded.</p>
+      <p>Google's own engineers open their guide to this with the exact sentence your customers are thinking: "I was about to click that! Why did it move?" The classic casualties are the reader who loses her place mid-article and the shopper whose "add to cart" button slides out from under her thumb. That second one is why this is a revenue problem, not a cosmetic one: a customer who taps the wrong button - or who taps a button that turns out to be an ad - does not come back to try again.</p>
+      <p>And it is a search problem too. CLS sits alongside loading speed and interactivity as one of Google's three Core Web Vitals - the page-experience signals that feed search ranking. A page that jumps is, in Google's eyes, a page that fails part of its quality bar.</p>
+
+      <h2>The four causes</h2>
+      <p><strong>1. Photos and images with no reserved space.</strong> When the page draws, the browser does not know how tall a photo will be until the photo file arrives. So it draws the text first, the photo arrives a beat later, and everything below the photo drops to make room. Every image on the page is a potential shove - and a page full of photos shoves a dozen times.</p>
+      <p><strong>2. Ads, embeds, and widgets with no reserved space.</strong> The booking widget, the embedded map, the review carousel, the social feed: these are whole programs that arrive late, and when they do, they are often much taller than the hole the page left for them. Your booking tool is a prime suspect - it is heavy, it loads from another company's server, and it lands exactly where a customer is trying to read.</p>
+      <p><strong>3. Content injected after the fact.</strong> The cookie consent bar that pushes the whole page down. The announcement banner that appears three seconds in. The pop-up that shoves the article aside. Anything that was not there when the page first drew, and pushes existing content to make room, is a layout shift wearing a costume.</p>
+      <p><strong>4. The font swap.</strong> Your site loads with a fallback font, then your real brand font arrives and swaps in. If the two fonts are different sizes, every line of text re-wraps and the whole page breathes. (<a href="do-those-pretty-fonts-slow-down-my-website.html">Fonts cost you download time too</a> - this is the second, separate way they cost you.)</p>
+
+      <h2>The fix ladder</h2>
+      <p><strong>Step 1 - pin the photos down.</strong> Every image on the site should carry its dimensions - the width and height declared up front - so the browser reserves the right-sized hole before the photo arrives. This is the single highest-leverage fix on most small-business sites, because most of them have dozens of photos and none of them declare dimensions. Your web person or your site builder's image settings handle it; it is not a redesign, it is a declaration.</p>
+      <p><strong>Step 2 - give the widgets a box.</strong> The booking widget, the map, the review carousel: each one gets a fixed-size container on the page - a box of the right height that is there from the first paint. When the widget arrives late, it fills the box instead of shoving the page. If the widget's height varies, reserve the <em>largest</em> size it can be; a box with a little air in it beats a page that jumps.</p>
+      <p><strong>Step 3 - stop pushing content down.</strong> Cookie bars, announcement banners, and pop-ups should sit <em>on top</em> of the page - floating over the content - not push the content down. A banner that overlays is an announcement; a banner that shoves the article down is a layout shift. Same for anything your marketing tools inject after load: reserve its space, or float it.</p>
+      <p><strong>Step 4 - tame the font swap.</strong> This one is developer-level, but the plain-English version is: the fallback font must be tuned to match the real font's size, so the swap is invisible. The mechanism names are <code>font-display</code> and fallback size adjustment - hand those two terms to whoever manages your site and the jumping text goes away.</p>
+      <p><strong>Step 5 - measure, don't guess.</strong> Run the page through Google's PageSpeed Insights and look at the CLS number specifically - not the overall score, the CLS line. Fix one cause, re-run, watch the number fall. When it sits at 0.1 or under, you are done.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don't buy faster hosting to fix it.</strong> A fast server delivers a jumping page faster - the page still jumps. This is about order and reserved space, not delivery speed (<a href="does-cheap-hosting-make-my-website-slow.html">hosting fixes slowness</a>; this is a different disease).</p>
+      <p><strong>Don't "fix" it by making the whole page wait.</strong> Holding the page blank until every photo, widget, and font has arrived turns a jumping page into a page that shows nothing - the <a href="why-does-my-website-show-a-blank-white-screen.html">blank-screen problem</a>, which is worse.</p>
+      <p><strong>Don't ignore it because "it settles."</strong> It settles for <em>you</em>, on your fast connection, having seen the page before. For a first-time visitor on a phone, the shifting happens exactly while they are deciding whether to trust you - and Google is scoring it the whole time.</p>
+      <p><strong>Don't blame the visitor's phone.</strong> The jump happens on every device. Phones just make it worse, because the screen is small and a shifted button is a tapped wrong button.</p>
+
+      <h2>The bottom line</h2>
+      <p>A page that jumps around is a page whose pieces arrive late with no space reserved for them. Google scores it, customers feel it, and the wrong tap it causes is a sale that walks away. The fix is not speed and not a redesign - it is reserved space: dimensions on the photos, boxes for the widgets, overlays instead of push-downs, a matched fallback font. Pin everything down, and the page your customer sees first is the page that stays.</p>
+      <p class="meta">CLS mechanics (one of three Core Web Vitals; unitless score from shifted content plus distance; target 0.1 or less for 75%+ of visits; poor above 0.25; shifts within 500ms of user input excluded) and the four most common causes (images without dimensions; ads/embeds/iframes without dimensions; dynamically injected content; web fonts) per Google web.dev "Optimize Cumulative Layout Shift" (published May 5, 2020; last updated Feb 7, 2025), verified 2026-10-06. Score composition (impact fraction x distance fraction) and CLS as a Google Search ranking factor per indexsy.com CLS guide, verified 2026-10-06. Fix mechanics (width/height attributes; reserve space with CSS for ads/embeds; reserve space or use transforms for injected content; font-display or size-adjust for font swaps) per nucliweb webperf-snippets, verified 2026-10-06. No traffic, conversion, or adoption-rate figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Jumping pages are check #1's ugly cousin. The free speed check grades your site’s load behavior in about ten seconds, in plain English — so you can see whether your pages are stable, or still sliding around under your customers’ thumbs.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your page stability alongside all 40 trust signals — security, mobile, email authentication, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+page+jumping+around+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
