@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Feel Slow Even Though the Speed Test Says It’s Fast? — The Perceived-Speed Problem</title>
+<meta name="description" content="Your speed test gives the site a green score, but customers say it feels sluggish. The test measures loading; your customers feel responding — and Google grades that separately. The four feel-killers, the psychology of waiting, and the three-step thumb test.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Website Feel Slow Even Though the Speed Test Says It’s Fast? — The Perceived-Speed Problem</h1>
+    <p class="lede">Here is a puzzle owners bring us: the speed test gives the site a green score, the developer says everything is fine, and yet customers keep saying the site feels slow — buttons that don’t answer, pages that stutter, a checkout that fights back. Both sides are telling the truth. The test measures how fast your site loads. Your customers are judging something else entirely: how fast it responds. Google measures that separately, most sites fail it, and the fix is usually not making anything load faster.</p>
+    <div class="article">
+
+      <p>First, where this guide sits among its siblings: this is the mirror image of <a href="should-my-website-speed-test-score-worry-me.html">our guide on speed-test scores</a> — that one is about a bad score on a site that feels fine. This is the reverse: a good score on a site that feels broken. It is not about the phone gap (<a href="why-is-my-website-slow-on-mobile.html">that guide</a>), not about the blank white screen (<a href="why-does-my-website-show-a-blank-white-screen.html">that one</a>), and not about the layout jumping as its own topic (<a href="why-does-my-website-jump-around-while-it-loads.html">covered here</a> — the jump appears below as one of four feel-killers, not the subject). The subject is the gap between what the test measures and what your thumb feels.</p>
+      <p><strong>The short answer:</strong> the speed test measures <em>loading</em> — how fast the biggest thing on the page shows up. Your customers are judging <em>responding</em> — how fast the page answers when they tap it. Those are two different metrics, Google grades them separately, and the responding one is the most commonly failed speed metric on the web. A site can ace the loading test and still feel broken in the hand.</p>
+
+      <h2>What the test actually measures</h2>
+      <p>The headline number on a speed test is LCP — Largest Contentful Paint — which is a precise way of saying “when did the biggest visible thing show up.” Google’s bar is 2.5 seconds. A page can paint its hero image in two seconds, score green, and still be unusable for another eight: the picture is there, but the buttons are decorative. The test checked the arrival of the paint. Nobody checked whether the door opens.</p>
+      <p>This is the trap owners fall into with developers: “but the test says we’re fast.” The test says you’re fast <em>at loading</em>. Your customer never said the page was slow to appear. They said it feels slow to use — and use is a different measurement.</p>
+
+      <h2>What your customers actually feel</h2>
+      <p>Do the thumb test yourself: open your site on your phone, tap the menu button, and count “one-one-thousand” before anything visibly changes. That beat — the silence between your tap and the page’s answer — is what “feels slow” is made of. Not the loading. The answering.</p>
+      <p>Google has a metric for exactly this, and it is the one most sites fail. It is called INP — Interaction to Next Paint — and it measures the delay between your tap and the screen’s visible response, across every tap in the visit, reporting the worst one. It replaced the older FID metric as an official Core Web Vital on March 12, 2024, precisely because FID only measured the <em>first</em> tap — most sites passed it and still felt sluggish afterwards. The bar: under 200 milliseconds is good, over 500 is poor, judged across real visitors. Industry reporting puts the failure rate around four in ten sites — it is the most commonly failed of the three Core Web Vitals.</p>
+      <p>Why does a site fail it? Almost always the same reason: the page’s main thread is busy running scripts — trackers, widgets, chat tools, animations — when your tap arrives, so the tap waits in line. The page loaded fast. It just can’t listen while it’s thinking.</p>
+
+      <h2>The four ways a “fast” site feels slow</h2>
+      <p><strong>1. The dead tap.</strong> You tap a button and nothing happens — no highlight, no movement — then a beat later the page lurches into action. The tap wasn’t lost; it was queued behind JavaScript. This is the INP failure above, and it is the single most common reason a green-scored site feels broken. Customers read a dead tap as “this site doesn’t work” and tap again, which queues a second tap behind the first.</p>
+      <p><strong>2. The blank stare.</strong> The page shows nothing — white screen, empty boxes — while it assembles itself. The load time is identical to a page that shows a grey skeleton outline of what’s coming, but the blank one feels far slower. LinkedIn’s design team proved this in 2013: users judged skeleton-screen pages as loading faster than spinner pages with <em>exactly the same</em> measured load time. The brain in an open-ended wait (“something is happening”) experiences time as longer than the brain shown a shape (“the page is here, content is coming”).</p>
+      <p><strong>3. The jump.</strong> Content shifts under your finger just as you tap — the button you aimed at is suddenly somewhere else, and you tapped an ad instead. That’s layout shift, and it has <a href="why-does-my-website-jump-around-while-it-loads.html">its own guide</a>, but it belongs on this list because it is a <em>feel</em> failure more than a load failure: the page loaded quickly and then betrayed the tap.</p>
+      <p><strong>4. The stutter.</strong> Scrolling judders, animations hitch, the page moves in steps instead of gliding. Nothing about the load was slow — the device simply can’t keep up rendering while scripts hog the processor. On a customer’s two-year-old phone, stutter reads as “this site is heavy and cheap,” no matter what the lab score said on the developer’s new laptop.</p>
+
+      <h2>Why the wait feels longer than it is</h2>
+      <p>There is a classic principle from waiting-lines research: occupied time feels shorter than unoccupied time. A wait with something to look at, or information about what’s coming, compresses in memory; a blank wait stretches. That is the entire mechanism behind the skeleton-screen finding — and it is why the cheapest feel-fix on the web is also the oldest: never show a customer a blank screen or a bare spinner when you can show them the shape of what’s arriving.</p>
+      <p>The classic usability guideline puts numbers on the tolerance: about a tenth of a second feels instantaneous, about one second is the limit of uninterrupted flow, and past about ten seconds people start abandoning the task. Your customers are not timing you with a stopwatch — they are comparing every tap on your site against every app on their phone, and the apps answer instantly.</p>
+
+      <h2>The three-step thumb test</h2>
+      <p>You don’t need the developer for the diagnosis. Do this on a real phone, on cellular — not your office wifi, not the developer’s laptop:</p>
+      <p><strong>1. Tap the three money buttons.</strong> The call button, the menu, the book/quote button — whatever earns you money. Tap each and count “one-one-thousand” before anything visibly responds. More than a beat on any of them, and you have the feel problem — regardless of what the score says.</p>
+      <p><strong>2. Ask your developer one question.</strong> “What is our INP?” If they don’t know the metric, that’s your answer about why the feel problem survived this long. The bar is 200 milliseconds across real visitors. The usual fix is cutting or deferring the scripts fighting over the main thread — trackers, chat widgets, and review widgets are the repeat offenders (<a href="do-those-little-tracking-scripts-slow-down-my-website.html">trackers</a>, <a href="do-those-chat-widgets-and-booking-tools-slow-down-my-website.html">chat tools</a>, <a href="do-those-review-widgets-slow-down-my-website.html">review widgets</a> each have their own guide).</p>
+      <p><strong>3. Kill the blank stare.</strong> Wherever the site shows a white screen or a bare spinner while loading — page transitions, image galleries, the booking widget — ask for content-shaped placeholders instead: grey blocks in the shape of what’s coming. It changes nothing about actual load time and changes everything about felt time. This is the rare fix that is cheap, fast, and proven.</p>
+
+      <h2>The bottom line</h2>
+      <p>A fast-loading site that doesn’t answer feels slow, and feeling is what customers act on. The test measures the paint; your customers measure the response. Run the thumb test tonight on your own phone — if the money buttons don’t answer within a beat, you don’t have a loading problem, you have a listening problem, and now you know the metric (INP), the bar (200 milliseconds), and the question to ask. The sites that feel instant aren’t always faster. They’re just never caught thinking.</p>
+      <p class="meta">INP (Interaction to Next Paint) replaced FID as a Core Web Vital on March 12, 2024; FID was removed from Chrome’s tools (CrUX API, PageSpeed Insights, Lighthouse) on September 9, 2024 (via dev.to and loadfocus.com, checked 2026-10-06). Thresholds: good at or under 200ms, needs improvement 200–500ms, poor over 500ms, evaluated at the 75th percentile of real Chrome users over a rolling 28-day window (multiple 2026 sources, consistent). INP measures the full interaction — input delay plus processing plus presentation delay — across all interactions in a visit, reporting the worst; FID measured only the first input’s delay (loadfocus.com). INP is the most commonly failed vital, with industry reporting roughly four in ten sites failing (shobhit-halse web-performance skill: 40% of FID-passing sites fail INP; yash-banka seo-playbook: 43%). Skeleton screens perceived as faster than spinners at identical load times: LinkedIn’s 2013 mobile redesign research, design team led by Luke Wroblewski (dev.to, renderlog.in); UX literature cites roughly 20–30% perceived-faster. Nielsen’s classic response-time limits (~0.1s instantaneous, ~1s flow limit, ~10s attention limit) and Maister’s waiting-lines principle (occupied time feels shorter, 1985) cited as established principles. All verified 2026-10-06. No whole-web conversion or revenue figures stated — none verified, deliberately omitted.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain — the check measures your homepage against a typical phone and names the three biggest things slowing it down. About 20 seconds, free. Run it, then do the thumb test above: the check grades your loading, your thumb grades your responding.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your speed alongside all 40 trust signals — security, mobile, email authentication, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+feel-vs-score+speed+gap+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
