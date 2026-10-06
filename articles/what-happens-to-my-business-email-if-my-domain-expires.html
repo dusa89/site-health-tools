@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Happens to My Business Email If My Domain Expires? — The Address That Rents, Not Owns</title>
+<meta name="description" content="Your business email address is a rental, and the domain is the landlord. What actually breaks when a domain expires — the day-by-day timeline, the 45-day and 30-day windows — and the documented attack where a stranger re-registers your domain and starts receiving your password resets.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Happens to My Business Email If My Domain Expires? — The Address That Rents, Not Owns</h1>
+    <p class="lede">Here is the uncomfortable truth about the email address on your business cards: you do not own it. You rent it — and the domain name in the middle is the lease. Let that lease lapse and your email does not just quietly go away. It goes through a public, documented timeline where your address can end up in someone else’s inbox entirely. In 2026, attackers bought an expired domain, recreated its email address, and used the password resets to push malware to a major software package. This guide is the timeline, what breaks when, and the five-minute routine that makes it a non-issue.</p>
+    <div class="article">
+
+      <p>First, where this guide sits among its siblings: this is not the email that broke during a website move (<a href="why-did-my-email-stop-working-when-i-moved-my-website.html">that guide</a> — that owner changed DNS but still <em>owned</em> the domain), and it is not spoofing (<a href="why-did-my-customer-get-an-email-i-never-sent.html">that guide</a> — someone faking your address from the outside). This is the owner-side version, and it is stranger: when your domain expires, a stranger can legally inherit your <em>real</em> address — and the internet will keep sending them your mail.</p>
+      <p><strong>The short answer:</strong> your email address has three parts, and you only control the outer two conditionally. The mailbox (@yourdomain.com) is rented from a domain registrar. If the domain expires, email to your address starts bouncing — and if the domain fully releases, whoever registers it next can set up <em>your exact address</em> and receive password resets, vendor replies, and customer emails that were still headed your way. It happened in a documented supply-chain attack in 2026. The whole thing is preventable in five minutes.</p>
+
+      <h2>Why the domain is the landlord</h2>
+      <p>Think of your address, info@yourdomain.com, as a storefront. The name on the sign (info) is yours to assign. But the <em>building</em> — yourdomain.com — is a lease from a registrar, paid yearly or multi-year. The landlord keeps a phone book entry (the DNS records) pointing your mail at your inbox. Stop paying the lease, and the landlord pulls the phone book entry first, and eventually rents the building to someone else — who then starts receiving the mail still addressed to your storefront.</p>
+      <p>Most owners confuse the domain renewal with the hosting or the email plan. They are three separate bills. You can renew hosting and email religiously and still lose everything if the domain — the one bill that actually names your address — lapses.</p>
+
+      <h2>The timeline: what breaks, and when</h2>
+      <p>For the standard domain extensions (the .com/.net/.org family), the registry lifecycle is documented by ICANN and looks like this — checked October 2026, exact days vary by extension and registrar, but the shape is the industry standard:</p>
+      <p><strong>Expiry day: the site and mail go dark.</strong> The domain stops resolving. Customers typing your address get bounces; email to you comes back undelivered. Your files still exist on the hosting account — nothing is deleted — but the address book entry pointing at them is gone.</p>
+      <p><strong>Days 1–45: the auto-renew window.</strong> ICANN’s lifecycle allows up to a 45-day auto-renew grace period. In practice, registrars send increasingly urgent notices, and many list the domain for auction around day 30 — a stranger can <em>bid</em> on your name while you can still reclaim it. Reclaiming costs the normal renewal plus, at some registrars, a late fee.</p>
+      <p><strong>Days ~45–75: the redemption period, 30 days.</strong> This is the registry-level recovery stage under ICANN’s Expired Registration Recovery Policy: the previous owner can still restore the domain through the sponsoring registrar, but it now requires a special restore process with an additional redemption fee on top of renewal. Nobody can register it yet — the registry holds it — but this is also the stage where many registrars run expired-domain auctions, so someone may already be waiting.</p>
+      <p><strong>Days ~75–80: the 5-day Pending Delete window.</strong> The final stage: no renewal, no restoration, no auction bid will save it. After roughly five days, the name drops back into the public pool — first-come, first-served. Industry explainers put the typical full journey from expiry to public release at about 70–80 days; there is no guaranteed release date, so do not plan to snatch it back the day it drops.</p>
+      <p><strong>After release: your address has a new landlord.</strong> Whoever registers the name can point its mail anywhere. They can recreate <em>your exact address</em> — the same mailbox you printed on everything — and the internet keeps delivering to it: customer replies, vendor invoices, and every password reset for every account still tied to your address.</p>
+
+      <h2>It happened — the 2026 password-reset heist</h2>
+      <p><strong>Labeled as a reported case:</strong> in 2026, security researchers documented an attack on the node-ipc software package. A maintainer’s account email lived on a domain that had expired in January 2025 and was re-registered in mid-2026, most likely by the attackers. The play was simple: set up a mail server, recreate the maintainer’s exact email address, and request a password reset. The reset email arrived in the attacker’s inbox. They reset the account password and published malicious versions of the package (CSO Online, ~June 2026). The domain was not hacked. It was legally re-registered, and the mail flowed.</p>
+      <p>The software world has started defending itself against exactly this pattern: the Python package registry began automatically unverifying email addresses tied to expiring domains in June 2025 — over 1,800 addresses unverified — because expired-domain takeovers had become a supply-chain attack vector (cyberpress.org / The Hacker News, August 2025). And as recently as October 2026, industry guidance put the general case bluntly: “a forgotten domain lapses and is re-registered by a stranger, who then begins receiving password-reset emails for every service still tied to it” (Mondaq, October 2026).</p>
+      <p>For a small business, the exposure is the same shape with different stakes: your banking alerts, your vendor portals, your customer emails — everything still pointed at the address everyone knows. The attacker does not need to know your password. They just need your address, and the lease on the building behind it.</p>
+
+      <h2>The five-minute routine that ends the risk</h2>
+      <p><strong>1. Turn on auto-renew, then verify it worked.</strong> Auto-renew is usually a toggle in the registrar dashboard — and it fails silently when the card on file has expired. Log in, confirm the toggle, and confirm the payment method. A surprising number of lapsed domains trace back to a declined card nobody noticed.</p>
+      <p><strong>2. Put the expiry on a calendar you will see.</strong> Registrars are required to send expiration notices, but notices land in spam or at an old admin address. Register the expiry date on the calendar you actually look at — and set two reminders, 60 days and 14 days out. This is the cheapest insurance a business can buy: zero dollars, two minutes.</p>
+      <p><strong>3. Lock the registrar account with two-factor.</strong> The same attacker economics apply to the registrar account itself — a phished login can change nameservers or transfer the domain away without you. Every registrar offers two-factor; the one guarding your address should have it on. (The account-takeover mechanics are covered in <a href="my-email-is-sending-messages-i-didnt-write.html">the compromised-mailbox guide</a>.)</p>
+      <p><strong>4. Renew for more than a year.</strong> Domains can be registered for up to ten years. A three- or five-year renewal turns the most dangerous bill you own into an event you think about rarely — and costs less per year than annual renewals at most registrars.</p>
+      <p><strong>5. Check where your address is the recovery path.</strong> Make a quick list of the accounts that would send a password reset to your business address — banking, vendors, hosting, the registrar itself. That list is what an expired-domain takeover buys. If the list is long, the domain lease deserves the same attention you give the bank account.</p>
+
+      <h2>The bottom line</h2>
+      <p>Your business email address is a rental, and the domain is the lease. The timeline from expiry to a stranger’s inbox is public, documented, and measured in roughly 70–80 days — and it has already been weaponized. Auto-renew plus a working payment method plus a calendar reminder ends the whole risk. Five minutes, once a year, against an attack that costs the victim far more than the domain ever did.</p>
+      <p class="meta">Domain lifecycle figures (autoRenewPeriod up to 45 days per ICANN new-gTLD registration-lifecycle documentation; Redemption Grace Period 30 days under ICANN’s Expired Registration Recovery Policy, corroborated by nicenic.com ~Sep 2026 and jksdigital.in Sep/Oct 2026; Pending Delete ~5 days; typical full journey to public release ~70–80 days for many gTLDs per NiceNIC Sep 2026 — no guaranteed universal release date; timing varies by extension and registrar), all checked 2026-10-06. The node-ipc domain case is a practitioner/reporter-documented incident (CSO Online, ~June 2026, summarized and labeled in-copy). PyPI’s 1,800+ auto-unverifications since June 2025 (cyberpress.org / The Hacker News, August 2025) and the Mondaq October 2026 characterization are reported facts, labeled in-copy. No whole-web conversion or revenue figures stated — none verified, deliberately omitted.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain — the check runs the SPF, DKIM, and DMARC authentication tests and tells you in plain English whether your email proves it comes from your business. An expired domain kills all three at once; this check tells you whether yours is still pointed at a mailbox you control.</p>
+        <a class="toolbtn" href="../index.html">Run the free Email deliverability check check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #2 of 40</h2>
+      <p>The full Site Health Watch audit checks your email authentication alongside all 40 trust signals — speed, security headers, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+what+happens+to+business+email+when+a+domain+expires+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
