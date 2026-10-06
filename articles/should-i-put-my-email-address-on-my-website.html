@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should I Put My Email Address on My Website?</title>
+<meta name="description" content="A clickable email on your contact page is also a public feed for harvesting bots — and the FTC tested exactly what happens next. How address scraping works, what the numbers showed, and the four-tier protection ladder, from contact form to plain text.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should I Put My Email Address on My Website?</h1>
+    <p class="lede">Your customers want a big friendly “email us” button on your contact page, and you want to be easy to reach. What nobody tells you at the website-builder stage: every plain-text email address on your site is also published in a public database of sorts — the internet itself — where harvesting bots collect it automatically. A U.S. Federal Trade Commission study tested exactly what happens to published addresses. Here is what they found, and the honest answer to the question.</p>
+    <div class="article">
+
+      <p>First, the distinction this guide is built on: this is not about your emails going to spam (<a href="is-my-business-email-going-to-spam.html">we have a whole guide on email authentication</a>) and it is not about spam you already receive (<a href="how-do-i-stop-spam-from-flooding-my-business-email.html">that one is here</a>). This is the opposite end of the problem: an address on your own website, put there by you, being collected by software that never sleeps. If you fix deliverability but publish your address in plain text, you are bailing water while the faucet runs.</p>
+      <p><strong>The short answer:</strong> a plain-text email address on your website <em>will</em> be harvested by bots — the FTC proved it with a controlled experiment. It does not mean you can never publish an address. It means you publish it with protection: a contact form as the front door, and the email itself assembled by JavaScript or encoded so the bots find nothing. Ten minutes of work, once.</p>
+
+      <h2>How harvesting actually works</h2>
+      <p>Spammers run programs that spider through web pages looking for email addresses — especially the addresses inside <code>mailto:</code> tags, the ones you click to open a mail window. That is not a theory about how spam works; it is documented in the net-abuse harvest FAQ maintained for years as the reference on the subject. A bot does not read your page the way a customer does. It downloads the raw HTML source and runs a pattern match for anything shaped like an address. Plain text and clickable links are both collected. The address then flows into spam databases, where it circulates indefinitely — once one spammer has it, the list propagates and there is no taking it back.</p>
+      <p>This is why the spam often starts within days or weeks of a new site launch. The address did not leak. Nobody sold it. The bot simply visited, matched the pattern, and added it. Freshly registered domains and brand-new contact pages get visited by these crawlers routinely — being new does not protect you; it paints the target.</p>
+
+      <h2>The experiment: the FTC published addresses on purpose</h2>
+      <p>In one of the most cited experiments on this question, U.S. Federal Trade Commission investigators created 150 fresh email accounts — 50 on an ISP with no spam filtering, 50 each on two ISPs with filtering — and posted sets of three on 50 internet locations: FTC-run websites, popular message boards and blogs, chat rooms, and USENET groups. To guarantee only automated harvesters could collect them, the addresses were rendered in the same color as the page background — invisible to human visitors.</p>
+      <p>The results were not close. The unfiltered addresses received <strong>2,129</strong> pieces of spam within two weeks. By week five, the count was <strong>8,885</strong>. The two filtered sets got 469 and 95 in the same two weeks — filtering helps enormously, but notice the gap between “filtered” and “unpublished”.</p>
+      <p>Then the masking arm. The investigators created four “masked” addresses — written as “name at domain dot com” instead of the real format — and posted them alongside four unmasked addresses on four popular sites. After five weeks, the four masked addresses had received <strong>one</strong> piece of spam. The four unmasked ones had collected <strong>close to 6,500</strong>. The takeaway is old but the mechanism is unchanged: if the bot cannot parse it, it cannot collect it.</p>
+
+      <h2>What works in 2026: the protection ladder</h2>
+      <p>More recent testing keeps the same picture. Honeypot testing in 2026 against roughly 700 live harvesters ranked the protection options: JavaScript-assembled addresses blocked 100% of the harvesters; HTML entity encoding blocked 95–99%; image or CSS-reversal tricks blocked the bots but broke screen readers and copy-paste for real humans — a bad trade for a business contact. Here is the ladder, best first:</p>
+      <p><strong>Tier 1 — a contact form as the front door.</strong> No address on the page at all. The customer types their message into your form, it lands in your inbox (with spam filtering and a honeypot or CAPTCHA to stop form spam). Most platforms and every serious support portal do exactly this. It also fixes the deliverability angle — <a href="why-do-my-contact-form-emails-go-to-spam.html">form mail that reaches you is a deliverability question, not a harvesting one</a> — and it works for people without an email app configured.</p>
+      <p><strong>Tier 2 — build the address with JavaScript.</strong> The page source holds the address in pieces or encoded; a small script assembles a normal clickable <code>mailto</code> link when the page loads. Bots reading raw HTML find no pattern to match; your customers see and click a perfectly normal link, and copy-paste works. This is the tier the 2026 testing found fully effective.</p>
+      <p><strong>Tier 3 — HTML entity encoding.</strong> Each character is written as an HTML entity (<code>&#64;</code> instead of @). It renders as a normal address in the browser but is measurably harder for bots to parse — 95–99% blocked in the 2026 testing. Nearly as good, trivially easy, and no script required.</p>
+      <p><strong>Tier 4 — the “at dot” plain-text mask.</strong> Writing “name at domain dot com” is what the FTC tested in 2006, and it worked then — one spam in five weeks. The caveat: bots have had twenty years to learn the trick, so treat it as the weakest tier. And it annoys customers, who have to reconstruct the address by hand. Use it only as a last resort.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don't publish it as an image.</strong> It stops the bots — but it also stops screen readers (blind visitors literally cannot reach you), breaks copy-paste, and looks odd on high-resolution screens. Accessibility law is not the only reason this is a bad trade; the customer friction is.</p>
+      <p><strong>Don't hide it on an obscure page and call it safe.</strong> A contact page buried in the footer with no search indexing is still crawled. “Nobody will find it” is a statement about humans, not bots, and bots are the threat.</p>
+      <p><strong>Don't let the mask tier be the whole strategy.</strong> If your address has been plain-text on the site for years, the bots already have it — encoding it now stops future harvesting, not the wave already in motion. Pair the fix with real filtering on the inbox end (<a href="how-do-i-stop-spam-from-flooding-my-business-email.html">start here</a>).</p>
+
+      <h2>Who should still publish a raw address?</h2>
+      <p>The honest exception: some businesses genuinely need a public email. Journalists, freelancers whose clients expect one-click emailing, and businesses where the address is also the brand's public identity. If that is you, publish it at a protected tier — and use a dedicated public-facing address (say <em>hello@</em>) rather than your real working inbox, so the wave lands in a filterable mailbox, not where you do business. <a href="should-i-have-separate-email-addresses-for-sales-support-and-billing.html">Separate addresses for separate jobs</a> is the companion move.</p>
+
+      <h2>The bottom line</h2>
+      <p>Putting your email on your website in plain text is publishing it to software whose entire job is collecting published emails. The FTC's experiment is the number: 8,885 spams in five weeks for the unprotected, one for the masked. You do not have to choose between being reachable and being protected — a contact form as the front door, or an address assembled by JavaScript, gives your customers a normal clickable experience while the bots find nothing. Ten minutes, once, and your published address stops being a feed for the harvesting industry.</p>
+      <p class="meta">Harvesting mechanics (spidering for mailto: addresses) per the net-abuse harvest FAQ (faqs.org). FTC experiment figures (150 accounts, 50 locations, 2,129 spam at two weeks / 8,885 at five weeks unfiltered; 469 and 95 filtered; masked 1 vs unmasked ~6,500 at five weeks) per the Security Management Magazine summary (asisonline.org, 2006). 2026 protection rankings (JS assembly 100% blocked, HTML entity 95–99%, image/CSS-reversal bot-effective but accessibility-breaking) per 2026 honeypot testing of ~700 live harvesters (github.com/powr-data/mtx-skills email-address-obfuscation, crawled 2026). All verified 2026-10-05. No adoption-rate, market-share, or attack-frequency figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain &mdash; the check runs the SPF, DKIM, and DMARC authentication tests and tells you in plain English whether your email proves it comes from your business. Takes about 5 seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free Email deliverability check check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #2 of 40</h2>
+      <p>The full Site Health Watch audit checks your email authentication alongside all 40 trust signals — speed, security headers, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+putting+an+email+address+on+your+website+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
