@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Email Is Sending Messages I Didn't Write — Am I Hacked?</title>
+<meta name="description" content="Emails are going out from your business address that you never wrote. That means one of two things: someone is faking your address, or someone is inside your account. The 10-second test that tells them apart, the silent trick intruders use to stay invisible, and the 6-step recovery in order.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>My Email Is Sending Messages I Didn't Write — Am I Hacked?</h1>
+    <p class="lede">A customer calls about a strange email “from you.” Or you open your own Sent folder and there is a message you never wrote, in your own handwriting style, answering someone you know. Two nightmares look identical from the outside: a stranger faking your address — your account untouched — or a stranger inside your account, sending mail as you. One is a nuisance. The other is an emergency. Here is how to tell which one you are in, and what to do next.</p>
+    <div class="article">
+
+      <p>First, where this guide sits among its siblings: it is not about customers receiving email you never sent because a stranger forged your address — <a href="why-did-my-customer-get-an-email-i-never-sent.html">that is the spoofing guide, and it matters here because spoofing is the FIRST suspect to rule out</a>. It is not about setting up DMARC (<a href="what-is-dmarc.html">that guide</a>) or the unauthenticated-sender warning (<a href="why-does-gmail-show-a-question-mark-next-to-my-business-name.html">that one</a>). This is about the case where the mail really did leave from inside your account — someone has your login, and the normal defenses were walked through, not broken.</p>
+      <p><strong>The short answer:</strong> if the mystery messages appear in your own Sent folder, someone is inside your account and you should treat it as an active emergency. If they do not appear in Sent, your account is probably fine and you are looking at address forgery instead — go read the spoofing guide. Everything below is for the first case.</p>
+
+      <h2>The 10-second test: Sent or not Sent</h2>
+      <p>Open your email in a web browser — not your phone app — and open the Sent folder. Now match it against the mystery messages your customers saw.</p>
+      <p><strong>If the messages are NOT in your Sent folder:</strong> nobody is in your account. A stranger forged your address on mail sent from somewhere else, the same way anyone can write any return address on a paper envelope. Your account was never touched. <a href="why-did-my-customer-get-an-email-i-never-sent.html">This is the spoofing case</a>, and the fix is authentication records (SPF, DKIM, DMARC), not a password change. Go there.</p>
+      <p><strong>If the messages ARE in your Sent folder:</strong> someone sent them from inside your account. They have — or had — your login. Keep reading; this is the emergency path.</p>
+      <p>One more place to check while you are here: the Trash and the Deleted folder. Intruders routinely delete their own sent mail to hide the trail, and deleted items sit in Trash for 30 days on most providers. Also glance at Drafts — sometimes the operation is still in progress.</p>
+
+      <h2>How they got in</h2>
+      <p>Almost nobody gets “hacked” by guessing. The three doors that matter in 2026:</p>
+      <p><strong>1. The fake login page.</strong> You clicked a link — a “password expired” warning, a shared-document notice, a carrier invoice — landed on a page that looked exactly like your email login, and typed your password. Eye Security’s 2026 incident report, built from 343 investigated cases at midsize European companies, found 81% of investigated incidents were business email compromise, and 63% originated from phishing via links. The link is the front door.</p>
+      <p><strong>2. The stolen session token.</strong> This is the one that beats your two-factor code. In 2026 attackers shifted from stealing passwords to stealing <em>authentication tokens</em> — the proof, stored by your browser or app, that you already logged in. A token bypasses both the password and the multi-factor prompt, because as far as the server can tell, you are already you. Travelers’ Q2 2026 Cyber Threat Report found business email compromise claims 57% higher than the same quarter last year, driven by exactly this shift to token theft. Eye Security found 79% of the incidents it investigated involved an MFA bypass — so “I have two-factor on” is good hygiene, not a guarantee.</p>
+      <p><strong>3. A reused password from someone else’s breach.</strong> If your business email password is also the password you used on a site that got breached, automated tools try it everywhere within hours. This is the argument for a password manager and unique passwords, and it is also why the recovery steps below include changing the password — even when the entry point was a token.</p>
+
+      <h2>The silent trick that keeps them invisible</h2>
+      <p>Here is what the intruder does in the first minutes after getting in: nothing dramatic. They quietly set a mail rule that forwards a copy of every incoming message to an address they control — then they simply read. Nothing looks wrong. Your inbox behaves normally. Over days or weeks they learn your billing cycle, your contractors, how your manager writes, when the deposit is due. The day before a payment, the email arrives inside the real thread, from the real account, with one detail changed: the bank account number.</p>
+      <p>This is why business email compromise is a money crime first. Abnormal AI’s 2026 research, across roughly 800,000 analysed email attacks, found vendor email compromise accounted for about 61% of the business email compromise activity observed — and requests to change where money goes (a “billing account update”) carried a 26.5% account compromise rate, versus under 1% for routine invoice questions. The criminals take the trouble when the prize is a redirected payment. The FBI’s 2026 annual report put 2025 BEC losses at $3.05 billion across 24,768 complaints — roughly $123,000 per incident. The fake email is never the point. The redirected wire is.</p>
+
+      <h2>The 6-step recovery, in order</h2>
+      <p>Do these in sequence. The order matters — several steps fail if you skip ahead.</p>
+      <p><strong>Step 1 — Don’t tip them off yet.</strong> Do not send a warning email to your customers from that account, and do not confront “the hacker” by replying to anything. They may be reading in real time and they can delete your warning before anyone sees it. Work from a different device if you can, so your clicks don’t ride inside their session.</p>
+      <p><strong>Step 2 — Change the password AND kill every session.</strong> A password change alone does not evict an intruder who is already inside with a stolen token — the token keeps working. You need both: new password, plus “sign out everywhere” / “revoke all sessions.” On Google this is myaccount.google.com → Security → Your devices → sign out all; on Microsoft 365 it is revoking sessions from the account page. Travelers’ 2026 guidance says it plainly: build token response into the incident plan — a password reset by itself is not enough.</p>
+      <p><strong>Step 3 — Turn on two-factor (or better, passkeys) and leave it on.</strong> Microsoft’s own research shows multi-factor authentication blocks more than 99.2% of account compromise attacks. It does not stop the token-theft trick above — but it closes the password and reused-password doors permanently, and those are still the doors most intruders use.</p>
+      <p><strong>Step 4 — Hunt the backdoors.</strong> This is the step everyone skips, and the reason intruders “come back” a week later. Check all four hiding places and remove anything you did not add: (a) mail forwarding rules and filters — including rules that auto-forward to an external address or auto-delete incoming mail; (b) “send as” addresses and delegates — anyone else authorised to send from your address; (c) connected third-party apps and OAuth permissions — a “productivity app” granted full mailbox access is a key under the mat; (d) unknown signed-in devices and recovery email/phone numbers — an attacker-added recovery address means they can reset their way back in.</p>
+      <p><strong>Step 5 — Audit the damage.</strong> With the account locked down, reconstruct what happened: which customers received fake mail, whether any email mentioned changed bank details or payment instructions, and whether any money moved. If a vendor’s or your own banking details were “updated” by email at any point, call the real party on a known phone number — never the number in the email — and verify. At roughly $123,000 per incident on average, the payment-redirect moment is the expensive part of this story; the email is just how they set it up.</p>
+      <p><strong>Step 6 — Tell the humans.</strong> Now warn your customers — from the secured account, or by phone for anyone who received instructions involving money. Report the incident: the FBI takes these at ReportFraud.ftc.gov / ic3.gov, and your email provider has a compromised-account reporting path. Screenshot everything first — the forwarding rules, the unknown sessions, the sent items — before you delete them, so the report has evidence.</p>
+
+      <h2>Before you finish: the other explanation</h2>
+      <p>Sometimes the “intruder” is a person you know. A former employee whose access was never revoked, a contractor who kept the login “just in case,” a shared password that outlived its reason. If the backdoor hunt in Step 4 turns up a familiar name rather than a stranger, the fix is the offboarding you never did — <a href="what-do-i-do-with-my-employees-email-when-they-leave.html">the offboarding guide walks through the full checklist</a>. It is less dramatic than a hacker, and just as dangerous.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t assume one password change fixed it.</strong> Tokens, forwarding rules, and delegated access all survive a password change. Step 2 and Step 4 exist because this mistake is how people get re-compromised.</p>
+      <p><strong>Don’t reuse the new password anywhere else.</strong> Pick one unique password per account, stored in a password manager — otherwise the next breach of an unrelated site hands your email back to the same tools.</p>
+      <p><strong>Don’t delete the evidence before documenting it.</strong> Screenshot the unknown rules, sessions, and sent items first. You need them for the report, and for the awkward conversation with the customer who paid the wrong account.</p>
+      <p><strong>Don’t trust any “new bank details” that arrived by email during the incident window.</strong> Treat every payment instruction received while the account was compromised as hostile until verified by phone on a number you already had.</p>
+
+      <h2>The bottom line</h2>
+      <p>Mystery mail in your Sent folder means someone was — or is — inside your account, and the 2026 trend is that they stay quiet: a stolen token walks past your password and your two-factor code, and a silent forwarding rule lets them read everything while you see nothing. The defense is a boring sequence done in order: don’t tip them off, change the password and kill all sessions, turn on two-factor, hunt the forwarding rules and delegates, audit who got fake mail, then tell the humans. Six steps, one afternoon, and the door is closed — including the doors most people never knew were open.</p>
+      <p class="meta">Incident data (343 investigated cases, midmarket Europe; 81% BEC, 79% involved MFA bypass, 63% originated from phishing via links) per Eye Security, The State of Business Email Compromise 2026 (LinkedIn, 2026). Token-theft shift (BEC claims 57% higher in Q2 2026 vs prior year; attackers stealing auth tokens instead of passwords; build token response into the plan, not just a password reset) per Travelers Q2 2026 Cyber Threat Report via Digital Insurance, Sept 2, 2026. Vendor-email-compromise share (~800k attacks analysed; ~61% of observed BEC activity; billing-update requests 26.5% compromise rate vs under 1% for routine inquiries) per Abnormal AI 2026 research via Red Flag Reporting. BEC loss figures (2025: $3.05B, 24,768 complaints, ~$123k average) per FBI IC3 2026 annual report via usecarly.com. MFA efficacy (blocks >99.2% of account compromise attacks) per Microsoft research via 2026 industry write-up. Silent-forward intruder behavior per LinkedIn 2026 industry piece. All verified 2026-10-06. No adoption-rate or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain — the check runs the SPF, DKIM, and DMARC authentication tests and tells you in plain English whether your email proves it comes from your business. Takes about 5 seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free Email deliverability check check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #2 of 40</h2>
+      <p>The full Site Health Watch audit checks your email authentication alongside all 40 trust signals — speed, security headers, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+hacked+business+email+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
