@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Website Used to Be Fast — What Made It Slow?</title>
+<meta name="description" content="Your website loaded fine a year ago, and now every page drags. You did not redesign anything — but your site quietly got heavier every month. Here is why websites drift slower over time, the 5 audit steps that find which layer drifted, and the fixes in order of leverage.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>My Website Used to Be Fast — What Made It Slow?</h1>
+    <p class="lede">You did not change the design. You did not add pages. And yet your website — the same one that loaded fine a year or two ago — now makes visitors wait. Nobody hacked it, nobody broke it, and nothing looks different. What happened is quieter: month by month, your site got heavier. Plugins got bigger with every update, the database filled with junk nobody cleaned, the photo library swelled with full-resolution uploads, and nobody ever took anything out. Websites do not stay fast on their own. Here is how the drift works, how to measure what yours gained, and the cleanup order that reverses it.</p>
+    <div class="article">
+
+      <p>First, where this guide sits among its siblings: this is not the general “my site is slow” troubleshooting walkthrough — <a href="why-is-my-website-so-slow.html">that guide is here</a> — and it is not about whether your host is the problem (<a href="does-cheap-hosting-make-my-website-slow.html">that one</a>). It is also not the intermittent-speed case <a href="why-is-my-website-only-slow-sometimes.html">covered here</a>, where the site is fast one minute and slow the next. This guide is for the slow, steady decline: it was fine, it kept getting worse, and nobody can point to the day it changed — because the day never came.</p>
+      <p><strong>The short answer:</strong> your website gained weight while you were not looking. The five places it accumulates are plugin updates that add features you never asked for, plugins you stopped using but never removed, a media library full of camera-sized photos, a database clogged with revisions and expired data, and third-party scripts added over the years and never audited. Five audit steps below find which layers drifted on your site — fix them in the order given, biggest leverage first. (If you only just discovered the slowdown by running a speed test, <a href="should-my-website-speed-test-score-worry-me.html">this guide</a> explains what the score itself actually means.)</p>
+
+      <h2>Why drift happens: the web itself got heavier, and so did you</h2>
+      <p>Part of the creep is not your fault at all. The average page on the internet has been getting heavier for a decade: the median mobile page grew from about 845 KB in 2015 to roughly 2.6 MB by August 2026, per HTTP Archive — a 202.8% increase over the decade. Images have been nearly flat since 2018; the growth is JavaScript, which nearly doubled from about 358 KB in 2018 to roughly 689 KB in 2026. Everything your site depends on — your theme, your plugins, your analytics — ships inside that tide. Even if you changed nothing, the pieces your site is made of did.</p>
+      <p>The other part is your site specifically. The average WordPress site in the US runs about 21 plugins (2025 figures), and WordPress sites already run heavier than the web average — about 2.9 MB mobile, 3.3 MB desktop, versus 2.6 and 3.0 for the median page. Every plugin is a subscription to somebody else’s development roadmap: updates add features, features add scripts, scripts add weight. That is before counting the plugins you tried once in 2022 and left sitting there, or the three “speed booster” plugins someone stacked on top of each other.</p>
+
+      <h2>The 5 audit steps that find your drift</h2>
+      <p>Do these in order. Each step names a layer; the ones with weight are the ones you fix.</p>
+      <p><strong>Step 1 — List what is actually installed.</strong> Open your plugin list and count. Anything you do not recognize, or anything deactivated but still installed, is a candidate. A deactivated plugin does not load on your pages — but it is still code on your server that someone has to keep updated, and it is the classic place a cleanup stops short. Delete what you do not use, for real. If two plugins do the same job, keep the better one.</p>
+      <p><strong>Step 2 — Check what each survivor ships.</strong> For each remaining plugin, the question is not “how many do I have” but “what does this one add to every page?” Each plugin that loads scripts or styles site-wide adds to the page weight whether its feature is on that page or not. The heaviest offenders on business sites are usually page builders, security plugins that scan on every request, and anything that adds a chat bubble, review widget, or booking button on pages that never need them. The fix is not fewer plugins as a number — it is fewer scripts on the page.</p>
+      <p><strong>Step 3 — Weigh your media library.</strong> Upload a photo from a phone and WordPress keeps the original — the 5 MB camera-sized file — alongside the web sizes. Over two years of “quick” uploads, that library gets enormous, and page builders love pulling the full-size file when you grab the wrong thumbnail. Check your library’s largest files first; replace anything over a few hundred KB that appears on a page, and set a habit: resize before upload. Images are still about a third of the median page’s weight, so this is the fastest win most sites have.</p>
+      <p><strong>Step 4 — Empty the database’s junk drawer.</strong> Every draft autosave, every post revision, every expired transient (a temporary data cache plugins write and sometimes never clean up), and the spam folder’s ten thousand comments — all of it lives in your database, and the database answers every page request. On sites that have run for years without a cleanup, expired transients and revision stacks are the usual suspects. A database cleanup plugin — one you run and then delete — clears revisions, autosaves, spam, and expired transients in one pass. Back up first. Always back up first.</p>
+      <p><strong>Step 5 — Audit the third-party scripts.</strong> Over the years someone added a tracking pixel, a heatmap, a review badge, a live-chat trial, a booking widget, and a cookie banner from three different vendors. Each one is a request your page makes to someone else’s server on every visit. View your page source and list every domain that is not yours; if you cannot name the business reason for a script, remove it and see if anyone notices. The tracking-script and widget siblings in this series (<a href="do-those-little-tracking-scripts-slow-down-my-website.html">tracking scripts</a>, <a href="do-those-review-widgets-slow-down-my-website.html">review widgets</a>, <a href="do-those-chat-widgets-and-booking-tools-slow-down-my-website.html">chat and booking tools</a>) show how fast these add up — here the point is nobody took them back out.</p>
+
+      <h2>What NOT to do</h2>
+      <p><strong>Do not start with a hosting upgrade.</strong> Moving to a faster, pricier host is the most common first move — and it does not remove a single kilobyte of bloat. It rents you a bigger truck for the same overloaded boxes. Run the drift audit first; if the site is clean and still slow, then talk hosting.</p>
+      <p><strong>Do not install another speed plugin on top of the pile.</strong> There is a whole industry selling plugins that promise to make your 30 plugins load faster. The good ones help — but every plugin you install is another subscription to someone’s roadmap, and the irony of fixing bloat with more code should make you pause. Clean first; add one well-chosen optimization plugin last, not first.</p>
+      <p><strong>Do not delete blindly.</strong> The flip side: bulk-deleting plugins you “think” are unused can break forms, break checkout, or break the thing your contact page quietly depended on. Deactivate first, wait a week, click through your site like a customer — then delete.</p>
+      <p><strong>Do not treat a clean test as permanent.</strong> Drift is a subscription, not an event. The updates keep coming, the uploads keep landing, the scripts keep getting added. Put a 10-minute quarterly cleanup on the calendar — or get someone to — because a site you cleaned once is a site that starts drifting again tomorrow.</p>
+
+      <h2>The bottom line</h2>
+      <p>If your website used to be fast and now is not, nothing mysterious happened: it accumulated weight in five places while nobody was watching. List the plugins and delete the dead ones, audit what the survivors load, shrink the media library, clean the database, and strip the third-party scripts you cannot justify. Most sites recover a large share of their old speed from that cleanup alone — no redesign, no new host, no new plugins stacked on top. The drift will start again the day after you finish; the difference is that now you know what to check.</p>
+      <p class="meta">Median page weight mobile ~845 KB (July 2015) -> 2,362 KB (July 2025, +202.8% over the decade) -> ~2.6 MB (Aug 2026); desktop ~3.0 MB (Aug 2026) per HTTP Archive; WordPress medians mobile ~2.9 MB / desktop ~3.3 MB (Aug 2026) per HTTP Archive WordPress lens; JavaScript driving growth (median mobile JS ~358 KB in 2018 -> ~689 KB Sep 2026; images flat since 2018) per HTTP Archive via colorlib site-speed statistics; median page breakdown desktop: JS 697 KB, images 1,058 KB, fonts 139 KB, CSS 82 KB, HTML 22 KB (mobile: JS 632 KB, images 911 KB) per HTTP Archive 2025 Web Almanac via SQ Magazine; average US WordPress site ~21 plugins, 60,300+ plugins in official directory, 82.4% of WordPress sites use at least one caching plugin (2025) per SQ Magazine WordPress statistics; Duplicator recommends 20-30 plugins (avg 25) for efficient operation per mycodelesswebsite WordPress statistics; average WordPress site ~20 plugins (Web Almanac 2023) via GS Plugins / Medium Dec 2025. All verified 2026-10-06.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain — the check measures your homepage against a typical phone and names the three biggest things slowing it down. About 20 seconds, free. Run it before the cleanup, then again after: the before-and-after number is your proof the drift is gone.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your speed alongside all 40 trust signals — security, mobile, email authentication, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+creeping+slowdown+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
