@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Bounce Through Several Addresses Before It Loads?</title>
+<meta name="description" content="Type your address and watch the browser's address bar change three or four times before your site appears. That is a redirect chain — each hop a full extra trip before anything loads. What causes it, what Google says about it, and the one fix that collapses it.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Website Bounce Through Several Addresses Before It Loads?</h1>
+    <p class="lede">Type your own web address into your phone's browser and watch the address bar closely. Does it change — once, twice, three times — before your site finally appears? Those are redirects, and when they stack up in a line, they form a redirect chain. Nothing looks broken, but every hop is a full extra trip your customer's phone has to make before it sees a single pixel of your business. Here is how to count your hops, what Google's own people say the limit is, and the one fix that collapses the whole chain.</p>
+    <div class="article">
+
+      <p>Most of the time, redirects are invisible and harmless. You move a page, the old address politely points to the new one, and nobody notices. A redirect <em>chain</em> is when those polite pointers start pointing at each other: address A sends visitors to B, B sends them to C, C sends them to D — and only D finally shows the page. One chain is not a bug you can see. It is a tax your customers pay on every single visit.</p>
+
+      <h2>What a redirect chain actually is</h2>
+      <p>A redirect is a single instruction from your server: &ldquo;this address moved; go to that address instead.&rdquo; A redirect chain is a <em>sequence</em> of those instructions: A redirects to B, B redirects to C, C redirects to D, and D finally loads. Each server response tells the browser to request yet another URL — so every hop is a full extra request the browser must complete before anything on your page can start loading. On a phone connection, where each request takes noticeably longer, a four-hop chain can feel like a completely different website. (<a href="why-is-my-website-so-slow.html">Our general speed guide</a> covers the other usual suspects; this guide is only about the address-bar dance.)</p>
+      <p>This is not the same as a slow server. <a href="why-does-my-website-take-forever-to-start-loading.html">The dead-time guide</a> is about a server that takes seconds to answer. A chain can live on a perfectly fast server — the answer comes back instantly every time, but the answer keeps being &ldquo;go ask over there.&rdquo; Fast server, slow arrival. It is also not the intermittent kind of slowness: <a href="why-is-my-website-only-slow-sometimes.html">the sometimes-slow guide</a> hunts culprits that come and go, while a chain taxes every visit to every affected page — including your own. And on the <a href="why-is-my-website-slow-on-mobile.html">mobile-slowness side</a>, the chain is one of the most mechanical culprits: each hop is a round trip over the slowest network your customers use.</p>
+
+      <h2>How chains quietly form (yours probably has one)</h2>
+      <p>Chains almost never get built on purpose. They accumulate, one well-meaning change at a time:</p>
+      <p><strong>Protocol and host upgrades stack.</strong> First someone added HTTPS, so http redirects to https. Then someone standardized the www version, so non-www redirects to www. Then a trailing-slash rule got added, so the slashless version redirects to the slashed one. A visitor who types the old form now rides <em>all three</em> hops before the page loads.</p>
+      <p><strong>Old moves never get replaced.</strong> A page moved in 2021, and the old address was redirected to its 2021 home. In 2024 the page moved again, and the 2021 address was redirected onward instead of the original rule being updated. Now the 2020 address points to the 2021 address points to the 2024 address. Every migration that added a rule instead of replacing the original one added a hop.</p>
+      <p><strong>Your own links feed the chain.</strong> This is the one most owners miss: if your menus, buttons, canonical tags, and sitemap still point at the <em>old</em> addresses, every visitor starts at the beginning of the chain even after you fix the first page. The chain is not just a server setting — it is whatever your links point at.</p>
+
+      <h2>What each hop costs you</h2>
+      <p>The cost is mechanical, not theoretical. Every redirect hop adds one full round trip between the customer's device and your server, and nothing on the page can begin until the last hop resolves. Two hops is a rounding error on a desktop connection; on a phone on a weak signal, a three- or four-hop chain is the difference between a site that feels instant and one that feels broken.</p>
+      <p>Google's own people say the same thing. John Mueller, Google's search advocate, has said to keep frequently-crawled URLs under five hops — and that with multiple hops, the main effect is that the site is slower for users. Google's documentation warns that chains longer than two or three hops can slow its crawling and pass along less ranking value. The practitioner rule of thumb, from Search Engine Land's current guide: one hop is safe, two is tolerable, three or more is risky. None of this is about penalties. It is about speed you are giving away for free.</p>
+
+      <h2>How to count your own hops</h2>
+      <p>You do not need a developer for this — it takes about a minute. In your browser's developer tools (F12 on desktop Chrome), open the Network tab, reload your homepage, and look at the request list: every line marked 301 or 302 before the final 200 is one hop in your chain. If you would rather not touch developer tools, any free redirect-checker website shows the full path hop by hop. If your <a href="should-my-website-speed-test-score-worry-me.html">speed test score</a> lists an &ldquo;Avoid multiple page redirects&rdquo; diagnostic, that is the test pointing at this exact problem. Count the hops on your homepage, then check your most important inner pages — service pages and contact pages often have longer chains than the homepage, because they have been moved more times.</p>
+
+      <h2>The one fix: collapse every chain to a single hop</h2>
+      <p>Every old address should point <em>directly</em> at the final live page — no intermediate stops. When you find A pointing to B pointing to C, the fix is not to speed up the hops; it is to rewrite the first rule so A points straight to C. Then do the unglamorous second half: update your internal links, your canonical tags, and your sitemap to point at the final addresses, so nobody — visitor or search engine — starts at the beginning of a chain you already collapsed. Keep the redirects themselves live for at least a year, because old links, bookmarks, and social posts out there still point at the old addresses long after Google has moved on.</p>
+      <p>Do not guess whether the collapse worked, and do not pay a developer to guess either. Run the check: our free speed test runs Google's own measurement against your homepage and shows you where the seconds are going — including how many trips your address forces before anything loads. No signup, no ads, about ten seconds.</p>
+      <p class="meta">Redirect-chain mechanics (sequence definition, per-hop extra request on the critical path) verified 2026-10-06 (RightBlogger, Sep 2026). Google's sub-5-hop guidance for frequently-crawled URLs and &ldquo;slower for users&rdquo; framing per John Mueller via Search Engine Land redirect guide; 1-hop-safe / 2-tolerable / 3+-risky / 10-ceiling rule of thumb per Search Engine Land 2026 guide; longer-than-2-to-3-hops crawl slowdown and reduced PageRank pass-through per Google's documentation (via elyspace.com), verified 2026-10-06. Chain-formation mechanisms (protocol/host migration stacking, rule-addition vs replacement, internal links and canonicals pointing at old URLs) per Search Engine Journal, RightBlogger, and dev.to bulk-301 guide (Sep 2026). Collapse-to-single-hop fix, internal-link/canonical/sitemap updates, and keep-live-at-least-a-year guidance per the same sources. No adoption-rate, market-share, or bounce-rate figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down, redirects included.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+redirect+chains+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
