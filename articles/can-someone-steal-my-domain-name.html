@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can Someone Steal My Domain Name?</title>
+<meta name="description" content="Yes — if they can get into your registrar account. How domain theft actually works, why the transfer lock and the EPP code are your real locks, and the 5-step lockdown that makes the theft fail.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Can Someone Steal My Domain Name?</h1>
+    <p class="lede">Someone stole a small business’s domain name last year and the business didn’t find out for three days — because the thieves didn’t touch the website. They took the domain itself: one unlock, one transfer code, one registrar move, and suddenly the email stopped working, the website showed someone else’s page, and the real owner had to fight for weeks to get it back. Your domain was paid for, renewed, and safe — and none of that stopped the theft. Here is how it actually happens, and the five steps that make it fail.</p>
+    <div class="article">
+
+      <p>One clarification before we start: this is not about forgetting to renew your domain (that is our <a href="what-happens-if-my-domain-name-expires.html">guide on what happens when a domain name expires</a>). An expired domain is <em>your</em> fault and you get it back by paying. A stolen domain is taken while it is fully paid for — and the person who takes it holds all the cards until you get it back. Different problem, different defenses. This guide is the theft side.</p>
+      <p><strong>The short answer:</strong> yes — a domain is stolen through the registrar account, not through the website. Whoever can log into your domain registrar (GoDaddy, Namecheap, Google Domains, whoever you registered with) can unlock your domain, ask for the transfer code, and move it to a registrar they control. Your website password, your hosting, your WordPress login — none of that matters to the thief. The registrar login is the whole game.</p>
+
+      <h2>How a domain theft actually works</h2>
+      <p>It is embarrassingly ordinary. Here are the four moves:</p>
+      <p><strong>1. They get your registrar login.</strong> Usually through your email: reset the registrar password, intercept the reset email, log in. Or they buy credentials from a data breach. Or the weakest version — the domain was registered by your old developer in <em>their</em> account, and a dispute (or their own compromise) turns into your loss. (That one has its own guide: <a href="does-my-old-developer-still-have-access-to-my-website.html">does your old developer still have access?</a>)</p>
+      <p><strong>2. They unlock the domain.</strong> Domains ship with a transfer lock on — the registrar-level status <em>clientTransferProhibited</em>, which blocks any transfer to another registrar. The thief turns it off with one click, because they are logged in as you.</p>
+      <p><strong>3. They take the AuthInfo code.</strong> The transfer code — also called the EPP or authorization code — is the secret that proves the requester is the owner. Your registrar must give it to the registered name holder (ICANN’s own transfer policy says so, and says the holder can demand it and the lock’s removal within 5 calendar days if there’s no self-service button). The thief grabs it in seconds.</p>
+      <p><strong>4. They move the domain out — and it auto-completes.</strong> At the new registrar they start the transfer, paste the code, and if nobody objects, the transfer completes on its own after about 5–7 days. The moment the domain lands elsewhere, they point your domain’s DNS at their own servers. Your website shows their page. Your business email on that domain stops reaching you — password resets for everything else, invoices, customer replies — gone with it.</p>
+      <p>That last part is why a stolen domain is worse than a hacked website: a hacked site can be restored from a backup; a stolen domain takes your email, your Google Business Profile verification, and your customers’ trust in every address that mentions it.</p>
+
+      <h2>The 5-step lockdown (in this order)</h2>
+      <p><strong>Step 1 — Today: two-factor authentication on the registrar account.</strong> This is the single highest-leverage move on this page. The attack runs on a password-only registrar login; an authenticator app on your phone kills the password-reset path stone dead. Do it before you finish this article. Every registrar offers it — it’s usually under account settings or security.</p>
+      <p><strong>Step 2 — Today: check the transfer lock is ON.</strong> In your registrar’s control panel, confirm the domain shows locked — the status is <em>clientTransferProhibited</em> in technical terms. It costs nothing and it is the latch on the door: with it on, nobody can start an inter-registrar transfer. (You’ll turn it off yourself if you ever move registrars on purpose — that’s normal.)</p>
+      <p><strong>Step 3 — This week: own the one email that rules everything.</strong> The registrant contact email — the address on the domain’s registration — is where transfer confirmations and password resets go. If that address is your old Gmail, your developer’s inbox, or an address at a provider you left, the theft path runs through an inbox you don’t control. Point it at an email you actively own and check, and lock <em>that</em> email with two-factor too.</p>
+      <p><strong>Step 4 — This week: WHOIS privacy.</strong> Public WHOIS shows the world your name, email, and phone — the exact details a social-engineering attacker needs to impersonate you to a registrar’s support line. Privacy protection (free at most registrars now) replaces your details with the registrar’s — fewer targets painted on you.</p>
+      <p><strong>Step 5 — When the domain matters enough: registry lock.</strong> The registrar lock in step 2 stops <em>outsiders</em>; it does nothing once someone is logged in as you (a security handbook from OWASP says this explicitly — the account-owned case). Registry lock sits one level above the registrar: changes then need an out-of-band verification — a phone call or signed request the registry verifies independently — before anything moves. It’s a paid, manual service (Verisign Registry Lock, and registrar services like CSC and MarkMonitor offer it). For a domain your whole business runs on, it’s the deadbolt behind the latch.</p>
+      <p>Two more worth a line: <em>clientUpdateProhibited</em> blocks nameserver changes (so an attacker can’t just repoint your DNS without a transfer), and <em>clientDeleteProhibited</em> blocks accidental deletion. Ask your registrar if they can set them — some do by default with the transfer lock.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t hand the AuthInfo/EPP code around by email.</strong> That code is the key to the whole domain — the same policy that says you can demand it also assumes you’ll treat it like a password. The new transfer rules coming through ICANN (approved at ICANN82 in March 2025) turn the code into a short-lived, request-only TAC that expires after about 14 days by default — generate it when you need it, use it, and never forward it around.</p>
+      <p><strong>Don’t leave the domain in someone else’s account.</strong> If your developer, agency, or ex-partner holds the domain in their registrar account, you don’t own your domain — you rent it from your relationship with them. Move it into your own account. It takes a week and it’s the move that matters most after 2FA.</p>
+      <p><strong>Don’t rely on the lock alone if the email is weak.</strong> A transfer lock you can turn off by answering a security question on a five-year-old email account isn’t a lock. Step 1 (2FA on the registrar) plus step 3 (own the contact email) is what makes step 2 real.</p>
+      <p><strong>Don’t assume “my registrar is too small to be targeted.”</strong> Attackers don’t target registrars — they target owners. The small business whose email and site both run on one domain is a <em>better</em> target than a big company with a security team, because the ransom works faster.</p>
+
+      <h2>If it already happened</h2>
+      <p><strong>Speed matters more than anything — transfers can complete in under a week if nobody objects.</strong> Call your registrar (the one you lost the domain from) immediately, not by email: report the domain as stolen, ask them to freeze any pending transfer, and document everything. File ICANN’s registrar complaint process and the transfer dispute channel if the registrar won’t act. Keep your registration receipts, renewal invoices, and WHOIS history screenshots — proof of prior ownership is your case. For clear theft (not a billing dispute), a police report establishes the paper trail. Honest note: recovery is a process measured in days to weeks, and it starts with the registrar you bought the domain from — that’s why every step above is about never needing this section.</p>
+
+      <h2>The bottom line</h2>
+      <p>Your domain is stolen through one login: the registrar’s. Two-factor on that account, the transfer lock on, the contact email in your hands, privacy on the WHOIS record, and a registry lock for the domain the business lives on — five steps, under an hour, and the theft fails at step one instead of completing at step four. An expired domain costs you a renewal fee. A stolen domain costs you your email, your site, and your name on the internet — do the lockdown.</p>
+      <p class="meta">Domain-transfer mechanics verified 2026-10-05 against ICANN’s Transfer Policy (operative February 2024): registrars must provide the registered name holder with the unique AuthInfo code and remove clientTransferProhibited status within 5 calendar days of the holder’s request where no self-service exists; transfer requires the domain unlocked plus the code; transfers auto-complete in approximately 5–7 days absent objection, per registrar transfer documentation. Reform facts (transfer-policy review, approved at ICANN82, March 2025, via a 2026 InternetX explainer): the auth code becomes the TAC (generated only on request, registry-held one-way hash, default 14-day lifetime); the 60-day lock shortens to 30 days; transfer completion restated as 120 hours — framed as the reform’s changes, not yet universal. Lock-status mechanics per the OWASP domain-security handbook (current): clientTransferProhibited blocks unauthorized inter-registrar transfers at registrar level but not once the account itself is compromised; clientUpdateProhibited/clientDeleteProhibited cover nameserver/contact changes and deletion; registry lock (Verisign/CSC/MarkMonitor) requires out-of-band verification above the registrar. WHOIS-privacy effect and “the one email rules everything” framing are the article’s own synthesis of those sources; the “three days” theft anecdote is illustrative, not a sourced incident.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The transfer lock lives at your registrar — but the rest of your security posture is measurable right now. The free security check reads your site’s SSL, headers, and exposure and tells you, in plain English, what’s actually locked down. Ten seconds, no signup.</p>
+        <a class="toolbtn" href="../security.html">Run the free Website security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your domain and registrar posture alongside all 40 trust signals — speed, security, mobile, email, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+someone+can+steal+my+domain+name+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
