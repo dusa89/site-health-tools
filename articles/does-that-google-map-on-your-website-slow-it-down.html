@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does That Google Map on Your Website Slow It Down?</title>
+<meta name="description" content="That little Google Map in your footer is not a picture — it is a live app loading from Google's servers on every page. Why it is one of the heaviest things on your site, and the 4-step fix.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Does That Google Map on Your Website Slow It Down?</h1>
+    <p class="lede">Almost every local business website has one: the little Google Map in the footer or on the contact page. It looks like a picture. It is not a picture. It is a live map application, loaded from Google's servers every single time someone opens your page — and it is routinely one of the heaviest things your site loads.</p>
+    <div class="article">
+
+      <p>One clarification before we start: this is not about plugins and widgets in general (covered in our <a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">guide to plugins slowing down your site</a>) or about oversized photos (our <a href="why-do-my-photos-slow-down-my-website.html">photo guide</a>). <strong>This guide is about one specific thing: the Google Map embedded on your site</strong> — the footer map, the contact-page map — and why that one innocent-looking box costs more speed than almost anything else on the page. The plugins guide mentions maps once, in passing. This is the full story.</p>
+      <p><strong>The short answer:</strong> yes. A Google Map embed is not an image — it is a small program that runs Google's map software inside your page. Every visitor's browser has to download that software from Google's servers before your page is done loading. If the map sits in your footer, that cost is paid on <em>every page</em> of your site, by visitors who never scroll down far enough to see it.</p>
+
+      <h2>Why one little map costs so much</h2>
+      <p><strong>1. It is a live application, not a picture.</strong> When Google's own documentation says the embed needs "no JavaScript," it means no JavaScript <em>from you</em> — you paste an iframe and you are done. But inside that frame, Google's map software still loads: the map tiles, the zoom controls, the search box, the scripts that make it interactive. Your page cannot finish loading until Google's servers have delivered all of it. A picture of a map weighs almost nothing. A working map is a working program.</p>
+      <p><strong>2. It loads on every page it appears on.</strong> Most agencies put the map in the footer — which means it is on the homepage, every service page, the about page, the blog. The visitor reading your pricing page pays the map's loading cost even though the map is three screenfuls below and they will never look at it. One embed multiplied by every page is how a "small" thing becomes your site's biggest slowdown.</p>
+      <p><strong>3. It is third-party code, which is the expensive kind.</strong> Your own text and images come from your server in one trip. The map comes from Google's servers — a separate connection, separate security handshake, separate download — and your page waits on it. Speed-testing tools consistently flag map embeds in the "third-party code" section for exactly this reason. It is also why the map hits phones hardest: a phone on a weak signal feels every extra server round-trip.</p>
+
+      <h2>The 30-second test</h2>
+      <p>You do not need to take anyone's word for this — your own site will confess.</p>
+      <p><strong>1. Run the free speed check</strong> (link below) on your contact page, then on a page without the map. Compare the two. The map page will almost always score lower and list Google's servers among the slowest-loading items.</p>
+      <p><strong>2. Ask your web person one question:</strong> "Is the map in the footer, or only on the contact page?" If the answer is the footer, you are paying the map tax on every page of your site.</p>
+      <p><strong>3. Watch a phone load it.</strong> Open your homepage on your phone over a normal cell connection — not your office Wi-Fi — and watch what loads last. The map frame is usually the straggler, painting in after everything else is already on screen.</p>
+
+      <h2>The fix ladder (cheapest first)</h2>
+      <p><strong>1. Move the map to the contact page only.</strong> This is free and it is the biggest win. Customers looking for your address go to the contact page — that is the one page where the map earns its keep. Off the footer, off every other page. Your address <em>text</em> stays in the footer (customers and Google both need the words); only the live map moves.</p>
+      <p><strong>2. Make the map load lazily.</strong> Ask your web person to add lazy loading to the map frame, so it only loads when a visitor actually scrolls down to it instead of loading with the rest of the page. This is a one-line change and it is the standard advice for map embeds. The map still appears — it just stops holding up everything above it.</p>
+      <p><strong>3. Switch to click-to-load.</strong> The professional version: replace the live map with a <em>picture</em> of the map (a screenshot works fine), and only load the real interactive map when a visitor clicks the picture. Optimization plugins for WordPress do exactly this — they block the map frame on page load and swap in a placeholder, because, in their words, blocking the iframe on page load helps the site load faster. Visitors who want the map click once and get it; everyone else gets a fast page. Same map, a fraction of the cost.</p>
+      <p><strong>4. Consider whether you need the embed at all.</strong> Be honest about what customers actually do with your map: they want your address and a "get directions" button. A text address plus a link that opens Google Maps on the customer's phone does that job better than an embedded frame — and costs nothing to load. Many fast local sites run exactly this setup.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t delete the address text.</strong> The fix is about the live map frame, not the address itself. Keep your street address written out in the footer and on the contact page — customers need it, and the written address is part of how Google understands where your business is. Remove the heavy frame; keep the words.</p>
+      <p><strong>Don’t assume "it is just one little embed."</strong> That is the sentence every slow site's owner says about the thing that turned out to be the problem. One map embed routinely outweighs all of a page's text and styling combined — "little" describes how it looks, not what it costs.</p>
+      <p><strong>Don’t put the map back on every page "for SEO."</strong> An embedded map is not what tells Google where you are — your written address, your Google Business Profile, and consistent listings do that. Nobody has ever ranked higher because their footer had a live map on it. The map is for humans who are already on your contact page.</p>
+
+      <h2>The bottom line</h2>
+      <p>Your Google Map looks like a picture and behaves like an application — and your visitors' browsers pay the application's price on every page that carries it. Move it to the contact page, make it lazy-load, or switch it to click-to-load, and keep a directions link for the customers who actually need it. It is one of the cheapest speed wins on a typical local business site, because the thing slowing you down was never really part of your site at all — it was Google's program, running inside it.</p>
+      <p class="meta">The embed mechanics (iframe embed requiring no JavaScript from the site owner; map software, tiles, and controls loading from Google's servers) were verified against Google's current Maps Embed API documentation on 2026-10-05; the Embed API is free with unlimited requests but requires a Google Cloud API key and billing account per Google's docs. The click-to-load placeholder pattern and the "blocking the iframe on page load helps the site load faster" description come from the AWEOS Google Maps iframe plugin documentation on WordPress.org (updated early 2026). Lazy-loading guidance for map embeds and the mobile-performance warning for third-party embeds like Google Maps were verified against current published guides on 2026-10-05. No byte figures, percentages, or ranking-effect claims are made — "one of the heaviest things" describes the mechanism (a full interactive program vs. static content), not a measured comparison. The 30-second test is a practical check, not a certified audit.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Run the free speed check on your contact page, then on a page without the map — one difference, honest answer. Takes about 10 seconds per run, no signup.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Site speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your site's speed alongside all 40 trust signals — speed, security, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+Google+Maps+slowing+down+my+site+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
