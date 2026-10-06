@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Take Forever to Start Loading? — The Dead Time Before Anything Appears</title>
+<meta name="description" content="Click your website and count the dead air before anything shows up. That silence has a name — time to first byte — and it’s spent at four tollbooths most owners have never heard of. What each one costs, and the one free fix nobody told you about.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Website Take Forever to Start Loading? — The Dead Time Before Anything Appears</h1>
+    <p class="lede">Here is a complaint owners describe precisely: you click your website and nothing happens. Not a slow image, not a loading spinner — nothing. One beat, two beats, and then the page arrives all at once. If that sounds familiar, your problem is not how fast your site loads. It is how long it takes to <em>start</em>. There is a whole journey that happens before the first byte of your site reaches the customer — four tollbooths every visitor passes, each one charging time. Most speed advice ignores them completely. This guide doesn’t.</p>
+    <div class="article">
+
+      <p>First, where this guide sits among its siblings: this is not about load <em>weight</em> — the photos (<a href="why-do-my-photos-slow-down-my-website.html">their guide</a>), videos (<a href="does-the-video-on-my-website-slow-it-down.html">their guide</a>), fonts (<a href="do-those-pretty-fonts-slow-down-my-website.html">their guide</a>), widgets (<a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">their guide</a>), and trackers (<a href="do-those-little-tracking-scripts-slow-down-my-website.html">their guide</a>) all have their own. It is not the phone gap (<a href="why-is-my-website-slow-on-mobile.html">that guide</a>), not caching (<a href="what-is-website-caching.html">that guide</a>), not the feel-after-load gap (<a href="why-does-my-website-feel-slow-when-the-test-says-fast.html">that guide</a> — the reverse of this one), and not the blank white screen (<a href="why-does-my-website-show-a-blank-white-screen.html">that guide</a> — a broken render, not a late arrival). The subject is the silence between the click and the arrival: the four tollbooths, and what each one costs.</p>
+      <p><strong>The short answer:</strong> before your website sends the customer a single pixel, four things have to happen in order — the visitor’s browser has to find your address, call your server, agree on security, and wait for the server to think. Each one takes time. When the total stretches past a second or two, customers feel it as “the site won’t open” — and the most common culprit is the very first tollbooth, the one almost nobody checks.</p>
+
+      <h2>The four tollbooths</h2>
+      <p>Open any page-speed report and look at the timing breakdown (Chrome’s developer tools call it the waterfall). The phases arrive in a fixed order — every visitor passes them, on every page, before anything appears:</p>
+      <p><strong>Tollbooth 1: DNS lookup — finding the address.</strong> Your website’s name (the words in the address bar) is not where it lives — it lives at a number, an IP address, and the browser has to ask a directory to translate the name into the number. That translation is the DNS lookup. Typical cost: 20 to 120 milliseconds per lookup (per Yahoo’s classic YSlow research), and the industry target is under 50 milliseconds. That sounds trivial — until you learn that some lookups take nearly two <em>seconds</em>. One engineer documented the case in late 2025: his backend answered in 120 milliseconds — genuinely fast — but the full wait before the first byte was 2.3 seconds. The DNS lookup alone took 1,847 milliseconds. The lookup happens before the server ever sees the request, so no amount of server speed can fix it.</p>
+      <p><strong>Tollbooth 2: Connecting — picking up the phone.</strong> Once the browser knows the number, it places the call — a TCP connection to the server. One round trip across the network. Nearby and healthy, this is fast; far away or congested, it isn’t.</p>
+      <p><strong>Tollbooth 3: The TLS handshake — agreeing on security.</strong> That padlock in the address bar is a negotiation: browser and server agree on encryption before anything is sent, another round trip or two. Every secure page pays this; most pages are secure, so every visitor pays it.</p>
+      <p><strong>Tollbooth 4: Waiting — the server thinks.</strong> The request is in; now the server builds the page. This is the famous TTFB — time to first byte — except the name lies a little: most published TTFB figures bundle the earlier tollbooths in. What the number actually includes is the DNS lookup, the connection, the handshake, the network distance, any CDN or proxy work, <em>and</em> the server’s own thinking. So when someone tells you “our TTFB is slow, our server must be slow,” they may be blaming the kitchen for a traffic jam on the road outside.</p>
+
+      <h2>Why the first tollbooth is the one nobody checks</h2>
+      <p>Here is the industry picture: an IBM and Catchpoint study measured DNS response across more than 2,000 popular websites and found the global average was 263 milliseconds — and sites running their own DNS (self-hosted) were 35% slower than average, while premium managed DNS services outperformed. Your DNS usually comes free with wherever you bought the domain — the registrar’s default nameservers — and the registrar picked the cheapest option, not the fastest. One practitioner documented the migration case: moving three domains off a slow DNS provider cut median lookups from about 180 milliseconds to under 35, and the first-byte time improved by roughly 120 milliseconds on first visits. Nothing about the website changed — no new hosting, no redesign. The address book just answered faster.</p>
+      <p>There is a multiplier hiding here, too. Every <em>different</em> place your page pulls from costs a fresh lookup: the font service, the review widget, the chat tool, the map, the tracker. The browser must wait for each lookup to finish before it can download anything from that host. So the site with fifteen external services pays the tollbooth fifteen times — and the one slow nameserver poisons every lookup it serves.</p>
+
+      <h2>The three-step check you can run tonight</h2>
+      <p><strong>1. See the tollbooths yourself.</strong> This is the one place we’ll point at a developer tool, because it settles the argument in one picture: open your site, open the browser’s network panel, reload, click the first request (your homepage), and open its Timing tab. You will see the phases laid out as colored bars — DNS, connecting, TLS, waiting. Whichever bar is longest is where your money is being lost. If the DNS bar dominates, your server is innocent.</p>
+      <p><strong>2. Ask your developer one question.</strong> “What is our time to first byte, and how much of it is DNS?” If they can’t split the number — if “TTFB is slow” is as far as the diagnosis goes — the tollbooth analysis above is exactly what’s been missing. The fix depends entirely on which booth is slow: DNS means move the nameservers, connecting means the server is too far from the customer, waiting means the server itself is thinking too hard (or <a href="does-cheap-hosting-make-my-website-slow.html">the hosting is the problem</a>).</p>
+      <p><strong>3. The free fix nobody mentions.</strong> Moving your nameservers from the cheap registrar default to a fast managed DNS provider costs nothing and is done once — your developer can do it in an afternoon, and you never touch it again. It is the highest-leverage speed fix most small-business sites will ever see, precisely because nobody’s competitors are checking it either. Ask for it by name: “move our DNS to a fast managed provider.”</p>
+
+      <h2>The bottom line</h2>
+      <p>The dead air before your site appears is not one problem — it is four tollbooths in a row, and the most expensive one is usually the first, the directory lookup, the one your developer never measured. Open the timing tab, find the longest bar, and start there. If it’s DNS, the fix is free and permanent. The sites that “open instantly” aren’t always lighter than yours. They just paid fewer tolls to get to the customer.</p>
+      <p class="meta">Waterfall phase order (DNS lookup → TCP connecting → TLS handshake → waiting/TTFB → content download) per Chrome DevTools timing documentation and dev.to waterfall explainers, checked 2026-10-06. DNS lookup averages 20–120ms (YSlow via w3speedup.com; bigrock.in); target under 50ms (bigrock.in) / under 100ms (Jetpack); browser must wait for each lookup before downloading from that host (w3speedup.com, Jetpack). IBM/Catchpoint study (2,000+ popular websites, peak season, 216 backbone nodes): global average DNS response 263ms; self-hosted DNS 35% slower than average; premium managed DNS significantly outperformed — via SDxCentral, ~Nov 2025. TTFB includes DNS, connection setup, TLS, network latency, proxy/CDN work, and origin processing — not server code alone (dev.to layer-by-layer workflow, 2026). The 1,847ms DNS lookup anecdote (120ms backend, 2.3s first byte) is a practitioner’s reported case (Medium, Nov 2025, summarized). The 180ms→under-35ms migration case with ~120ms TTFB improvement is one practitioner’s runbook (w3speedup.com, Sept 2026), labeled in-copy. No whole-web conversion or revenue figures stated — none verified, deliberately omitted.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain — the check measures your homepage against a typical phone and names the three biggest things slowing it down. About 20 seconds, free. Then look at the first-request timing: if the DNS bar is the longest, your server is innocent and the tollbooth above is the fix.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your speed alongside all 40 trust signals — security, mobile, email authentication, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+dead+time+before+a+site+loads+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
