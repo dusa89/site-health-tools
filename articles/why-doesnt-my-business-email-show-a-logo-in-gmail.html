@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Doesn’t My Business Email Show a Logo in Gmail? — The Blue-Checkmark Problem</title>
+<meta name="description" content="Big brands get their logo next to their name in the inbox — and some get Gmail’s blue checkmark too. It is not a setting in your email tool: it is BIMI, a certificate, and a DMARC record at enforcement. The three requirements, the real cost, and why only about 4% of senders qualify.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Doesn’t My Business Email Show a Logo in Gmail? — The Blue-Checkmark Problem</h1>
+    <p class="lede">You have seen it in your own inbox: some businesses get their logo sitting next to their name, and some get Gmail’s blue checkmark beside that. Then there is yours — a grey initial in a circle, looking unestablished next to them. The logo is not a setting in your email tool and it is not something you buy from Google. It is the reward level above everything our other email guides diagnose: if authentication is passing the exam, the logo is the gold star you get for having passed it. Here is the actual program, the real cost, and the one gate almost everyone fails.</p>
+    <div class="article">
+
+      <p>First, where this guide sits among its siblings. Our other email guides diagnose the trust icons in your inbox: the <a href="why-does-gmail-show-a-question-mark-next-to-my-business-name.html">question mark</a>, the <a href="why-does-my-email-say-via-next-to-my-business-name.html">“via”</a>, the <a href="is-my-business-email-going-to-spam.html">spam-folder slide</a>, and <a href="what-is-dmarc.html">DMARC itself</a>. This guide is the level above all of them — not “why does my email look broken” but “how do I get the logo everyone notices.” The mechanism is called BIMI — Brand Indicators for Message Identification — and it is the only program that puts your logo next to your name in the inbox. Gmail’s blue checkmark is the second level of that same program, available only to a subset.</p>
+      <p><strong>The short answer:</strong> your logo appears in the inbox when a mailbox provider trusts that you are really you — and the way you prove it is a DNS record, a certificate you pay for yearly, and a DMARC policy at full enforcement. Three requirements, in order, and the order is the point: almost everyone who wants the logo is disqualified at requirement one.</p>
+
+      <h2>Requirement 1: DMARC at enforcement — the gate almost everyone fails</h2>
+      <p>BIMI requires your DMARC policy to be at quarantine or reject. Google states outright that BIMI does not support p=none — the monitoring-only setting most small businesses sit on. No enforcement, no logo, no exceptions: the certificate question does not even arise until this is done.</p>
+      <p>This is why so few senders have the logo. Valimail’s 2026 report puts BIMI adoption at about 4% of senders, and the same report puts DMARC enforcement at 42% — meaning more than half of businesses have not finished the step the logo requires. The report names the gap directly: mailbox-provider mandates drove everyone to publish a DMARC record (reporting), but most organizations “set it and forgot it” at the non-protective level. An email-authentication vendor put it bluntly in 2026: BIMI projects stall at DMARC enforcement, not at the certificate. The weeks spent finishing authentication do more for your email than the logo ever will.</p>
+      <p>The owner test is one question for whoever handles your domain: “What is our DMARC policy?” If the answer is p=none or a shrug, you are not even eligible — and fixing that is deliverability work that pays off whether or not you ever chase the logo.</p>
+
+      <h2>Requirement 2: the certificate — and which one you actually want</h2>
+      <p>The logo has to be certified as yours, or impersonators would just upload everyone’s logos. Two certificates exist, and the difference between them is the whole decision:</p>
+      <p><strong>The Verified Mark Certificate (VMC)</strong> is the full version. It proves — through a Mark Verifying Authority — that your organization owns the logo, and in Gmail it is the <em>only</em> certificate that produces the blue checkmark. The catch is structural: a VMC requires your logo to be a legally registered trademark (USPTO, EUIPO, WIPO, or a government seal). If you do not already hold one, trademark registration typically takes six to twelve months — the certificate timeline is measured in years, not days.</p>
+      <p><strong>The Common Mark Certificate (CMC)</strong> gets the logo displayed but no blue checkmark in Gmail. It exists for businesses without a registered trademark. Cheaper than a VMC, and the honest choice if you want the logo without the trademark project.</p>
+      <p>The pricing, from published third-party figures checked in 2026: a VMC runs roughly $1,000 to $1,500 a year depending on the issuer (DigiCert’s own list price, checked August 2026, was $1,752; resellers list around $1,249), and a CMC around $949 to $1,416 a year. Those are per-year subscription prices, they move, and they do not include the trademark — which, if you need one, is a separate legal expense on that six-to-twelve-month timeline. Get a current quote rather than budgeting from an article.</p>
+
+      <h2>Requirement 3: the logo file itself</h2>
+      <p>The easy part, once the above is done: an SVG Tiny PS version of your logo, minimum 96 by 96 pixels for Gmail, in absolute pixel dimensions, on a solid background, 32KB or smaller — published in a BIMI DNS record. If your logo has transparency or fancy gradients, this is where the design conversation happens: the inbox logo is a small, flat mark, and complex logos get simplified for it.</p>
+
+      <h2>Where the logo actually shows up</h2>
+      <p>BIMI support is not universal. The BIMI Group lists the participating mailbox providers as Apple, AU (KDDI), Fastmail, Gmail, La Poste, Yahoo, and Zone — and each sets its own display criteria, including the right to decline a logo on reputation grounds even when the configuration is correct. Translation: do everything right and your logo still may not show everywhere — it shows where the providers trust you.</p>
+      <p>One hard boundary worth knowing: none of this is available on a free @gmail.com address. The blue checkmark and BIMI are for organizations on a custom domain — if you are still sending business email from a free address, that is the step before any of this (<a href="should-i-use-a-free-gmail-address-for-my-business-email.html">that guide</a>).</p>
+
+      <h2>So should you do it?</h2>
+      <p>Honest read, in owner terms: for a services business sending a few thousand emails a month, BIMI is a nice-to-have that comes <em>after</em> DMARC enforcement, never before it. Getting to enforcement is the work that actually improves deliverability; the logo is the badge you get for having done it. For a consumer brand where inbox recognition drives open rates — retail, hospitality, anything where the customer picks which email to open — the math changes, and the logo earns its keep. Either way, the order is the same: enforcement first, certificate second, logo third. The businesses you see with the checkmark did not buy it — they qualified for it.</p>
+
+      <h2>The bottom line</h2>
+      <p>The logo next to the name is not a feature of your email tool and not a Google upsell — it is a public proof that you finished your email authentication properly. Three requirements, in a fixed order: DMARC at quarantine or reject (the gate that disqualifies most businesses — about 4% of senders qualify, per Valimail’s 2026 report), a certificate (the VMC for the blue checkmark, which requires a registered trademark; the CMC for the logo without it), and the logo file itself. Ask your domain person the one question — “what is our DMARC policy?” — and you will know exactly which of the three you are standing in front of.</p>
+      <p class="meta">Gmail blue checkmarks launched May 2023 as an expansion of BIMI, per Google’s announcement (via ghacks.net). Requirements per Google documentation: DMARC policy of quarantine or reject — BIMI does not support p=none (Google docs, via wisemedia.io, updated September 2026); a Verified Mark Certificate or Common Mark Certificate from a Mark Verifying Authority; an SVG Tiny PS logo, minimum 96x96 for Gmail, solid background, 32KB or smaller (wisemedia.io). Only a VMC produces the blue checkmark in Gmail; a VMC requires a legally registered trademark (USPTO/EUIPO/WIPO or government seal), and trademark registration typically takes 6–12 months (wisemedia.io; ssldragon.com). Published third-party pricing: VMC roughly $1,000–$1,500/yr (wisemedia; ghacks “~$1,500”); DigiCert list checked 2026-08-25: VMC $1,752, CMC $1,416 (MailGenius); SSL Dragon lists DigiCert VMC $1,249/yr, CMC $949/yr — trademark cost separate, figures move, get a current quote. Valimail 2026 report: BIMI adoption “stalls at a 4% adoption rate”; DMARC enforcement 42% in 2025 (up from 35%); the “Enforcement Gap” — most orgs sit at reporting-only DMARC (via lifestyle.eastmnweeklynews.com, 2026-02-25). “BIMI projects stall at DMARC enforcement rather than the certificate” (MailGenius, September 2026). Participating providers per the BIMI Group: Apple, AU (KDDI), Fastmail, Gmail, La Poste, Yahoo, Zone — each with own criteria, can decline on reputation (MailGenius). Blue checkmark not available on free @gmail.com accounts; custom domain required. All verified 2026-10-06. No invented stats.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain — the check runs the SPF, DKIM, and DMARC authentication tests and tells you in plain English whether your email proves it comes from your business. The BIMI logo is requirement-two territory; this check tells you whether you have cleared requirement one.</p>
+        <a class="toolbtn" href="../index.html">Run the free Email deliverability check check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #2 of 40</h2>
+      <p>The full Site Health Watch audit checks your email authentication alongside all 40 trust signals — speed, security headers, mobile, and AI visibility — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+Gmail+logo+and+blue+checkmark+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
