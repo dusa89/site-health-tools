@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google’s Speed Test Gave My Website 52/100 — But It Feels Fine. Which Is Right?</title>
+<meta name="description" content="Google’s free speed test gave your site a failing grade, but the site feels fine on your phone. The 0–100 number is a lab simulation, not a measurement of your real visitors — here is what the score actually means, which half of the report to read, and when a low score deserves your attention.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Google’s Speed Test Gave My Website 52/100 — But It Feels Fine. Which Is Right?</h1>
+    <p class="lede">You ran Google’s free PageSpeed Insights test, it slapped a 52 out of 100 on your website in orange, and your stomach dropped. But you open the site on your own phone and it loads fine — it does not feel like a failing website. So who is lying: your eyes or the score? Mostly, the score is answering a different question than the one you asked. It did not measure your visitors’ experience. It simulated a worst-case phone on a slowed connection and graded the technical checklist. Here is how to read it like someone who knows the trick — and when a low score actually deserves your attention.</p>
+    <div class="article">
+
+      <p>First, where this guide sits among its siblings: it is not about how many <em>seconds</em> a site should take — <a href="how-fast-should-my-website-load.html">that guide</a> covers the load-time thresholds. It is not about whether slowness hurts your Google rankings — <a href="does-a-slow-website-hurt-my-google-rankings.html">that is here</a>. And it is not about why the phone version struggles more than desktop — <a href="why-is-my-website-slow-on-mobile.html">that is here</a>. This guide is about the instrument itself: what the 0–100 number on Google’s speed test actually is, why it disagrees with your own eyes, and the correct way to read the report.</p>
+      <p><strong>The short answer:</strong> trust your eyes first, then check the right half of the report. The big number is a <em>lab</em> score — a simulation, not a measurement of your visitors. Real business websites score in the 50s all the time, including sites built by professionals. The part of the report worth your worry is the <em>field data</em>: what your actual visitors experienced over the last month.</p>
+
+      <h2>What the number actually is: a simulation, not your visitors</h2>
+      <p>PageSpeed Insights runs your page through a laboratory test. It loads your site on a simulated mid-range phone, over a deliberately slowed connection, with the CPU throttled — roughly the worst phone experience your visitors might have, not the one most of them do. Then it grades a technical checklist and produces the 0–100 score with three bands: 90–100 is Good, 50–89 Needs Improvement, and 0–49 Poor. (Google defaults to the mobile test, because most of your visitors are on phones.)</p>
+      <p>That is why a site that feels fine scores 52. Your phone is probably decent, your connection is probably Wi-Fi, and your browser has the site half-cached. The test strips all of that away and measures the worst case. A 52 does not mean “your site loads like a 52.” It means “a throttled mid-range phone scored your technical checklist at 52.”</p>
+      <p>This is also why even professional web agencies ship sites that score 30–50 out of 100 — measured in November 2025 across agency-built websites with Google’s own Lighthouse tool (dev.to). Those sites are not broken; the agencies optimized for other things — fast delivery, easy client editing, familiar workflows — and performance simply was not the priority. A middling lab score is the <em>normal</em> state of the small-business web, not evidence that something is on fire.</p>
+
+      <h2>The two halves of the report: lab data and field data</h2>
+      <p>Every PageSpeed report has two sections, and confusing them is the source of almost all the panic:</p>
+      <p><strong>Lab data</strong> — the simulation described above. Useful for debugging (“what should I fix?”), useless as a verdict on your business (“is my site slow?”). It reflects one simulated device on one simulated connection, run once.</p>
+      <p><strong>Field data</strong> — the “What your real users experience” panel, from the Chrome User Experience Report (CrUX): anonymized measurements from actual Chrome visitors to your page, aggregated over a rolling 28 days, judged at the 75th percentile. This is the closest thing the report has to your customers’ lived experience.</p>
+      <p>Read them in the right order: field data first (“how is the site actually doing?”), lab data second (“what would I fix?”). And know field data’s blind spot: it only sees Chrome users, so it misses the Safari-on-iPhone half of your traffic (a real limitation — about half of US mobile browsing is Safari). Low-traffic sites may have no field data at all, in which case the report says so; then the lab data plus your own phone check are all you have.</p>
+
+      <h2>What actually deserves your attention (and what does not)</h2>
+      <p><strong>Ignore:</strong> the exact number. There is no business difference between a 52 and a 61, and the jump from 70 to 80 to 90 is, as one performance writer put it, “exponentially harder” — effort spent chasing a number rather than improving your customers’ experience (Kuno Creative). The standing advice from people who fix sites for a living: don’t chase the perfect score; focus on the best experience for your actual visitors (wpindigo). Real-visitor Core Web Vitals matter more than the lab score — stated plainly in an October 2026 WordPress performance guide.</p>
+      <p><strong>Watch:</strong> the field-data vitals, in seconds. The three that matter: Largest Contentful Paint (when the main content appears — Google calls under 2.5 seconds good, over 4.0 poor), Cumulative Layout Shift (the jumping-around-while-loading problem), and Interaction to Next Paint (how snappy the page feels when tapped). If your field data shows these in the poor bands for real visitors, that is the version of the report worth acting on — and it is also the version Google’s page-experience ranking signals look at.</p>
+      <p><strong>Act on:</strong> the top of the lab-data recommendations, but only the first one or two. The report ranks issues by potential savings. One agency’s public teardown of their own homepage is the perfect illustration: it scored 59 on mobile, they fixed exactly five things — oversized images, a main image that loaded too late, page-builder bloat, heavy extras like maps and fonts, accessibility and layout shift — and reached 89 (Tacoma Web Designers, October 2026). A 59 was a real business homepage all along; the fixes were real but bounded. Nobody needed 100.</p>
+      <p>The 3-second rule still governs: Google’s published benchmark found 53% of mobile visits are abandoned after 3 seconds (2017, still the industry reference). So the question is never “is my score good?” — it is “does the main content appear in under 3 seconds on a real phone?” If yes, the score is trivia. If no, the score just told you where to look.</p>
+
+      <h2>What not to do</h2>
+      <p><strong>Don’t pay someone just to raise the number.</strong> An invoice that moves you from 52 to 78 with no change in how the site feels on a real phone bought you a number, not customers. Any proposal should name which real-visitor metric it moves and by how much — in seconds.</p>
+      <p><strong>Don’t treat one test as a verdict.</strong> Lab scores vary run to run — the simulated connection has noise, your server’s mood matters. Retest a few times and average, and retest after changes on the same page. One orange 52 means less than three orange 52s.</p>
+      <p><strong>Don’t ignore field data showing poor vitals.</strong> This is the one direction of panic that is justified. If real visitors over the last 28 days experienced poor load times, that is not the test being harsh — that is your customers leaving. The lab data then tells you which fixes buy the most seconds.</p>
+      <p><strong>Don’t compare your score to a competitor’s without context.</strong> A 52 on a booking-heavy service site with a map, chat widget, and review feed can be a healthier business outcome than a 94 on a static page with nothing on it. The score does not know what your site does.</p>
+
+      <h2>The bottom line</h2>
+      <p>Google’s 0–100 number is a lab simulation of a worst-case phone — informative, not prophetic. Professional sites score in the 50s routinely. Read the field-data panel first: if your real visitors see the main content in under 3 seconds, the score is noise and you can get back to business. If the field data is poor, take the lab report’s top two recommendations, fix those, and stop there — the last 20 points of score cost more than they earn. The number serves you, not the other way around.</p>
+      <p class="meta">PSI score bands (90–100 Good, 50–89 Needs Improvement, 0–49 Poor; mobile default) per Google’s PageSpeed Insights documentation. Lab vs field data (lab = Lighthouse simulation; field = real Chrome users, 28-day CrUX rolling window, 75th percentile) per Google documentation. Professional sites scoring 30–50/100 measured Nov 2025 with Lighthouse (dev.to). 90+ chase "exponentially harder" / vanity-metric critique (Kuno Creative); "don’t chase the perfect score" (wpindigo); real-visitor Core Web Vitals matter more than lab score (pctechmag, Oct 2026). Field data Chrome-only limitation (Kuno Creative). LCP thresholds 2.5s/4.0s per Google Core Web Vitals bands. 53% mobile abandonment after 3 seconds per Google’s 2017 published benchmark. Agency 59→89 teardown (5 fixes: oversized images, slow main image, page-builder bloat, heavy extras, accessibility/layout shift) per Tacoma Web Designers, Oct 2026. All verified 2026-10-06. Note: a live PSI measurement of a major property was attempted this run but the keyless API returned 429 (quota); no third-party score claims stated.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain — the check translates the lab report into seconds and plain English: how fast your site actually feels, the 3 biggest slowdowns, and what each fix is worth. Takes about 10 seconds, no signup.</p>
+        <a class="toolbtn" href="../speed.html">Run the free Plain-English Speed Check check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit checks your speed alongside all 40 trust signals — email authentication, security, mobile experience, and SEO — every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+speed-test+score+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
