@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Should I Change on My Website When an Employee Leaves?</title>
+<meta name="description" content="An employee left. They had the WordPress login, the social passwords, the email account, the shared passwords. The 30-minute offboarding checklist that closes every door they walked through — and why most small businesses forget half of them.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Should I Change on My Website When an Employee Leaves?</h1>
+    <p class="lede">When an employee walks out the door, most owners think about the obvious: collect the keys, collect the laptop, say goodbye. But the invisible keys are the ones that matter — the WordPress admin account, the shared passwords everyone knows, the social media logins, the email account that receives the password-reset emails for everything else. Surveys keep finding the same uncomfortable truth: 89% of former employees still have access to at least one company application after they leave (Zimyo 2026 offboarding report), and more than one in four went so far as to log in to the back end of the company's website after departing (Beyond Identity). This isn't about trusting or distrusting the person who left. It's about the fact that almost nobody systematically closes the doors — and the doors stay open for years.</p>
+    <div class="article">
+
+      <h2>1. The keys nobody collects</h2>
+      <p>Think of every login the employee used as a physical key you handed them. When they leave, you'd collect the keys — but nobody collects the digital ones. The research on this is brutal and consistent: 89% of former employees retain access to at least one company application after departure, and 20 percent of businesses have suffered a breach linked to an orphaned account nobody remembered to close (Zimyo 2026 Employee Offboarding Process Report). OneLogin's survey of IT decision-makers found nearly half of businesses say former employees can still access corporate accounts — and half of respondents said ex-employee accounts stay active for longer than a day, with 20 percent taking a month or more to deprovision.</p>
+      <p>This is the insider version of <a href="does-my-old-developer-still-have-access-to-my-website.html">the old-developer problem</a> — but it's harder, because the developer was a vendor you managed. The employee was part of the team: they know the patterns, the shared passwords, the "we all use the same login for that" shortcuts. That's exactly why the website checklist below is longer than most owners expect.</p>
+      <h2>2. The website checklist (in order)</h2>
+      <p><strong>The CMS/WordPress users.</strong> Log into your WordPress admin, go to Users, and look at the departing employee's account. If they were the only admin, create a second admin account for yourself FIRST — then demote theirs to Subscriber (or delete it and attribute their posts to your account). Deleting the only admin locks you out of everything. Also scan the full user list while you're there: leftover "test" accounts, the old intern, the previous developer's admin seat from <a href="does-my-old-developer-still-have-access-to-my-website.html">the developer handoff</a> — offboarding day is audit day.</p>
+      <p><strong>The hosting control panel.</strong> If the employee could log into your hosting account (cPanel, the host's dashboard, the FTP/SFTP credentials), change those passwords and remove their user. Hosting access is root access to the website — it bypasses WordPress entirely.</p>
+      <p><strong>The domain registrar and DNS.</strong> Whoever can log into your domain registrar (GoDaddy, Namecheap, Cloudflare) owns your business's address on the internet. If the employee was a contact or user on that account, remove them. This is also the account that receives <a href="i-got-a-letter-saying-my-domain-is-about-to-expire.html">domain-expiration notices</a> — make sure they go to someone still in the building.</p>
+      <p><strong>Email — the master key.</strong> The employee's work email account is the reset-email destination for everything else: hosting, social media, payment gateways. Suspend or delete the mailbox, remove it from any shared inboxes or aliases, and — this is the step everyone forgets — check that no OTHER account's password-reset email still routes to an address the former employee can read. That's the exact <a href="why-am-i-getting-password-reset-emails-i-didnt-ask-for.html">password-reset attack path</a>, handed to someone by process instead of by a hacker.</p>
+      <p><strong>Social media admin roles.</strong> Facebook Pages, Instagram (via Business settings), LinkedIn company page admins, YouTube channel managers, Google Business Profile managers — remove their role or demote them. Social access is how a disgruntled departure becomes a public one, and the Beyond Identity survey found logging into corporate social media (36%) was the single most common thing former employees did with lingering access.</p>
+      <p><strong>Payment and booking tools.</strong> Stripe, PayPal, Square, your booking system, your CRM — most have "staff" or "team member" users with their own logins. Revoke those. If the employee's personal login was the recovery contact on any payment account, replace it.</p>
+      <p><strong>The shared passwords.</strong> The Wi-Fi password, the "everyone uses this one" logins, the password the whole office knows. If the departing employee knew any shared password, that password is now a former-employee password — change it. This is also the moment to stop sharing logins going forward; the <a href="should-i-give-my-web-developer-my-passwords.html">no-shared-passwords rule</a> applies to staff exactly as it applies to vendors.</p>
+      <h2>3. The back-end surprise</h2>
+      <p>Here's the stat that makes this a website article and not just an HR article: in the Beyond Identity survey, more than one in four former employees logged into <em>the back end of the company's website</em> after leaving. Not email. Not social. The website's admin area — the place where content gets published, where customer data sits, where the <a href="how-do-i-know-if-my-website-has-already-been-hacked.html">signs of a hack</a> would be the first thing they'd see.</p>
+      <p>Most of them weren't doing anything malicious — curiosity, unfinished business, muscle memory. But the risk isn't really about malice. It's about the account sitting there, active, with the old password, as the months pass — the same orphaned account the Zimyo report ties to one in five business breaches. And if the departure WAS bitter, the website is the loudest megaphone available: defaced pages, deleted content, a redirect to somewhere embarrassing (see <a href="why-is-my-website-redirecting-to-spam-sites.html">the redirect article</a> for what that looks like from the outside).</p>
+      <h2>4. The 30-minute exit routine (do this the same day)</h2>
+      <p><strong>Before the last day, ask one question:</strong> "What do you have access to?" Write down the answer. Employees almost always remember things you forgot — the social account they set up three years ago, the password manager entry, the personal email they used for one tool because it was faster that day.</p>
+      <p><strong>On the last day, in order:</strong> (1) change the shared passwords; (2) demote or delete their CMS user; (3) remove hosting and registrar users; (4) suspend the email account and reroute its aliases; (5) strip social media and Google Business Profile roles; (6) revoke payment/booking/CRM staff users; (7) turn on two-factor authentication on the accounts that didn't have it — if you're touching the locks anyway, upgrade them.</p>
+      <p><strong>Keep it professional.</strong> Do all of this as routine, for every departure — friendly, neutral, same checklist whether someone was fired or retired. A professional offboarding process doesn't just close the technical doors; the Beyond Identity researchers found it also generates goodwill, which is the thing that actually reduces the motivation to come back through them.</p>
+      <p>And don't treat the phone as an afterthought: if the employee used a personal device for work — the authenticator app, the saved passwords, the email app that stays logged in — that's the <a href="if-someone-steals-my-phone-can-they-take-over-my-business.html">phone-takeover path</a> wearing a different hat. Revoke device sessions on Google Workspace, Microsoft 365, and anywhere else "stay signed in" was doing the remembering for them. Unlike <a href="is-it-safe-to-update-my-website-from-coffee-shop-wifi.html">the coffee-shop risk</a>, which ends when the laptop closes, a forgotten session on a former employee's phone works forever — until someone kills it.</p>
+      <p class="meta">Offboarding stats verified 2026-10-07. 89% former-employee lingering access + 20 percent of businesses breached via orphaned accounts: Zimyo 2026 Employee Offboarding Process Report (via Blake Lindsay LinkedIn post, ~Sep 2026). 83% maintained access to a previous employer's accounts + more than 1 in 4 logging into the company website backend: Beyond Identity study (US/UK/Ireland), via cybermagazine.com and helpnetsecurity.com. ~Half of businesses with still-active ex-employee accounts, half active longer than a day, 20 percent deprovisioning in a month or more, 20 percent breached by former staff: OneLogin "Curse of the Ex-Employees" report via darkreading.com. 38% of organizations leaving former employees/guests with access they should have lost: ShareGate State of M365 report, Sep 24 2026, via hcamag.com. No conversion-lift or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are locking things down: run our free check to see where your website stands on the security basics right now. Paste your domain, get a plain-English verdict in about ten seconds — no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #6 of 40</h2>
+      <p>The full Site Health Watch audit checks your site against all 40 trust signals &mdash; security headers, hidden malware, speed, mobile, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+what+to+change+on+a+website+when+an+employee+leaves+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
