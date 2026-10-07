@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Is My Online Store's Checkout So Slow?</title>
+<meta name="description" content="The slowest page on a store is usually the one that takes the money — and that is not a coincidence. Checkout cannot be cached like the rest of your site, so it feels every speed problem at full strength. The five real causes, and the fix order that doesn't break anything.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Is My Online Store's Checkout So Slow?</h1>
+    <p class="lede">Here is the cruelest fact in website speed: the slowest page on a store is usually the one that takes the money. The homepage can be fast, the product pages can fly, and the checkout can still crawl — and that is not bad luck, it is physics. Every other page on your store can be pre-built and served from cache. The checkout cannot. It has to do fresh work for every single visitor, every single time: your cart, your shipping, your taxes, your coupon, your payment. So checkout is the page where every weakness in your setup shows up first and hits hardest — the weak host, the heavy plugins, the background jobs, the third-party scripts. The good news: because checkout has its own short list of causes, it also has a fix order that actually works.</p>
+    <div class="article">
+
+      <h2>1. The page you can't cache</h2>
+      <p>Start with the rule that explains everything else: <strong>cart, checkout, and account pages must never be cached.</strong> WooCommerce's own developer documentation is explicit about this — those pages must stay dynamic and be excluded from caching (per a September 2026 WooCommerce speed audit roundup). The reason is simple: caching a checkout would serve one person's cart and totals to someone else. It would break the store and could expose private order data.</p>
+      <p>So here is the split nobody tells store owners: your visitors get <a href="what-is-website-caching.html">cached pages</a> that skip the server's work entirely — while every checkout runs the full build, fresh, on every request. The <a href="is-your-website-slow-because-of-an-old-php-version.html">old-PHP article</a> made the point that caching hides an old engine from visitors; checkout is the one page that rule does not protect, because it runs through PHP at full strength on every single order. One hosting analysis put it plainly: the same split is why a logged-in admin feels a slow dashboard while visitors see a fast site — and it is exactly why a checkout "feels slower than the product pages around it" (AHosting, September 2026). The product pages are pre-built. The checkout is built to order.</p>
+      <h2>2. What checkout actually does (why it's heavy by nature)</h2>
+      <p>Checkout is doing real work on the server for every visitor. It reads that shopper's specific cart, calculates their shipping and taxes, applies any coupons, and talks to the payment gateway in real time. None of that can be pre-built and reused, because it is different for every person (CoSpark, September 2026). That is the root of the whole problem: checkout does the most work per visitor of any page on the store, so anything that makes that work heavier or slower hits checkout harder than anywhere else.</p>
+      <p>This is also why the <a href="why-does-my-website-take-forever-to-start-loading.html">slow server-response article</a> matters more for stores than for brochure sites. On a normal site, a slow server response gets hidden behind the cache. On a checkout, there is no cache to hide behind — the customer waits for the whole thing. It is also why <a href="why-does-my-website-lag-when-customers-click-the-buttons.html">slow input response</a> bites hardest on checkout: the place-order button is the one button on the site where a 400-millisecond lag costs real money.</p>
+      <h2>3. The invisible tax: cart fragments on every page</h2>
+      <p>WooCommerce ships with a script called <strong>cart fragments</strong> whose job is to keep the mini-cart updated — the little cart count in the header. To do it, the script fires a background request (<code>?wc-ajax=get_refreshed_fragments</code>) on <em>every page a visitor loads</em>, asking the server "has anything in the cart changed?" — whether or not the visitor has anything in the cart. Many themes don't even show a dynamic mini-cart. You pay the cost anyway.</p>
+      <p>Each of those background calls adds load to your server and competes with the work checkout actually needs to do. On mobile and slower connections it is noticeable (Pofii Insights; CyberPanel's WooCommerce guide, ~September 2026).</p>
+      <p>The fix is real — but it is <em>selective</em>, not blunt. Limit the script to the pages that genuinely need it (cart and checkout), or delay it until the shopper actually interacts (a scroll, a hover, a click). The wrong move is switching cart fragments off everywhere: that breaks the mini-cart, confuses customers who no longer see their cart update, and creates fresh support headaches. It is a tuning job, not an on-off switch — performance-plugin makers like WP Rocket document the careful way to handle it (CoSpark, September 2026). Do it on staging first.</p>
+      <h2>4. The payload you can't remove: payment scripts</h2>
+      <p>The <a href="do-those-little-tracking-scripts-slow-down-my-website.html">tracking-scripts article</a> covers the scripts you can delete. Checkout's scripts are different: they are the cost of taking money. The payment gateway's fraud screening, the buy-now-pay-later widgets, the address autocomplete, the shipping calculator, the coupon-code checker — each one is a third party doing real work inside your checkout, and none of them can be removed without removing the feature.</p>
+      <p>What you <em>can</em> do is audit the list. The rule from a October 2026 performance guide is blunt and correct: the count matters less than what each one loads — twenty well-behaved plugins that only enqueue assets on their own pages cause less harm than eight that load scripts site-wide (<a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">the plugins article</a> covers the general audit). Audit what each plugin adds <em>to the checkout specifically</em>, and remove anything whose purpose nobody can state. The checkout is where a <a href="does-cheap-hosting-make-my-website-slow.html">weak host</a> shows up first, because it is the one page that can't hide behind caching. And speed is only half the checkout equation — <a href="do-customers-trust-my-website-enough-to-pay-me-online.html">the trust article</a> covers the legitimacy half, because a fast checkout on a site nobody trusts still loses the sale.</p>
+      <h2>5. The background jobs running at the worst moment</h2>
+      <p>WordPress runs its scheduled tasks (WP-Cron) on visitor page loads. That means peak traffic — the exact moment your checkout is busiest — is when the system also fires off background jobs: update checks, scheduled cleanups, plugin housekeeping. Store owners report add-to-cart and checkout redirects taking five seconds or more during busy hours from this alone (FunnelKit's checkout optimization guide).</p>
+      <p>The fix is one of the highest-value cheap changes a store can make: disable WP-Cron in <code>wp-config.php</code> and schedule a real server cron to run every five minutes instead. Scheduled tasks keep running; buyers stop paying for them. Check your host's control panel first — many expose this as a one-click toggle.</p>
+      <h2>6. The database half: order storage and object caching</h2>
+      <p>Checkout hammers the database — every cart read, every session lookup, every settings fetch — and it can't be page-cached, so the database gets hit hard on every single order. Two upgrades target exactly this:</p>
+      <p><strong>High-performance order storage (HPOS).</strong> This moves orders out of the shared WordPress posts tables into dedicated, indexed order tables — which speeds up everything that happens when someone clicks Place Order. New stores have it by default; older stores are often still on legacy storage. Check <strong>WooCommerce &gt; Settings &gt; Advanced &gt; Features</strong>, and verify your critical plugins declare HPOS compatibility before switching (FunnelKit).</p>
+      <p><strong>Redis object caching.</strong> A persistent object cache absorbs the repeated queries — sessions, cart contents, settings lookups — in memory instead of hitting the database each time. Most managed WordPress hosts expose Redis as a one-click toggle plus a small plugin. If yours doesn't, it is a short job for a developer and one of the best speed-per-dollar changes on this list (FunnelKit). The <a href="what-is-database-bloat-and-is-it-slowing-my-website-down.html">database-bloat article</a> covers the cleanup side of the same problem — expired transients and stale session rows slow every lookup checkout makes.</p>
+      <h2>7. The fix order (do it in this sequence)</h2>
+      <p>Because checkout is the page that takes money, the fix order has a safety rule baked in: nothing here gets changed on the live store first.</p>
+      <p><strong>1. Audit what loads on checkout.</strong> List every plugin and script that touches the checkout page. If nobody can state its purpose, it goes — on staging first.</p>
+      <p><strong>2. Tune cart fragments selectively.</strong> Limit to cart/checkout pages, or delay until shopper interaction. Never blunt-disable; test the mini-cart and the add-to-cart flow after the change.</p>
+      <p><strong>3. Move WP-Cron off visitor traffic.</strong> Disable it in wp-config, set the real five-minute server cron. Watch the busy-hour slowdowns disappear.</p>
+      <p><strong>4. Enable HPOS.</strong> Compatibility mode first, full switch after orders sync cleanly. The higher your order volume, the bigger the win.</p>
+      <p><strong>5. Add Redis object caching.</strong> The database relief checkout needs, since page caching is off the table.</p>
+      <p><strong>6. Test like a buyer.</strong> Not as an anonymous visitor on the homepage — as a logged-in shopper with items in the cart. Separate server response time from front-end rendering, and trust field data from real visitors over lab scores (dev.to, October 2026).</p>
+      <p>The honest catch: none of these is a magic switch, and a checkout will never be as fast as a cached homepage — that comparison is rigged. The question is whether your checkout is <em>as fast as it can be</em> for work that cannot be cached. And that is measurable: time the server response on checkout before and after each change, one change at a time. The page that takes your money deserves to be the page you measure most carefully — because <a href="what-does-one-extra-second-cost.html">every extra second has a price</a>, and on checkout, you are the one paying it.</p>
+      <p class="meta">Mechanics verified 2026-10-07. Cart/checkout/my-account must stay dynamic and excluded from caching (WooCommerce developer docs, via cospark.com, Sep 2026); caching one person's cart to another breaks the store and can expose private order data (cospark.com). Checkout's per-visitor server work — cart read, shipping/tax calculation, coupon application, real-time gateway communication — per cospark.com, Sep 2026. Cart fragments firing ?wc-ajax=get_refreshed_fragments on every page view, cart or no cart, themes without a mini-cart paying anyway, TTFB + main-thread cost, mobile noticeability — per pofii.com, cyberpanel.net (~Sep 2026), convertcart.com; selective tuning vs blunt disable + WP Rocket's careful approach per cospark.com. Uncacheable-page split ("feels slower than the product pages around it") per ahosting.net, Sep 2026. WP-Cron on visitor loads, 5+ second busy-hour redirects, DISABLE_WP_CRON + 5-minute server cron per funnelkit.com. HPOS dedicated indexed order tables, new stores default, older stores often legacy, compatibility-mode-first switch per funnelkit.com. Redis object caching absorbing session/cart/settings queries, one-click on most managed hosts per funnelkit.com. Plugin-load audit rule (20 well-behaved &lt; 8 site-wide) per dev.to, Oct 2026. Test as logged-in buyer with cart, field data over lab scores per dev.to, Oct 2026. No conversion-lift or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are auditing checkout: run our free check to see how your store's loading speed reads from the outside. Paste your domain, get a plain-English verdict — the performance numbers a customer actually feels, not a lab score. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+slow+store+checkouts+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
