@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is Your Website Slow Because of an Old PHP Version?</title>
+<meta name="description" content="Most small business websites run on a PHP version nobody chose — the host picked it at signup and it never changed. Old versions are measurably slower and no longer get security patches. The check, the speed ladder, and the safe upgrade.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Is Your Website Slow Because of an Old PHP Version?</h1>
+    <p class="lede">Every page on a WordPress site — and most other small-business sites — passes through the same invisible engine before it reaches a customer: PHP. It processes the page, talks to the database, and hands the finished result to the visitor. And most owners have never once looked at which version of it they’re running. Your host picked one when the account was created, and it’s been sitting there ever since — in some cases a version that stopped getting security fixes years ago. The twist nobody mentions: newer PHP isn’t just safer, it’s dramatically faster at the same job. A version upgrade can be the cheapest speed fix your site will ever get — if you do it in the right order.</p>
+    <div class="article">
+
+      <h2>1. The engine you never chose</h2>
+      <p>Think of it this way: your hosting plan is the <em>size</em> of the engine, and PHP is the <em>age</em> of it. The <a href="does-cheap-hosting-make-my-website-slow.html">cheap-hosting article</a> is about size — too little power for the work. This is about age. You can have a perfectly good host and still be running PHP 7.4, which hasn’t received a security patch since November 2022, or PHP 8.1, which went end-of-life on December 31, 2025.</p>
+      <p>That’s the part that surprises people: nothing about this degrades. This is not the <a href="why-is-my-website-getting-slower-every-month.html">getting-slower-every-month story</a>. An old PHP version was slow the day your site launched — the site just never got any faster, and the world moved on without it. There’s no crash, no warning, no red light on the dashboard. It’s a silent, permanent handicap.</p>
+      <h2>2. The speed ladder (real benchmarks, honestly framed)</h2>
+      <p>PHP 7 was already roughly twice as fast as PHP 5.6 on the same server — and PHP 8 kept climbing. Published hosting benchmarks measuring requests per second with everything else held constant show the climb plainly: PHP 5.6 around 100 requests/sec, PHP 7.4 around 250, PHP 8.0 around 300 (the new JIT compiler), PHP 8.1 and 8.2 around 320, PHP 8.3 at 350 and up — with that source’s tests showing 8.3 loading pages about 20% faster than 8.1.</p>
+      <p>Kinsta-run benchmarks reported PHP 8.1 about 47% faster than 8.0 and handling more than 50% more requests per second than PHP 7.2. Practitioners who’ve done the switch broadly describe the jump from the PHP 7 era to PHP 8 as two to three times the throughput — treat that as an estimate, not a promise.</p>
+      <p>And here’s the honest catch, stated plainly: those are <em>throughput</em> benchmarks — how many page requests one server can chew through per second. They are not a guarantee that your homepage will load three times faster. On a real site, the theme, the plugins, the caching, and the image weight dominate the total. PHP is one layer of the stack, but it’s the one layer every uncached page touches. Logged-in admins, checkout pages, contact forms — anything a cache can’t serve — all run through PHP. Which is exactly why <a href="why-does-my-website-take-forever-to-start-loading.html">a slow server response</a> is worth chasing down to this cause.</p>
+      <h2>3. The version cliff — and what’s dying next</h2>
+      <p>Speed is only half the argument. The other half is that old PHP is unpatched PHP. The official schedule, straight from PHP’s own supported-versions page: PHP 8.1’s security support ended December 31, 2025. PHP 8.2 is security-fixes-only right now and goes fully end-of-life December 31, 2026 — about two months from the writing of this article. PHP 8.3 gets security fixes until the end of 2027. PHP 8.4 is actively supported, and PHP 8.5 (released November 2025) is the current stable release, with PHP 8.6 scheduled for November 19, 2026.</p>
+      <p>WordPress.org’s position: PHP 8.3 or greater. WordPress 6.8 and later fully support 8.4, and 6.9 and later support 8.5 — the remaining risk in an upgrade is almost never WordPress core, it’s your plugins and theme.</p>
+      <p>The uncomfortable industry stat: roughly 55 percent of the top million PHP sites were still running an end-of-life version, measured after the 8.1 cutoff. That’s more than half the web’s PHP sites accepting known, unfixable flaws — the same neglect <a href="do-i-really-need-to-update-my-website.html">the update article</a> covers from the software side. PHP is the server-side cousin of that same problem.</p>
+      <h2>4. Check it in 30 seconds</h2>
+      <p>If your site runs WordPress: log in, go to <strong>Tools &gt; Site Health &gt; Info &gt; Server</strong>, and read the PHP version line. Anything below 8.3 is behind. If you see 7.4, 7.2, or 5.6, you’re running an engine that stopped receiving security fixes years ago.</p>
+      <p>Note the sneakiness here: caching can <em>hide</em> this problem from you. Cached pages skip PHP entirely — so the site feels fast to visitors while every uncached request (your admin area, the checkout, the form submit) still runs through the old engine. <a href="what-is-website-caching.html">The caching article</a> explains the layers; PHP is the layer caching conceals.</p>
+      <h2>5. The safe upgrade order (do it before your host does)</h2>
+      <p>The switch itself is usually a dropdown: in cPanel it’s the <strong>MultiPHP Manager</strong> or <strong>Select PHP Version</strong> screen. Most modern hosts also handle it from their own dashboard. But the order matters, because this is the one speed fix that can break things:</p>
+      <p><strong>1. Back up everything first.</strong> A full backup you can restore in one click. This is non-negotiable — same rule as any update.</p>
+      <p><strong>2. Check plugin and theme compatibility.</strong> Ancient plugins and custom themes are where upgrades break. Update WordPress core and everything you can update <em>before</em> touching the PHP version — newer releases are the ones tested against newer PHP.</p>
+      <p><strong>3. Test on staging if you have it.</strong> Flip the version on a copy, click through the important pages (homepage, contact form, checkout if you sell), watch the error log for 24 hours.</p>
+      <p><strong>4. Switch, then watch.</strong> After the change, keep the old version available as a one-click rollback and monitor for a day. Most breakage shows up fast — a white screen or a dead plugin — and rolling back takes seconds.</p>
+      <p>One more reason not to park this: hosts are starting to make the decision for you. WP Cloud automatically upgraded remaining PHP 8.1 sites at the December 2025 deadline, and WP Engine, Kinsta, and SiteGround followed comparable policies — months of warning emails, then the migration happens on <em>their</em> calendar. A forced upgrade on a Tuesday morning, with a legacy plugin that no longer loads, is the expensive version of this fix. Doing it on your own calendar, with a backup and a rollback, is the cheap version — and the speed gain comes free with the safety.</p>
+      <p class="meta">Mechanics verified 2026-10-07. PHP support schedule (8.1 security support ended Dec 31, 2025; 8.2 security-only until Dec 31, 2026; 8.3 security until Dec 31, 2027; 8.4 active until Dec 31, 2026/security to 2028; 8.5 current stable, security to 2029; 8.6 GA scheduled Nov 19, 2026) from php.net/supported-versions.php via jackober.com (updated Oct 2026), cross-checked with versionlog.com and thephpf release-cycle update. Throughput benchmarks (5.6 ~100, 7.4 ~250, 8.0 ~300, 8.1/8.2 ~320, 8.3 350+ req/s; 8.3 pages ~20% faster than 8.1) per roconpaas.com, labeled benchmarks. Kinsta-derived figures (8.1 ~47.1% faster than 8.0, >50% more req/s than 7.2) via linkilo.co. The 2-3x estimate per tooltester.com, labeled estimate. 55% of top million PHP sites on EOL versions (monstermegs.com, Oct 2026, citing W3Techs). WordPress.org recommending PHP 8.3+ and WP 6.8+/6.9+ supporting 8.4/8.5 per jackober.com. Host forced-upgrade policies (WP Cloud auto-upgrade at 8.1 EOL; WP Engine/Kinsta/SiteGround warn-then-move) per monstermegs.com. No conversion-lift or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are checking versions: run our free check to see how your site's loading speed reads from the outside. Paste your domain, get a plain-English verdict — the performance numbers a customer actually feels, not a lab score. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+old+PHP+versions+slowing+down+websites+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
