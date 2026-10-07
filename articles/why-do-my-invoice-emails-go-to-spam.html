@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Do My Invoice Emails Go to Spam But My Normal Emails Don't?</title>
+<meta name="description" content="Your regular emails land in inboxes just fine — but your invoices keep landing in spam. It's not random: every message is scored on its own, and invoices carry almost every marker spam filters are trained to catch. Here's why, and the fixes in order of impact.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Do My Invoice Emails Go to Spam But My Normal Emails Don't?</h1>
+    <p class="lede">Your everyday emails arrive without a problem. You and your customers email back and forth all day and nothing goes missing. But the invoices — the messages that actually get you paid — keep landing in spam folders, where they sit unread until you call and ask about the money. It feels random, and it feels personal. It is neither. Every single email is scored on its own merits, and invoices happen to carry almost every marker that spam filters are trained to catch: they come from somebody else's servers, they carry attachments, they contain payment links, and they use the exact language that phishing scams use. Once you see the invoice through the filter's eyes, the fix becomes obvious — and most of it is a one-time setup.</p>
+    <div class="article">
+
+      <h2>1. Your invoice was never sent by your email</h2>
+      <p>Here is the part most business owners never realize: when you click &ldquo;send invoice&rdquo; in QuickBooks Online, the email does <em>not</em> come from your email provider. QuickBooks sends it from its own servers, from an <strong>@intuit.com</strong> address. And this isn't a setting you misconfigured — Intuit's own support confirms it: sending QuickBooks Online invoices from your own domain is &ldquo;currently unavailable.&rdquo; Users have been asking for it on Intuit's feedback forum for years. One wrote that &ldquo;invoices from noreply@intuit.com are often caught in spam filters&rdquo;; two years later another replied they were &ldquo;still getting invoices blocked by clients.&rdquo;</p>
+      <p>Now look at it from Gmail's side. Your normal email passes the identity checks (SPF, DKIM, DMARC — <a href="what-is-dmarc.html">the trust trio</a>) because it genuinely comes from your mail provider. Your invoice arrives <em>claiming to be from your business</em> but physically sent from Intuit's computers — a mismatch your own mail never has. That is exactly the pattern phishing uses, so the filter treats it with suspicion by default. It is the same reason <a href="why-are-my-emails-suddenly-going-to-spam.html">a sudden deliverability break</a> feels so confusing: everything looks fine on your end, because on your end, everything <em>is</em> fine. The problem is who the invoice claims to be versus who actually sent it.</p>
+      <p>This isn't only a QuickBooks problem. Any invoicing or payment tool — Xero, Stripe, Square, your CRM — sends from <em>its</em> servers, not yours. The difference is that some of them give you a way out: Xero, for example, offers a custom-SMTP option in its email settings, so your invoices can go out through your own mail server, authenticated as you. QuickBooks' documented workarounds are thinner: connect your Gmail through its &ldquo;Send with Gmail&rdquo; feature so invoices leave from your real address, or save the invoice as a PDF and send it from your own email like any other message. Either way, the principle is the same — the invoice should travel as <em>your</em> mail, not as a stranger's mail wearing your name.</p>
+      <h2>2. Invoices look exactly like the phishing Gmail is trained to catch</h2>
+      <p>The second problem is the invoice itself. Fake-invoice phishing is one of the oldest and most common email scams in existence — there is an entire documented category of &ldquo;protected document containing invoice information&rdquo; attacks. So Gmail does not see your invoice as a bill. It sees an <em>invoice-shaped message</em>, and invoice-shaped messages are exactly what the filter was built to interrogate.</p>
+      <p>Walk through the checklist the filter runs: <strong>attachments</strong> — criminals deliver malware through attachments, so every PDF gets opened and scanned, and anything unusual gets flagged. <strong>Links</strong> — &ldquo;click here to pay&rdquo; buttons that lead to quickbooks.intuit.com or stripe.com instead of <em>your</em> domain look like the mismatched-link trick phishers use; current spam-filter guides specifically call out mismatched link domains and redirect chains as triggers that now carry more weight than trigger words. <strong>Language</strong> — &ldquo;payment due,&rdquo; &ldquo;urgent,&rdquo; &ldquo;click here to pay&rdquo; is urgency-plus-money phrasing, the native dialect of scams. <strong>Shape</strong> — image-heavy or link-heavy bodies with little real text, which filters read as content hiding from scanners.</p>
+      <p>Any one of these is survivable. A real invoice stacks four or five of them in a single message, sent from somebody else's servers, claiming to be from you. That is why your chatty &ldquo;thanks, see you Thursday&rdquo; email sails through while the invoice — the message you most need delivered — gets quarantined. It is also the mirror image of <a href="my-vendor-emailed-new-bank-details-is-it-a-scam.html">the fake-invoice scam article</a>: there, the criminal's invoice looked real enough to fool a human. Here, your real invoice looks suspicious enough to fool the filter.</p>
+      <h2>3. The fixes, in order of impact</h2>
+      <p><strong>Fix the sender first — this is the biggest lever.</strong> In QuickBooks Online, turn on the &ldquo;Send with Gmail&rdquo; option so invoices leave from your actual address, or save each invoice as a PDF and send it from your own email. In Xero, switch on the custom-SMTP option in the email settings and point it at your own mail server. And whatever invoicing tool you use, add the SPF/DKIM records it asks for — that is the &ldquo;include&rdquo; line in your domain's DNS that officially authorizes their servers to send as you. (If you have never touched those records, <a href="is-my-business-email-going-to-spam.html">start with the deliverability check</a> — it shows you exactly which of the three are missing.)</p>
+      <p><strong>Fix the content second.</strong> Where the tool allows it, link to the pay page instead of attaching a heavy PDF — one clean link on a domain related to yours beats an attachment plus three redirect hops. Write the subject line like a human: &ldquo;Invoice #1042 from Acme Plumbing&rdquo; will always beat &ldquo;URGENT — Payment Required!!!&rdquo; Keep the body mostly real text, not one big image. Small changes, but each one removes a marker from the filter's checklist.</p>
+      <p><strong>The one-time customer fix.</strong> For any customer whose spam folder keeps eating your invoices, ask them to open one invoice email and mark it &ldquo;not spam.&rdquo; That single action trains their filter that your invoices are wanted mail — it is the fastest repair available, and it works even before you finish the technical fixes above. (The reverse problem — <a href="why-do-customers-say-they-never-got-my-quote.html">customers never receiving your quotes at all</a> — usually has the same root cause, so fix it once for both.)</p>
+      <h2>4. The money math that makes this urgent</h2>
+      <p>An invoice in spam is an invoice paid late — or never. Nobody goes digging through their spam folder looking for a bill they do not know exists, so the invoice just sits there aging while you wonder why a good customer &ldquo;hasn't paid yet.&rdquo; One 30-day-late invoice costs you more in cash-flow pain than every fix on this page combined, and the sender fix is a one-time setup that takes less time than chasing a single overdue payment by phone.</p>
+      <p class="meta">Mechanics verified 2026-10-07. QuickBooks Online cannot send invoices from your own domain (&ldquo;currently, this option is unavailable in QuickBooks Online&rdquo;) and sends from @intuit.com addresses (noreply@intuit.com, do_not_reply@intuit.com): Intuit QuickBooks Community support threads. &ldquo;Invoices from noreply@intuit.com are often caught in spam filters&rdquo; / &ldquo;still getting invoices blocked by clients&rdquo;: Intuit QuickBooks Online customer feedback forum. QBO workarounds (&ldquo;Send with Gmail&rdquo; feature; save-as-PDF and send from your own email; save-and-share link): Intuit QuickBooks Community. Xero custom-SMTP option in email settings plus SPF/DKIM/DMARC domain authentication: mailpro.com Xero deliverability guide (crawled ~28 days prior). Trigger words carrying less weight in 2026 while body/HTML/link signals (broken HTML, image-only sends, mismatched link domains) carry more: massmailer.io spam-filter guide (updated ~Sep 28 2026). Large attachments, excess links, and poor formatting raising suspicion: medium.com deliverability guide (~98 days prior); &ldquo;links and attachments send a red flag&rdquo;: emazzanti.net. Fake-invoice phishing as a documented lure category: pcrisk.com (~27 days prior). No conversion-lift or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are fixing invoices: run our free check to make sure the messages you send actually land in inboxes. Paste your domain, get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three settings that decide whether Gmail and Outlook trust your mail. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+invoice+emails+going+to+spam+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
