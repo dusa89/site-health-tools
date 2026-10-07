@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Can't I Send Email From My Phone (But It Works on My Computer)?</title>
+<meta name="description" content="Your computer sends email fine. Your phone refuses. Same account, same password — so the account is not the problem. Why your phone's outgoing settings are a separate door from your inbox, the three numbers that are almost always wrong, and the 60-second test that finds the fault.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Can't I Send Email From My Phone (But It Works on My Computer)?</h1>
+    <p class="lede">Your computer sends email without a blink. Your phone shows an error every time you hit send. Same account, same password — so it cannot be the account, and it cannot be you typing the password wrong. What it is: your phone's email app has two separate doors, one for reading mail and one for sending it. The reading door is open. The sending door has three numbers on it, and at least one of them is wrong on your phone. Here is the 60-second test that proves where the fault lives, and the fix ladder in order.</p>
+    <div class="article">
+
+      <p>Start with what this symptom tells you, because it is more useful than it looks. If your computer sends email from this account and your phone does not, <strong>the account itself is healthy</strong> — your password works, the mailbox exists, nothing is locked or suspended. Receiving mail on the phone probably works too. That combination — receive yes, send no — narrows the whole universe of email problems down to one small box: your phone's <em>outgoing</em> mail settings.</p>
+      <p>Here is the mental model that makes this fixable. Every email app has two doors. The <strong>incoming door</strong> (IMAP) is where mail arrives — your phone found this one, which is why the inbox works. The <strong>outgoing door</strong> (SMTP) is a completely separate connection with its own server name, its own port number, and its own login switch. Phone setup screens often pre-fill the outgoing door by copying the incoming one, or leave its authentication toggle off, or carry a port number that worked on your office wifi but dies on cellular data. Any one of those silently breaks sending while the inbox keeps working perfectly.</p>
+
+      <h2>The three numbers that are almost always wrong</h2>
+      <p>Open the account settings on your phone and find the outgoing / SMTP section. Compare what is there against what your email provider publishes. There are only three things to check, and they fix nearly every case of this:</p>
+      <p><strong>1. The server name.</strong> Incoming and outgoing are frequently different names — for example, Outlook.com uses <code>imap-mail.outlook.com</code> for incoming mail and <code>smtp-mail.outlook.com</code> for outgoing mail. If the phone put the incoming name (or an old provider name from a setup you did years ago) into the outgoing field, nothing will send. Copy the outgoing server name from your provider's current settings page, not from memory.</p>
+      <p><strong>2. The port.</strong> The modern outgoing port is <strong>587</strong>, used with TLS/STARTTLS encryption; <strong>465</strong> is the SSL alternative that carrier setup guides name as the fallback when 587 has trouble. The trap is <strong>port 25</strong> — the old standard. Most home internet providers and mobile networks now block port 25 to fight spam (Comcast/Xfinity did this for its residential customers and tells everyone to use 587 instead), so a phone set to port 25 can receive mail happily and fail every send. If your outgoing port says 25, change it to 587 and re-test before touching anything else.</p>
+      <p><strong>3. The password flavor — and the authentication toggle.</strong> The outgoing door has its own login switch, usually labeled something like "my outgoing server requires authentication" or "require sign-in for the outgoing server." If that is off, turn it on and give it your full email address and password. And here is the Gmail catch that has stranded a lot of phones since late 2024: Google ended password-only sign-in for third-party mail apps on September 30, 2024. A mail app that logs into Gmail with just your regular password no longer works. The fixes are the Gmail app itself (which uses Google's modern sign-in), or — if you want your phone's built-in mail app — turning on 2-Step Verification on the Google account and generating a special 16-character <strong>app password</strong> for the phone, then using <em>that</em> as the password in the phone's settings. Your normal Gmail password will never work in that box again.</p>
+
+      <h2>The 60-second test that tells you where the problem lives</h2>
+      <p>Before changing anything, run this diagnostic — it saves most people a long support call. Open your web browser (on the phone or the computer), log into your email provider's <strong>webmail</strong> — the website version of your email — and send a test message to yourself. If webmail sends fine, the account is healthy and the problem is 100% your phone's outgoing settings; keep working through the three numbers above. If webmail also fails to send, stop touching the phone — the problem is at the account or provider level, and that is a call to your email provider with the exact error message on the screen. This one test tells you which of two completely different problems you have, and it takes a minute.</p>
+
+      <h2>The fix ladder, cheapest first</h2>
+      <p><strong>Step 1 — the webmail test above.</strong> Sixty seconds, isolates the fault.</p>
+      <p><strong>Step 2 — flip the authentication toggle.</strong> In the phone's outgoing settings, make sure "require sign-in" or "my outgoing server requires authentication" is ON, with your full email address as the username. This is the single most common fix and takes thirty seconds.</p>
+      <p><strong>Step 3 — fix the port.</strong> Set outgoing port to 587 with TLS/STARTTLS encryption. If 587 fails, try 465 with SSL. If it says 25, that was very likely your whole problem.</p>
+      <p><strong>Step 4 — Gmail users: the app password.</strong> Turn on 2-Step Verification on your Google account (<a href="should-i-turn-on-two-factor-for-my-business-email.html">the same feature this site recommends for your business email</a>), generate an app password for your phone's mail app, and paste that 16-character code into the phone's password box — not your normal password.</p>
+      <p><strong>Step 5 — delete and re-add the account on the phone.</strong> Sounds drastic, but removing the account and adding it fresh forces the phone to set up both doors from current settings instead of preserving whatever wrong number has been sitting there for years. Your mail lives on the server, so nothing is lost. This fixes the cases where a setting is wrong somewhere you cannot see.</p>
+      <p><strong>Step 6 — call the provider with the exact error message.</strong> If webmail failed too, or none of the above worked, call your email provider's support and read them the <em>exact</em> error text on the phone screen. "Cannot send mail" is not an error message; the line under it — the one with the code or the server name — is the part they need.</p>
+
+      <h2>Why this costs you real money</h2>
+      <p>Think about when this bites. You are out of the office — on a job site, between appointments — and a customer is waiting on a quote. You tap out the reply, hit send, and assume it went. Hours later you learn it has been sitting in the phone's outbox the whole time, and the customer has decided you ghosted them. A phone that cannot send is not a minor annoyance for a business owner; it is a silent gap between you and every customer who needs an answer <em>now</em>. Fixing the outgoing door takes one pass through the three numbers above — usually under ten minutes — and it stays fixed.</p>
+      <p>One more thing while you are in email-fixing mode: once your messages are leaving the phone, the next question is whether they land in inboxes. That is a different problem — <a href="is-my-business-email-going-to-spam.html">whether your business email is quietly going to spam</a> — and unlike this one, it never shows you an error at all. And if your quotes do go out but <a href="why-do-customers-say-they-never-got-my-quote.html">customers keep saying they never arrived</a>, that is the third flavor of the same family, with its own fix list.</p>
+      <p class="meta">Outgoing-port guidance (587 with STARTTLS/TLS; 465 as the SSL fallback; port 25 blocked by most residential ISPs and mobile networks) per Vodafone UK and EE UK device setup guides and the warmy.io SMTP diagnostic guide, verified 2026-10-06. Comcast/Xfinity residential port-25 block per Comcast's published network change, verified 2026-10-06. Outlook.com outgoing settings (smtp-mail.outlook.com, port 587, TLS) per Microsoft Q&A community support, verified 2026-10-06. Google's "Less secure apps" password-only sign-in end date of September 30, 2024, per the Google Workspace blog announcement; 16-character app passwords requiring 2-Step Verification per Google's app-password documentation (via ghacks.net summary), verified 2026-10-06. The outgoing-server authentication toggle as a classic send failure per the warmy.io diagnostic guide, verified 2026-10-06. No bounce-rate, conversion-lift, or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are fixing email: run our free check to make sure the messages you send actually land in inboxes. Paste your domain, get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three settings that decide whether Gmail and Outlook trust your mail.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+sending+email+from+a+phone+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
