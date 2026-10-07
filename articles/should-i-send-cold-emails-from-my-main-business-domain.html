@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should I Send Cold Emails From My Main Business Domain?</title>
+<meta name="description" content="Your main domain is the front door of your business email — and cold outreach is the fastest way to burn its reputation at Gmail and Outlook. What the 0.1%/0.3% complaint math means, why the sibling-domain pattern exists, and the honest setup order.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should I Send Cold Emails From My Main Business Domain?</h1>
+    <p class="lede">Here is the question nobody asks before they start: the emails go out, the replies trickle in, the campaign feels like it's working — and then one morning your regular customers' invoices start landing in spam, your appointment confirmations bounce, and your team can't email each other reliably. Nothing about your business changed. What changed is your domain's reputation — because you sent cold outreach from the same domain your entire business lives on. Your main domain is the front door of your email: every mailbox provider scores it, and the score follows the domain, not the inbox you sent from. Cold email from that domain is gambling the front door for the campaign. Here is how the math actually works, and the setup that keeps the campaign from touching the business.</p>
+    <div class="article">
+
+      <h2>1. Your domain is your front door</h2>
+      <p>Forget the inbox for a minute. Gmail, Outlook, and Yahoo do not really trust <em>you</em> — they trust your domain, and they score it constantly. Every message your domain sends, every complaint a recipient files, every bounce, every engagement signal feeds one reputation attached to the domain name in your From line. That is why the <a href="is-my-business-email-going-to-spam.html">authentication article</a> matters (SPF, DKIM, DMARC are the three identity checks), but identity is only half the story: authentication proves the mail really came from your domain. Reputation is whether Gmail likes what your domain has been doing lately. You can pass every identity check and still land in spam — because, as one 2026 deliverability guide put it, a "Low" or "Bad" domain reputation in Google Postmaster Tools sends every message to spam regardless of authentication.</p>
+      <p>Cold outreach is the fastest legitimate way to move that reputation down. A cold recipient never asked for your email, and cold lists — even decent ones — always contain some people who hit "report spam" instead of replying or deleting. That is the deal with cold email: a small, steady stream of complaints is the cost of the channel. The question is where you let that cost land.</p>
+      <h2>2. The math that kills domains</h2>
+      <p>The numbers are exact, and they have been tightening. Google and Yahoo require bulk senders to keep user-reported spam complaints below 0.3% — and they advise aiming under 0.1%, never spiking to 0.3%. Cross the line and, since a November 2025 enforcement escalation, Google rejects the mail outright instead of junk-foldering it — the cost of crossing a threshold is no longer a slap on the wrist. Above 0.5%, sending gets blocked. At low volume the margin is brutally thin: three complaints on 1,000 emails already hits 0.3%. Bounces work the same way: keep them under about 2%, because a spike above 3% damages sender reputation, and if you send through Amazon SES, the account goes under review around 0.1% complaints and can pause sending at 0.5% — and SES enforces at the account level, so one bad list can freeze every mailbox on the account.</p>
+      <p>Now put that math on your main domain. One overeager campaign, one stale list segment, one assistant who buys a sketchy list — and the complaints attach to the domain your invoices, your customer replies, your appointment reminders all come from. A cold campaign's risk budget is meant to be small and disposable. Your main domain's reputation is the opposite of disposable. This is the same lesson as the <a href="why-did-my-email-marketing-account-get-suspended.html">suspension article</a>, one level up: the platform can kill your sending account, but complaints can wound the domain at the mailbox providers themselves — and no platform appeal fixes that.</p>
+      <p>The one more twist people miss: bulk-sender status, once you cross the 5,000-a-day-to-personal-inboxes threshold, is generally permanent — dropping back under the threshold later does not exempt you again. There is no undo button on scale, either.</p>
+      <h2>3. The sibling-domain setup</h2>
+      <p>This is why the cold-email world runs on a standing pattern, and it is worth copying exactly: a separate sending domain for cold outreach — never the primary company domain. If your business is yourcompany.com, you register something like yourcompany.co or get-yourcompany.com, set it up properly, and every cold email you ever send comes from there. The bad campaign burns the sibling, not the business.</p>
+      <p>The setup order, honestly stated:</p>
+      <p><strong>Step 1 — Register the sibling.</strong> A separate domain, not a subdomain of the main one as the primary plan. Subdomain-sending is better than the apex domain — and some engineers use a dedicated sending subdomain as their minimum — but reputation signals bleed across subdomains more than most people assume. The standard cold-email pattern is the fully separate domain: maximum insulation, cheap to register.</p>
+      <p><strong>Step 2 — Authenticate it like it's the business.</strong> SPF, DKIM (2048-bit), and DMARC with alignment to the visible From domain, plus one-click unsubscribe headers on anything templated and sequenced. The rules that apply to bulk senders apply to cold senders too: the authentication requirements, the unsubscribe requirements, the complaint math — none of it cares that your campaign is small.</p>
+      <p><strong>Step 3 — Warm it for weeks.</strong> A brand-new domain that immediately starts blasting is the single most flagged pattern on the internet. Warm new domains and inboxes for weeks before real sends — start small, ramp gradually, never spike volume. Two to four weeks is the practitioner band; exact warm-up numbers are vendor folklore, but "new domain plus immediate volume equals flagged" is the solid part.</p>
+      <p><strong>Step 4 — Keep per-inbox volume modest.</strong> The working band in 2026 is roughly 20 to 50 cold sends per day per inbox, scaling by adding more authenticated inboxes — typically 3 to 5 per domain across several domains — rather than pushing one mailbox harder. Verify every address before it enters a sequence; list quality is what keeps bounces under 2% and complaints near zero.</p>
+      <p><strong>Step 5 — Watch Postmaster Tools.</strong> Google Postmaster Tools shows your domain's reputation directly. It is the dashboard that tells you the truth before your customers' spam folders do.</p>
+      <h2>4. The honest catches</h2>
+      <p><strong>The law rides along.</strong> The infrastructure above keeps your domain alive; it does not make the campaign legal. Cold email to businesses in the US is regulated by CAN-SPAM — accurate headers, identifying the message as an ad, a valid physical address, honoring opt-outs within 10 days — with per-email penalties running around $50k or more, inflation-adjusted. The <a href="should-i-buy-an-email-list-for-my-business.html">buy-an-email-list article</a> covers the full legal tier. A sibling domain protects your reputation; nothing protects you from the law except following it.</p>
+      <p><strong>Cold email is not the same job as the newsletter.</strong> If your program is really just your existing customers and prospects — the newsletter, the announcements — that belongs on your main domain, authenticated and well-run, like the <a href="should-i-send-my-newsletter-from-my-business-email.html">newsletter article</a> explains. The sibling domain is for strangers, not your list. Mixing them is how a good newsletter list inherits a cold campaign's complaints.</p>
+      <p><strong>"But I'm small — the rules are for big senders."</strong> The 5,000-a-day threshold decides who is formally a bulk sender, but the underlying signals — authentication, complaints, bounces — drive placement for every sender regardless of volume. At small volume the complaint math is actually crueler, because a handful of complaints is a bigger percentage. Being small is not a shield; it is thinner armor.</p>
+      <h2>5. What if the damage is already done?</h2>
+      <p>If you have already been cold-emailing from your main domain: stop the cold sends from that domain now — not next week, now. Move the campaign to a sibling domain and start its warm-up from zero. Check your main domain's reputation in Google Postmaster Tools and watch it recover over weeks, not days; reputation is earned back slowly. If your rejections are coming from <a href="why-does-gmail-reject-my-business-email.html">Gmail's hard bounces</a>, the <a href="why-are-my-emails-suddenly-going-to-spam.html">global deliverability checklist</a> is your recovery order. And if the campaign was ever run through a marketing platform, re-read the <a href="why-did-my-email-marketing-account-get-suspended.html">suspension article</a> — platforms suspend cold senders routinely, and that is the cheap version of this lesson. The expensive version is your whole domain at Gmail. Do the sibling-domain setup before the campaign, not after the damage.</p>
+      <p class="meta">Mechanics verified 2026-10-07. Bulk sender requirements (SPF + DKIM + DMARC aligned with the visible From domain; RFC 8058 one-click unsubscribe honored within 2 days; spam complaints below 0.3%, aim under 0.1%) — Google/Yahoo bulk sender guidelines via emailsendx.com 2026 compliance checklist (crawled Oct 2026). Enforcement tightened from junk-foldering to outright rejections starting November 2025 — marketing-for-engineers-2026 ch. 9 (rogerthenomad) and ozigi cold-email volume guide (Oct 2026). 5,000/day-to-personal-inboxes bulk threshold; status generally permanent once crossed — marketing-for-engineers-2026. "Use a separate sending domain for cold outreach, never the primary company domain" — sgtpooki cold-email-compliance.md (~Sep 2026). "Dedicated sending subdomain. Never your apex domain. A bad campaign should not be able to damage your primary domain's reputation" — marketing-for-engineers-2026. Practitioner bands: 20–50 cold sends/day per inbox, 3–5 inboxes per domain across several domains; 2–4 week warm-up (50–100/day start, double every two days, full volume ~day 21); bounces under ~2%, spike above 3% damages reputation; 3 complaints on 1,000 emails = 0.3% — ozigi/how-many-cold-emails-per-day-without-spam (Oct 2026). Amazon SES: ~0.1% complaint review, ~0.5% pause; bounces under 5%, at 10% pause — warmbly complaint-rate writeup (~Sep 2026). CAN-SPAM per-email penalties ~$50k+ inflation-adjusted — sgtpooki (verify at ftc.gov before quoting). "Low"/"Bad" Postmaster reputation = straight to spam regardless of authentication — massmailer.io 2026 deliverability guide. No subscriber-count or engagement-rate figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Before you fix your outreach: run our free check to make sure the messages you already send actually land in inboxes. Paste your domain, get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three settings that decide whether Gmail and Outlook trust your mail. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+cold+email+from+the+main+business+domain+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
