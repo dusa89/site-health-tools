@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is a CDN — and Does My Small Business Website Need One?</title>
+<meta name="description" content="A CDN is a network of servers that keep copies of your website closer to your customers. Plain-English explanation of what it does, when a small business actually needs one, what it costs (often $0), and what it won't fix.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Is a CDN — and Does My Small Business Website Need One?</h1>
+    <p class="lede">You've heard the letters CDN and nodded along. Here's the plain version: right now your website lives on one computer, in one city. A customer ten minutes away gets their pages fast. A customer across the country asks that same one computer across the country — twice, for every page — and it feels slow. A CDN (Content Delivery Network) is the fix for the distance part: it's a network of computers around the world that keep copies of your site, so customers get their pages from the copy closest to them instead of your one computer. Here's what it does, when a small business actually needs one, and the part nobody tells you: the best one costs $0.</p>
+    <div class="article">
+
+      <p>Let's make this concrete. Your website is a single kitchen cooking every meal for the whole country. A customer next door gets their food hot and fast. A customer three states away waits while the order travels — and waits again when it comes back. That round trip is most of what "my website is slow for people far away" means (<a href="why-is-my-website-slow-for-visitors-in-other-countries.html">the other-countries article</a> is the symptom; this is the cure). A CDN is like opening small neighborhood kitchens that keep copies of your most popular dishes: the far-away customer gets served by the kitchen in their neighborhood, not by yours. Nobody moves your kitchen. The copies do the traveling.</p>
+      <h2>What the CDN actually does</h2>
+      <p>When you put your site behind a CDN, all your visitors' traffic routes through the CDN's network <em>before</em> it reaches your hosting. The CDN serves the static parts of your pages — the images, the stylesheets, the scripts — from whichever of its data centers is closest to each visitor. The classic example: your hosting is in the United States, a customer opens your site in Germany, and the CDN hands them the images from its European data center instead of shipping everything across the Atlantic (that Germany example comes straight from WPBeginner's setup guide — it's the textbook case).</p>
+      <p>It does three things at once, and only one of them is speed. <strong>One: distance.</strong> The copies sit closer to your customers, so every page's files travel less. <strong>Two: load.</strong> Your one server handles fewer requests directly, because the CDN's copies answer most of them — your site is less likely to buckle if traffic spikes. <strong>Three: a free security layer.</strong> Because traffic passes through the CDN first, it can absorb the junk — denial-of-service attacks, bot traffic — before it ever reaches your server, and it hides your server's real address from attackers. Speed is why people sign up; the shield is why they stay.</p>
+      <h2>The three layers (so you know which one you're fixing)</h2>
+      <p>Think of your site's speed as three layers stacked on top of each other. <strong>Layer 1: your hosting</strong> — the one computer. If the computer itself is slow or overloaded, that's a hosting problem (<a href="does-cheap-hosting-make-my-website-slow.html">the cheap-hosting article</a> covers it). <strong>Layer 2: the CDN</strong> — the copies in between. This article. <strong>Layer 3: the customer's browser cache</strong> — the visitor's own device keeping copies of files it already downloaded (<a href="what-is-website-caching.html">the caching article</a> covers that one). When your site is slow, the fix depends on which layer is guilty — and the CDN only fixes layer 2. That's the honest part of this article, coming next.</p>
+      <h2>The decision tree: do you actually need one?</h2>
+      <p><strong>If all your customers are local</strong> — same city, same metro area — distance is almost never your speed problem. Your one computer is already close to everyone who matters. A CDN won't hurt, but it won't fix anything either; your slowness lives in one of the other layers (bloated plugins, uncompressed photos, cheap hosting). <strong>If your customers are spread across the country</strong> — you sell in 20 states, your customers call from three time zones — then yes: distance is real for you, and this is the fix. <strong>If you have international customers at all</strong>, the answer is an easy yes; a CDN is the difference between "your site works in Germany" and "your site <em>feels</em> like it's in Germany." <strong>If you're in between</strong> — mostly local, a few out-of-state — the honest answer is: it costs $0, takes about half an hour to set up, and you'll never think about it again. At that price, "probably, eventually" rounds to yes.</p>
+      <h2>What it costs (the good news)</h2>
+      <p>The best-known option, Cloudflare, has a free plan that includes a genuine full CDN: 330+ data centers worldwide, no bandwidth limits, no per-gigabyte charges, unmetered protection against denial-of-service attacks, a free SSL certificate, and a basic firewall — "genuinely usable for most personal and small business sites," per the September 2026 pricing roundups. Paid tiers exist ($20/month Pro adds image optimization and the full firewall; $200/month Business adds PCI compliance for e-commerce), but most small business sites never need to pay Cloudflare a cent. One quirk worth knowing: paid plans are <em>per domain</em> — a Pro plan covers one website, not every site on your account.</p>
+      <h2>What a CDN will NOT fix (the honest catch)</h2>
+      <p>This is the part the sales pages skip. <strong>A CDN copies what you have — including the bloat.</strong> If your site is slow because of 40 plugins (<a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">the plugins article</a>), uncompressed photos, or a bloated database (<a href="what-is-database-bloat-and-is-it-slowing-my-website-down.html">the database-bloat article</a>), the CDN just delivers your bloat from closer copies. Faster delivery of a slow page is still a slow page. Fix the bloat first, then add the distance fix. <strong>And the first answer still comes from your server.</strong> The CDN's free tier speeds up the files on each page; the initial "start loading" moment — the wait before anything appears (<a href="why-does-my-website-take-forever-to-start-loading.html">the take-forever-to-start article</a>) — is still your hosting's job, unless you turn on full-page caching (Cloudflare charges $5/month extra for that on the free plan; it's bundled free on Pro and up). A CDN shrinks distance. It doesn't shrink your site.</p>
+      <h2>How you actually get one (the 30-minute version)</h2>
+      <p><strong>Step 0: check whether you already have one.</strong> Some hosting plans include a CDN automatically — GoDaddy's managed WordPress plans all include one, per their own help pages. Ask your host (or check your hosting dashboard) before you add a second one; two CDNs is not twice as fast. <strong>Step 1: sign up for the free plan</strong> at the CDN provider and add your domain. <strong>Step 2: point your nameservers.</strong> The provider gives you two nameserver addresses; you paste them in at your domain registrar (GoDaddy, Namecheap, wherever you bought the domain), replacing the old ones. This is the one slightly-scary step, and it's a one-time thing — propagation takes a few minutes to a few hours, then all your traffic flows through the CDN. <strong>Step 3: confirm the orange cloud.</strong> In the CDN dashboard, the DNS records pointing at your hosting should show the proxied/active icon (orange cloud on Cloudflare) — that's what tells you traffic is actually going through the network. <strong>Step 4: know about the stale-copy trap.</strong> This is the one ongoing gotcha: when you change your site — new photo, new text — visitors may keep seeing the old cached copy for a while. Every CDN has a "purge cache" button for exactly this; after a site change, purge, and the new version goes out to the copies. It's a two-minute habit, once you know it exists.</p>
+      <p class="meta">Mechanics verified 2026-10-07. Cloudflare Free plan ($0/month): full CDN across 330+ data centers, unmetered bandwidth with no per-GB charges on any plan, unmetered DDoS protection, universal SSL certificate, basic WAF — per costbench.com's September 2026 Cloudflare pricing FAQ; Pro ($20/month: image optimization, full WAF, 20 page rules) and Business ($200/month) tiers, paid plans per-domain (one plan = one site) — per costbench.com and howtohosting.guide (July 2026). Mechanics: reverse-proxy model, all traffic routes through the CDN network first, static files served from the closest data center (WPBeginner's Germany example) — per wpbeginner.com's Cloudflare setup guide, the savechm/civados small-business Cloudflare guide, and hostscore.net's CDN explainer. $5/month APO full-page-caching add-on on the free plan (bundled on Pro+; Kinsta's testing reported up-to-300% page-load gains) — per howtohosting.guide. GoDaddy Managed WordPress includes a CDN on all plans — per GoDaddy's own help page. No conversion-lift or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you're fixing speed: run our free check and get a plain-English verdict on what's actually slowing your site down &mdash; images, plugins, hosting, and the rest. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+my+website+needs+a+CDN+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
