@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Is My Website Slow When I'm Editing It (But Fast for Visitors)?</title>
+<meta name="description" content="Your website has two machines inside it: the front your visitors see (fast, cached) and the back you work in every day (live, uncached, and slow for different reasons). The heartbeat polling machine, the dashboard chatter, and the honest fix order.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Is My Website Slow When I'm Editing It (But Fast for Visitors)?</h1>
+    <p class="lede">Here is a paradox every site owner has lived: your customers browse fine, the speed test grades you fine — and then you sit down to edit a page and everything crawls. Clicks take seconds. The editor stutters. Publishing feels like mailing a letter. Your site is not gaslighting you. Your website has two machines inside it, and you only ever speed-test one of them. The front — what visitors see — is cached, polished, and fast. The back — the dashboard, the editor, the admin area where you spend your working hours — is live, uncached, and slow for completely different reasons. None of the front-end fixes (caching, image compression, the CDN) touch it. Here is what actually slows down the back of the house, and the fix order that makes editing feel fast again.</p>
+    <div class="article">
+
+      <h2>1. Two machines, one website</h2>
+      <p>The first thing to understand is that "your website is slow" is two different complaints wearing one sentence. The front end — the pages your customers see — goes through every performance trick you have: caching, the CDN, optimized images, the whole stack from the <a href="what-is-website-caching.html">caching article</a> and the <a href="what-is-a-cdn-and-does-my-website-need-one.html">CDN article</a>. The back end — your dashboard, your editor, your admin screens — skips all of that. It is live PHP on every click, every screen, every keystroke. Nothing is cached, nothing is served from the edge, and the parts that are slowest have no equivalent on the visitor side at all.</p>
+      <p>This is why the speed test can never diagnose it. A speed test loads your homepage like a visitor, the way <a href="why-does-my-website-feel-slow-when-the-test-says-fast.html">the front-end test article</a> explains — it never logs into your dashboard. When you say "my website is slow" and you mean the editing experience, you are describing a machine the test has never seen.</p>
+      <h2>2. The heartbeat: the polling machine you never hear</h2>
+      <p>The biggest back-end slowdown has a name: the WordPress Heartbeat API. While you have an editor open, your browser quietly sends a request to your server's admin-ajax.php roughly every 15 seconds — every 60 seconds or so on other admin screens. That request powers the features you like: autosave, the "someone else is editing this" post locking, the session-expiry warning. You never see it. It just polls, forever, for as long as the tab is open.</p>
+      <p>Each one of those ticks is expensive in a way front-end requests are not. It boots the whole of WordPress, loads every active plugin you have, runs every handler any plugin attached to it, and occupies a PHP worker — a worker that is then unavailable to serve an actual customer — for the duration. And because the admin-ajax.php path is uncacheable, none of your caching helps: a cached visitor page uses zero PHP workers, a heartbeat tick uses one, every time. That is the sentence that explains the paradox.</p>
+      <p>Then multiply. Every open editor tab ticks independently — about four ticks a minute per tab. Leave three tabs open while you write, and your own browser is quietly hammering your server harder than your lunchtime traffic. This is the classic symptom: CPU sitting high, the dashboard crawling, traffic flat — and upgrading the hosting plan "fixes" it until the tabs come back.</p>
+      <h2>3. The other back-end culprits</h2>
+      <p>The heartbeat is the usual suspect, but it is not the only chatter in the dashboard. Three more things slow down the back of the house:</p>
+      <p><strong>The dashboard widgets.</strong> The main dashboard screen is full of widgets pulling data — some from your own database, some from external feeds (the WordPress news widget being the classic one nobody reads). Every one of them queries or calls out on every dashboard load. The fix costs nothing: Screen Options in the top-right corner, uncheck everything you don't actively use.</p>
+      <p><strong>The admin-list screens.</strong> "All Posts" and "All Pages" with hundreds of items per page load slowly for the same reason a spreadsheet with 10,000 rows opens slowly. Same Screen Options panel: drop the items-per-page to 20 or 50, uncheck columns you never look at.</p>
+      <p><strong>Pollers that aren't the heartbeat.</strong> The heartbeat is not the only thing hitting admin-ajax.php — cart fragments, live search, popup builders, and plugin notification pollers all target the same endpoint, and so do bots. One practitioner's GTmetrix waterfall caught a social-sharing plugin's admin-ajax calls adding a full 2.3 seconds. The detective step: open your browser's Network tab, filter to admin-ajax.php, and read the <em>action</em> parameter in the request — it names the responsible plugin. Fix that plugin; don't blame the endpoint.</p>
+      <p>And the pairing worth knowing: if your server is ALSO running an old PHP version, you get the worst of both worlds — <a href="is-your-website-slow-because-of-an-old-php-version.html">slow engine multiplied by fast chatter</a>. On crowded shared hosting, where you can't control the stack at all, this is the one admin slowness where <a href="does-cheap-hosting-make-my-website-slow.html">the hosting article's</a> verdict bites hardest — the workers the ticks consume are shared with everyone else's ticks.</p>
+      <h2>4. The honest fix order</h2>
+      <p>Do these in order. Each one is cheap; together they usually end the problem.</p>
+      <p><strong>Step 1 — Strip the dashboard.</strong> Screen Options, uncheck every widget you don't use. This is free, instant, and embarrassingly effective.</p>
+      <p><strong>Step 2 — Slow the heartbeat, don't kill it.</strong> Raising the interval from 15 seconds to 60 seconds cuts that session's server load by roughly 75%. The Heartbeat Control plugin does it with toggles per location (Dashboard / Post Editor / Front end); WP Rocket and LiteSpeed Cache both ship heartbeat controls. The one rule: do NOT disable it entirely in the post editor — that kills autosave, and a browser crash becomes a lost afternoon. Slowing it down has one honest trade-off: autosave and post-lock detection get less immediate. On a one-person site that's invisible; in a newsroom where three people edit the same article, leave the editor's interval alone and throttle everywhere else.</p>
+      <p><strong>Step 3 — Deregister it on the front end.</strong> Logged-out visitors gain nothing from the heartbeat — some plugins load it on visitor pages anyway. Deregistering the script outside wp-admin stops front-end polling cold. (If that sentence made your eyes glaze over, this is the item for the developer — it's one filter.)</p>
+      <p><strong>Step 4 — Fix the named poller.</strong> Whatever the Network tab's <em>action</em> parameter fingered, deal with that plugin: update it, replace it, or turn off its polling feature. This is also where the <a href="what-is-database-bloat-and-is-it-slowing-my-website-down.html">database-bloat article</a> connects — dead rows make admin queries slow (data), and polling makes the admin hammer the database (chatter). A slow back end is usually both.</p>
+      <p><strong>Step 5 — Object caching, if the database is the drag.</strong> Redis or Memcached object caching stores frequent query results in RAM — it helps the admin more than the front, because the front is already page-cached. Many managed hosts offer it one click away.</p>
+      <h2>5. The honest catches</h2>
+      <p><strong>Caching plugins will not fix this.</strong> This is the catch that wastes the most money: the admin area is uncacheable by design, so a caching upgrade that made the front fly does nothing for the editor. If someone sells you a caching fix for admin slowness, they are selling you the wrong machine's medicine.</p>
+      <p><strong>It's your tabs, not just your site.</strong> Before you blame the host, count your open editor tabs. The fix that costs zero dollars is closing the ones you're not using.</p>
+      <p><strong>The front-end has its own admin-ajax problem.</strong> The <a href="why-is-my-online-stores-checkout-so-slow.html">checkout article</a> covers the other side of this endpoint: cart fragments polling on VISITOR pages — same admin-ajax.php, opposite side of the glass. If your store is slow for customers AND slow for you, you may need both fixes.</p>
+      <p class="meta">Mechanics verified 2026-10-07. Heartbeat polls admin-ajax.php ~every 15 seconds in the post editor, ~60 seconds on other admin screens; powers autosave, post locking, session warnings — ewallzsolutions.com 2026 guide, wpglossy.com, paperblog 13-ways guide. Each tick boots WordPress, loads all active plugins, occupies a PHP worker; admin-ajax.php uncacheable — page caching does not help — Medium (@mattchurst, Jul 2026; @john.nessime, 2026). ~4 ticks/minute per open tab; CPU high with flat traffic is the classic symptom — Medium @mattchurst Jul 2026. 15s → 60s interval = ~75% load reduction for the session — ewallzsolutions 2026. Heartbeat Control plugin (per-location toggles); WP Rocket + LiteSpeed Cache ship heartbeat controls — hostinger.com Sep 2026 tutorial, ewallzsolutions 2026. Disabling heartbeat in the editor kills autosave; slowing it trades autosave/post-lock immediacy — invisible single-author, real cost in multi-author newsrooms — Medium @john.nessime 2026. Diagnose via Network tab filtered to admin-ajax.php; the `action` parameter names the plugin; social-sharing plugin example added 2.3s — Medium @john.nessime 2026, paperblog. Dashboard widgets (news widget), admin-list pagination via Screen Options (20–50 items), Redis/Memcached object caching — d-link slow-admin guide, hostinger. No subscriber counts, engagement figures, or vendor market-share claims stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are thinking about speed: run our free check to see how your site's loading speed reads from the outside. Paste your domain, get a plain-English verdict — the performance numbers a customer actually feels, not a lab score. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+editing+feels+slow+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
