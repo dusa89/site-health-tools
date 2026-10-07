@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Do I Let My Assistant Check My Business Email Without Sharing My Password?</title>
+<meta name="description" content="Your assistant needs to answer your business email — but handing over your password is the wrong key for the job. Delegated access (Google Workspace) and shared mailboxes (Microsoft 365) give them the inbox without the password. Plain-English setup for both.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>How Do I Let My Assistant Check My Business Email Without Sharing My Password?</h1>
+    <p class="lede">You hired help, and now comes the awkward question: they need to read and answer your business email, and the only way you know to give them access is to hand over your password. It feels wrong, and it is wrong — not because you don't trust them, but because a password is the wrong key for this job. Your password is the master key: it opens the inbox, changes the password itself, locks you out, and can't be taken back without changing it everywhere. What you actually want is a spare key with their name on it — access that reads and answers your mail, leaves the rest of your account alone, and can be revoked in one click when they move on. Both major email platforms have this built in. Here is what to use instead of the password.</p>
+    <div class="article">
+
+      <p>Let's name the thing you are tempted to do: tell your assistant your email password. They log in as you. They read, they reply, life goes on. It works — and it quietly creates five problems you'll meet later. <strong>One: it can't be taken back cleanly.</strong> The day they leave, you change the password — and every device you own gets kicked out too, in the same moment, with no warning (<a href="what-do-i-do-with-my-employees-email-when-they-leave.html">the offboarding article</a> walks through what that day should look like). <strong>Two: your two-factor breaks.</strong> If your inbox is protected by a phone tap or a code (<a href="should-i-turn-on-two-factor-for-my-business-email.html">the two-factor article</a> — if you haven't set this up, read it after this one), your assistant now needs your phone or your code every time they log in, so you either hand that over too or you turn the protection off. Sharing a password quietly un-protects the account. <strong>Three: nobody knows who sent what.</strong> A reply that goes out under your name could be you or them — there's no record, which matters the day a customer disputes what was promised. <strong>Four: sessions live forever.</strong> Their phone, their laptop, their tablet — every device they ever signed in on stays signed in until the password changes, on devices you will never see again. <strong>Five: it normalizes the habit.</strong> Once "just use my password" is how your business works, it becomes how your developer, your bookkeeper, and your cousin's kid who "knows computers" all get in (<a href="should-i-give-my-web-developer-my-passwords.html">the website-password version of this lesson</a>). The password stops being a secret and starts being a rumor.</p>
+
+      <h2>The real answer: delegation, not passwords</h2>
+      <p>Both of the big business email platforms have a built-in feature for exactly this, and the name is <strong>delegated access</strong>: your assistant opens <em>your</em> inbox from inside <em>their</em> account, using <em>their</em> password. They can read, answer, and delete your mail. They cannot change your password, lock you out, or touch anything else you own. And you can revoke it in one click whenever you like. Setup differs by platform; pick yours below.</p>
+
+      <h2>If your email is on Google Workspace (Gmail)</h2>
+      <p>It's called <strong>mail delegation</strong>. Open Gmail on a computer, click the gear icon, then <strong>See all settings</strong>, then the <strong>Accounts</strong> tab. Scroll to <strong>"Grant access to your account"</strong> and click <strong>Add another account</strong>. Enter your assistant's email address and click <strong>Send email to grant access</strong>. They get an invitation link, click it to accept (the invitation expires after 7 days), and within about a day — often about half an hour — your name appears under their profile picture in the top-right corner as a "Delegated" account. One click and they're inside your inbox, sending as you.</p>
+      <p>Two things worth knowing before you start. <strong>First:</strong> both of you must be in the same Google Workspace organization — you can't delegate to someone's personal Gmail address. If your assistant only has a personal Gmail, they need a real address on your business domain first. <strong>Second:</strong> your admin may need to allow it. In the Google Admin console it's under Apps &gt; Google Workspace &gt; Gmail &gt; User settings &gt; <strong>Mail delegation</strong> ("Let users delegate access to their mailbox"). If the option is missing from your settings, that's why — it's an admin switch, not a broken account. The admin can also decide whether mail the assistant sends shows just your name or "your name, sent by your assistant" — pick the version your customers should see.</p>
+
+      <h2>If your email is on Microsoft 365 (Outlook)</h2>
+      <p>Microsoft splits this into two tools, and the distinction is useful. A <strong>shared mailbox</strong> is a separate inbox with its own address — <em>info@yourbusiness.com</em>, <em>quotes@yourbusiness.com</em> — that several people open from inside their own accounts. It needs no license of its own (up to 50 GB of mail), though everyone who touches it needs their own Microsoft 365 license. This is the right home for the <em>role</em>: quotes, support, the generic front door of the business. The other tool is <strong>delegate permissions</strong> on <em>your own</em> mailbox: someone in the Exchange admin center grants your assistant Full Access (open and manage your mailbox), Send As (replies look entirely like they're from you), or Send on Behalf (replies show "assistant on behalf of you" — the honest label, and often the better choice with customers).</p>
+      <p>Path for the admin or IT person: Exchange admin center &gt; Recipients &gt; Mailboxes &gt; click the mailbox &gt; <strong>Manage mailbox delegation</strong>, then add the person under Read and manage and Send as. Revoking is the same screen in reverse.</p>
+
+      <h2>The one rule that keeps all of this safe</h2>
+      <p>Put the <em>role</em> in a shared mailbox and the <em>person</em> in delegated access to your own. Quotes and support questions belong to <em>quotes@</em> — they survive assistants coming and going, and when someone leaves you revoke <em>them</em> while the role address keeps working. Delegate your <em>personal</em> inbox only for a true right-hand assistant, the way an executive delegates to an admin. And the standing rule underneath all of it: one person, one login. Nobody logs in "as you" — they log in as themselves, with their own password and their own two-factor, and the system records who did what. That's the difference between a business with email discipline and a business with a rumor for a password.</p>
+
+      <h2>The exception: plain hosting email</h2>
+      <p>If your business email is just the mailbox that came with your web hosting — no Google Workspace, no Microsoft 365 — delegation doesn't exist there, and that's an honest limitation of the cheap tier, not a failure of yours (<a href="should-i-use-the-email-that-came-with-my-web-hosting.html">the hosting-email article</a> explains the other trade-offs). The workable fallback: your assistant gets their own address on your domain (assistant@yourbusiness.com) and answers the shared inbox by <em>forwarding</em> from the main box. They reply from their own name. It's clunkier, but it preserves the one-person-one-login rule — which is the part that actually protects you.</p>
+      <p class="meta">Mechanics verified 2026-10-07. Gmail mail delegation: Settings &gt; See all settings &gt; Accounts &gt; "Grant access to your account" &gt; Add another account, invitation link (expires after 7 days), activation up to 24 hours (often ~30 minutes), delegate reads/sends/deletes from inside their own account via the profile-picture "Delegated" switcher, cannot change password or account settings, both users must be in the same Google Workspace org, admin enablement at Apps &gt; Google Workspace &gt; Gmail &gt; User settings &gt; Mail delegation, sender-info option (owner+delegate or owner only), one-click revocation, up to 1,000 delegates — per Google Workspace Help's "Let users delegate access to a Gmail account" and the itsolver.net, pinnacletechnology.solutions, and patronum.io setup guides. Microsoft 365: shared mailbox needs no own license under 50 GB (each user needs their own license); delegate permission types Full Access / Send As / Send on Behalf; Exchange admin center &gt; Recipients &gt; Mailboxes &gt; Manage mailbox delegation — per the urtech.ca setup guide and the msp-microsoft-365-kb and mscloudexplorers.com references. No conversion-lift or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are fixing email: run our free check to make sure the messages you send actually land in inboxes. Paste your domain, get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three settings that decide whether Gmail and Outlook trust your mail. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+letting+my+assistant+check+my+business+email+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
