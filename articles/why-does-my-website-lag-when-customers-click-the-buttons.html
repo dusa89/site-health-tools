@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Lag When Customers Click the Buttons?</title>
+<meta name="description" content="Your site loads fine — but every tap on a button, menu, or form feels delayed, like the page is thinking. That is not loading speed; it is interaction speed, and Google grades it with a metric called INP. What it measures, why your speed-test score can't see it, and the main-thread bottleneck that causes it.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Website Lag When Customers Click the Buttons?</h1>
+    <p class="lede">Your website loads. The photos appear, the text is there — and then a customer taps the menu button and nothing happens for a beat. They tap again. Nothing. Then both taps fire at once and they're on the wrong page. The site didn't fail to load; it failed to RESPOND. Loading speed and responding speed are two different things, and Google has been grading the second one as a Core Web Vital — the kind that affects search rankings — since March 2024. The metric is called INP, and if your site feels 'laggy' even though your speed test says it's fast, this is almost certainly why.</p>
+    <div class="article">
+
+      <p>Here is the distinction that unlocks this whole problem. There are two kinds of slow. <strong>Loading slow</strong> is the blank screen, the wait for the page to appear — that is what most speed articles on this site (and most speed tests) talk about. <strong>Responding slow</strong> is what happens after the page is fully loaded: the customer taps something and the page seems to ignore them. The tap on the menu, the search box, the "add to cart" button — each one carries a small, visible delay, like the site is thinking before it obeys. Customers read that delay the way you read a blank stare from a cashier: as broken.</p>
+      <p>Google measures this separately, and since March 12, 2024, it grades it as an official <strong>Core Web Vital</strong> — one of the three user-experience metrics that feed search rankings. The metric is <strong>INP: Interaction to Next Paint</strong>. It replaced the older FID (First Input Delay) metric, because FID only measured the very first interaction on the page. INP samples <em>every</em> interaction — every click, tap, and keypress — across the visitor's entire time on the page, and reports a value representative of the whole experience (effectively the worst ones, with some outlier smoothing). Since <a href="what-is-website-caching.html">roughly 90% of a visitor's time on a page happens after it finishes loading</a>, INP is the metric that measures the part of the visit your loading-speed tests never watched.</p>
+
+      <h2>What INP actually counts</h2>
+      <p>When a customer taps your button, three things have to happen before anything visibly changes on screen. INP times all three, end to end:</p>
+      <p><strong>1. Input delay</strong> — the time from the tap until your site even starts responding to it. If the browser's main thread is busy doing something else (a script running, a tracker phoning home), your tap waits in line. This is the part the old FID metric measured.</p>
+      <p><strong>2. Processing time</strong> — the time your site's code spends handling the tap. A search box that filters a long list, a menu that rebuilds half the page, a button whose handler does heavy work synchronously — all of this runs before the browser can show anything new.</p>
+      <p><strong>3. Presentation delay</strong> — the time until the next visual update actually appears. The work is done; the browser still has to paint the result.</p>
+      <p>INP reports the total: tap to visible change. Google's bar is public: <strong>200 milliseconds or less is good; 200 to 500 milliseconds needs improvement; over 500 milliseconds is poor</strong> — judged at the 75th percentile of real visitors, separately for mobile and desktop. Half a second doesn't sound like much until you imagine every tap on your site taking that long.</p>
+
+      <h2>The trap your speed test can't see</h2>
+      <p>This is the part that catches site owners off guard: <strong>INP is a field metric</strong> — it is measured from real Chrome users (the Chrome User Experience Report, which is what Google Search actually uses) — and <strong>lab tools like Lighthouse cannot measure it directly</strong>. A clean Lighthouse score is a simulated test on a fast machine with an empty cache; it tells you nothing about how your site's interactions behave on your customers' actual phones. That is exactly the gap the guide on <a href="why-does-my-website-feel-slow-when-the-test-says-fast.html">why your site feels slow when the test says fast</a> describes — and INP is the most common thing living inside that gap: the site loads beautifully in the lab and lags on every real tap in the field.</p>
+      <p>You can see your real numbers in PageSpeed Insights (the "field data" section) or Google Search Console's Core Web Vitals report — not in a synthetic test. If the field data shows a poor INP while the lab score looks fine, stop optimizing images and start looking at JavaScript.</p>
+
+      <h2>Why it lags: the one-thread bottleneck</h2>
+      <p>A browser's main thread is a single lane. Everything — running your scripts, responding to taps, painting the screen — queues through it, one thing at a time. The lag your customers feel is almost always one thing: <strong>long tasks</strong> hogging that lane. A task is a chunk of work the browser must finish before it can do anything else, and any single task over about 50 milliseconds blocks taps from being answered.</p>
+      <p>The usual suspects, in plain terms:</p>
+      <p><strong>Heavy click handlers.</strong> The classic INP killer: a button whose code does expensive work directly — re-rendering a big list, filtering hundreds of items, running a calculation — synchronously, before the browser gets to paint any feedback. The fix developers use is embarrassingly simple: show the pressed state or a spinner <em>first</em>, then do the heavy work a beat later, so the customer sees the tap registered instantly.</p>
+      <p><strong>Too much JavaScript, too early.</strong> Page builders, plugins, and theme frameworks ship code for every feature whether your page uses it or not. Each script is a potential long task sitting in the lane where your customers' taps need to travel. This is the same crowd that slows loading — <a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">plugins and widgets</a>, <a href="do-those-little-tracking-scripts-slow-down-my-website.html">tracking scripts</a>, <a href="do-those-chat-widgets-and-booking-tools-slow-down-my-website.html">chat widgets</a> — but here they hurt <em>after</em> the load, every tap.</p>
+      <p><strong>Third-party scripts running wild.</strong> Trackers, ad scripts, and embeds that fire on timers can grab the main thread at exactly the moment a customer taps. The customer experiences your site as the thing that froze — they don't know (or care) that it was someone else's script.</p>
+      <p><strong>No instant feedback.</strong> Even when the work takes a moment, a button that visibly depresses, a search box that shows a spinner, a menu that starts sliding immediately — these make the wait feel like progress. The worst INP experience is the tap that shows nothing for 400ms and then jumps.</p>
+
+      <h2>What fixes it (in plain English)</h2>
+      <p>You don't need to learn to code — you need to know what to ask your developer for, because INP fixes are developer work:</p>
+      <p><strong>Break long tasks into short ones.</strong> The technical rule: no single chunk of JavaScript should run longer than about 50 milliseconds without yielding the thread so the browser can handle taps and paint. Developers split the work and hand control back between chunks — through simple timing, the newer <code>scheduler.yield()</code>, or by moving heavy computation to a Web Worker (a background lane that doesn't block taps at all).</p>
+      <p><strong>Defer what isn't needed yet.</strong> Code for the checkout flow doesn't need to load and run on the homepage. Code splitting and deferring non-critical scripts keep the main lane clear for the interactions happening <em>now</em>.</p>
+      <p><strong>Audit the third parties.</strong> Every script that isn't yours is a suspect. If a tracker or widget isn't earning its place in revenue or insight, removing it is both a loading fix and an interaction fix — two articles' worth of wins from one deletion.</p>
+      <p><strong>Debounce the chatty inputs.</strong> Search boxes and filters that re-run on every keystroke create long tasks out of thin air. Waiting a fraction of a second after the customer stops typing before doing the work is a standard fix.</p>
+
+      <h2>Why this costs you customers, not just rankings</h2>
+      <p>The search-ranking angle is real — INP is a Core Web Vital, and Core Web Vitals feed Google's page-experience signals. But the business angle is sharper. A customer who taps your menu twice and lands on the wrong page doesn't think "poor INP." They think your site is broken, and broken sites don't get the call. Every tap that feels ignored is a tiny vote of no confidence, and unlike a slow load — which at least shows progress — a frozen-feeling page gives the customer nothing to wait <em>for</em>. They leave faster from lag than from loading, because loading at least promises arrival.</p>
+      <p>And unlike most speed problems, this one hides from the tests that would have warned you. If your speed score looks good but customers describe the site as "laggy" or "glitchy," don't buy more speed work on loading — ask your developer about interaction latency, and point them at the field data in PageSpeed Insights. The fix is real, measurable, and usually smaller than anyone expects.</p>
+      <p class="meta">INP replaced First Input Delay (FID) as the Core Web Vital responsiveness metric on March 12, 2024, per Google's web.dev announcement (verified 2026-10-07). INP thresholds — 200ms or less good, 200–500ms needs improvement, over 500ms poor — per web.dev's INP documentation; assessed at the 75th percentile of real page loads via the Chrome User Experience Report, separately for mobile and desktop (verified 2026-10-07). "~90% of a user's time on a page is spent after it loads" per web.dev's INP documentation (verified 2026-10-07). INP measures all interactions (click, tap, keypress) across the page lifecycle — input delay plus processing time plus presentation delay — and is a field metric Lighthouse cannot measure directly, per 2026 Core Web Vitals practitioner guides (verified 2026-10-07). Long-task mechanics (tasks over ~50ms blocking the main thread; yielding via setTimeout/scheduler.yield/Web Worker; immediate visual feedback before heavy work) per practitioner references (verified 2026-10-07). No conversion-lift or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Our free speed check runs Google's own test against your site and translates the results out of engineer-speak — seconds instead of scores, the three biggest slowdowns described plainly, each with a one-line fix. No signup, no ads, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+website+lag+when+customers+click+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
