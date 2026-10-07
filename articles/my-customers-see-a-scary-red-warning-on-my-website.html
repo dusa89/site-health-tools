@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Customers See a Scary Red Warning on My Website — What Do I Do?</title>
+<meta name="description" content="A customer calls: “your website says it’s dangerous.” The full-screen red “Deceptive site ahead” warning, where it comes from, why clicking through doesn’t fix it for anyone else, and the exact sequence — confirm, clean, request review — that gets the flag lifted.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>My Customers See a Scary Red Warning on My Website — What Do I Do?</h1>
+    <p class="lede">A customer calls, and they sound embarrassed for you: “Hey — I tried to visit your website, and it says it’s dangerous. Big red screen.” You check, and there it is: a full-screen red warning that blocks your entire site before anyone can see a word of it. It doesn’t say your page failed to load. It says, in so many words, that your business cannot be trusted. This is the most expensive warning a small business website can carry — and the good news is it has a fixed, documented way out. Here is where the red screen comes from, what it does to your search results while it’s up, and the exact sequence that gets it lifted.</p>
+    <div class="article">
+
+      <p>Let’s name what you’re seeing, because the name is the diagnosis. The warning reads something like <strong>“Deceptive site ahead”</strong> or <strong>“Dangerous site”</strong> — a full-screen red block, no website behind it, with a small <em>Advanced</em> link that lets a brave visitor click through. It is not your browser acting up. It is not your hosting company scolding you. It is <strong>Google Safe Browsing</strong>: the blocklist Google maintains and ships inside Chrome, Firefox, and Safari. When Google decides your site is serving malware or phishing pages, every one of those browsers blocks it the same way. The warning follows your domain — not the visitor’s browser — and there is no setting, disclaimer, or apology page on your site that turns it off for your customers. Only you, the site owner, can get it lifted. That’s the bad news. The good news is the path is documented and it works.</p>
+
+      <h2>What the red screen actually means</h2>
+      <p>The red screen means Google believes your site is doing one of two things: <strong>distributing malware</strong> (software or scripts that infect visitors’ computers) or <strong>phishing</strong> (pages that pretend to be a bank, a login, or some other trusted site to steal credentials). Google’s own Search Console labels these as the “security issues” it reports: deceptive pages, malware, harmful downloads — along with the specific URLs it caught.</p>
+      <p>Three honest possibilities sit behind it. <strong>One:</strong> your site really was hacked — attackers inject malware or hidden phishing pages into small business sites precisely because nobody is watching them (the “why would anyone hack <em>my</em> little site” question is answered in <a href="my-website-doesnt-sell-anything-do-i-still-need-security.html">the no-I-don’t-sell-anything article</a>: they want the search traffic, not your data). <strong>Two:</strong> the flag is stale — a previous site or previous owner on your domain earned it and the flag outlived the cleanup. <strong>Three:</strong> it’s a genuine false positive — Google’s scanners sometimes misflag clean sites. All three go through the same clearing process, with one extra step for false positives (below).</p>
+      <p>One thing it does <em>not</em> mean: it is not the same as the “Not Secure” warning in the address bar. That one is about your HTTPS certificate (covered in <a href="why-does-my-website-say-not-secure.html">why your site says not secure</a>) — a padlock issue. The red screen is a <em>block</em>: the visitor cannot reach your site at all without deliberately clicking past it. Almost nobody clicks past it. And that is the real cost.</p>
+
+      <h2>Why this costs more than the hack did</h2>
+      <p>The malware, if any, may have already been cleaned — but the flag stays up until Google re-checks. While the flag stands, the damage is two-fold. <strong>First, the visitor loss:</strong> a customer who sees “Deceptive site ahead” and retreats does not come back tomorrow with a second chance. They assume the business is shady or dead, and they click the next search result. <strong>Second, the search loss:</strong> Google doesn’t just warn visitors — it collapses your search presence while the flag is up. Your listing in Google’s own results disappears or gets suppressed, which means the fix isn’t just “get the warning off my site” — it’s “get my business back in front of customers.” Every day the flag stands is a day of lost visitors <em>and</em> lost search traffic. This is why the sequence below is ordered by speed: confirm, clean, request review — in that order, as fast as you can.</p>
+
+      <h2>The clearing sequence: confirm, clean, request review</h2>
+      <p><strong>Step 1 — Confirm: look at what Google actually flagged.</strong> Set up (or open) <strong>Google Search Console</strong> and verify you own the site — via the Google Analytics tag if one is already installed, or the HTML-file method. Then go to <strong>Security &amp; Manual Actions → Security issues</strong>. This page tells you exactly what Google thinks is wrong (deceptive pages, malware, harmful downloads) and lists sample URLs it caught. If the page says nothing is wrong and the warning persists, skip to the false-positive step below — don’t guess. This report is the only diagnosis that matters; everything else is speculation.</p>
+      <p><strong>Step 2 — Clean: remove the cause, then the symptom.</strong> Have your developer (or your host’s support team) scan the site thoroughly and remove every trace of the malicious content — infected files, injected scripts, rogue pages. Then fix the <em>cause</em>, because cleaning without patching is a revolving door: the overwhelming majority of these infections walk in through outdated website software — an old plugin, an old theme, an old version of the site platform itself. Update everything, and close whatever door they came through. If your site was genuinely broken into, <a href="what-should-i-do-if-my-website-gets-hacked.html">the hack-response article</a> walks through the full remediation; this article is the flag-lifting lane. Also scan your own computer — infections sometimes start at the owner’s machine and climb in through saved passwords (<a href="should-i-give-my-web-developer-my-passwords.html">who should hold your logins</a> matters here).</p>
+      <p><strong>Step 3 — Request review: ask Google to re-check.</strong> Back in Search Console’s Security issues section, click <strong>Request review</strong> and describe — briefly, in plain words — what was found and what was fixed: what the malware was, where it was removed, what software was updated to close the hole. Google then manually re-checks the site. Practitioner reports put the turnaround at roughly <strong>1 to 3 days</strong> for most reviews, with the warning itself clearing from browsers within about 72 hours after approval. Two rules here: submit <em>once</em> — repeated requests slow the queue down for everyone, including you — and don’t submit before the site is actually clean, because a failed review costs you the whole wait.</p>
+
+      <h2>The false-positive path</h2>
+      <p>If the Security issues report is <em>empty</em> — Google claims nothing is wrong — but browsers still show the red screen, you’re likely looking at a false positive or a stale flag from a previous owner. Don’t request a review of a clean report; instead, report the misclassification directly at Google’s Safe Browsing false-positive form (search “safebrowsing report_error”). State plainly what the site is — an ordinary small-business site, no logins, no downloads, no data collection — and that you believe the flag is an error. You can check the current flag status for your domain at any time through Google’s Safe Browsing transparency checker (search “google safe browsing transparency report search” and enter your domain) — useful while you wait, so you know the moment it clears instead of checking your own site nervously.</p>
+
+      <h2>After it clears: make sure it never comes back</h2>
+      <p>A lifted flag with unpatched software is a flag waiting to return — the same outdated plugin that let them in the first time will let them in again, and a <em>second</em> flag is harder to clear than the first. The prevention list is short and unglamorous: keep your website software, plugins, and themes updated (<a href="do-i-really-need-to-update-my-website.html">the updates article</a> — the “everything” part is the whole point); run regular malware scans; keep a backup that predates any infection so a cleanup never becomes a rebuild-from-scratch (<a href="if-my-website-vanished-tonight-do-i-have-a-copy.html">the backup article</a>); and know who is actually responsible for watching all of this — you, your developer, or your host (<a href="who-is-responsible-for-my-websites-security.html">the responsibility article</a>, because the red screen usually lands on the person who assumed it was someone else’s job).</p>
+      <p>One last honesty note: nobody can promise a review turnaround time — “1 to 3 days” is what practitioners report, not a guarantee — and nobody can clear the flag faster by calling Google. There is no phone number for this. Anyone offering to lift the flag for a fee is selling you the click you could do yourself in five minutes. Confirm, clean, request review, wait — and then patch the door so it never happens again.</p>
+      <p class="meta">Mechanics verified 2026-10-07. Google Safe Browsing as the source of the full-screen warning (blocklist built into Chrome/Firefox/Safari; only the site owner can get the flag lifted) per MalCare’s Safe Browsing blacklist-removal guide. Search Console → Security &amp; Manual Actions → Security issues as the diagnostic surface (sample URLs, deceptive-pages/malware/harmful-downloads classes) per AfeesHost’s knowledge base and the Bixacloud remediation guide. Fix sequence — scan, remove malicious content, patch the root cause (outdated software), then Request review in Search Console — per AfeesHost, MalCare, and the Bixacloud guide. Review turnaround 1–3 days + up-to-72h browser propagation, and the “don’t submit repeated requests” rule, per the Los Ramos remediation runbook. False-positive report form and transparency-report status checker per the same runbook. Prevention list (updates, scans, form security) per the Bixacloud guide. No conversion-lift or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The red warning means something failed on the security side — and our free security check grades the rest of yours the way Mozilla does: padlock, certificate, security headers, each finding translated into plain English. Free, no signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free website security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #6 of 40</h2>
+      <p>The full Site Health Watch audit checks your site against all 40 trust signals &mdash; security headers, hidden malware, speed, mobile, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+scary+red+warning+on+websites+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
