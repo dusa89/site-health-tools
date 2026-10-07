@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I Turned That Plugin Off Months Ago — Why Did It Get My Site Hacked?</title>
+<meta name="description" content="Deactivating a WordPress plugin is not the same as deleting it. The files stay on your server, still reachable, still scannable — and attackers probe them whether the plugin is switched on or not. What 'off' really means, and the 5-minute cleanup that closes the door.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>I Turned That Plugin Off Months Ago — Why Did It Get My Site Hacked?</h1>
+    <p class="lede">Go look at your Plugins page right now. Scroll past the ones you use and you will find them: the slider you replaced last year, the booking plugin from the idea that never launched, the SEO tool your developer tried for a week. All switched off. All harmless-looking. Here is the part nobody told you: switching a plugin off does not remove it. Every file is still sitting on your server, still reachable from the public internet — and the automated scanners hammering every small-business website on earth do not care whether your plugin is on or off. They probe the files directly. That 'off' plugin is a door you forgot you left unlocked.</p>
+    <div class="article">
+
+      <h2>1. What 'deactivate' actually does (and doesn't do)</h2>
+      <p>When you deactivate a plugin, WordPress does exactly one thing: it stops loading that plugin during normal page views. That is the whole of it. It does <em>not</em> delete the plugin's files. It does <em>not</em> take them off your server. It does <em>not</em> make them unreachable. The entire plugin — every PHP file, every script, every known weakness in it — is still sitting in your <code>wp-content/plugins</code> folder, exactly where it was.</p>
+      <p>And files on a web server are reachable. An attacker who knows the plugin's file paths — and they do, because plugin code is public — can request those files directly in a browser, bypassing WordPress's "is this plugin active?" question entirely. Wordfence, the company whose business is watching these attacks happen, puts it plainly in its security checklist: <strong>every plugin or theme on your website — active or inactive — is a potential entry point</strong>, and "malicious hackers frequently target known vulnerabilities in deactivated plugins that site owners forget to remove, as their code may still be publicly accessible."</p>
+      <p>One security writeup from September 2026 said it in six words every owner should memorize: <strong>"Deactivated is not removed."</strong> A dormant plugin still sits on your server, and it still runs code when it is exploited (devstars.com). The off switch is a pause button for <em>you</em>. For an attacker, nothing changed.</p>
+      <h2>2. Why attackers love your junk drawer</h2>
+      <p>You are not being targeted personally. Nobody is sitting at a desk plotting against your bakery — the <a href="my-website-doesnt-sell-anything-do-i-still-need-security.html">why-small-sites-get-attacked article</a> covers why attackers bother with small sites at all. The attacks are automated: botnets sweep the entire internet probing for known plugin file paths, and when they find one with a known vulnerability, they fire the exploit — a published recipe, no creativity required. A 2026 writeup on plugin vulnerabilities put the uncomfortable truth simply: a published vulnerability with public exploit code means any site still carrying that code is in the target pool, active plugin or not.</p>
+      <p>This is why "I don't use it, so it can't hurt me" is backwards. The plugin you don't use is the one you never update, never think about, and never notice when its developer stops patching it — which makes it the <em>best</em> target on your site, not the safest. Security guides are unanimous on the fix, and they all say the same unglamorous thing: <strong>if you are not using it, delete it — not just deactivate it</strong> (LinkedIn, 2026 prevention guide). Or shorter still: "Uninstalled plugins can't be exploited."</p>
+      <p>It is not theoretical. In the first week of October 2026, flaws in Ninja Forms and WPC Product Bundles were actively exploited to hack WordPress sites (BleepingComputer). Patching stopped further break-ins — but the security researchers stressed that updating does <em>not</em> clean a site that was already compromised. Prevention is the whole game here, and prevention starts in your plugins list.</p>
+      <h2>3. The abandoned ones are worse</h2>
+      <p>There is a second trap hiding in the same list: plugins whose developers have quietly walked away. A plugin that hasn't been updated in a year is abandoned — nobody is maintaining it, which means security holes in it will never be patched. The rule from the 2026 vulnerabilities writeup is blunt: delete it and find an alternative.</p>
+      <p>How to spot them: on your Plugins page, the "View details" link for each plugin shows its last update date. More than 12 months with no update is the danger zone. These are the plugins most likely to contain the exact vulnerabilities the botnets are scanning for — and because they are usually also deactivated ("I stopped using it ages ago"), they sit in the worst possible combination: unpatched, unmonitored, and still fully reachable.</p>
+      <h2>4. The 5-minute dormant-plugin audit</h2>
+      <p>Do this once, then put a monthly repeat on the calendar. It takes five minutes and closes one of the cheapest attack surfaces on the internet.</p>
+      <p><strong>Step 1 — See what you're carrying.</strong> In your WordPress dashboard go to Plugins and use the "Inactive" filter. Count them. Most owners are surprised: five, ten, sometimes twenty plugins they forgot existed.</p>
+      <p><strong>Step 2 — Delete, don't deactivate.</strong> For each inactive plugin, ask one question: do I use this? If the answer is no, delete it — the Delete link appears after deactivation. Wordfence's standing guidance: remove any plugin you haven't used in 30 days. If you ever need it again, the plugin directory still has it; reinstalling takes two minutes. That is not a reason to keep the files on your server for a year.</p>
+      <p><strong>Step 3 — Check the "last updated" dates.</strong> For the plugins you keep, open each one's details and check the last update. Over a year with no update: treat it as abandoned, delete it, and find a maintained alternative.</p>
+      <p><strong>Step 4 — Do the themes too.</strong> Same rule, same reason. Delete every inactive theme — keep your active theme plus one default backup (WordPress's own Twenty-something theme) in case something breaks. Attackers probe theme files exactly the way they probe plugin files.</p>
+      <p><strong>Step 5 — Kill the test installs.</strong> Wordfence's checklist names these explicitly: old test WordPress installations — the staging copy from 2023, the "newsite" folder your developer left behind — get removed entirely. They are full websites with their own outdated plugins, sitting on your server, usually forgotten and never updated.</p>
+      <p>One caution while you work: deactivate-then-delete, in that order, and check the site still loads after each deletion. If a plugin turns out to be load-bearing in some way you didn't expect, reinstalling from the directory takes two minutes. The <a href="do-i-really-need-to-update-my-website.html">update article</a> covers keeping what you <em>keep</em> patched — this audit is about shrinking the list of things that need patching in the first place.</p>
+      <h2>5. What if the damage is already done?</h2>
+      <p>If your site was already hacked through a dormant plugin, deleting it now closes the door but does not evict the intruder — the October 2026 Ninja Forms writeup was explicit that patching stops new break-ins but doesn't clean existing ones. Attackers routinely leave backdoors behind that survive the cleanup of the visible mess. Run through the <a href="how-do-i-know-if-my-website-has-already-been-hacked.html">has-my-site-already-been-hacked checklist</a> (unknown admin users, mystery files, sudden redirects like the ones in the <a href="why-is-my-website-redirecting-to-spam-sites.html">redirect-to-spam guide</a>), and if anything looks wrong, follow the <a href="what-should-i-do-if-my-website-gets-hacked.html">post-hack response order</a> — which ends, fittingly, with deleting the dormant plugins so it can't happen the same way twice.</p>
+      <p>And if all of this feels like one more chore on a list that never ends: that is exactly what the audit is for. Dormant plugins are check #6's neighborhood — one of 40. You do the five-minute audit above; we check the other 39 things you'd never think to look at.</p>
+      <p class="meta">Mechanics verified 2026-10-07. Deactivation leaves all files on the server; every plugin or theme, active or inactive, is a potential entry point; hackers target known vulnerabilities in deactivated plugins whose code remains publicly accessible — per Wordfence's security checklist (wordfence.com, accessed 2026-10-07). "Deactivated is not removed; a dormant plugin still sits on your server and still runs code when it is exploited" — devstars.com WordPress supply-chain writeup (~Sep 2026). "Deactivated plugins are still scannable and still vulnerable; if you are not using it, delete it, not just deactivate it" — LinkedIn 2026 prevention guide. "Uninstalled plugins can't be exploited"; abandoned-plugin 12-month rule — medium.com/@Nils_Eriksson, WordPress plugin vulnerabilities 2026 (~Apr 2026). Monthly audit: remove plugins unused in 30 days, delete inactive themes (keep active + one backup), remove test installs entirely — Wordfence checklist. Ninja Forms + WPC Product Bundles exploited in the wild; patching stops further exploitation but does not clean existing infections — BleepingComputer (~Oct 6, 2026). No infection-rate or market-share figures stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain. You get Mozilla&rsquo;s A+&ndash;F grade translated into plain English, how many of its checks passed, and your certificate&rsquo;s exact expiry date. Free, no signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #6 of 40</h2>
+      <p>The full Site Health Watch audit checks your site against all 40 trust signals &mdash; security headers, hidden malware, speed, mobile, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+dormant+plugins+getting+sites+hacked+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
