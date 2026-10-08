@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Do My Employees Keep Clicking Phishing Emails?</title>
+<meta name="description" content="Verizon's 2026 breach report: the human element is in 62% of breaches, and your staff are not the problem — the attack design is. The three hooks that get clicks, why small businesses are the target, and the 10-minute training fix order, in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Do My Employees Keep Clicking Phishing Emails?</h1>
+    <p class="lede">You trained them. You told them not to click. And last Tuesday your bookkeeper nearly wired money to a "vendor" whose bank was suddenly in a different state. Here is the part nobody in the training videos will say: <strong>your employees keep clicking because the emails are designed to be clicked</strong> — by people who do nothing else for a living, now writing the lures with AI. Verizon's 2026 breach report puts the human element in <strong>62% of all breaches</strong> (up from 60%). This is not a hiring problem. It is a design problem — the attack's design, not your people's. And the fix is not another hour of training. It is a small set of rules that make clicking harmless.</p>
+    <div class="article">
+
+      <h2>1. The short answer, up front</h2>
+      <p><strong>They click because the email did its job.</strong> Modern phishing is not the Nigerian prince with broken English — that version is a museum piece. The emails arriving at your business are written cleanly, reference real people, arrive during the workday about work topics, and now (per the 2026 breach data) are routinely drafted with AI assistance. Clicking them is not a character flaw; it is the expected human response to a professional deception campaign aimed at a busy person with a full inbox. The businesses that fix this do not hire smarter people. They change the <em>rules</em> so that a click cannot become a breach.</p>
+      <h2>2. The three hooks — what the click is really about</h2>
+      <p>Every successful phish uses at least one of three levers. Learn to name them and you can spot most attacks in five seconds:</p>
+      <p><strong>Authority.</strong> The email comes from someone the employee must obey — the owner, the boss, the vendor, the IT department, the bank. "Please process this today, I'm in a meeting." The 2026 breach data calls the heavyweight version of this <strong>pretexting</strong> — building a fake trusted relationship until the victim acts — and it reached 6% of all breaches, increasingly used as the way <em>in</em> to ransomware attacks. <a href="my-vendor-emailed-new-bank-details-is-it-a-scam.html">The vendor-bank-details wire-fraud email</a> is pretexting with a dollar figure attached — and the mirror image, attackers <a href="why-did-my-customer-get-an-email-i-never-sent.html">impersonating your business to your customers</a>, is the same playbook aimed outward.</p>
+      <p><strong>Urgency.</strong> The email manufactures a clock — "account suspended," "payment due today," "review needed before 5pm." Urgency short-circuits the second look. The attacker's whole bet is that a busy employee will act before thinking. If an email says <em>act now</em>, that is the single most suspicious thing in it.</p>
+      <p><strong>Familiarity.</strong> The email looks exactly like the real thing — your actual Microsoft login page, your actual bank's branding, an invoice layout matching a vendor you really use. AI-assisted attackers (the 2026 report documents threat actors using AI help in a median of 15 attack techniques) now personalize at scale: real names, real job titles, real recent events scraped from social media. The grammar test died in 2025. Assume every lure is well-written.</p>
+      <h2>3. Why your small business — not just the big ones</h2>
+      <p>"We are too small to be a target" is the belief that does the attacker's targeting for them. Attacks are automated and volume-driven; the phishing kit does not know your revenue. And small businesses are <em>cheaper</em> to hit: fewer defenses, one bookkeeper with wire access, no security team to call. The FBI's 2026 internet-crime report (2025 data) counted <strong>1,008,597 complaints totaling $20.877 billion in losses</strong> — and business email compromise alone accounted for <strong>$3.05 billion across 24,768 complaints</strong>. That is the category your bookkeeper's near-miss lives in. The biggest check-fraud wave and the fake-invoice industry run on small businesses precisely because the big companies finally locked their doors.</p>
+      <p>Also: the click is moving to the phone. The 2026 breach data found that in phishing simulations, <strong>click rates over voice and text were 40% higher than over email</strong> — and Mandiant's 2026 threat report shows voice phishing up to 11% of intrusions while email phishing fell to 6%. The "boss" is increasingly a text message. Train for the phone, not just the inbox.</p>
+      <h2>4. Why training-by-shame does not work</h2>
+      <p>The most common "program" in small business is: send a fake phishing test, shame whoever clicks, maybe threaten a meeting with HR. This fails twice. First, it teaches people to <em>hide</em> mistakes — the employee who clicked will never report the real one, because reporting is how you get in trouble. The breach you never hear about is the expensive one. Second, it trains people to pass the <em>test</em>, not spot the <em>attack</em> — they learn your test vendor's style, and the real attack looks different.</p>
+      <p>The inversion that works: <strong>report, don't delete — and never punish a report.</strong> The employee who clicks and then immediately calls IT is your best sensor on the network. Every security team in the world wants a user base that reports fast. You build that by celebrating the reports and deleting the shame. A fake-test click should trigger a 30-second lesson, not a write-up. If the test has consequences, people will not report the real thing.</p>
+      <h2>5. The 10-minute fix order</h2>
+      <p>You do not need a program. You need five rules, written down, repeated once a quarter:</p>
+      <p><strong>Rule 1: money moves get a second channel.</strong> Any instruction to send money, change bank details, or pay a new invoice gets verified by a <em>second channel you already trust</em> — a call to a number you already have, not the number in the email. This one rule kills the $3.05-billion category dead. Put it on the wall of the office that pays the bills. <a href="my-vendor-emailed-new-bank-details-is-it-a-scam.html">The vendor-bank-details checklist</a> shows exactly how the scam reads.</p>
+      <p><strong>Rule 2: the report button is sacred.</strong> Make reporting one click (most email tools have a report-phishing button — enable it) and make the rule explicit: no one is ever punished for reporting, even if the report is a false alarm, even if they clicked first. Report first, investigate second. This applies double to staff who read the inbox on your behalf — <a href="how-do-i-let-my-assistant-check-my-business-email.html">the assistant-access article</a> covers the trusted-helper side; this rule covers the attackers targeting that helper.</p>
+      <p><strong>Rule 3: multi-factor on email, everywhere.</strong> If a click does harvest a password, multi-factor authentication means the password is useless without the phone. <a href="should-i-turn-on-two-factor-for-my-business-email.html">The two-factor article</a> covers the setup — it is the cheapest control on this entire list and it neutralizes most stolen credentials outright. (The mechanical side matters too: SPF, DKIM, and DMARC decide whether a spoofed version of <em>your</em> domain even reaches inboxes — <a href="what-is-dmarc.html">the DMARC article</a> explains the trio.)</p>
+      <p><strong>Rule 4: test to teach, never to shame.</strong> If you run simulated phishing tests, the miss must trigger a short lesson on the spot and nothing else. Anonymous aggregates go to management; individual names do not. The metric that matters is <em>report rate</em>, not click rate — a high click rate with a high report rate is a winning security culture.</p>
+      <p><strong>Rule 5: the 5-second check.</strong> Teach one habit, not twenty: before acting on any unexpected email, hover the sender address (not the display name) and ask two questions — "was I expecting this?" and "does the actual address match?" Five seconds. That is the whole technique. It catches the majority of real-world attacks because most attacks still need you to act on something unexpected.</p>
+      <h2>6. What to ask your IT person (plain English)</h2>
+      <p><strong>"Is multi-factor turned on for every email account, including the ones nobody uses?"</strong> Orphaned inboxes are the back door — <a href="what-do-i-do-with-my-employees-email-when-they-leave.html">the employee-exit article</a> covers the deprovisioning side.</p>
+      <p><strong>"Do we have a report-phishing button in everyone's email, and does it actually work?"</strong> A button nobody was shown is decoration.</p>
+      <p><strong>"If someone's email account was taken over today, how would we know?"</strong> This is the test of whether monitoring exists at all — the answer connects directly to <a href="my-email-is-sending-messages-i-didnt-write.html">the "my email is sending messages I didn't write" article</a>, which is what the takeover looks like from the inside.</p>
+      <p>And the honest summary: the click is not the breach. The click with no second-channel check, no report button, no multi-factor, and a shame culture — <em>that</em> is the breach. Fix the environment and the clicking stops mattering. That is the whole job, and it takes an afternoon.</p>
+      <p class="meta">Mechanics verified 2026-10-07. Verizon DBIR 2026 (19th edition): 31,000+ incidents, 22,000+ confirmed breaches, 145 countries; human element present in 62% of breaches (up from 60%); social engineering 16% of breaches; phishing-simulation click rates over voice/text 40% higher than over email; pretexting 6% of all breaches; GenAI assistance used by the median threat actor in 15 documented techniques. Mandiant M-Trends 2026: email phishing 6% of intrusions (down), voice phishing 11% (up). FBI IC3 2026 (2025 data): $20.877B losses, 1,008,597 complaints; business email compromise $3.05B, 24,768 complaints. SERP check 2026-10-07: enterprise training-vendor pitches and click-rate listicles rank — no plain-English owner-level "why do my employees keep clicking" answer found. No per-employee or per-industry click-rate figures stated; none verifiable.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Before you retrain the team: run our free check to make sure the mail your business sends actually lands in inboxes. Paste your domain, get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three settings that decide whether Gmail and Outlook trust your mail. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+employees+keep+clicking+phishing+emails+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
