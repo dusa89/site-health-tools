@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Load Slow the First Time but Fast the Second Time?</title>
+<meta name="description" content="Open your website after a long break and it drags. Click around and it flies. That is the cold-cache effect — the first visit forces the server to build the page from scratch, and three cache layers decide how long that takes. Here is what is happening, in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Website Load Slow the First Time but Fast the Second Time?</h1>
+    <p class="lede">Open your website after a long stretch away and it drags — the logo hangs, the text stutters in. Click to a second page and it flies. Open it again tomorrow and it is instant. This is not your imagination and it is not the site getting faster as you use it: it is the <strong>cold cache</strong>. The first visit forces your server to build the page from raw parts; the second visit collects a ready-made copy off the shelf. Every small business owner has felt this and almost nobody has had it explained to them. Here is the full picture.</p>
+    <div class="article">
+
+      <h2>1. The short answer, up front</h2>
+      <p>A website page exists in two forms: the <strong>built page</strong> (a finished HTML file sitting on a shelf, ready to hand over) and the <strong>raw ingredients</strong> (database rows, theme files, plugin code). When a visitor arrives and the built page is already on the shelf — a "warm" cache — they get it in a fraction of a second. When it is not there — a "cold" cache — the server has to assemble it from scratch: ask the database questions, run the code, stitch the answer together. That assembly is the slow first load. (The plain-English primer on what caching is lives in <a href="what-is-website-caching.html">the caching article</a>.) And here is the twist that makes this article matter: <strong>your own site almost never looks cold to you</strong>, because your browser keeps a warm copy of your last visit. Your visitors, arriving for the first time, get the cold one. This is the machinery underneath <a href="why-is-my-website-fast-for-me-but-slow-for-customers.html">the fast-for-you, slow-for-them problem</a>.</p>
+      <h2>2. The three shelves (what "cache" actually means)</h2>
+      <p>When people say "the cache," they are really talking about three separate shelves, stacked on top of each other:</p>
+      <p><strong>Shelf one: your visitor's browser.</strong> The first time someone visits, their phone downloads your logo, your fonts, your styles, your JavaScript — the heavy luggage. The second time, the phone reuses most of it from its own memory. That is why the second visit feels so much faster: half the page never travels the network at all.</p>
+      <p><strong>Shelf two: your server's page cache.</strong> The finished HTML of your homepage, saved after the first build so the server can hand it over next time instead of rebuilding. This is what your caching plugin or your host's caching manages. Expired, cleared, or never-built — and the server is back to assembling from raw ingredients.</p>
+      <p><strong>Shelf three: the CDN's edge shelf.</strong> If you use a content network like Cloudflare, copies of your pages sit in data centers near your visitors. A "hit" at the nearest edge is the fastest delivery there is; a "miss" means the request flies all the way back to your origin server. And a miss, researchers measured, is not free — a recent freeCodeCamp test found a cold CDN miss taking <strong>0.366 seconds vs 0.239 seconds for a warm hit</strong> — and even slower than going straight to the origin server (0.281s), because the miss adds the work of storing the object it failed to find. This is the conceptual companion to <a href="what-is-a-cdn-and-does-my-website-need-one.html">the CDN article</a>: the edge shelf only pays when the same page gets requested twice.</p>
+      <h2>3. Why the first build is so expensive</h2>
+      <p>What does "assemble from raw ingredients" actually cost? For a WordPress site — which runs roughly a third of the small-business web — one analyst's March 2026 breakdown (Medium/@admin_69911) puts it bluntly: <strong>a typical page fires 30 to 200+ database queries</strong>. Each query asks MySQL for a lookup, a join, a result. On a well-kept site that whole dance takes about 50 milliseconds. On a neglected one it takes 2 to 5 seconds. Then the theme and the plugins run their code on top, and <em>then</em> the finished page can be shelved for the next visitor.</p>
+      <p>The first visitor pays for all of that. The second visitor pays for almost none of it. Nobody told you this, but every website on the planet has a first customer of the morning who pays the full price of the build — they just usually arrive quietly, and nobody hears the page take four seconds. This is the whole cold-build story behind <a href="why-does-my-website-take-forever-to-start-loading.html">the first-byte slowness article</a>: the first byte is late because the kitchen had to cook the meal before it could serve it.</p>
+      <h2>4. The warm illusion — why YOU never see the cold site</h2>
+      <p>A September 2026 piece by Mido Digital ("Why Your Website Loads Fast for You but Slow for Your Visitors") names the illusion precisely, and it applies here word for word: <strong>you are almost never a first-time visitor to your own site.</strong> Your browser has already cached the assets. Your computer's DNS resolver already knows your server's address — no lookup wait. If you are logged into WordPress, most caching plugins skip you entirely, so you see the raw output. And even in a private window, you are testing from the same city as your server on a fast connection. You are tasting the warm soup and telling the restaurant it is fine — while the first-time customer across the country waits on the cold one.</p>
+      <p>This also explains the trap owners fall into: "I just checked, it loads fine." You checked warm. The customer checked cold. Neither of you is wrong; you measured two different websites. (Visit-order variance is its own beast — distinct from the time-of-day variance in <a href="why-is-my-website-only-slow-sometimes.html">the slow-sometimes article</a>.) That is why honest speed testing is done cold — a fresh private window, a location you do not operate from — the discipline behind <a href="why-does-my-website-feel-slow-when-the-test-says-fast.html">the test-vs-feel article</a>.</p>
+      <h2>5. When EVERYONE becomes a first-timer</h2>
+      <p>There are moments when the shelves get emptied and every visitor becomes a first visitor:</p>
+      <p><strong>Deployments and updates.</strong> Push a new version of the site, update the theme, restart the server — the cache is wiped and the first arrivals each eat the full rebuild. A June 2026 TechRounder guide names this the "slow first load after deployment" problem and describes the fix that follows: a <strong>warmup request</strong> — an automatic background visit that rebuilds and re-shelves the key pages <em>before</em> any real visitor arrives. Think of it as the restaurant prepping before opening, as a March 2026 cache-warming explainer puts it: the kitchen is hot when the first customer walks in, not after.</p>
+      <p><strong>Cache clears.</strong> You hit "purge the cache" after a change — good hygiene — and for the next few minutes every page on the site is cold again. This is also why the "my site is suddenly slow" panic that follows a plugin update usually resolves on its own: the shelves refill.</p>
+      <p><strong>Cache expiry.</strong> Cached pages have a shelf life. When it lapses — an hour, a day — the next visitor rebuilds. If your slowest complaints cluster around certain times, expiry windows are a suspect worth naming to your developer.</p>
+      <p><strong>Logged-in and dynamic pages, always.</strong> Your checkout, your cart, your customer accounts — those shelves are <em>never</em> stocked, by design. The March 2026 WordPress breakdown lists the full set of places caching never reaches: admin pages, logged-in users, WooCommerce carts, first-time visitors, AJAX requests, REST API calls. That is why <a href="why-is-my-online-stores-checkout-so-slow.html">the checkout is slow even on a fast site</a>, and why <a href="why-is-my-website-slow-when-im-editing-it.html">the admin side feels like a different, slower website</a> — it is; it lives outside the cache entirely.</p>
+      <h2>6. Cache warming — making every visit a second visit</h2>
+      <p>The professional answer to the cold-first-load problem is to never let a real visitor be the first one. <strong>Cache warming</strong> is the practice of automatically "visiting" your own key pages on a schedule — after every deployment, after every cache clear, every morning — so the shelves are stocked before customers arrive. The good caching plugins have this built in as "preload" (WP Rocket's preload, for example, rebuilds the cache for your sitemap pages automatically). Cloudflare-style edge caching does its own version at the edge.</p>
+      <p>But — and this is the part the plugin sales pages skip — <strong>warming cannot fix a slow kitchen; it only hides it.</strong> The March 2026 WordPress analysis is explicit: caching skips the 30-to-200 database queries; it does not fix them. If your underlying build takes four seconds, warming just means you pre-paid those four seconds on a schedule instead of charging them to your first visitor. The real fix for a slow cold load is the one in the speed articles you have been reading: fix the database, fix the plugins, fix the hosting — and <em>then</em> let the warming keep the shelves full. Warm is a comfort; fast is a construction.</p>
+      <h2>7. The crawler catch (why this article exists on a marketing site)</h2>
+      <p>Here is the business reason cold-cache matters more than comfort: <strong>Google's crawler is a first-time visitor.</strong> The freeCodeCamp measurement found that a crawler fetching 80 pages logged every single one as a cache miss at the origin — a 0% hit rate, each miss carrying the extra storage cost. First-time human visitors arrive cold by the same logic: nobody has warmed their browser for your site yet.</p>
+      <p>Which means the cold load is the load that gets graded. Google's ranking systems read field data from real visitors — and the first, coldest visit is the one the crawler saw. A site that feels instant to its owner but serves four-second cold loads to strangers is showing the search engine its worst face and its owner its best. That is the commercial argument for asking about warming and cold-load time — not the developer's vanity metrics, but the visit your next customer actually has. It is the same field-data discipline as <a href="why-does-my-website-speed-score-change-every-time-i-test-it.html">the speed-score article</a>: the field is what Google reads, and the field is cold.</p>
+      <h2>8. What to ask your developer (plain English)</h2>
+      <p>You do not need to understand caching to buy it correctly. Ask three questions:</p>
+      <p><strong>"Is my cache preloading after deploys and clears?"</strong> If the answer is a blank stare, nobody is warming the site — every update ships a cold restaurant. The fix is preload/warmup configuration, not a bigger server.</p>
+      <p><strong>"What is our cold load time — first visit, empty cache?"</strong> Not your warmed-up second click. The number that matters is the first customer's number. If they cannot produce it, they have never measured the site the way customers experience it.</p>
+      <p><strong>"What is slow in the cold build itself?"</strong> If the kitchen takes four seconds to assemble a page, warming is a bandage. The database queries, the plugin count, the hosting floor — the speed articles on this site name them all — are the actual construction.</p>
+      <p>And the zero-cost version you can do today: open your own site in a private window, on your phone, on data instead of wifi, and count. That is the closest most owners will ever get to seeing the site the way a first-time customer sees it. If it drags there, it drags for them — and now you know exactly why.</p>
+      <p class="meta">Mechanics verified 2026-10-07. TechRounder (Jun 18, 2026): deployments/server restarts wipe the cache — the first visitor waits while the server rebuilds from scratch; the warmup cache request preloads key pages before any real visitor. Medium/@warmupcacherequest (Mar 11, 2026): cold cache latency = first requests trigger heavy database queries; warming preloads frequently requested data; the restaurant-before-opening analogy. Mido Digital / Medium (Sep 2026): the warm-cache illusion — your browser has cached the CSS/JS/images, your local DNS resolver knows the server's IP, logged-in WordPress users bypass full-page caching, and incognito testing still runs on a privileged network and geography. freeCodeCamp (recent): warm HIT 0.239s vs cold MISS 0.366s vs direct-to-origin 0.281s — a MISS ~85ms slower than no cache; crawler = 0% hit rate, every URL a miss; first-time human visitors arrive cold by definition. Medium/@admin_69911 (Mar 1, 2026): a typical WordPress page runs 30 to 200+ database queries (well-tuned ~50ms total; neglected 2–5s); cache doesn't help: admin pages, logged-in users, WooCommerce carts, first-time visitors, AJAX requests, REST API calls. SERP check 2026-10-07: developer-level cache-warming explainers rank — no plain-English owner-level "first load slow, second load fast" decision article found. No cold-cache first-visit complaint-rate figures stated for any specific business; none verifiable.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+first-load+slowness+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
