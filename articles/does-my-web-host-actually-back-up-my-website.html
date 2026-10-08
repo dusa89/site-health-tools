@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does My Web Host Actually Back Up My Website?</title>
+<meta name="description" content="Short answer: probably — but their backup is for them, not for you. What hosts really back up (and the fine print nobody reads), the $150 restore-fee surprise, the malware-in-the-backup trap, and the 20-minute setup that means you never have to trust them — plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Does My Web Host Actually Back Up My Website?</h1>
+    <p class="lede">Every hosting sales page says <strong>"daily backups included."</strong> It sounds like a safety net. Then the site goes down — a bad update, a hack, a cancelled card — and the owner learns the truth the hard way: the host's backup is a <em>server convenience</em>, kept for the host's purposes, on the host's schedule, with the host's rules. Sometimes it saves you. Sometimes the restore costs $150. Sometimes the "backup" contains the malware you are trying to remove. This is the article that tells you what your host's backup really is — and the one copy you should own yourself, because it is the copy that always works.</p>
+    <div class="article">
+
+      <h2>1. The short answer, up front</h2>
+      <p><strong>Most hosts do back your site up. Almost none of them back it up <em>for you</em>.</strong> Think of the host's backup like the building's sprinkler system: it exists, it helps, it is designed around the building's liability — not your belongings. A proper backup is the copy <em>you</em> control: in a different place, from before the bad thing happened, and proven to restore. Everything below is the difference between those two things. (The responsibility article explains <a href="who-is-responsible-for-my-websites-security.html">whose job each layer really is</a>; this is the backup chapter of that division.)</p>
+      <h2>2. What "daily backups included" actually means</h2>
+      <p><strong>The schedule varies more than the sales page suggests.</strong> Hostinger, one of the biggest shared hosts, runs backups <strong>weekly on its entry Premium plan, daily from Unlimited up</strong> — and its own review coverage adds the honest footnote: <em>keep your own copy of important content too</em> (Gizmodo, Oct 2026). GoDaddy's Managed WordPress keeps daily backups of your files for the last 30 days with manual restore; standard Web Hosting keeps daily backups you can manually restore (GoDaddy Help, current). Some hosts go further: InMotion's Backup Manager — scheduled backups with one-click restore — is a <strong>paid add-on on shared plans</strong> (Gizmodo, Oct 2026). "Included" is not universal. It is a feature tier, not a promise.</p>
+      <p><strong>The copy is for the host first.</strong> The host's backup exists so the host can recover from <em>its</em> failures — a failed server drive, a datacenter incident. When the failure is <em>yours</em> — the update you ran at midnight that white-screened the site, the card that lapsed and expired the plan — the host's convenience is optional and its terms are the fine print. One owner learned this in October 2026 when GoDaddy quoted a <strong>$150 recovery charge</strong> to pull his sites' data back a few days after his hosting expired (Warrior Forum, Oct 2026). The backup existed. Getting it back had a price.</p>
+      <p><strong>The host's backup may not understand your site.</strong> On unmanaged hosting the responsibility is explicitly yours, and the host's generic backup "may or may not be WordPress-aware" (tremhost, Sep 2026) — a file copy of a WordPress site without its database is a pile of parts, not a website. Even where backups are daily and automatic, a shared-hosting security guide from August 2026 puts the same rule the professionals live by: <em>don't count on a backup you have never restored until you have proven it works</em>. Retention length, restore testing, and restore permissions are, in the words of the UK government's 2025/2026 Cyber Security Breaches Survey (published April 2026), "rarely spelled out in the plan." Three in four businesses now back up securely to a cloud service — and the quarter that don't are disproportionately the ones trusting the host's copy alone.</p>
+      <h2>3. The four things the sales page never says</h2>
+      <p><strong>"We back up daily" can mean files only.</strong> A WordPress site is two things: files (the theme, the plugins, the uploads) and a database (the posts, the pages, the orders, the customer accounts). Some backup systems copy one and not the other. If your "backup" is missing the database, you have a website-shaped box with nothing inside. When you read your host's backup page, the question is always <em>files AND database?</em> — not just "backup?"</p>
+      <p><strong>"One-click restore" can mean "after the host approves it."</strong> Some restores are genuinely self-serve; some require a support ticket, a wait, and a fee. The $150 recovery story is the extreme end, but the pattern is normal: the host's backup is on the host's terms, and its clock is the host's clock. Your own copy restores on your clock — including at 2am on a Sunday, when the site is down and support is a queue.</p>
+      <p><strong>"30-day retention" can contain the disaster.</strong> A rolling 30-day backup is great — unless the bad thing happened 45 days ago and the damage only showed up today. This is the exact shape of the dormant-plugin breach: <a href="i-turned-that-plugin-off-months-ago-why-did-it-get-my-site-hacked.html">the plugin was turned off months ago and the hack landed today</a>. Every "backup" in the 30-day window already contains the hole. Retention is a window, not a guarantee.</p>
+      <p><strong>"Included" sometimes isn't.</strong> The paid-add-on case again — budget for Backup Manager or its equivalent if your plan doesn't include scheduled restores. The cheapest backup is still the plugin you configure yourself; the most expensive is the one you discover you don't have.</p>
+      <h2>4. The malware-in-the-backup trap</h2>
+      <p>This is the one that burns people twice, and it is worth stating in GoDaddy's own words from their disaster-recovery page: malware can sit on a site doing nothing for a while, <em>during which time the malware is saved as part of your backups</em>. Restoring from an infected backup puts the malware straight back onto the server. Clean restore, dirty copy, same malware, new bill.</p>
+      <p>It is the same loop as <a href="i-cleaned-the-malware-off-my-website-why-does-it-keep-coming-back.html">the malware-that-keeps-coming-back article</a>: the infection's real timeline is longer than the backup window, so every copy in the window is dirty. The fix is rotation hygiene, not more backups: <strong>keep one known-clean copy from before the trouble</strong> (a full site + database export stored off the server), and when you clean a hack, the restore point is the clean copy — never the freshest copy. If the hack is active right now rather than historical, <a href="what-should-i-do-if-my-website-gets-hacked.html">the hacked-recovery article</a> is the procedure — this article is what makes step one of that procedure a one-click restore instead of a rebuild. If your backup rotation can't answer "which of these copies is definitely from before the infection," you don't have a rotation. You have a collection of guesses.</p>
+      <h2>5. The real setup: your own copy, in three parts</h2>
+      <p><strong>Part one: a backup plugin you own.</strong> On WordPress, this is UpdraftPlus or equivalent — free tier is fine: schedule a full backup (files + database) at least weekly, more often if you publish or sell regularly (daily for any site that changes regularly is the professional standard — n6cloud, Aug 2026). The plugin writes the backup <em>off the server</em>: Google Drive, Dropbox, Amazon S3, wherever you already have storage. That offsite part is not a bonus — it is the point. A backup that lives on the same server as the site dies in the same fire.</p>
+      <p><strong>Part two: back up before every update.</strong> <a href="do-i-really-need-to-update-my-website.html">The updates article</a> covers why updates are mandatory; the disaster story is the update that conflicts with a plugin and white-screens the homepage. A one-click pre-update backup turns a 4-hour panic into a 30-second restore. Many backup plugins offer one-click "backup before update" — turn it on and never think about it again.</p>
+      <p><strong>Part three: prove the restore once.</strong> Not the full disaster drill — one restore of one backup to confirm the file isn't corrupt and the process works. The August 2026 security guide puts the cadence at <em>restores tested at least monthly</em>; for a small business site, even one successful test a year beats the industry's default of "we've never tried." An untested backup is a hope, not a plan.</p>
+      <p>The honest economics: a proper setup costs you nothing (a free plugin + storage you already pay for) and takes about twenty minutes. The $150 recovery fee is the price of learning that at the wrong end of the transaction. <a href="do-i-need-a-website-firewall.html">The firewall</a> is the outer ring that keeps the bad day from arriving, and <a href="do-i-need-ssl.html">SSL</a> is the padlock on the data in motion — this is the inner ring that makes the bad day survivable.</p>
+      <h2>6. What to ask your host (plain English)</h2>
+      <p><strong>"Does my plan include automated backups — files AND database — and how far back does the retention go?"</strong> You want both halves of the answer: the scope and the window.</p>
+      <p><strong>"If my site breaks, can I restore a backup myself from the dashboard — or do I have to contact support, and is there a fee?"</strong> This is the $150 question, asked before you need the answer.</p>
+      <p><strong>"If my hosting expires, how long do you keep the backups, and what does recovery cost?"</strong> A lapsed card is one of the most common "disasters." Know the grace period now.</p>
+      <p><strong>"Can I download a full backup (files + database) to keep my own copy off your servers?"</strong> If the answer is no, that is the loudest signal in this whole article: the backup is the host's, not yours.</p>
+      <p>And the honest catch to carry home: the host's backup is better than nothing, and you should keep it — but it is the spare tire, not the engine. The copy that saves you is the one you own, off the server, from before the trouble, proven to restore. Set it up once (twenty minutes, free) and the whole "does my host back me up" question stops mattering — because you do.</p>
+      <p class="meta">Mechanics verified 2026-10-08. Hostinger (Gizmodo shared-hosting review, ~Oct 2026): backups weekly on Premium, daily from Unlimited up; "it is wise to keep your own copy of important content too." InMotion (Gizmodo small-business hosting, ~Oct 2026): Backup Manager (scheduled backups + one-click restore) is a paid add-on on shared plans. GoDaddy Help (disaster recovery, current): Managed WordPress = daily backups of files for the last 30 days, manual restore; Web Hosting = daily backups, manual restore; GoDaddy's own warning — malware is saved into backups over time, and restoring an infected backup puts the malware back on the server. tremhost (Sep 2026): on unmanaged hosting backups are your responsibility; the host's generic backup "may or may not be WordPress-aware." Warrior Forum (Oct 2026): $150 recovery charge quoted to restore data a few days after GoDaddy hosting expired. n6cloud (Aug 2026): daily for sites that change regularly, restores tested at least monthly, at least one copy offsite; retention up to 30 days on quality shared plans; "don't count on a backup you have never restored until you have proven it works." UK DSIT/Home Office Cyber Security Breaches Survey 2025/2026 (published 30 Apr 2026, via enterprisetimes Sep 2026): 74 percent of businesses back up securely to a cloud service; retention length, restore testing and restore permissions "rarely spelled out in the plan." SERP check 2026-10-08: host knowledge-base backup/restore docs and vendor comparisons rank — no plain-English owner-level "does my web host actually back up my website" decision article found. No per-host backup-success rates or restore-failure figures stated beyond the cited sources; none verifiable.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are thinking about security: run our free check to see how your site reads from the outside. Paste your domain &mdash; you get Mozilla&rsquo;s A+&ndash;F grade translated into plain English, how many of its checks passed, and your certificate&rsquo;s exact expiry date. Free, no signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>The full Site Health Watch audit checks your site against all 40 trust signals &mdash; security headers, hidden malware, speed, mobile, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+website+backups+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
