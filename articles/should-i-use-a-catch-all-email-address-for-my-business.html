@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should I Use a Catch-All Email Address for My Business?</title>
+<meta name="description" content="A catch-all inbox catches every typo — and every spam attack. How the wildcard address turns your domain into a directory-harvest target, the backscatter and mail-loop traps, and the honest setup that catches typos without opening the floodgates.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should I Use a Catch-All Email Address for My Business?</h1>
+    <p class="lede">The pitch sounds perfect: one inbox that catches everything — the customer who typed sals@ instead of sales@, the misaddressed quote request, the lead who guessed at your address and got lucky. Nothing slips through the cracks. The problem is that the same open door that catches the typo also catches every address a spammer invents — admin@, invoice@, david@, random gibberish strings — and your server accepts every one of them, politely, by design. That is the deal the catch-all makes: you trade "nothing slips through" for "everything gets in." And "everything" turns out to be mostly attackers. Here is what a catch-all actually does to your mail, the three traps it sets for your domain's reputation, and the honest setup that catches the typos without opening the floodgates.</p>
+    <div class="article">
+
+      <h2>1. What a catch-all actually is</h2>
+      <p>A catch-all (or wildcard) email address is a server setting that accepts mail sent to <em>any</em> recipient at your domain — whether or not that address exists. sales@, info@, sals@, random-gibberish-482@ — all of it lands in one bucket mailbox.</p>
+      <p>To understand the risk you have to see the two ways a mail server can answer the door. In the normal setup — what engineers call fail-closed — the server checks the recipient against its list of real addresses during the handshake. Unknown recipient gets a hard rejection, right there: <em>550 5.1.1 User unknown</em>. Connection closes. No message is transferred. Your server spends almost nothing.</p>
+      <p>A catch-all flips that to fail-open: the server answers <em>250 OK</em> to every recipient name, accepts the full message — headers, body, attachments — and routes it to the bucket. The spam check, if any, happens later. The distinction matters because of what the spammer does next.</p>
+      <h2>2. The promise: catching typos and lost leads</h2>
+      <p>The honest reason small businesses turn this on is a good one: the typo. A customer writes sals@ instead of sales@, or emails billing2@ because they are guessing. Without a catch-all that message bounces and the customer assumes you are unreachable. With one, it lands in your inbox and you answer it. For a one-person business with no IT department, that safety net feels like free insurance.</p>
+      <p>It <em>is</em> real insurance — against a small, specific risk. The question is what the premium costs. And the premium is paid to the other side of the internet's economy: the harvesters.</p>
+      <h2>3. The dictionary attack: your domain becomes a target</h2>
+      <p>Here is the attack your catch-all is built for — not against you personally, but against every domain that runs one. It is called a Directory Harvest Attack, and it is brutally simple: the spammer's software fires thousands of messages at your domain addressed to common and invented names — admin@, invoice@, hr@, david@, mike2@, strings of gibberish — and watches which ones get accepted.</p>
+      <p>On a fail-closed server, every one of those probes dies at the door with a 550 rejection. The attacker learns nothing, your server stores nothing, and the attack is expensive for them and free for you. On a catch-all, every probe is accepted and stored. The attacker learns your domain accepts everything — which is exactly the information they wanted — and your bucket fills with the harvest. You did not get targeted because you are important. You got targeted because you answered the door to everyone.</p>
+      <p>This is the first trap: the catch-all does not just catch typos. It catches every probe, and it tells the internet's worst actors that your domain is worth probing.</p>
+      <h2>4. The backscatter trap: your server becomes the spammer</h2>
+      <p>This is the one that damages your business, and it works like this. The catch-all accepts a spam message (remember: 250 OK, at the door). Your spam filter then catches it <em>after</em> the connection closes — which is normal, filters work after acceptance. The server does what servers do with mail it cannot deliver: it generates a bounce message, a Non-Delivery Report, addressed to the sender.</p>
+      <p>But the sender is forged. Spammers spoof the return address. So your server sends its bounce to an innocent person who never emailed you. To Gmail and Outlook, that looks like <em>your</em> server is harassing <em>their</em> users with unsolicited bounce messages. That has a name — <strong>backscatter</strong> — and there are blocklists (like ips.backscatterer.org) that exist specifically to catalog servers doing it. Land on one and your legitimate business mail starts going straight to junk folders. Your invoices, your quotes, your replies — collateral damage from bounces you never chose to send.</p>
+      <p>If your mail has started landing in spam and you run a catch-all, read the <a href="why-are-my-business-emails-being-blacklisted.html">blacklist article</a> and the <a href="is-my-business-email-going-to-spam.html">going-to-spam article</a> — backscatter is one of the standard suspects on both checklists. And it is why the <a href="what-is-dmarc.html">DMARC article</a> matters beyond marketing mail: the authentication setup you built to protect what you <em>send</em> cannot protect you from what your server <em>accepts</em>.</p>
+      <h2>5. The loop of death: catch-all plus auto-reply</h2>
+      <p>The second trap is the mail loop. It goes like this: your catch-all accepts spam addressed to random@domain.com. You have an out-of-office auto-reply on — vacation, holiday, a "we got your message" confirmation. The auto-reply fires at the spammer's (spoofed, invalid) address. That reply bounces. The bounce returns to random@domain.com. The catch-all accepts it. The auto-reply fires again. The bounce returns. Again. Again — until the system gives up with an error like <em>550 5.4.14 Hop count exceeded</em> and your mail queue is a smoking crater.</p>
+      <p>This is not a rare edge case — it is the documented failure mode of catch-all setups, and it is why the rule is absolute: a catch-all bucket must <em>never</em> auto-reply. No out-of-office, no read receipts, no "thanks for your message" confirmations on wildcard mail. The honest fix for the vacation problem is separate: real addresses get the auto-reply, the wildcard bucket gets silence.</p>
+      <h2>6. The volume problem: the bucket fills, the account locks</h2>
+      <p>The third trap is volume. A catch-all under a dictionary attack does not receive a little extra mail — it receives thousands of messages an hour. Practitioners report the standard symptoms: the bucket hits storage limits, search becomes useless (the client's email buried on page 400), and the noise drowns the signal so thoroughly that the typos you installed the thing to catch are unfindable.</p>
+      <p>And on hosted platforms there is a sharper edge. Google Workspace, for example, routes catch-alls through its Default Routing settings and limits receiving to roughly 60 messages per minute per user. A moderate dictionary attack blows through that — and the reported outcome is not just dropped mail, it is account suspension. The safety net that was supposed to catch lost leads ends with you locked out of your own email.</p>
+      <p>If the symptom you are actually seeing is a flood that <em>looks</em> like a compromise — bounces for mail you never sent, a mailbox filling overnight — read the <a href="my-email-is-sending-messages-i-didnt-write.html">hacked-mail article</a> before assuming the worst. Catch-all bounce storms mimic the signs of a hacked account. The fix for one is very different from the fix for the other, so diagnose first.</p>
+      <h2>7. The honest answer: aliases, not a wildcard</h2>
+      <p>Here is what actually solves the typo problem without opening the floodgates: defined aliases for every real address, plus pattern-matched routing for the categories you use, and a hard 550 rejection for everything else.</p>
+      <p>The <a href="should-i-have-separate-email-addresses-for-sales-support-and-billing.html">separate-addresses article</a> is the blueprint: sales@, support@, billing@, yourname@ — real addresses, each with an owner. The typo insurance comes from adding the common misspellings as aliases (sals@ → sales@, suport@ → support@) and, if you use tagged addresses (sales-q1@, sales-webinar@), a pattern rule that accepts that family and rejects the rest. Unknown names still get the 550 at the door. The harvest probes still die on the handshake. But the customer who fat-fingers sales@ still reaches you.</p>
+      <p>The practitioners who run this at scale report it blocks the vast majority of directory-harvest probes while keeping every legitimate typo path open. It is slightly more setup than flipping the wildcard switch. It is also the difference between a door with a guest list and a door with no lock.</p>
+      <h2>8. If you insist on the wildcard: the safe-ish order</h2>
+      <p>Sometimes the answer is still yes — a solo operator, a launch week, a domain where missing one lead costs more than the spam. If that is you, do it in this order:</p>
+      <p><strong>Step 1 — Create the real aliases first.</strong> Every address you actually use should exist as a real mailbox or alias before the wildcard goes on. The wildcard is the net below the trapeze, not the trapeze.</p>
+      <p><strong>Step 2 — Route the wildcard to its own bucket, never your inbox.</strong> A separate mailbox (or a filtered folder) that you check deliberately — never mixed into the mail you live in. The moment wildcard mail shares your inbox, the signal-to-noise ratio of your whole business email collapses.</p>
+      <p><strong>Step 3 — No auto-replies, no forwards on wildcard mail. Ever.</strong> No out-of-office on the bucket. And never forward the wildcard to a personal Gmail — that is the loop-of-death setup wearing a different hat, and the <a href="should-i-forward-my-business-email-to-my-personal-gmail.html">forwarding article</a> explains why the forwarded copy breaks authentication on arrival.</p>
+      <p><strong>Step 4 — Watch the volume and set a kill threshold.</strong> If the bucket is receiving hundreds of messages a day and the real typo-catches are a handful a month, the math has already told you the answer. Turn it off. Most businesses that run the numbers discover the wildcard catches one genuine typo a quarter and ten thousand harvest probes a week.</p>
+      <p><strong>Step 5 — Review it quarterly.</strong> The addresses people typo at change as your business changes. The alias list in section 7 needs the same quarterly review as everything else in your mail setup.</p>
+      <h2>9. The honest catches</h2>
+      <p><strong>The catch-all is not a backup.</strong> It catches inbound mail to mistyped addresses. It does not archive, back up, or protect anything. If the thing you want is "never lose an email," that is a retention and backup conversation, not a wildcard conversation.</p>
+      <p><strong>The reputation damage is inbound.</strong> The <a href="should-i-send-cold-emails-from-my-main-business-domain.html">cold-email-from-the-main-domain article</a> covers the outbound mirror of this problem: what you <em>send</em> burns your domain's reputation. The catch-all is the inbound mirror: what you <em>accept</em> burns it — backscatter blocklists and harvest targeting do not care that you never sent a single spam message.</p>
+      <p><strong>"But my host recommended it."</strong> Some cheap hosts enable catch-alls by default because it reduces their support tickets ("where did my email go?"). A host optimizing for fewer tickets is not optimizing for your deliverability. Check whether yours is on — in most control panels it is a single toggle — and decide deliberately.</p>
+      <p><strong>The one genuine use case.</strong> A brand-new domain, a launch week, a solo founder who would rather sort spam than miss the one email that matters — the wildcard has a legitimate season. The mistake is not using it. The mistake is installing it in week one and forgetting it exists in year three, by which point the bucket is a 50-gigabyte monument to every spammer who ever found you.</p>
+      <p class="meta">Mechanics verified 2026-10-07. Catch-all (wildcard) mechanics — fail-open "250 OK" to every recipient vs fail-closed "550 5.1.1 User unknown" at RCPT TO; Directory Harvest Attacks (blasting admin@, invoice@, invented names to map valid addresses); backscatter (accept-then-bounce to spoofed senders; blocklists such as ips.backscatterer.org); the loop of death (catch-all + auto-reply → "550 5.4.14 Hop count exceeded"); Google Workspace catch-all via Default Routing with ~60 messages/minute per-user receiving limits (moderate dictionary attack can trigger suspension); the honest alternative (defined aliases + pattern-matched category routing + hard 550 reject for the rest) — Alexey Bulygin Medium catch-all email series, Jan 2026 (crawled Oct 2026). SERP check 2026-10-07: the catch-all literature is technical (SMTP mechanics, Postfix/Exchange configuration, MSP operations) — no plain-English small-business-owner article answering "should I use one" ranks. No subscriber counts, engagement figures, or vendor market-share claims stated; none verified.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Before you touch your mail routing: run our free check to make sure the messages you already send actually land in inboxes. Paste your domain, get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three settings that decide whether Gmail and Outlook trust your mail. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+catch-all+email+addresses+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
