@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Speed Score Change Every Time I Test It?</title>
+<meta name="description" content="Tested your site three times and got three different speed scores? That is the tool breathing, not your site breaking. What the 0-to-100 number actually measures, where run-to-run noise comes from, and the honest way to test.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Website Speed Score Change Every Time I Test It?</h1>
+    <p class="lede">You tested your website on Monday and got 82. Tuesday it was 71. Wednesday — after you changed nothing — it was 88. And now you are wondering whether your site is haunted, your hosting is lying to you, or you somehow broke something between coffee and the second tab. None of those. The number moves because of what the number <em>is</em>: a single simulated run through a throttled phone, executed on shared machinery, reported as if it were a physical measurement. It was never going to be stable. Here is where the wobble comes from, which number actually matters for your business, and the honest testing protocol that replaces score-chasing.</p>
+    <div class="article">
+
+      <h2>1. The mystery: three tests, three numbers, zero changes</h2>
+      <p>This is the single most common speed-test experience on the internet, and it is worth saying plainly: a score that moves 8 or 10 points between tests, with no changes on your side, is normal. It does not mean your developer broke something. It does not mean your host is throttling you. It means the test is doing what it does — running one simulated page load on one device, on one network, at one moment — and no two of those moments are alike. The confusion starts because the report hands you a confident-looking number and hides how it was produced. Once you see the machinery, the wobble stops being a mystery.</p>
+      <p>If you have not yet read the <a href="should-my-website-speed-test-score-worry-me.html">speed-score explainer</a>, start there for what the score means. This article is the companion piece: what it means is one question — why it <em>moves</em> is the other.</p>
+      <h2>2. What the 0-to-100 score actually measures</h2>
+      <p>The headline number on a PageSpeed report is based entirely on the <strong>lab run</strong>: one page load, simulated. The mobile test pretends to be a mid-tier phone (Google uses the Moto G4 as its reference) on a throttled mobile connection. The desktop test pretends to be a desktop on a wired line. The test itself runs in a Google datacenter — North America, Europe, or Asia — and the location is printed in the report's environment block, which almost nobody reads.</p>
+      <p>Three consequences fall out of that setup. First: it is one sample. One load, one device, one network. Second: the device and network are <em>simulated</em> — the throttling is an approximation, and approximations have error bars. Third: the machinery running the simulation is shared — you are testing on a worker that is doing other work at the same time. Every one of those is a noise source, and they stack.</p>
+      <h2>3. Where the noise comes from: the four wobbles</h2>
+      <p><strong>Wobble one — the lab worker.</strong> Chrome's own documentation on score fluctuations names the sources outright: local network availability, client hardware availability, and client resource contention. Translation: the computer running your test sometimes has its hands full. A busy worker renders your page a beat slower, and the score dips. Same page, different minute, different load on the test machine.</p>
+      <p><strong>Wobble two — your server's neighbors.</strong> If you are on shared hosting, your site shares its server with other sites — the <a href="does-cheap-hosting-make-my-website-slow.html">cheap-hosting article</a> covers why that matters for baseline speed. It also matters for variance: your neighbor's traffic spike at 2 p.m. is your slower test at 2 p.m. Tests run at different times of day are tests run against different servers, effectively.</p>
+      <p><strong>Wobble three — the cache state.</strong> A first visit (cold cache) downloads everything; a repeat visit (warm cache) reuses what the browser kept. The <a href="what-is-website-caching.html">caching article</a> explains the machinery. For testing, the point is simpler: whether the test hit a warm or cold path changes the number, and the test does not tell you which one it got. Your visitors, meanwhile, are mostly repeat visitors with warm caches — the population the test least resembles.</p>
+      <p><strong>Wobble four — third-party auctions.</strong> Ads, tracking pixels, chat widgets — <a href="do-those-little-tracking-scripts-slow-down-my-website.html">the tracking-scripts article</a> covers their weight. Their timing also varies: ad networks run real-time auctions, so the exact scripts that load change from one page view to the next. One run pulls a fast auction, the next pulls three slow bidders, and the score moves on something you do not control.</p>
+      <h2>4. One run is one sample: the median protocol</h2>
+      <p>Practitioners have a standard response to all of this, and it is refreshingly boring: <strong>run the test 3 to 5 times and take the median</strong>. A single lab run is one noisy sample; the median of five runs is the signal underneath the noise. If your five runs come back 74, 79, 71, 77, 75, your site is a 75 — the 71 and the 79 were the noise. If they come back 75, 76, 74, 75, 77, your site is a 75 and the tool is behaving.</p>
+      <p>The discipline costs you two extra minutes and kills an entire category of false alarms. Never act on a single test. Never report a single test to your developer as "the score dropped." And never, ever redesign your site because one Tuesday run came back red.</p>
+      <h2>5. The second number: field data, and why it never bounces</h2>
+      <p>Below the lab score, the report shows a second section: <strong>field data</strong>, from Google's Chrome User Experience Report. This is not a simulation. It is the aggregated experience of real visitors on real devices and real networks, collected over a trailing 28-day window, reported at the 75th percentile — the experience that at least three-quarters of page loads were at least as good as. It does not bounce between runs because it is not one run: it is tens of thousands of runs, averaged over a month.</p>
+      <p>This is the number that matters for your business, for two reasons. First, it is your visitors' actual experience. Second, it is the number Google's ranking systems read — the <a href="does-a-slow-website-hurt-my-google-rankings.html">rankings article</a> covers which signals count. A site can hold a 90 in the lab and fail the field test, or sit at 70 in the lab while real users get a perfectly good experience. The score and the field data are two different measurements of two different things; the report's design invites you to read the first as the second, and that is the trap the whole industry keeps falling into.</p>
+      <h2>6. Why lab and field can flat-out disagree</h2>
+      <p>They disagree because they measure different populations over different timescales. The lab is one simulated load today. The field is a month of real loads — old Android phones, patchy coffee-shop wifi, visitors on the other side of the world, people on devices the simulator never pretends to be. Your real visitors are disproportionately repeat visitors (warm cache) on whatever hardware they own. The simulator is a Moto G4 that never visited you before.</p>
+      <p>Google's documentation says it about as plainly as documentation ever does: having good lab data does not necessarily mean real-user experiences will also be good. And the reverse is true too — a lab score that looks mediocre can coexist with a perfectly healthy field record. One more wrinkle: small or new sites often have <em>no</em> field data at all, because the report needs enough distinct visitors to publish an anonymized aggregate. No field section is not a failing grade; it is "not enough visitors to say."</p>
+      <h2>7. The hole in the score: it never taps anything</h2>
+      <p>Here is the sharpest limitation, and the one that bites real businesses: <strong>the performance score contains zero measurement of interactivity</strong>. The metric that captures how a page responds to taps and clicks — Interaction to Next Paint, a Core Web Vital since March 2024 — is not in the score at all, in any form, at any weighting. A lab run loads the page and stops. It never taps the menu, never opens the dropdown, never tries the booking widget.</p>
+      <p>The practical consequence is specific and very common: a page scores 88 in the lab, and then the mobile menu takes half a second to open on a real phone because the menu's code does too much work per tap. The score never saw it, because nobody tapped anything. So the full picture is two gaps, not one: the lab score bounces (this article), and even when it is stable it is blind to the part of the experience your customers actually feel with their thumbs. Judge interactivity on a real phone, in your own hand — no simulator substitutes.</p>
+      <h2>8. The honest testing protocol</h2>
+      <p>Put it together and the honest protocol is short. <strong>Step 1 — run it 3 to 5 times, take the median.</strong> That is your lab number. <strong>Step 2 — read the field data, not the score.</strong> The 28-day aggregate is what your visitors experienced and what Google reads. <strong>Step 3 — test like a visitor, not like a developer.</strong> Logged out, cold-ish cache, the page your customers actually land on — the <a href="why-is-my-online-stores-checkout-so-slow.html">checkout-speed article</a> makes this point for stores; it applies everywhere. <strong>Step 4 — compare field over time, not lab over days.</strong> Field data moves slowly by design; a month-over-month trend in the field report is a real signal, and a Tuesday-to-Wednesday lab swing is not.</p>
+      <p><strong>Step 5 — fix the opportunities list, not the number.</strong> The lab run's real value is the diagnostics below the score: the named fixes, the waterfall, the specific third party eating 2 seconds. Those are actionable whether the score is 71 or 88. The number is the weather; the opportunities are the forecast.</p>
+      <h2>9. The honest catches</h2>
+      <p><strong>A 10-point swing is the tool breathing.</strong> If the median of your runs is stable, nothing is wrong with your site. The panic threshold is not "the number moved" — it is "the median moved 20 points and the field data confirms it."</p>
+      <p><strong>Chasing 100 is a hobby, not a strategy.</strong> The <a href="how-fast-should-my-website-load.html">benchmarks article</a> sets the honest targets. Past a healthy field record, squeezing the lab score from 88 to 97 buys you nothing your customers can feel — and the hours spent chasing it are hours not spent on the things that do show up in the field data.</p>
+      <p><strong>Test the page that earns you money.</strong> Owners test the homepage because it is the front door. But the page that decides revenue is usually deeper — the booking page, the product page, the contact form. Those pages carry the heavy scripts and the uncacheable parts, and their lab numbers look worse. Test the money page, not the brochure page.</p>
+      <p><strong>Your developer's "it scores fine for me" has a known explanation.</strong> Their machine, their network, their datacenter, their minute — a different draw from the noise distribution. Hand them the median of your five runs, not one screenshot, and the conversation changes immediately.</p>
+      <p class="meta">Mechanics verified 2026-10-07. The 0–100 score is based entirely on the lab run (field/CrUX data reported separately, does not affect the score); lab = one simulated load — Lighthouse mobile simulates a mid-tier Moto G4 on throttled mobile network, desktop = emulated desktop on wired connection, PSI runs in a Google datacenter (North America, Europe, or Asia; location in the report's environment block); field data = Chrome UX Report, real Chrome users over a trailing 28-day window at the 75th percentile, the input to Google's page-experience ranking signal; run-to-run variability documented by Chrome (network availability, hardware availability, client resource contention) — practitioners take the median of 3–5 runs; lab vs field can disagree (one simulated load vs 28 days of real devices/networks; "good lab data does not necessarily mean real-user experiences will also be good" — Google docs); INP not in the performance score in any form — replaced FID as a Core Web Vital 12 March 2024 (good ≤200 ms, poor &gt;500 ms at p75); small sites may have no field data (insufficient anonymized samples). Sources: dev.to explainers Sep–Oct 2026; pagespeed-insights SKILL.md (GitHub, Sep 2026); pagespeed-insights-mcp README (Oct 2026); Chrome Lighthouse performance-scoring docs; web.dev lab-and-field-data-differences. SERP check 2026-10-07: the lab/field literature is technical (dev.to, GitHub skill docs, Chrome docs) — no plain-English small-business-owner article answering "why does my speed score keep changing" ranks. No Core Web Vitals pass/fail guarantees stated; none verifiable.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are thinking about speed: run our free check to see how your site's loading speed reads from the outside. Paste your domain, get a plain-English verdict — the performance numbers a customer actually feels, not a lab score. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+my+speed+score+keeps+changing+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
