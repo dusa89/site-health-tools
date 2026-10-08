@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does My Website Get Slower When More People Visit?</title>
+<meta name="description" content="Short answer: yes — but it is a checkout-lane problem, not a website problem. Your hosting plan lets a fixed number of visitors in at the same instant, and the 21st one waits. The lane math, the three spike moments every owner hits, and the fix order that beats an expensive upgrade — plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Does My Website Get Slower When More People Visit?</h1>
+    <p class="lede">Your site is fine on a normal Tuesday. Then you send the email blast, the Facebook post takes off, or the holiday sale starts — and the site turns to molasses exactly when it matters most. Here is the part the hosting ads never say: <strong>your plan does not sell you speed. It sells you a fixed number of checkout lanes.</strong> On a typical cheap plan, about 20 visitors can be inside your site at the exact same instant. The 21st waits in line — and on a slow page, that line forms fast. This is why a slow website is a double tax: it annoys one visitor, and it <em>steals lanes</em> from the next ten.</p>
+    <div class="article">
+
+      <h2>1. The short answer, up front</h2>
+      <p><strong>Yes — and it is not really about your website. It is about lanes.</strong> Think of your hosting plan as a grocery store with a fixed number of checkout lanes. Every visitor who opens a page takes a lane, and they hold it until the page finishes loading. A page that takes 0.4 seconds holds a lane for 0.4 seconds; a page that takes 3 seconds holds it for 3 seconds. When all the lanes are full, the next visitor queues — and a queue <em>feels</em> exactly like a slow website. Your site did not change. The traffic did. <a href="does-cheap-hosting-make-my-website-slow.html">The cheap-hosting article</a> covers the quality of the store itself; this one is about what happens when the parking lot fills up.</p>
+      <h2>2. The lane math (the part that surprises owners)</h2>
+      <p>On ordinary shared hosting, the limit nobody tells you about is the number of requests allowed inside your account <em>at the same instant</em> — hosting companies call this Entry Processes, and the typical cheap-plan value is <strong>20</strong>. When request 21 arrives while 20 are still running, it gets refused outright (a "508" error) or stacked in a queue. Underneath that, the plan hands you roughly <strong>10 to 20 PHP workers</strong> — the actual hands that build your pages.</p>
+      <p>Here is the math that changes the whole picture. Concurrent visitors in your lanes = visitors arriving per second × how long each page takes to load:</p>
+      <p><strong>10 arrivals per second × 0.4-second pages = 4 lanes used</strong> (plenty of room).<br><strong>10 arrivals per second × 2.0-second pages = 20 lanes used</strong> (the red line).<br><strong>10 arrivals per second × 3.0-second pages = 30 lanes needed</strong> (queues and 508 errors).</p>
+      <p>Same traffic in all three rows. The only thing that changed is page speed. A site serving pages in 400 milliseconds handles <strong>five times the traffic</strong> of an identical site serving them in 2 seconds — on the exact same plan, with no upgrade. Which means the most common "we need a bigger plan" emergency is actually a speed bug in disguise. (That slow start matters more than it looks: <a href="why-does-my-website-take-forever-to-start-loading.html">the slow-start article</a> explains why a long time-to-first-byte burns lanes five times faster.)</p>
+      <h2>3. The three spike moments every owner hits</h2>
+      <p><strong>The email blast.</strong> You send the campaign to 5,000 people at 9am. Five thousand visitors spread across a day is nothing; the same 5,000 clicking through in the two hours after the send is a completely different workload — and every shopper who adds to a cart or opens checkout runs uncached work on the server. This is the number-one way small stores discover their ceiling: the sale that worked <em>too well</em>.</p>
+      <p><strong>The viral moment.</strong> A local news mention, a big repost, a video that takes off. Unlike the blast, you get no warning — the parking lot fills in minutes. If your site has no cached layer (see <a href="why-does-my-website-load-slow-the-first-time.html">the cold-cache article</a> — a fresh spike is every visitor's first visit), every one of those visitors gets the full slow build, and every one of them holds a lane for the whole slow build.</p>
+      <p><strong>The slow build.</strong> Traffic grows month by month and the site quietly gets worse, because every extra visitor adds lane time. If the decline is gradual rather than sudden, read <a href="why-is-my-website-getting-slower-every-month.html">the getting-slower-every-month article</a> — and know that "gradually slower" and "suddenly unusable" are the same ceiling, met at different speeds.</p>
+      <h2>4. What the queue looks like from the customer's side</h2>
+      <p>The symptoms are specific, and they are how you tell this problem apart from ordinary slowness. If <a href="why-is-my-website-only-slow-sometimes.html">the site is only slow sometimes</a>, check whether the "sometimes" is your busy times — this is one of the main causes:</p>
+      <p><strong>Checkout takes forever during the sale.</strong> Cart, checkout, and account pages cannot be fully cached — they are personal. So they always need a worker, and under a spike they queue first. Eight-second checkouts during a promotion are the classic tell, and <a href="why-is-my-online-stores-checkout-so-slow.html">the checkout article</a> covers the page itself; here the cause is the crowd.</p>
+      <p><strong>The back of the store jams while the front looks fine.</strong> You try to update something during the rush and the admin area crawls, even though customers' pages still load. That is the queue: workers are all serving visitors, and your admin request waits behind them.</p>
+      <p><strong>Errors instead of slowness.</strong> Past the limit you stop getting slow pages and start getting refused ones — 503 (no lanes free) or 508 (your account's process limit hit). A customer who gets an error page is worse than a customer who waits.</p>
+      <p>One number that should scare you into action: a single ordinary page is really 20 to 60 separate requests — the HTML plus every image, stylesheet, script, and font. One hundred visitors arriving at once on a 40-request page means <strong>4,000 near-simultaneous requests</strong> competing for those 10 to 20 workers. That is the real scale of a "small" spike.</p>
+      <h2>5. The fix order — cheap before expensive, always</h2>
+      <p><strong>First: make pages fast, because fast pages need fewer lanes.</strong> Remember the math — cutting a 2-second page to 0.4 seconds quintuples the traffic your current plan can handle. That is the cheapest capacity upgrade that exists, and it costs nothing: images compressed (<a href="why-do-my-photos-slow-down-my-website.html">the photo article</a>), unused plugins removed, PHP updated, the cache actually working (<a href="what-is-website-caching.html">the caching article</a>). A cached page does not need a worker at all — the lane problem disappears for every visitor who gets the cached copy.</p>
+      <p><strong>Second: move the static traffic off your lanes.</strong> Your logo, your stylesheets, your product images have not changed in months, but without a CDN your server re-serves them from its own disk to every visitor, every time — burning lanes on files that never change. <a href="what-is-a-cdn-and-does-my-website-need-one.html">The CDN article</a> explains the fix: the static work moves to the edge, and your lanes only handle the pages that actually need building.</p>
+      <p><strong>Third: only then, the plan.</strong> The cheap fixes do not remove a hard limit. If your host's resource graphs show the lines touching the ceiling after your last busy day, you have outgrown shared hosting for real — and then the upgrade is money well spent. But upgrading <em>before</em> the speed work is buying more lanes for a kitchen that builds every page slowly. Fix the kitchen first; the lanes multiply on their own.</p>
+      <h2>6. What to ask your host (plain English)</h2>
+      <p><strong>"How many entry processes / concurrent requests does my plan allow?"</strong> You want the number. If they say 20 and you run sales, you now know your ceiling.</p>
+      <p><strong>"How many PHP workers come with my plan, and can I see the resource graphs from my last busy day?"</strong> The graphs are the proof — if the lines touched the ceiling, the spike story is confirmed, and <a href="why-is-my-website-fast-for-me-but-slow-for-customers.html">the fast-for-you-slow-for-customers article</a> explains why you never felt it yourself.</p>
+      <p><strong>"Which of my pages can't be cached — cart, checkout, account?"</strong> Those are the pages that will always need lanes. Knowing the list tells you exactly where a spike will hurt first.</p>
+      <p>And the honest summary: your website does get slower when more people visit — because every slow page holds a checkout lane, and lanes are the one thing your plan sells in fixed supply. The good news is the same math that causes the problem sells the cure: make the pages fast and the same plan handles five times the crowd. Start there, add the CDN, and only buy the bigger plan when the graphs prove you need it.</p>
+      <p class="meta">Mechanics verified 2026-10-07. notifier.so guide (updated ~Sep 2026): typical shared-hosting Entry Processes = 20 concurrent requests inside an account at the same instant; request 21 while 20 run = refused with 508; concurrency = requests/sec x response time (10 x 0.4s = 4 fine; 10 x 2.0s = 20 at the limit; 10 x 3.0s = 30 508s); a 400ms-page site handles 5x the traffic of a 2s-page site on the same plan; a 508 is usually a performance bug, not a capacity shortage. Mido Digital / Medium (Aug 2026): shared hosting caps concurrent PHP workers at 10-20; marketing spikes exhaust them; visitors queue = extreme delays or 503s; e-commerce worker exhaustion = abandoned carts, lost revenue. skynethosting.net (Oct 2026, WooCommerce): 5,000 visitors/day spread evenly is easy, the same 5,000 in two hours after an email blast is a different workload; cart/checkout/My Account cannot be fully cached; symptoms = admin crawls while front end is fine, 8-second checkouts, 503s at peak; cheap fixes (tuned caching plugin, image compression, unused-plugin removal, PHP update) do not remove a hard limit; the ceiling test = resource graphs after the last busy day. skynethosting.net (Oct 2026, CDN): one WordPress page = 20-60 requests; 100 simultaneous visitors x 40 requests = 4,000 near-simultaneous requests; without a CDN, static files are re-served from origin disk to every visitor, every time. SERP check 2026-10-07: hosting-company docs and developer guides on 508/503 concurrency rank — no plain-English owner-level "does my website slow down when more people visit" decision article found. No per-plan concurrent-visitor or per-industry spike-failure figures stated beyond the cited sources; none verifiable.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+websites+slow+down+under+traffic+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
