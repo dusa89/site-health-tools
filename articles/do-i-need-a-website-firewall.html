@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do I Need a Website Firewall?</title>
+<meta name="description" content="A website firewall blocks attackers before they reach your site — but the free Sucuri plugin is not one, and your security plugin is not one either. What the two kinds actually do, what the free tier really covers, and the honest answer for a small business, in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do I Need a Website Firewall?</h1>
+    <p class="lede">Somewhere between the hosting upsell email and the security plugin dashboard, the words "website firewall" started showing up — usually next to a price. So you did the reasonable thing: you installed a security plugin, which feels like the same job. Here is the honest answer nobody selling you one will give you straight: <strong>a security plugin and a website firewall are two different jobs, in two different places</strong> — and for most small businesses, the right answer is a free tier of one, plus the plugin you already have. This is the whole picture, no sales pitch.</p>
+    <div class="article">
+
+      <h2>1. The short answer, up front</h2>
+      <p><strong>Yes — and the meaningful version is free.</strong> Cloudflare's forever-free plan includes a real website firewall (verified as of October 2026) that blocks the highest-risk attack patterns before they reach your server, plus unmetered DDoS protection and a free SSL certificate. It takes under an hour to set up and costs $0. If you are taking payments or storing customer accounts, the paid tier (about $20&ndash;25/month) is where the WordPress-specific protection and PCI-friendly features live. Everything else — the upsells, the fear — is detail.</p>
+      <h2>2. What a website firewall actually is (the bouncer, not the lock)</h2>
+      <p>You already know the <a href="what-the-padlock-means.html">padlock</a> — that is encryption, a private tunnel between the visitor and your site (<a href="do-i-need-ssl.html">whether you need one at all, answered here</a>). A firewall is the <strong>bouncer outside the door</strong>. Every request to your website passes through it first. Known attack patterns — SQL injection attempts, cross-site scripting probes, botnets hammering your login page — get turned away at the curb. Your server never sees them, never spends energy on them, never gets the chance to mishandle them.</p>
+      <p>The part owners miss: the bouncer works even when you are not looking. <a href="why-does-my-website-keep-getting-login-attempts.html">The login hammering your site gets every night</a> is exactly the traffic a firewall was invented for. A plugin fights those attempts <em>on your server</em> — each one costs your hosting plan a little CPU. A cloud firewall fights them <em>on someone else's computers</em>, and your server stays quiet. Same attack, very different bill.</p>
+      <h2>3. The two kinds — and why "I have a security plugin" is not an answer</h2>
+      <p>This is the distinction the whole industry blurs on purpose. There are two firewall architectures, and they protect from two different places:</p>
+      <p><strong>The endpoint firewall (Wordfence).</strong> It lives <em>on your server</em>, inside WordPress. Think of a bodyguard standing in your living room — he sees everything, knows which window is being rattled, checks every file for tampering. The price: when a mob of 10,000 bots rushes the door, the fight happens <em>in your living room</em>. Your server pays CPU for every single block. On cheap shared hosting, that fight is the reason your site slows down during an attack.</p>
+      <p><strong>The cloud firewall (Sucuri, Cloudflare).</strong> It lives <em>out on the internet</em>, in front of your hosting. A gate down the street from your house — the bad guys are stopped 50 yards away and never touch your door. Your server stays cool, the attack never reaches your CPU, and it keeps working even if WordPress itself is down.</p>
+      <p>So when someone says "I have Wordfence, so I have a firewall" — true, endpoint kind. When someone says "I have the free Sucuri plugin, so I have a firewall" — <strong>not true.</strong> The free Sucuri plugin is auditing, file-integrity checks, and hardening; it scans and reports. The firewall is Sucuri's paid cloud service — a completely different product. This is documented in every 2026 comparison and still surprises owners. (The full Wordfence-vs-Sucuri breakdown is its own ecosystem decision; the point here is the <em>location</em>, not the brand.)</p>
+      <h2>4. What it blocks, in owner-English</h2>
+      <p>The firewall rulebook reads like a list of the attacks in the rest of this security cluster:</p>
+      <p><strong>Injection attempts</strong> — attackers typing database commands or scripts into your search box, your contact form, your URL parameters, hoping your site runs them. This is the OWASP Top 10 stuff the free Cloudflare ruleset explicitly covers (SQL injection, cross-site scripting), verified in the October 2026 free-tier docs.</p>
+      <p><strong>Login hammering</strong> — thousands of password guesses against your login page, the symptom described in <a href="why-does-my-website-keep-getting-login-attempts.html">the login-attempts article</a>. A firewall throttles or blocks the IPs before they touch your site.</p>
+      <p><strong>Bad bots</strong> — scrapers stealing your content, spam bots posting junk in your forms, vulnerability scanners probing every plugin you have installed. The firewall recognizes their signatures and denies them the door.</p>
+      <p><strong>Brand-new vulnerability attacks</strong> — when a plugin you use gets a critical flaw, the firewall vendors push an emergency rule that blocks the exploit pattern <em>before you update the plugin</em>. Cloudflare's free tier includes these high-risk CVE emergency fixes — the last line of defense before you are reading <a href="what-should-i-do-if-my-website-gets-hacked.html">the what-to-do-after-a-hack article</a> — and the closest thing to insurance that $0 buys in this industry.</p>
+      <h2>5. What the free tier honestly covers — and where it stops</h2>
+      <p>The May 2026 free-tier limits audit (eastondev) is the clearest statement of the boundary, and it is refreshingly honest: the free managed ruleset is a <strong>subset</strong> — the high-risk vulnerabilities, not the full catalog. Specifically <em>not</em> included: WordPress-specific protection (that is a paid feature), account-level management across multiple domains, and the advanced bot analytics.</p>
+      <p>But what <em>is</em> included is enough for most small sites: the core attack patterns, the emergency CVE rules, and — critically — <strong>custom rules that work on the free tier</strong>. You can block a specific IP, a whole country, a bot user-agent, or a sensitive URL path, by hand, for free. For a brochure site, a portfolio, a blog — the free tier genuinely blocks most of what automated attacks throw at you. The audit's own words: sufficient for small sites, upgrade for e-commerce or financial services.</p>
+      <p>The paid jump ($20&ndash;25/month) buys the full managed rulesets including the WordPress-specific ones, real-time rule updates (free Wordfence rules arrive 30 days late — the documented delay), and at the Business tier ($200/month), PCI-friendly features for sites taking cards.</p>
+      <h2>6. "But I am too small to be attacked"</h2>
+      <p>This is the objection the <a href="my-website-doesnt-sell-anything-do-i-still-need-security.html">"I don't sell anything" article</a> takes apart, and it applies double here: <strong>attacks are automated, and automation does not read your revenue.</strong> Bots scan the entire internet for vulnerable WordPress installs; your 6-page plumber site gets probed exactly as often as a store — the bot does not know the difference and does not care. What happens next is the expensive part: the compromised site sends your customers' visitors to scam pages (<a href="why-is-my-website-redirecting-to-spam-sites.html">the redirect-to-spam symptom</a>), hosts phishing pages under your name (<a href="someone-is-pretending-to-be-my-business-online.html">the impersonation problem</a>), or gets blacklisted so Google warns everyone off (<a href="why-does-google-say-my-website-is-dangerous.html">the dangerous-site warning</a>). The firewall is the $0 version of not becoming that story.</p>
+      <h2>7. The setup, in one paragraph</h2>
+      <p>The free Cloudflare path, as every 2026 walkthrough describes it: create a free account, add your domain, Cloudflare scans your existing DNS records, and you replace your registrar's nameservers (GoDaddy, Namecheap, wherever the domain lives) with the two Cloudflare gives you. Traffic now routes through their network first — that is what makes the firewall possible. One detail that bites people: in the Cloudflare DNS panel, the orange-cloud icon means the record is <em>proxied</em> (firewall active); a grey cloud means DNS-only, and the firewall is silently not protecting that record. Check the clouds.</p>
+      <h2>8. What to ask your developer (plain English)</h2>
+      <p><strong>"Are we behind a cloud firewall, or only running a plugin?"</strong> If the answer is plugin-only, you have the bodyguard but no gate. Adding the free tier is the cheapest security upgrade in existence.</p>
+      <p><strong>"Do our DNS records show the orange cloud?"</strong> Proxy status is the whole game for a cloud firewall. Unproxied records are unprotected records, and nobody notices until an attack arrives through the side door.</p>
+      <p><strong>"When the next critical plugin vulnerability drops, do we have a virtual patch or are we waiting on an update?"</strong> This is the professional's question. The firewall's emergency rules are the patch; the plugin update is the fix. You want both — but the patch arrives first.</p>
+      <p>And the honest catch to carry home: a firewall does not replace updates, strong passwords, two-factor, or backups — the same layers <a href="who-is-responsible-for-my-websites-security.html">the responsibility article</a> lays out. It is the outermost ring. The good news is the outermost ring is free, and it is the ring that absorbs the traffic your server would otherwise pay for. (If the phrase "nothing happened yet" is doing your security planning, that article is worth the read — the job nobody assigned, assigned to you by default.)</p>
+      <p class="meta">Mechanics verified 2026-10-07. Cloudflare free plan (verified Oct 2026, costbench): forever free; free tier includes WAF (free managed ruleset — subset covering OWASP Top 10 core + high-risk CVE emergency fixes), unmetered DDoS mitigation, global CDN, universal SSL. Eastondev (May 26, 2026) free-tier limits: subset ruleset — no WordPress-specific protection, domain-level only; custom rules (block by IP/country/user-agent/URL path) work on free; sufficient for small sites, upgrade advised for e-commerce/financial. Pro ~$20–25/mo adds full WAF rulesets incl. WordPress-specific (financesonline $20/mo/domain; costbench Oct 2026 $25/mo); Business $200/mo adds PCI features + 25 custom rulesets. Wordfence = endpoint (on-server) firewall; Sucuri = cloud reverse-proxy firewall (aveshost/elsner/oddjar 2026 comparisons). Free Wordfence rule updates delayed 30 days, paid real-time, free includes 2FA; Sucuri free plugin = auditing/integrity/hardening only — not the firewall (oddjar). SERP check 2026-10-07: vendor Wordfence-vs-Sucuri comparisons rank — no plain-English owner-level "do I need a website firewall" decision article found. No attack-frequency or breach-rate figures stated; none verifiable.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are thinking about security: run our free check to see how your site reads from the outside. Paste your domain &mdash; you get Mozilla&rsquo;s A+&ndash;F grade translated into plain English, how many of its checks passed, and your certificate&rsquo;s exact expiry date. Free, no signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>The full Site Health Watch audit checks your site against all 40 trust signals &mdash; security headers, hidden malware, speed, mobile, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+website+firewalls+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
