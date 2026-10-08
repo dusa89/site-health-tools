@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Do My Emails Bounce Back?</title>
+<meta name="description" content="Your email came back with an error instead of reaching the customer. What a bounce message actually is, the five bounces every business owner meets (wrong address, full mailbox, too-big file, blocked, sent too many), how to read the 3-digit code at the top, and the fix for each — plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Do My Emails Bounce Back?</h1>
+    <p class="lede">You hit send on a quote, a contract, an invoice — and a few minutes later an email comes back saying it could not be delivered. That returned message is called a <strong>bounce</strong>, and it is actually good news wearing a scary costume: unlike email that silently slides into a spam folder (covered in <a href="why-are-my-emails-suddenly-going-to-spam.html">the spam article</a>), a bounce <em>tells you what went wrong</em>. There is one skill to learn — finding the 3-digit code near the top — and after that, almost every bounce falls into one of five families, each with its own fix. This article is the whole map.</p>
+    <div class="article">
+
+      <h2>1. What a bounce actually is</h2>
+      <p><strong>A bounce is your email being returned to sender, with the reason stamped on it.</strong> Think of it like the post office bringing your letter back with a sticker: "no such address," "mailbox full," "package too heavy." The returned message usually comes from an address like MAILER-DAEMON or "Mail Delivery System" — that is a robot, not a person, so do not reply to it. The information you need is in the first two or three lines; everything below that is technical wrapping you can ignore.</p>
+      <p><strong>Three outcomes, three different problems.</strong> <em>Delivered</em> means it arrived (whether they read it is another question). <em>Bounced</em> means it came back with an error — loud and readable, this article. <em>Silently missing</em> means no error came back and the customer never saw it — that is the spam-folder problem, and <a href="why-are-my-emails-suddenly-going-to-spam.html">the spam article</a> covers it. Owners waste hours treating all three the same way. The first question is always: did anything come back?</p>
+      <h2>2. The one skill: find the 3-digit code</h2>
+      <p><strong>Open the bounce and look at the top for a number like 550 or 452.</strong> Email servers speak in 3-digit codes (this is part of the email standards, RFC 5321 — the same rules every provider has used for decades), and the first digit is the whole story:</p>
+      <p><strong>Codes starting with 5 (500-599) are PERMANENT.</strong> "Stop and fix something — sending it again changes nothing." A 550 will never succeed on retry. Read the words after the code; they name the fix.</p>
+      <p><strong>Codes starting with 4 (400-499) are TEMPORARY.</strong> "Something is wrong right now, we will try again." Your mail server automatically retries these — Microsoft's own mail protection, for example, retries a deferred message every 15 minutes for a full day (Microsoft Learn, verified Oct 2026). You do nothing. You only act if a <em>second</em> message arrives a day later saying delivery finally failed.</p>
+      <p><strong>"Delivery delayed" is NOT a bounce.</strong> It is a warning that the server is still trying — the 4xx family doing its job. File it, forget it, and only investigate if the final failure notice follows. Panicking at the warning is the most common false alarm in business email.</p>
+      <h2>3. The five bounces every owner meets</h2>
+      <p><strong>Bounce one: 550 5.1.1 — "user unknown" / "mailbox unavailable."</strong> The most common bounce in business life. It means the address you sent to does not exist at that domain — misspelled, a typo in your contacts, or the person left the company and their mailbox was deleted. The fix is embarrassingly simple and almost always skipped: <strong>read the address back letter by letter.</strong> One transposed letter (gmial instead of gmail) produces exactly this bounce. If the address looks right, the customer changed jobs — call them and ask for the current one. <a href="why-do-customers-say-they-never-got-my-quote.html">The missing-quote article</a> is the cousin of this bounce: no error, no delivery, same first step.</p>
+      <p><strong>Bounce two: 552 5.2.2 (or 452) — "mailbox full" / "over quota."</strong> This one is not about you at all: the <em>recipient's</em> inbox is full, so their server refused your email. There is nothing to fix on your side — no setting, no record, no upgrade. The fix is a phone call or a text: "your inbox is full, my quote bounced." Small businesses hit this constantly with customers on old hosting-company email plans with tiny storage. Do not keep resending; the bounce will keep coming until they clear space.</p>
+      <p><strong>Bounce three: 552 5.3.4 — "message too large."</strong> Your attachment (or the whole email) exceeded the recipient's size limit — and sometimes your own provider's. Two facts make this bounce confusing. First: Gmail's 25 MB limit is the <strong>entire message, not the file on your disk</strong> (mailjerry.com, verified Oct 2026) — the email body, the signature images, and the file all count. Second: attaching a file makes it grow about <strong>a third bigger in transit</strong> (the encoding email uses), so a 20 MB file arrives as roughly 26-27 MB — over the 25 MB line even though the file itself looked fine (mailjerry.com; Microsoft's own 365 blog, both verified Oct 2026). Microsoft 365 allows up to 150 MB if configured, but defaults to 35 MB send / 36 MB receive (Microsoft Learn, verified Oct 2026) — and most small-business hosts set theirs far lower than Gmail's 25. The fix is not a smaller file; it is <strong>no file at all: put it on Google Drive, Dropbox, or OneDrive and send the link.</strong> Contractors sending job photos and contracts hit this bounce weekly; the link habit ends it permanently. Zipping rarely helps — photos and PDFs are already compressed, so the zip barely shrinks.</p>
+      <p><strong>Bounce four: 550 5.7.1 — "blocked" / "rejected due to policy."</strong> The recipient's server does not trust your mail. This is the bounce that points at <em>your</em> setup: your domain or sending address is on a blocklist, or your authentication is failing so you look like a forger. It is also the bounce where the other articles in this family earn their keep — <a href="why-are-my-business-emails-being-blacklisted.html">the blacklist article</a> for the blocklist case, <a href="what-is-dmarc.html">the authentication article</a> for the SPF/DKIM/DMARC case, and <a href="is-my-business-email-going-to-spam.html">the deliverability article</a> for the 10-second diagnosis. Unlike the first three bounces, this one is never the customer's fault. If every address at one customer's company bounces 5.7.1, though, their server may simply distrust your provider — rare, and a call to their IT person resolves it. Gmail's own version of this rejection — the "your mail looks suspicious" verdict — is common enough to have <a href="why-does-gmail-reject-my-business-email.html">its own article</a>.</p>
+      <p><strong>Bounce five: 550 5.4.5 — "daily sending quota exceeded."</strong> You sent too many emails today and your provider cut you off until tomorrow. Gmail allows 500 a day on a free account and 2,000 a day on Google Workspace (Cornell IT's published Workspace limits, verified Oct 2026). Owners hit this the day they send a newsletter or a batch of quotes from their main business address — <a href="should-i-send-my-newsletter-from-my-business-email.html">the newsletter article</a> explains why that is the wrong tool for the job. The fix: wait 24 hours, then move bulk sending to a proper mailing service and keep the business address for one-to-one mail.</p>
+      <h2>4. The mistakes that make bounces worse</h2>
+      <p><strong>Mistake one: retrying a 5xx bounce.</strong> A permanent failure will fail forever. Resending the same email to the same address ten times produces ten bounces and zero deliveries. Read the code, fix the cause, then send once.</p>
+      <p><strong>Mistake two: deleting the address in a panic.</strong> A 5.1.1 bounce does not always mean the customer is gone — it often means you typed it wrong once. Confirm the address before you delete the contact; the number of "lost customers" who were actually typos would fill a filing cabinet.</p>
+      <p><strong>Mistake three: replying to the bounce.</strong> It came from MAILER-DAEMON, a robot. Your reply goes nowhere. Forward the bounce to your web person or IT helper instead — the code at the top is exactly what they need.</p>
+      <p><strong>Mistake four: treating a bounce like a spam problem.</strong> Bounces are errors with answers; spam-foldering is silent and needs authentication work. If the bounce says 5.7.1 (blocked), <em>then</em> the authentication articles apply — but a 5.1.1 wrong-address bounce needs no authentication work at all, and owners who "fix their SPF" for a typo'd address are fixing the wrong thing.</p>
+      <h2>5. The questions owners always ask next</h2>
+      <p><strong>"The bounce is full of gibberish — headers, IP addresses?"</strong> Ignore all of it. The one line that matters is near the top: the 3-digit code and the plain words right after it ("user unknown," "mailbox full," "message too large," "blocked"). Everything else is the servers talking to each other.</p>
+      <p><strong>"It only bounces when I email one company."</strong> Then it is their server and their rules, not your email. One company's filter can be stricter than the rest of the world's. Call someone there — ideally their IT person — and ask what their filter flagged. Nine times in ten it is their full mailbox or an overzealous filter, and a human resolves it in minutes.</p>
+      <p><strong>"It bounces from my phone but not my laptop?"</strong> Then the problem is the phone's setup, not the recipient — <a href="why-cant-i-send-email-from-my-phone.html">the phone article</a> covers the sending-settings side of exactly this.</p>
+      <p><strong>"Should I worry about one bounce to one address?"</strong> No. Single bounces are typos and full inboxes — routine. Worry when the <em>pattern</em> appears: the same code to many addresses (your setup has a problem — start with <a href="is-my-business-email-going-to-spam.html">the diagnostic</a>), or bounces on addresses that worked last month (something changed — <a href="how-do-i-switch-email-providers-without-losing-anything.html">a recent provider move</a> breaks authentication records if they were not rebuilt).</p>
+      <p class="meta">Mechanics verified 2026-10-08. 5xx = permanent failure / 4xx = temporary failure per the email standards (RFC 5321). Temporary-failure retry cadence: Microsoft's mail protection retries a deferred message every 15 minutes for 1 day (Microsoft Learn EOP limits). Gmail: 25 MB per-message limit covering the entire message, not the file (mailjerry.com); ~33% encoding overhead in transit — a 20 MB file travels as ~26-27 MB (mailjerry.com; Microsoft 365 blog). Microsoft 365 message size configurable to 150 MB; default 35 MB send / 36 MB receive (Microsoft Learn). Gmail sending quotas: 500/day personal, 2,000/day Workspace (Cornell IT Workspace limits page). Figures per the cited sources' publication dates; check the provider's own documentation for the current number.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>If your bounce said "blocked," "rejected," or "policy," the problem is usually authentication: paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three records that decide whether other servers trust your mail. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>Bounces are one symptom. The full Site Health Watch audit checks your website's speed, security, mobile experience, and AI visibility too &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+bounced+emails+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
