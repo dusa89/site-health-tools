@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Do I Switch Email Providers Without Losing Anything?</title>
+<meta name="description" content="Moving business email to a new provider is safe — if the order is right. The four traps that eat people's mail (the DNS TTL trap, the dead-mailbox trap, the SPF trap, the CNAME trap), the exact cutover checklist, and 2026 prices for Google Workspace and Microsoft 365 — plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>How Do I Switch Email Providers Without Losing Anything?</h1>
+    <p class="lede">Outgrown the email that came with your web hosting? Ready to move to Google Workspace or Microsoft 365? The good news first: <strong>nobody has to lose a single email</strong>. The bad news: the order matters more than the provider, and the businesses that lose mail all lose it the same four ways. This article is the move in the right order — the steps that take an hour, the ones that take a day of waiting, and the traps that turn a routine switch into a week of missing invoices. If you are still deciding whether to leave your hosting company's email at all, <a href="should-i-use-the-email-that-came-with-my-web-hosting.html">the hosting-email article</a> is the stay-or-go decision; this is the how.</p>
+    <div class="article">
+
+      <h2>1. The short answer, up front</h2>
+      <p><strong>Yes, you can move everything — every old email, every folder, every contact — and keep receiving new mail without a gap.</strong> But there is no single "migrate" button that does it safely. A provider switch has three moving parts: the old mail has to be <em>copied</em> to the new place, the domain's MX record has to be <em>pointed</em> at the new place, and the authentication records (SPF, DKIM) have to be <em>rebuilt</em> for the new place. Do those in the wrong order and mail goes missing, bounces, or starts landing in your customers' spam folders. The checklist in section 4 is the right order. The next two sections are why each step exists — read them once and you will never lose mail to a move.</p>
+      <h2>2. Where people move to (and what it costs in 2026)</h2>
+      <p><strong>Most small businesses land in one of two places: Google Workspace (Gmail on your own domain) or Microsoft 365 (Outlook on your own domain).</strong> Both are real business email: spam filtering that actually works, mail you can get to from any device, and calendars that invite customers instead of confusing them. The deciding factors are price and habit — pick the one your brain already likes, because a tool you fight is a tool that gets skipped.</p>
+      <p><strong>The 2026 prices, so you can do the math yourself.</strong> Google Workspace Business Starter is <strong>$7 per user per month billed annually, $8.40 on flexible monthly billing</strong> (pricing reviewed Sep/Oct 2026; Standard is $14/$16.80, Plus $22/$26.40 — you do not need those tiers for email). Microsoft 365 Business Basic is <strong>$6 per user per month</strong>, Business Standard <strong>$12.50</strong> (Sep 2026). A 5-person team on Workspace Starter is about $420 a year on annual billing. Write that number down before you move, because one of the traps below is discovering mid-move that you are paying for 12 users when you need 5.</p>
+      <p><strong>What NOT to move to: your free personal Gmail.</strong> Forwarding everything to you@gmail.com feels free and costs you the business identity — customers see a personal address and read "side project." <a href="should-i-forward-my-business-email-to-my-personal-gmail.html">The forwarding article</a> covers why that trade never pays. A paid plan keeps yourname@yourbusiness.com, which is the address your customers already trust.</p>
+      <h2>3. The four traps that eat people's mail</h2>
+      <p><strong>Trap one: the DNS gap.</strong> Your MX record tells the world's mail servers where your email lives. That record has a TTL — a "time to live" — which is how long other servers are allowed to remember the old answer before checking again. If your TTL is the common 24 hours and you switch the MX record on a Tuesday, some servers keep delivering to the old mailbox until Wednesday. If you already cancelled the old service, those emails <em>bounce</em>. If you kept it but never copy the stragglers over, those emails sit on the old server forever and you never see them. The fix is mechanical and free: <strong>lower the MX TTL to 300 seconds (5 minutes) the day BEFORE you switch</strong> — then wait out the old TTL so the short one takes effect — and only then change the record (HostMyCode, Oct 2026; JustEmails migration guide, Sep 2026). It does not eliminate mixed delivery; it shrinks the window from a day to minutes. There is a built-in mercy here: mail servers <em>retry</em> failed deliveries for a while (dev.to, Mar 2026), so a brief gap usually resolves itself — but a day-long gap does not.</p>
+      <p><strong>Trap two: killing the old mailbox too early.</strong> This is the single most common migration failure, and it has a technical name worth knowing: migration tools are "additive only." They copy mail from old to new; they do not watch the old mailbox for mail that arrives <em>after</em> the copy ran, and they do not delete copies of messages you deleted on the old side. So the correct sequence is: copy, switch DNS, <em>leave the old server running</em>, then run one final "cleanup delta" copy a day or two later to catch the mail that arrived during the mixed-delivery window (Medium, Jan 2026). Two checks make this airtight: <strong>verify the copy by item count, not by size</strong> — gigabytes lie because encoding overhead changes the numbers, so "4,205 items in, 4,205 items out" is the real audit (Medium, Jan 2026) — and if the copy crashes mid-way, resume rather than restart (tools like imapsync pick up where they stopped; JustEmails, Sep 2026).</p>
+      <p><strong>Trap three: the SPF/DKIM you forgot to rebuild.</strong> Your old provider's authentication records say "these servers may send mail for this domain." After the move, those records point at the old servers — so your first invoices from the new provider look exactly like forgeries to Gmail and Outlook. Symptoms: the emails arrive but with "via" warnings, or they slide into spam, or you end up on a blacklist you never deserved. <a href="what-is-dmarc.html">The authentication article</a> explains the three records; the migration step is simply to publish the <em>new</em> provider's SPF and DKIM values (Google and Microsoft both give you exact lines to paste) as part of the move, not as an afterthought. If you moved months ago and deliverability has been strange ever since, run <a href="is-my-business-email-going-to-spam.html">the deliverability article's</a> diagnosis — and note that a sudden post-move blacklist is a known consequence, covered in <a href="why-are-my-business-emails-being-blacklisted.html">the blacklist article</a>.</p>
+      <p><strong>Trap four: the pointing mistakes.</strong> Two small ones, both real. First: an MX record is supposed to point at a hostname with its own address records — pointing it at a CNAME (an alias name) is non-compliant and many mail servers simply fail on it, which means bounces with cryptic codes (dmarcreport, Oct 2026). Second: deleting the <em>wrong</em> record in the DNS panel in the excitement of the moment — for example removing the old provider's MX while the new one has a typo. The one-step fix: before you touch anything, screenshot or write down every mail-related record (MX, SPF, DKIM, DMARC). That snapshot is your undo button. Keep it for a month.</p>
+      <h2>4. The right order: the cutover checklist</h2>
+      <p><strong>Day minus one (15 minutes, then waiting).</strong> 1. In your DNS panel, lower the TTL on your MX record (and the address records of any mail hostnames) to 300 seconds. 2. Wait 24 hours so the old, longer TTL expires from caches everywhere. 3. Meanwhile, buy the plan and create every user account at the new provider — same addresses, same names. 4. Add the new provider's SPF and DKIM records to your DNS (they publish exact values in their setup guides). 5. Give your assistant and staff their new logins now — <a href="how-do-i-let-my-assistant-check-my-business-email.html">the shared-access article</a> covers the right way to hand out access without sharing passwords.</p>
+      <p><strong>Move day (the active hour).</strong> 6. Copy the old mailboxes to the new ones — IMAP copy, provider import tool, or a migration service; verify by item count, not size. 7. Swap the MX record to the new provider and delete the old one. 8. Send a test email from the new system and reply to it — confirm the test lands in the <em>sent</em> folder next to the migrated history, not in a stranger folder. 9. Confirm one inbound email arrives at the new inbox. 10. Reconfigure the phones and laptops — mail apps do not follow the MX record on their own, and a phone still pointing at the old server is how "my sent mail vanished" stories start.</p>
+      <p><strong>The week after (the part everyone skips).</strong> 11. Leave the old mail service running for at least 7 days. 12. Run the final delta copy to catch ghost mail from the mixed-delivery window, then check the old inboxes one last time. 13. Only then cancel the old service — and download one archive export first. 14. Verify your SPF/DKIM/DMARC read clean on the new provider (the 10-second check below does exactly this).</p>
+      <p>That checklist is the entire move. There is no step that requires an IT department — there is only the discipline of doing them in that order. The accidental version of this move — email that broke because a website migration deleted the records — is covered in <a href="why-did-my-email-stop-working-when-i-moved-my-website.html">the moved-website article</a>; it reads like the blooper reel of this checklist.</p>
+      <h2>5. The questions owners always ask next</h2>
+      <p><strong>"Will there be downtime?"</strong> Effectively no — if the TTL was lowered and the MX swap is clean, inbound mail may take minutes to fully redirect, and the retry mechanism covers the blips. What people experience as "downtime" is almost always trap two: mail arriving at an old mailbox nobody checks anymore. <a href="why-do-customers-say-they-never-got-my-quote.html">The missing-quote article</a> is the symptom guide.</p>
+      <p><strong>"Do I keep paying for both during the move?"</strong> Yes, for one month of overlap. Paying one extra month of the old service is the cheapest insurance in the whole move — it is the ghost-mail window, the undo button, and the archive all in one. Cancelling the old service on move day to save $20 is how $2,000 quotes disappear.</p>
+      <p><strong>"What about my calendar and contacts?"</strong> Calendars and contacts migrate separately from mail (Google and Microsoft both have importers), and they are the piece people forget until the first missed meeting. Migrate them the same day as the mailboxes and verify by spot-checking a few appointments.</p>
+      <p><strong>"Can my IT person just do this?"</strong> If you have one, yes — hand them this checklist. If you do not, the new providers' setup wizards walk through it; the only genuinely fiddly step is the DNS panel, and it is exactly three records to change. The migration software guides (JustEmails, Sep 2026) put the realistic budget at a day of mostly-waiting — the TTL wait, the copy, the ghost-mail wait. The work is small; the waiting is the work.</p>
+      <p class="meta">Mechanics verified 2026-10-08. Pricing: Google Workspace Business Starter $7/user/mo billed annually, $8.40 flexible monthly (acridautomation, reviewed Sep 2026; cloudinsight, Oct 2026); Business Standard $14/$16.80, Plus $22/$26.40. Microsoft 365 Business Basic $6/mo, Business Standard $12.50/mo (hustlerslibrary, Sep 2026). Migration order: lower MX TTL to 300s 24h before cutover, wait out the old TTL (HostMyCode MX tutorial, Oct 2026; JustEmails migration guide, Sep 2026; dmarcreport DNS change planning, Oct 2026). Do not decommission the old server before a final delta copy; migration tools are additive-only; verify by item count not size (Medium, Jan 2026). imapsync is resumable (JustEmails, Sep 2026). MX pointing at a CNAME is non-compliant and causes delivery failures (dmarcreport, Oct 2026). SMTP retry gives partial forgiveness for brief gaps (dev.to, Mar 2026). Prices and procedures are per the cited sources' publication dates; check the provider's own checkout for the current figure.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>After the move, verify the new provider's authentication actually reads clean: paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three records that decide whether Gmail and Outlook trust your mail from its new home. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>The full Site Health Watch audit also checks your website's speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+switching+email+providers+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
