@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should I Hide My Website's Login Page?</title>
+<meta name="description" content="Someone told you to hide your wp-admin page from hackers. Here is what hiding actually stops, what it never stops, and the five real locks that matter more — in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should I Hide My Website's Login Page?</h1>
+    <p class="lede">Somewhere along the way — a blog post, a developer, a plugin upsell — you heard the advice: <em>hide your login page and the hackers can't find it.</em> It sounds clever. Your WordPress login lives at the same address as 40% of the internet's login pages, and moving yours somewhere secret feels like taking your house off the map. Here is the honest answer from people who watch these attacks for a living: hiding the door helps against the dumbest robots, does nothing against anyone who actually wants in, and there are five locks that matter roughly a hundred times more. This article ranks them.</p>
+    <div class="article">
+
+      <h2>1. The short answer, up front</h2>
+      <p>If hiding your login page is free and takes five minutes, do it — it costs nothing and it does filter out some noise. But understand what you bought: a quieter doorbell, not a stronger door. The attacks that actually take over small-business websites do not care where your login page lives. They care whether your password is guessable, whether you have a second lock on the account, and whether your software is patched. Do the five real locks in section 5 first. Hiding is the garnish, not the meal.</p>
+      <h2>2. Why your login door gets knocked at all</h2>
+      <p>Every WordPress site on earth ships with the same front door: <strong>/wp-admin</strong> and <strong>/wp-login.php</strong>. WordPress runs about 40% of all websites (W3Techs, October 2026) — so an attacker does not need to know anything about <em>your</em> site. They point a robot at the entire internet and knock on every default door. It is fully automated, it never sleeps, and it is enormous: the Wordfence network blocked 16 <em>billion</em> brute-force login attempts in the first quarter of 2026 alone, up 15% from the quarter before.</p>
+      <p>This is also why the <a href="why-does-my-website-keep-getting-login-attempts.html">login-attempts article</a> exists — the knocking is the symptom. The attempts are not personal. Nobody chose your plumbing company as a target. You are one door in a neighborhood of half a billion identical doors, and the robots knock on all of them.</p>
+      <h2>3. What "hiding" the login page actually does</h2>
+      <p>Hiding means changing the address — your login moves from <strong>yoursite.com/wp-admin</strong> to something like <strong>yoursite.com/my-secret-door-7391</strong>. The dumbest class of bots only ever knocks on the default address. Those bots try the default door, get nothing, and move on. Your login-attempt logs go quiet. It <em>feels</em> like the attacks stopped.</p>
+      <p>That quiet is real, and it is the entire benefit. Fewer junk attempts in the log, marginally less load on the server, one less thing pinging you at 3 a.m. If a plugin does it cleanly and free, there is no reason to refuse it.</p>
+      <h2>4. What hiding does NOT do</h2>
+      <p>Here is where the pitch usually stops and the honesty starts. Security practitioners have a name for this move: <strong>security through obscurity</strong> — safety that depends on the attacker not knowing something, rather than on anything actually being strong. And the 2026 consensus is blunt: modern attack tools do not rely on the default address. They probe for login pages, detect the moved one, and carry on. A renamed login URL can also cause real annoyances: broken bookmarks and links, confused staff, and integrations (apps, services, plugins that expect the standard address) that quietly stop working.</p>
+      <p>The deeper problem: hiding answers the wrong question. The robots were never the threat — they are background radiation. The actual break-ins happen when a bot (or a person) <em>finds</em> the login page — moved or not — and the credentials give way. If your admin username is "admin" and the password is the dog's name, no secret URL on earth saves you. Which brings us to the locks.</p>
+      <h2>5. The five real locks, in order</h2>
+      <p><strong>Lock 1 — Kill the username "admin."</strong> WordPress used to create an administrator account literally named "admin," and it still exists on millions of live sites. That hands an attacker half the puzzle for free: they only have to guess the password. Create a new administrator with a name nobody would guess, log in as that account, and delete the old "admin" account (reassigning its content to the new one). Ten minutes, enormous payoff.</p>
+      <p><strong>Lock 2 — A long, unique password.</strong> Not the dog, not the business name with a "1" on the end, and not the same password you use for email. A password manager generating 20 random characters is the honest standard. This is the lock the robots are actually testing, billions of times a quarter.</p>
+      <p><strong>Lock 3 — Two-factor authentication (2FA).</strong> This is the single biggest upgrade most small-business sites can make, and WordPress does not ship it — you add it with a plugin. With 2FA on, a stolen password is useless without the code from your phone. The security analyses are consistent: 2FA stops the vast majority of credential-based attacks even when the password is already compromised. If you do one thing from this article, do this one.</p>
+      <p><strong>Lock 4 — Limit login attempts.</strong> WordPress, out of the box, lets anyone try passwords forever. A login-limiting plugin locks out an address after a handful of failures. It does not stop a determined attacker, but it turns an infinite guessing game into a very slow one — and the automated bots mostly give up and move to easier doors.</p>
+      <p><strong>Lock 5 — Keep everything updated.</strong> The <a href="why-does-my-website-software-need-updating.html">updates article</a> covers why. For the login door specifically: many break-ins do not go through the login form at all — they go through an unpatched plugin and <em>create</em> an admin account from the inside. A locked door means nothing if the window is open.</p>
+      <h2>6. The back door you have never heard of: XML-RPC</h2>
+      <p>WordPress ships with a feature called XML-RPC — a remote-connection endpoint originally built so outside apps (like the old mobile app, or Jetpack) could talk to your site. Attackers love it, because it lets them bundle <em>hundreds</em> of password guesses into a single request, slipping past the login-attempt limits from Lock 4. If you do not use Jetpack or a remote-publishing app, this door serves you nothing and attackers everything. Disabling it removes the surface entirely — most security plugins do it with a toggle, or your developer can do it in minutes.</p>
+      <h2>7. What to ask your developer (the 15-minute list)</h2>
+      <p>Send this verbatim: "Please (1) make sure no administrator account is named 'admin'; (2) turn on two-factor authentication for all administrator and editor accounts; (3) install login-attempt limiting; (4) disable XML-RPC if we don't use Jetpack or remote publishing; (5) confirm WordPress, the theme, and all plugins are current. Optionally move the login URL if it doesn't break anything." That is the whole job. If anyone quotes you a multi-hundred-dollar "login security package" for this list, get a second quote.</p>
+      <h2>8. The honest catches</h2>
+      <p><strong>Hiding first, locks never, is the classic mistake.</strong> A secret login URL with "admin" / "password123" behind it is a hidden house with no locks. The order matters: locks first, hiding only as a free extra.</p>
+      <p><strong>Do not run three security plugins.</strong> Wordfence, Sucuri, iThemes, and friends all doing login protection at once do not stack — they slow the site, conflict with each other, and add complexity. One solid security plugin plus the five locks above is the setup. More plugins is not more security.</p>
+      <p><strong>Shopify, Wix, and Squarespace owners can skip this article.</strong> Your login page belongs to the platform, and platform logins already carry attempt limiting and 2FA options. This entire problem is a self-hosted-WordPress problem — which, at 40% of the web, is most of the small-business internet, but not all of it.</p>
+      <p><strong>If you share logins with staff or developers, read the companion pieces.</strong> <a href="should-i-give-my-web-developer-my-passwords.html">Sharing passwords with your developer</a> and <a href="does-my-old-developer-still-have-access-to-my-website.html">revoking an ex-developer's access</a> cover the human side of the same door. And if your inbox is full of password-reset emails you did not request, that is <a href="why-am-i-getting-password-reset-emails-i-didnt-ask-for.html">a different symptom</a> worth reading about.</p>
+      <p class="meta">Mechanics verified 2026-10-07. WordPress: 40.1% of all websites, 58.6% CMS market share (W3Techs, 7 Oct 2026); Wordfence network blocked 16 billion brute-force attacks in Q1 2026, +15.3% quarter-over-quarter (cited in WordPress security roundup, 2026); WordPress core ships no 2FA — plugin required; default "admin" username persists on millions of live sites (2026 WordPress-security analysis); renaming the login URL is security through obscurity — automated tools detect moved login pages regardless; can cause broken links, user confusion, integration breakage; WAF + 2FA far more effective (2026 "essential vs overkill" consensus); XML-RPC bundles hundreds of password attempts per request, bypassing attempt limits — disable if Jetpack/remote publishing unused; brute-force attacks remain common — strong passwords, 2FA, limited attempts mandatory (Sept 2026 ecosystem roundup). SERP check 2026-10-07: "hide wp-admin" advice is split between plugin vendors and practitioners calling it obscurity — no plain-English owner-level ranked answer found. No breach-rate or attack-success figures stated; none verifiable.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>While you are thinking about security: run our free check to see how your site reads from the outside. Paste your domain — you get Mozilla&rsquo;s A+&ndash;F grade translated into plain English, how many of its checks passed, and your certificate&rsquo;s exact expiry date. Free, no signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>The full Site Health Watch audit checks your site against all 40 trust signals &mdash; security headers, hidden malware, speed, mobile, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+hiding+my+website%27s+login+page+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
