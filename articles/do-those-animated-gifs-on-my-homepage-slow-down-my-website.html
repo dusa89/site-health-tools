@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do Those Animated GIFs on My Homepage Slow Down My Website?</title>
+<meta name="description" content="Animated GIFs look light and fun — the looping banner, the little product demo. They're not. One GIF can outweigh every photo on your homepage: why the format is so heavy, how Google's own speed test flags them, and the five-minute GIF-to-video swap that keeps the motion and drops the weight — plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do Those Animated GIFs on My Homepage Slow Down My Website?</h1>
+    <p class="lede">The looping banner on your homepage feels like the lightest thing on the page. It's a little picture that moves — what could it possibly weigh? Quite a lot, as it turns out. Animated GIFs are some of the heaviest single files on small-business websites: one hero banner GIF can cost more download time than every photo on the page put together. The good news is this is one of the easiest speed wins in existence. The motion stays, the weight goes — because the right way to show a looping animation in 2026 is not a GIF at all. If your homepage feels heavy in a way you can't explain, and the speed-test articles haven't named it, <a href="why-is-my-homepage-slow-but-the-rest-of-my-website-is-fine.html">the homepage-slow article</a> is worth a read first; this one names the usual suspect.</p>
+    <div class="article">
+
+      <h2>1. The short answer, up front</h2>
+      <p><strong>Yes — and it's probably the single heaviest file on your homepage.</strong> An animated GIF looks like a fun little moving picture, but under the hood it's a flip-book: dozens or hundreds of full images stacked inside one file, playing in a loop. A five-second looping banner can weigh <strong>several megabytes</strong> — more than your logo, your fonts, and your photos combined. On a phone with a weak signal, that one GIF is the thing your customer is waiting on. Google's own speed test agrees with you, by the way: if you run your site through PageSpeed Insights and the report suggests <strong>"Use video formats for animated content,"</strong> that suggestion is literally about your GIFs. Your speed tool is already telling you what to fix.</p>
+      <h2>2. Why a moving picture weighs so much</h2>
+      <p>The GIF is a 1987 invention, and it shows. A video file is smart about motion: it stores one full picture, then only records <em>what changed</em> from frame to frame. A GIF does the dumb version — <strong>it stores every single frame as its own full image</strong>, one after another, with no real motion compression to lean on. A 5-second loop at 15 frames a second is 75 pictures in a trench coat pretending to be one file.</p>
+      <p>Then there's the color budget. Each GIF frame is capped at <strong>256 colors</strong> — which is why compressed GIFs get that banded, posterized look. Shrinking a GIF means shrinking the colors, the size, or the frame count, and each cut visibly degrades it. That is the trap owners fall into: they ask their web person to "just compress the GIF," the GIF gets uglier, it's still heavy, and nobody wins. The format was designed for tiny clip-art animations on dial-up forums, not for full-width homepage banners. Using it for a hero banner is like commuting in a museum piece — charming, and terrible at the job.</p>
+      <h2>3. The numbers: what a GIF costs vs what a video costs</h2>
+      <p>Google's own web performance guide worked this example, and it's worth quoting because it answers the whole question in one line: <strong>a 3.7 MB animated GIF became a 551 KB MP4 and a 341 KB WebM video.</strong> Same animation, same loop, same silence — roughly <strong>eleven times lighter</strong> as a video. (web.dev, "Replace GIFs with video.")</p>
+      <p>Run that math against your homepage. One 3.7 MB hero GIF on a typical phone connection is seconds of loading by itself — and GIFs almost never travel alone, because once one is in, the product page gets one, the testimonial section gets one, the "how it works" strip gets one. Meanwhile <a href="why-do-my-photos-slow-down-my-website.html">the photo article</a> shows how cheap static images are once they're sized right. The GIF breaks the whole budget by itself. This is also why the "just lazy-load it" answer disappoints: <a href="what-is-lazy-loading-and-will-it-make-my-website-faster.html">lazy loading</a> delays a heavy file until it's needed — but a delayed 3.7 MB still costs 3.7 MB of your customer's data, and it still eats decoding time when it arrives. Deferring is not dieting.</p>
+      <h2>4. Where small-business GIFs usually come from</h2>
+      <p>They arrive through three doors. <strong>Door one: the homepage hero.</strong> Somebody wanted movement above the fold — a looping demo, a before-and-after, a little animated logo — and a GIF was the easy answer at the time. <strong>Door two: the Giphy shortcut.</strong> "Just grab a GIF from Giphy" is common advice, and it's the worst version of the problem: the GIF is heavy <em>and</em> the embed loads Giphy's own scripts on top of it. A Giphy embed is a heavy file with a heavy delivery truck. <strong>Door three: the slideshow cousin.</strong> <a href="should-i-get-rid-of-my-homepage-slideshow.html">The slideshow article</a> covers rotating banners — several images taking turns. A GIF is the slideshow's single-file sibling: same visual idea, much worse cost per second of motion. And one more from the same family: <a href="do-those-pretty-fonts-slow-down-my-website.html">the pretty-fonts article</a> covers the other "looks light, costs real weight" line item. GIFs are the heaviest member of that club.</p>
+      <h2>5. The fix: the five-minute GIF-to-video swap</h2>
+      <p>Here is the part that makes this the best speed deal on your site. An animated GIF does exactly three things: it <strong>plays automatically</strong>, it <strong>loops forever</strong>, and it <strong>has no sound</strong>. A muted, looping web video does all three — and that's the entire fix: <strong>convert each homepage GIF to a video file.</strong> This is a five-minute job for whoever manages your site. The exact words to use with them: <em>"Convert every animated GIF on the homepage to a muted, looping MP4 and WebM video — Google's own guide says it cuts the file to about a tenth."</em> If they push back, the guide to send them is Google's "Replace GIFs with video" on web.dev — it's written for them, not for you, and it includes the conversion commands.</p>
+      <p>Three details worth knowing so you can sanity-check the work: <strong>autoplay needs the video to be muted</strong> — browsers refuse to autoplay anything with sound, so the "muted" part isn't optional, it's what makes it play by itself like the GIF did. <strong>Serve both WebM and MP4</strong> — WebM is the lighter one, MP4 is the fallback for browsers that don't speak WebM; the page tries WebM first. And <strong>set the width and height on the video</strong> — one reason GIFs <a href="why-does-my-website-jump-around-while-it-loads.html">make pages jump around while loading</a> is that the browser doesn't know the box size until the heavy file arrives. Reserve the space and the layout stops bouncing.</p>
+      <h2>6. What NOT to do</h2>
+      <p><strong>Don't just compress the GIF harder.</strong> The 256-color ceiling means every compression round visibly degrades it — banding, dithering, mush — while the weight barely moves. You're polishing a format that lost. <strong>Don't replace the GIF with an embedded video platform player.</strong> <a href="does-the-video-on-my-website-slow-it-down.html">The video article</a> covers why a YouTube or Vimeo embed can be heavier than a simple video file: you're buying the player's whole machinery for a five-second loop. A plain video file with no player chrome is the move. And <strong>don't keep GIFs "because they work in email."</strong> That's actually true — most email clients can't play video, so GIFs still rule newsletters. The fix is location-specific: GIFs in email, videos on the website. Same animation, right container each time.</p>
+      <h2>7. The rule going forward</h2>
+      <p>The decision rule is one sentence: <strong>if it moves and loops, it's a video, not an image.</strong> Anything animated on your website — hero banners, product demos, little reaction loops — gets the video treatment from now on. Reserve the GIF for the two places video can't go: email, and chat. Your homepage drops its heaviest file, your speed score climbs, and nobody looking at the page can tell anything changed — which is exactly the point. The motion stays. Only the weight leaves.</p>
+      <p class="meta">Mechanics verified 2026-10-08. web.dev "Replace GIFs with video": worked example 3.7 MB GIF &rarr; 551 KB MP4 / 341 KB WebM (~11x lighter); Lighthouse flags GIFs with a "Use video formats for animated content" suggestion; GIF traits to recreate = autoplay, loop, silent (&lt;video autoplay loop muted playsinline&gt;; WebM + MP4 fallback). azbigmedia (Sep 2025): GIFs huge vs JPEG/PNG; every frame stored individually, no motion compression; 256 colors per frame. dev.to (2026): GIF has no inter-frame compression worth depending on; every kept frame a full indexed image; 256-color frames. Format dates to the GIF89a era (1987). SERP check 2026-10-08: agency/developer explainers on GIF weight rank — no plain-English owner-level "should the GIFs on my homepage go" decision article found.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. If a GIF is on the culprit list, this is the week it becomes a video.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+animated+GIFs+slowing+down+websites+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
