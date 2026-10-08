@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should I Pay If Hackers Lock My Website?</title>
+<meta name="description" content="Your files are scrambled, a ransom note is on your screen, and there's a countdown. Whether paying the ransom actually gets your website back, what the FBI says, and the first-hour playbook that does — plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should I Pay If Hackers Lock My Website?</h1>
+    <p class="lede">You open your laptop and your files will not open — the website files, the customer list, the invoices, all of it. In their place is a message: your data has been encrypted, pay this amount (usually in cryptocurrency) by the deadline, or lose it forever. This is <strong>ransomware</strong>, and the question it is designed to make you ask — under pressure, on a timer — is "should I just pay?" <a href="i-got-an-email-saying-a-hacker-recorded-me-is-it-real.html">The blackmail email from the sextortion article is a bluff you can delete</a>; this one is real, and the answer is still no. Here is why, in plain English — and the first-hour playbook that gets your business back without paying.</p>
+    <div class="article">
+
+      <h2>1. What just happened to your files</h2>
+      <p><strong>Ransomware scrambles your files so nothing opens, then sells you the unscramble.</strong> It is not a warning or a prank — the files genuinely are locked. The ransom note usually adds two more screws: a countdown ("the price doubles in 48 hours, the key is destroyed in 7 days") and a second threat ("we also copied your customer data, and if you don't pay we publish it"). The FBI calls that second threat <strong>double extortion</strong> — encrypt your systems AND steal your data (the August 2026 FBI/CISA/HHS advisory on the Medusa ransomware group describes exactly this model, verified Oct 2026). The timer is a pressure tactic, not a fact about what your data is worth.</p>
+      <p><strong>You are not too small to be on their list.</strong> The FBI's 2025 Internet Crime Report counted 3,611 ransomware complaints with over $32 million in reported payments (April 2026, verified Oct 2026) — and that figure is only the payments people <em>reported</em>; it excludes lost business, wages, equipment, and cleanup costs. Sixty-three new ransomware variants appeared in 2025, and 14 of the 16 U.S. critical infrastructure sectors were hit. Hospitals, schools, city governments, small manufacturers — the FBI's Cyber Division chief put it plainly in 2026: "I can't think of anything that's off limits to them." A locked bakery laptop pays just as well as a locked hospital server to the people running this.</p>
+      <h2>2. The answer: do not pay. Here is why, in plain terms</h2>
+      <p><strong>The FBI's official position: "The FBI does not support paying a ransom in response to a ransomware attack. Paying a ransom doesn't guarantee you or your organization will get any data back. ... We have seen cases where organizations never got the decryption key after having paid the ransom."</strong> (fbi.gov, verified Oct 2026). These are criminals holding a gun to your files. There is no customer-service desk, no refund policy, and no reason for them to hand over a working key after the money lands. Some victims pay and get a key that does not work. Some pay and get nothing at all. The money is gone either way — along with the data, if there is no backup.</p>
+      <p><strong>Reason two: paying marks you as a payer.</strong> The groups run this as a business, and a business that pays once goes on the "will pay" list. The same August 2026 federal advisory documented a case where a <em>second</em> attacker demanded an <em>additional</em> payment after the first ransom was paid — triple extortion. Paying does not buy safety; it buys your name on a list.</p>
+      <p><strong>Reason three: paying does not un-leak your data.</strong> In the double-extortion model, they copied your files <em>before</em> scrambling them. Paying for the unscramble key does nothing about the copy they kept. The "we'll delete it if you pay" promise comes from the same people who broke into your systems — it is worth exactly as much as their word, which is the thing that put you here. <a href="what-should-i-do-if-my-website-gets-hacked.html">The general hack-response article</a> covers the forensics side; this article is the payment decision, and the decision is no.</p>
+      <h2>3. The first-hour playbook (do this before anything else)</h2>
+      <p><strong>Minute one: disconnect, don't power off.</strong> Unplug the network cable or turn off Wi-Fi — <em>not</em> the power button. A shutdown can wipe the evidence investigators need to find out how they got in (FBI-linked 2026 SMB guidance, verified Oct 2026). One infected machine can spread to every other device on the same network; cutting the network cord stops the spread without destroying the trail.</p>
+      <p><strong>Minute five: call your IT person, not the hackers.</strong> Do not negotiate with the ransom note. Do not install the "decryption tool" they link you. Call whoever maintains your website or computers — and if that is <a href="who-is-responsible-for-my-websites-security.html">the developer or IT helper from the responsibility article</a> — they are the one who decides the recovery order. Doing this alone, under pressure, is how backups get overwritten and logs get lost.</p>
+      <p><strong>Minute thirty: report it at ic3.gov.</strong> The FBI's Internet Crime Complaint Center is where ransomware gets reported. Reporting helps investigators track the group behind the attack — and sometimes a free decryption tool already exists for your exact ransomware variant, which the FBI can surface (verified Oct 2026).</p>
+      <p><strong>Then: restore from your backup — the one you have actually tested.</strong> A backup nobody has test-restored in the last year is a hope, not a plan. If you have a clean, tested copy — like the one <a href="if-my-website-vanished-tonight-do-i-have-a-copy.html">the backup article</a> walks you through making — wiping and restoring is how the business comes back without paying a cent. (Do not count on your hosting company's copy: <a href="does-my-web-host-actually-back-up-my-website.html">their backup is for their disasters, not yours</a>.)</p>
+      <h2>4. The mistakes owners make under the timer</h2>
+      <p><strong>Mistake one: paying fast to beat the countdown.</strong> The timer exists to stop you thinking. The three reasons in section 2 are true at hour 1 and hour 100 — the price doubling does not make the key any more reliable.</p>
+      <p><strong>Mistake two: hiding it.</strong> Owners who quietly pay and tell nobody — not their IT person, not the FBI — end up with the worst of both worlds: money gone, data still in criminal hands, and the hole that let them in still open. <a href="how-do-i-know-if-my-website-has-already-been-hacked.html">The forensics article</a> exists because "they got in" is a question you want answered, not assumed away.</p>
+      <p><strong>Mistake three: wiping everything immediately.</strong> Wiping destroys the evidence of how they entered — which is the evidence that prevents the <em>next</em> attack. Disconnect, preserve, call the professional, restore from backup. In that order.</p>
+      <h2>5. The questions owners always ask next</h2>
+      <p><strong>"What if it's my customers' data that's locked — do I have to tell them?"</strong> That is a legal question, not a technical one, and the honest answer is "ask a lawyer" — many states have breach-notification rules with real deadlines. What is certain: paying does not remove that obligation. The ransom note is not a legal settlement.</p>
+      <p><strong>"My web person says wipe and restore — but my site was fine yesterday?"</strong> Yes, wipe and restore. "Fine yesterday" is exactly when ransomware strikes — the encryption happens in minutes, long after weeks of silent access. A clean restore from before the infection is the fix; the scrambled copy is evidence, not an asset.</p>
+      <p><strong>"Is there any case where paying makes sense?"</strong> The FBI's guidance is a flat no, and the cases where companies pay are the ones with no tested backup and days of downtime staring them down — which is the most expensive possible way to discover you had no backup. The cheap version of this lesson is <a href="if-my-website-vanished-tonight-do-i-have-a-copy.html">making the copy now</a>.</p>
+      <p class="meta">Mechanics verified 2026-10-08. FBI official ransomware guidance: "The FBI does not support paying a ransom in response to a ransomware attack. Paying a ransom doesn't guarantee you or your organization will get any data back. ... We have seen cases where organizations never got the decryption key after having paid the ransom" (fbi.gov, verified Oct 2026). FBI IC3 2025 Annual Report (released Apr 2026): 3,611 ransomware complaints, reported losses over $32 million (payments only — excludes lost business, time, wages, files, equipment, remediation); 63 new ransomware variants identified in 2025; 14 of 16 U.S. critical infrastructure sectors victimized. Double extortion + documented triple-extortion case: FBI/CISA/HHS joint advisory on Medusa, updated ~Aug 18-19, 2026. First-hour response (disconnect-don't-shutdown, don't pay, don't wipe, call IT, report at ic3.gov, restore from tested backup): FBI-linked 2026 small-business guidance. Figures per the cited sources' publication dates; check the FBI's own pages for the current numbers.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Check whether your website itself is exposed right now: the free security scan reads your site's headers, certificates, and visible exposure &mdash; the same kind of 'how did they get in?' check section 3 calls for. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Ransomware is one symptom. The full Site Health Watch audit checks your site against all 40 trust signals &mdash; security headers, hidden malware, speed, mobile, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+ransomware+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
