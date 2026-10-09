@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Is My Contact Form Getting Spammed by Robots?</title>
+<meta name="description" content="Those fake quote requests with gibberish names aren't from customers — they're from bots spraying the whole internet. Why robots found your form without targeting you, the three kinds of form spam (and why one tool never stops all three), and the scarier version: when criminals turn your form into their spam cannon — plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Is My Contact Form Getting Spammed by Robots?</h1>
+    <p class="lede">The short answer: <strong>they didn't pick you — they picked everyone.</strong> Bots crawl the web looking for any form with a submit button, yours included, and spray it automatically. Most of what lands in your inbox is junk to delete. But there is a version of this problem where the danger runs the other way — <strong>criminals using YOUR contact form to send spam to other people, from your business's good name.</strong> Here is what is actually happening, in plain English, and the defense stack that stops it cheapest-first.</p>
+    <div class="article">
+
+      <h2>1. It's not about you — bots spray the whole internet</h2>
+      <p><strong>Nobody targeted your business.</strong> Spam bots run their own crawlers that visit websites and scan the page's underlying code for form fields and a submit button. They do not read your content or care what you sell — they are looking for a box to pour junk into. Once found, your form goes on a queue and gets submitted automatically (dev.to, ~May 2026). Search engines make it worse: the moment your site appears in results for anything, the form becomes discoverable through the same public search tools the bots use.</p>
+      <p><strong>Your form can also end up on a list.</strong> Spammers buy and sell lists of web addresses known to contain contact forms — compiled over time, shared and re-shared inside spam networks. Once your address lands on one, multiple different bots submit to it, again and again (dev.to, ~May 2026). This is why the spam never stops after one quiet week: you are not on one bot's list, you are on the internet's list.</p>
+      <h2>2. There are three kinds of form spam — and one tool never stops all three</h2>
+      <p><strong>The dumb bots are the easy ones.</strong> Naive bots scrape the web and submit to every form they find — gibberish names, random links, fake email addresses. They are numerous but not sophisticated, and the cheapest defense in existence stops them cold: the <strong>honeypot</strong>. That is a form field real visitors never see — hidden on the page — which bots fill in automatically because they fill in EVERY field. If the hidden field comes back with anything in it, the submission is spam. It costs nothing, loads no third-party script, and your real visitors never notice it (2026 anti-spam guide, msangeetha.com).</p>
+      <p><strong>The targeted scripts need a real checkpoint.</strong> Some bots are written against your specific form — they inspect your page's code, spot hidden fields, and skip them. A honeypot does not fool these. This is where a human-check belongs, and the 2026 default recommendation is <strong>Cloudflare Turnstile</strong>: free, usually invisible, no "click all the traffic lights" puzzles, privacy-focused, and it plugs into the popular form tools (msangeetha.com, 2026).</p>
+      <p><strong>The human spam needs a different weapon entirely.</strong> Some spam is typed by real people — SEO agencies pitching you, link sellers, opportunists. Real keystrokes, looks like a normal message. No honeypot or human-check catches it, because a human did it. Only <strong>content filtering</strong> has a chance: Akismet checks each submission against a database built from 500 billion+ blocked spam messages and counting (akismet.com, current). One tool never fully works — that is why the pros stack all three (msangeetha.com, 2026).</p>
+      <p><strong>One warning about Google's version:</strong> reCAPTCHA v3 is free only up to 10,000 checks per month across your whole Google account — and over that limit, it can start <strong>breaking your form entirely</strong> with quota errors. Worse: if it loads on every page, every page VIEW counts against the quota, not just submissions, and bot traffic burns it faster (msangeetha.com, 2026). Free has a ceiling. Know where yours is.</p>
+      <h2>3. The scary version: your form as someone else's spam cannon</h2>
+      <p><strong>Most form spam is annoying. Some of it makes YOU the criminal's mailman.</strong> Security researchers at Cisco Talos found campaigns that abuse the signup and contact forms of <strong>perfectly normal websites</strong> to overload victims with spam. Your site keeps working exactly as before — which is precisely why spam filters struggle to catch it: the mail is coming from a legitimate business's real form (TechRadar, Sep 2026). If your form has no protection at all, it is not just receiving spam — it is available infrastructure for someone else's.</p>
+      <p><strong>One technique is called header injection.</strong> Attackers type special characters into your form's fields that smuggle extra instructions into the email your form sends — like secretly copying the message to thousands of other addresses. Your form becomes a spam cannon firing from YOUR mail server, under YOUR business's name (Medium/InstaTunnel, Nov 2025). The recipient sees your business. The spammer stays invisible.</p>
+      <p><strong>Another is email bombing — and the victim is a real person.</strong> Bots take one victim's email address and sign it up to thousands of online forms — "a few thousand addresses sign up in a few seconds to a single form" (ActiveCampaign, Sep 18, 2026). The address drowns in confirmation emails, sometimes thousands a minute — which is the point: with the inbox flooded, the victim can't see the real notices while criminals steal information or run fraudulent transactions. Your unprotected form is one of the thousands of hoses.</p>
+      <p><strong><a href="someone-is-pretending-to-be-my-business-online.html">This is the impersonation article's evil twin.</a></strong> There, strangers borrow your name with fake profiles. Here, your actual website does the sending — which is worse, because the mail is genuinely from you.</p>
+      <h2>4. Why a firewall can't fix this (and hiding can't either)</h2>
+      <p><strong><a href="do-i-need-a-website-firewall.html">A firewall filters traffic — but your form must accept input by design.</a></strong> A firewall can't tell a bot's fake quote request from a customer's real one; both arrive as ordinary form submissions. This is a different layer of the problem, and it needs different machinery — the stack in section 5, not a bigger firewall.</p>
+      <p><strong><a href="should-i-hide-my-websites-login-page.html">Hiding works for a login page, because only you need to find it.</a></strong> A contact form has the opposite job: every customer must be able to find it in seconds. Anything your customers can find, bots can find. So the goal was never invisibility — it is making the form expensive for bots and free for humans.</p>
+      <p><strong><a href="should-i-let-customers-create-accounts-on-my-website.html">And it is not just the contact form.</a></strong> Every form that sends email or creates an account — newsletter signups, quote requests, account registrations — carries the same spam-cannon risk. Fix the contact form's stack first, then apply the same protection to the rest.</p>
+      <p><strong>Meanwhile <a href="why-am-i-getting-password-reset-emails-i-didnt-ask-for.html">the password-reset spam in your inbox</a> is the mirror image:</strong> that article is about spam arriving AT you through someone else's form abuse. This article is about spam flowing THROUGH yours. Same machinery, opposite direction — and <a href="i-got-an-email-saying-a-hacker-recorded-me-is-it-real.html">unlike the blackmail bluff in your inbox</a>, a hijacked form is a real compromise of your business's reputation, not a scare email you can delete.</p>
+      <h2>5. The defense stack, cheapest first</h2>
+      <p><strong>Layer one: the honeypot — free.</strong> Ask your web person whether your form has a hidden trap field. Most modern form plugins include one as a setting. Zero cost, zero visitor friction, stops the dumb bots — the numerous-but-not-sophisticated kind the 2026 guide starts with.</p>
+      <p><strong>Layer two: Cloudflare Turnstile — free.</strong> The invisible human-check. Replaces the old image puzzles with something your customers never see. If your web person reaches for reCAPTCHA instead, ask about the 10,000-a-month quota ceiling first — and make sure it only loads on pages with forms, not site-wide.</p>
+      <p><strong>Layer three: Akismet — from $10/month for business sites.</strong> The content filter that catches the human-typed spam the other two layers miss, backed by the largest spam database in the WordPress world. This is the only layer that judges WHAT was written instead of WHO wrote it.</p>
+      <h2>6. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"Our contact form is getting spammed by bots. Five asks: first, turn on the honeypot trap field if the form plugin has one. Second, add Cloudflare Turnstile to the form — not reCAPTCHA unless you can confirm we stay under the monthly quota. Third, put Akismet on the form so the human-typed spam gets filtered too. And while you're in there — check that the form's email fields can't be abused for header injection, and apply the same protection to the newsletter signup and any other forms that send email."</em> Five asks, one afternoon, and your form stops being everyone else's problem.</p>
+      <p class="meta">Mechanics verified 2026-10-08. Bot discovery methods (own crawlers scanning page source, search indexing, directory/social links, purchased URL lists of known forms): dev.to, ~May 2026. Three spam types + layered defense (naive bots/honeypot, targeted scripts/CAPTCHA, human spam/content filtering; one tool never fully works): 2026 WordPress anti-spam guide, msangeetha.com, updated ~Sep 25, 2026. Honeypot mechanics (hidden field, bots fill every field, zero friction, no third-party script): msangeetha.com, 2026. Cloudflare Turnstile (free, usually invisible, privacy-focused, no image puzzles; default recommendation): msangeetha.com, 2026. reCAPTCHA v3 quota trap (10,000 free assessments/month/org; over-quota 429 errors can break forms; page views count if loaded site-wide; bot traffic burns quota): msangeetha.com, 2026. Akismet (500 billion+ spam submissions blocked all-time; global spam database; free for personal blogs, commercial plans from $10/month): akismet.com blog, current. Cisco Talos form-hijack spam campaigns (legitimate sites' forms abused as spam infrastructure; filters struggle because the site works normally): TechRadar, crawled Sep 2026. Email header injection (Bcc smuggling through form fields, spam sent from the business's own server): Medium/InstaTunnel, Nov 2025. Email bombing ("a few thousand addresses sign up in a few seconds to a single form"; flooding to disable the account and cover fraud/theft): ActiveCampaign help center, Sep 18, 2026.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Find out whether your own site is exposed right now: the free security scan reads your site's headers, certificates, and visible exposure &mdash; the same kind of 'how did they get in?' check this article runs on contact forms. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Form spam is one symptom. The full Site Health Watch audit checks your site against all 40 trust signals &mdash; security headers, hidden malware, speed, mobile, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+contact+form+spam+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
