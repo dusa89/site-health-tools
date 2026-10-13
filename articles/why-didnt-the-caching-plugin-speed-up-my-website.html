@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Didn't the Caching Plugin Speed Up My Website?</title>
+<meta name="description" content="Your web person installed a caching plugin and the site is still slow. The six honest reasons a caching plugin changes nothing - an empty cache, the logged-in bypass, pages that cannot be cached, two caches fighting, settings that backfired, and the problem underneath the cache - plus the ten-minute checklist that finds yours.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Didn't the Caching Plugin Speed Up My Website?</h1>
+    <p class="lede">The caching plugin went in last week and the stopwatch says nothing changed. Before anyone blames the plugin, the host, or the web person, know this: a caching plugin only speeds up one specific thing - serving the same finished page twice. If your slowness lives anywhere else, the plugin was never going to touch it. Here are the six places it hides, and the ten-minute check that finds yours.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-12 - not promises about your situation. Every site is set up
+      differently, and your answer will be one of the six below, not all of
+      them. The checklist at the end finds which one.</p>
+      <h2>What the plugin actually does (in 30 seconds)</h2>
+      <p>On a normal visit, your server builds your page from scratch:
+      it runs the code, asks the database for your content, and renders
+      the whole thing - hundreds of milliseconds of work, every single
+      time. A caching plugin saves the finished page the first time it
+      gets built, and hands out the saved copy to the next visitors
+      without rebuilding anything. That is the whole trick: it speeds up
+      <em>serving</em>, not <em>building</em>. If your problem is in the
+      building, the plugin is a bandage on the wrong wound. (Our
+      <a href="what-is-website-caching.html">caching explainer</a> covers
+      the full picture if you want it.)</p>
+      <h2>Reason 1: the cache was empty when you measured</h2>
+      <p>The very first visit to each page is the one that builds the
+      saved copy. So if you ran the speed test the same afternoon the
+      plugin was installed, the test measured the uncached page - the
+      plugin had nothing saved yet. Of the six reasons, this is the one that shows up
+      most often: nobody waited. Most plugins
+      have a setting called preload or preloading that walks through your
+      pages and builds the saved copies ahead of time. Turn it on, let it
+      finish the job, and then test. (Our
+      <a href="why-does-my-website-load-slow-the-first-time.html">first-visit
+      article</a> explains why that first load is always the slowest - and
+      our <a href="why-is-my-website-only-slow-sometimes.html">sometimes-slow
+      article</a> covers the close cousin, when the cache helps on some
+      visits and not others.)</p>
+      <h2>Reason 2: you were logged in - you see the slow version</h2>
+      <p>Here is the one that fools most owners. Most caching
+      plugins deliberately skip logged-in users, and the admin area is
+      never cached at all. That means when <em>you</em> check your site,
+      you get the slow, freshly-built page - while your customers get the
+      fast, saved copy. You are literally looking at a different website
+      than they are. Before concluding anything, open your site in a
+      private or incognito window without logging in. That is what your
+      customers see, and it is the only version worth timing. If your
+      complaint is really "the dashboard is slow," know that no page-caching
+      plugin can fix that - the dashboard is supposed to bypass
+      the cache, and speeding it up is a different job.</p>
+      <h2>Reason 3: the slow pages are the ones that cannot be cached</h2>
+      <p>Some pages must never be served from a saved copy: the cart, the
+      checkout, the account page, the booking flow. They have to reflect
+      each visitor's own information, so the server rebuilds them on
+      every single visit - code and database queries, every time, by
+      design. If your store's homepage flies and the checkout crawls,
+      that is not a plugin failure; page caching was never allowed on
+      those pages. The real fix for uncacheable pages is a different kind
+      of cache (one that remembers database answers instead of whole
+      pages) plus cleaning up the database itself.</p>
+      <h2>Reason 4: two caches are fighting each other</h2>
+      <p>Many hosts already run their own caching, and plenty of sites
+      already had a speed service like Cloudflare in front of them. Add a
+      plugin on top and you can end up with two or three layers that
+      disagree about who is in charge. The symptoms: pages that look
+      half-optimized, changes that do not appear, or speed that is
+      somehow worse than before. The same goes for stacking multiple
+      speed plugins - two plugins doing the same job on the same page
+      means paying the processing cost twice and gaining nothing, and
+      when something breaks you get to guess which of the five candidates
+      did it. The rule is simple: one cache layer in charge. If your host
+      caches, tell the plugin - or use the host's cache and skip the
+      plugin.</p>
+      <h2>Reason 5: the settings slowed the visible part of the page</h2>
+      <p>Caching plugins usually come with extra switches: combine the
+      stylesheets, shrink the scripts, delay the JavaScript. Those can
+      genuinely backfire - the server answers faster, but the browser is
+      kept waiting to start drawing the page, so the score gets worse
+      and the page <em>feels</em> slower. One popular plugin maker took
+      this seriously enough to turn the combining feature off by default
+      in its February 2026 release, after users reported exactly this
+      pattern. If your server time improved but the page feels worse,
+      turn off the aggressive combine-and-minify settings first. The
+      plain page cache is the safe part; the extra switches are where
+      the trouble lives.</p>
+      <h2>Reason 6: the problem is underneath the cache</h2>
+      <p>Every uncached visit still runs the full build, and the build
+      can be slow for reasons no page cache can reach. The usual pile:
+      a database stuffed with leftover settings from plugins you deleted
+      months ago, dozens of saved revisions of every page, expired
+      temporary entries nobody cleaned, comments and metadata pointing
+      at things that no longer exist. After a couple of years and a few
+      dozen plugins, that pile can mean megabytes of junk loaded on every
+      single uncached request. One developer's rule of thumb: if the
+      server still takes over about 600 milliseconds to answer even on a
+      cached page, the hosting is the suspect - under that, keep looking
+      at the site itself. (Our
+      <a href="what-is-database-bloat-and-is-it-slowing-my-website-down.html">database
+      bloat article</a> walks through the cleanup, and our
+      <a href="does-cheap-hosting-make-my-website-slow.html">hosting
+      article</a> covers when the server itself is the culprit.)</p>
+      <h2>The ten-minute checklist</h2>
+      <p>Run these in order before spending another dollar:</p>
+      <p><strong>1. Test the right version.</strong> Private window, not
+      logged in. That is the page your customers get. (Our
+      <a href="how-do-i-know-my-web-person-actually-fixed-my-speed.html">verify-the-fix
+      article</a> shows how to measure it properly.)</p>
+      <p><strong>2. Fill the cache first.</strong> Turn on the plugin's
+      preload setting, wait for it to finish every page, then test. A
+      test run against an empty cache proves nothing.</p>
+      <p><strong>3. Pick one cache layer.</strong> Host cache, plugin, or
+      Cloudflare - one boss. Turn off the overlaps.</p>
+      <p><strong>4. Switch off the aggressive extras.</strong> Disable
+      CSS/JS combining and minifying, then re-test. If the page gets
+      faster, the settings were the problem, not the cache.</p>
+      <p><strong>5. Check the uncached pages separately.</strong> If the
+      homepage flies and the checkout crawls, that is the uncacheable
+      pages telling you the database needs attention, not the cache.</p>
+      <p>If all five come back clean and the site is still slow, the
+      answer is underneath the cache - the database, the hosting, or the
+      sheer weight of what is loading. That is a different repair, and
+      it is exactly the kind of thing a real audit is for.</p>
+      <p>Sources for the facts above, all checked 2026-10-12: what a page
+      cache does - a normal visit boots the code, hits the database, and
+      renders the theme, and serving saved HTML cuts that work to near
+      zero (dev.to WordPress speed piece, updated ~8 days ago); the cold
+      cache - the first visit to each page builds the saved copy, so
+      testing right after activation measures uncached pages, and the
+      preload setting fixes it (wordpress.org WP-Optimize support thread,
+      ~233 days ago, the plugin author's own reply); the logged-in
+      bypass - most caching plugins skip logged-in users and admin pages
+      are never cached, so owners see the slow version while visitors
+      get the fast one (medium.com, March 2026, ~210 days ago;
+      hostaccent.com, updated ~6 days ago); the dashboard gap - the
+      caching layer never touches the admin area, which always runs live
+      code and database queries (webugol.com, updated ~5 days ago); the
+      uncacheable pages - cart, checkout, and account pages cannot take
+      page cache because they must reflect each visitor, so the fix is
+      database-level caching and database work (dev.to WooCommerce
+      performance piece, updated ~10 days ago); the clashing layers -
+      host caches, Cloudflare, and second plugins can fight over who is
+      in charge, and doubled-up compression adds processing for no
+      benefit (wordpress.org thread; fastpixel.io, updated ~4 days ago);
+      the minify backfire - combining and deferring stylesheets and
+      scripts can delay the first paint, which is why the plugin maker
+      turned combining off by default in the February 2026 release
+      (wordpress.org thread, author's reply); the database underneath -
+      bloated leftover settings, revisions, expired temporary entries,
+      and orphaned metadata slow every uncached build, and no page cache
+      reaches them (medium.com, March 2026); the 600-millisecond rule of
+      thumb for suspecting the host on a cached page (dev.to, updated ~8
+      days ago). The six reasons and the checklist are our troubleshooting
+      method, built from the sources above.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English - how many seconds your homepage takes on a typical phone, plus the three biggest slowdowns described without the jargon.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>A caching plugin is one line of defense, and it is only one of 40 checks. The full Site Health Watch audit covers your email authentication, security, mobile experience, SEO, and AI visibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+the+caching+plugin+didn%27t+speed+up+my+website+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
