@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Security Check Says I'm Missing 'Security Headers' - What Does That Mean?</title>
+<meta name="description" content="Your site has the padlock but the security check flags 'missing security headers.' What the five headers are in plain English, which attacks each one stops, and the one ask to hand your web person.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>My Security Check Says I'm Missing 'Security Headers' - What Does That Mean?</h1>
+    <p class="lede">Your padlock is on and your certificate is valid, but the security check flags "missing security headers" and it reads like engineer-speak. It is not. It means your server is forgetting to send each visitor's browser a short set of standing orders - invisible bodyguards that stand between your customers and real attacks.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-13 - not promises about your situation. Every site is
+      different; these are the standard protections, described in
+      plain English.</p>
+      <h2>The short answer</h2>
+      <p>Every time your site loads, your server sends the visitor's
+      browser your page plus a small bundle of instructions most people
+      never see. Security headers are those instructions. They tell the
+      browser: always use the encrypted connection, only load code from
+      the approved list, never let another site put this page inside an
+      invisible frame, do not guess what files are, and do not leak page
+      addresses to other sites. A site can have a perfect padlock and
+      still be missing all five. The padlock means the road between your
+      customer and you is encrypted. The headers are the guards posted
+      along it.</p>
+      <h2>Guard one: HSTS - "never take the dirt road"</h2>
+      <p>Strict-Transport-Security tells browsers to always use HTTPS
+      for your site, for however long you set it - the standard target
+      is one year (31,536,000 seconds). Without it, a visitor who types
+      your address without the https, or clicks an old http link, starts
+      on the unencrypted road - and on coffee-shop wifi, an attacker on
+      the network can keep them there and read or rewrite the traffic.
+      With it, the browser upgrades to the secure road automatically
+      on every visit from then on. The setup ramps up: start with a short
+      memory (five minutes) to verify nothing breaks, then raise it to a
+      year. Adding <strong>includeSubDomains</strong> extends the order
+      to every subdomain - but check first that every subdomain actually
+      works over HTTPS, or you will lock yourself out of the ones that
+      do not. The strongest version is <strong>preload</strong>: your
+      domain goes on a list baked into Chrome, Firefox, Safari, and Edge
+      themselves, so even a first-time visitor on a brand-new device gets
+      the secure road. Treat preload as a one-way door - getting off the
+      list takes months.</p>
+      <h2>Guard two: CSP - the guest list</h2>
+      <p>Content-Security-Policy is a guest list for your page. It says
+      exactly which places your pages may load scripts, images, and
+      frames from. This is the main defense against the attack where a
+      hacker slips a malicious script into your page - the same family
+      of attack behind checkout skimmers, the invisible code that steals
+      card numbers as customers type (our <a href="why-did-my-customers-card-get-stolen-after-buying-from-my-site.html">card-theft
+      guide</a> covers how those work). Without a guest list, the
+      browser runs any code it finds. With one, injected code from an
+      unapproved source is refused. The trap: a guest list that is too
+      strict can block your own booking widget, embedded videos, or
+      payment buttons. That is why a <strong>report-only mode</strong>
+      exists - run the policy in watch mode for a week, read what would
+      have been blocked, fix the list, then switch to enforce. Watch
+      mode alone gives zero protection; it is the rehearsal, not the
+      show.</p>
+      <h2>Guard three: no invisible frames - the clickjacking rule</h2>
+      <p>Clickjacking is a con: another site puts your page inside an
+      invisible frame, layers its own buttons on top, and the visitor
+      clicks what they see while actually clicking what is hidden - a
+      "confirm payment" they never meant to approve. The guard against
+      it says your page may never be framed, or only by your own site.
+      The old guard is the <strong>X-Frame-Options</strong> header
+      (DENY or SAMEORIGIN). The modern one is CSP's
+      <strong>frame-ancestors</strong> directive, which does the same job
+      with more flexibility - you can allow named partner sites instead
+      of just all-or-nothing. Modern browsers use frame-ancestors when
+      both are present; the old header is the backstop for old browsers,
+      so the recommendation is to send both with matching meaning. The
+      good news: a policy containing only frame-ancestors is valid and
+      restricts nothing else - it is one of the easiest pieces of CSP
+      to deploy.</p>
+      <h2>Guards four and five: the quiet ones</h2>
+      <p><strong>X-Content-Type-Options: nosniff</strong> tells browsers
+      not to second-guess what a file is. Without it, a browser can be
+      talked into treating a disguised file as executable code - the
+      classic way a harmless-looking upload turns hostile. One line,
+      set everywhere. <strong>Referrer-Policy</strong> controls what
+      your site tells other sites about where a visitor came from. The
+      recommended minimum - strict-origin-when-cross-origin - sends only
+      your domain name, not the full page address with its paths and
+      query strings, to outside sites. One header most guides now say to
+      skip: <strong>X-XSS-Protection</strong>. The old browser XSS
+      filters it controlled have been removed, and in some cases they
+      leaked information themselves - omit it or set it to 0.</p>
+      <h2>The grade your scanner shows - and what it does not mean</h2>
+      <p>Mozilla's free Observatory - the same engine behind our
+      <a href="../security.html">security check</a> - scores sites from
+      0 to 100 and translates that into a letter grade from F to A+.
+      The score is built from exactly these headers: CSP, HSTS,
+      X-Frame-Options, X-Content-Type-Options, cookie flags, and a few
+      more. Landing low is easy - the bar is honestly low in practice:
+      even example.com grades around B/C with HSTS set but CSP and
+      Permissions-Policy missing (per an October 2026 header-grading
+      demo) - so a D on a small-business site is normal, not a crisis,
+      but it does mean the guards are not posted. One honest caveat, straight from
+      Mozilla: an A+ does not mean unhackable. The scan checks the
+      configuration, not your actual code - it will not find an
+      outdated plugin, a weak password, or a vulnerable contact form.
+      The headers are the fence. The locks on the doors are a separate
+      job (our <a href="what-the-padlock-means.html">padlock guide</a>
+      and <a href="why-does-my-website-say-not-secure.html">Not Secure
+      guide</a> cover the other half).</p>
+      <h2>The one ask for your web person</h2>
+      <p>All five headers are configuration, not code - nobody is
+      rewriting your website. Your host or web person adds them at the
+      server (or in Cloudflare or your CDN's edge rules), typically a
+      fifteen-to-thirty-minute job. Hand them this sentence: "Please
+      add HSTS with a one-year max-age, a Content-Security-Policy with
+      frame-ancestors set, X-Content-Type-Options set to nosniff, and a
+      Referrer-Policy - and start the CSP in report-only mode first."
+      If your site sits behind Cloudflare, it can be done as edge rules
+      with no server changes at all. Then re-run the
+      <a href="../security.html">free check</a> and watch the grade
+      move.</p>
+      <p>Sources for the facts above, all checked 2026-10-13: the HSTS
+      ramp-up (start at 5 minutes / 300 seconds, raise to one year /
+      31,536,000 seconds), includeSubDomains covering all subdomains,
+      and the preload one-way door with months-long removal (github.com/drake
+      HSTS reference; dev.to/siteory 20-minute security audit, updated
+      ~4 days before this article); frame-ancestors as the modern
+      replacement for X-Frame-Options, both-headers recommendation, and
+      a frame-ancestors-only policy restricting nothing else
+      (getsiteaiaudit.com clickjacking guide; github.com/dorucioclea
+      clickjacking brief); X-Content-Type-Options nosniff, Referrer-Policy
+      minimum strict-origin-when-cross-origin, X-XSS-Protection deprecated
+      and leaky (dev.to/siteory); report-only CSP mode gives no
+      protection (dev.to/siteory); Mozilla Observatory's 0-to-100 score
+      mapping to F-through-A+ grades, the tested headers list, and the
+      A-plus-does-not-mean-perfectly-secure caveat (pcworld.com
+      Observatory launch report; developer.mozilla.org Observatory
+      FAQ). The "guards along the road" framing is our analysis, built
+      from the sources above.</p>
+      <div class="trybox">
+        <strong>Try it free &mdash; takes about 10 seconds</strong>
+        <p>Paste your domain. Ten seconds later you get Mozilla's grade translated into plain English - which guards are posted on your site, which are missing, and the one ask to hand your web person.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Missing security headers are one of six security checks - and security is only one of 40 checks. The full Site Health Watch audit covers your website's speed, mobile experience, SEO, email authentication, and accessibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+what+security+headers+mean+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
