@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Email Say 'Via' or 'On Behalf Of'?</title>
+<meta name="description" content="Your customers see 'via gmail.com' or 'on behalf of' next to your name and your mail looks unprofessional. It is not a virus - it is your mail app honestly reporting that the real sender doesn't match the From line. What it means, the four setups that cause it, and the exact fix in Gmail and Outlook - in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Email Say 'Via' or 'On Behalf Of'?</h1>
+    <p class="lede">The short answer: <strong>your email is fine - your setup is just being honest about who really sent it.</strong> Every email carries two 'froms': the letterhead (the address you typed) and the postal worker (the server that actually carried it). When those two don't match, Gmail and Outlook print both - 'via gmail.com', or 'on behalf of' - so recipients can spot forgeries. It looks unprofessional, but it is an anti-fraud feature, not a hack. Below is what each version means, the four setups that trigger it, and the exact setting that makes your name stand alone - plus the one case where a free setup can never fully erase it.</p>
+    <div class="article">
+
+      <h2>1. What your customer actually sees</h2>
+      <p>Open an email from a setup with this problem and look at the sender line. In Gmail you will see <strong>"via gmail.com"</strong> in small grey text right after your name. In Outlook it reads something like <strong>"From yourname@gmail.com on behalf of you@yourbusiness.com"</strong>. If you send newsletters through a marketing tool, it can say <strong>"sent on behalf of you@yourbusiness.com via [the marketing service's] mail server"</strong>. The customer is not imagining it, and you are not hacked. Your mail app is doing the one thing it trusts more than your name: reporting where the mail physically came from.</p>
+      <h2>2. The two 'froms' on every email (the honest frame)</h2>
+      <p>Think of an email like a letter carried by a courier. The <strong>From line</strong> is the return address you write on the envelope - it says whatever you typed. The <strong>Sender field</strong> is the courier's own badge - who physically picked it up and delivered it. When you write your business address on the envelope but hand it to Gmail's courier, the recipient's mail app sees the mismatch and prints both. Gmail's own help documentation says this outright: when you send "as" your business address through Gmail's own servers, your Gmail address stays in the sender field, and some versions of Outlook display the full "on behalf of" version. This exists because forgery is how phishing works - <a href="can-someone-send-email-that-looks-like-its-from-my-business.html">forged From lines are the evil-twin attack</a>, and printing both sides is the mail world's way of showing its work. Annoying on legitimate mail; invaluable against fraud.</p>
+      <h2>3. The four setups that cause it (likeliest first)</h2>
+      <p><strong>Setup one - the Gmail "Send mail as" shortcut.</strong> You added your business address to free Gmail under "Send mail as" and let Gmail's servers do the sending. This is the most common cause for small businesses: your name goes on the envelope, Gmail's courier delivers it, and Gmail tells on you. <strong>Setup two - Outlook.com as a send-only account.</strong> You added your business address to Outlook.com but only for sending, so every message goes out through Microsoft's servers "on behalf of" your address. <strong>Setup three - a newsletter or CRM tool.</strong> The marketing service puts your domain on the From line but the mail physically leaves from their servers - the mismatch prints as "sent on behalf of ... via ..." (<a href="why-am-i-getting-spam-emails-from-my-own-address.html">the mirror image of the forgery problem</a>). <strong>Setup four - your website's contact form.</strong> The site fires form notifications through the web host's mail server with your address on the From line. If yours is setup one or two, the fix is one settings change. If it is three or four, the fix lives in the tool's domain authentication - covered in section five.</p>
+      <h2>4. The one-settings-change fix in Gmail</h2>
+      <p>In Gmail, go to the gear icon, "See all settings," then "Accounts and Import." Under "Send mail as," find your business address and click "edit info," then "Next Step." Gmail offers a choice: "Send through Gmail" (the shortcut that causes the "via") or <strong>"Send through [your other email provider's] SMTP servers."</strong> Choose the second one and enter your mail host's SMTP details - server name, port (usually 587), your full email address as the username, and your password. One catch: if that account has two-factor authentication on, your regular password will not work here - create a 16-character app password in that account's security settings and use it instead. Gmail verifies the details, and from then on your mail leaves through your own domain's servers: "mailed-by" and "signed-by" show your domain, and SPF and DKIM authentication both pass. No more "via."</p>
+      <h2>5. The Outlook fix and the marketing-tool fix</h2>
+      <p><strong>Outlook.com:</strong> do not keep the business address as a send-only entry. Add it properly as a <strong>send-and-receive account</strong> (settings, your email accounts, "add a send-and-receive account"), and in the advanced options choose <strong>"Send email using your provider's server - recipient will not see your Outlook address."</strong> That one option is the entire fix: your mail leaves through your provider's servers, so there is no second sender to disclose. <strong>Newsletter/CRM tools:</strong> the service needs your domain's written permission - that is what <a href="why-do-my-invoice-emails-go-to-spam.html">DKIM authentication</a> does. In the tool's domain settings you will find DNS records to add (a TXT record for SPF naming their servers, and a DKIM key). Once those are live, the service's servers are authorized senders for your domain and the "on behalf of" disappears. If a tool cannot offer domain authentication at all, that is a reason to switch tools, not to live with the label. <strong>Website contact forms</strong> get the same idea: the form must send through your domain's mail server, not the web host's default mailer with your address pasted on the From line (on WordPress that means an SMTP plugin pointed at your mail host). The same authentication is what <a href="how-do-i-check-if-gmail-trusts-my-business-email.html">Gmail's Postmaster trust grade</a> watches - clean sender matches feed the trust score.</p>
+      <h2>6. The honest ceiling: what a free setup cannot erase</h2>
+      <p>Here is the limit nobody advertises. Some mail clients flag the "via" simply because the mail is <em>physically</em> sent by Gmail's servers rather than your domain's - even with everything else correct. For personal use that is cosmetic and harmless, and <a href="do-i-need-a-dedicated-ip-for-my-business-email.html">the IP upsell won't fix it either</a>. But if every single recipient must see your name alone - quotes, invoices, contracts - the real answer is a real mailbox for your domain (Google Workspace, Microsoft 365, or your web host's mail) or a sending service that DKIM-signs with your domain's own keys. Free "send as" setups have a ceiling; this label is where you hit it. It is also worth saying what this is not: the "via" does not mean your mail is broken, your domain is blacklisted, or your <a href="should-i-forward-my-business-email-to-my-personal-gmail.html">forwarding setup</a> is failing. It means one thing only - the name on the envelope and the courier's badge don't match.</p>
+      <h2>7. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"My outgoing mail shows 'via gmail.com' / 'on behalf of' and I want my name standing alone. Four asks. First, check how my business address sends mail right now - is it going through Gmail's or Outlook's servers, or through my domain's own mail server? Second, if I am on a free 'send as' setup, switch it to send through my domain's SMTP servers with the right port and credentials, and confirm the fix by sending a test to a second address and checking 'Show original' - mailed-by and signed-by must show my domain with SPF and DKIM passing. Third, for the newsletter tool: publish the SPF and DKIM records so their servers are authorized senders for my domain. Fourth, tell me straight if my current free setup can ever fully erase the label, or whether I need a real mailbox for my domain - plain English, no upsell."</em> The test is the proof: before and after, one test email, the sender line read by a second pair of eyes.</p>
+      <p class="meta">Verified 2026-10-10. Gmail Help: sending "as" a business address through Gmail's own servers keeps the Gmail address in the sender field; some Outlook versions display "From yourusername@gmail.com on behalf of customaddress@mydomain.com"; the documented recommendation is to use the other provider's SMTP servers (Gmail Help doc, crawled 2026-10-10). Avoid the "via" by selecting "Send through [other email provider's] SMTP servers" in "Send mail as" setup - app password required when the secondary account uses 2FA (aeanet.org FAQ, crawled 2026-10-10). After the fix: mailed-by and signed-by show the custom domain, SPF and DKIM both PASS (medium.com custom-domain guide). "Via" flags non-authenticated mail - SPF/DKIM signing failures or envelope subdomain mismatches; fix = verify SPF, custom envelope record, DKIM signing (netcore support, updated ~Jan 2026). Cosmetic limit: some clients show "via" because mail is physically sent by Gmail's servers; full removal needs a sending provider with the domain's own DKIM (jishnuteegala guide, updated ~Jul 2026). Outlook "on behalf" = sending from one account on behalf of another; fix = send-and-receive account with "Send email using your provider's server" (Microsoft Q&A, crawled ~Sep 2026). Marketing senders: "sent on behalf of" when From uses your domain but mail leaves from the marketing servers; DKIM setup authorizes their servers and removes the header (support.bigcontacts.com, crawled ~Mar 2026). Honesty: vendor docs describe the mechanics, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three ID checks that decide whether your mail clients print your name alone or add a 'via'. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>A sender mismatch is a symptom. The full Site Health Watch audit checks your website's speed, security, mobile experience, and AI visibility too &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+%27via%27+and+%27on+behalf+of%27+labels+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
