@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does 'Minimize Main-Thread Work' Mean on My Speed Test?</title>
+<meta name="description" content="Seeing 'Minimize main-thread work' flagged on your PageSpeed report? In plain English: your page kept the browser's one main worker too busy reading scripts and drawing the page - so clicks froze. What each of the six buckets means, why the page feels stuck when this one fails, and the fixes that actually calm it down.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Does 'Minimize Main-Thread Work' Mean on My Speed Test?</h1>
+    <p class="lede">The honest answer: <strong>this one is about the browser&rsquo;s worker, not the internet&rsquo;s plumbing.</strong> When your page loads, one main worker inside the browser does almost everything: it reads your code, works out where everything sits, paints the page, and answers taps and scrolls - all in one line. This audit flags that the worker was kept too busy during your page&rsquo;s load, so while it was reading scripts, nobody&rsquo;s clicks could get through. Below: the six buckets your report lists, translated; why this is the audit behind frozen buttons and jerky scrolling; and the fixes that actually free the worker up.</p>
+    <div class="article">
+
+      <p>All numbers are reported figures from the cited sources, not promises about your site.</p>
+      <h2>The verdict first: the one-worker problem</h2>
+      <p>Picture a small store with one cashier. That cashier reads every
+      price tag, bags every item, answers every customer question, and takes
+      every payment - everything goes through them, in order. The browser's
+      <strong>main thread</strong> is that cashier. It reads your page's code,
+      builds the page's internal picture, paints what you see, and responds
+      to every tap, click, and scroll - one worker, one line.</p>
+      <p>When your speed test flags "Minimize main-thread work," it is
+      reporting that the worker was overloaded during your page's load. Long
+      stretches of script-reading and layout work meant the line was not
+      moving: the page could not answer the visitor. The test even breaks
+      the work into buckets so you can see where the worker's time went:</p>
+      <p><strong>Script Evaluation</strong> - time spent running through the
+      page's scripts: the functions, variables, and code your widgets and
+      tools loaded. <strong>Script Parsing &amp; Compilation</strong> - time
+      spent translating those scripts before they can run. <strong>Style
+      &amp; Layout</strong> - time spent measuring where every element sits,
+      from the HTML and the styles. <strong>Rendering</strong> - time spent
+      actually drawing the page once the measurements are done.
+      <strong>Parse HTML &amp; CSS</strong> - time spent reading the page's
+      structure itself. <strong>Other</strong> - everything left over. Each
+      bucket shows its seconds, so the biggest bucket is where the worker
+      drowned.</p>
+      <h2>Why the page feels frozen when this one fails</h2>
+      <p>This is the CPU version of slow - the other speed audits are mostly
+      the download version (how much had to travel over the internet). A page
+      can finish downloading and still feel stuck, because the worker is
+      still chewing through scripts. That is the direct cause of
+      <a href="why-does-my-website-lag-when-customers-click-the-buttons.html">buttons
+      that lag when customers tap them</a> and
+      <a href="why-does-my-website-stutter-when-i-scroll.html">scrolling that
+      stutters</a> - the tap waits in line behind the script work. The same
+      overload pushes up your Total Blocking Time, and the individual worst
+      tasks show up under the companion audit "Avoid long main-thread tasks"
+      - those long tasks are the worst contributors to input delay, one of
+      the three parts of Google's Interaction to Next Paint score, which is
+      Google's measure of how fast your page reacts to a visitor.</p>
+      <h2>The usual suspects - and the fixes</h2>
+      <p><strong>Suspect one: third-party tools.</strong> Chat widgets,
+      tracking scripts, review feeds, and social embeds are the most common
+      main-thread hogs - they arrive as big script files the worker must read
+      before it can serve the visitor. Our
+      <a href="what-does-reduce-the-impact-of-third-party-code-mean-on-my-speed-test.html">third-party
+      code article</a> walks through weighing each one. If a tool is not
+      earning its place, removing it is often the biggest single fix - and
+      <a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">our
+      plugins-and-widgets article</a> is the removal checklist.</p>
+      <p><strong>Suspect two: scripts that do not need to run first.</strong>
+      Many sites run every script the moment the page starts loading,
+      including scripts only needed later. <strong>Suspect three: leftover
+      script.</strong> Old plugins, unused libraries, and compatibility
+      shims keep the worker reading code nobody uses - the exact problem
+      <a href="what-does-reduce-unused-javascript-mean-on-my-speed-test.html">our
+      unused-JavaScript article</a> covers. <strong>Suspect four: heavy
+      styling.</strong> Complex layouts and animation make the Style &amp;
+      Layout bucket swell; simpler page structure is genuinely faster.</p>
+      <p>The fixes, in owner-English: first, cut what the worker has to read
+      - remove every script, plugin, and widget the business does not need.
+      Second, make the remaining non-essential scripts wait their turn -
+      they should load after the page is already showing, not before. Third,
+      shrink the files themselves so there is less to translate and run.
+      Fourth, simplify the page's structure so layout math is cheap. Note
+      this is a developer job, not a settings toggle - but it is one of the
+      checks inside our full audit, because a fast-feeling site converts and
+      a frozen one does not.</p>
+      <h2>What to tell your developer</h2>
+      <p>Send your web person this: <em>&ldquo;My speed report flags
+      'Minimize main-thread work' - the main thread is overloaded. Five
+      asks. First, tell me which bucket is biggest on the report: Script
+      Evaluation, Style &amp; Layout, or one of the others. Second, audit
+      the third-party scripts and tell me which ones are worth their cost -
+      start with the chat widget and tracking scripts. Third, defer every
+      script that is not needed for the first screen, so the page shows
+      before the extras run. Fourth, remove unused libraries and polyfills,
+      and split any oversized script file into smaller pieces. Fifth, look
+      at whether the theme's layout complexity is swelling the Style &amp;
+      Layout bucket - <a href="what-does-eliminate-render-blocking-resources-mean-on-my-speed-test.html">our
+      render-blocking article</a> covers the download-order half of the same
+      problem. Report back: total main-thread time before and after, the
+      biggest bucket now, and which scripts you removed or deferred.&rdquo;</em>
+      The proof is the audit clearing on a fresh speed test - and buttons
+      that answer the first tap.</p>
+      <p class="meta">Verified 2026-10-11. The audit groups and analyzes
+      main-thread activity during page load (DebugBear PageSpeed Insights
+      guide, updated ~2 days ago; crawled 2026-10-11). The main thread
+      parses the HTML and CSS, builds the page's internal model, and parses,
+      evaluates, and compiles the JavaScript - most of that on the one main
+      thread; while it is busy it cannot respond to the visitor
+      (magefan.com PSI guide; crawled 2026-10-11). The six reported
+      categories: Script Evaluation, Script Parsing &amp; Compilation, Style
+      &amp; Layout, Rendering, Parse HTML &amp; CSS, Other (10web.io PSI
+      breakdown; DebugBear; crawled 2026-10-11). Long CPU stretches increase
+      Total Blocking Time; the companion "Avoid long main-thread tasks"
+      audit lists the worst individual tasks - the worst contributors to
+      input delay, one of the three components of Interaction to Next Paint
+      (DebugBear main-thread doc; crawled 2026-10-11). Third-party tools a
+      common cause of main-thread load (pflb.us PSI guide; DebugBear;
+      crawled 2026-10-11). Documented fixes: split large script files, remove
+      unused libraries and polyfills, defer non-essential scripts, simplify
+      style and layout work (pflb.us; magefan.com; crawled 2026-10-11). This
+      is general information, not promises about your exact report - but the
+      one-worker math is the same math on every page.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Reading about the worker is one thing - measuring your own page is better. The free speed check gives you the one number that matters (seconds, not points) plus the three biggest slowdowns in plain English. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The main thread is one of dozens of things that decide whether visitors stay or leave. The full Site Health Watch audit checks your website's speed &mdash; plus security, email authentication, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+what+%27Minimize+main-thread+work%27+means+on+my+speed+test+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
