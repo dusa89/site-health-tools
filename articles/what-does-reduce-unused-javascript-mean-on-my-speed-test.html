@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does &lsquo;Reduce Unused JavaScript&rsquo; Mean on My Speed Test?</title>
+<meta name="description" content="Your speed test flags 'Reduce unused JavaScript' and you have no idea what it wants you to do. Plain-English answer: your visitors' phones are downloading code they never use on that page - dead weight. What the warning means, where the dead weight comes from, what 'Est savings' is really saying, and the four asks for your web person.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Does &lsquo;Reduce Unused JavaScript&rsquo; Mean on My Speed Test?</h1>
+    <p class="lede">The short answer: <strong>your visitors' phones are downloading code they never use.</strong> That red warning - "reduce unused JavaScript" - is the speed test telling you your page ships dead weight: instructions the phone downloads, reads, and works through, even though nothing on that page ever runs them. It is a common warning on small-business websites, and it almost always traces back to the same handful of causes: plugins that load everywhere, features that were removed but never cleaned out, and tracking code nobody remembers adding. Below: what the three words actually mean, where the dead weight comes from, what the test's "Est savings" number is really telling you, the fix list in leverage order, the one trap to avoid, and what to tell your web person.</p>
+    <div class="article">
+
+      <h2>1. The three words, decoded</h2>
+      <p>Start with the vocabulary, because the warning is written for developers and you are not one. <strong>"JavaScript"</strong> is the invisible machinery of your website - the code behind the moving parts: the mobile menu that slides open, the contact form that validates your typing, the slider that rotates photos, the chat bubble, the cookie banner, the tracking that tells you how many visitors came yesterday. You never see JavaScript itself; you see what it does. <strong>"Unused"</strong> means loaded but never run - on <em>that</em> page. The code arrives on the visitor's phone and sits there, unread, like a toolbox hauled to a job that needed a screwdriver. <strong>"Reduce"</strong> means: download less of it, or at least stop making the phone deal with it before the page shows up. So the full sentence in plain English is: <strong>"Your page is making phones download and process code that page never uses - send less of it."</strong> The test is not being poetic; it flags every JavaScript file carrying more than 20 kilobytes of unused code (corewebvitals.io, page last reviewed March 2026; crawled 2026-10-10). If the warning names files on your report, those files crossed that line.</p>
+      <h2>2. Where the dead weight comes from - the five usual sources</h2>
+      <p>Dead code does not arrive by accident; it arrives by habit. Here are the five sources, likeliest first on a small-business site. <strong>Source one: plugins that load everywhere.</strong> Many plugins ship their code to <em>every</em> page because the plugin does not know which pages actually use it. The documented examples: a theme or plugin loads contact-form code on all pages even though the form only appears on the contact page, and a slider plugin loads its JavaScript on pages where no slider exists (bloggingtriggers.com, ~143 days old; crawled 2026-10-10). Your homepage is carrying the contact page's toolbox. <strong>Source two: features that died but their code didn't.</strong> The popup you turned off last year, the booking tool you replaced, the slider you deleted - the feature is gone, but nobody uninstalled the plugin, so its code still loads on every visit. <strong>Source three: whole libraries for one job.</strong> Sometimes a plugin pulls in an entire code library to use one small piece of it - like buying the whole hardware store for a screwdriver. <strong>Source four: forgotten tracking tags.</strong> Marketing tags get added to the site's tag manager - or pasted straight into the header - and never removed: the old analytics account, the ad pixel from the campaign that ended in 2024, the heatmap tool from the one redesign. <strong>Source five: scripts loaded too early.</strong> Some code only matters later - after the visitor scrolls, clicks, or fills in a form - but it loads with everything else up front, standing in line ahead of the page itself. (The tracking stack has its own article - <a href="do-those-little-tracking-scripts-slow-down-my-website.html">the tracking-scripts article</a> - and the pile-up problem has its own too - <a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">the plugin-pileup article</a>. This warning is often where those two problems show up wearing a lab coat.)</p>
+      <h2>3. Why it matters more than the score</h2>
+      <p>It is tempting to treat this as a grade to chase. Do not - the score is the least of it. Here is the scale of the problem across the web: the 2025 Web Almanac found that the median mobile page ships 646 kilobytes of JavaScript, and <strong>251 kilobytes of it - more than a third - goes unused</strong> on the page where it loads (cited by corewebvitals.io; crawled 2026-10-10). Now translate that to your customer. Her phone does not just download the dead weight - it must also <em>read</em> it and work through it, and reading code is real work for a phone processor. On your desktop on office Wi-Fi, 251 kilobytes of dead code is invisible. On a customer's two-year-old phone on a data connection, in a parking lot, it is the difference between the page feeling instant and feeling stuck. The phone pays twice: once for the download, once for the reading. That is why this warning tracks with what customers actually feel - buttons that answer late, pages that hesitate. One performance-monitoring vendor, CoreDash, reports that sites keeping their unused JavaScript under 100 KB score "good" on Google's responsiveness measure 93% of the time, versus 64% for sites carrying over 400 KB (cited by corewebvitals.io; crawled 2026-10-10) - a vendor's number, but the direction matches the physics. (How the phone-vs-computer gap works is its own article - <a href="why-is-my-website-slow-on-mobile.html">the phone-slowness article</a>.)</p>
+      <h2>4. What "Est savings" is really saying</h2>
+      <p>Next to the warning, the test prints something like "Est savings of 59 KiB" (one published speed-audit report showed "Est savings of 1,243 KiB" - over a megabyte of dead weight). Read that number for what it is: <strong>the test's rough estimate of how much dead code it found.</strong> Bigger number, bigger problem; small number, smaller problem. What it is NOT: a promise. It does not mean your site will get exactly that much faster, and it does not mean fixing it will move your grade by any particular amount. Treat it the way you would treat a mechanic saying "there's about fifty pounds of junk in the trunk" - useful for sizing the job, not a guarantee about the race time. One more honest note: the test measures one page, usually your homepage. The dead weight often differs page to page - the contact page may be clean while the homepage is heavy, or the reverse - so the warning is a sample, not a whole-site verdict.</p>
+      <h2>5. The fix list - in leverage order</h2>
+      <p>Fixes, biggest leverage first. <strong>Fix one: uninstall what you do not use.</strong> This is the only fix that actually <em>removes</em> dead code instead of rearranging it. Go through the plugin list with your web person and deactivate, then uninstall outright, anything the site no longer uses: the dead popup, the replaced booking tool, the old slider. Same for the tag manager or header code: every tracking tag should have a living owner and a current purpose; the rest get deleted. A site that has been through three redesigns is often carrying all three designs' leftovers. <strong>Fix two: delay the rest until the visitor interacts.</strong> This is the fix owners hear about most, and it lives in the caching/optimization plugin's settings under names like "Delay JavaScript Execution." The mechanism is simple: non-essential scripts are held back and only allowed to run after the visitor does something - moves the mouse, taps, scrolls, presses a key - so the page itself renders first and the dead weight stops blocking it (bloggingtriggers.com; cybernaira.com 2026 settings guide; esapplication.com 2026 comparison; crawled 2026-10-10). It is the standard answer because it works on the score AND on the customer's phone. <strong>Fix three: defer what cannot be delayed.</strong> For scripts that must be present but not first, "load JavaScript deferred" changes the loading order so the page finishes drawing before the scripts run. Same family as fix two, gentler. <strong>Fix four: the exclusion list.</strong> Menus, the cookie banner, the cart button - anything the visitor touches in the first seconds - must be excluded from delaying so it works instantly. This is not optional garnish; it is the difference between a fast site and a broken one (more in section 6). <strong>Fix five: retest and click through everything.</strong> Re-run the speed test on the homepage AND one inside page, then click through the site on a phone - menus, forms, the cookie banner, checkout - before calling it done.</p>
+      <h2>6. The trap - "just delay everything"</h2>
+      <p>The temptation, once you learn about delay switches, is to delay every script on the list and watch the warning vanish. Do not. Two honest cautions from the people who write the settings guides. First: <strong>delaying the wrong scripts breaks things.</strong> The mobile menu that will not open, the form that submits to nowhere, the cookie banner that never appears - these are the classic symptoms of a delay list with no exclusions, and a 2026 settings guide warns outright that aggressive delaying on a large site can cause errors and functionality issues (oswoptimize.com, ~120 days old; crawled 2026-10-10). The exclusion list in fix four is load-bearing. Second: <strong>delaying is rearranging, not removing.</strong> The code still ships to the phone; it just stops blocking the page. As one guide puts it plainly, delaying does not fully remove unused code - it pushes it to load later so it stops triggering the warning (bloggingtriggers.com; crawled 2026-10-10). That is a real improvement for the customer, but it is not the same as the code being gone. The sites that truly fix this warning do fix one first (uninstall the dead stuff) and use delaying for what legitimately remains. And the standing rule for all of this: <strong>do not touch these settings yourself.</strong> This is the web person's job - one wrong exclusion and the checkout breaks silently. Your job is the four asks in section 8.</p>
+      <h2>7. The one case you have already met</h2>
+      <p>You may have seen this exact warning wearing a different costume. The spam-guard article documented a real instance: a speed test flags the reCAPTCHA script - the "I'm not a robot" checkbox - as unused JavaScript on pages with no form, because the guard loads everywhere by default (<a href="is-the-im-not-a-robot-checkbox-slowing-down-my-website.html">the reCAPTCHA article</a>). That is source one from section 2 in the wild: code loaded on pages that never use it, flagged by name. If your report names a file with "recaptcha" or "contact-form" in it on your homepage, you are looking at the same animal - and the fix is the same shape: scope it to the pages that need it, or delay it. When you hand the report to your web person, circle the named files; the names are the map.</p>
+      <h2>8. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"Our speed test flags 'Reduce unused JavaScript.' Four asks. First, list every file the warning names and tell me which plugin, widget, or tracking tag each one belongs to - I want the dead-weight inventory in plain English. Second, for each one: uninstall it if we don't use it, scope it to the pages that need it if it's page-specific, or delay it until visitor interaction if it must stay - and show me the exclusion list for the menu, the cookie banner, and the contact form before you turn delaying on. Third, re-run the speed test on the homepage and one inside page and show me the warning shrinking - the 'Est savings' number going down is the proof. Fourth, click through the whole site on a phone afterward - menus, forms, cookie banner, checkout - and confirm nothing broke. Plain English, and no setting changes without the exclusion list first."</em> The proof is twofold: the warning's number drops, and everything still works. (And if the grade itself is what confuses you rather than the warning, <a href="should-my-website-speed-test-score-worry-me.html">the 52/100 article</a> translates the score; if the grade keeps moving between runs, <a href="why-does-my-website-speed-score-change-every-time-i-test-it.html">the moving-score article</a> explains why. The delay switch usually lives in the caching plugin - <a href="what-is-website-caching.html">the caching article</a> is the map to that settings page.)</p>
+      <p class="meta">Verified 2026-10-10. Lighthouse flags every JavaScript file with more than 20 KiB of unused code under "Reduce unused JavaScript"; the warning means the page downloads and runs code it does not need for that page load (corewebvitals.io, page last reviewed March 2026; crawled 2026-10-10). 2025 Web Almanac: median mobile page ships 646 KB of JavaScript, 251 KB of it unused on the page where it loads (cited by corewebvitals.io; crawled 2026-10-10). Common causes: too many CMS plugins, dead code from removed features, whole libraries pulled in for one function, code running on every page that is only needed on some, scripts loaded immediately that could have waited (corewebvitals.io; crawled 2026-10-10). Small-business examples: contact-form code loading on every page though the form is only on the contact page; slider JavaScript loading on pages with no slider (bloggingtriggers.com, page ~143 days old; crawled 2026-10-10). "Delay JavaScript Execution" holds non-essential scripts until visitor interaction (mouse move, tap, scroll, keypress); ships in WP Rocket and equivalents including LiteSpeed Cache and Perfmatters (bloggingtriggers.com; cybernaira.com 2026; esapplication.com 2026 comparison; crawled 2026-10-10). Honest limit: delaying does not fully remove unused code - it pushes it later so it stops blocking the page; true removal means uninstalling what is not used (bloggingtriggers.com; crawled 2026-10-10). Caution: aggressive delaying without exclusions can break menus, forms, and cookie banners; exclude above-the-fold interactive scripts (oswoptimize.com, ~120 days; cybernaira.com 2026; crawled 2026-10-10). "Est savings" is the test's rough estimate of dead weight found, not a promised speed gain. All numbers are reported figures from the cited sources, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. Run it, then hand your web person the four asks in this article.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours, including the exact loading-time number for your homepage.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+%27reduce+unused+JavaScript%27+speed+test+warning+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
