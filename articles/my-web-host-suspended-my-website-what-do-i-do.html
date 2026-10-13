@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Web Host Suspended My Website — What Do I Do?</title>
+<meta name="description" content="Your site now shows a suspension page instead of your business. Why your host is allowed to pull the plug, the three reasons they do it (billing, malware, policy), what 'suspended' really means for your data, and the cheapest-first recovery playbook — plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>My Web Host Suspended My Website — What Do I Do?</h1>
+    <p class="lede">The short answer: <strong>your site is not deleted — your host hit pause, not erase.</strong> A suspension is your host pulling your website offline, and they do it for one of three reasons: an unpaid bill, malware or abuse found on your account, or a policy violation. Your data is almost certainly still there. Read the notice they sent you, don't delete the account, and call them — the fix depends entirely on which of the three it is, and you find out by asking.</p>
+    <div class="article">
+
+      <h2>1. Suspended is a pause, not a delete — know the difference</h2>
+      <p><strong>What you are seeing is the host's version of a circuit breaker.</strong> Instead of your website, visitors get a page that says something like "This Account Has Been Suspended." The site files are still on the server — hosts preserve your data for a grace period even on billing suspensions (Heart Internet, Mar 2026). Nothing is gone. But nothing is reachable either, and every hour it sits there, customers are bouncing off a dead page.</p>
+      <p><strong>Two things are usually still working.</strong> First, your hosting dashboard login (billing suspensions especially) — log in and look for the notice, the account status, and any unread tickets. Second, your email history — before suspending you, hosts send notices, and for malware they send a security ticket. Search your inbox (and spam folder) for the host's name. That notice names the reason, and the reason decides the entire recovery. Guessing is how a one-day fix becomes a two-week outage.</p>
+      <p><strong>One version is not the host's doing at all:</strong> a domain can get suspended for failed contact verification — the domain registrar flips your nameservers and your website <strong>and</strong> email stop working at once. The fix is verifying the domain's contact details in the dashboard; the site typically returns within 24 hours (Hostinger support, updated ~24 days ago). If BOTH the site and email died together, check the domain first — that is the tell.</p>
+      <h2>2. The three reasons, likeliest first</h2>
+      <p><strong>Reason one: the bill didn't get paid.</strong> This is the single most common suspension, full stop. A missed renewal triggers an automatic suspension — no human reviewed it, no malware involved. Your data sits preserved for a grace period, and reactivation is usually automatic the moment you pay: log in to the dashboard, find the renewal section, complete the payment (Heart Internet, Mar 2026). If you switched cards, moved, or let a card expire, check that first. An embarrassing number of "hacks" are expired credit cards.</p>
+      <p><strong>Reason two: your host found malware or abuse on your account.</strong> Hosts run automated scanners across every account on a shared server, and when one finds malware, compromised plugins or themes, altered core files, or signs of a break-in, the host suspends the account to protect the whole server — including your neighbors (Heart Internet, Mar 2026). The notice for this one reads differently: the security team sends a ticket naming the affected domains, the path to the infected file or folder, and the steps they already took to disable the threat (techbriefers.com, 2026). <strong>This is actually your host doing you a favor</strong> — a compromised site that stays live gets flagged by Google, burns your email reputation, and keeps spreading.</p>
+      <p><strong>Reason three: a policy violation that isn't malware.</strong> The common ones: spam pouring out of your account (one host caps it at 19 emails a minute via PHP code and 10,000 a day total — and calls unprotected contact forms one of the most common reasons email service gets shut off; serverswebhosting.com, Jul 2026), resource abuse, or using your hosting space as an offsite backup for other stuff — hosts sell active website hosting, not archive storage, and they will suspend for it (Heart Internet, Mar 2026). If none of the first two fit, read your terms of service for the "acceptable use" section and compare it against what your account has been doing.</p>
+      <h2>3. Why they suspend first and explain later</h2>
+      <p><strong>You rent a room in a building with hundreds of neighbors.</strong> That is what shared hosting is: your site sits on one server alongside many others. If your account gets compromised and starts spewing spam, hosting phishing pages, or hammering the server's resources, everyone in the building feels it — and the host's reputation with email providers and security lists takes the hit. Suspending one account in seconds is how they protect the other hundreds (Heart Internet, Mar 2026; techbriefers.com, 2026).</p>
+      <p><strong>The scanners don't sleep, and they don't know you.</strong> These are automated systems: file scanners, mail-volume monitors, login-anomaly detectors. They flag patterns, not people. That is why the suspension can feel arbitrary — your site worked fine yesterday — and why it is not a punishment. It is triage. The flip side: because it is pattern-driven, the notice tells you the pattern, and the fix is just the pattern reversed.</p>
+      <p><strong>This is <a href="who-is-responsible-for-my-websites-security.html">the responsibility split in action.</a></strong> That article covers who owns what on paper — you vs the host. A suspension is the host exercising the part it owns: the server, the network, the shared building. Your part — the files, the passwords, the software inside your room — is what got you suspended, and it is what gets you back.</p>
+      <h2>4. Don't do these three things</h2>
+      <p><strong>Don't delete the account or the site.</strong> "I'll just start over" feels decisive, but it destroys the evidence (the notice, the ticket, the infected paths) and the backups you'd restore from. Suspended is not deleted — keep it that way. The account is your leverage; the ticket inside it is your map.</p>
+      <p><strong>Don't delete files just because the names look unfamiliar.</strong> Once you start poking around, you will find files with technical-sounding names that look suspicious and are completely legitimate — hosting and application files look like that by nature. One security guide's explicit warning: if you aren't sure whether a file is malicious, get it reviewed before removing it (jksdigital.in, Sep 2026). Deleting the wrong file breaks your site further; deleting nothing until someone qualified looks is free.</p>
+      <p><strong>Don't change just one password and call it clean.</strong> If this is a malware suspension, one password change is not enough — an attacker may have modified files, created hidden accounts, inserted malicious code, or exploited an outdated plugin, and changing one password fixes none of that (jksdigital.in, Sep 2026). And the reinstallation trap: <a href="i-cleaned-the-malware-off-my-website-why-does-it-keep-coming-back.html">cleaning without closing the hole means it comes back</a> — which earns you a second suspension, and hosts notice repeat customers.</p>
+      <p><strong>Meanwhile, check the difference:</strong> <a href="how-do-i-know-if-my-website-has-already-been-hacked.html">the hacked-detection article</a> covers the quiet signs of a compromise — this article is the loud version, where your host found it first. And if your customers are seeing a warning but the site still loads, that is <a href="my-customers-see-a-scary-red-warning-on-my-website.html">the scary red screen article</a>, a different emergency; a suspension page means the site isn't loading at all.</p>
+      <h2>5. The recovery playbook, cheapest first</h2>
+      <p><strong>Step one: read the notice, then call or chat with support.</strong> Every guide on this says the same thing: contact the hosting company's support team (phone or live chat) and ask for the specific reason, or dig through your email history for their notices first (techbriefers.com, 2026). Ask them: which reason — billing, malware, or policy? Which files or domains are flagged? What exactly do you need to see before you'll unsuspend? Write down the answer. This is the map for everything below.</p>
+      <p><strong>If it's billing:</strong> pay the outstanding balance in the dashboard's renewal section and request the suspension be lifted — on most hosts reactivation is automatic once payment processes (Heart Internet, Mar 2026). Then fix the root cause: update the card on file, turn on auto-renewal, and put the renewal date on a calendar. This is a 15-minute problem, not a security problem.</p>
+      <p><strong>If it's malware — the full clean, in order:</strong> first, change ALL the passwords — hosting account, website admin, database users, FTP/SFTP — and don't reuse one across them (jksdigital.in, Sep 2026). Second, the simplest fix of all: <strong>restore a clean version of your files from a backup you know is un-infected</strong> — your host then verifies it and brings the site back online (techbriefers.com, 2026). <a href="does-my-web-host-actually-back-up-my-website.html">If you're counting on the host's backup, read this first</a> — know what their copy actually covers. Third, update the website software: WordPress itself, every plugin, every theme — outdated components are the hole most attackers walked through. Fourth, scan and clean what's left, and <strong>fix the vulnerability, not just the infection</strong> — one guide's blunt warning is that without closing the hole, the same problem returns after the account is restored (jksdigital.in, Sep 2026). <a href="what-should-i-do-if-my-website-gets-hacked.html">The full hack-response playbook</a> covers the deeper forensics if the simple restore doesn't hold.</p>
+      <p><strong>If it's a policy violation:</strong> fix what the notice names. Spam pouring out of your contact forms? Lock those forms down — <a href="why-is-my-contact-form-getting-spammed-by-robots.html">the contact-form spam article</a> walks through the exact stack, and one hosting guide explicitly names unprotected forms as a top cause of email-service shutdowns (serverswebhosting.com, Jul 2026). Resource abuse or storage misuse? Move the archives off the hosting account and ask support what the limits are. Then ask them to verify the fix and lift the suspension.</p>
+      <h2>6. What to tell support (the exact words)</h2>
+      <p>Send or say this: <em>"My website is showing a suspension page. Five asks: first, what is the exact reason — billing, malware, or policy? Second, if it's billing, where do I pay and does it reactivate automatically? Third, if it's malware, send me the list of affected files and paths your scanner flagged. Fourth, once I've cleaned it — all passwords changed, software updated, clean backup restored — who verifies it and how fast do you unsuspend? Fifth, what do I need to change so this doesn't happen again?"</em> Five asks, one conversation, and the suspension has a timeline instead of a mystery.</p>
+      <p class="meta">Mechanics verified 2026-10-09. Two primary suspension reasons — billing (most common; auto-suspend on missed renewal, data preserved for a grace period, reactivation automatic on payment) vs policy/security violations (malware &amp; compromise, compromised plugins/themes, altered core files, unauthorized access attempts, storage violations; security suspensions require contacting support): Heart Internet support article, updated Mar 5, 2026. Malware ticket contents (affected domains, path to infected file/directory, steps taken) and simplest fix (restore a clean un-infected backup, host verifies and reinstates): techbriefers.com, crawled 2026. Careful approach for security suspensions (one password change insufficient — modified files, hidden accounts, malicious code, exploited components; change hosting/admin/database/FTP-SFTP passwords, no reuse; update software; don't delete unfamiliar-looking files, get them reviewed; scan and clean; fix the vulnerability or it returns after restoration): jksdigital.in, updated ~13 days ago. Domain verification suspension variant (failed ICANN contact verification — nameservers flip, site and email stop, verify contact details in dashboard, back within 24 hours): Hostinger support, updated ~24 days ago. Email-sending suspension variant (19 emails/minute via PHP, 9/minute via SMTP, 10,000/day collective; unprotected contact forms a common reason email service is disabled): serverswebhosting.com, Jul 30, 2026. First step (contact support by call/live chat, or search email history for their notices): techbriefers.com, 2026; blog.mashjoy.com ("This Account Has Been Suspended").</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Find out whether your own site is exposed right now: the free security scan reads your site's headers, certificates, and visible exposure &mdash; the same kind of 'what would the host's scanner find?' check this article runs through. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>A suspension is one symptom. The full Site Health Watch audit checks your site against all 40 trust signals &mdash; security headers, hidden malware, speed, mobile, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+hosting+suspensions+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
