@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is My Slow Website Making My Google Ads More Expensive?</title>
+<meta name="description" content="Slow pages hurt paid clicks twice: Google's Quality Score charges you more per click for a bad landing page, and visitors bounce before they buy. How it works and how to check yours.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Is My Slow Website Making My Google Ads More Expensive?</h1>
+    <p class="lede">Every click on your Google ad costs you real money. If the page that click lands on is slow, you get hit twice: Google can charge you more for each click, and more of the visitors you paid for leave before they see a thing.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-13 - not promises about your situation. Google does not
+      publish exactly how its scores are weighted; anyone who quotes you
+      an exact dollar saving from a faster page is estimating, not
+      measuring.</p>
+      <h2>The short answer</h2>
+      <p>Very likely, yes - through Google's Quality Score system.
+      Google grades every keyword you bid on with a 1-to-10 score, and
+      one of its three parts is the landing page experience: whether the
+      page your ad leads to is relevant, trustworthy, fast, and
+      mobile-friendly. A slow landing page drags that score down, and a
+      low score means you pay more per click for the same ad position
+      than a competitor with a fast, relevant page. Nobody at Google will
+      tell you the exact price difference - the formula is theirs - but
+      the direction is not disputed anywhere in the industry: better
+      landing pages pay less per click.</p>
+      <h2>What Quality Score actually is</h2>
+      <p>Quality Score is Google's 1-to-10 rating of each keyword in your
+      account. It has three parts: how often people click your ad
+      (expected click-through rate), how closely your ad matches what
+      the person searched (ad relevance), and the experience of the page
+      the ad leads to (landing page experience). Your score affects two
+      things you care about: where your ad shows up, and what you
+      actually pay. Two advertisers can bid the same amount for the same
+      keyword, and the one with the higher Quality Score gets the better
+      position and pays less per click. Google's own documentation states
+      this plainly: advertisers with higher scores pay less for the same
+      ad position.</p>
+      <h2>Why speed is baked into the landing page score</h2>
+      <p>Landing page experience includes page speed directly, along with
+      mobile-friendliness and trust signals. Google watches what real
+      visitors do on your page: if people click your ad and leave within
+      seconds, that signals a bad experience, and a slow page is one of
+      the most common reasons for it. Most ad clicks now come from
+      phones, so Google evaluates the mobile version of your page. This
+      is a different mechanism from the organic-ranking question we
+      covered separately - there, speed is a small tiebreaker between
+      competing pages; here, speed feeds a score that moves your actual
+      price per click.</p>
+      <h2>The two ways a slow page burns your ad budget</h2>
+      <p>First, you pay more for every click. A poor landing page
+      experience can drop your Quality Score by a few points, and every
+      point down costs you more per click for the same position. Second,
+      you pay for clicks that produce nothing: visitors who bounce before
+      the page finishes loading cost you the click fee and never see
+      your offer. Google's long-standing published benchmark says more
+      than half of mobile visits are abandoned after three seconds -
+      those are clicks you bought and handed straight back. The two
+      effects compound against you: you pay more per click and convert
+      fewer of them. That compounding effect is our analysis, built from
+      the sources below.</p>
+      <h2>The one number to aim for</h2>
+      <p>The consistent guidance across paid-search practitioners is
+      simple: your landing page should load in under two seconds on a
+      phone. That is not a Google-published requirement - it is the
+      industry working target. Google's own published benchmark of
+      abandonment after three seconds is the outer bound: three seconds
+      is where you start losing the majority, not where you are safe.
+      And measure the pages that take paid traffic, not your homepage:
+      many businesses send every ad to the homepage, which is heavier,
+      slower, and less relevant than a page built for the ad - costing
+      you on Quality Score twice over.</p>
+      <h2>How to check whether speed is costing you right now</h2>
+      <p>Open your Google Ads account, go to the Keywords view, and add
+      the Quality Score columns - Google offers Quality Score, Landing
+      page experience, Expected CTR, and Ad relevance as columns you can
+      add. Look at the Landing page experience column for the keywords
+      that matter to you: "Below average" or "Average" on your money
+      keywords is the flag. Then run those exact landing-page URLs
+      through a speed check and note the seconds figure on mobile. If
+      the flag and a slow number line up on the same page, you have
+      found a page where speed is very likely inflating what you pay -
+      and where visitors are bouncing before they convert.</p>
+      <h2>The fix list that matters for ad landing pages</h2>
+      <p>The standard speed fixes apply, but ad landing pages get two
+      special rules. First, do not send paid traffic to your homepage:
+      a dedicated page that matches the ad's promise loads faster
+      because it carries less weight, converts better because it has one
+      job, and scores better on relevance. Second, strip the landing
+      page of anything that does not earn the click: the chat widget,
+      the review carousel, the background video, the pop-up that fires
+      on entry - every one of these slows the page and each one is a
+      distraction from the single button the visitor came to press. One
+      page, one offer, one button is the shape that both visitors and
+      Google reward.</p>
+      <p>Sources for the facts above, all checked 2026-10-13: the three
+      Quality Score components - expected click-through rate, ad
+      relevance, and landing page experience - and that page speed is a
+      direct component of the landing page score (eseospace.com landing
+      page guide; f22labs.com Quality Score guide; designloud.com Quality
+      Score explainer); a low score raises cost per click while a high
+      score lowers it for the same position, with ad rank determined by
+      bid times Quality Score (f22labs.com; designloud.com; leadraftmarketing.com
+      speed-and-Quality-Score guide); that a poor landing page experience
+      can drop the score by a few points and that slow pages bounce
+      before converting (foundrycro.com 2026 homepage-vs-landing-page
+      analysis; wpseoai.com wrong-landing-page guide); the under-two-second
+      industry target for landing pages (prioritypixels.co.uk; designloud.com);
+      that most ad clicks come from mobile and the page is graded on its
+      mobile version (designloud.com; wpseoai.com). The 53 percent
+      abandonment after three seconds is Google's published 2017
+      benchmark, still the industry reference. The compounding framing
+      and the "two ways it burns your budget" framing are our analysis.</p>
+      <p>Related reading: the organic-search side of this question - <a
+      href="will-google-bury-my-website-because-its-slow.html">will
+      Google bury your website because it is slow</a>; what <a
+      href="what-does-one-extra-second-cost.html">one extra second
+      costs</a> in lost sales; and why your site is <a
+      href="is-my-website-slow-for-customers-on-bad-wifi.html">slow for
+      customers on bad wifi</a> even when it loads fine for you.</p>
+      <div class="trybox">
+        <strong>Try it free &mdash; takes about 10 seconds</strong>
+        <p>Paste the URL of the page your ads send people to. Ten seconds later you get one verdict in plain English - how fast it really is on a typical phone, and the three biggest slowdowns translated out of jargon.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>A slow page makes every ad click cost more - and speed is only one of 40 checks. The full Site Health Watch audit covers email deliverability, security, mobile experience, SEO, and AI visibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+is+my+slow+website+making+my+Google+Ads+more+expensive+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
