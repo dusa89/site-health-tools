@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is My Backup Plugin Slowing Down My Website?</title>
+<meta name="description" content="Your backup plugin copies your entire website on a schedule, and on shared hosting that job fights your visitors for the same computer power. Why a backup can fire in the middle of a customer's page load, the every-2-hours trap, and the five-setting fix, in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Is My Backup Plugin Slowing Down My Website?</h1>
+    <p class="lede">Here is a mystery owners bring us: the website is slow at the same time every day, or a customer swears the site crawled once and nobody can reproduce it. More often than you would guess, the culprit is not traffic and not hackers. It is the thing that is supposed to protect the website: the backup plugin, doing its job on a schedule nobody thought about. The good news is you do not have to choose between backups and speed. You just have to teach the backup some manners.</p>
+    <div class="article">
+
+      <p>All numbers are reported figures from the cited sources, not promises about your
+      situation - measurement conditions differ test to test. The facts below describe
+      how backups and website servers interact in general; your own hosting
+      account's resource graph is the verdict on your website.</p>
+      <h2>What a backup actually does to your server</h2>
+      <p>A backup is not a small errand. It is your plugin reading every
+      single file on your website, one by one, plus making a full copy of
+      your database, then packaging it all up. On a typical small-business
+      site that means thousands of files. And here is the part that matters:
+      on shared hosting, your visitors and your backup share one computer.
+      There is a fixed amount of processing power, and when the backup is
+      running, your customers get whatever is left.</p>
+      <p>This is not theory. A published hosting stress test measured exactly
+      this kind of background job - a task reading thousands of small files
+      the way a backup does - and found processor contention caused the
+      biggest slowdown of anything they tested. One extra background task
+      nearly doubled response time, from 81 milliseconds to 152. Reported
+      measurement from their lab, not a promise about your site - but it
+      shows the shape of the problem: the backup is not "a little extra
+      work," it is a second full-time job your server did not apply for.
+      (Our <a href="does-cheap-hosting-make-my-website-slow.html">cheap
+      hosting article</a> covers the size of the engine; this article is
+      about one passenger grabbing the wheel. It happens on good hosting
+      too.)</p>
+      <h2>The sneaky part: a customer can trigger your backup</h2>
+      <p>Now the part nobody tells you. WordPress does not have a real clock
+      for scheduled jobs. Its built-in scheduler only checks "is anything
+      overdue?" when somebody loads a page - and if a backup is due, it
+      starts the backup <em>during that visitor's page load</em>. That is
+      straight from WordPress's own developer handbook. One plain-English
+      writeup of this mechanism puts it perfectly: the visitor pays for it.
+      Heavy scheduled work executes inside a real person's page request.
+      They wait; the job runs.</p>
+      <p>It gets worse. A backup you scheduled for 3am does not run at 3am.
+      It runs at the first page load <em>after</em> 3am - which, on a quiet
+      business site, might be 9:12 in the morning, right when your first
+      real customer of the day shows up. So the "slow at the same time
+      every day" mystery and the "slow once, never again" mystery are often
+      the same thing: a backup firing inside somebody's visit. If your
+      slowness has no pattern at all, our <a
+      href="why-is-my-website-only-slow-sometimes.html">sometimes-slow
+      article</a> walks through the other suspects - but a scheduled backup
+      is the one intermittent cause you can put on a calendar.</p>
+      <h2>The every-2-hours trap</h2>
+      <p>The most popular free backup plugin offers schedules as frequent as
+      every 2 hours. On a large site, that is a full copy of everything,
+      several times a day, every day. Backup plugins running too often - or
+      running on a big website - are a documented cause of servers running
+      out of resources, and hosts respond to that the same way every time:
+      they throttle your account. Throttling means your site gets slower for
+      everyone, and it stays slower until the resource spike passes. The
+      plugin's own documentation is honest about this: creating a backup
+      uses extra server resources, particularly on larger websites.</p>
+      <p>So check your setting. If your site changes once a week but your
+      plugin backs up every few hours, you are paying the full price of a
+      backup a dozen times over for protection you do not need. The common
+      sensible schedule the plugin's own docs suggest is weekly for files
+      and daily for the database - and even that is more than many brochure
+      sites need. (This is also why the fix is not "delete the plugin."
+      Having no backup at all is worse; our <a
+      href="if-my-website-vanished-tonight-do-i-have-a-copy.html">vanished-tonight
+      guide</a> covers the disaster-recovery side. Keep the backups. Fix
+      the schedule.)</p>
+      <h2>Where the backups sleep matters too</h2>
+      <p>Two mistakes owners make with backup <em>storage</em>. First: keeping
+      every backup on the same server as the live website. If that server is
+      hacked, damaged, or simply goes down, your website and its backup
+      vanish together - the plugin maker themselves warn against relying on
+      same-server copies alone. Send finished backups somewhere else: cloud
+      storage like Google Drive or Dropbox is the standard answer, and most
+      backup plugins connect to them directly.</p>
+      <p>Second: never deleting old copies. Every backup is a big file, and
+      a year of daily backups is a mountain of them sitting on your disk.
+      That is disk space your website cannot use, and a server that fills
+      its disk starts breaking in strange ways. Turn on the plugin's
+      retention limit - the setting that keeps, say, the last 4 copies and
+      automatically deletes the oldest - so the pile never grows without
+      bound. (Disk-filling clutter has a cousin: our <a
+      href="what-is-database-bloat-and-is-it-slowing-my-website-down.html">database
+      bloat article</a> covers the junk that accumulates <em>inside</em>
+      your database. Different junk, same cure: stop keeping what you do
+      not need.)</p>
+      <h2>The five-setting fix</h2>
+      <p>You do not need a new plugin. You need five settings, and none of
+      them require touching code:</p>
+      <p><strong>1. Run backups when nobody is looking.</strong> Schedule them
+      for the dead of night or whenever your traffic is lowest - the
+      plugin's own docs say quieter periods reduce the hit on performance.
+      If your plugin lets you pick the exact start time, use it; if it only
+      offers intervals, pick the longest one your update habits justify.</p>
+      <p><strong>2. Back up incrementally.</strong> Instead of copying the
+      whole site every time, take one full backup and then only copy what
+      changed since. The plugin makers describe this as the way to save
+      server resources and disk space at once. Fewer full copies, smaller
+      jobs, happier server.</p>
+      <p><strong>3. Give WordPress a real clock.</strong> The standard advice
+      from performance specialists: switch off the built-in
+      visit-triggered scheduler and run a real server cron job instead, so
+      the backup fires at the actual scheduled time - 3am means 3am - and
+      never inside a customer's page load. Your host's control panel can set
+      this up; if that sentence scares you, this is a ten-minute job for
+      your web person, not a project.</p>
+      <p><strong>4. Store backups off the server.</strong> Connect the plugin
+      to cloud storage and stop keeping the only copies where the website
+      lives. This protects you from the server dying <em>and</em> frees the
+      disk space those files were eating.</p>
+      <p><strong>5. Cap how many copies you keep.</strong> Set the retention
+      limit so old backups delete themselves. Four recent copies beat forty
+      ancient ones in every way that matters.</p>
+      <p>One more, free: if you run several websites on one hosting account,
+      stagger their backup times so they never all fire at once. Two
+      backups fighting each other for the same processor is the problem
+      squared.</p>
+      <h2>How to tell if the backup is YOUR slowdown</h2>
+      <p>The clock test comes first. If the site drags at roughly the same
+      time every day - or if the "slow" complaints cluster around one part
+      of the day - check what time your backup is scheduled. A match is not
+      proof, but it is a strong suspect.</p>
+      <p>Then look at the evidence your host already collects. Most hosting
+      control panels have a resource-usage graph showing processor and
+      memory over time. Open it, find the backup's scheduled time, and look
+      for the spike. A mountain of processor usage exactly when the backup
+      runs is about as close to a confession as servers give.</p>
+      <p>The decisive test is the oldest one in the book: turn the backup
+      schedule off for two days (keep the plugin installed, keep your last
+      good backup files somewhere safe) and watch. If the daily slowdown
+      vanishes, you have your answer - then turn the schedule back on with
+      the five settings above. And keep the traffic explanation separate in
+      your head: our <a
+      href="does-my-website-get-slower-when-more-people-visit.html">traffic-spike
+      article</a> covers slowness that tracks visitor numbers. Backup
+      slowness tracks the clock, not the crowd. That difference is the whole
+      diagnosis.</p>
+      <p>The general version of this story - every plugin and widget adding
+      its own weight - is covered in our <a
+      href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">plugins-and-widgets
+      inventory article</a>. The backup is special because its weight
+      arrives on a schedule. Learn the schedule, tame the schedule, and the
+      protector stops being the problem.</p>
+      <p>Sources for the facts above, all checked 2026-10-12: the backup-style
+      file-reading stress test, where one extra background task pushed
+      response time from 81ms to 152ms (skynethosting.net, updated ~14 days
+      ago, crawled ~4 hours ago); scheduled backups as a trigger of CPU
+      spikes, and shared-host CPU caps degrading sites regardless of theme
+      weight (Medium/volodymyrzh, updated ~174 days ago, crawled ~18 days
+      ago); too-frequent backups on large sites as a named cause of
+      resource exhaustion, with incremental backups the recommended lighter
+      path (researchasahobby.com, updated ~3155 days ago, crawled 1 day
+      ago); WP-Cron firing only on page loads with due tasks running during
+      that load (developer.wordpress.org Plugin Handbook, crawled ~107 days
+      ago); heavy scheduled work executing inside a visitor's page request,
+      and 3am jobs firing at the first morning page load instead
+      (Medium/pingvera, updated ~77 days ago, crawled under an hour ago);
+      replacing the visit-triggered scheduler with a real server cron and
+      scheduling heavy tasks for low-traffic hours (themedev.net, crawled
+      ~21 hours ago); full backups as often as every 2 hours on the free
+      tier, backup creation using extra server resources especially on
+      larger sites, quieter-period scheduling reducing the performance hit,
+      exact start-time and incremental options cutting server load, and
+      staggering backup times across sites on one server (teamupdraft.com
+      scheduling documentation, crawled ~8 days ago, and teamupdraft.com
+      backup-schedule guide, updated ~13 days ago, crawled ~3 hours ago);
+      the warning against relying on same-server backup copies
+      (teamupdraft.com backup-schedule guide, same dates); retention limits
+      auto-purging the oldest copies to conserve space (UpdraftPlus FAQ via
+      wppick.com, updated ~99 days ago, crawled ~4 days ago). All figures
+      are reported measurements from the cited sources, not promises about
+      any individual business.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Suspect your backup is the culprit? Get your baseline first. The free speed check gives you your mobile loading seconds in plain English in about ten seconds - run it during a quiet hour, then again when the site feels slow. If the numbers only look bad on schedule, you have your answer.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>A backup setting is only one piece of the puzzle. The full Site Health Watch audit checks your site's speed, security, mobile experience, SEO, and AI visibility - every finding verified against your live site, delivered within 24 hours. Because a site that backs up perfectly at 3am but takes 6 seconds to load still loses the customer.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+backup+plugins+slowing+down+websites+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
