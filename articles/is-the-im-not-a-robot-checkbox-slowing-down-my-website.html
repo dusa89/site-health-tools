@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is That 'I'm Not a Robot' Checkbox Slowing Down My Website?</title>
+<meta name="description" content="That little 'I'm not a robot' checkbox on your contact form may be slowing down every page of your website - even pages with no form on them. Why spam-protection scripts load site-wide, how to prove it, and the one-setting fix - in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Is That 'I'm Not a Robot' Checkbox Slowing Down My Website?</h1>
+    <p class="lede">The short answer: <strong>probably yes - and the slowdown hits every page, not just the one with the form.</strong> That checkbox (Google's reCAPTCHA, or its invisible cousin that watches silently in the background) is a bouncer hired to guard your contact form against spam robots. The problem: many website setups station the bouncer at <em>every</em> door of the building, not just the one door with the form behind it - so every visitor downloads the bouncer's full toolkit on every page they open, including your homepage and blog posts. Below: why it loads everywhere, how to prove it is the culprit before you touch anything, the one-setting fix, and the spam tradeoff you must respect first.</p>
+    <div class="article">
+
+      <h2>1. What you would notice</h2>
+      <p>Run a speed test and look at the "reduce unused JavaScript" or third-party warnings: if you see <strong>google.com/recaptcha</strong> in the list, your spam guard is loading on the page you just tested - and almost certainly on all of them. The checkbox itself only appears on your contact page, so nothing <em>looks</em> wrong anywhere else. What you feel instead is a site that is a beat slower everywhere for no visible reason: the homepage, the services pages, the blog posts. That gap between "looks fine" and "feels slow" is the signature of a script doing its work where nobody asked it to - the same class of problem as <a href="do-those-little-tracking-scripts-slow-down-my-website.html">those little tracking scripts</a> riding on pages they do not belong on.</p>
+      <h2>2. Why the bouncer stands at every door (the honest frame)</h2>
+      <p>It is not a bug - it is the lazy default. Checking every page for "does this one have a form?" takes extra work from the plugin author, so most form plugins skip the check and load the spam-protection script on <em>all</em> pages. Contact Form 7, one of the most-used form plugins in the world, loads the reCAPTCHA script on every page by default - its own support forums treat this as known behavior. WPForms ships a setting literally called <strong>"Load Assets Globally"</strong> that does the same thing when switched on. And the invisible version of reCAPTCHA makes the problem worse by being unseeable: it scores how visitors behave in the background across your whole site, which is exactly why plugins default to loading it everywhere. You hired a bouncer for one door; the installer posted him at all of them and never told you.</p>
+      <h2>3. How to prove it is the culprit (before you touch anything)</h2>
+      <p>Do not guess - measure. Run your homepage through a speed test and check whether recaptcha appears in the unused-JavaScript or render-blocking lists. Then run a page that has no form at all, like a blog post: if recaptcha shows up there too, you have your proof - the script is loading where it can do no good whatsoever. (First rule out the two usual suspects on the same test: <a href="why-do-my-photos-slow-down-my-website.html">oversized photos</a> and <a href="why-does-my-website-take-forever-to-start-loading.html">a slow server</a> - you want to know whether your problem is script-side or server-side before you blame the guard.) One honest data point from the wild: a site owner on the WordPress forums tested both ways and reported PageSpeed scores of <strong>25-35 with reCAPTCHA active versus 64-76 without it</strong>. That is one person's report on one site, not a promise about yours - your gap may be smaller or larger. But it shows the shape of the problem: this is not a rounding error, it can be the single biggest script on the page. If you want the safest test, have your web person toggle it on a staging copy first - never experiment on the live site during business hours.</p>
+      <h2>4. Fix one: post the bouncer only where the form is</h2>
+      <p>Start with the setting, not the code. Open your form plugin's settings and look for anything about loading assets, scripts, or reCAPTCHA globally - in WPForms it is the "Load Assets Globally" toggle; switch it off and the plugin goes back to loading its scripts only where it detects a form. Many other form plugins have a similar per-form or global toggle. If your plugin offers no such setting, your web person can scope it with one small snippet - the standard pattern checks "does this page contain a form?" and unloads the script everywhere else. (This is one corner of the bigger <a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">plugin-bloat audit</a> - the spam guard is often the heaviest plugin on the list.) Two cautions from people who have done this. <strong>First, popups count:</strong> if your homepage has a popup or slide-in with a form inside it, that page needs the script too - stripping it breaks the popup form silently. <strong>Second, test the form afterward:</strong> submit it yourself in a private browser window, confirm the message actually arrives, and watch your spam folder for a week. A guard that no longer guards is worse than a slow one.</p>
+      <h2>5. Fix two: swap the bouncer for a lighter one</h2>
+      <p>Scoping usually recovers most of the speed, so treat switching as optional - but know the options. <strong>Cloudflare Turnstile</strong> is the popular replacement: its free plan includes unlimited verification requests, it plugs into the big form plugins (Gravity Forms, Elementor, Contact Form 7), and it is designed to verify visitors in the background, asking them to interact only when something looks suspicious. Going the other direction also helps: the visible checkbox version <em>typically</em> only loads where the form itself renders, while the invisible watcher is the one most plugins insist on loading everywhere - sometimes the "dumber" guard is the faster one. (Check your own speed test rather than trusting the version number: implementations vary, and some checkbox setups load globally too.) And for sites with light spam pressure there is the <strong>honeypot</strong>: an invisible extra field humans never see and robots always fill in - zero scripts, zero slowdown, surprisingly effective as a first layer. None of these is automatically right; the right one depends on how much spam you actually get, which your web person can read off your form's spam log. (And note what switching does <em>not</em> fix: <a href="what-is-website-caching.html">caching</a> helps repeat visits, and <a href="does-the-video-on-my-website-slow-it-down.html">that homepage video</a> is a separate heavyweight - each slowdown gets its own fix.)</p>
+      <h2>6. The spam tradeoff - read this before you delete anything</h2>
+      <p>Here is what happens if you just rip the guard out: <a href="why-is-my-contact-form-getting-spammed-by-robots.html">the robots come back</a>, fast, and your inbox fills with junk - or worse, your form gets used to send spam <em>from</em> your domain. Scope it, do not delete it. Two more honest costs to know about. <strong>The badge rule:</strong> Google's terms say the reCAPTCHA badge (or its credit line naming reCAPTCHA with links to Google's policies) must stay visible in the user flow - hiding the badge to "clean up the design" without the credit line breaks their rules. <strong>The quota:</strong> Google's free tier covers 10,000 checks a month, and loading the invisible version on every page burns through that budget on visitors who never go near a form - scoping the script saves quota as well as speed. The theme of this whole article: the guard is worth having; it is just not worth posting at doors nobody uses.</p>
+      <h2>7. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"My spam protection (reCAPTCHA) is loading on every page of my site, and a speed test flags it as unused JavaScript on pages with no form. Three asks. First, scope it so it only loads on pages that actually have a form - check the plugin's global-loading setting first, and remember any popup or slide-in that contains a form still needs it. Second, after the change, submit the form yourself in a private window and confirm the message arrives, then watch the spam folder for a week - I want proof the guard still guards. Third, tell me straight whether switching to Cloudflare Turnstile is worth it for my spam volume, or whether scoping what I have is enough - plain English, no upsell."</em> The before-and-after speed test is the receipt: same pages, same tool, the recaptcha line gone from the warnings.</p>
+      <p class="meta">Verified 2026-10-10. Contact Form 7 loads the reCAPTCHA script on every page by default; WPForms' "Load Assets Globally" setting loads its assets (including reCAPTCHA) on every page (wordpress.org support threads, crawled 2026-10-10). The documented fix is conditional dequeuing - keeping form assets active only on pages where forms exist - with the warning that popups/modals containing forms must be included (dev.to WordPress performance walkthrough, updated ~Sep 2026). One site owner reported PageSpeed scores of 25-35 with reCAPTCHA vs 64-76 without - a user report, not a benchmark (wordpress.org forum, crawled 2026-10-10). Cloudflare Turnstile's free plan includes unlimited verification requests and works with Gravity Forms, Elementor Forms, and Contact Form 7 (mywork.com.au guide, crawled 2026-10-10). Google's free reCAPTCHA tier covers 10,000 assessments per month per organization (2025 CAPTCHA provider buyer's guide). Google's terms require reCAPTCHA branding to remain visible in the user flow when the badge is hidden. Honesty: vendor docs and forum reports describe the mechanics, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your URL and get your load time in plain English &mdash; seconds, not scores &mdash; plus the three biggest slowdowns translated out of jargon, including third-party scripts riding on pages they do not belong on. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+the+%27I%27m+not+a+robot%27+checkbox+slowing+down+websites+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
