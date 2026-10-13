@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do I Have to Tell My Customers If My Website Was Hacked?</title>
+<meta name="description" content="Your website got hacked - do you legally have to tell your customers? Plain English: all 50 states have breach-notification laws, small businesses are not exempt, and the clock runs 30-60 days in the strictest states. What triggers the duty, who else gets told, and the first-48-hours checklist.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do I Have to Tell My Customers If My Website Was Hacked?</h1>
+    <p class="lede">The honest answer: <strong>if customer information was actually taken, the law in your state almost certainly says yes - and being a small business does not get you out of it.</strong> All 50 states, plus DC, have data-breach notification laws, and they apply to every business type - sole proprietors and LLCs included. The duty is triggered when someone unauthorized gets hold of your customers' personal information: names with account numbers, passwords, Social Security numbers, that kind of thing. Below: what triggers it, how fast the clock runs, who else has to hear about it, and the first-48-hours checklist.</p>
+    <div class="article">
+
+      <p>All numbers are reported figures from the cited sources, not promises about your
+      situation - deadlines and thresholds change when laws change. This is general
+      information about how breach-notification laws
+      work, not legal advice. If customer data was taken, talk to a lawyer
+      before you send any notices - the details of your situation decide
+      which states' laws apply.</p>
+      <h2>The verdict first: yes, probably, and the clock is already running</h2>
+      <p>Every state has its own version of the rule, but the shape is the
+      same everywhere: if your business owns or holds computerized personal
+      information about residents of a state, and that information is
+      acquired by someone unauthorized, you must tell the affected people.
+      <strong>Being small is not an exemption.</strong> A one-person shop
+      with a breached customer list is under the same duty as a chain.</p>
+      <p>About 20 states put a hard number on the deadline - between 30 and
+      60 days. Florida, California, and Colorado give you 30 days; Texas
+      gives you 60. The rest say "without unreasonable delay," which is
+      lawyer-speak for: don't sit on it. If you have customers in the EU,
+      their rule is stricter: 72 hours to notify the regulator after you
+      become aware of the breach.</p>
+      <h2>What actually triggers the duty - and what does not</h2>
+      <p>The trigger is not "my site got defaced" or "there was malware in
+      the theme." The trigger is <strong>personal information in the wrong
+      hands</strong>: a customer's name combined with an account number,
+      password, Social Security number, driver's license, or medical info.
+      If the hacker only planted spam links and never touched the customer
+      database, most laws do not require notification - but you still have
+      to be able to <em>prove</em> that, which is why the investigation
+      matters.</p>
+      <p>One important exception: data that stayed properly encrypted, with
+      the encryption key safe, generally does not trigger the duty in most
+      states - the thief got gibberish, not information. This is one reason
+      our <a href="should-my-website-store-my-customers-credit-card-numbers.html">article
+      on not storing card numbers</a> matters: information you never held
+      can never leak.</p>
+      <h2>It is not just your customers who have to hear about it</h2>
+      <p>In roughly 36 states, big-enough breaches must also be reported to
+      the state attorney general - the thresholds are things like 500
+      affected residents in California and Colorado, 250 in Texas. If more
+      than 1,000 people are affected, most states' laws also require
+      notifying the credit bureaus. And if the breach touched payment cards,
+      your payment processor has its own reporting rules on top of all of
+      this. A breach that feels like "a website problem" can turn into
+      four or five separate notifications - which is why people who clean
+      up hacks for a living will tell you: <strong>get the facts straight
+      before you announce anything.</strong></p>
+      <h2>The first-48-hours checklist</h2>
+      <p><strong>One: do not wipe the server.</strong> Your first instinct
+      will be to delete everything and start fresh. Resist it. The server
+      logs are the evidence that shows what the hacker took - and what they
+      did not. Back up the hacked site first, exactly as it is, then clean
+      it. Our <a href="what-should-i-do-if-my-website-gets-hacked.html">hacked-website
+      response article</a> walks through the mechanics.</p>
+      <p><strong>Two: lock down access immediately.</strong> Change every
+      password connected to the site - hosting, admin, database, email.
+      Turn on two-factor authentication everywhere it is offered. If a
+      former developer or employee had access, revoke it now; see our
+      <a href="does-my-old-developer-still-have-access-to-my-website.html">old-developer-access
+      article</a>.</p>
+      <p><strong>Three: get a professional to confirm what was taken.</strong>
+      The notification duty depends on facts - which tables, which fields -
+      that are hard to establish from the inside. This is some of the most
+      valuable money a breached business spends. If you carry cyber
+      insurance, call the carrier before hiring anyone: many policies cover
+      the forensics and notification costs but require their own approved
+      responders, as our
+      <a href="should-i-buy-cybersecurity-insurance-for-my-small-business.html">cyber-insurance
+      article</a> explains.</p>
+      <p><strong>Four: talk to a lawyer before notifying.</strong> The
+      notices have to say specific things - what happened, what data was
+      involved, what customers should do, what you are doing about it, and
+      how to reach you. A lawyer makes sure the notice satisfies every
+      state involved, because your customers do not all live in your
+      state.</p>
+      <h2>The one thing you must not do: cover it up</h2>
+      <p>In 2016, Uber had a breach affecting 57 million users - and instead
+      of notifying, the company paid the hackers to delete the data and
+      said nothing. When it came out, the cover-up became a bigger legal
+      disaster than the breach. The lesson for a small business: the fine
+      for late notification is bad, but the penalty for hiding a breach is
+      worse - and customers who hear it from you are far more likely to stay;
+      customers who hear it from the news are far more likely to leave. Our
+      <a href="why-would-anyone-hack-my-small-business-website.html">piece
+      on why small sites get targeted</a> explains why "too small to
+      matter" is exactly the wrong comfort.</p>
+      <p>The deeper lesson: breaches are detected by finding them, and
+      finding them is a security-check problem. Malware that sits on a site
+      for months - the kind our
+      <a href="i-cleaned-the-malware-off-my-website-why-does-it-keep-coming-back.html">reinfection
+      article</a> describes - is a breach waiting to be discovered. And if
+      you are wondering whether something is already wrong, our
+      <a href="how-do-i-know-if-my-website-has-already-been-hacked.html">signs-you-have-been-hacked
+      article</a> is the place to start.</p>
+      <p class="meta">Verified 2026-10-11. All 50 states + DC (+ Puerto
+      Rico, Guam, Virgin Islands) have breach-notification laws; Alabama
+      was the last to adopt, 2018 (NCSL, via cheriandrews.com small-business
+      guide, last crawl ~8 days ago; privacyrights.org 50-State Survey 2026
+      edition, last crawl ~1 hour ago). Applies to every business type
+      regardless of size - sole proprietor, LLC, C-corp, non-profit
+      (cheriandrews.com). 20 states set a hard numeric deadline of 30-60
+      days; 31 use "without unreasonable delay" (privacyrights.org). FL, CA,
+      CO: 30 days; TX: 60 days (coggno.com timeline guide, crawled ~1 hour
+      ago; privacyrights.org). Roughly 36 states require AG/regulator notice
+      too - e.g. 500 affected residents CA/CO, 250 TX (privacyrights.org;
+      coggno.com); over 1,000 individuals: credit-bureau notice in most
+      states (cheriandrews.com). Trigger: unauthorized acquisition of
+      personal information; data that stayed encrypted with an uncompromised
+      key generally does not trigger (terms.law California-law summary,
+      crawled ~3 days ago). GDPR: 72 hours to notify the supervisory
+      authority after becoming aware (EU residents affected); affected
+      individuals told "without undue delay" if high risk. Uber 2016:
+      57 million users, breach concealed, legal fallout (fastercapital.com,
+      crawl ~138 days ago). Deadlines and thresholds are reported figures
+      from the cited sources and change when laws change - confirm against
+      your state's current statute. This is general information, not legal
+      advice.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>A breach usually starts as a quiet security gap - a missing header, an expired certificate, a page served without the padlock. Our free security check scans your site the way the public internet sees it and translates the results into plain English: what's fine, what isn't, and what to fix first. No signup, no ads.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Breach notification is what happens after the damage - the full Site Health Watch audit finds the gaps before hackers do. We check your site's security posture, speed, mobile experience, SEO, and AI visibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+breach+notification+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
