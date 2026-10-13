@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Business Email Look Broken on My Customer's Screen?</title>
+<meta name="description" content="You send a clean email and your customer replies with a screenshot of a mangled mess — giant images, missing pictures, half the message cut off, weird colors. Four real reasons this happens, what each one looks like, and how to make your emails bulletproof. Plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Business Email Look Broken on My Customer's Screen?</h1>
+    <p class="lede">The short answer: <strong>there is no single "email app" — your message is being redrawn by half a dozen different engines, and the worst one is Microsoft Word.</strong> On your phone it looks perfect because your phone's mail app is forgiving. On your customer's Outlook, or in Gmail dark mode, your email runs into rules you never saw. Four reasons — starting with the most notorious — and how to defend against each one.</p>
+    <div class="article">
+
+      <h2>1. The scene: their screenshot looks nothing like your screen</h2>
+      <p>You send a newsletter or a quote. On your phone it looks clean: logo at the top, two neat columns of services, a blue "Call now" button. Then a customer replies with a screenshot. The header photo is enormous. The two columns are stacked like dominoes. The blue button is just blue underlined text. Your first thought is that you broke something. You didn't — you met the four reasons, and you are about to learn their names. A different Gmail problem — whether your email reaches the inbox at all — <a href="is-my-business-email-going-to-spam.html">has its own article</a>; this one is about what happens <em>after</em> it arrives.</p>
+      <h2>2. Reason 1 (the big one): their Outlook draws email with Microsoft Word</h2>
+      <p>Since 2007, the classic Windows desktop versions of Outlook have rendered HTML email with Microsoft Word's layout engine — not a web browser. Word was never built to draw web pages, so it quietly ignores a huge amount of standard styling: no flexbox, no grid, no max-width, no rounded corners, no background images, no floating elements, no media queries (emailsendx.com 2026 guide; foundation/inky docs). On the caniemail.com scoreboard — over 300 email features tested — Outlook for Windows scores 59, the lowest of any tracked client (research verified against caniemail, March 2026).</p>
+      <p>What it looks like: a headshot that is a 600px file set to display at 80px ignores the max-width rule entirely and blows up to its native 600px — "the image blows up the entire email" (hackernoon, ~Sep 16 2026). Background images behind headlines vanish. Rounded buttons become sharp-cornered boxes. Two-column layouts collapse into one tall stack. One honest caveat: Microsoft's newer Edge-based Outlook is much more capable — but plenty of businesses still run the classic one, so your email has to survive Word's engine (inky compatibility docs).</p>
+      <p>What to do: there is no setting your customer can flip that fixes this — it is your email's code that has to be Word-proof. If you send business emails from a proper email tool (Mailchimp, Brevo, Klaviyo and the like), their templates already generate Outlook-safe code. If your web person hand-builds your newsletter HTML, "does this render in Outlook desktop?" is the first question to ask them.</p>
+      <h2>3. Reason 2: Gmail's scissors — "[Message clipped] View entire message"</h2>
+      <p>Gmail cuts off any email whose code weighs more than <strong>102KB</strong> — kilobytes, not megabytes — and replaces the rest with a "View entire message" link (ActiveCampaign help, updated Sep 13 2026; Constant Contact knowledgebase). The catch is what counts: Gmail measures the raw HTML — every character of text, styling, tracking URL, and image address — not your image files. A long newsletter with lots of formatting can trip the limit while feeling light. Pasting from a Word doc is the classic trigger: the paste drags in invisible formatting code, so use paste-without-formatting (Ctrl+Shift+V on PC) when you build emails (Constant Contact knowledgebase).</p>
+      <p>What it looks like: the email just stops mid-thought with the clipped notice. Worse, everything below the cut hides too — including the unsubscribe link. A reader who wants off your list now has to click through to find the exit, and some will hit "report spam" instead, which hurts your sending reputation (ActiveCampaign, Sep 13 2026). On phones it gets stranger: the clipped Gmail mobile view can drop the mobile-friendly layout and show the desktop version (ActiveCampaign, Sep 13 2026). Separately, Gmail keeps a private trust score on your domain that affects delivery — <a href="how-do-i-check-if-gmail-trusts-my-business-email.html">that behavior has its own article</a>. The fix for clipping is short emails and a self-test: send yourself the email, open it in Gmail, and check whether the clipped line appears.</p>
+      <h2>4. Reason 3: the blocked-picture boxes — Outlook won't show images by default</h2>
+      <p>Microsoft Outlook is configured by default to block automatic picture downloads from anyone not on the recipient's Safe Senders list. The reason is privacy: images can carry tracking pixels that tell the sender when and where you opened the email (thewindowsclub.com; ablebits.com). So your customer opens your email and sees empty boxes with red X's and a bar saying "Download Pictures" — which, as one HubSpot community member put it, most customers will never think to click.</p>
+      <p>What to do: design as if the pictures aren't there. Every image gets descriptive alt text, so the box at least says "Our spring tune-up special: $79" instead of nothing. And never put the whole message inside one image — a price list baked into a single JPG is invisible to a customer with blocked pictures. Then tell customers, once, how to whitelist you: in classic Outlook it is File &gt; Options &gt; Trust Center &gt; Trust Center Settings &gt; Automatic Download (ablebits.com). One line in your welcome email — "add us to your safe senders so our emails show up properly" — does more than any redesign.</p>
+      <h2>5. Reason 4: dark mode rewrites your design</h2>
+      <p>Here is the part nobody warns you about: there isn't one dark mode — email designers count roughly six of them. Apple Mail is cooperative: it lets you write specific dark-mode styles and follows them. Gmail on iPhones does a full color inversion. Gmail on Android darkens aggressively and changes brand colors whether you like it or not. Outlook's desktop and mobile apps each do their own partial inversion, and they don't match each other. Gmail on the web does nothing at all (reallygoodemails.com, ~Sep 18 2026; mailpeek dark-mode comparison).</p>
+      <p>What it looks like: a black logo on a white background simply vanishes into a dark background. Transparent PNGs are the most common casualty — without a solid background of their own, they invert into ghosts (mailpeek). Borders you set to white can flip into bright lines. Microsoft's own guidance for senders: avoid pure black and pure white (clients target those first), keep strong contrast between text and background in both modes, and never make links depend on color alone — keep the underline (learn.microsoft.com). The practical fixes: give your logo a solid background in the image file itself, and send yourself a test email and read it in dark mode on a phone before it goes out.</p>
+      <h2>6. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"Customers keep sending me screenshots where our emails look broken. Five asks: first, show me one of our emails open in classic Outlook on Windows — screenshots, not your word. Second, how heavy is the email's HTML — are we under Gmail's 102KB clip limit? Third, show it to me with images blocked — does it still make sense? Fourth, show it to me in dark mode on a phone, Gmail and Outlook. Fifth, if our template fails any of those, rebuild it in a tool that generates Outlook-safe code and retest all five."</em> Five asks, and the mystery of the broken screenshot becomes a checklist.</p>
+      <p class="meta">Verified 2026-10-09. Outlook Word rendering engine (2007-2021 classic, ignores flexbox/grid/max-width/border-radius/background images/float/media queries): emailsendx.com 2026 guide; foundation/inky compatibility docs; hackernoon updated ~Sep 16 2026. caniemail.com scoreboard — Outlook Windows 59/302, lowest of tracked clients: via research verified against caniemail March 2026. 600px-image max-width symptom: hackernoon ~Sep 16 2026. New Edge-based Outlook more capable, legacy persists: inky compatibility docs. Gmail 102KB clip — raw HTML counted, not image files; paste-without-formatting tip: ActiveCampaign help updated Sep 13 2026; Constant Contact knowledgebase; beehiiv support. Clipping hides unsubscribe link, mobile view drops responsive layout: ActiveCampaign Sep 13 2026; Zoho help. Outlook blocks images by default (Safe Senders exception, tracking-pixel reason; Trust Center path): thewindowsclub.com; ablebits.com; HubSpot community. Six dark modes — Apple Mail cooperative, Gmail iOS full inversion, Gmail Android aggressive, Outlook partial/inconsistent, Gmail web no change: reallygoodemails.com ~Sep 18 2026; mailpeek dark-mode comparison. Transparent PNGs most common casualty: mailpeek. Sender guidance (avoid pure #000000/#FFFFFF, strong contrast, underlined links, no text baked in images): learn.microsoft.com dark-mode guide.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Before you dig into dashboards: paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the ID checks that decide whether your authentication pass rate starts at 100%. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>Broken-looking emails are one symptom. The full Site Health Watch audit checks your website's speed, security, mobile experience, and AI visibility too &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+business+emails+look+broken+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
