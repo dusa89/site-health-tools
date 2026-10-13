@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can I Use One Email Inbox for Two Businesses?</title>
+<meta name="description" content="You run two businesses but you are one person - can both email addresses live in one inbox? Yes, with aliases and send-as identities. How Google Workspace alias domains, Microsoft 365 aliases, and Gmail's send-as work, the three traps (wrong From, on-behalf-of leaks, calendar identity), and when two businesses genuinely need two accounts.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Can I Use One Email Inbox for Two Businesses?</h1>
+    <p class="lede">The short answer: <strong>yes - and this is a designed feature, not a hack.</strong> Every serious email platform has a mechanism that lets one person receive mail for several business addresses in a single inbox and send mail that wears each business's name. Google calls it a user alias domain; Microsoft calls them proxy aliases. Below: the three ways to set it up, how sending from the right identity works, how to keep the two businesses' mail sorted inside one inbox, what it costs, the three traps (including the one that tells your customer exactly which setup you use), and the point where two businesses genuinely need two separate accounts.</p>
+    <div class="article">
+
+      <h2>1. What the one-inbox setup actually is</h2>
+      <p>There are three ways to get two businesses' mail into one inbox, and only two of them are good. <strong>Way one: aliases.</strong> Your email provider gives your existing mailbox extra addresses. Mail to any of them lands in your inbox, and you can reply wearing whichever business's name you choose. This is the designed mechanism. <strong>Way two: send-as identities on free Gmail.</strong> Gmail's "Send mail as" lets you add another address under Settings and send from it inside your Gmail account (clean.email; getmailbird.com, updated ~46 days ago; crawled 2026-10-11). <strong>Way three: forwarding.</strong> You point business B's address at business A's mailbox and it all lands in one place. It works for receiving - but forwarding cannot send <em>as</em> business B, and it is the sloppiest of the three. (Forwarding's full story, and its own risks, is <a href="should-i-forward-my-business-email-to-my-personal-gmail.html">the forwarding article</a>.) (And if you are doing the opposite - one business, separate addresses for sales, support, and billing - <a href="should-i-have-separate-email-addresses-for-sales-support-and-billing.html">that article</a> is the mirror image of this one.) The rest of this article assumes you want the real setup: aliases or send-as identities, not forwarding.</p>
+      <h2>2. The three ways to do it properly</h2>
+      <p><strong>On Google Workspace: the user alias domain.</strong> If you own the second business's domain, Google's own documentation describes your exact case: "you might manage multiple businesses or brands, each with their own domain" - and gives you two choices. Add the second domain as a <em>user alias domain</em> and every user gets addresses at both domains at no extra cost per user (support.google.com; crawled 2026-10-11). The same name before the @ works at both domains (cloudhq.net; crawled 2026-10-11). Add it as a <em>secondary domain</em> instead when each business has its own separate users - and then you pay a license per account (support.google.com; crawled 2026-10-11). Two businesses, one owner, one login: the alias domain is the one. <strong>On Microsoft 365: aliases.</strong> Each Microsoft 365 user can carry up to 400 aliases, with no additional fees or licenses - the address just needs to be added to the user (Microsoft Learn admin docs, ms.date 02/02/2026; crawled 2026-10-11). One tenant can run aliases across multiple brand domains; Microsoft's own Q&A calls it a "widely adopted best practice" for organizations that want cost efficiency with centralized management (learn.microsoft.com; crawled 2026-10-11). <strong>On free Gmail: send-as identities.</strong> Settings, See all settings, the Accounts and Import tab, "Add another email address" under Send mail as. Gmail sends a verification code to that address to prove it is yours; once verified, you pick which identity to send from in the compose window's From dropdown (clean.email; getmailbird.com; crawled 2026-10-11). Two paid licenses of nothing: Workspace users each get up to 30 aliases (skynetiks.com; crawled 2026-10-11), M365 users up to 400, Gmail send-as free.</p>
+      <h2>3. Sending AS the right business - the From discipline</h2>
+      <p>Receiving was the easy half. The half that matters to customers is the sending identity: when you reply to business B's customer, the From line must say business B. With Gmail's send-as, you choose the sender address in the compose window's From dropdown - one click per message (getmailbird.com; crawled 2026-10-11). Gmail's replies can be set to reply from the address each message was sent to - a setting worth switching on - which keeps every thread wearing the right brand without you picking the identity each time. On Microsoft 365, sending from an alias works natively once it is enabled in the Exchange admin center (learn.microsoft.com Q&A; crawled 2026-10-11). The discipline is the human part: an invoice from business A going to business B's customer is a professionalism problem, not a technology problem. If one business sends the vast majority of your mail, set that identity as the default and make the other one the conscious choice.</p>
+      <h2>4. Keeping the two businesses sorted inside one inbox</h2>
+      <p>One inbox that receives two businesses' mail needs a sorting system or it becomes a junk drawer. <strong>Filters and labels</strong> are the designed answer: a filter that matches mail addressed to business B's address and applies business B's label, so you can read "one business at a time" inside the single inbox. Gmail's plus addressing adds a tagging trick for free: mail to you+plumbing@gmail.com lands in your inbox (the + word is ignored for delivery), and a filter can catch "+plumbing" and route it to a label (pcworld.com, Sep 14, 2026; crawled 2026-10-11). Useful for sign-ups and lead forms - you can see which business surface the mail came through. Two honest limits on the plus trick: it does not hide your real address (the address is sitting inside it), and there is no off switch for one plus address - filters can label or delete its mail, but the address itself keeps working (dev.to; crawled 2026-10-11). Plus tags are for organizing, not for professional addresses. (If the question behind this one is really "my inbox is overwhelming in general," that is a different article's job - this one is about which business the mail belongs to, not volume.)</p>
+      <h2>5. The free-mailbox option: shared mailboxes on Microsoft 365</h2>
+      <p>If business B does not need to be inside YOUR inbox at all - it just needs an address that exists - Microsoft 365 has a fourth option. Shared mailboxes are unlimited on Business Standard, require no license, and each holds 50GB (intertecdatasolutions.com, updated ~103 days ago; crawled 2026-10-11). Use one when you want business B's address to live its own separate life - its own inbox, its own sent folder, possibly with an assistant who has access - while business A stays yours alone. Microsoft's own guidance draws the line this way: aliases when one person manages everything; a shared mailbox when an address needs its own inbox or multiple hands (learn.microsoft.com Q&A; crawled 2026-10-11). That same line is the answer to the most common "should I add a person?" question - <a href="how-do-i-let-my-assistant-check-my-business-email.html">the assistant-access article</a> covers what changes the day someone besides you needs in.</p>
+      <h2>6. The three traps</h2>
+      <p><strong>Trap one: the "on behalf of" leak.</strong> A send-as identity configured properly shows a clean From line. Configured carelessly, it shows "sent by yourname@gmail.com on behalf of you@yourbusiness.com" - which tells the customer exactly how small your setup is. This is not a mystery: <a href="why-does-my-email-say-via-or-on-behalf-of.html">the via/on-behalf-of article</a> explains the exact cause and the fix. The workaround-comparison that documents this puts it in a table: the alias route gives clean outbound branding, while sending through group-style routing leaks the on-behalf-of identity (helloari.com, updated ~109 days ago; crawled 2026-10-11). <strong>Trap two: the calendar and files leak.</strong> On Google Workspace, aliases work in Gmail - but the rest of the suite does not know about them. Calendar invites and Drive shares sent "from" an alias still reveal your real primary identity (helloari.com; crawled 2026-10-11). If business B's clients get calendar invites, they will see business A's name. This is the trap nobody warns about because the alias works perfectly right up until it does not. <strong>Trap three: forwarding masquerading as aliasing.</strong> Forwarding only fixes the receiving half - you can read both businesses' mail, but replies go out wearing the wrong name unless you also set up a send-as identity. People discover this the first time a customer replies "who is this?" Read the forwarding article before you lean on it. (One more neighbor trap: if business B's mail is coming from a web host's free email package instead of a real provider, <a href="should-i-use-the-email-that-came-with-my-web-hosting.html">the hosting-email article</a> explains why that email breaks differently.)</p>
+      <h2>7. When two businesses genuinely need two accounts</h2>
+      <p>The one-inbox setup is perfect for one person wearing two hats. It breaks down at three points. <strong>People:</strong> the day someone else needs to read or send business B's mail, you need separation - a second account, a shared mailbox, or delegation. One shared inbox with everyone's password is how credentials get stuck to departing employees. <strong>Legal and money separation:</strong> if the two businesses are separate entities for taxes, liability, or contracts, commingled mail is commingled evidence - your accountant will eventually ask why business B's invoices live in business A's Sent folder. <strong>Reputation independence:</strong> remember the newsletter-subdomain logic - <a href="should-my-newsletter-come-from-a-subdomain.html">the subdomain article</a> explains why email streams need their own reputation lanes. If business A runs a promotional campaign that generates spam complaints, business B's mail is only at risk if both businesses send from the same domain; keep a separate domain per business and each stands or falls on its own reputation. One person, two brands, clean separation on paper: one inbox. Anything involving other people, other entities, or shared reputations: separate accounts. (If business B is running on a free @gmail.com address right now instead of its own domain, <a href="should-i-use-a-free-gmail-address-for-my-business-email.html">the free-Gmail article</a> is the first fix - identities only look professional when the address does.)</p>
+      <h2>8. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"I run two businesses and I want one inbox. Four asks. First, set up my second business's domain as an alias domain (Google Workspace) or add its addresses as aliases on my account (Microsoft 365) - no new paid seats, my existing mailbox receives both. Second, configure send-as identities for the second business's addresses and verify them, so the From line wears the right business on every reply - and set replies to default from the address each message was sent to. Third, build me a filter-and-label system so each business's mail gets its own label the moment it lands - I want to read one business at a time. Fourth, test it with me: send to each address, confirm it lands labeled correctly, and confirm a reply wears the correct From name with no 'on behalf of' showing. And tell me honestly whether my calendar invites would reveal the other business's name - if they would, say so before I find out from a customer."</em> The proof is a test message to each address, each labeled right, each reply wearing the right name. (And if you want someone to check whether YOUR business's email looks trustworthy to the people receiving it, <a href="../index.html">the free email check on this site</a> gives you a plain-English verdict on the three ID checks in about ten seconds.)</p>
+      <p class="meta">Verified 2026-10-11. Google Workspace: add a second brand's domain as a user alias domain - every user gets addresses at both domains, no extra cost per user; use a secondary domain (separate paid accounts) when each business has its own users (support.google.com Workspace Help; crawled 2026-10-11). Domain aliases share one mailbox per user with the same prefix across domains and need no extra licensing (support.cloudhq.net; crawled 2026-10-11). Up to 30 aliases per Workspace user (skynetiks.com; crawled 2026-10-11). Microsoft 365: up to 400 aliases per user, no additional fees or licenses (Microsoft Learn admin docs, ms.date 02/02/2026; crawled 2026-10-11); sending from an alias supported natively once enabled in the Exchange admin center (learn.microsoft.com Q&A; crawled 2026-10-11). M365 Business Standard shared mailboxes: unlimited, no license, 50GB each (intertecdatasolutions.com, updated ~103 days ago; crawled 2026-10-11). Gmail send-as: Settings &gt; See all settings &gt; Accounts and Import &gt; "Add another email address"; Gmail sends a verification code to the address; pick the identity from the compose From dropdown (clean.email; getmailbird.com, updated ~46 days ago; crawled 2026-10-11). Plus addressing: text after + is ignored for delivery; filters can route it to labels; useful for spotting which signup leaked your address (pcworld.com, Sep 14, 2026; crawled 2026-10-11). Dots in Gmail usernames are ignored entirely (medium.com, updated ~20 days ago; crawled 2026-10-11). Plus-address limits: no per-address off switch; your real address is visible inside every plus address (dev.to, updated ~5 days ago; crawled 2026-10-11). Alias limits: calendar invites and Drive shares reveal the primary identity, not the alias; poorly configured sending leaks an "on behalf of" sender (helloari.com, updated ~109 days ago; crawled 2026-10-11). This is general information, not promises about your exact report - but the alias math is the same math on every platform.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three ID checks that decide whether YOUR mail lands where it should. Running two businesses on one inbox? Check that each business's domain passes all three before you alias it.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>One inbox can carry two businesses cleanly - but only if each business's domain is authenticated and each identity sends as itself. The full Site Health Watch audit checks your email authentication for every domain you own, plus website speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+running+two+businesses+from+one+inbox+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
