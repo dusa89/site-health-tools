@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Contact Form Says &lsquo;Message Sent&rsquo; &mdash; But the Emails Never Arrive</title>
+<meta name="description" content="Your contact form says 'message sent' and the emails never arrive - not in your inbox, not in spam. Plain-English answer: 'message sent' is the form's word, not your inbox's. Where one contact-form submission can die between the form and you, why the 2024/2025 mailbox rules made old setups stop working, the fix list in leverage order, and the four asks for your web person.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>My Contact Form Says &lsquo;Message Sent&rsquo; &mdash; But the Emails Never Arrive</h1>
+    <p class="lede">The short answer: <strong>"message sent" is the form's word, not your inbox's.</strong> That confirmation only means the form handed your visitor's message to your website's server. What the server does next - whether it sends the message at all, whether it sends it in a way Gmail trusts, whether it survives the spam filters - is a completely separate job, and it is the job that fails. The most common reality on WordPress sites: the website sends the message with no proof of identity at all, and modern mail servers refuse to deliver mail they cannot identify. Below: the four places one message can die between the form and your inbox, why setups that worked for years broke around 2024, the fix list in leverage order, the traps that look like fixes, and what to tell your web person.</p>
+    <div class="article">
+
+      <h2>1. What "message sent" actually promises</h2>
+      <p>Read that confirmation for what it is: a receipt from the <em>form</em>, not from your inbox. When a visitor clicks submit, the form plugin says "thanks, I passed the message to the server" - that is the whole promise. It has no idea whether the server sent it, whether Gmail accepted it, or whether it landed anywhere you will ever see. This matters because every fix below targets the <em>server</em>, not the form. If you have been rebuilding the form, changing its fields, or switching form plugins trying to fix this, you have been working on the one part of the pipeline that is almost certainly fine.</p>
+      <h2>2. The journey of one message - and its four death points</h2>
+      <p>Here is the trip one submission takes, with the four places it dies. <strong>Stop one: the form.</strong> The plugin collects the name, email, and message, and writes an email addressed to you - the "Send To" address in its notification settings. If that address has a typo, or points at an old employee's inbox, or was never filled in, the message goes to the wrong place. Test-email-works-but-form-mail-does-not usually means the problem is right here: check the Send To address before anything else (wpforms.com; crawled 2026-10-10). <strong>Stop two: the server.</strong> By default, WordPress hands the email to PHP's built-in mail() function on your web server. Many hosts restrict or disable that function - and some block outgoing mail from PHP entirely to protect their own reputation. In that case nothing is delivered, and WordPress never tells you; the form still says "message sent" (getsiteaiaudit.com; jackober.com; crawled 2026-10-10). <strong>Stop three: the mailbox door.</strong> Even when the server does send, the message arrives at Gmail (or Yahoo, or Outlook) carrying no proof of who sent it. The default mail() function sends without authentication - there is no way to verify the sender - so most providers reject these messages or filter them as spam (hosted.com, updated ~20 days; crawled 2026-10-10). <strong>Stop four: your spam folder.</strong> The messages that survive stop three often land here. The number that gets reported from one dataset: sites on the default setup see only about 64% of their emails delivered - more than one-third never reach anyone - versus 96.4% with a properly configured authenticated setup (blog.webhostmost.com, ~145 days; crawled 2026-10-10). Four stops, four different failure modes - and most fixes only address one.</p>
+      <h2>3. Why the mail has no identity - the ID-check frame</h2>
+      <p>The middle of the story is identity, and it is worth understanding because it is also what broke most old setups. Modern mailboxes run three ID checks before trusting a message: SPF asks "is this server allowed to send mail for this domain?"; DKIM checks a cryptographic seal proving the message was not altered; DMARC tells the receiver what to do when the first two fail (quarantine, reject, or nothing). Here is what the website's default sends into that checkpoint: the message leaves from your <em>web server's</em> IP address - on most hosting, a server shared with hundreds of other sites. That IP is almost never listed in your domain's SPF record. The message carries no DKIM seal for your domain. And if your domain publishes DMARC - some do now, often set up by whoever handles your regular business email - the message fails it outright (getsiteaiaudit.com; crawled 2026-10-10). A visitor fills in your form; the website writes "from yourbusiness.com" on the envelope; the envelope arrives via a server your domain never authorized. To the receiving mailbox, that is exactly what a forgery looks like. (How the three ID checks work is its own article - <a href="how-do-i-check-if-gmail-trusts-my-business-email.html">the Gmail-trust article</a> - and the "via" label your customers see is the same mechanism wearing a different costume - <a href="why-does-my-email-say-via-or-on-behalf-of.html">the via article</a>.)</p>
+      <h2>4. Why setups that worked for years broke around 2024</h2>
+      <p>If your form worked fine for years and stopped sometime in the last year or two, nothing about your site changed - the rules did. On 1 February 2024, Google and Yahoo made authentication binding: every sender needs at least SPF or DKIM, and anyone sending 5,000+ messages a day to Gmail or Yahoo inboxes needs all three - SPF and DKIM passing, a DMARC record published, the From domain aligned with the sending domain - plus one-click unsubscribe honored within 48 hours, and a spam complaint rate below 0.3% (dev.to guide, updated ~9 days; warmy.io, ~122 days; crawled 2026-10-10). Google's stated target is under 0.10% - at 0.30% or more, more of your mail gets classified as spam (getmacha.com, ~17 days; crawled 2026-10-10). Then, on 5 May 2025, Microsoft applied the same shape of rules to Outlook, Hotmail, and Live inboxes: SPF, DKIM, and DMARC required for high-volume senders, with non-compliant mail getting a hard rejection right in the conversation - error 550 5.7.515 - not a quiet spam-foldering (warmy.io, ~122 days; crawled 2026-10-10). Your contact form does not send 5,000 messages a day, but it benefits from none of that volume logic: the baseline checks now apply to every message, and unauthenticated mail from a web server is exactly the class of mail the baseline checks were written to catch. This is the "nothing changed on our end" failure - the enforcement around your mail changed.</p>
+      <h2>5. The fix list - in leverage order</h2>
+      <p>Fixes, biggest leverage first. <strong>Fix one: send the form's mail the authenticated way.</strong> Install an SMTP plugin - the widely used free option is WP Mail SMTP, and FluentSMTP is the other popular free choice - and route the website's mail through an authenticated sender: your own mailbox provider or a transactional email service. This replaces the anonymous PHP mail() path with mail that carries credentials, and it is the first and biggest piece of the package behind the 96.4% figure (the figure covers this plus fix two's domain From and fix three's DNS records) (dosavor.com, October 2026; blog.webhostmost.com; crawled 2026-10-10). <strong>Fix two: force the From address onto your domain.</strong> The form must send From an address on your own domain - not the visitor's address, not a Gmail address. On Contact Form 7, that means opening the form's Mail tab, replacing the From field with the same domain address you configured in the SMTP plugin, and turning on the plugin's "Force From Email" setting so the form cannot override it (dosavor.com; crawled 2026-10-10). A form sent From a Gmail address while your domain is authenticated for yourdomain.com triggers authentication failures - the From mismatch is one of the classic traps (hosted.com; crawled 2026-10-10). <strong>Fix three: publish the three DNS records.</strong> SPF listing every service allowed to send for your domain (including the new mailer), DKIM from the mailer, and DMARC - starting at the monitoring policy, p=none, and tightening later (dev.to; dosavor.com; crawled 2026-10-10). This is the web person's or domain registrar's job, not yours - but it is a one-time job. <strong>Fix four: verify the plumbing.</strong> Confirm the form's Send To address is the inbox you actually read; submit a test message and check inbox AND spam; use the SMTP plugin's built-in email test to confirm the authenticated path works before blaming the form (wpforms.com; crawled 2026-10-10). <strong>Fix five: turn on the paper trail.</strong> Once mail flows, enable email logging so there is a record of every message the site sends - delivered or failed - instead of discovering the next outage from a customer complaint weeks later (wpforms.com; crawled 2026-10-10). (The dedicated-IP upsell your host may offer at this moment is its own article - <a href="do-i-need-a-dedicated-ip-for-my-business-email.html">the dedicated-IP article</a> - and if your regular sent mail is bouncing rather than vanishing, <a href="why-do-my-emails-bounce-back.html">the bounce-back article</a> covers the other direction.)</p>
+      <h2>6. The traps - fixes that are not</h2>
+      <p>Three things that feel like fixes and are not. <strong>Trap one: adding your own address to contacts or a safe-senders list.</strong> That whitelists mail in YOUR mailbox; it does nothing for the authentication failures that are killing the mail before it ever reaches you - and nothing for the lost messages from other people's Gmail accounts either. <strong>Trap two: putting the visitor's email in the From field.</strong> It seems natural - replying would be one click - but the From address must be your domain for the ID checks to pass. The visitor's address belongs in Reply-To (or in the message body), never in From; putting it there is exactly the mismatch that gets the message flagged (hosted.com; crawled 2026-10-10). <strong>Trap three: disabling the spam filter to "let everything through."</strong> You will find the missing form mail buried under a mountain of actual spam, and you will have traded one missed-lead problem for a hundred missed-lead problems. Fix the sending, not the filtering.</p>
+      <h2>7. The quiet one - confirmation emails to the customer</h2>
+      <p>While you are in there, check the other direction too. Many forms also send the visitor a confirmation ("thanks, we got your message") - and that mail travels the exact same broken pipeline. Customers who never receive a confirmation assume the form ate their message, so some of them may submit twice, call instead, or give up and move on. When the fixes in section 5 are done, submit a test from your own personal email and confirm BOTH messages arrive: the notification to you, and the confirmation to the visitor. Two inboxes, two checks, one working form.</p>
+      <h2>8. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"Our contact form says 'message sent' but the notification emails never arrive. Four asks. First, check the form's Send To notification address - is it the inbox I actually read, no typos, no old employee address? Second, install an SMTP plugin and route the website's mail through an authenticated sender, and force the form's From address to an address on our domain - the visitor's address goes in Reply-To, never in From. Third, publish the SPF, DKIM, and DMARC records for our domain covering the new mailer - and show me a test email passing all three checks before we call it done. Fourth, turn on email logging so we have a record of every message the site sends, and submit a live test from a personal email to confirm both my notification AND the visitor's confirmation arrive. Plain English, and no setting changes I can't see the results of."</em> The proof is twofold: a test email passes all three ID checks, and a live form submission lands in both inboxes. (If what confuses you is the mailbox rules rather than the form, <a href="how-do-i-check-if-gmail-trusts-my-business-email.html">the Gmail-trust article</a> translates them; if your invoice emails specifically are the ones dying, <a href="why-do-my-invoice-emails-go-to-spam.html">the invoice-spam article</a> is the sibling case; and if someone sold you on blasting the list from your main domain, <a href="should-i-send-cold-emails-from-my-main-business-domain.html">the cold-email article</a> is the one to read before you send.)</p>
+      <p class="meta">Verified 2026-10-10. By default WordPress hands email to PHP's built-in mail() on the web server; many hosts restrict or disable it, and even when it works the messages lack the authentication Gmail, Yahoo, and Outlook now expect - so they are rejected or filtered as spam (jackober.com, updated ~7 days; hosted.com, updated ~20 days; crawled 2026-10-10). The default sends from the web server's IP - often a shared server - which is usually not in the domain's SPF record, carries no DKIM seal for the domain, and fails DMARC if the domain publishes one; some hosts block outgoing PHP mail entirely without telling the site (getsiteaiaudit.com; crawled 2026-10-10). Measured deliverability: ~64% on the default vs 96.4% with authenticated SMTP (blog.webhostmost.com, ~145 days; crawled 2026-10-10). Contact Form 7 fix: Mail-tab From replaced with the domain address configured in the SMTP plugin + Force From Email on (dosavor.com; crawled 2026-10-10). From-mismatch (Gmail address as From on an authenticated domain) triggers authentication failures (hosted.com; crawled 2026-10-10). Google/Yahoo binding since 1 Feb 2024: SPF or DKIM minimum; 5,000+/day senders need all three + From alignment + one-click unsubscribe within 48h; spam rate below 0.3%, target under 0.10% (dev.to, ~9 days; warmy.io, ~122 days; getmacha.com, ~17 days; crawled 2026-10-10). Microsoft binding since 5 May 2025: SPF+DKIM+DMARC required, hard 550 5.7.515 rejection otherwise (warmy.io; crawled 2026-10-10). All numbers are reported figures from the cited sources, not promises about your inbox.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three ID checks that decide whether YOUR mail lands where it should. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>The missing form mail is one symptom of one problem - mail your domain sends that mailboxes don't trust. The full Site Health Watch audit checks your email authentication, website speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+contact-form+emails+that+never+arrive+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
