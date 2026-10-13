@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Do I Read the Waterfall Chart on My Speed Test?</title>
+<meta name="description" content="The waterfall chart is the X-ray under your speed score: every file, when it started, how long it took. What the rows, bars, colors, and segments mean, and the four patterns that show where your slowness actually lives.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>How Do I Read the Waterfall Chart on My Speed Test?</h1>
+    <p class="lede">Your speed test hands you a score and a wall of colored bars that looks like it belongs in an engineering lab. That wall is the waterfall chart, and it is the most useful part of the whole report - it is a timeline of every single file your page asked for, when each one started, and how long it took. Learn to read it and you stop guessing why your site is slow. Here is the whole chart in four patterns, in plain English.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-12 - not promises about your situation. Test setups differ,
+      and your chart will look different from anyone else's. The reading
+      method is the same either way.</p>
+      <h2>What you are looking at</h2>
+      <p>Run your site through WebPageTest, GTmetrix, or Pingdom - all
+      three offer a free test with a waterfall view - and find the tab
+      labeled Waterfall. What you see is a stack of rows. Every row is one file
+      your visitor's browser had to fetch: first the page itself, then the
+      stylesheet, the scripts, the images, the fonts. Time runs left to
+      right. Each bar starts the moment the browser asks for that file and
+      ends when the file finishes arriving. Each file type gets its own
+      color, so you can tell at a glance whether the long bars are photos
+      or scripts without reading a thing. The leftmost column names the
+      file; hover over it or click it and you get the full name and
+      location. You may also see thin vertical lines crossing the chart -
+      those mark events, like the moment the browser first starts putting
+      the page on screen.</p>
+      <h2>Inside one bar: the five pieces of a wait</h2>
+      <p>Look closely at any single bar and it splits into colored
+      segments, each one a different kind of waiting. First the browser
+      looks up the address (the DNS step - turning your domain name into
+      a street address). Then it connects. Then, on a secure site, the
+      encryption handshake. Then the big one: the wait for the first
+      byte, the stretch where the server is thinking and nothing is
+      arriving yet. Then the actual download. That split matters because
+      two bars of identical length can mean completely different problems
+      - a bar that is all waiting is a server problem, a bar that is all
+      download is a file-size problem, and the chart lets you see which
+      you have.</p>
+      <h2>Pattern 1: the first bar waits forever</h2>
+      <p>The very first row is your page's HTML. If most of its bar is
+      the waiting segment - the browser asked, and then sat there - your
+      server is slow, and nothing on the page itself can fix that. As a
+      rough line, Google calls 800 milliseconds or less to the first
+      byte good; above that needs improvement, and above 1800 is poor.
+      A 2-second wait before anything moves means your hosting or your
+      site's backend is the place to look first. (Our
+      <a href="why-does-my-website-take-forever-to-start-loading.html">start-loading
+      article</a> walks through the causes and fixes; our
+      <a href="does-cheap-hosting-make-my-website-slow.html">hosting
+      article</a> covers when the server itself is the culprit.)</p>
+      <h2>Pattern 2: a bar starts late but finishes fast</h2>
+      <p>Sometimes a bar is short - the file itself is small and quick -
+      but it does not start until two seconds in. That file was waiting
+      in line behind something else. A script that needs another script
+      first, a stylesheet the page cannot render without, a file that
+      only exists because an earlier file mentioned it. This is the most
+      misread pattern on the chart: the slow-looking file is innocent,
+      and the thing it was waiting on is the real fix. Follow the bar
+      leftward to whatever finished right before it started. (In
+      Lighthouse language this is the render-blocking-resources problem -
+      our <a href="what-does-eliminate-render-blocking-resources-mean-on-my-speed-test.html">plain-English
+      decoder</a> explains it.)</p>
+      <h2>Pattern 3: the long download tail</h2>
+      <p>Now the opposite: a bar that starts promptly and then stretches
+      far to the right, mostly download segment. That is a big file on a
+      normal connection. On most business sites it is a photo - the hero
+      image, the gallery, the background nobody compressed. The chart
+      tells you exactly which file it is, down to the filename, so there
+      is no guessing. (Our
+      <a href="why-do-my-photos-slow-down-my-website.html">photos
+      article</a> covers the fix; and if the tail is long because your
+      visitor is far from your server, our
+      <a href="what-is-a-cdn-and-does-my-website-need-one.html">CDN
+      article</a> explains the delivery shortcut.)</p>
+      <h2>Pattern 4: the staircase</h2>
+      <p>When the browser can only fetch a few files at once from the
+      same server, the rows stack into a staircase - each new bar starts
+      as an earlier one finishes. A little staircasing is normal. A deep
+      staircase with dozens of tiny files means your page is spending
+      more time asking than receiving. That is the sign to cut the
+      number of requests: merge files, drop the widgets you do not use,
+      stop loading things your visitors never see.</p>
+      <h2>What to ignore</h2>
+      <p>Two things trip up first-time readers. First, do not chase tiny
+      differences. Run the test twice and the bars will shift - the
+      internet is a shared road, and a clean test and a busy test give
+      different numbers. Only act on patterns that show up every time.
+      (Our <a href="why-does-my-website-speed-score-change-every-time-i-test-it.html">score-change
+      article</a> explains why.) Second, the chart does not show what the
+      browser did with the file after it arrived. A script that downloads
+      in a blink and then ties up the browser for two seconds looks
+      innocent on the waterfall - if your page feels stuck after loading,
+      that is a different test.</p>
+      <h2>The bottom line</h2>
+      <p>Four questions, and you can read any waterfall chart ever made:
+      which bar is the longest, is the length waiting or downloading,
+      what finished right before the late starters began, and does the
+      pattern survive a second test run? Answer those and you will know
+      whether your problem is the server, the file sizes, the loading
+      order, or the sheer number of requests - before you spend a dollar
+      or ask your web person to change a thing. Bring the chart to them
+      with those answers and the conversation changes completely.</p>
+      <p>Sources for the facts above, all checked 2026-10-12: the
+      waterfall layout - rows are requested files, bars run left to
+      right across time, colors mark file types, the file-name column
+      with full name on hover or click (webdesignerdepot.com waterfall
+      guide, updated ~1034 days ago; medium.com WebPageTest walkthrough,
+      ~1583 days); vertical lines marking events such as the start of
+      rendering (medium.com walkthrough); the bar segments - DNS lookup,
+      connection, secure handshake, wait for first byte, download (dev.to
+      waterfall guide, updated ~812 days ago; dev.to TTFB explainer,
+      updated ~376 days ago); reading method - long bars are the
+      bottlenecks, rendering-blocking files matter most, parallel versus
+      sequential loading, the critical path (dev.to waterfall guide;
+      pagespeedplus.com performance guide, crawled ~4 hours ago); the
+      first-byte line - 800 milliseconds or less good, above that needs
+      improvement, above 1800 poor (shopify.com TTFB guide, crawled
+      ~109 days ago; jetpack.com WordPress TTFB guide, crawled ~25 days
+      ago; speedvitals.com, updated ~6 days ago); free waterfall tools -
+      WebPageTest with selectable location and connection, GTmetrix,
+      Pingdom (w3speedup.com roundup, updated ~46 days ago). The four
+      patterns and the four questions are our reading method, built from
+      the sources above.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>See what your own site's numbers look like. The free speed check reports your total page weight in megabytes plus your mobile loading seconds in plain English, in about ten seconds.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>Slow-loading files are only one of 40 checks. The full Site Health Watch audit covers your email authentication, security, mobile experience, SEO, and AI visibility - every finding verified against your live site, delivered within 24 hours. A fast page that leaks email to spam still loses the customer.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+reading+the+waterfall+chart+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
