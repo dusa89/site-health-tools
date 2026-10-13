@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can Customers Uploading Files to My Website Get Me Hacked?</title>
+<meta name="description" content="That "attach a file" button on your contact or job-application form can be a front door — not because customers do anything wrong, but because of what the button accepts. How upload attacks work, the 2026 cases, and the five questions that close the door. Plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Can Customers Uploading Files to My Website Get Me Hacked?</h1>
+    <p class="lede">The short answer: <strong>yes — an "attach a file" button is one of the oldest, most reliable ways attackers break into small business websites.</strong> Not because your customers do anything wrong. Because some upload buttons accept whatever file they're given, and an attacker doesn't send a photo. They send a file your server will <em>run</em> — and then they visit it the way you'd visit a webpage, and from there they own the site. In 2026 this exact trick was used against small business sites at scale. If a hack already happened, <a href="what-should-i-do-if-my-website-gets-hacked.html">the response playbook covers what to do next</a>; this is about whether your upload button is a door.</p>
+    <div class="article">
+
+      <h2>1. The scene: the button you added to be helpful</h2>
+      <p>It seemed like good service. A job-application form that takes resumes. A contact form that accepts photos of the broken thing. A quote form that takes the blueprint. The button says "attach a file," the customer clicks it, the file lands in your inbox or your website's media library, and everyone moves on. Here's what that button actually is: an invitation for any stranger on the internet to put a file onto your server. Ninety-nine times out of a hundred, the file is a resume or a photo. The hundredth time, it's not. (If your form problem is junk <em>messages</em> pouring in rather than files, <a href="why-is-my-contact-form-getting-spammed-by-robots.html">that's a different attack — spam through the form</a>; this article is about what can arrive <em>attached</em> to one.)</p>
+      <h2>2. What the attacker actually does (no jargon)</h2>
+      <p>The attack has a boring name — "arbitrary file upload" — and a simple shape. The attacker picks a file that is secretly a program. On most small business sites that means a PHP file: the same kind of file your website itself is built from. The upload button takes it, the server stores it, and then the attacker opens it in a browser like any webpage. The file runs. It's called a webshell, and it's a remote control for your website: read your customer list, copy your database, plant spam pages, install more malware. Patchstack, which tracks WordPress attacks for a living, puts it bluntly — once this trick is fully pulled off, the attacker "can immediately gain full control of the hosting environment" (patchstack.com, 2026).</p>
+      <p>The part that should worry you: the check that was supposed to stop it usually just reads the file's <em>name tag</em>, not what's inside. Rename the attack file <code>shell.php.jpg</code> and a weak check sees "a photo" and waves it through. Spoof the file's declared type the same way. Security testers list a whole menu of these disguises — double extensions, fake content types, renamed files — all exploiting the same idea: the bouncer checks the ID the guest hands over, never looks at the face (medium.com pentesting guide, May 2025). The Wholesale Lead Capture hack of 2026 was even lazier than that: the plugin asked the attacker's own request which file types were allowed. The lock checked a key the burglar supplied (rswebsols.com via Wordfence).</p>
+      <h2>3. Three times this happened in 2026 — to sites like yours</h2>
+      <p><strong>The wholesale form (February patch, June attacks).</strong> A WooCommerce plugin for wholesale lead capture had a flaw letting anyone — no login needed — upload a PHP webshell through its form. The fix came out February 20, 2026. Mass exploitation didn't start until June. Four months where the patch existed and most owners hadn't applied it. The webshells, researchers note, "can sit quietly in an uploads folder for months before anyone notices a thing" — from there an attacker can read the customer list, the order data, the wholesale pricing, or just use the server to attack someone else (benryan.com.au; rswebsols.com, 2026).</p>
+      <p><strong>The page builder (August 2026).</strong> Elementor Pro — one of the most popular WordPress page builders — shipped an arbitrary file upload flaw, rated 9 out of 10 severity, fixed in version 4.2.2. Patchstack's warning: these flaws "are used in mass-exploit campaigns. Attackers use these to attack thousands of websites at a time, regardless of traffic size or popularity." Your traffic doesn't matter. The software does (patchstack.com, Aug 2026).</p>
+      <p><strong>The contact form (September 2026).</strong> In late September 2026, security researchers reported a file-upload flaw in Contact Form 7 — the plugin behind millions of small business contact forms — is under active attack. Attackers place PHP backdoors where the server will execute them, and the early campaigns were explicitly targeting "e-commerce sites, membership platforms, and small business websites that rely heavily on contact forms" (webpronews.com, Sep 2026). If your site has a Contact Form 7 with a file field, check its update status now.</p>
+      <h2>4. The part nobody tells you: the race is measured in hours</h2>
+      <p>Patchstack's 2026 security report has a number worth sitting with: around half of high-impact WordPress vulnerabilities were exploited within 24 hours of being disclosed, and among the most heavily targeted, the median time from disclosure to attack was five hours. Meanwhile 46% of the serious flaws in premium plugins had no patch available at the time they became public (via wp-content.co, 2026). And the thing owners lean on — "my host handles security" — blocked only 12% of actively exploited WordPress vulnerabilities in Patchstack's testing. Even arbitrary file upload, the <em>best</em>-blocked category, was stopped only 60% of the time (patchstack.com, 2026). Your host is a helpful neighbor, not a locked door. The update button is the lock. (<a href="who-is-responsible-for-my-websites-security.html">The full responsibility split — what your host covers and what stays yours</a> — is worth reading next.) This is the same gap the <a href="i-turned-that-plugin-off-months-ago-why-did-it-get-my-site-hacked.html">disabled-plugin article</a> warned about — attackers don't wait for a convenient moment.</p>
+      <h2>5. The honest frame: not every upload button is dangerous</h2>
+      <p>Two honest notes before the fixes. First: if your site is on Wix, Squarespace, or Shopify, the vendor runs the server and handles file uploads inside their own walls — this door is mostly their problem, not yours. The risk described here lives mainly on self-hosted sites (WordPress especially) and plugins that add upload features. Second: the danger isn't your customers. It's what the button is <em>allowed</em> to accept and what the server is <em>allowed</em> to run. A button that only accepts actual photos, stores them where the server can't execute code, and renames them on arrival is a reasonable button. A button that takes anything and drops it in a folder the server treats as live code is a door with the hinges on the outside.</p>
+      <h2>6. The five fixes, in leverage order</h2>
+      <p><strong>1) Ask whether you need the button at all.</strong> The most secure upload feature is the one that doesn't exist. If the resume-upload field gets three files a year, replace it with "email your resume to…" and delete the button. No button, no door.</p>
+      <p><strong>2) Allowlist, never blocklist.</strong> Don't tell the button "block the bad stuff" — there are infinite disguises. Tell it the only things it accepts: photos means <code>.jpg</code> and <code>.png</code>, documents means <code>.pdf</code>, and everything else is refused. The check should be enforced by the server, not trusted from the visitor's browser.</p>
+      <p><strong>3) Put the files where they can't run.</strong> Uploaded files should land in a folder the web server treats as storage, not as code — ideally outside the publicly reachable website folder, or in a folder where script execution is disabled. This is the fix that turns a successful upload into a harmless file sitting in a drawer.</p>
+      <p><strong>4) Update the plugin that owns the button.</strong> The first two cases above had patches waiting when the attacks came. The Wholesale Capture flaw was fixed four months before the attack wave — the victims were the ones who hadn't updated, and Elementor Pro's 4.2.2 fix was out before its exploitation window too. If your form plugin, page builder, or theme has an update pending, that's the lock, not a chore.</p>
+      <p><strong>5) Check for squatters.</strong> A webshell already planted looks like an odd file in the uploads folder — a <code>.php</code> file where only photos should be, a strangely named file, something uploaded at 3 a.m. If you find anything you don't recognize, don't delete it yourself yet — that's evidence for your web person, and deleting the wrong thing can break the site. <a href="how-do-i-know-if-my-website-has-already-been-hacked.html">The detection article covers the full squatter hunt</a>, and <a href="i-cleaned-the-malware-off-my-website-why-does-it-keep-coming-back.html">the reinfection article</a> explains why unclosed upload doors are how malware returns after a cleanup.</p>
+      <h2>7. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"I learned that file-upload buttons are a common break-in point and I want ours checked. Five asks: first, which forms or features on our site let visitors upload files — do we need all of them, and can we remove any? Second, what file types does each one accept, and is it an allowlist enforced server-side? Third, where do uploaded files get stored — can the server execute code from that folder, or is execution disabled? Fourth, is the plugin or code behind the upload button fully updated right now? Fifth, can you check the uploads folder for any files that shouldn't be there — especially PHP files where only photos or PDFs should be? No jargon in the answers — plain English."</em> Five asks, and the helpful button stops being a door.</p>
+      <p class="meta">Verified 2026-10-09. Arbitrary file upload = attacker uploads a malicious PHP webshell, gains full control of the hosting environment (patchstack.com "Myth of Secure Hosting", crawled Oct 2026). Unsafe file uploads a common RCE vector; indicators: unknown files in wp-content/uploads, base64 webshell code, odd filenames (managed-wp.com Patchstack Academy briefing, Feb 2026). WooCommerce Wholesale Lead Capture CVE-2026-27540: unauthenticated upload, fixed 20 Feb 2026, mass exploitation from June 2026, webshells sit quietly for months; allowed-types list taken from the attacker's request (benryan.com.au; rswebsols.com via Wordfence, Sep 2026). Elementor Pro 4.2.1 arbitrary file upload, CVSS 9, 19 Aug 2026: backdoors executed; mass-exploit campaigns hit thousands of sites regardless of size (patchstack.com). Contact Form 7 CVE-2026-87902 reported under active exploitation late Sep 2026; early targets: small business sites relying on contact forms (webpronews.com). Half of high-impact vulns exploited within 24h of disclosure, median 5h for heavily targeted; 46% of premium-plugin KEVs unpatched at disclosure (Patchstack 2026 report via wp-content.co). Hosting defenses blocked 12% of actively exploited WP vulns (26% wider set); file upload best-blocked class at 60% (patchstack.com). Disguise tricks: double extensions, spoofed content types (medium.com pentesting guide, May 2025). Honesty: managed platforms (Wix/Squarespace/Shopify) own this risk; self-hosted WordPress is where the door lives.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. About a minute later you get a plain-English verdict &mdash; your Mozilla security grade translated out of engineer-speak, a live HTTPS test, and your certificate's expiry date. Find out which doors are open before the bots do.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Your doors are one check. The full Site Health Watch audit runs all 40 trust signals against your live site &mdash; security headers, email authentication, speed, mobile, and AI visibility &mdash; every finding verified, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+customer+file+uploads+can+get+a+website+hacked+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
