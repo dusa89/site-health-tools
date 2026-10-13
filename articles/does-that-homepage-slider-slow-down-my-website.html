@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does That Homepage Slider Slow Down My Website?</title>
+<meta name="description" content="That rotating banner at the top of your homepage costs you speed, visitors click it almost never, and the fix is simpler than you think. Plain-English guide for business owners.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Does That Homepage Slider Slow Down My Website?</h1>
+    <p class="lede">The short answer is <strong>yes — and almost nobody looks at it anyway.</strong> That rotating banner at the top of your homepage is one of the heaviest things on the page and one of the least-seen. It loads a pile of images and code before your visitor can do anything, and the measurements say roughly <strong>one in a hundred</strong> visitors ever clicks it. You are paying a speed tax on your most important page for a billboard your customers scroll past.</p>
+    <div class="article">
+
+      <h2>1. What the measurements say about sliders</h2>
+      <p><strong>The most famous measurement comes from the University of Notre Dame's website.</strong> A researcher there tracked its homepage carousel for three months: across roughly 315,000 times the carousel was shown, it got about 28,928 clicks — roughly 1% of visitors clicked any slide at all (erikrunyon.com, 2013, via austinwilliams.com). A separate study at the University of York found the same pattern: about half of the few clicks went to the very first slide, and clicks fell off sharply for every slide after it (Paul Kelly, 2013).</p>
+      <p><strong>Usability researchers say the rotation itself is the problem.</strong> The Nielsen Norman Group's testing on auto-forwarding content found that because the slides move, visitors assume they are looking at an advertisement — and reflexively ignore them, the same "banner blindness" that kills banner ads. In one of their tests, a user could not find the information she was looking for even though it was printed in huge letters — because it was sitting inside a carousel slide (NNGroup, "Auto-Forwarding Carousels and Accordions Annoy Users"). Your most important messages are the ones most likely to be treated as ads.</p>
+      <p><strong>So your five slides are really one slide with a 99% ignore rate.</strong> Nobody waits through the rotation. Nobody sees slide four. The other four slides exist for you, not for your customers.</p>
+      <h2>2. The four ways a slider slows you down</h2>
+      <p><strong>It loads every photo, not just the visible one.</strong> A five-slide slider typically downloads all five hero images up front — five full-size photos on the single most important page of your site. That is the same bill as <a href="why-do-my-photos-slow-down-my-website.html">the photo problem</a>, multiplied by five, sitting exactly where Google's loading measurement starts counting.</p>
+      <p><strong>The first slide is what Google grades you on.</strong> Google's Largest Contentful Paint — the metric behind <a href="how-fast-should-my-website-load.html">its speed judgment</a> — almost always measures your slider's first image. Everything the slider makes the browser do before that image appears counts against you. And because sliders animate in, the first slide is often <em>slower</em> to appear than a plain photo would be.</p>
+      <p><strong>The slider's own code is dead weight on every page.</strong> Slider plugins ship their own JavaScript and styling that load even when the visitor is on a page with no slider. Performance guides for WordPress single out the big animation-heavy slider plugins (Revolution Slider, Layer Slider) as repeat offenders — "they'll probably slow down your site significantly" — and recommend the lighter alternatives (Soliloquy, Meta Slider) if you must have one (onlinemediamasters.com, 2026). The vendor's own documentation warns that heavy media, lots of layers, and complex effects "increase loading and scripting costs."</p>
+      <p><strong>The box that loads last shoves your page around.</strong> Sliders that don't reserve their height make the whole page jump when they finally appear — the exact behavior <a href="why-does-my-website-jump-around-while-it-loads.html">the layout-shift guide</a> describes. Google measures that too, and visitors trying to tap a button right as it jumps are the ones who leave.</p>
+      <h2>3. The conversion argument is even worse than the speed argument</h2>
+      <p><strong>A slider is how businesses avoid making a decision.</strong> Everyone in the company wants their thing on the homepage, so the homepage gets five messages instead of one — and the visitor gets none of them. Marketing people have a name for this: it's the compromise that lets the loudest department win while the customer loses.</p>
+      <p><strong>The first slide is the only one that performs.</strong> Remember the numbers: 84% of the tiny click pool went to position one in the Notre Dame study; the York study saw the same cliff. Slides two through five are paying full rent for a room nobody enters.</p>
+      <p><strong>Auto-rotation actively annoys the people it is meant to impress.</strong> It moves while they're trying to read. It changes the slide right as they reach for a button. The usability researchers' verdict is blunt: visitors don't like things moving outside their control, and they treat moving content as advertising.</p>
+      <h2>4. What to do instead (in order of leverage)</h2>
+      <p><strong>One: replace the slider with one hero image and one message.</strong> Pick your single most important offer, put it above the fold with a clear button, and be done. This is what the fastest, best-converting small-business homepages do — and it's the fix that improves both speed and sales at once. The other four messages don't die; they move to the pages where visitors are actually ready to read them.</p>
+      <p><strong>Two: if you must keep a slider, cut it to three slides, max.</strong> One study's researcher dropped his carousel from a long rotation to a maximum of five and saw clicks concentrate on the visible ones. Fewer slides = fewer hidden images to download = less code = faster page. Cap it at three and you've kept the idea while cutting most of the cost.</p>
+      <p><strong>Three: turn off auto-rotation.</strong> Let the visitor drive. A manual slider with arrows doesn't ambush anyone, doesn't get mistaken for an ad as quickly, and doesn't yank content away from someone about to click. If your slider plugin insists on autoplay, that's a reason to replace the plugin.</p>
+      <p><strong>Four: make the first slide the LCP-friendly one.</strong> One properly sized image — roughly the width the slider actually renders at, saved as a modern format like WebP — beats a 3,000-pixel original that downloads two to three times the data for zero visible gain (medium.com/@devmonowar, Oct 2026). And never lazy-load the first slide: Google's measurement starts there, so delaying it delays your score.</p>
+      <p><strong>Five: if you're on WordPress, audit the slider plugin itself.</strong> The big animation-heavy plugins are known page-weight offenders. A lighter slider plugin — or a single static hero — is frequently the single biggest speed win available to an owner who can make the change without touching code.</p>
+      <h2>5. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"I want to test replacing our homepage slider with a single static hero image and one message. Before we change anything: (1) tell me how many images and how much code the slider loads on the homepage; (2) show me the mobile PageSpeed score and the LCP number with and without the slider; (3) if we keep a slider, cap it at three slides, turn off autoplay, and compress the first slide image to the actual display size. Then we'll decide together."</em> Three asks: the measured cost, the measured difference, and the constraints if it stays. If their answer is "the slider is fine," ask to see the two scores — the numbers settle it.</p>
+      <p class="meta">Facts verified 2026-10-09. Carousel click data: Erik Runyon, University of Notre Dame website, tracked 3 months — ~315,655 feature displays, 28,928 clicks (~1% of visitors clicked), 84% of clicks on position 1, remainder ~4% each (erikrunyon.com, 2013, via austinwilliams.com blog). University of York, Paul Kelly, 2013: roughly half of carousel clicks on the first slide, rapid drop-off after (via University of Lisbon thesis, repositorio.ulisboa.pt). NNGroup "Auto-Forwarding Carousels and Accordions Annoy Users": moving content is assumed to be advertising (banner blindness); one usability test had a user unable to find information printed in huge letters because it sat inside a carousel. Slider weight: big animation-heavy slider plugins "probably slow down your site significantly" (onlinemediamasters.com, 2026); vendor FAQ warns heavy media, layers, and complex effects "increase loading and scripting costs" (clubwpress.net). Slide-image guidance: first slide usually the LCP element (do not lazy-load it); ~1600–1920px WebP for full-width sliders; 3000px originals download 2–3x the data for no visible gain (medium.com/@devmonowar, crawled Oct 2026). LCP good-under-2.5s is Google's published Core Web Vitals threshold.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. A heavy slider is one of the most common culprits this check finds.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours, including the exact loading-time number for your homepage.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+homepage+sliders+slow+down+websites+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
