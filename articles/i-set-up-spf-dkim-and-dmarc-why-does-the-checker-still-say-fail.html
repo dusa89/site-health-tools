@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I Set Up SPF, DKIM, and DMARC - Why Does the Checker Still Say Fail?</title>
+<meta name="description" content="You did the DNS work and pasted the records - and the checker still shows red. The six small mismatches between what you published and what the checker reads: the two-SPF-records killer, the DKIM name that does not match, the wrong name checked, DNS that has not spread yet, the DMARC stage that looks like a failure, and the report mailbox that does not exist. Plus the ten-minute order to check them in.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>I Set Up SPF, DKIM, and DMARC - Why Does the Checker Still Say Fail?</h1>
+    <p class="lede">You spent an afternoon in your DNS settings doing exactly what the guides said. SPF pasted. DKIM pasted. DMARC pasted. And the checker still shows red. Before you rip it all out and start over, know this: the problem is almost never that you set it up wrong. It is one of six small mismatches between what you published and what the checker is reading - and five of them take under a minute to confirm. Run them in order before you touch a single record.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-12 - not promises about your situation. Every mail setup is
+      arranged a little differently, and your answer will be one of the six
+      below, not all of them. (Our <a href="what-is-dmarc.html">DMARC
+      explainer</a> covers what the records themselves mean, if you need the
+      primer first.)</p>
+      <h2>1. You have TWO SPF records - of the six problems, this is the one that shows up most often</h2>
+      <p>Start here, because it is the fastest check with the biggest
+      payoff: one lookup of your DNS answers it in seconds. Your
+      registrar's DNS panel lets you add a new
+      TXT record without warning you that one already exists. So now you
+      have the record your web host gave you during setup <em>and</em> the
+      record your mail provider gave you - both sitting there, both
+      individually correct, and together completely broken.</p>
+      <p>The rule is strict and old: a domain may publish exactly ONE TXT
+      record starting with v=spf1 on a given name. More than one, and the
+      email standard (RFC 7208) says the receiver must throw out
+      <em>both</em> of them - a permanent error. Your mail does not get
+      half-authenticated. It gets treated as unauthenticated. One check of
+      your DNS for "how many lines start with v=spf1" settles it: the
+      answer must be one.</p>
+      <p>The fix is a merge, not a delete. Every sender goes inside the
+      single record, like this: one v=spf1, both includes side by side, one
+      ending - <code>v=spf1 include:_spf.google.com
+      include:sendgrid.net ~all</code> (swap in your own providers). Then
+      remove the second record completely. And know there is a ceiling too:
+      more than 10 DNS lookups inside the one record is the same kind of
+      permanent error, so every <code>include:</code> is a cost you should
+      be able to justify.</p>
+      <h2>2. The DKIM key is published under the wrong name</h2>
+      <p>A DKIM key is not just a value - it is a value at an
+      <em>address</em>. The public key must live at
+      <code>{selector}._domainkey.yourdomain.com</code>, and that selector
+      name must match the name written in the <code>s=</code> field of the
+      signature stamp on your outgoing mail. If the record says
+      <code>google._domainkey</code> but your mail is stamped with a
+      different selector name, the verifier looks at the wrong address,
+      finds nothing, and calls it a fail. The value is fine. The name is
+      wrong.</p>
+      <p>The Microsoft 365 version of this trip is especially common. Their
+      DKIM setup is not a TXT record at all - it is two CNAME records,
+      <code>selector1._domainkey</code> and
+      <code>selector2._domainkey</code>, pointing into Microsoft's own key
+      namespace - and the signing toggle in the Defender portal has to be
+      switched on before a single message gets stamped. Records sitting in
+      your DNS without the toggle on is one of the most common
+      "I did everything and it still fails" situations in business
+      email: the infrastructure is built and the engine is off.</p>
+      <h2>3. You checked the wrong name</h2>
+      <p>The checker looked at <code>example.com</code>. Your invoices go
+      out through <code>invoicing.example.com</code>, or your newsletter
+      tool sends from <code>news.example.com</code>. A subdomain is a
+      different name with its own records - fix the apex domain all you
+      like, the subdomain's mail still fails. Check the exact name your
+      mail actually sends from, and if your newsletter tool gave you its
+      own setup page, its own records live on its own sending name. (Our
+      <a href="should-my-newsletter-come-from-a-subdomain.html">subdomain
+      article</a> walks through how that setup is supposed to look.)</p>
+      <h2>4. DNS has not finished spreading yet</h2>
+      <p>DNS is not one computer - it is a network of copies, and a new or
+      changed record takes time to reach all of them. Checkers do not all
+      ask the same copy, which is why one tool can show green and another
+      red for the same domain on the same afternoon. Allow up to a day or
+      two for everything to settle, then test again. This is the reason
+      the diagnostic order at the end of this article puts patience before
+      edits: most "it fixed itself overnight" stories are just DNS
+      finishing its job.</p>
+      <h2>5. The DMARC "fail" may be exactly what you staged</h2>
+      <p>Not every red mark is broken. A DMARC record with
+      <code>p=none</code> means "watch and report, do not block anything"
+      - and that is the correct first stage, on purpose, for almost every
+      business. It is how you collect the reports that tell you who sends
+      as your domain before you start rejecting anything. A checker that
+      flags it as a failure is showing you your plan, not a broken
+      record. Escalating to quarantine and then reject is a deliberate
+      second and third step, after the reports come back clean - not
+      something to do because a tool showed red.</p>
+      <h2>6. The DMARC report mailbox does not exist</h2>
+      <p>Your DMARC record says
+      <code>rua=mailto:dmarc@yourdomain.com</code> - send the reports
+      here. If that mailbox was never created, the reports bounce, and
+      some checkers flag the setup as incomplete. Create the address (or
+      point the record at a monitoring service's address), and - this is
+      the part everyone skips - actually read the first few reports. They
+      are the only honest inventory of every service sending mail as your
+      business, and they are what tell you when it is safe to move from
+      monitoring to enforcement.</p>
+      <h2>The ten-minute diagnostic order</h2>
+      <p>Run these before changing anything:</p>
+      <p><strong>1. Count the SPF records.</strong> However many lines
+      start with v=spf1 on the name you send from - the answer must be
+      exactly one. Merge, do not add.</p>
+      <p><strong>2. Match the DKIM selector.</strong> The name in the
+      record must match the name in the s= field of your outgoing mail's
+      signature. Microsoft shops: confirm the two CNAMEs <em>and</em> the
+      signing toggle.</p>
+      <p><strong>3. Check the name you actually send from.</strong> If
+      your mail leaves from a subdomain or a tool's sending domain, that
+      is the name to verify.</p>
+      <p><strong>4. Wait a full day.</strong> If you changed records in
+      the last 24-48 hours, your "failure" may be a copy of DNS that has
+      not caught up. Test again in the morning before touching anything.
+      (Our <a href="why-did-my-email-stop-working-when-i-moved-my-website.html">DNS-move
+      article</a> covers the cousin of this - what breaks when your whole
+      DNS changes homes.)</p>
+      <p><strong>5. Only then escalate DMARC.</strong> Deliberately:
+      reports first, quarantine second, reject last. (And if your worry
+      is really "will my quotes reach the inbox,"
+      <a href="how-do-i-check-if-gmail-trusts-my-business-email.html">the
+      trust check</a> is the reputation side of the story; staying
+      unauthenticated is what eventually gets you
+      <a href="why-are-my-business-emails-being-blacklisted.html">blacklisted</a>.)</p>
+      <p>Sources for the facts above, all checked 2026-10-12: the one-SPF-record
+      rule - more than one TXT record starting with v=spf1 on the same
+      host is a permanent error under RFC 7208 and receivers must discard
+      all of them; the usual cause is records arriving from two different
+      providers and the registrar showing both (duocircle.com setup guide,
+      updated ~41 days ago; inventivehq.com syntax guide, ~87 days ago;
+      captaindns.com permerror guide, ~223 days ago); the fix is to merge
+      all senders into one record rather than adding another
+      (duocircle.com); the 10-DNS-lookup ceiling is the same class of
+      permanent error (captaindns.com; dev.to permerror piece, updated ~24
+      days ago); the DKIM selector rule - the published key must live at
+      {selector}._domainkey and match the s= value in the DKIM-Signature
+      header (Microsoft Learn DKIM documentation, updated ~4 days ago via
+      the defender-docs-mirror; learn.microsoft.com, ~285 days ago); the
+      Microsoft 365 setup - two CNAME records (selector1/selector2._domainkey)
+      into Microsoft's key namespace, one selector signing at a time, the
+      signing toggle in the Defender portal required before any message
+      is stamped (same Microsoft documentation); DNS propagation commonly
+      taking up to 24-48 hours for all copies to update (smartreach.io
+      setup guide; glockapps.com DKIM guide). The six failure modes and
+      the diagnostic order are our troubleshooting method, built from the
+      sources above.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Type your domain. Ten seconds later you get a plain-English verdict on your email authentication - SPF, DKIM, and DMARC - plus the exact DNS records to paste in for anything that is missing.</p>
+        <a class="toolbtn" href="../index.html">Run the free email deliverability check</a>
+      </div>    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>Passing the records is only the start - the full Site Health Watch audit checks your website's speed, security, mobile experience, SEO, and AI visibility too. Every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+the+email+checker+still+says+my+SPF%2C+DKIM%2C+or+DMARC+failed+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
