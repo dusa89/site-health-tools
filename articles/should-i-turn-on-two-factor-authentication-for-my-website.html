@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should I Turn On Two-Factor Authentication for My Website?</title>
+<meta name="description" content="Your web person says to turn on two-factor authentication. You are wondering whether the extra step is worth the hassle. The short answer (yes — it blocks more than 99% of account takeovers, per Microsoft), which second factor to pick, and the lockout-proof setup order — in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should I Turn On Two-Factor Authentication for My Website?</h1>
+    <p class="lede">The short answer: <strong>yes — turn it on. It is the single most effective thing you can do for your website's login security, and it is free.</strong> Two-factor authentication (2FA) means your password is no longer enough on its own: after the password, your site asks for a six-digit code from an app on your phone that changes every 30 seconds. A thief can steal your password a hundred ways — from a data breach, a phishing email, or the brute-force bots already hammering your login page — but without your phone, the stolen password is a key to a door that needs two keys. Microsoft's own research found that MFA blocks more than 99.2% of account-compromise attacks. Below is what 2FA actually is, which second factor to choose, how to set it up without locking yourself out, and the exact words to send your web person.</p>
+    <div class="article">
+
+      <h2>1. What it actually is (the deadbolt on your login)</h2>
+      <p>Think of your website login as your shop's front door. The password is the lock on the door. Two-factor authentication adds a deadbolt — a second lock with a different key. After you type your password, the site asks for a code from an <strong>authenticator app</strong> on your phone (Google Authenticator, Microsoft Authenticator, or Authy are the common free ones). The app shows a six-digit code that changes every 30 seconds; you type the current one and you are in. Even if someone guesses or steals your password, they cannot log in without the code on your phone. That is the whole idea: <em>something you know</em> (the password) plus <em>something you have</em> (the phone). It adds about ten seconds to each login.</p>
+      <h2>2. The number that ends the debate</h2>
+      <p>Microsoft's security team studies account takeovers at internet scale. Their findings: enabling MFA <strong>blocks more than 99.2% of account-compromise attacks</strong>, and <strong>99.9% of the Microsoft accounts that did get compromised had no second factor turned on</strong>. Those are Microsoft's numbers about accounts generally — not a promise about your site — but the direction is unmistakable. Now connect it to your website: one of the top attack vectors against WordPress sites is <strong>credential stuffing</strong> — bots working through lists of leaked usernames and passwords against your login page (<a href="why-does-my-website-keep-getting-login-attempts.html">that pounding in your login logs</a>). A stolen password is the attacker's whole plan. With 2FA on, the stolen password alone is worthless. The plan dies at step two.</p>
+      <h2>3. Not all second factors are equal — pick the app, not the text</h2>
+      <p>There are three ways to get the second factor, and they are not equally strong. <strong>Text-message codes are the weakest.</strong> Attackers can steal them through SIM-swapping (convincing your phone company to move your number to their phone) and through fake login pages — and Microsoft is retiring its built-in text-and-voice MFA in early 2027 because the industry is moving on. <strong>The authenticator app is the standard you want</strong>: it works offline, cannot be SIM-swapped, and is free. <strong>Passkeys and hardware keys are the strongest</strong> — they cannot be phished at all — but plugin support for them on WordPress is still thin, so they are a later upgrade, not today's setup. One honest caveat: an authenticator code can still be phished by a sophisticated attacker who tricks you onto a fake login page that relays your code in real time. That does not make 2FA pointless — it still kills the automated, high-volume credential attacks that actually hit small business sites — it just means 2FA is armor, not invisibility.</p>
+      <h2>4. Which tool: one plugin, not three</h2>
+      <p>WordPress does not ship with 2FA built in — a plugin adds it. You have three reputable choices, and the rule is <strong>install only one</strong>: multiple security plugins fighting over your login page causes more trouble than it prevents. For most single-owner business sites: <strong>Wordfence Login Security</strong> (free, no user limit — 2FA plus brute-force protection and login-attempt limiting in one package, so it also quiets the bot pounding) or <strong>WP 2FA</strong> (a dedicated 2FA plugin with a clean setup wizard; its paid tier around $79 a year adds hardware-key and SMS support you probably do not need). If you like minimal: the <strong>Two Factor</strong> plugin, maintained by WordPress core contributors, is small and does just this one job. The miniOrange plugin works too but gates its free plan by user count and does not publish its prices, so budgeting means installing it and looking inside first. One more honesty note: if your site is on a managed builder like Wix, Squarespace, or Shopify, there is no plugin — 2FA lives in your account's security settings in the dashboard. Different door, same deadbolt.</p>
+      <h2>5. The lockout-proof order (read this before touching anything)</h2>
+      <p>The number one reason owners fear 2FA is getting locked out of their own site. The fear is rational — the setup takes ten minutes, but a bad order turns it into a support ticket. Do it in this order and the fear evaporates: <strong>first, update everything</strong> (site core current, phone's automatic time-sync ON — authenticator codes tolerate only about 30 to 90 seconds of clock drift, and a drifting clock rejects every code you type). <strong>Second, create a spare administrator account</strong> — a second admin username on a different email address at a different mail provider. This is your spare house key; if your phone ever dies, you walk in through the spare account instead of calling for help. (A lost or stolen phone is a wider problem than the authenticator app — <a href="if-someone-steals-my-phone-can-they-take-over-my-business.html">the phone-takeover guide</a> covers locking down the device side.) <strong>Third, enroll your main account:</strong> install the one plugin, open your user profile (or the plugin's login-security page — the exact location depends on the plugin), choose the authenticator-app method, scan the QR code with the app, and confirm with one live code before saving. <strong>Fourth, generate the backup codes and download them</strong> — the plugin shows about ten single-use codes exactly once and never again; save them somewhere you can find without your phone (a password manager, or printed on paper in the office safe). <strong>Fifth, test in a private browser window</strong> — log all the way in from scratch, code and all — before you consider the job done. If your site has staff or other admins, do them one role at a time: warn everyone first (no surprise lockouts), start with administrators, then editors, and let each group settle before the next.</p>
+      <h2>6. The two maintenance habits that keep it working</h2>
+      <p>First, <strong>keep the spare admin alive and its email working.</strong> The spare key only helps if you can reach the spare inbox — <a href="why-am-i-getting-password-reset-emails-i-didnt-ask-for.html">unasked-for password-reset emails</a> arriving at that spare address are a sign someone is probing it, and you want the address under your control. Second, <strong>revisit enrollments when people leave.</strong> A departed employee or an ex-developer with 2FA enrolled is a door you left locked from their side with their key still working — <a href="does-my-old-developer-still-have-access-to-my-website.html">revoking access</a> means deleting the user (or at minimum their enrollment), not just changing the password. Two-factor does not replace access hygiene; it makes the hygiene you already do actually stick.</p>
+      <h2>7. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>“Turn on two-factor authentication for the website. One plugin only — Wordfence Login Security or WP 2FA, your pick, free tier is fine. Authenticator-app method (TOTP), not text messages. Before you touch my account: create a spare administrator account on a different email provider and document both logins for me. Enroll my account, confirm one live code, generate the backup codes and send them to me securely — not by email. Then test a full login in a private window before you log out. If you share passwords with anyone on the team (<a href="should-i-give-my-web-developer-my-passwords.html">our password-sharing guide</a> explains why that needs handling), their passwords stay useless to an attacker as long as each person has their own second factor — so no shared authenticator codes. And no, hiding the login page (<a href="should-i-hide-my-websites-login-page.html">covered here</a>) is not a substitute — we are doing both.”</em> A good web person does this in one sitting. One who says 2FA is overkill for a small site is telling you they have not read the login-attempt logs.</p>
+      <p class="meta">Verified 2026-10-10. Microsoft MFA research: blocks more than 99.2% of account-compromise attacks (via yeoandyeo.com); 99.9% of compromised Microsoft accounts lacked MFA (Microsoft Security Intelligence 2023, via guptadeepak.com practitioner's guide updated ~Sep 2026; howtogeek.com). Credential stuffing against wp-login.php is a top WordPress attack vector; with 2FA a stolen password is worthless without the phone (stressfreehost.com, Sep 18 2026). Factor ranking: passkeys/hardware keys strongest and phishing-proof; authenticator apps the strong standard; SMS weakest — SIM-swap, fake login pages; Microsoft retires built-in SMS/voice MFA Feb 1, 2027 (yourabt.com, updated Oct 8 2026); NIST SP 800-63-4 rates SMS OTP inadequate for AAL2 (guptadeepak.com). TOTP codes remain phishable via adversary-in-the-middle proxies (darkoperator.com, Oct 5 2026) — armor, not invisibility. WordPress ships no built-in 2FA (smartcoding.com.au); install only one login-managing plugin (same). Picks: Wordfence Login Security free with no user limit (dev.to 2026 guide); WP 2FA premium ~$79/year (inmotionhosting.com, Aug 2026); miniOrange free plan gates user count, prices unpublished (same). Lockout-proof order — update first, spare admin on a different mail provider, enroll + confirm one live code, 10 single-use backup codes shown once, private-window test; TOTP tolerance ~30-90s clock drift (hostaccent.com, Sep 2026). Rollout by role with warning and grace period (smartcoding.com.au). TOTP adds ~10 seconds per login (same). Honesty: Microsoft's numbers describe accounts at scale, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. About a minute later you get a plain-English verdict &mdash; your Mozilla security grade translated out of engineer-speak, a live HTTPS test, and your certificate's expiry date. Password-only logins are exactly the open door this check looks for.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Your doors are one check. The full Site Health Watch audit runs all 40 trust signals against your live site &mdash; security headers, email authentication, speed, mobile, and AI visibility &mdash; every finding verified, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+two-factor+authentication+for+my+website+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
