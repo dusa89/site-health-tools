@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Am I Getting Every Email Twice?</title>
+<meta name="description" content="Every email arriving twice is almost never two people sending &mdash; it is your own setup showing you the same message twice. The five causes in plain English: the account added twice, the &ldquo;leave a copy on the server&rdquo; setting, the forwarding loop, the direct-plus-group double, and clashing rules &mdash; plus the two-minute test that tells you which one is yours.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Am I Getting Every Email Twice?</h1>
+    <p class="lede">The short answer: <strong>nobody is sending to you twice &mdash; your setup is showing you one email two times.</strong> Almost every duplicate-inbox case traces back to one of five setup quirks: the same account added to your phone twice, a mail setting that leaves copies on the server, a forward-and-fetch loop, a message that reached you two ways at once, or two inbox rules fighting over the same mail. Below is the two-minute test that identifies which one is yours, what each cause actually is in plain English, and the exact words for your web person to fix it. (If your inbox is full of <em>different</em> junk you never asked for, that is a <a href="how-do-i-stop-spam-from-flooding-my-business-email.html">spam flood</a> &mdash; a different problem with a different fix.)</p>
+    <div class="article">
+
+      <h2>1. The two-minute test: is it really duplicated?</h2>
+      <p>First, make sure the problem is what you think it is. Open the two copies and look at the time stamps. If the two copies arrived at <em>different</em> times &mdash; minutes or hours apart &mdash; the sender (or their system) genuinely sent twice. Newsletters double-fire, quote requests get re-submitted, out-of-office loops echo. That is a sender-side double-send, and no inbox setting caused it. (If the copies do not come twice but simply show up late, that is a different symptom with its own diagnosis — <a href="why-do-my-business-emails-arrive-hours-late.html">why business emails arrive hours late</a>.) If the two copies arrived at the <em>same</em> time, it is your setup. Delete one copy, then check: did the other copy survive? (If your SENT folder shows messages you never wrote, that is the opposite problem — <a href="my-email-is-sending-messages-i-didnt-write.html">someone sending from your account</a>, not duplication.) If both vanished, they were one message shown twice &mdash; a display quirk in the app. If one remains, you have true duplicates and one of the five causes below is responsible. Write down which result you got; it is the first thing your web person will ask.</p>
+      <h2>2. Cause one: the same account added twice</h2>
+      <p>This is the most common one. You added your business email to your phone, then added it again &mdash; maybe once as the full address and once as a shorter name, or once when you first set up the phone and again after an update asked you to. Each entry behaves like a separate mail check, so every message downloads twice and lands in the same inbox. (The phone's sending side is its own puzzle — if you also cannot send from the phone, see <a href="why-cant-i-send-email-from-my-phone.html">why you cannot send email from your phone</a>.) It is the same story on a computer: the mailbox set up once, then set up again under a slightly different name (tech-support guides flag the alias-as-a-second-account version of this, cigatisolutions.com, crawled ~Sep 2026). The fix is embarrassingly simple: open the mail settings on the phone and the computer, look for your business address listed more than once, and delete the extra entry. Duplicates stop the moment there is only one checker.</p>
+      <h2>3. Cause two: the "leave a copy on the server" setting</h2>
+      <p>Here is the mechanic, plainly. There are two ways a mail program can fetch email. The older way (POP) is like visiting the post office: you take the letters home with you, and the box is empty afterward. The newer way (IMAP) is like reading your mail at the post-office counter: the letters stay in the box, and your phone and computer all look at the same box. Microsoft's own support confirms the POP default is to delete messages from the server after downloading them (support.microsoft.com, crawled ~Sep 2026) &mdash; but there is a checkbox, "leave a copy of messages on the server," that changes it. If your phone's mail program uses the older way with that checkbox on, every device re-downloads the same letters. Worse, if the program's internal "already fetched this" list gets corrupted, it forgets what it downloaded and grabs everything again &mdash; a Mozilla support thread (crawled Oct 2026) documents users re-downloading hundreds of messages when Thunderbird's tracking file broke. If you use more than one device, the modern answer is the counter method (IMAP) on all of them: one box, no copies, no duplicates. (Moving providers entirely is a bigger operation with its own checklist — <a href="how-do-i-switch-email-providers-without-losing-anything.html">how to switch email providers without losing anything</a>.)</p>
+      <h2>4. Cause three: the forwarding loop</h2>
+      <p>This one is a homemade double. Say your business email forwards to your Gmail &mdash; and your Gmail is <em>also</em> set to pull mail from the business mailbox directly ("check mail from other accounts"). The same message now reaches Gmail twice: once pushed by the forward, once pulled by the fetch. Or: the forward is on, your phone pulls from the business mailbox with the leave-a-copy checkbox on, and Gmail pulls the same mailbox &mdash; three checkers, one letter. Any time the same mailbox is both forwarding out and being fetched by something else, you have built a duplicating machine out of settings. The fix: pick ONE way the mail travels. If mail forwards to Gmail, Gmail should not also fetch from the mailbox. (If you have not set up forwarding at all yet, read <a href="should-i-forward-my-business-email-to-my-personal-gmail.html">the forwarding guide</a> before touching it &mdash; it is a decision with tradeoffs.)</p>
+      <h2>5. Cause four: it reached you two ways at once</h2>
+      <p>Sometimes the duplication is legitimate &mdash; the message really was addressed to you twice. The classic: someone emails you directly AND copies the team list you are on, or the newsletter is sent to your address and also to a group that includes you. Both copies arrive around the same time with the same text, and your inbox shows two because two really came. Troubleshooting guides for group setups name this exact pattern: addressed directly plus via the group equals two inbox copies (en.ittrip.xyz). The tell: the "To" line differs between the copies &mdash; one says your name, the other says the group name. The fix is not a setting; it is the sender taking your direct address (or you) off one of the two paths.</p>
+      <h2>6. Cause five: clashing rules and overeager scanners</h2>
+      <p>Inbox rules are automatic filing instructions ("move every invoice to the Bills folder"). If two rules both claim the same incoming message &mdash; especially rules that say "move a COPY to" a folder &mdash; each rule leaves its own copy behind, and the inbox shows two. Multiple guides name misconfigured rules as a duplicate source (experts-exchange.com; nucleustechnologies.com). Email-scanning antivirus is a documented side-effect cause (experts-exchange.com; arysontechnologies.com): it intercepts the download to scan it, and in some setups the mail program then processes the same message a second time. If your duplicates appeared right after a security program update, that is your suspect. Fix: review the rules list (look for two rules that could both match the same message, or any "copy to" rule), and temporarily disable the mail-scanning feature to test.</p>
+      <h2>7. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"Every email is arriving twice. I already ran the delete-one-copy test &mdash; [the other copy survived / both vanished / the copies came at different times]. Four asks. First, check whether my business address is set up more than once on my phone and my computer, and remove the extra entry. Second, tell me whether my mail uses POP or IMAP &mdash; if it is POP with 'leave a copy on the server' turned on, switch everything to IMAP. Third, check for any forwarding rules AND any 'check mail from other accounts' fetches pointing at the same mailbox &mdash; the mail should travel exactly one way. Fourth, review my inbox rules for two rules claiming the same message, especially any 'move a copy' rule. Plain English in the answers."</em> The whole job is one mailbox, checked once, traveling one path. Anything that reads it a second time is a duplicate waiting to happen.</p>
+      <p class="meta">Verified 2026-10-10. POP3 clients by default delete messages from the server after download; the "leave a copy of messages on the server" setting changes that (support.microsoft.com, crawled ~Sep 2026). The same mailbox configured twice with leave-a-copy enabled downloads each message twice - flagged as a leading duplicate cause (cigatisolutions.com guide, crawled ~Sep 2026). Misconfigured "move a copy" inbox rules and corrupted download-tracking files both produce duplicates (experts-exchange.com; support.mozilla.org thread, crawled Oct 2026). A message addressed both directly and via a group legitimately arrives twice (en.ittrip.xyz). IMAP sync conflicts across devices and add-in interference are additional documented triggers (arysontechnologies.com, updated ~Jul 2026; systoolsgroup.com, updated ~Jun 2026). Honesty: sometimes the sender really did send twice - newsletters double-fire and quote forms re-submit; different timestamps mean a sender-side double-send, not an inbox problem.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three ID checks that decide whether your mail gets delivered, delayed, or refused. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>Duplicate inboxes are a symptom. The full Site Health Watch audit checks your website's speed, security, mobile experience, and AI visibility too &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+every+email+arrives+twice+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
