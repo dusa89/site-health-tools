@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Web Host Wants to Sell Me a Dedicated IP for My Email — Do I Actually Need One?</title>
+<meta name="description" content="Your web host is offering you a dedicated IP for your business email. Here is what it actually buys, why most small businesses do worse with one, the honest volume line providers use, and the warmup trap nobody selling the upsell mentions — in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>My Web Host Wants to Sell Me a Dedicated IP for My Email — Do I Actually Need One?</h1>
+    <p class="lede">The short answer: <strong>for almost every small business, no — and buying one can make your deliverability worse, not better.</strong> A dedicated IP for email only pays off when you send a lot of mail, very steadily. Below that line, the shared pool you already ride on is the warm, established, cheaper choice — and the host knows that. Here is how to tell which side of the line you are on, and what to ask before you spend the money. (If your email goes out through the free account your host bundled with the website, read <a href="should-i-use-the-email-that-came-with-my-web-hosting.html">the web-host email article</a> first — this is the upsell conversation that comes next.)</p>
+    <div class="article">
+
+      <h2>1. What an IP address has to do with your email</h2>
+      <p>Every email leaves from a server, and every server has an IP address — a street address for computers. Mailbox providers (Gmail, Outlook, Yahoo) keep a reputation file on that address, just like a credit score. If a lot of mail from one address is wanted, opened, and answered, the address earns trust. If a lot of it is spam, bounced, or reported, the address earns suspicion. Your business emails go out through <em>your</em> provider’s address — and that address has a score whether you know about it or not.</p>
+      <h2>2. The apartment building and the house</h2>
+      <p>On a <strong>shared IP</strong>, you live in an apartment building: dozens or hundreds of businesses send from the same address, and you all share one reputation. The building is already warm — it has been sending legitimate mail for years — so your mail leaves from a trusted address on day one. On a <strong>dedicated IP</strong>, you move into your own house: the address is yours alone, nobody else’s mail affects you, and the reputation is yours to build or wreck. Control sounds better — and for the right sender, it is. But a brand-new house has no credit history at all, and the post office treats an unknown address with suspicion. That suspicion has a name: it is called a cold IP.</p>
+      <h2>3. The honest line: how much mail you actually send</h2>
+      <p>Providers draw the line on volume, because reputation needs enough mail to judge. The commonly cited threshold is around <strong>50,000 emails a month, sent steadily</strong> — at that point a dedicated IP starts to earn its keep (some providers put the line higher, near 100,000). Under that line, the shared pool wins: it is already warm, it costs you nothing extra, and — this matters — your few thousand emails blend into a pool of legitimate mail instead of drawing the extra scrutiny that lands on a quiet, unknown address. One deliverability guide puts it bluntly: a dedicated IP is required and beneficial only to a very small percentage of senders. Most owners send hundreds or a few thousand emails a month. For them, the upsell is a solution to a problem they do not have.</p>
+      <h2>4. The trap: a new dedicated IP starts at zero</h2>
+      <p>Here is what the sales page does not say. A fresh dedicated IP has <strong>no reputation at all</strong>, and mailbox providers treat an unknown sender conservatively — they rate-limit it, hold its mail temporarily (greylisting), or file it into spam until the sending pattern proves legitimate. Sending your full volume on day one looks exactly like a spammer setting up shop, and providers react accordingly. The fix is called <strong>warming the IP</strong>: starting with a few hundred emails a day to your most engaged recipients, then ramping up over roughly four to eight weeks before you reach full volume. Skip the warmup and your expensive dedicated IP can deliver <em>worse</em> than the shared pool for weeks — the very weeks you are paying for the upgrade.</p>
+      <h2>5. When the answer is actually yes</h2>
+      <p>There are owners who genuinely need one. You send high, steady volume — tens of thousands a month, every month, not a holiday burst (the bulk-newsletter decision lives here — <a href="should-i-send-my-newsletter-from-my-business-email.html">our guide on sending your newsletter from the business mailbox</a> walks that volume question). Your sending habits are disciplined: clean lists, low bounces, low complaints. And you can commit to a proper warmup before sending at full speed. A fourth case: you are on a shared pool with a genuinely bad neighbor — someone else’s spam keeps landing your mail in junk — and your provider will not move you or clean house. That last case is real, but note the caveat: reputable providers actively police their pools and keep bad actors off, so ask before assuming you are stuck with one.</p>
+      <h2>6. How to tell which side you are on (30 seconds of honesty)</h2>
+      <p>First, count: do you send anywhere near 50,000 emails a month, steadily? If the honest answer is a few thousand, you are done — the shared pool is your answer. Second, if you suspect a bad neighbor, check the evidence: <a href="how-do-i-check-if-gmail-trusts-my-business-email.html">Google’s Postmaster Tools</a> has a separate reputation grade for your sending IP, distinct from your domain grade. If the IP grade is poor while your lists and content are clean, you have a neighbor problem — otherwise you have a you problem, and a new IP will not fix it. Third, watch the two numbers that matter during any warmup: keep bounces under 2% and spam complaints under 0.1%, or slow the ramp down. (Bounces have their own map — <a href="why-do-my-emails-bounce-back.html">what each bounce code means</a>.)</p>
+      <h2>7. What a dedicated IP cannot fix</h2>
+      <p>A dedicated IP changes the address your mail comes from. It does not change the mail. If your emails land in spam because of purchased lists, confusing content, or missing unsubscribe links, the new address inherits the same fate — and on a cold IP, faster, because there is no warm pool reputation to absorb the damage. Cold-sending from your main business domain is its own hazard (<a href="should-i-send-cold-emails-from-my-main-business-domain.html">the cold-email-domain article</a>). Fix the list and the habits first — <a href="is-my-business-email-going-to-spam.html">the spam diagnostic</a> and <a href="why-are-my-business-emails-being-blacklisted.html">the blacklist guide</a> cover the order of operations. A dedicated IP is a magnifier, not a cure: it multiplies good sending habits and bad ones alike.</p>
+      <h2>8. What to tell your web host (the exact words)</h2>
+      <p>Send them this: <em>“Before I pay for a dedicated IP, I want three answers. First, what is our actual monthly sending volume — is it anywhere near the volume where a dedicated IP pays off? Second, what is the current IP-reputation grade of the shared pool we send from — is there a documented bad-neighbor problem, or is the pool healthy? Third, if I take the dedicated IP, what is the exact warmup schedule you will run before it carries full volume — I am not sending full volume on day one. If you cannot answer all three, we are staying on shared.”</em> An honest host answers in numbers. A host that cannot is selling you furniture for a house you do not own.</p>
+      <p class="meta">Verified 2026-10-10. Dedicated IP earns its keep around 50,000+ emails per month sent steadily; below that, shared-pool deliverability is typically better because the pool is already warm (emailsendx.com comparison guide, updated ~Sep–Oct 2026); other providers draw the line near 100,000/month (mysmtp.eu knowledge base; slim-ent.com guide, crawled Sep 2026). A new dedicated IP has zero reputation — providers rate-limit, greylist, or spam-folder unknown IPs until the pattern proves legitimate (smtpedia.com IP warmup guide, updated Sep 17, 2026). Standard warmup: 4–8 weeks ramping from a few hundred a day, most-engaged recipients first (smtpedia.com; hostadvice.com, crawled Aug 2026; SiteGround 2026 academy guide). Warmup slow-down triggers: bounce rate over 2%, complaint rate over 0.1% (smtpedia.com). A dedicated IP is “required and beneficial only to a very small percentage of senders”; low-volume or inconsistent senders can do more harm than good (Zoho ZeptoMail guide). Honesty: thresholds vary by provider; warmup schedules are reported guides, not guarantees.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three ID checks that decide whether your mail gets delivered, delayed, or refused. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>A new IP is one decision. The full Site Health Watch audit checks your website's speed, security, mobile experience, and AI visibility too &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+I+need+a+dedicated+IP+for+my+business+email+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
