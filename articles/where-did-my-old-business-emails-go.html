@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where Did My Old Business Emails Go?</title>
+<meta name="description" content="Old business emails missing from your phone but sitting on the office computer, or gone everywhere? The usual culprit is a decades-old mail setting that downloads your email onto one device and deletes the original. POP vs IMAP in plain English, how to tell which one you are on, and the ten-minute fix.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Where Did My Old Business Emails Go?</h1>
+    <p class="lede">Nothing makes a business owner panic like an inbox with holes in it. The 2023 invoices are on the office computer but not on your phone. Or worse: they are nowhere at all. Before you assume you were hacked, know this: the most common cause is not an attack. It is a setting. A mail setting from the 1980s that most business email accounts still carry around, quietly downloading your mail onto one device and deleting the original. It has a name, POP, and once you know it exists, the fix takes about ten minutes.</p>
+    <div class="article">
+
+      <p>This article describes how email programs handle your mail in
+      general. Your own account settings are the verdict on your mail,
+      not this page. Nothing here moves, deletes, or changes your email -
+      the fixes below are settings you or your web person change on your
+      devices.</p>
+      <h2>Your email program has two ways of handling mail</h2>
+      <p>Every email program, Outlook, Apple Mail, Thunderbird, your
+      phone, fetches your mail using one of two methods. They sound
+      technical. They are not.</p>
+      <p><strong>POP works like a courier.</strong> It drives to the post
+      office, picks up all your letters, delivers them to one house, and
+      the post office throws its copies away. Your mail now exists in
+      exactly one place: that device. Microsoft's own support pages put it
+      plainly: by default, when a POP3 account retrieves new messages, the
+      messages are deleted from the mail server and saved on the computer
+      you are using. Because the message is no longer on the server, you
+      cannot see it when you connect from another computer.</p>
+      <p><strong>IMAP works like visiting the post office.</strong> You
+      walk in, read your letters, maybe file some into folders, and leave
+      everything there. Your phone, your computer, and webmail all show
+      the same thing, because the mail lives on the server and every
+      device just looks at it. Delete something on your phone and it is
+      gone everywhere, which is the trade-off, but nothing ever vanishes
+      because you opened it on the wrong device.</p>
+      <p>That is the whole mystery. If your old emails live on one device
+      and nowhere else, or they were there last year and are gone now,
+      you are almost certainly on POP with the default setting: download,
+      then delete the original.</p>
+      <h2>The telltale signs you are on POP</h2>
+      <p><strong>Sign 1: the emails are on the office computer but not on
+      your phone.</strong> The computer checked the mail first, downloaded
+      everything, and deleted the server copies. Your phone arrived at an
+      empty post office. This is the classic one, and it is almost never
+      anything else.</p>
+      <p><strong>Sign 2: webmail shows nothing old.</strong> Log into your
+      email in a browser. If years of mail are missing there but present
+      in Outlook on one computer, that mail was pulled off the server and
+      now lives only inside that computer's local mail file.</p>
+      <p><strong>Sign 3: mail you sent from your phone never appears in
+      your computer's sent folder.</strong> POP only downloads the inbox.
+      It does not sync sent mail, drafts, or folders. Each device keeps
+      its own private sent history, which is why "I know I sent it" turns
+      into an argument with yourself.</p>
+      <p><strong>Sign 4: it started after someone "set up" your
+      email.</strong> A web host's one-click setup, an old Outlook
+      configuration, a nephew who "knows computers." POP was the default
+      for decades, so any setup done more than a few years ago, or done
+      quickly, probably picked it.</p>
+      <h2>Why so many businesses are still on POP</h2>
+      <p>Nobody chooses POP on purpose anymore. It survives by inertia.
+      The account was configured in 2016 and nobody has touched it since.
+      The web host's setup guide defaulted to it. An old tutorial said to
+      use it. And here is the part nobody tells you: <strong>it works
+      perfectly until the day you get a second device.</strong> One
+      computer, checking one inbox, never notices anything wrong. The
+      problems begin the week you add a phone, a laptop, or an assistant,
+      and by then years of mail may already be trapped on the original
+      machine.</p>
+      <p>Our <a href="why-am-i-getting-every-email-twice.html">duplicates
+      article</a> covers the mirror-image symptom, getting every email
+      twice, which comes from rules and groups rather than from POP. If
+      your problem is mail that is missing rather than mail that is
+      doubled, you are in the right place.</p>
+      <h2>The fix, in order</h2>
+      <p><strong>Fix 1: flip the "leave a copy" switch.</strong> POP has a
+      setting that stops the deleting: in Outlook it lives under Account
+      Settings, then More Settings, then the Advanced tab, labeled
+      "Leave a copy of messages on the server." In Thunderbird it is
+      under Account Settings, then Server Settings, labeled "Leave
+      Messages on the server." Check it, and from now on your mail stays
+      on the server after download. This stops the bleeding. It does not
+      fix the deeper problem, which is that POP still does not sync
+      anything, but your mail will stop disappearing.</p>
+      <p><strong>Fix 2, the real one: switch to IMAP.</strong> Most modern
+      providers default to IMAP now, because it is the method built for
+      multiple devices. Switching usually means removing the account from
+      your email program and adding it again, choosing IMAP this time.
+      Your address, your password, and your mail on the server all stay
+      the same. One honest warning: <strong>mail that POP already pulled
+      off the server does not come back.</strong> It lives in the old
+      computer's local mail file. Copy or export that file before you
+      change anything, which is also why our
+      <a href="do-i-need-to-back-up-my-business-email.html">email backup
+      article</a> exists. And if your Gmail address is involved, note that
+      Gmail keeps POP turned off by default: it must be switched on
+      manually under Settings, then Forwarding and POP/IMAP, before any
+      outside program can use it at all.</p>
+      <p><strong>Fix 3: check the Gmail fetcher variant.</strong> If you
+      have Gmail pulling in your business mail through its "check mail
+      from other accounts" feature, that feature uses POP too, and its
+      "leave a copy of retrieved messages on the server" box must be
+      checked or Gmail quietly hijacks everything and the original
+      account goes empty. Our
+      <a href="should-i-forward-my-business-email-to-my-personal-gmail.html">Gmail-forwarding
+      article</a> walks through that exact trap.</p>
+      <p>A practical note for the re-setup: if your email program suddenly
+      refuses your password during all of this, especially with a Gmail
+      address, it may be the 2022 change, not a wrong password. Since May
+      30, 2022, Google no longer lets mail apps sign in with your regular
+      Gmail password; with 2-step verification on, you generate a special
+      16-character App Password from your Google account's security page
+      and use that in Outlook or Apple Mail instead.</p>
+      <h2>Three other reasons old emails vanish</h2>
+      <p><strong>Your mailbox is full.</strong> Email accounts have a
+      storage limit. When it fills up, new mail starts bouncing back to
+      senders, and some setups start dropping the oldest mail to make
+      room. If customers say their emails to you are bouncing, our
+      <a href="why-do-my-emails-bounce-back.html">bounce-back article</a>
+      covers it, but check your storage meter first: a full mailbox
+      explains both missing old mail and missing new mail.</p>
+      <p><strong>Archive is not delete, but it looks like it.</strong> On
+      phones especially, a swipe archives instead of deleting, and
+      archived mail leaves the inbox without going to trash. It is still
+      there, in All Mail or the Archive folder. Before diagnosing anything
+      exotic, search All Mail for a missing message.</p>
+      <p><strong>A retention policy is quietly tidying up.</strong> Some
+      business setups auto-delete mail older than 30, 90, or 365 days. If
+      mail vanishes on a schedule rather than randomly, ask whoever
+      manages the account whether a retention rule is running. This one is
+      set by policy, not by accident, so the fix is a decision, not a
+      setting.</p>
+      <h2>What to ask your web person</h2>
+      <p>Four questions that get a straight answer: (1) "Am I on POP or
+      IMAP on each of my devices?" (2) "Is 'leave a copy on the server'
+      turned on, and if I switch to IMAP, what happens to the mail already
+      sitting on the office computer?" (3) "How do I get the old mail off
+      that one computer and somewhere safe before we change anything?" -
+      this is the backup question, and the answer should involve exporting
+      or copying the local mail file, not hoping for the best. (4) "If we
+      move providers later, how do we do it without losing anything?" -
+      our <a href="how-do-i-switch-email-providers-without-losing-anything.html">provider-switch
+      article</a> covers the safe sequence, and if your phone is part of
+      the mess, our <a href="why-cant-i-send-email-from-my-phone.html">phone
+      setup article</a> covers the device side.</p>
+      <p class="meta">Verified 2026-10-12. POP3 download-and-delete is the
+      documented default: retrieved messages are deleted from the server
+      and saved on the computer in use, changeable via the "Leave a copy
+      of messages on the server" setting (Microsoft Support,
+      support.microsoft.com; page last-updated unknown, crawled ~54 days
+      ago). IMAP leaves messages on the server until deleted; POP3 offers
+      the leave-on-server choice in Thunderbird and Outlook settings
+      (hostitsmart.com, updated ~752 days ago, crawled ~201 days ago).
+      POP3 downloads the inbox only with no folder sync, and the first
+      device to check receives the mail (utilizewindows.com, updated
+      ~1414 days ago, crawled ~12 hours ago). Most modern providers
+      default to IMAP; POP3 users should enable "keep a copy on server"
+      (dev.to, updated ~531 days ago, crawled ~23 hours ago). Gmail POP is
+      off by default and must be enabled under Settings, then Forwarding
+      and POP/IMAP (Gmail Help via scribd mirror, crawled ~14 days ago).
+      Since May 30, 2022, mail apps connecting to Gmail require an App
+      Password with 2-step verification (Microsoft Q&amp;A,
+      learn.microsoft.com, updated ~1381 days ago, crawled ~47 days ago).
+      All statements describe how email programs behave in general, not
+      promises about any individual account.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Missing mail is not the only email problem that quietly costs you customers. Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC, the three ID checks that decide whether your mail gets delivered. Takes about ten seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>Vanishing emails are a setup problem - and setup is only one of the 40 things that can quietly cost you customers. The full Site Health Watch audit checks your email authentication, website speed, security, mobile experience, and AI visibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+disappearing+business+emails+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
