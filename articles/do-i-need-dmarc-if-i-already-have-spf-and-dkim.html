@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do I Need DMARC If I Already Have SPF and DKIM?</title>
+<meta name="description" content="SPF and DKIM authenticate your email, but without DMARC they are two locks with no guard. What DMARC adds, what p=none, quarantine, and reject actually do, and the safe path to full enforcement.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do I Need DMARC If I Already Have SPF and DKIM?</h1>
+    <p class="lede">Your web person set up SPF and DKIM and called email security done. That is two of the three checks - but two checks with no enforcement behind them. DMARC is the piece that turns authentication into protection, and skipping it is the most common gap on small business domains.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-13 - not promises about your situation. Nobody can tell
+      you exactly how inbox providers score your mail; anyone who
+      promises a specific inbox rate is selling something.</p>
+      <h2>The short answer</h2>
+      <p>Yes. SPF and DKIM prove an email really came from your domain,
+      but they tell receiving servers nothing about what to do when
+      that proof fails. Without DMARC, a forged email that fails both
+      checks can still be delivered - the receiving server shrugs and
+      passes it through. DMARC is the instruction that closes the gap:
+      it says "when an email pretending to be from us fails the checks,
+      here is what to do with it." Think of SPF and DKIM as two locks
+      on your front door, and DMARC as the guard who decides what
+      happens when someone picks one.</p>
+      <h2>What SPF and DKIM actually do - and the gap they leave</h2>
+      <p>SPF is a list you publish saying which servers are allowed to
+      send email for your domain. DKIM is a digital signature your
+      server stamps on each outgoing email, which receivers verify
+      against your published key. Both answer the same question: "is
+      this email really from who it says it is?" Both leave the same
+      hole: neither one says what happens when the answer is no. A
+      scammer who sends a fake invoice from your address fails both
+      checks - and Gmail receives the failure, has no instruction for
+      what to do with it, and often delivers the email anyway.</p>
+      <h2>What DMARC adds: alignment plus an instruction</h2>
+      <p>DMARC does two things the other two cannot. First, it requires
+      alignment: the domain in the From address you see must match the
+      domain that passed SPF or DKIM. This is the gap attackers used
+      for years - they would pass SPF with their own domain and fake
+      your address in the From line, and everything looked fine. Second,
+      DMARC carries your policy - the one-line instruction telling the
+      receiving server what to do with mail that fails. That policy is
+      the whole reason the record exists.</p>
+      <h2>The three policies, in plain English</h2>
+      <p>Your DMARC record has a setting called the policy, written as
+      p= followed by one of three words, and it controls what happens
+      to mail that fails:</p>
+      <p><strong>p=none: watch, do not touch.</strong> The receiving
+      server delivers the failing email normally and sends you a report
+      about it. This is the starting position, and it is for learning -
+      the reports show you every server sending as your domain, including
+      the ones you forgot about.</p>
+      <p><strong>p=quarantine: suspicious goes to spam.</strong> Mail
+      that fails gets dropped into the spam or junk folder instead of
+      the inbox. This is the middle step, and it is the first one where
+      the policy actually changes what happens to mail.</p>
+      <p><strong>p=reject: failures do not arrive.</strong> The receiving
+      server refuses the mail outright - it is bounced back and never
+      lands anywhere. This is the finish line: the strongest protection
+      against someone sending mail as your domain.</p>
+      <h2>The trap: p=none is not protection</h2>
+      <p>This is the mistake half of small businesses make. Someone sets
+      up DMARC at p=none, sees "DMARC: found" on a checker, and thinks
+      the job is done. It is not - p=none tells the world "I am aware
+      of DMARC" and explicitly instructs receivers to deliver forged
+      mail anyway. Stages 1 and 2 behave identically for the person
+      reading the email; only quarantine and reject change delivery
+      behavior. That is why email checkers flag p=none as "DMARC policy
+      not enabled" even though a record exists. If your record has been
+      sitting at p=none for a year, you have monitoring, not protection -
+      and the "safe path" below is how you move it to real enforcement
+      without breaking your legitimate mail.</p>
+      <h2>The safe path: none to quarantine to reject</h2>
+      <p>You cannot jump straight to p=reject unless you already know
+      every legitimate sender is passing, or you will start bouncing
+      your own invoices, appointment reminders, and newsletters. The
+      order everyone agrees on: publish at p=none with reporting turned
+      on, watch the reports for two to four weeks to find every system
+      sending as your domain (your newsletter tool, your CRM, the
+      billing platform nobody documented), fix each one's SPF or DKIM
+      so it passes, then move to p=quarantine - optionally starting at
+      25 or 50 percent of failing mail first - and finally to p=reject
+      once clean mail is consistently passing. Slow on purpose: one
+      missed sender at p=reject is a bouncing payroll email.</p>
+      <h2>The 2024 rule change that settled this for everyone</h2>
+      <p>In October 2023 Google and Yahoo announced what had been a
+      recommendation was becoming a requirement, and enforcement began
+      in February 2024: anyone sending roughly 5,000 or more messages a
+      day to Gmail or Yahoo addresses must authenticate with both SPF
+      and DKIM and publish a DMARC record of at least p=none - or the
+      mail gets delayed, spam-foldered, or rejected. Microsoft brought
+      in the same requirements for Outlook.com in May 2025. Most small
+      businesses never hit 5,000 a day, but every inbox provider now
+      treats authenticated domains as more trustworthy by default - so
+      the same records that satisfy the bulk rules also make your
+      everyday quotes and invoices land better. There is no meaningful
+      downside to ending at p=reject even if you send fifty emails a
+      month. (Our <a href="what-is-dmarc.html">DMARC explainer</a> walks
+      through the record itself, and if your checker still shows red
+      after you set everything up, our <a href="i-set-up-spf-dkim-and-dmarc-why-does-the-checker-still-say-fail.html">fail-after-setup
+      guide</a> covers the six small mismatches that cause it - and if Gmail is
+      bouncing or spam-foldering your mail right now, our <a href="why-does-gmail-reject-my-business-email.html">Gmail
+      rejection guide</a> explains what the bounce messages mean.)</p>
+      <p>Sources for the facts above, all checked 2026-10-13: the three
+      DMARC policies and what each does - none delivers normally,
+      quarantine sends to spam, reject refuses outright (domainposture.com
+      policy guide; breachhorizon.com small-business explainer; dmarctrust.com
+      enforcement playbook; wpmailsmtp.com policy explainer); p=none is
+      monitoring only and does not stop spoofing, which is why checkers
+      flag it as "not enabled" (domainposture.com; dmarctrust.com; wpmailsmtp.com);
+      the rollout path none to quarantine to reject with report review
+      and percentage ramps (breachhorizon.com; domainposture.com);
+      the Google/Yahoo bulk sender requirements - announced October 2023,
+      enforced February 2024, 5,000 messages per day threshold, SPF and
+      DKIM plus a DMARC record of at least p=none (autospf.com 2026 guide;
+      getsiteaiaudit.com requirements guide); Microsoft matching
+      requirements for Outlook.com effective May 5, 2025, with 550 5.7.515
+      rejections for non-compliance (warmy.io deliverability guide). The
+      "two locks and no guard" framing is our analysis, built from the
+      sources above.</p>
+      <div class="trybox">
+        <strong>Try it free &mdash; takes about 10 seconds</strong>
+        <p>Paste your domain. Ten seconds later you get one verdict in plain English - whether SPF, DKIM, and DMARC are actually protecting your business email, and exactly what to add if something is missing.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>A domain with SPF and DKIM but no real DMARC policy is two locks with no guard - and email is only one of 40 checks. The full Site Health Watch audit covers your website's speed, security, mobile experience, SEO, and AI visibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+do+I+need+DMARC+if+I+already+have+SPF+and+DKIM+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
