@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is That Old Test Copy of My Website Still Online?</title>
+<meta name="description" content="Your web person once made a test copy of your website - staging.yoursite.com, a /test folder, the dev site from the redesign. It is probably still live, usually with weaker locks and updates nobody ran. Why forgotten copies are the softest door on your property, how strangers find them, and the fix list - in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Is That Old Test Copy of My Website Still Online?</h1>
+    <p class="lede">The short answer: <strong>probably, and it is the back door nobody locked.</strong> Somewhere in your web history - a redesign two years ago, a plugin test last spring, the 'let me try it here first' copy - a full second version of your website is likely still sitting on the public internet. It usually holds the same customer data, the same login pages, and the same plugins as your real site, but with weaker passwords, updates nobody bothered to run, and no one watching it. Attackers know these copies exist, they know how to find them, and in September 2026 a security audit found one test environment still running months after its job ended - reachable from the outside, hooked up to a live customer database, guarded by weaker logins than the real system. Below: what the test copy is, why it is the softest door you own, how strangers find it without guessing, and the fix list in leverage order.</p>
+    <div class="article">
+
+      <h2>1. What the "test copy" actually is</h2>
+      <p>Every redesign, plugin test, or "let me try it here first" moment usually produces one: a full copy of your website parked somewhere out of sight. The common forms: a <strong>staging subdomain</strong> (staging.yoursite.com or dev.yoursite.com), a <strong>folder on your live domain</strong> (yoursite.com/test or /new), or a <strong>leftover from a redesign</strong> that was supposed to be temporary and somehow never got deleted. These copies are made fast, used for a week or two, and then forgotten - but "forgotten" does not mean "gone." The site is still on your hosting account, still loading for anyone who knows the address, and still running whatever version of everything was current the day it was made. Two years of security updates may have gone into your live site since then; the test copy got none of them. (If your old developer might also still hold logins, that is a different door - <a href="does-my-old-developer-still-have-access-to-my-website.html">the ex-developer article</a> covers it.)</p>
+      <h2>2. Why it is the softest door on your property</h2>
+      <p>Think of it as a second house with the same valuables and a cheaper lock. The test copy is usually a clone of your real site, so it holds <strong>the same things attackers want</strong>: your customer list and order history if the database was copied over, your contact-form submissions, your admin login page, your plugins. But almost everything that protects the live site is missing or weaker on the copy: the password is often the default or something simple, because it was "temporary"; <strong>two-factor authentication is rarely turned on</strong> there; it may be running in <strong>debug mode</strong> (a developer setting that spills error details - useful for the developer, a roadmap for an attacker); the firewall and security plugin your live site has may never have been installed on the copy; and nobody is checking its logs, because nobody remembers it exists. A September 2026 security audit found exactly this pattern in the wild: a test environment built for a short demo, still running months later, reachable from outside the network and connected to live customer data - protected by weaker logins than the real system, because the people who built it never expected a stranger to reach it.</p>
+      <h2>3. How strangers find it without guessing</h2>
+      <p>"Nobody knows the address" is not protection. Here are the three ways test copies get found, all routine: <strong>Google finds it.</strong> If the copy was ever linked or crawled, a simple search can surface it - and some site owners discover their staging copy is indexed right next to their real site. <strong>The certificate gives it away.</strong> The security certificates that make the padlock work are public records: Certificate Transparency logs (the public ledger at crt.sh) list every subdomain a certificate covers, so if the certificate names staging.yourdomain.com directly, anyone can look it up. Even a wildcard certificate tells an attacker a wildcard exists - one more reason the 'unlisted' address is not real protection. Security researchers name this as the standard first step for finding forgotten subdomains. <strong>Guessing works too.</strong> Attackers keep lists of the usual names - dev, staging, test, demo, old, beta - and try them against every domain automatically. Reconnaissance writeups spell out the pattern bluntly: staging.company.com usually runs an older, unpatched copy of the application; dev.company.com often has debug mode on. None of this requires targeting you personally. In July 2026, one crew automated known website-plugin flaws and fired them at more than 45,000 targets at once - nobody hand-picks small businesses; the sweep finds whatever is soft. An unpatched copy of your site is exactly what the sweep is built to catch.</p>
+      <h2>4. The shared-walls problem - why the copy can sink the real site</h2>
+      <p>Here is the part that surprises owners: the test copy is rarely truly separate. It usually lives <strong>on the same hosting account as your live site</strong> - same server, same file system. That means a break-in on the forgotten copy can read the live site's files, including the configuration file that holds your live database password. From there the attacker walks through the shared wall into the real thing. There is a second trap: many test copies <strong>share the live site's database</strong>, or were cloned from it and never disconnected. Security checklists warn that a staging save can overwrite real production data - orders, form submissions, user accounts - and from the attacker's side, a shared database means breaking into the weakly-guarded copy hands them the keys to the live data. This is why the fix is never "just ignore it because customers don't see it." Customers don't see it. Attackers do. (If you have never made a backup you actually trust, read <a href="if-my-website-vanished-tonight-do-i-have-a-copy.html">the backup article</a> - the test copy is the wrong kind of copy; you want the right kind.)</p>
+      <h2>5. The fix list - in leverage order</h2>
+      <p><strong>One: delete it if the work is done.</strong> The only perfect fix for a test copy is no test copy. If the redesign shipped, the plugin test finished, or the "try it here first" moment passed, the copy should be gone - files and database both. Ask your web person the blunt question: "Do we still need it?" If the answer is no, it gets deleted this week. (WordPress maintenance guides say it plainly: an unused staging site wastes resources and can become a security vulnerability.) <strong>Two: if it must live, put a real lock on the front door.</strong> A server-level password on the whole copy - the kind where the browser itself asks for a username and password before showing anything. Not just the WordPress login, not a "please don't look" checkbox. One shared password your web person holds. <strong>Three: update it exactly like the live site, or take it down.</strong> A test copy you keep must get the same updates on the same schedule as the real site - same core, same plugins, same day. If that will not happen, see fix one. <strong>Four: separate everything.</strong> Its own database (never the live one), its own admin logins (never shared with the live site), and no real customer data on the copy - testing should use fake names and fake orders. <strong>Five: block the search engines - and understand what that does and doesn't do.</strong> Set the copy to discourage search-engine indexing (in WordPress: Settings, then Reading, then the "discourage search engines" checkbox). This keeps Google from listing it - it does <strong>not</strong> stop an attacker, who never needed Google. Treat it as tidiness, not security.</p>
+      <h2>6. The mistakes that feel like fixes but aren't</h2>
+      <p>Three traps owners fall into: <strong>"I checked the 'discourage search engines' box, so we're fine."</strong> That checkbox is a request Google may honor - it is not a lock, and attackers do not ask Google's permission. <strong>"It's on an unguessable URL."</strong> Unguessable is not invisible: certificate logs, old links, and automated guessing all bypass secrecy. This is the same illusion as hiding the login page and hoping - <a href="should-i-hide-my-websites-login-page.html">the hidden-login article</a> covers why obscurity is not protection. <strong>"We turned the plugin off on the test copy."</strong> A disabled plugin on a forgotten site is still code sitting on a server nobody watches - and a whole forgotten site is the bigger version of <a href="i-turned-that-plugin-off-months-ago-why-did-it-get-my-site-hacked.html">the dead-plugin problem</a>. The pattern in every trap: a step that hides the copy instead of locking or removing it. Hiding is not securing.</p>
+      <h2>7. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"I want a full inventory of every copy of our website that is online - staging subdomains, test folders, old redesign copies, all of it, with the exact addresses. Four asks. First, delete every copy we no longer need, files and database both - this week, not someday. Second, every copy we keep gets a server-level password on the whole thing, separate admin logins from the live site, its own database, and no real customer data on it - fake test data only. Third, kept copies get updated on the same schedule as the live site, same day. Fourth, prove to me two things: that Google cannot find each remaining copy, AND that a stranger who knows the address still cannot open it. Plain English, and show me the list."</em> The proof is the inventory: every copy named, every copy either deleted or locked and updated. If your web person cannot produce the list, that is your answer - there are copies out there nobody is tracking, and that is exactly the situation the September 2026 audit caught. (For the bigger question of whose job all of this is, see <a href="who-is-responsible-for-my-websites-security.html">the responsibility article</a>; and when you sweep your site for signs of a break-in, the test copy is one of the places to look - <a href="how-do-i-know-if-my-website-has-already-been-hacked.html">the detection guide</a>.)</p>
+      <p class="meta">Verified 2026-10-10. September 2026 test-environment case: a security audit ahead of a cloud migration found a test environment reachable from outside the network, connected to a database with live customer information - spun up quickly for a short-term demo, never meant to be permanent, still running months later with weaker login protection than production (theregister.com, Sept 17 2026; crawled 2026-10-10). July 2026 automated attacks: one crew fired known website-plugin flaws (mostly WordPress) at 45,000+ targets from an internet-device search engine's lists; the Breeze caching plugin bug (CVE-2026-3844) backdoored 17,000+ by the crew's own count - with the caveat it only worked when the non-default "Host Files Locally - Gravatars" setting was on (thehackernews.com, July 2026; crawled 2026-10-10). Not about staging specifically - cited as proof attackers sweep everyone by automation. Finding forgotten subdomains: SSL certificates are public; Certificate Transparency logs (crt.sh) list covered subdomains, and recon guides name this plus Google dorking plus common-name guessing (dev/staging/test/old) as the standard discovery steps; staging subdomains commonly run older unpatched apps, dev subdomains often have debug mode on (medium.com recon guides; github recon writeups; crawled 2026-10-10). Staging hygiene: password-protect the staging URL, server-level, non-negotiable (wpfoundry.app); never share a database between live and staging - a staging save can overwrite production data including orders and accounts (duplicator.com; crawled 2026-10-10); separate credentials and HTTPS on all environments (wbcomdesigns.com); block search-engine indexing (wpzoom.com; webenvo.com; crawled 2026-10-10) - stops Google, not attackers; delete unused staging environments - an unused staging site "can become a security vulnerability" (wpzoom.com). All numbers are reported figures from the cited sources, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. About a minute later you get a plain-English verdict &mdash; your Mozilla security grade translated out of engineer-speak, a live HTTPS test, and your certificate's expiry date. Forgotten test copies and unlocked doors are exactly the kind of thing this check is built to surface.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Your test copy is one door. The full Site Health Watch audit runs all 40 checks against your live site &mdash; security headers, email authentication, speed, mobile, and AI visibility &mdash; every finding verified, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+old+test+copies+of+websites+still+being+online+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
