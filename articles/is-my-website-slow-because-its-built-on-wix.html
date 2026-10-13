@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is My Website Slow Because It's Built on Wix?</title>
+<meta name="description" content="Wix, Squarespace, and GoDaddy get blamed for slow websites — but the real-user data surprises everyone. What the builder actually controls, what you added that costs you, and whether moving off is worth it — plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Is My Website Slow Because It's Built on Wix?</h1>
+    <p class="lede">The short answer is <strong>probably not — and the real data surprises almost everyone.</strong> Measured across millions of real visits, Wix sites pass Google's Core Web Vitals <strong>more often</strong> than WordPress sites do. The builder is not the villain it was in 2016. But here is the part that matters: the builder is the one slowdown you <strong>cannot fully fix</strong>, because the kitchen is not yours. You cannot change the server, you cannot remove the platform's own code, and every app you ever installed keeps charging you rent. Here is what the builder actually costs you, in plain English.</p>
+    <div class="article">
+
+      <h2>1. The data surprises everyone</h2>
+      <p><strong>Real-user measurements put Wix ahead of WordPress on speed.</strong> The HTTP Archive's Core Web Vitals technology report (August 2026 data) measured how often sites pass Google's speed-and-stability bar on real visits: Wix passes 81% of the time on mobile, Squarespace 72%, WordPress 49%, against a web-wide average of 53% (colorlib.com site-speed statistics, crawled October 2026). Wix also holds the highest median mobile Lighthouse performance score of the major platforms listed. The reason is structural: "hosted platforms lead... because the vendor controls hosting, CDN and much of the front-end code." When one company owns the server, the delivery network, and the code, the floor is high.</p>
+      <p><strong>And the WordPress number is not the platform's fault either.</strong> The same report notes the wide WordPress variance reflects "hosting quality, theme choice, and plugin count" — <a href="does-cheap-hosting-make-my-website-slow.html">the server you bought</a> and <a href="does-my-website-theme-make-it-slow.html">the theme you picked</a>, not WordPress itself. A clean, well-hosted WordPress site beats a cluttered Wix site every time. The platform is not destiny in either direction.</p>
+      <p><strong>Google agrees the old reputation is out of date.</strong> Google's John Mueller has said publicly that Wix sites can rank fine, and praised Wix's progress on loading speeds and mobile optimization (TechRadar; lilachbullock.com, 2026). If your web person still tells you "Google hates Wix," that advice expired years ago.</p>
+      <h2>2. What the builder controls — and you cannot touch</h2>
+      <p><strong>The server is theirs. Full stop.</strong> On Wix, Squarespace, or GoDaddy's builder, there is no host shopping and no server settings — you get the vendor's hosting, on the vendor's terms, and you cannot tune it the way <a href="does-cheap-hosting-make-my-website-slow.html">the hosting article</a> describes for a self-hosted site. Reviewers put the limitation plainly: you have "less control over the hosting environment," and "if Wix has a platform issue that affects page speed... you can't fix it at the server level the way you can with self-hosted WordPress" (quicklyhire.com; beyondgoat.co.uk, 2026).</p>
+      <p><strong>The platform's own code loads on every page, and you cannot remove it.</strong> Every Wix or Squarespace site carries the vendor's shared JavaScript — the editor runtime, the template framework — whether your page needs it or not. Technical reviews note "code bloat and automatic script loading can affect performance," and that drag-and-drop building "can sometimes lead to bloated code" (TechRadar; actuatemedia.com). This is the locked kitchen: on WordPress you can strip a theme down to the studs; on a builder, the walls are load-bearing.</p>
+      <p><strong>The practical meaning: your speed ceiling is set by the vendor.</strong> You can clean everything you control and still hit a floor you cannot go under. For most small-business sites that floor is fine — the 81% pass rate says so. It only becomes the binding constraint when the site outgrows the platform: heavy stores, membership areas, anything custom.</p>
+      <h2>3. The rope they hand you (this is usually the real bill)</h2>
+      <p><strong>What you added costs more than the platform does.</strong> Builders make it dangerously easy to stack features: one more app, one more animation, one more widget. "Each installed app adds code to your pages. A chat widget, a popup tool, a scheduling plugin, and a social feed all running together will drag performance down" (uberant.com, October 2026). That is <a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">the plugin trap</a> wearing builder clothes — the app market is the builder's plugin folder, and it fills up the same way. The usual stacked set — chat, popup, scheduler, social feed — is exactly what <a href="do-those-chat-widgets-and-booking-tools-slow-down-my-website.html">the widget article</a> warns about.</p>
+      <p><strong>Images are the usual culprit.</strong> Builder editors invite you to drop in full-resolution photos, and the page pays for every pixel. "Oversized, high-resolution photos add significant weight" — run them through a free compressor before uploading and the visible result stays sharp while the file shrinks considerably (uberant.com). The <a href="why-do-my-photos-slow-down-my-website.html">photo article</a> covers the full diet; on a builder site it matters twice, because you cannot fix a heavy page with server-level tricks.</p>
+      <p><strong>Animations, parallax, and video backgrounds are the silent killers.</strong> The editor's fanciest features — scroll effects, entrance animations, autoplaying hero video — are the most expensive things on the page, and <a href="why-is-my-website-slow-on-mobile.html">phones feel them first</a>. A builder site with three animations and a video background is slow because of the decorations, not the platform.</p>
+      <h2>4. The five fixes, in leverage order</h2>
+      <p><strong>One: audit your apps.</strong> Open the app market / installed apps list and remove everything you do not actively use. Keep the ones that earn their keep; every survivor should justify the code it adds to every page. This is the single highest-leverage move on a builder site.</p>
+      <p><strong>Two: put your images on a diet.</strong> Compress every photo before uploading (not after — the editor's built-in compression cannot undo an 8MB original), and size them to the space they actually fill. No 4000-pixel-wide photo for a 600-pixel slot.</p>
+      <p><strong>Three: kill the animations.</strong> Turn off parallax, entrance effects, and animated section transitions. They cost the most on the weakest devices — your customers' phones — and almost nobody misses them.</p>
+      <p><strong>Four: make the video-background call.</strong> If your homepage opens with autoplaying video, test the page with a still image instead. Video backgrounds are the single heaviest common decoration on builder sites.</p>
+      <p><strong>Five: check your template's age.</strong> This one surprises people: older Wix sites built on legacy templates "still carry more bloated code than they need," and inherited old Wix stores have been measured with mobile PageSpeed scores in the 30s — while Wix's newer Studio editor "has closed most of this gap" (lilachbullock.com, 2026). If your site is on a years-old template, rebuilding on a current template can buy more speed than any optimization — without leaving the platform.</p>
+      <h2>5. Should you move off the builder? The honest answer</h2>
+      <p><strong>Moving is a rebuild, not a tweak.</strong> Leaving Wix or Squarespace for WordPress (or anything self-hosted) means rebuilding the site from scratch: weeks of work, real money, new hosting to manage, and a learning curve you currently do not have. Anyone who quotes you a "quick migration" is selling, not advising.</p>
+      <p><strong>And the data says the platform is rarely the reason.</strong> Remember the HTTP Archive numbers: the platform does not decide your speed — what you put on it does. A clean Wix site beats a bloated WordPress site, and a bloated WordPress site is the easiest thing in the world to build (forty plugins will do it). Move for the real reasons: you need custom function the builder cannot do, you want to own your hosting and your code, you are scaling past what the platform handles well.</p>
+      <p><strong>Do not move for speed alone.</strong> If the five fixes above do not get you where you need to be, get an honest measurement first — then decide. The builder's locked kitchen only binds at the top end; almost no small-business site lives there.</p>
+      <p><strong>The Squarespace and GoDaddy notes.</strong> Squarespace tends to edge Wix on mobile polish: one independent 2026 test measured Squarespace's Largest Contentful Paint at 3.6 seconds vs Wix's 6.8 (Google recommends under 2.5), and Squarespace ships a built-in CDN plus automatic image resizing (cybernews.com, 2026). GoDaddy's builder plays in the same class with the same rules — locked server, app stacking, image diet. The five fixes apply verbatim.</p>
+      <h2>6. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"Our site is on [Wix / Squarespace / GoDaddy]. Before we talk about leaving the platform: (1) list every installed app and remove the ones we don't actively use; (2) compress and right-size all images before upload; (3) turn off parallax and entrance animations; (4) test the homepage with a still image instead of the video background; (5) tell me whether we're on a current template or a legacy one — and if legacy, what a rebuild on the current template costs versus staying put. And give me the mobile PageSpeed score before and after."</em> Six asks, six fixes: the app rent, the image weight, the animation tax, the video call, the template-age check, and the honest migration quote.</p>
+      <p class="meta">Platform data verified 2026-10-09. HTTP Archive Core Web Vitals Technology Report, August 2026 data (via colorlib.com site-speed statistics, crawled Oct 2026): mobile Core Web Vitals pass rates — Wix 81%, Squarespace 72%, WordPress 49%, all websites 53%; desktop — Wix 87%, Squarespace 66%, WordPress 53%, all websites 60%; median mobile Lighthouse performance — Wix 61 (highest of major platforms), Squarespace 29. "Hosted platforms lead... because the vendor controls hosting, CDN and much of the front-end code"; WordPress variance reflects "hosting quality, theme choice, and plugin count." Google's John Mueller: Wix sites can rank fine; praised Wix's speed and mobile progress (TechRadar; lilachbullock.com, 2026). Limitations: drag-and-drop "can sometimes lead to bloated code" (actuatemedia.com); "code bloat and automatic script loading can affect performance" (TechRadar); platform issues "can't [be fixed] at the server level the way you can with self-hosted WordPress" (beyondgoat.co.uk, 2026). App stacking: "Each installed app adds code to your pages" — chat widget + popup + scheduler + social feed "will drag performance down"; images "the usual culprit," compress before upload (uberant.com, Oct 2026). Legacy templates carry excess bloat; mobile PageSpeed scores in the 30s seen on old Wix stores; Studio editor "has closed most of this gap" (lilachbullock.com, 2026). Independent 2026 test: Wix LCP ~6.8s vs Google's 2.5s recommendation; Squarespace LCP 3.6s; Squarespace CDN + auto image resizing (cybernews.com, 2026).</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. On a builder site, the culprit is usually what you added &mdash; apps, images, animations &mdash; and this check names them.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours, including the exact server-response number for your site.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+Wix%2FSquarespace+builders+slow+down+websites+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
