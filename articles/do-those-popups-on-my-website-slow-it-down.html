@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do Those Popups on My Website Slow It Down?</title>
+<meta name="description" content="Your email-capture popup is costing you speed on every single page - not just the one it appears on. How popups actually slow a site, Google's separate penalty for intrusive ones, and the honest conversion math that decides whether yours earns its keep - in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do Those Popups on My Website Slow It Down?</h1>
+    <p class="lede">The short answer: <strong>yes, but the popup itself is rarely the whole problem - the pile-up is.</strong> One email-capture popup, running alone, typically costs a tenth or two of a second on every page, because the plugin ships its script everywhere even when the popup only fires somewhere. The real damage happens when popups stack with the cookie banner, the chat widget, and the review badge - each one adding its own tenth of a second, its own layout shift, its own shot at annoying a visitor who was about to buy. Below: exactly what popups cost your site, Google's separate penalty for the intrusive ones, the honest conversion math that decides whether yours earns its keep - and the kill rule for when it does not.</p>
+    <div class="article">
+
+      <h2>1. The every-page tax - your popup loads even where it never fires</h2>
+      <p>Here is the mechanic most site owners miss. You set up one email-capture popup that only appears on the homepage - and you assume the cost lives on the homepage. It does not. The typical WordPress popup plugin <strong>adds its embed code to every page on your site</strong>, because the plugin does not know the display rules you set inside the popup app; the campaign only triggers where the rule is true, but the script ships everywhere (that is how the vendor's own staff explains the mechanics). So the first question is never "how fast is my homepage" - it is "how many pages am I paying for a popup that fires on one of them." Independent benchmarks of a leading popup plugin show about <strong>a tenth to two-tenths of a second</strong> added to front-page load on activation, with roughly 21KB of extra memory (WP Hive benchmarks). Not catastrophic alone - but it is a tax on every page, including the ones that never show the popup.</p>
+      <h2>2. Cloud vs self-hosted - where the script actually lives</h2>
+      <p>Not all popup tools cost the same, and the difference is where they do their work. <strong>Cloud popup tools</strong> keep almost everything on their own servers: in one vendor's own 2026 comparison, its cloud tool measured about 2 KB on the site's server, loaded the rest asynchronously from its CDN <em>after</em> the page had already rendered, and loaded <strong>nothing at all on pages with no active campaign</strong>. <strong>Self-hosted popup plugins</strong> do their work from your server - the same comparison measured about 81 KB of scripts and styles shipped with every page load. Two honesty notes: first, that comparison is the cloud vendor's own marketing, so the exact numbers are theirs - but the direction is confirmed by independent benchmarks, and the principle is plain: every-page loading is the tax. Second, "loads asynchronously" means the visitor's screen does not wait for the popup - but the page is still downloading, parsing, and storing it, which shows up in your speed score and on slow phones. If your popup plugin is self-hosted, that is the first lever to ask about.</p>
+      <h2>3. The three ways popups hurt your Core Web Vitals</h2>
+      <p>Google grades your pages on three real-world measurements in 2026 - and popups lean on all three. <strong>One: responsiveness.</strong> Interaction to Next Paint (INP), which replaced the old metric in March 2024, measures how fast the page reacts to every tap and click; under 200 milliseconds is good, and it is now the metric most sites fail. A popup injecting a chunk of DOM and JavaScript mid-visit gives the browser extra work exactly when it is supposed to be reacting to you. <strong>Two: layout stability.</strong> Cumulative Layout Shift (CLS) measures content jumping around while the page loads; under 0.1 is good, and eCommerce analyses specifically name <strong>"dynamic banners and promotional popups"</strong> as a cause. <strong>Three: the no-free-ride rule.</strong> Google's own Martin Splitt has answered the "but it's a third-party plugin" complaint directly: there are no Core Web Vitals breaks for slow plugins and apps - the email-list, review, and chatbox functionalities were named as exactly the kind of marketing tools that drag scores down. Your site owns the grade even when the popup vendor owns the code. (And if you run a cookie banner, a chat widget, and a review badge alongside the popup, read <a href="do-those-chat-widgets-and-booking-tools-slow-down-my-website.html">the widget-stacking article</a> - the pile-up is the point.)</p>
+      <h2>4. The second penalty - Google demotes intrusive popups, separately from speed</h2>
+      <p>Popups can cost you twice: once in speed, once in rankings, through a separate signal. Since January 2017, Google has said that pages where <strong>content is not easily accessible to a visitor arriving from mobile search results may rank lower</strong>. It targets three things: a popup that covers the main content right after someone arrives from search (or while they are reading); a standalone interstitial the visitor has to dismiss before reaching the content; and a page whose top portion is designed to look like an interstitial. <strong>Cookie agreements and age-verification warnings are exempt</strong> - the algorithm deliberately ignores those (they are legal obligations, covered in <a href="does-that-cookie-popup-slow-down-my-website.html">the consent-popup article</a>). What this is not: it is not a "penalty" in the manual-action sense - it affects rankings, not indexing, and Google has said great content can still outrank. What it can be: one documented case showed an 82% drop in desktop organic traffic in a month and 97% of the homepage's keyword rankings lost after launching a mobile+desktop promo popup, with page load stretching from 3 to 13 seconds. One documented case is a warning, not a promise - but the mechanism is real and still in force. Full-screen-on-arrival on mobile is the move that triggers it; a small banner or a slide-in that respects the content does not.</p>
+      <h2>5. The worth-it math - what popups actually convert</h2>
+      <p>Speed cost is only half the ledger. The other half is what the popup earns, and the 2026 numbers are honest in both directions. Across roughly 3,900 popup accounts and nearly 139 million recorded views in the first nine months of 2026, the <strong>median popup converted 1.30% of its views into form submissions</strong>, with the top quarter at 2.67% (Poptin's 2026 benchmark report). Exit-intent popups - the ones that appear as the visitor leaves - showed <strong>no reliable advantage</strong> over other triggers in 2026: 1.10% vs 0.78% median, a gap the researchers themselves say could be chance (Popupsmart's 2026 benchmark). On mobile, "exit intent" is approximated anyway - no cursor, so tools guess from a fast scroll up or a back-button press. The optimistic end: campaigns that nail context, timing, clarity, value, mobile format, and frequency caps can convert at 30-60% (bdow's analysis). The plain-English reading: a popup converting under ~1% that nobody is measuring is pure cost. A popup converting 3%+ on a page that matters is a marketing expense with a receipt. Anything in between is a test waiting for a verdict. And <strong>frequency matters as much as format</strong>: the same analysis that shows 30%+ converters also shows the winning pattern - capped at about one display per visitor per day, with "no" respected. Bombarding every page on every visit converts like a popup that converts at nothing.</p>
+      <h2>6. The fix list - if you keep it, make it cheap</h2>
+      <p>If the popup earns its keep, keep it - and make it as cheap as possible. <strong>Scope it to the pages that matter:</strong> your campaign rules should say "this page," not "everywhere" - remember the script ships everywhere, so only fire where it can pay off. <strong>One at a time:</strong> the email popup, the cookie banner, the chat widget, and the sale announcement should never all ambush the same visitor; stagger them or choose - the stacking article covers the math. <strong>Fix the timing:</strong> never fire on arrival - a 6-to-10-second delay, a 50%-scroll trigger, or exit-intent gives the page a chance to load and the visitor a chance to care; welcome popups firing at 0-1 seconds are documented underperformers. <strong>Respect mobile separately:</strong> no full-screen-on-arrival on phones - a bottom bar or slide-in, one email field, a big tappable close button; full-screen mobile formats are exactly what the ranking signal targets. <strong>Cap the frequency:</strong> one display per visitor per day, and remember "no" - a visitor who closed it twice is not converting on the third try, only on leaving. <strong>Prefer the lighter tool:</strong> cloud over self-hosted where the numbers support it, and if your theme has a built-in popup, test it before paying for a plugin. Then apply the kill rule: measure the conversion rate for 30 days. If it cannot beat the 1.30% median and nobody on your team can say what it is earning, <strong>delete it</strong> - a popup you do not measure is a tax you do not need. (Popups that include countdown timers inside the offer carry that cost too - see <a href="do-those-countdown-timers-slow-down-my-website.html">the timer article</a>.)</p>
+      <h2>7. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"I want our popups audited. Four asks. First, tell me exactly which popup tools are installed, whether each one loads its scripts on every page or only where it fires, and whether any of them is self-hosted when a cloud or built-in option exists - plain numbers, no upsell. Second, check our display rules and make sure each popup fires only on the pages where it can pay off - the script ships everywhere, so I want to know exactly where each one actually appears, on desktop and on mobile separately. Third, set timing and frequency so no popup fires on arrival, mobile popups are bottom-bar or slide-in format (never full-screen on arrival), and no visitor sees a popup more than once a day. Fourth, pull the conversion rate on each popup for the last 30 days - anything under about 1% that we are not actively testing gets removed. Plain English, and show me the before-and-after speed numbers."</em> The numbers are the proof: conversion rate, pages covered, and speed with the popup on versus off. (Popups are one member of the plugin family - <a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">the plugin audit guide</a> covers the rest; and for how the speed piece feeds rankings generally, see <a href="does-a-slow-website-hurt-my-google-rankings.html">the rankings article</a>. Mobile behavior more broadly: <a href="why-is-my-website-slow-on-mobile.html">the mobile-speed article</a>.)</p>
+      <p class="meta">Verified 2026-10-10. Popup cost: WP Hive benchmarks show +0.1 to +0.17s front-page load change and ~21KB memory on OptinMonster activation (wphive.com, multiple versions; crawled 2026-10-10). Cloud vs self-hosted: OptinMonster's own 2026 plugin comparison measured ~2 KB on-server with async CDN load after page render and nothing loaded on pages with no active campaign, vs ~81 KB scripts+styles on every page load for self-hosted Popup Maker (optinmonster.com, updated ~Aug 2026; crawled 2026-10-10) - favorable numbers are the vendor's own; the direction is confirmed by independent benchmarks. Every-page embed: the WP plugin adds the embed code to ALL pages because it does not know the app-side display rules; the campaign only triggers where the rule is true (wordpress.org support thread, vendor staff; crawled 2026-10-10). Core Web Vitals 2026: LCP under 2.5s, INP under 200ms, CLS under 0.1, 75th percentile of real visits; INP replaced FID in March 2024 (dev.to ~Oct 2026; subscribepr.com ~Sep 2026; crawled 2026-10-10). CLS from "dynamic banners and promotional popups" (medium.com/@teamseo.qf May 2026; crawled 2026-10-10). No CWV breaks for third-party apps; email-list/review/chatbox functionalities named (searchenginejournal.com; crawled 2026-10-10). Intrusive-interstitial signal: in force since Jan 10, 2017; three bad examples; cookie/age exempt (marketing-interactive.com ~Sep 2026; 4hoteliers; crawled 2026-10-10). Documented case: 82% desktop organic traffic drop in one month, 97% of homepage keyword rankings lost, 3s-to-13s page load after mobile+desktop popup launch (searchengineland.com; crawled 2026-10-10) - one case, not a study; affects rankings, not indexing. Conversion: median 1.30%, top-quarter 2.67% across 3,897 accounts / 5,885 popups / 138.7M views, Jan-Sep 2026 (poptin.com, Oct 8 2026; crawled 2026-10-10). Exit-intent 1.10% vs 0.78% no-intent, gap could be chance; mobile approximated via fast scroll-up or back-button press (popupsmart.com, ~Sep 2026; crawled 2026-10-10). 30-60% converters when context+timing+clarity+value+mobile-first+frequency all line up (bdow.com, ~May 2026; crawled 2026-10-10) - bdow sells popup services; mechanics documented, framing optimistic. All numbers are reported measurements from the cited sources, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. A popup script loading on every page is exactly the kind of culprit this check surfaces.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours, including the exact loading-time number for your homepage.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+popups+slow+down+a+website+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
