@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is My Business Email Private? What the Lock Icon in Gmail Really Means</title>
+<meta name="description" content="That little lock icon in Gmail does not always mean what owners think it means. Grey, green, and red locks decoded, what email encryption actually protects, why confidential mode is not encryption, and what to do before you send anything sensitive.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Is My Business Email Private? What the Lock Icon in Gmail Really Means</h1>
+    <p class="lede">You have probably seen the little lock icon in Gmail and assumed it meant your email was private. Sometimes it does. Sometimes it means something much narrower. And sometimes the lock is red and hanging open, which is Gmail's way of tapping you on the shoulder. Here is what each version actually promises &mdash; and the one thing none of them promise.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-12 - not promises about your situation. Email setups differ,
+      and providers change details over time. The general picture here is
+      stable; the specifics of your account are worth checking with your
+      email provider or web person.</p>
+      <h2>The decoder ring: grey, green, and red</h2>
+      <p>When you compose a message in Gmail, look next to the
+      recipient's name. On a message you received, the icon sits up in the
+      message header area &mdash; click it and Gmail tells you more. There
+      are three versions, and they answer one question: was this message
+      scrambled while it traveled?</p>
+      <p><strong>Grey lock: scrambled on the road.</strong> The message is
+      protected by TLS &mdash; encryption applied while the email moves
+      between mail servers. This is the normal, everyday case for most
+      business email. It does <em>not</em> mean nobody can ever read it
+      (more on that below). It means nobody listening in along the way
+      could read it.</p>
+      <p><strong>Green lock: the strongest version.</strong> This means
+      S/MIME encryption is active &mdash; the message is locked so that
+      only the recipient's device can open it. You will only see this
+      on a paid Google Workspace account where the extra encryption has
+      been set up on both sides. Most small businesses never see the green
+      lock, and that is normal.</p>
+      <p><strong>Red open lock: traveling in the open.</strong> The other
+      side's mail system does not do encryption, so the message goes as
+      readable text. Google added this warning back in February 2016, and
+      its advice then is still the right advice now: if you see the red
+      lock while writing, do not send anything confidential &mdash; tax
+      forms, contracts, bank details &mdash; to that address. If you see it
+      on a message you received, that message arrived unencrypted; there is
+      usually nothing you can do about it after the fact, but you now know
+      not to reply with anything sensitive. The red lock is uncommon in
+      practice, because the big providers (Microsoft, Yahoo, and the rest)
+      all support encryption &mdash; which is exactly why you should pay
+      attention on the rare occasion you see it.</p>
+      <p>One thing the lock never tells you: whether the sender is honest.
+      A scammer's email can be perfectly encrypted. The lock is about the
+      <em>journey</em>, not the <em>sender</em>. (The icon that questions
+      the sender is the red question mark Gmail shows instead of a profile
+      photo &mdash; our <a
+      href="why-does-gmail-show-a-question-mark-next-to-my-business-name.html">question-mark
+      guide</a> covers that one. Two icons, two different questions.)</p>
+      <h2>What the lock actually protects: the road, not the post offices</h2>
+      <p>Think of your email as a letter and the internet as the road
+      between two post offices &mdash; yours (Gmail, Outlook, whoever
+      hosts your business mail) and the recipient's. TLS is an armored
+      truck on that road: while the letter is moving, it is scrambled, and
+      anyone eavesdropping &mdash; say, someone sniffing the coffee-shop
+      wifi &mdash; sees only gibberish.</p>
+      <p>But the armored truck only runs if <em>both</em> post offices use
+      it. If the recipient's mail system does not support encryption,
+      there is no truck, and Gmail shows you the red lock to say so. And
+      here is the part nobody puts in the marketing: at each post office,
+      the letter gets opened. Your provider decrypts your mail to store it,
+      scan it for spam, and show it to you; the recipient's provider does
+      the same on their end. So your provider and their provider can read
+      routine email. That is not a hack or a scandal &mdash; it is how
+      email works. The encryption protects against snoopers on the road,
+      not against the companies carrying the mail.</p>
+      <p>This is also why encryption and authentication are two separate
+      jobs. Proving a message really came from your domain (the SPF, DKIM,
+      and DMARC checks) is about <em>identity</em>. Scrambling it in
+      transit is about <em>privacy</em>. You want both, and neither
+      replaces the other &mdash; our <a
+      href="what-is-dmarc.html">DMARC guide</a> covers the identity half,
+      and our <a
+      href="how-do-i-check-if-gmail-trusts-my-business-email.html">Gmail-trust
+      guide</a> covers whether Gmail believes mail from your domain in the
+      first place.</p>
+      <h2>Confidential mode is a velvet rope, not a vault</h2>
+      <p>Gmail's confidential mode <em>sounds</em> like encryption. It is
+      not. What it does: the message expires after a time you set, you can
+      revoke access early, and the recipient is blocked from forwarding,
+      copying, printing, or downloading it through Gmail's normal buttons.
+      Useful &mdash; for example, when you want a quote to stop floating
+      around after the deal closes.</p>
+      <p>What it does <em>not</em> do: encrypt the message so nobody can
+      read it. Google can still read confidential-mode mail. And every one
+      of those forwarding restrictions is beaten by the oldest trick in
+      the book: a photo of the screen with a phone. Use confidential mode
+      for &ldquo;please don't pass this around.&rdquo; Do not use it for
+      &ldquo;nobody can ever see this.&rdquo;</p>
+      <h2>The real vault: S/MIME, and what it takes</h2>
+      <p>There is one built-in way to get true end-to-end-style encryption
+      inside Gmail, where not even Google can read the message: S/MIME
+      &mdash; the green lock. But the price of admission explains why you
+      have never seen it. You need a paid Google Workspace account (not
+      free Gmail). Your Workspace admin has to turn S/MIME on. And both
+      you <em>and</em> the recipient need valid security certificates that
+      you have exchanged with each other &mdash; like swapping physical
+      keys before you can use the lock.</p>
+      <p>That is a lot of setup, which is why S/MIME lives mostly in law
+      firms, medical practices, and financial companies &mdash; businesses
+      that routinely email contracts, tax documents, or sensitive client
+      information and have an IT person to maintain it. If that describes
+      your business, ask your web person about it directly (see the script
+      below). If you mostly email quotes, invoices, and scheduling, the
+      grey lock plus good habits is the proportionate answer &mdash; just
+      know what the grey lock does and does not promise.</p>
+      <h2>MTA-STS: telling the world &ldquo;always use the armored truck&rdquo;</h2>
+      <p>There is one more layer, and almost nobody has it yet. MTA-STS is
+      a small public policy your domain publishes that says: only ever
+      deliver my mail over encrypted connections &mdash; no downgrading to
+      the open road, ever. Think of it as DMARC's lesser-known cousin:
+      DMARC tells the world how to handle fakes of your domain, MTA-STS
+      tells the world to always encrypt mail bound for your domain.</p>
+      <p>Adoption is still tiny: about 0.7% of the million biggest domains
+      published an MTA-STS policy in the January 2026 snapshot, up from
+      0.5% in 2025 and 0.3% in 2024. More than doubled over two years, from a small base
+      &mdash; the direction is the point. The industry is moving toward
+      always-encrypted mail, the way it moved toward always-encrypted
+      websites years ago. Worth knowing it exists; worth asking your web
+      person about when you next review your domain's DNS records
+      (ideally in the same conversation as SPF, DKIM, and DMARC).</p>
+      <h2>What to actually do</h2>
+      <p><strong>1. Respect the red lock.</strong> Before you send anything
+      sensitive &mdash; tax forms, contracts, bank details, medical or
+      legal documents &mdash; glance at the lock next to the recipient's
+      name. Grey means the road is protected. Red means it is not, and the
+      sensitive stuff should go another way (a secure portal, an encrypted
+      file share, or a phone call).</p>
+      <p><strong>2. Never email passwords or full account numbers, lock or
+      no lock.</strong> The grey lock protects the road, not the post
+      offices. Anything truly secret does not belong in email at all.</p>
+      <p><strong>3. Lock the account door too.</strong> Two-factor
+      authentication guards who can open your mailbox; the lock icon guards
+      the message on its journey. Different doors &mdash; you want both.
+      Our <a href="should-i-turn-on-two-factor-for-my-business-email.html">two-factor
+      guide</a> walks through turning it on.</p>
+      <p><strong>4. Use confidential mode for what it is.</strong> Expiry
+      dates and no-forwarding are genuinely useful for quotes, drafts, and
+      anything you want to stop floating around. Just never mistake it for
+      encryption.</p>
+      <p><strong>5. Keep the identity half strong.</strong> An encrypted
+      scam email is still a scam &mdash; our <a
+      href="my-vendor-emailed-new-bank-details-is-it-a-scam.html">vendor-scam
+      guide</a> shows why you verify payment instructions by phone no
+      matter what the icons say. And your own domain's SPF, DKIM, and
+      DMARC records are what keep criminals from sending mail <em>as</em>
+      you in the first place.</p>
+      <p><strong>6. Back up, separately.</strong> Encryption protects mail
+      in motion; backups protect mail at rest against loss, hacks, and
+      accidents. Our <a href="do-i-need-to-back-up-my-business-email.html">backup
+      guide</a> covers that other half.</p>
+      <h2>Four questions for your web person</h2>
+      <p><strong>1.</strong> &ldquo;Can you confirm our business email uses
+      encrypted connections to send and receive &mdash; and show me where
+      I would see the red lock if it didn't?&rdquo;</p>
+      <p><strong>2.</strong> &ldquo;We have SPF, DKIM, and DMARC &mdash;
+      should we also publish an MTA-STS policy so the world always
+      encrypts mail sent to us?&rdquo;</p>
+      <p><strong>3.</strong> &ldquo;If I ever need to send truly private
+      documents &mdash; contracts, tax forms, sensitive client data
+      &mdash; do we have S/MIME set up, or what is our secure alternative
+      to email?&rdquo;</p>
+      <p><strong>4.</strong> &ldquo;Is two-factor turned on for every
+      business email account, and does everyone on the team know that
+      confidential mode expires messages but does not encrypt them?&rdquo;</p>
+      <h2>The bottom line</h2>
+      <p>The lock icon is Gmail telling the truth in three colors: grey
+      means the road was protected, green means the message itself is
+      locked, red means it traveled in the open. None of them mean the
+      sender is honest, none of them keep your provider from reading
+      routine mail, and confidential mode is an expiry date, not a vault.
+      Once you know what each one promises, the right move is usually
+      simple: respect a red lock, never email secrets, and save the real
+      vault &mdash; S/MIME &mdash; for the documents that truly need
+      it.</p>
+      <p>Sources for the facts above, all checked 2026-10-12: the grey /
+      green / red lock meanings &mdash; grey = TLS in transit, red open =
+      no encryption, green = S/MIME active (securityboulevard.com Gmail
+      security guide, updated ~188 days ago, crawled ~2 hours ago;
+      bloggerwalk.com Gmail encryption guide, updated ~16 days ago, crawled
+      ~3 hours ago); Google's red-padlock and question-mark warnings
+      introduced February 2016 (ghacks.net, dated 11 Feb 2016, page updated
+      Feb 2026; theinternetpatrol.com 2016 explainer; shortlist.com and
+      pcworld.com, both Feb 2016); TLS requiring both sending and
+      receiving systems to support it, and the &ldquo;don't send tax forms
+      or contracts to a red-lock address&rdquo; guidance
+      (theinternetpatrol.com; ghacks.net, paraphrased); red locks being
+      uncommon because major providers support TLS (pcworld.com, Feb 2016);
+      confidential mode not being true encryption &mdash; expiry/revoke/
+      no-forward only, Google can still read it, screenshots bypass it
+      (androidpolice.com guide, updated ~901 days ago, crawled ~41 days
+      ago; securityboulevard.com); S/MIME requirements &mdash; paid Google
+      Workspace, admin-enabled, exchanged certificates on both sides, the
+      only option where not even Google can read the message
+      (securityboulevard.com); MTA-STS adoption at 0.7% of the top million
+      domains in January 2026, up from 0.5% (2025) and 0.3% (2024)
+      (suped.com MTA-STS adoption piece, updated ~64 days ago, crawled ~7
+      days ago).</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Encryption is only half the email-safety story &mdash; the other half is whether your mail lands where it should. Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC, the three ID checks that decide whether your business email reaches the inbox. Takes about ten seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>Knowing what the lock means is one check &mdash; a healthy inbox needs all of them. The full Site Health Watch audit checks your email authentication for every domain you own, plus website speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+email+encryption+and+the+Gmail+lock+icon+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
