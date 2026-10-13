@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does Having Hundreds of Pages Make My Website Slow?</title>
+<meta name="description" content="Your site has grown to 200, 500, 2,000 pages and it's getting slower. Is the page count the problem? The honest answer, where bigness actually bites, and the five asks that find the real culprit. Plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Does Having Hundreds of Pages Make My Website Slow?</h1>
+    <p class="lede">The short answer: <strong>no — the number of pages isn't slowing your site down.</strong> When someone opens your homepage, your website doesn't carry all 500 pages to them — it carries one. Think of books on a shelf: grabbing one book takes the same time whether the shelf holds 10 books or 1,000. But bigness brings three hangers-on that DO slow things down, and your slow site is almost certainly one of those, not the page count.</p>
+    <div class="article">
+
+      <h2>1. The scene: the site grew, and so did the slowness</h2>
+      <p>You started with 12 pages. Now there are 300 — service pages, blog posts, old landing pages from a sale you ran two years ago. The site feels heavier than it used to. The obvious theory writes itself: too many pages. It's a reasonable guess, and it's wrong — which is actually good news, because the real culprits are fixable without deleting a single page. If your whole database is bloated in general, <a href="what-is-database-bloat-and-is-it-slowing-my-website-down.html">the database-bloat article covers the mechanics</a>; this one is about the page-count theory specifically. And if your site is simply degrading over time, <a href="why-is-my-website-getting-slower-every-month.html">the slow-decline article has its own checklist</a>.</p>
+      <h2>2. Why the count itself doesn't matter</h2>
+      <p>Every page loads by itself. When a visitor opens your contact page, the server builds that one page and sends it — it doesn't load the other 299 pages first. Speed is measured one page at a time, and Google evaluates individual pages, not your whole domain at once: a slow product page can struggle in search results while a fast blog post on the same site does fine (devenup.com; seodesignchicago.com, updated ~Aug 2026). The platforms agree: in an answer on Shopify's community forum asking whether adding many more collections would slow the store — "you don't need to worry about the number of collections... stores with thousands of collections still perform well" (community.shopify.com, Apr 2023). Your 500 pages are not the weight. Now, the three things that ride along with a big site — those are the weight.</p>
+      <h2>3. Hanger-on #1: the invisible backpack (the 800KB line)</h2>
+      <p>On WordPress there's a table in the database called wp_options, and anything flagged "autoload" in it gets loaded into memory on every single page load — cached or not. A fresh WordPress install autoloads around 100KB. Two years and 30 plugins later, it can be 5MB or more: 5MB of data loaded into memory on every single request (Marcin Dudek, medium.com, Mar 2026). The worst part is whose it is: plugins you deleted months ago leave their options behind with autoload still switched on — "most of this data is orphaned" (same). Since WordPress 6.6, the built-in Site Health screen flags autoloaded data above roughly 800KB, and one host that debugged thousands of slow sites calls trimming back under that line "one of the most reliable ways to restore dashboard performance in 2026" (hostaccent.com blog, Oct 2026). The standing targets: under 800KB-1MB is healthy; 3-5MB means optimize; 10MB or more means performance issues that should be addressed now (wpmudev.com, updated Aug 13 2026; WP Engine's own docs recommend under 800KB). Growing to 300 pages didn't cause this — but 300 pages usually comes with years of installed-and-abandoned plugins, which did.</p>
+      <h2>4. Hanger-on #2: the leftovers nobody empties</h2>
+      <p>WordPress keeps every revision of every page and post — by default, forever. Edit a service page 50 times and there are 50 copies sitting in the database. Add spam comments (bots spray the whole internet), expired temporary cache entries that outlived their expiry, orphaned metadata pointing at posts that were deleted long ago, and old scheduled tasks that never got cleaned up (Marcin Dudek, Mar 2026). None of this is "pages," and none of it shows on your site — but it makes the database heavier, queries slower, and backups bigger. The fix is a cleanup plugin like WP-Optimize or Advanced Database Cleaner: back up first, run it, and schedule it monthly — one site-maintenance guide notes cleanup "keeps the admin area snappier and backups smaller" (pctechmag.com, updated 4 days ago). This is routine plumbing, not surgery, and it's the number-one actual fix behind the "too many pages" theory.</p>
+      <h2>5. Hanger-on #3: your admin suffers, your visitors don't (and your backups balloon)</h2>
+      <p>Here's a wrinkle worth knowing: admin pages are never cached. Caching plugins speed up what visitors see, but your dashboard loads raw — every slow query runs on every click (Marcin Dudek, Mar 2026). So a big old database can make YOUR editing experience feel terrible while visitors see a perfectly fine site; one hosting guide puts it plainly: because admin pages are never cached, "you feel the full cost on every click" (wpmultitool.com). If the site is slow for you but fine for customers, that's the split talking. The other quiet cost of bigness is the media library: years of uploads — old photos, PDFs, images replaced by newer versions — sit on the server's disk and get packed into every backup, making backups slower and more expensive. Cleanup tools flag unused uploads; a host's "you're running out of space" email is usually this, not pages.</p>
+      <h2>6. The one real page-count rule: the sitemap ceiling</h2>
+      <p>There is exactly one place where the number of pages has a hard rule: the sitemap, the file that tells Google where your pages are. One sitemap file is capped at 50,000 URLs or 50MB uncompressed — whichever it hits first — and past that you split into child sitemaps under a sitemap index (egochi.com blog, ~58 days ago; mangools.com blog, 15 days ago). Google recommends a sitemap for any site with more than 500 pages (content-whale.com 2026 guide, 9 days ago). If your site is under a few thousand pages and the sitemap generates fine, the count is a non-issue — this rule exists for catalogs and publishers, not plumbers.</p>
+      <h2>7. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"Our site has grown to a few hundred pages and it's slowing down — I don't think the count is the problem. Five asks: first, what's our wp_options autoload total — are we over the 800KB line, and what's the biggest offender? Second, run a database cleanup — revisions, spam, expired transients, orphaned meta — and show me the before-and-after numbers. Third, is the slowness on the admin side, the visitor side, or both — don't fix what visitors can't feel. Fourth, how big is the media library, and how much of it is unused? Fifth, does our sitemap generate cleanly, or is the count anywhere near a limit? No page gets deleted without my sign-off — the answer is cleanup, not amputation."</em> Five asks, and the mystery of the heavy site becomes a checklist.</p>
+      <p class="meta">Verified 2026-10-09. Page speed vs site speed — Google evaluates individual pages, not domains (devenup.com; seodesignchicago.com, ~Aug 2026). Shopify staff: thousands of collections still perform well (community.shopify.com, Apr 2023). wp_options autoload — every flagged option loaded into memory on every page load, cached or not; fresh install ~100KB; 2 years + 30 plugins can be 5MB+; orphaned data from deleted plugins (Marcin Dudek, medium.com, Mar 2026). 800KB Site Health flag since WordPress 6.6 (hostaccent.com blog, Oct 2026). Targets: under 800KB-1MB healthy, 3-5MB optimize, 10MB+ critical (wpmudev.com, Aug 13 2026; WP Engine via wpmultitool.com). Admin pages never cached (Marcin Dudek, Mar 2026; wpmultitool.com). Database leftovers — revisions kept forever by default, spam, expired transients, orphaned postmeta, old cron events (Marcin Dudek, Mar 2026). Cleanup tools + monthly schedule + smaller backups (pctechmag.com, 4 days ago). Sitemap: 50,000 URLs or 50MB uncompressed per file; sitemap index past that (egochi.com ~58 days ago; mangools.com 15 days ago). Google recommends sitemaps for sites over 500 pages (content-whale.com 2026 guide, 9 days ago).</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. If the database is the culprit, this check points at it.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>A heavy site is one symptom. The full Site Health Watch audit runs all 40 checks against your live site &mdash; speed, email authentication, security, mobile, and AI visibility &mdash; every finding verified, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+having+hundreds+of+pages+slows+down+a+website+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
