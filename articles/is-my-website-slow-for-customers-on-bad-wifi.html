@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is My Website Slow for Customers on Bad Wifi?</title>
+<meta name="description" content="Your website flies on your office wifi but crawls for customers on weak connections. Why page weight punishes slow connections hardest, the 5-seconds-per-megabyte rule of thumb, and the fixes that cost nothing, in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Is My Website Slow for Customers on Bad Wifi?</h1>
+    <p class="lede">Here is a complaint owners hear and cannot explain: a customer says the website took forever, but it opens instantly every time you check it. Nobody is lying. You are testing on good wifi with a fast connection. They were on a weak signal in a parking lot, a crowded coffee shop, or a rural road with one bar. Your website did not change between those two moments. The pipe it had to squeeze through did. And this is one of the most common reasons a perfectly fine website loses perfectly good customers.</p>
+    <div class="article">
+
+      <p>All numbers are reported figures from the cited sources, not promises about your
+      situation - connections, devices, and pages differ. The figures below describe the
+      web in general; the free speed check at the bottom tells you what your own
+      homepage weighs, which is the number that matters for you.</p>
+      <h2>Your page has a weight, and the connection has a size</h2>
+      <p>Think of your website as a delivery truck and the visitor's internet
+      connection as the road. Your office wifi is a six-lane highway: even a
+      heavy truck flies down it. A customer on a weak signal is a one-lane
+      dirt road. The truck is the same. The road is not.</p>
+      <p>Websites have gotten heavy. The median page on the mobile web now
+      weighs about 2.6 megabytes, and about 3 megabytes on desktop
+      (HTTP Archive's August 2026 crawl, checked this week). Images are the
+      biggest single chunk - roughly 911 kilobytes of the median mobile
+      page - with JavaScript next at about 632 kilobytes. That is the
+      average page. Half the web is heavier. And here is the part owners
+      miss: on a fast connection, weight barely registers. On a slow one,
+      it is the whole story.</p>
+      <h2>The 5-seconds-per-megabyte rule</h2>
+      <p>Do the math with me, because this is the entire article in one
+      number. Google's own speed test grades your mobile page on a
+      simulated slow connection: 1.6 megabits per second, which
+      Lighthouse's own documentation describes as roughly the bottom
+      quarter of 4G and the top quarter of 3G connections. That is not a
+      torture test. That is a plausible real customer.</p>
+      <p>Now the arithmetic (ours, from the published figures): one
+      megabyte is 8 megabits. At 1.6 megabits per second, each megabyte of
+      your page takes about 5 seconds just to <em>download</em>, before the
+      phone does a lick of work with it. The median 2.6-megabyte page needs
+      roughly 13 seconds of pure downloading on that connection. Thirteen
+      seconds before anything is even processed. Google's long-standing
+      research found that the chance a visitor leaves climbs 32% when load
+      time goes from 1 to 3 seconds, and 90% from 1 to 5 seconds. At 13
+      seconds, the customer is long gone - they never saw your headline,
+      your photos, or your phone number.</p>
+      <p>And downloading is not the only tax. The median mobile page makes
+      about 70 separate requests - images, scripts, stylesheets, fonts -
+      and each round trip on a slow connection costs a fraction of a second
+      that adds up, especially when requests have to wait in line behind
+      each other. Heavy pages do not just load slowly on bad connections.
+      They compound.</p>
+      <h2>Why you never see it yourself</h2>
+      <p>You check your website on office wifi or home fiber, on a phone you
+      bought recently, probably with the page already cached from last
+      time. That is the best-case scenario stacked three deep. Your
+      customers check it on hotel wifi shared with 40 rooms, on a phone
+      from 2021, on a road trip with one bar of signal, on a prepaid plan
+      where every megabyte also costs them real money. (Our <a
+      href="why-is-my-website-fast-for-me-but-slow-for-customers.html">fast-for-me
+      article</a> covers the geography version of this gap - the server
+      being far away. This is the pipe version: the server can be next
+      door and a thin connection still punishes a heavy page.)</p>
+      <p>Notice the mismatch this creates: Google judges your mobile page
+      on that simulated slow connection, and your real visitors on slow
+      connections live the same experience every day. The median mobile
+      page takes 7.9 seconds to fully load in lab tests (versus 4.7 on
+      desktop), and mobile now carries about 59% of web traffic. More than
+      half your visitors are on the device-and-connection combo that
+      suffers most. (Our <a
+      href="why-is-my-website-slow-on-mobile.html">slow-on-mobile
+      article</a> covers the phone-as-a-weaker-device half of that story -
+      this is the connection half.)</p>
+      <h2>The fixes that cost nothing</h2>
+      <p><strong>1. Find out what your page weighs.</strong> The free speed
+      check below reports your homepage's total weight in megabytes. Apply
+      the rule of thumb: multiply by 5 to get the rough download time on a
+      slow connection. If your homepage is 4 megabytes, that is about 20
+      seconds for a customer on a weak signal. Now you know the size of the
+      problem in plain numbers.</p>
+      <p><strong>2. Kill the heaviest single file first.</strong> One
+      autoplay background video can outweigh everything else on the page
+      combined. Replace it with a still image and a play button: customers
+      who want the video still get it, and everyone else stops paying for
+      it. (Our <a href="why-do-my-photos-slow-down-my-website.html">photos
+      article</a> covers the most common heavy-file fix of all - and our
+      <a href="what-does-serve-images-in-next-gen-formats-mean-on-my-speed-test.html">next-gen
+      formats decoder</a> explains the one format setting that shrinks
+      images without visibly changing them.)</p>
+      <p><strong>3. Turn on compression.</strong> Your server can "zip" your
+      pages before sending them, the same way a zip file shrinks a
+      document. Text files - the code and styling - shrink dramatically.
+      Most caching plugins and decent hosts do this with one toggle. It is
+      free, invisible, and it directly cuts the megabytes a slow connection
+      has to carry.</p>
+      <p><strong>4. Stop sending desktop photos to phones.</strong> A shocking
+      number of business websites send the same giant image to every
+      device. A phone screen never needs the 2400-pixel-wide version.
+      Modern website builders can serve a smaller file to smaller screens
+      automatically - if yours does not, this is a ten-minute job for your
+      web person, not a rebuild.</p>
+      <p><strong>5. Delete the trackers and widgets you never look
+      at.</strong> Every analytics script, chat widget, and social feed is
+      another download on a thin pipe - and another of those 70 requests.
+      Audit them the way you would audit subscriptions: if nobody has
+      opened the dashboard in six months, it is dead weight your slowest
+      customers are paying to download.</p>
+      <p><strong>6. Lazy-load what is below the fold.</strong> Images
+      further down the page do not need to load before the customer sees
+      the top. Lazy loading means the page fetches them only as the
+      customer scrolls. On a slow connection, this is the difference
+      between "the top of the page appears in 3 seconds" and "nothing
+      appears for 13."</p>
+      <p>One honest caveat: caching helps your <em>repeat</em> visitors -
+      our <a href="what-is-website-caching.html">caching article</a> explains
+      how. But a first-time customer on a slow connection still has to
+      download every byte once. There is no shortcut around a page that is
+      simply too heavy. (And if the site feels slow even on good wifi, that
+      is a different problem - our <a
+      href="why-does-my-website-feel-slow-when-the-test-says-fast.html">feels-slow
+      article</a> walks through the psychology of waiting versus real
+      delays.)</p>
+      <h2>The bottom line</h2>
+      <p>You cannot control your customers' connections. You can control
+      your page's weight. Every megabyte you cut is about 5 seconds handed
+      back to the customer on the worst connection - the customer in the
+      parking lot, on the road, on the prepaid plan, the one your
+      competitor's lighter site just served in 3 seconds flat. Weight is
+      the one speed factor that is entirely in your hands, costs nothing to
+      fix, and helps every single visitor, fast connection or slow.</p>
+      <p>Sources for the facts above, all checked 2026-10-12: median page
+      weight ~2.6 MB mobile / ~3.0 MB desktop, August 2026 crawl
+      (httparchive.org page-weight report, crawled ~26 days ago); content
+      breakdown of the median mobile page - images ~911 KB, JavaScript
+      ~632 KB, fonts ~122 KB, CSS ~77 KB (HTTP Archive figures via
+      web-design statistics roundup, checked 2026-10-12); the Lighthouse
+      "Slow 4G" mobile preset - 1.6 Mbps down, 150ms latency, roughly the
+      bottom 25% of 4G and top 25% of 3G connections
+      (googlechrome/lighthouse docs/throttling.md, crawled ~3 days ago);
+      median full page load in lab tests - 4.7 seconds desktop, 7.9
+      seconds mobile, mobile carrying ~59% of web traffic (HTTP Archive
+      via site-speed statistics roundup, updated ~11 days ago); 1s to 3s
+      load time raising the chance a visitor leaves by 32%, 1s to 5s by
+      90% (Google's published 2017 mobile research via SEO glossary,
+      crawled ~4 days ago - standing industry reference); the median
+      mobile page making ~70 requests (HTTP Archive via site-speed
+      statistics roundup, updated ~11 days ago). The 5-seconds-per-megabyte
+      arithmetic is ours, computed from the published 1.6 Mbps preset.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Find out how much your homepage weighs. The free speed check reports your total page weight in megabytes plus your mobile loading seconds in plain English, in about ten seconds - then multiply the megabytes by 5 to see what a slow connection does to you.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>Page weight is only one of 40 checks. The full Site Health Watch audit covers your email authentication, security, mobile experience, SEO, and AI visibility - every finding verified against your live site, delivered within 24 hours. A light page that leaks email to spam still loses the customer.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+slow+connections+slowing+down+websites+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
