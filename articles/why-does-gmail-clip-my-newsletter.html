@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does Gmail Clip My Newsletter? ('Message Clipped' Explained)</title>
+<meta name="description" content="Gmail cuts off any email whose HTML is bigger than about 102 kilobytes and hides the rest behind a 'View entire message' link. What counts toward the limit (your photos don't), what bloats it (pasted formatting does), and how to slim the email down.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does Gmail Clip My Newsletter? ('Message Clipped' Explained)</h1>
+    <p class="lede">You send a newsletter you are proud of, and half your Gmail readers only see part of it. The rest hides behind a link that says [Message clipped] - View entire message. Nothing is broken on your end. Gmail simply has a size rule, and your email is over it. Here is what the rule counts, what makes emails too heavy, and the fixes that get the whole message seen.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-12 - not promises about your situation. Sending platforms
+      differ, and your email will look different from anyone else's. The
+      size rule is the same either way.</p>
+      <h2>What you are seeing</h2>
+      <p>When an email's HTML is bigger than about 102 kilobytes, Gmail
+      shows the first 102 KB and cuts the rest. The reader gets a
+      "[Message clipped] View entire message" link and has to click it
+      to read the rest of the email. Many readers never click it. They
+      see part of your message, assume that is the whole thing, and
+      move on. Anything you put after the cut - the offer, the coupon,
+      the "call us" button - effectively does not exist for them. (This
+      is a display problem, not a delivery one: our <a href="why-do-my-newsletters-land-in-the-promotions-tab.html">promotions-tab
+      article</a> covers the case where the message never reaches the
+      inbox at all.)</p>
+      <h2>The 102 KB rule counts code, not photos</h2>
+      <p>This is the part that surprises people. The limit measures the
+      weight of the HTML code: your text, the HTML tags and tables, the
+      inline CSS, the link URLs, the tracking code. It does NOT count
+      your image files. Gmail loads images from external servers, so
+      only the image URL - a few bytes - counts toward the limit. You
+      can shrink your photos to thumbnails and your email will still be
+      clipped if the code underneath is bloated. The rule of thumb
+      several sending platforms give is to stay under 100 KB of code
+      weight for a comfortable margin.</p>
+      <h2>What makes an email heavy</h2>
+      <p>The weight comes from how the email is built, not how long it
+      looks. The usual suspects: nested tables (email layouts are built
+      from tables, and every level adds code), inline CSS repeated on
+      hundreds of cells, HTML comments left behind by the editor, extra
+      whitespace and line breaks, long tracking parameters glued onto
+      every link, and - the big one for busy owners - text pasted
+      straight from Word or Google Docs, which drags in hidden
+      formatting code. Paste with Ctrl+Shift+V (or Option+Shift+Cmd+V
+      on a Mac) to paste plain text instead. Hidden content blocks that
+      only show on desktop or only on mobile add weight too, as does
+      the unsubscribe code and the open-rate counter. None of this is
+      visible when you preview the email - you have to look at the code
+      weight itself.</p>
+      <h2>The testing trap</h2>
+      <p>Sometimes the clipping is an illusion. Gmail groups emails
+      with identical subject lines into one conversation thread. When
+      you send yourself five test copies with the same subject, Gmail
+      collapses the duplicates and clips the repeated content - and
+      your short, fine email looks broken. Change the subject line on
+      each test send, or turn off Conversation view in Gmail settings,
+      before concluding your email is too heavy.</p>
+      <h2>What clipping quietly costs you</h2>
+      <p>Three costs that do not show up in your preview. First, the
+      unsubscribe link usually sits in the footer - exactly the part
+      that gets cut. A reader who wants out and cannot find the link
+      reaches for the spam button instead, and spam complaints poison
+      your sender reputation. (Our <a href="why-are-my-emails-suddenly-going-to-spam.html">sudden-spam
+      article</a> covers what happens after complaints climb.) Second,
+      the open-tracking pixel sits near the bottom too, so clipped
+      emails register fewer opens than they actually get - your reports
+      understate how many people really saw the message. (Our <a href="why-cant-i-trust-my-email-open-rates.html">open-rates
+      article</a> covers the other reasons open counts lie.) Third, on
+      the Gmail phone app a clipped message loses its mobile layout
+      and renders the desktop view instead - small text, side-scrolling,
+      the works. (Our <a href="why-does-my-business-email-look-broken-on-my-customers-screen.html">broken-rendering
+      article</a> covers the other ways email layouts fall apart on
+      customers' screens.) Contact-form replies have the same anatomy
+      at a smaller scale - our <a href="why-do-my-contact-form-emails-go-to-spam.html">contact-form
+      article</a> walks through that one.</p>
+      <h2>How to slim it down</h2>
+      <p>Start by measuring. Send yourself a test, open it in Gmail,
+      use the three-dot menu and choose "Download message," then check
+      the file size of the downloaded email. (This reads a little high
+      because it includes headers, which is fine - it errs on the safe
+      side.) If the code weight is over 102 KB, work the fixes in this
+      order: cut the markup first (flatten nested tables, strip HTML
+      comments, delete styles that do not change how anything looks);
+      consolidate repeated inline CSS instead of pasting the same
+      declaration on 200 cells; shorten your URLs and tracking
+      parameters; drop images you do not need (fewer images means fewer
+      tags, even though the image files themselves do not count); and
+      move long content behind a "Read more" link to your site instead
+      of pasting the whole article in. Also watch for accented and
+      special characters (the copyright symbol, &eacute;, and friends):
+      they can inflate the size through character encoding, and using
+      HTML entities for them keeps the weight down. (One more thing
+      worth checking while you are in here: <a href="should-i-send-my-newsletter-from-my-business-email.html">whether
+      your newsletter should come from your business email address at
+      all</a> - the wrong sending tool makes every other fix harder.)</p>
+      <h2>The bottom line</h2>
+      <p>Gmail's 102 KB limit is not a suggestion and it applies no
+      matter which platform sends your email - there is no setting that
+      turns it off. But it is a code-weight limit, not a content limit:
+      a long, rich newsletter written in clean code sails under it,
+      while a short one pasted from Word can trip it. Measure your
+      weight, cut the markup first, and put your offer and your
+      unsubscribe link high enough that a clipped reader still sees
+      them. Your newsletter should not need a second click to do its
+      job.</p>
+      <p>Sources for the facts above, all checked 2026-10-12: the clip
+      itself - emails over ~102 KB show "[Message clipped] View entire
+      message" (ActiveCampaign help center, updated 2026-09-13, crawled
+      today; Constant Contact knowledge base, crawled ~6 hours ago;
+      Omnisend help, crawled &lt;1 hour ago); what counts - HTML code
+      weight only, text/tags/CSS/URLs/tracking, NOT image file sizes
+      (yespo.io email-size guide, crawled ~4 hours ago; ActiveCampaign
+      help; beehiiv support, crawled ~80 days ago - "stay under 100 KB"
+      as the safe line); the bloat list - nested tables, repeated inline
+      CSS, HTML comments, whitespace, long tracking parameters, pasted
+      Word formatting, hidden blocks, unsubscribe/counter code
+      (sendlayer.com clipping guide, updated ~67 days ago; Constant
+      Contact KB; massmailsoftware.com clipping guide, crawled ~13 hours
+      ago); the threading/testing trap - identical subject lines thread,
+      duplicates collapse and clip (Constant Contact KB; Omnisend help;
+      SendGrid docs, crawled ~19 days ago); non-ASCII encoding inflation
+      and HTML entities (SendGrid docs, crawled ~19 days ago); how to
+      measure - Download message three-dot check, or save the template
+      as .html (sendlayer.com guide; SendGrid docs); the hidden costs -
+      buried unsubscribe link driving spam complaints, dead tracking
+      pixel undercounting opens, mobile layout dropped to desktop view on
+      the Gmail app (ActiveCampaign help; Klaviyo community, Klaviyo
+      partner answer); the no-exceptions line - the limit applies
+      regardless of sending platform (beehiiv support). The fix order is
+      our reading method, built from the sources above.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Clipping is only one of the ways email silently fails &mdash; the other is never reaching the inbox at all. Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC, the three ID checks that decide whether your business email reaches the inbox. Takes about ten seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>Knowing what Gmail clips is one check &mdash; a healthy inbox needs all of them. The full Site Health Watch audit checks your email authentication for every domain you own, plus website speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+Gmail+clipping+my+newsletter+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
