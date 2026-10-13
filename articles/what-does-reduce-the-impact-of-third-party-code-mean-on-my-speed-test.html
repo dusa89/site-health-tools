@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does 'Reduce the Impact of Third-Party Code' Mean on My Speed Test?</title>
+<meta name="description" content="A speed-test line is blaming code you didn't write. In plain English: what 'third-party code' means, the 250-millisecond rule that fails the audit, why other companies' scripts slow your site more than their size suggests, and the four fixes - including a way to see your site without them in one click.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Does 'Reduce the Impact of Third-Party Code' Mean on My Speed Test?</h1>
+    <p class="lede">The honest answer: <strong>that line is about code running on your site that you didn't write and don't control - analytics, ad pixels, chat widgets, booking tools, social buttons, embedded videos.</strong> Your speed test fails it when that other-people's code blocks your visitor's phone for more than a quarter second during load - and the real sting is that the weight is only half the story. These scripts hog the phone's single processing lane and keep running for the whole visit, so a site that looks light can still feel sluggish. The median mobile page now ships more third-party JavaScript than its own code. Below: what counts as third-party, the 250-millisecond rule, why it's worse than the bytes suggest, the four fixes in order, and what to ask your web person.</p>
+    <div class="article">
+
+      <p>All numbers are reported figures from the cited sources, not promises about your site.</p>
+      <h2>What the line actually says</h2>
+      <p>Your speed test (Lighthouse, the engine behind PageSpeed Insights) lists a line
+      called <strong>&ldquo;Reduce the impact of third-party code&rdquo;</strong>. It fails
+      that line when code from other companies' servers blocks your visitor's phone for
+      <strong>250 milliseconds or more</strong> during the page load. The report lists
+      each offender by company name with how much time and data it cost. In the newest
+      Lighthouse version the standalone line moved into a renamed section - same rule,
+      same 250-millisecond tripwire. Think of this line as a table, not a score: it names
+      who is spending your visitor's time.</p>
+      <h2>What counts as &ldquo;third-party&rdquo;</h2>
+      <p>Anything that loads from a domain that isn't yours. The usual suspects on a
+      small-business site: Google Analytics, Google Tag Manager, chat widgets, booking
+      widgets, review widgets, Facebook and ad pixels, Instagram feeds, embedded YouTube
+      videos, cookie banners, and A/B-testing tools. Even the &ldquo;friendly&rdquo; ones
+      count - none of them are free. For each, see our pieces on
+      <a href="do-those-chat-widgets-and-booking-tools-slow-down-my-website.html">chat and
+      booking widgets</a>, <a href="do-those-little-tracking-scripts-slow-down-my-website.html">tracking
+      scripts</a>, and <a href="do-those-review-widgets-slow-down-my-website.html">review
+      widgets</a>.</p>
+      <h2>Why it's worse than the byte count suggests</h2>
+      <p>Two reasons, both invisible in a file-size readout.</p>
+      <p><strong>Everything runs in one lane.</strong> A phone has one main processing
+      thread - the lane your page uses to draw, to scroll, and to respond to taps. Every
+      third-party script runs in that same lane. While it's busy running someone's chat
+      widget code, your visitor's tap waits. The median mobile page's total blocking time
+      sits around 1.9 seconds - time the phone simply couldn't respond. Your own code's
+      dead weight is <a href="what-does-reduce-unused-javascript-mean-on-my-speed-test.html">a
+      separate line on the test</a>; this line is everyone else's.</p>
+      <p><strong>They don't stop at load.</strong> These scripts keep working for the whole
+      visit: analytics phones home, ad scripts refresh, chat widgets poll for new messages.
+      So the slowdown isn't a one-time tax at page open - it's background noise competing
+      with every scroll and tap for the rest of the session.</p>
+      <p>The scale: the median mobile site loads 21 third-party resources totaling about
+      450 KB, and carries 375 KB of third-party JavaScript against just 168 KB of its own
+      code - nearly double the code from other companies. They're also the unstable half
+      of your score: <a href="why-does-my-website-speed-score-change-every-time-i-test-it.html">the
+      number wanders between tests</a> partly because these scripts behave differently each
+      run.</p>
+      <h2>The four fixes, in order</h2>
+      <p><strong>1. Inventory what you're carrying.</strong> Most of this stuff arrived via
+      Google Tag Manager, which hides the real cost: one container can quietly load a dozen
+      tags, added over time by different people, with nobody checking the bill. List every
+      third-party on the site and ask who still needs it. The ones nobody claims get
+      removed - they were <a href="what-does-eliminate-render-blocking-resources-mean-on-my-speed-test.html">taxing
+      every visit</a> for nothing.</p>
+      <p><strong>2. Delay or disguise the heavy ones.</strong> Scripts that aren't needed
+      for the first paint should load after it (deferred loading - ask for this by name).
+      For heavy embeds like YouTube, use the facade pattern: show a thumbnail with a play
+      button, and only load the full player when the visitor clicks. The page gets the
+      look of the video immediately; the expensive part is created only on demand.</p>
+      <p><strong>3. Cut ruthlessly.</strong> A tracker that once answered one question and
+      now answers nothing is pure cost. One business's rule of thumb: for every new
+      third-party you add, remove two old ones.</p>
+      <p><strong>4. See the page without them.</strong> Chrome's developer tools can block
+      a third-party host and reload the page - one click shows you your site as if that
+      company never existed. If it suddenly feels fast, you've found your culprit.</p>
+      <h2>What to ask your web person</h2>
+      <p>Four questions, and note the answers: (1) &ldquo;Which third parties load on the
+      homepage, and which does each one do for the business?&rdquo; (2) &ldquo;Which of
+      them can be deferred until after the page shows?&rdquo; (3) &ldquo;Can the YouTube
+      embeds become click-to-play facades?&rdquo; (4) &ldquo;What does the third-party line
+      show in milliseconds now, and after you finish?&rdquo; That last one is the only
+      number that matters on this line: under 250, you pass.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+reducing+third-party+code+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
