@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is My Website Slow Because of My Page Builder?</title>
+<meta name="description" content="Elementor, Divi, and the rest get blamed for slow sites - sometimes fairly, sometimes not. What the builder actually adds to your pages, the fixes both companies have shipped, the 5-minute test that proves whether the builder is YOUR problem, and the trap in ripping it out - in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Is My Website Slow Because of My Page Builder?</h1>
+    <p class="lede">The honest answer: <strong>maybe - but the builder is only one suspect, and usually not the whole story.</strong> A page builder (Elementor, Divi, Beaver Builder, the rest) does add real weight to your pages: extra files your visitor's phone must download, and a more complicated page structure the phone must work through. That is genuine. But on many slow builder-built sites the builder is carrying a passenger list - heavy add-on plugins, unoptimized photos, nesting the designer never cleaned up, slow hosting - and those passengers often weigh more than the builder itself. Both companies have also shipped real fixes since the bad old reputation was earned. Below: what the builder actually adds, the numbers (with the old tests labeled as history), the free fixes your web person probably has not switched on, the 5-minute test that settles YOUR case, and why ripping the builder out is almost never the first move.</p>
+    <div class="article">
+
+      <h2>1. What a page builder actually adds - the runtime tax</h2>
+      <p>A page builder is a layer that sits on top of your WordPress site and lets someone design pages visually instead of writing code. That convenience ships a cost on every page load. <strong>Cost one: extra files.</strong> Each widget a builder offers can bring its own CSS and JavaScript. Elementor - over 10 million active installs in 2026 - loads additional CSS and JavaScript for every widget placed on a page, and a page built with 20 widgets can load 20 individual script files alongside the main library (vocal.media; crawled 2026-10-10). <strong>Cost two: nested markup.</strong> Page builders wrap your content in layers of divs so the visual editor can grab and move things; the browser has to chew through that structure on a phone. The HTTP Archive's standing criticism of builders is exactly this - more complex DOM structures and larger CSS and JavaScript bundles than a hand-built page (colorlib.com, updated ~10 days ago; crawled 2026-10-10). <strong>Cost three: the passenger list.</strong> Third-party add-on plugins for Elementor (Essential Addons, ElementsKit and their cousins) load extra scripts on every page - even pages where none of their widgets appear (vocal.media; crawled 2026-10-10). The builder gets the blame; the add-ons often deserve it. (If the question underneath is really "is it the THEME?" rather than the builder, <a href="does-my-website-theme-make-it-slow.html">the theme article</a> splits those two layers - and if you built on Wix rather than WordPress, <a href="is-my-website-slow-because-its-built-on-wix.html">the Wix article</a> covers that platform.)</p>
+      <h2>2. The numbers - and which ones are history</h2>
+      <p>You will see dramatic comparisons quoted online. Handle them in two piles. <strong>Pile one: the old tests.</strong> A 2021 same-design test reported Elementor scoring 46 on mobile and 83 on desktop in PageSpeed Insights against 94 and 99 for the native block editor, and a rebuild of Elementor's own homepage produced 356 div elements and 99 KB of markup in Elementor versus 77 divs and 28 KB in the native editor (via mamboserver.com, updated ~19 days ago; crawled 2026-10-10). Those results are real - and they <em>predate</em> every fix in section 3. Quote them as history, not as your site's current reality. <strong>Pile two: the current reality.</strong> The weight never fully left. A 2026 measurement found an Elementor page on a $150/month dedicated server still ships 18 requests before content on an uncached load - fast hosting hides the extra weight for cached visitors, but it cannot remove it (mamboserver.com; crawled 2026-10-10). One February 2026 benchmark put an Elementor test site at 413 KB of combined CSS - and after removing rules for widgets not used on the page, unused WooCommerce styles on a non-shop page, and unused forum styles, it dropped to 253 KB: 160 KB of dead weight the visitors had been downloading for nothing (medium.com, ~233 days old; crawled 2026-10-10). The platform-level backdrop: WordPress sites as a whole pass Core Web Vitals on only 45% of mobile sites, versus 85% for Duda and 74% for Wix (colorlib.com, citing HTTP Archive; crawled 2026-10-10). And the stakes of all this: 53% of mobile users leave a page that takes longer than 3 seconds to load (cited by vocal.media; crawled 2026-10-10). Reported figures, not promises about your site.</p>
+      <h2>3. The fixes the builders shipped themselves - probably not switched on</h2>
+      <p>This is the part most owners never hear. Both big builders have spent recent releases on exactly this problem, and the fixes are free - they just live in settings pages your web person may never have opened. <strong>Elementor's fixes.</strong> Elementor 3.1 moved duplicated runtime code into a single separate file (developers.elementor.com; crawled 2026-10-10). Elementor 3.3 changed how widget CSS loads: instead of one big file with every widget's styles, pages now load only the CSS of the widgets actually used on that page, with small files (under 8K) printed directly inside the page instead of as separate requests (developers.elementor.com; crawled 2026-10-10). Then there are the Experiments, at Elementor &gt; Settings &gt; Experiments: <em>Improved Asset Loading</em> (the lightbox and dialog libraries load only when the page uses them), <em>Improved CSS Loading</em> (widget styles and animations only where used, loaded inline), <em>Inline Font Icons</em> (icon libraries become inline images instead of loading the whole font), <em>Optimized DOM Output</em> (removes the inner wrapper layers that drove the old "356 divs" number), and <em>Lazy Load Background Images</em> (webnots.com; onlinemediamasters.com; crawled 2026-10-10). <strong>Divi's fixes.</strong> Divi 5 rebuilt the whole engine: the stylesheet is broken into small per-module pieces and each page gets a unique stylesheet containing only the modules that page uses - five modules on the page, CSS for those five. Critical CSS gets extracted and placed in the page head so nothing render-blocks, and there is an Inline Stylesheets option to remove the external request entirely (github.com jarmentor divi5-toolkit, ~27 days old; crawled 2026-10-10). The classic Divi settings: <em>Dynamic CSS</em>, <em>Dynamic Icons</em> (only the icons you used, not the whole library), and <em>Defer jQuery and jQuery Migrate</em> (the heavy scripts wait their turn; what the visitor sees loads first) - at Divi &gt; Theme Options &gt; Builder &gt; Advanced &gt; Performance (pctechmag.com, ~76 days old; crawled 2026-10-10). <strong>The stale-build warning.</strong> Elementor's old section-and-column layout was replaced by Containers - but sites built before containers and never migrated still carry the old nested structure (mamboserver.com; crawled 2026-10-10). If your site is a few years old, your web person should check whether it is still running the old structure. After changing CSS settings, Elementor sites need their CSS re-generated at Elementor &gt; Tools &gt; Regenerate CSS &amp; Data (developers.elementor.com; crawled 2026-10-10).</p>
+      <h2>4. The 5-minute test that settles YOUR case</h2>
+      <p>Do not argue about builders in the abstract - run one test that names your cause. <strong>Step one: the baseline.</strong> Run PageSpeed Insights (or <a href="../speed.html">the free speed check</a>) on your homepage and write the number down. <strong>Step two: the elimination.</strong> On a copy of the site - a staging copy, never the live site - temporarily deactivate every plugin except the caching plugin and re-run the test. A 2026 optimization checklist calls this the binary plugin-tax test: the gap between the two numbers is the total tax of your plugin stack, and reactivating one by one reveals which plugins add the most overhead (ninegravity.com; crawled 2026-10-10). If the builder deactivated is what moves the needle, the builder is the cause; if the score barely moves, the builder was not the main cause. <strong>Step three: the page-level check.</strong> If you have any page the builder did NOT touch (a plain page, the blog archive), test it too. Builder-built page slow + plain page fast = builder weight confirmed; everything slow = hosting or something global is in play. (Slow hosting shows up as the site taking forever to <em>start</em> loading - <a href="why-does-my-website-take-forever-to-start-loading.html">that article</a> covers the difference between a slow server and a heavy page.) This test is the whole argument: no opinions, one number, before and after. It is also your web person's job, not yours - but knowing the test exists is how you keep the conversation honest.</p>
+      <h2>5. Where the weight usually really comes from - the inventory</h2>
+      <p>When the builder gets blamed and the test says otherwise, here is where the weight usually lives. <strong>First: the add-on plugins.</strong> The builder plus three widget-pack plugins plus a slider plugin is four codebases on every page. A July 2026 agency audit found add-on plugins loading their CSS and JavaScript on every single page, even pages where no widget from that plugin appears - the fix is auditing with a tool like Query Monitor and unloading files on pages that do not need them (medium.com, ~87 days old; crawled 2026-10-10). This is the #1 real cause on builder-built sites: not the builder, its passengers. (<a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">The plugin-stack article</a> is the full version of this inventory.) <strong>Second: nested, over-decorated layouts.</strong> Too many sections, inner sections, and widgets bloat the page and force the browser - especially a phone - to work harder; the guidance from builder-speed guides is to keep layouts simple and avoid inner sections where one container does the job (digital4design.com; crawled 2026-10-10). Every decorative widget is a file download. <strong>Third: unoptimized media and fonts.</strong> A single uncompressed image can be 3-5 MB and add 2-4 seconds of load time (vocal.media; crawled 2026-10-10). If your hero image is a 4 MB photograph, the builder's own files are not your problem - <a href="why-do-my-photos-slow-down-my-website.html">the photo article</a> and <a href="do-those-pretty-fonts-slow-down-my-website.html">the font article</a> are the fixes. <strong>Fourth: hosting.</strong> Slow shared hosting can add 500-1500ms before the first byte of the page even arrives (vocal.media; crawled 2026-10-10) - and no amount of builder tuning fixes a server that answers late. <strong>Fifth: caching absent or misconfigured.</strong> Caching is the "photograph of the finished page" that skips the server's heavy calculations for repeat visitors - <a href="what-is-website-caching.html">the caching article</a> is the map. Honest caveat: caching hides the builder's weight for returning visitors; it does not remove it. First-time visitors still pay the full tax.</p>
+      <h2>6. The trap - "rip out the builder and rebuild"</h2>
+      <p>The temptation, once you believe the builder is guilty, is to conclude the answer is a rebuild without it. One documented case shows what that buys: a legacy Divi + WooCommerce site rebuilt as native blocks went from a mobile PageSpeed score of 70 to 95 with no performance plugins - the removed weight was the theme's render-blocking layer, which is exactly what the speed tests measure (youtube.com, ~45 days old; crawled 2026-10-10). Real gain, honestly documented. But here is the honest math nobody shows: <strong>a rebuild costs a full site project.</strong> New design pass, content re-entered or migrated, every template re-tested, the weeks of breakage risk - plus your team re-learning how to edit the site without the visual builder they know. A builder with its experiments switched on, its add-ons unloaded, and its layouts simplified can get many such sites within striking distance of the same scores for an afternoon of your web person's time. The rebuild is the right answer only when the site is due for a redesign anyway, or when the builder is locked to an old structure nobody can fix. The wrong sequence is rebuild-first, optimize-later; the right one is optimize-first, and only rebuild when the numbers say the builder itself - not its passengers - is still the ceiling.</p>
+      <h2>7. The two smaller traps</h2>
+      <p><strong>Trap one: switching on every experiment at once.</strong> Elementor's speed experiments are labeled experimental for a reason - dynamic loading can interact with other plugins' settings (like unused-CSS removal), and flipping five switches at once means you cannot tell which one broke the layout if something looks wrong (webnots.com; crawled 2026-10-10). One experiment at a time, test the site after each. <strong>Trap two: swapping one builder for another to fix speed.</strong> Elementor, Divi, Beaver Builder, WPBakery - one long-running optimization guide puts it bluntly: all page builders add to load time - they simply must add extra scripts and stylesheets to work the way they do (medium.com; crawled 2026-10-10). Trading one builder's weight for another's, without touching the add-ons, images, and hosting, is the most expensive way to learn that the builder was never the whole problem. A 2026 checklist puts it bluntly: avoid page builders on performance-critical pages - the native block editor is substantially lighter (ninegravity.com; crawled 2026-10-10). If you are starting a NEW site, that is the cheapest moment to make the call: the block editor is free and already installed.</p>
+      <h2>8. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"Our site is built with [Elementor/Divi], and I want to know if the builder is slowing us down. Six asks. First, run the elimination test: score the homepage now, then deactivate all plugins except the caching plugin on a staging copy and re-score - show me the gap, and show me which plugin adds the most. Second, check whether our builder's speed features are actually on: for Elementor, Improved Asset Loading, Improved CSS Loading, Inline Font Icons, Optimized DOM Output, Lazy Load Background Images, and whether we are on the old section layout or the new containers; for Divi, Dynamic CSS, Dynamic Icons, Critical CSS, Inline Stylesheets, Defer jQuery. Third, audit the builder add-ons with Query Monitor and unload their files from pages that don't use them. Fourth, regenerate the builder's CSS files after any changes. Fifth, simplify the homepage layout - kill nested sections and widgets that are decoration. Sixth, test one experiment or setting at a time and click through the whole site on a phone after each. Plain English, and no rebuild talk until the numbers say the builder itself is the ceiling."</em> The proof is the before-and-after score, with everything still working. (And if the speed grade itself is what confuses you rather than the builder, <a href="should-my-website-speed-test-score-worry-me.html">the 52/100 article</a> translates the score; if the phone is where it feels slow, <a href="why-is-my-website-slow-on-mobile.html">the mobile article</a> is the map.)</p>
+
+      <p class="meta">Verified 2026-10-10. Elementor has 10M+ active installs in 2026; a page's widgets can each bring their own script files; third-party add-ons (Essential Addons, ElementsKit) load extra scripts on every page even where unused; slow shared hosting adds 500-1500ms before the first byte (vocal.media; crawled 2026-10-10). 53% of mobile users leave a page taking longer than 3 seconds (cited by vocal.media; crawled 2026-10-10). HTTP Archive: the builder criticism is DOM bloat - more complex DOM, larger CSS/JS bundles; WordPress mobile Core Web Vitals pass rate 45% vs Duda 85%, Wix 74% (colorlib.com, updated ~10 days ago; crawled 2026-10-10). 2021 WP Tavern same-design test: Elementor 46 mobile / 83 desktop vs Gutenberg 94 / 99; Elementor homepage rebuild 356 divs + 99KB vs 77 divs + 28KB (via mamboserver.com, updated ~19 days ago; crawled 2026-10-10) - predates all the fixes below. Elementor 3.1: runtime duplication into one file; 3.3: per-widget dynamic CSS, sub-8K files inlined, save-time CSS library registration, regenerate at Elementor &gt; Tools &gt; Regenerate CSS &amp; Data (developers.elementor.com; crawled 2026-10-10). Experiments: Improved Asset Loading, Improved CSS Loading, Inline Font Icons, Optimized DOM Output, Lazy Load Background Images (webnots.com; onlinemediamasters.com; crawled 2026-10-10) - test after enabling; dynamic loading can interact with unused-CSS removal (webnots.com). Containers replaced the old section-and-column structure; pre-container sites still carry it (mamboserver.com; crawled 2026-10-10). Uncached Elementor page on dedicated hosting still ships 18 requests before content - hosting hides weight, it does not remove it (mamboserver.com; crawled 2026-10-10). 2026 checklist: avoid builders on performance-critical pages; native blocks substantially lighter; heavy themes 400KB+ CSS/JS vs lightweight under 80KB; binary plugin-tax test = deactivate all, compare to baseline (ninegravity.com 2026 checklist; crawled 2026-10-10). Feb 2026 benchmark: 413KB combined CSS down to 253KB after unused-rule removal - 160KB dead weight (medium.com, ~233 days old; crawled 2026-10-10). Jul 2026 audit: add-on plugins load CSS/JS on every page even where unused - audit with Query Monitor, unload per page (medium.com, ~87 days old; crawled 2026-10-10). Divi 5: per-module CSS assembled into a unique per-page stylesheet, Critical CSS inlined, Inline Stylesheets option; settings at Divi &gt; Theme Options &gt; Builder &gt; Advanced &gt; Performance (github.com jarmentor divi5-toolkit, ~27 days old; crawled 2026-10-10). Divi: Dynamic CSS, Dynamic Icons, Defer jQuery/Migrate (pctechmag.com, ~76 days old; crawled 2026-10-10). One documented rebuild: legacy Divi + WooCommerce to native blocks, mobile PageSpeed 70 to 95, no performance plugins (youtube.com, ~45 days old; crawled 2026-10-10). All numbers are reported figures from the cited sources, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. Run it, then hand your web person the four asks in this article.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours, including the exact loading-time number for your homepage.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+my+page+builder+is+slowing+down+my+website+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
