@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Do My Big Email Attachments Keep Bouncing?</title>
+<meta name="description" content="Your file is 20 MB and your email allows 25 MB, so why did it bounce? The 25 MB limit covers the whole message, encoding makes files about a third bigger in transit, and the recipient's server gets a vote too. The real limits by provider and the link-instead fix, in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Do My Big Email Attachments Keep Bouncing?</h1>
+    <p class="lede">Here is a special kind of frustrating: you attach the signed contract or the before-and-after photos, your email says the limit is 25 megabytes, your file is 20, and it should sail through. Ten minutes later a cold little message lands in your inbox: not delivered. Nothing is broken and you did not do anything wrong. You just ran into the three quiet rules of email attachments that nobody prints on the box.</p>
+    <div class="article">
+
+      <p>All numbers are reported figures from the cited sources, not promises about your
+      situation - providers change limits and your account's help page is the final
+      word. The mechanics below are how email attachments work everywhere; the exact
+      megabyte numbers are what the providers publish today.</p>
+      <h2>The 25 MB limit is not what you think it is</h2>
+      <p>Rule one: the limit covers the whole message, not the file. Gmail's
+      25 MB cap counts the headers, your written message, your signature,
+      and every attachment combined - the envelope, not just what you
+      picked in the file picker. One guide to Gmail's limit puts it
+      plainly: the maximum applies to the entire email including the
+      encoded attachments, so the usable room for your file is always a
+      little less than 25 MB.</p>
+      <p>Rule two: your file gets bigger on the way out. Email was built for
+      text, so attachments are converted into a text-safe encoding before
+      they travel, and that conversion inflates them by about a third. A
+      20 MB file becomes roughly 26 to 27 MB in transit. Do the math and
+      the mystery dissolves: your "under the limit" file was over the
+      limit the whole time. The practical rule of thumb from the same
+      guide: multiply your file size by 1.33. If the result is still under
+      your provider's cap, it can travel as an attachment. If not, it
+      cannot - and no amount of re-sending will change that.</p>
+      <p>This is also why several smaller files can gang up on you. Three
+      8 MB photos are 24 MB of files, which is about 32 MB of actual
+      message - over the cap, even though every single photo "fits."
+      (Our <a href="why-do-my-emails-bounce-back.html">general bounces
+      article</a> covers the other reasons mail comes back - bad
+      addresses, spam filters, reputation problems. This article is about
+      the one bounce cause that is purely about size.)</p>
+      <h2>The customer on the other end gets a vote</h2>
+      <p>Rule three: the recipient's server has its own limit, and the
+      smaller of the two limits wins. Your mail can be perfectly fine on
+      your side and still bounce because the customer's server only
+      accepts, say, 10 MB messages. You will never see their limit; you
+      only see the bounce. So when a file goes through to one customer
+      and bounces to another, that is not randomness - it is two different
+      mailboxes with two different ceilings. Keep this in mind before you
+      blame your own setup: if it only fails with one recipient, the
+      problem is almost certainly on their end, and the fix is the same
+      link-instead-of-attach move described below.</p>
+      <p>A related limit with a similar shape: Gmail also caps how
+      <em>many</em> messages you can send per day. That is the quantity
+      quota; this article is the size quota. Our <a
+      href="why-does-gmail-stop-me-after-500-emails.html">500-emails
+      article</a> covers the count side if you hit that wall instead.</p>
+      <h2>The real numbers, by provider</h2>
+      <p>Here is what the major providers publish as of 2026. Remember the
+      1.33 multiplier - the "effective file" column is what your file can
+      actually be on disk before encoding pushes it over:</p>
+      <p><strong>Gmail (personal):</strong> 25 MB to send, 50 MB to receive.
+      Files over the send limit automatically become a Google Drive link
+      instead of an attachment.</p>
+      <p><strong>Outlook.com / Hotmail:</strong> 20 MB per attachment, 25 MB
+      total per message. Oversized files become a OneDrive link. The
+      personal limit is fixed - it cannot be raised.</p>
+      <p><strong>Microsoft 365 (business):</strong> 35 MB to send, 36 MB to
+      receive by default; your IT person can raise it as high as 150 MB.</p>
+      <p><strong>Yahoo Mail:</strong> 25 MB per message.</p>
+      <p><strong>iCloud Mail:</strong> 20 MB, but its Mail Drop feature
+      sends files up to 5 GB as a download link that expires after 30
+      days.</p>
+      <p><strong>Email that came with your hosting plan:</strong> this is
+      the wild card. Hosting-bundled email usually runs on older-style
+      setups, and the desktop email programs people use with them commonly
+      cap out around 20 MB. Check your host's help docs for the real
+      number instead of assuming Gmail's. (Our <a
+      href="should-i-use-the-email-that-came-with-my-web-hosting.html">hosting-email
+      article</a> walks through when that free email is fine and when it
+      is costing you.)</p>
+      <h2>Why zipping sometimes does nothing</h2>
+      <p>The classic advice is "zip it," and for some files it works
+      beautifully: Word documents, spreadsheets, and PDFs can shrink to a
+      fraction of their size. But photos and videos are already compressed
+      by the camera. Zipping a 20 MB phone photo usually saves almost
+      nothing, because there is nothing left to squeeze out. If your
+      attachment is photos, the real fix is resizing, not zipping: a
+      phone photo shrunk to a normal viewing size drops from megabytes to
+      hundreds of kilobytes, and on a customer's screen it looks
+      identical. For documents, zip away. For photos, resize. For video,
+      do not even try - upload it somewhere and send the link.</p>
+      <h2>The link is the actual answer</h2>
+      <p>Every provider has now built the escape hatch directly into the
+      compose window, because this problem is that common. Attach something
+      too big in Gmail and it offers to upload it to Google Drive and put
+      a download link in the email (free Drive storage is 15 GB, which is
+      room for an enormous number of contracts and photo sets). Outlook
+      does the same with OneDrive. iCloud's Mail Drop handles up to 5 GB.
+      And the dedicated transfer services exist for the cases the
+      providers do not cover.</p>
+      <p>The link has a second advantage nobody mentions: it dodges the
+      recipient's limit too. A link is a tiny message with a tiny body, so
+      the customer's 10 MB ceiling never comes into play. It also keeps
+      your mailbox slimmer - every giant file you send and receive sits in
+      your mailbox eating your storage quota, which is one more reason our
+      <a href="do-i-need-to-back-up-my-business-email.html">email backup
+      article</a> exists: big files deserve to live somewhere built for
+      files, not inside your inbox.</p>
+      <h2>The routine that ends this problem</h2>
+      <p>Five habits, none of them technical:</p>
+      <p><strong>1. Treat 10 MB as your real limit.</strong> One published
+      2026 roundup of every provider's limits lands on the same practical
+      rule: keep attachments under about 15 to 18 MB, and under 10 MB when
+      you do not know the recipient's setup. Ten megabytes of file clears
+      every major provider's ceiling with room to spare.</p>
+      <p><strong>2. Resize phone photos before attaching.</strong> Your
+      phone's share menu usually offers a smaller size. Use it. The
+      customer cannot tell the difference, and a photo set that was 40 MB
+      becomes 4.</p>
+      <p><strong>3. One or two files per email, not ten.</strong> Files
+      share one envelope, so a stack of small photos can trip the limit
+      together. Split big sets across emails, or better, link them.</p>
+      <p><strong>4. Link anything over about 15 MB.</strong> Upload it to
+      Drive, OneDrive, or Dropbox and paste the link. It is faster to
+      send, impossible to bounce on size, and the customer gets a proper
+      download button.</p>
+      <p><strong>5. After sending something big, ask once: "Did you get
+      it?"</strong> A two-second confirmation beats discovering on Friday
+      that Monday's contract never arrived. (And if a website contact form
+      is the thing not delivering, that is a different machine - our <a
+      href="my-contact-form-says-message-sent-but-the-emails-never-arrive.html">contact-form
+      article</a> covers that one.)</p>
+      <p>One last distinction for the worried: a size bounce is not a
+      reputation problem. If Gmail is rejecting your mail for other
+      reasons - authentication, spam complaints, sending patterns - that
+      is covered in our <a
+      href="why-does-gmail-reject-my-business-email.html">Gmail-rejection
+      article</a>. Size bounces say "too big," plainly, every time. Fix
+      the size and they stop.</p>
+      <p>Sources for the figures above, all checked 2026-10-12: Gmail's
+      25 MB whole-message send limit and 50 MB receive limit, with the
+      limit applying to headers, body, and encoded attachments together
+      (mailjerry.com, updated ~138 days ago, crawled ~2 hours ago;
+      clrn.org, updated ~472 days ago, crawled ~11 days ago); the ~33%
+      Base64 encoding overhead, with a 20 MB file traveling at roughly
+      26-27 MB, and the multiply-by-1.33 rule of thumb (mailjerry.com,
+      same dates); the conservative keep-under-15-to-18-MB (under 10 MB
+      for unknown recipients) sending rule (Medium/FileConvy, published
+      Sep 2026, crawled under an hour ago); Outlook.com / Hotmail 20 MB
+      per attachment and 25 MB per message with automatic OneDrive links,
+      and the personal limit being unchangeable (Medium/FileConvy, same
+      dates; it-weblog.com, updated ~19 days ago, crawled ~4 days ago);
+      Microsoft 365 / Exchange Online 35 MB send / 36 MB receive default,
+      raisable to 150 MB by an administrator (it-weblog.com, same dates;
+      syscurve.com, updated Aug 25 2026, crawled ~4 hours ago); Yahoo
+      Mail 25 MB (mailwarm.com, updated ~9 days ago, crawled ~3 hours
+      ago); iCloud Mail 20 MB with Mail Drop up to 5 GB expiring after
+      30 days (Medium/FileConvy; mailwarm.com, same dates); the
+      recipient's server limit also applying, so a compliant message can
+      still bounce (clrn.org, same dates); Gmail's automatic Drive upload
+      for oversized files and 15 GB of free Drive storage
+      (emailanalytics.com, updated ~634 days ago, crawled ~211 days ago;
+      testbook.com, updated ~5 days ago, crawled ~1 hour ago); Outlook
+      desktop with old-style internet email accounts commonly at 20 MB
+      (mailwarm.com, same dates). All figures are reported limits from
+      the cited sources, not promises about any individual account.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Size limits are only half the email story. The other half is whether your mail even gets delivered: paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC, the three ID checks that decide whether Gmail trusts you. Takes about ten seconds, no signup.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>Attachment headaches are one symptom of email setup - and setup is only one of the 40 things that can quietly cost you customers. The full Site Health Watch audit checks your email authentication, website speed, security, mobile experience, and AI visibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+big+email+attachments+bouncing+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
