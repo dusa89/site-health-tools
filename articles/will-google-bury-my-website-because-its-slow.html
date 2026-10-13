@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Will Google Bury My Website Because It's Slow?</title>
+<meta name="description" content="A slow website does not get you banned from Google - but speed has been a real ranking signal since 2021. What the three Core Web Vitals actually grade, how much they move your ranking, and the bigger cost that has nothing to do with Google.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Will Google Bury My Website Because It's Slow?</h1>
+    <p class="lede">Somebody told you a slow website gets punished by Google - maybe a web person selling you a speed package. The truth is more useful than the scare: Google does grade your speed, it does count toward where you rank, and it is not the burial people describe. Here is what is actually measured, how much it moves the needle, and the cost of slowness that has nothing to do with Google at all.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-13 - not promises about your situation. Nobody outside
+      Google can tell you exactly how much speed moves any single
+      ranking, and anyone who promises you a specific jump is selling
+      something.</p>
+      <h2>The short answer</h2>
+      <p>No - Google does not bury slow websites. There is no penalty
+      box for slowness, no "slow site" filter that deletes you from the
+      results. What exists is quieter: since 2021, how your site feels
+      to use has been one of Google's official ranking signals, measured
+      by three specific numbers called the Core Web Vitals. A slow site
+      gives up a small edge on every search it appears in - and, more
+      importantly, it bleeds visitors who click and then leave. The
+      second cost is usually bigger than the first.</p>
+      <h2>The three things Google actually grades</h2>
+      <p>Google introduced the Core Web Vitals in May 2020 as its
+      official measure of real-world page experience - not lab tests,
+      but what actual Chrome visitors experience on your pages. There
+      are three, and your page only passes when all three are good at
+      the same time:</p>
+      <p><strong>1. How fast the main content appears: 2.5 seconds or
+      less.</strong> Google calls this Largest Contentful Paint - the
+      moment your headline, hero image, or main banner becomes visible.
+      Under 2.5 seconds is good, 2.5 to 4 needs work, over 4 is poor.
+      (Our <a href="how-fast-should-my-website-load.html">how-fast guide
+      </a> walks through all three numbers in detail.)</p>
+      <p><strong>2. How fast the page answers a tap or click: 200
+      milliseconds or less.</strong> This is Interaction to Next Paint -
+      the delay between a visitor tapping a button and the page
+      responding. Google replaced the old version of this metric with
+      the stricter one in March 2024, so if your web person is still
+      talking about the old measurement, their report is out of date.</p>
+      <p><strong>3. Whether the page stays still while it loads: a
+      shift score under 0.1.</strong> Cumulative Layout Shift measures
+      the jump-around - text sliding down as an image loads late, a
+      button moving just as someone taps it. Under 0.1 is good.</p>
+      <p>Google judges these at the 75th percentile of real visits -
+      meaning three out of four of your actual visitors need a good
+      experience, not just the average one.</p>
+      <h2>When speed became a ranking factor</h2>
+      <p>The vitals became official ranking signals with Google's Page
+      Experience Update, which rolled out through the summer of 2021.
+      Two later changes matter for you: in March 2024 Google swapped in
+      the stricter responsiveness metric described above, and since July
+      2024 Google judges all of this on the mobile version of your site
+      by default - the desktop version no longer sets the grade. If your
+      site is fast on your office computer but slow on phones, Google is
+      grading the phone version. (Our
+      <a href="why-is-my-website-slow-on-mobile.html">mobile-speed
+      article</a> explains why that gap is so common.)</p>
+      <h2>How much it really moves your ranking</h2>
+      <p>Here is the honest part the scare stories skip: page experience
+      is one signal among many, and relevance wins. If your page is the
+      best answer to what someone searched, it can outrank a faster page
+      with a weaker answer. Google's own people have described page
+      experience as the kind of signal that matters most when two pages
+      are otherwise close - the tiebreaker, not the executioner.</p>
+      <p>That does not make it meaningless. In local searches - "plumber
+      near me," "dentist open Saturday" - the pages competing for the top
+      spots are often very close in relevance, and that is exactly where
+      a tiebreaker bites. A slow site is not buried; it is quietly
+      outranked, one close call at a time, by competitors whose sites
+      feel better to use.</p>
+      <h2>The bigger cost has nothing to do with Google</h2>
+      <p>Forget rankings for a moment. Google's own published research
+      found that more than half of mobile visitors abandon a page that
+      takes longer than 3 seconds to load - a 2017 benchmark still quoted in speed guides today. Every one of those visitors clicked, waited, and left
+      without calling. They never complain, they never come back, and no
+      ranking in the world fixes a page that drives its own traffic
+      away. (Our <a href="what-does-one-extra-second-cost.html">one-extra-second
+      article</a> puts the business math on this.)</p>
+      <h2>How to see where you stand</h2>
+      <p>The free way: Google Search Console has a Core Web Vitals
+      report under the Experience section that shows your whole site
+      graded Good, Needs Improvement, or Poor, page group by page group -
+      it is the closest thing to seeing the grade Google sees. The
+      ten-second way: run our free speed check below. It tells you in
+      plain English how many seconds your homepage takes on a typical
+      phone, plus the three biggest slowdowns described without the
+      jargon - which is exactly where the first of the three vitals
+      comes from.</p>
+      <p>Sources for the facts above, all checked 2026-10-13: the three
+      Core Web Vitals and their thresholds - LCP 2.5 seconds or less,
+      INP 200 milliseconds or less, CLS under 0.1, judged at the 75th
+      percentile of real Chrome-user visits (Google web.dev
+      documentation; rvsmedia.co.uk vitals reference, updated ~29 days
+      ago); the vitals became ranking signals with the Page Experience
+      Update rolling out June through August 2021 (Google Search Central;
+      nestify.io update history); INP replaced First Input Delay as a
+      Core Web Vital in March 2024 (Google web.dev announcement; iron-out.io
+      migration guide); mobile-first indexing became the default for all
+      sites on July 5, 2024 (Google Search Central); page experience
+      described by Google as one signal among many, decisive mainly in
+      close rankings (Google Search Central guidance; webfor.com March
+      2026 vitals review); the 53%-abandon-after-3-seconds benchmark
+      (Google, 2017, still the industry reference). The tiebreaker
+      framing and the "quietly outranked" reading are our analysis, built
+      from the sources above.</p>
+      <div class="trybox">
+        <strong>Try it free &mdash; takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English - how many seconds your homepage takes on a typical phone, plus the three biggest slowdowns described without the jargon.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>A slow site gives up ranking ground and visitors at the same time, and speed is only one of 40 checks. The full Site Health Watch audit covers your email authentication, security, mobile experience, SEO, and AI visibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+will+Google+bury+my+website+because+it%27s+slow+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 &mdash; Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
