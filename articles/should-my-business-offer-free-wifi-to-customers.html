@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should My Business Offer Free Wifi to Customers?</title>
+<meta name="description" content="Customers expect free wifi - but one wrong setup puts your office computers, your files, and your card terminal on the same network as strangers. The two-network rule that makes guest wifi safe, the card-terminal separation rule, what those copyright letters actually mean, and the three traps to avoid.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should My Business Offer Free Wifi to Customers?</h1>
+    <p class="lede">The short answer: <strong>yes - customers expect it, and the risks are all solvable with one setup decision.</strong> The danger is not offering wifi; it is offering it the lazy way, with customers landing on the same network as your register, your office computers, and your files. Done right, guest wifi is two separate networks that cannot talk to each other: one for your business, one for everyone else. Below: the rule, the card-terminal requirement, the truth about those copyright letters, the three traps (including the one your own employees create), and the four asks to give your IT person.</p>
+    <div class="article">
+
+      <h2>1. Why this question feels scarier than it is</h2>
+      <p>Every owner who has thought about free customer wifi has had the same four worries, and all four are real. <strong>Worry one: strangers on your network.</strong> If customers join the same wifi your office computers use, their devices can see everything on that network - shared folders, printers, files, the computer in the back office. <strong>Worry two: one bad device.</strong> You have no control over the security hygiene of a customer's laptop or phone; one infected device on an unsegmented network can scan around and spread malware to your machines (linkedin.com, Jun 2026; crawled 2026-10-11). <strong>Worry three: the card terminal.</strong> Mix guest traffic with the network your register lives on and your card-handling compliance homework gets much bigger - the card-security rules treat any wifi that can reach the card side as part of the card side. <strong>Worry four: the letters.</strong> Copyright holders send infringement notices tied to the internet account a download came from - which is yours, when it happens on your wifi. Every one of these has the same fix, and it is section 2.</p>
+      <h2>2. The one rule that fixes almost everything</h2>
+      <p><strong>Two networks.</strong> Guests get one, your business gets the other, and the two cannot talk to each other. You never hand a customer the password to the network your register and office computers use - that password is for staff, full stop. The logic is the same pattern the email-security articles keep showing: one foothold becomes every foothold. <a href="if-someone-hacks-my-email-can-they-take-over-my-website.html">The email-takeover article</a> walks through it for a hacked inbox - one compromised account becomes the website, the password resets, everything. A guest device sitting on your business network is the same shape of problem: one doorway, everything behind it. Two networks that cannot reach each other removes the doorway. Once that rule is in place, worries one, two, and three from section 1 shrink to manageable size, and worry four gets its own answer in section 5.</p>
+      <h2>3. What the setup actually looks like</h2>
+      <p>Your router probably has a <strong>guest network</strong> option already built in. Turn it on and the router creates a second network with its own name and password: guests get internet, but not your shared folders, not your printers, not your office machines (kelsercorp.com; crawled 2026-10-11). This is usually <strong>no extra cost</strong> - it is a feature of the router you already own, not a second internet line - and if the settings page scares you, your internet provider can set it up (kelsercorp.com; crawled 2026-10-11). Give the guest network a clear name so customers find it ("YourShop-Guest"), and keep the business network's name boring and unadvertised. A <a href="do-i-need-a-website-firewall.html">firewall</a> is one of the layers that enforces the separation between them - the firewall article explains what it actually does in plain English. The whole setup takes less time than unboxing a new register.</p>
+      <h2>4. The card-terminal rule</h2>
+      <p>If you take cards at the counter, this section is not optional. The card-security rules require firewalls between <em>any</em> wireless network and the card-handling side of your business, and they treat wifi as a public network no matter what you use it for (PCI SSC wireless guidelines via scworld.com; crawled 2026-10-11). The current version of the standard says it even more plainly: network security controls between every wireless network and the card environment, with wireless traffic into it denied by default (purple.ai; crawled 2026-10-11). The flip side is the good news: <strong>a guest network with no path to the card side stays out of that compliance scope entirely.</strong> Two networks that cannot talk to each other is not just safer - it is the difference between a small compliance checklist and a large one. (The <a href="should-my-website-store-my-customers-credit-card-numbers.html">card-numbers article</a> covers the storage half of the card rules; this is the network half.)</p>
+      <h2>5. The "someone downloaded a movie on my wifi" letters</h2>
+      <p>Here is what actually happens: a customer pirates something on your connection, the copyright holder traces the download to your internet account, and the notice lands in <em>your</em> mailbox. It feels personal. The reassuring part comes from the one big court case on exactly this. In 2016, Europe's top court heard a case where Sony Music sued a shop owner after someone pirated a song over his shop's free wifi - and the court said the shop owner is <strong>not liable</strong> for what customers do on the shop's network (the "mere conduit" protection; curia.europa.eu; crawled 2026-10-11). But the same court added the catch: owners <em>can</em> be ordered to password-protect the network, and users should have to identify themselves before getting the password so nobody acts anonymously. That is EU law, not US law - but the practical lesson travels: <strong>password-protect the guest network and put a short terms-of-use page in front of the login.</strong> It deters abuse, and it shows you run the network responsibly if a letter ever does arrive. (Who owns this decision - you, your web person, or your ISP - is <a href="who-is-responsible-for-my-websites-security.html">the responsibility article's</a> whole question.)</p>
+      <h2>6. The three traps</h2>
+      <p><strong>Trap one: the shared password.</strong> One wifi password for staff and customers, printed on a card at the counter, never changed. Every former employee and every regular still holds the key to your business network. The fix is two passwords - and rotating the staff one whenever someone leaves. <a href="what-should-i-change-on-my-website-when-an-employee-leaves.html">The employee-leaves article</a> has the full offboarding checklist; the wifi password belongs on it. <strong>Trap two: the helpful rogue extender.</strong> An employee with a dead zone in the back plugs in their own wifi booster from home. It works - and it quietly bridges guests past your careful separation, because if you did not set it up, you do not know its rules. Scan for these and unplug them; extend the network properly instead (coxblue.com; crawled 2026-10-11). <strong>Trap three: the wide-open network.</strong> No password at all. Then everyone in the parking lot is your "customer," including whoever you least want on your connection - and your actual guests are easier to snoop on too, since open networks encrypt nothing between their device and your router.</p>
+      <h2>7. The everyday annoyances: bandwidth and hours</h2>
+      <p>Security handled, two practical problems remain. <strong>Bandwidth:</strong> guests streaming video can slow the connection your register and office depend on - the classic version is someone settling in for a long video binge on the same internet connection your register and card terminal depend on (coxblue.com; crawled 2026-10-11). Most guest-network setups let you cap each guest's speed so one person cannot drink the whole pipe. <strong>Hours:</strong> there is no reason the guest network needs to run at 3 a.m. Many routers can switch the public network off on a schedule - on when you open, off when you close (coxblue.com; crawled 2026-10-11). Fewer hours online means fewer hours for anyone to poke at it. (And for the mirror image of this whole article - you as the traveler on someone else's network instead of the provider - <a href="is-it-safe-to-update-my-website-from-coffee-shop-wifi.html">the coffee-shop wifi article</a> covers which of your own habits to change.)</p>
+      <h2>8. What to tell your web/IT person</h2>
+      <p>Send your assistant, web person, or IT contact this: <em>"I want to offer free wifi to customers. Four asks. First, set up a separate guest network that cannot reach my business computers, my files, or my card terminals - two networks that cannot talk to each other, with a firewall between the guest side and everything business. Second, prove it: connect a phone to the guest network and show me it cannot see my office computers or printers. Third, give the guest network its own name and password - never my business wifi password - and put a short terms-of-use page in front of the guest login. Fourth, show me how to change both passwords myself, and set the guest network to switch off when we're closed. And walk the building with me once: if anyone plugged in their own wifi extender, it comes out." </em> The proof is the phone test in ask two - a guest device that can see your office computers means the separation failed. (And if you want someone to check the website half of your security - the part the public internet can see - <a href="../security.html">the free security check on this site</a> scans your HTTPS and headers in about ten seconds.)</p>
+      <p class="meta">Verified 2026-10-11. EU Court of Justice, 15 September 2016, McFadden (C-484/14): a shop offering free wifi to the public is not liable for copyright infringements committed by users of that network under the "mere conduit" protection; but a rightsholder can obtain a court order forcing the operator to password-protect the network, with users revealing their identity before receiving the password (curia.europa.eu press release; scottishlegal.com; lexology.com; crawled 2026-10-11). PCI wireless guidance: perimeter firewalls required between any wireless network and the cardholder data environment; wifi treated as a public network regardless of purpose; a guest network with no traffic path to the card environment is out of scope (PCI SSC wireless guidelines via scworld.com; crawled 2026-10-11). PCI DSS v4.0.1: network security controls required between every wireless network and the CDE, wireless traffic into the CDE denied by default (purple.ai; crawled 2026-10-11). An infected guest device on an unsegmented network can scan and move laterally to corporate workstations, servers, and storage; an isolated guest network is a quarantine zone with no route to critical infrastructure (linkedin.com, Sherin Cherian, published Jun 10, 2026; crawled 2026-10-11). Safest setup: a separate password-protected guest network - guests get internet but not business resources like shared folders, sensitive documents, or devices; usually no extra cost through the existing router, and the ISP can help set it up (kelsercorp.com; crawled 2026-10-11). Separate staff and customer access points (SSIDs) wall off the business network; the public wifi can auto-switch off when nobody is around to monitor it (coxblue.com; crawled 2026-10-11). Rogue access points: employee-plugged extenders are uncontrolled backdoors - scan for them and cut them off (coxblue.com; crawled 2026-10-11). If guest wifi is exploited, businesses can face lawsuits or compliance violations, brand damage, and liability for facilitating cybercrime; mitigations include isolating guest networks, strong router admin passwords, and public wifi disclaimers (cybrvault.com; crawled 2026-10-11). This is general information, not promises about your exact report - but the two-network math is the same math on every router.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free security check scans what the public internet actually sees on your site &mdash; HTTPS, headers, and the common exposures. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Customer wifi done right is two networks, not one. The full Site Health Watch audit checks your website's security, speed, email authentication, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+offering+free+wifi+to+customers+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
