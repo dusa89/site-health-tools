@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Do I Stop Emails From a Company That Won't Let Me Unsubscribe?</title>
+<meta name="description" content="You unsubscribed, and the emails kept coming. Stop clicking the links inside their emails - your mail app has its own unsubscribe that plays by your rules. The exact order that actually stops them, the legal clock vs the inbox clock, and what to do with senders who ignore everything - in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>How Do I Stop Emails From a Company That Won't Let Me Unsubscribe?</h1>
+    <p class="lede">The short answer: <strong>stop clicking the links inside their emails, and let your mail app do the unsubscribing for you.</strong> When you click the tiny "unsubscribe" link at the bottom of a shady company's email, you are playing by their rules on their turf - and for the worst offenders, every click just confirms your address is a live one. Since February 2024, Gmail has required big senders to support one-click unsubscribe, and since July 2025 Gmail has its own one-tap <strong>Manage Subscriptions</strong> screen that cuts these senders off without you ever opening their mail. Below: the exact order that actually stops them, the legal clock versus the inbox clock, why the spam button is the unsubscribe of last resort - and what your click does to the sender's reputation - plus the two moves that end it for the senders who ignore everything.</p>
+    <div class="article">
+
+      <h2>1. The two kinds of senders that won't let you go</h2>
+      <p>First, figure out which animal you are dealing with, because the fix differs. <strong>Kind one: legit-but-sloppy.</strong> You bought something once, signed up for a webinar, or checked a box at checkout, and their unsubscribe is a four-step preference center - or your request is sitting in somebody's queue. These usually stop if you give them the legal window (section four). <strong>Kind two: list farmers.</strong> Your address was <a href="should-i-buy-an-email-list-for-my-business.html">bought on a list</a>, and their "unsubscribe" link is decoration - it may even be <a href="is-it-safe-to-click-unsubscribe-on-spam.html">the trap that confirms you are a real person reading mail</a>. Kind two will never honor an opt-out, so you stop asking and start filtering (sections five and six). The single most important move for both kinds: stop clicking links inside their emails. Everything below works from YOUR mail app outward, never from their footer inward.</p>
+      <h2>2. Rule one: use your mail app's own unsubscribe, not theirs</h2>
+      <p>On bulk mail, Gmail puts its <strong>own "Unsubscribe" link next to the sender's name at the top of the email</strong> - no scrolling to the footer, no hunting for grey six-point text. One click and Gmail fires the unsubscribe request in the background: no form, no "confirm your email address," no preference-center maze. This works because Gmail (and Yahoo) require bulk senders to support the one-click unsubscribe mechanism - machine-readable headers the sender must honor - so the vast majority of legitimate newsletters respond to it. Outlook has equivalent list-unsubscribe handling. The difference that matters: their link runs on their server with their rules; your app's button runs a standard request on your behalf. For any sender you do not fully trust, the app's button is the only unsubscribe you should ever click - and if the link inside a shady email is the only option, read <a href="is-it-safe-to-click-unsubscribe-on-spam.html">the safety guide first</a>.</p>
+      <h2>3. Step one: the one-tap cleanup - Gmail's Manage Subscriptions</h2>
+      <p>Since July 2025, Gmail has a screen built for exactly this problem. <strong>Manage Subscriptions</strong> (left sidebar, under "More" on desktop; the menu button on mobile) shows every subscription sender in one list, <strong>ranked by how often they have emailed you recently</strong> - so the worst offenders sit right at the top. Each name has a one-tap Unsubscribe button next to it; Gmail sends the opt-out request for you, and you never have to open a single one of their emails. Rolled out through 2025, it now covers virtually all consumer and Workspace accounts. Do this pass once and the bulk of your problem senders disappear in about five minutes. The ones that survive this pass are telling you something: they are the kind that does not honor opt-outs, and they get the treatment in sections five and six.</p>
+      <h2>4. Step two: the waiting window - the legal clock versus the inbox clock</h2>
+      <p>For legit senders, the law gives them a clock - and it is slower than you would guess. Under the <strong>CAN-SPAM Act</strong> (the FTC's compliance guide): a sender must honor your opt-out <strong>within 10 business days</strong>; the opt-out link has to keep working for at least 30 days after the message; they cannot charge a fee, ask for any information beyond your email address, or make you do more than send a reply or visit a single web page. Meanwhile Gmail's bulk-sender rules expect unsubscribe requests <strong>processed within 2 days</strong> - a stricter, separate clock; obeying the law does not satisfy the inbox. The practical move: note the date you unsubscribed. If mail is still arriving after about <strong>two weeks</strong>, they have blown past both clocks - stop unsubscribing and escalate to section five.</p>
+      <h2>5. Step three: the spam button is the unsubscribe of last resort</h2>
+      <p>For a sender that ignores your opt-out, stop clicking unsubscribe and start clicking <strong>Report spam</strong>. Here is why that works. Every spam complaint trains YOUR filter - and it counts against THEIR sender reputation: Gmail and Yahoo require bulk senders to stay under a <strong>0.30% complaint rate</strong>, measured in <a href="how-do-i-check-if-gmail-trusts-my-business-email.html">Google's Postmaster Tools trust grade</a>. Senders who collect too many complaints do not just get filtered - they get <a href="why-did-my-email-marketing-account-get-suspended.html">their sending accounts suspended outright</a>. Your single click is a whisper, but it is the mechanism that exists precisely for senders who ignore opt-outs. One honest boundary: only spam-button mail you genuinely did not ask for. Marking a real newsletter you actually read as spam punishes a business that did nothing wrong - and trains your filter to hide mail you wanted.</p>
+      <h2>6. Step four: block and filter the truly stubborn ones</h2>
+      <p>Some senders rotate addresses or just never stop, and for those you stop engaging entirely. <strong>Block the sender</strong> (in Gmail: the three-dot menu on any of their emails, then "Block") - future mail from that address routes to spam automatically. <strong>For address-rotators, build a filter:</strong> in Gmail settings, create a filter on a distinctive phrase from their subject line or the stable part of their sending address, and set it to "Skip the Inbox" and "Delete it" (or archive it for review). Two don'ts: don't reply - any reply, even "stop emailing me," confirms a human is reading and gets you MORE mail; and don't re-trigger it yourself - check whether an old account signup, a webinar registration, or a pre-checked box at checkout is re-adding you. Silence plus filters ends what requests never could. And if the problem is not one sender but the whole inbox drowning, <a href="how-do-i-stop-spam-from-flooding-my-business-email.html">the wider spam-defense playbook</a> covers filters, addresses, and setup changes for that bigger fight.</p>
+      <h2>7. The flip side - and what to tell your web person</h2>
+      <p>One honesty note before the script: if YOUR business sends newsletters, you are on the other side of this problem. Ignored unsubscribes are what get sending accounts suspended, and every one of your marketing emails needs <a href="why-does-my-newsletter-need-a-physical-address.html">a real physical address in the footer</a> - no-address mail is exactly the kind of mail this article teaches people to kill. If you are being buried by OTHER companies' mail, send your assistant or web person this: <em>"My business inbox is getting marketing emails that won't stop. Three asks. First, walk me through Gmail's Manage Subscriptions so I can clear the worst senders in one pass, and confirm each unsubscribe actually went through - I want a dated list of what we cleared. Second, for the ones that keep changing addresses, set up filters that skip the inbox and delete anything matching their sender patterns, and show me where the filters live so I can spot-check them. Third, check whether any of our own signup forms, tools, or web accounts put our address on these lists in the first place - plain English, no upsell."</em> The dated list is the proof: what got cleared, when, and what is left for the filters.</p>
+      <p class="meta">Verified 2026-10-10. Bulk-sender rules: Gmail+Yahoo since Feb 2024 for senders of 5,000+/day to consumer inboxes; Microsoft aligned May 2025; require SPF+DKIM+DMARC, one-click unsubscribe (RFC 8058 List-Unsubscribe/List-Unsubscribe-Post), spam complaint rate below 0.30% (smtpedia.com Aug 28 2026; mailercloud.com ~Sep 2026; mailpro.com; emailwarmup.com; crawled 2026-10-10). Gmail's own Unsubscribe next to sender name fires the request in the background, no forms (wangdoo.com ~Aug 2026; splynx.com; crawled 2026-10-10). Gmail "Manage Subscriptions": rolled out July 2025 (web July 8, Android July 14, iOS July 21), virtually all accounts by end of 2025; sidebar More -> Manage Subscriptions (app menu mobile); senders ranked by recent frequency; one-tap unsubscribe per sender; Gmail fires the opt-out on the user's behalf (hindustanherald.in ~Jun 2026; livemint; androidauthority; fluentcrm.com ~Aug 2026; wooxy.com ~Sep 2026; crawled 2026-10-10). CAN-SPAM (FTC compliance guide): honor opt-outs within 10 business days; opt-out mechanism functional at least 30 days after sending; no fee, no personal info beyond the email address, no more steps than a reply or a single web page; may not sell or transfer the address after opt-out (ftc.gov; crawled 2026-10-10). Gmail's bulk-sender expectation: process unsubscribes within 2 days - separate clock from CAN-SPAM's 10 business days (splinternetmarketing.com ~Jul 2026; crawled 2026-10-10). Honesty: several sources are email-marketing or deliverability vendors (they sell to senders); mechanics checked against the FTC guide and multiple independent sources. Averages and rules are bookends about the ecosystem, not promises about your inbox.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three ID checks that decide whether YOUR mail lands where it should. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>Unwanted mail is a symptom of a noisy sender ecosystem. The full Site Health Watch audit checks your website's speed, security, mobile experience, and AI visibility too &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+stopping+emails+from+a+company+that+won%27t+let+me+unsubscribe+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
