@@ -68,7 +68,7 @@
 <main>
   <div class="wrap">
     <h1>Do I Need DMARC If I Already Have SPF and DKIM?</h1>
-    <p class="lede">Your web person set up SPF and DKIM and called email security done. That is two of the three checks - but two checks with no enforcement behind them. DMARC is the piece that turns authentication into protection, and skipping it is the most common gap on small business domains.</p>
+    <p class="lede">Your web person set up SPF and DKIM and called email security done. That is two of the three checks - but two checks with no enforcement behind them. DMARC is the piece that turns authentication into protection, and skipping it leaves a gap many small business domains have.</p>
     <div class="article">
 
       <p>All facts below are reported from the cited sources, checked
@@ -137,7 +137,7 @@
       <p>You cannot jump straight to p=reject unless you already know
       every legitimate sender is passing, or you will start bouncing
       your own invoices, appointment reminders, and newsletters. The
-      order everyone agrees on: publish at p=none with reporting turned
+      order most sources recommend: publish at p=none with reporting turned
       on, watch the reports for two to four weeks to find every system
       sending as your domain (your newsletter tool, your CRM, the
       billing platform nobody documented), fix each one's SPF or DKIM
@@ -153,7 +153,7 @@
       and DKIM and publish a DMARC record of at least p=none - or the
       mail gets delayed, spam-foldered, or rejected. Microsoft brought
       in the same requirements for Outlook.com in May 2025. Most small
-      businesses never hit 5,000 a day, but every inbox provider now
+      businesses never hit 5,000 a day, but inbox providers tend to now
       treats authenticated domains as more trustworthy by default - so
       the same records that satisfy the bulk rules also make your
       everyday quotes and invoices land better. There is no meaningful
