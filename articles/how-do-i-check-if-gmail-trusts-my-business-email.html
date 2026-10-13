@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Do I Check If Gmail Trusts My Business Email?</title>
+<meta name="description" content="Gmail keeps a private report card on every domain that emails its users — and Google lets you read yours free. Google Postmaster Tools: the four trust grades, the two numbers that decide your grade, and setup in one afternoon. Plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>How Do I Check If Gmail Trusts My Business Email?</h1>
+    <p class="lede">Every time your business emails someone with a Gmail address, Gmail quietly writes down what happened — did the person mark it spam, did your ID checks pass, does your domain behave like a spammer. Over time that becomes <strong>a trust score on your business name</strong>, and it decides whether your quotes land in the inbox or the spam folder. Here is the part most owners never learn: <strong>Google gives you a free window into that score.</strong> It is called Postmaster Tools, it costs nothing, and this guide walks you through reading it like an owner, not an engineer.</p>
+    <div class="article">
+
+      <h2>1. Gmail grades your domain like a credit score</h2>
+      <p>Think of it this way: a credit bureau keeps a file on how you handle money, and lenders check it before trusting you. Gmail does the same thing with your email. Every domain that sends mail to Gmail users builds up a reputation — a private grade based on how recipients treat its mail. Good grade: your quotes land in the inbox. Bad grade: they land in spam, or Gmail refuses them at the door.</p>
+      <p>Here is what stings: <strong>recipients never see the grade, and Gmail never tells you unless you ask.</strong> Your customers just experience it — "I never got your quote" — while you stare at a sent folder that says everything went fine. <a href="why-do-customers-say-they-never-got-my-quote.html">That vanishing-quote problem has its own guide</a>; this one is about the diagnosis underneath it.</p>
+      <p>The free window into the grade is called <strong>Google Postmaster Tools</strong>. It is a dashboard Google runs for anyone who sends email to Gmail users. No subscription, no trial, no credit card — just a Google account and proof you control the domain (documentation.onesignal.com guide; folderly.com, 2026).</p>
+      <h2>2. The four grades, in plain English</h2>
+      <p>Google rates your domain one of four levels. These are Google's own definitions, translated:</p>
+      <p><strong>High</strong> — the trusted tier. Your domain has a track record of a very low spam rate, and your mail almost never gets flagged. This is the grade you want.</p>
+      <p><strong>Medium</strong> — the "mostly fine" tier. Your mail is generally good, but you have sent some spam-volume mail before. Most of it lands fine — until a bad week tips you over. Treat Medium as a warning light, not a passing grade: it means you are one bad campaign away from trouble.</p>
+      <p><strong>Low</strong> — the problem tier. Google believes your domain sends a considerable volume of spam regularly, and a meaningful share of your mail is getting filtered. If your quotes are vanishing, this is often where you are.</p>
+      <p><strong>Bad</strong> — the penalty box. A history of enormously high spam volume. Mail from your domain is almost always rejected at the door or sent straight to spam. Recovery from here is slow — it is measured in weeks of clean sending, not days (Google's Postmaster Tools documentation, via documentation.onesignal.com and socketlabs.com).</p>
+      <p>One honest note: Google has been reshuffling these dashboards into a newer version of the tool. If you log in and don't see the reputation grades, look for a link to the older view of Postmaster Tools — the grades live there while the transition finishes (docs.eSputnik.com; docs.yespo.io, 2026).</p>
+      <h2>3. The two numbers that decide your grade</h2>
+      <p><strong>Number one: your spam rate.</strong> This is the percentage of your emails that Gmail recipients marked as spam on a given day. Google publishes the lines, and they are not negotiable: <strong>keep your spam rate below 0.10%, and never let it reach 0.30%</strong> (Google's Email Sender Guidelines, via the OneSignal guide and lenkastudio.com, 2026).</p>
+      <p>Translated for a small business: 0.10% is <strong>1 spam complaint per 1,000 emails sent</strong>. 0.30% is 3 per 1,000. That is how thin the margin is — three unhappy recipients out of a thousand can push a bulk sender over the line where Google starts actively working against your mail. Cross 0.30% and Google's bulk-sender rules strip away delivery leniency until your rate stays back under 0.30% for seven straight days (folderly.com, 2026). The number is small because Gmail's scale is enormous; at billions of messages a day, a fraction of a percent is a flood.</p>
+      <p><strong>Number two: your authentication pass rate.</strong> This is the percentage of your mail passing the ID checks — SPF, DKIM, and DMARC. <a href="what-is-dmarc.html">The DMARC guide covers what those are</a>; here, what matters is that Postmaster Tools shows you the pass rate as a chart. A domain with failing authentication looks exactly like a domain being impersonated — because that is what failing authentication means. If this number isn't near 100%, fix it before anything else.</p>
+      <h2>4. Setting it up takes one afternoon</h2>
+      <p><strong>Step one:</strong> sign in with any Google account and open Postmaster Tools. Add your domain — and add the domain that appears in the <em>From</em> line of your emails, because that is the name Google grades, not necessarily the name on your mail server (documentation.onesignal.com).</p>
+      <p><strong>Step two:</strong> Google hands you a short text record to prove you own the domain. Paste it into your domain's DNS settings (the same place your web person put SPF and DKIM) as a TXT record. This is a ten-minute job for anyone who has touched your DNS before.</p>
+      <p><strong>Step three:</strong> wait. Data shows up about a day behind — Postmaster Tools is never same-day (typically a 1-to-2-day delay). Then come back and look.</p>
+      <p><strong>Three honest caveats before you judge the charts.</strong> First, if you send very little mail to personal Gmail addresses, some days will show nothing at all — Google hides low-volume data for privacy, and an empty chart is not evidence of a problem (folderly.com FAQ, 2026). Second, the tool covers mail sent to personal Gmail accounts; mail to business Google Workspace addresses doesn't appear. Third, <strong>it is Gmail-only.</strong> Your Outlook and Yahoo recipients have their own graders — Microsoft runs SNDS and JMRP for its inboxes — so Postmaster Tools is the biggest piece of the picture, not the whole picture (emailbouncer.org, 2026).</p>
+      <h2>5. Your first five minutes inside the dashboard</h2>
+      <p>Open it and look at these in order:</p>
+      <p><strong>Spam rate first.</strong> Look at the trend over the last month, not any single day. A flat line under 0.10% is healthy. A spike that lines up with a specific newsletter or campaign tells you exactly which mailing caused it — that is the campaign to never repeat.</p>
+      <p><strong>Reputation second.</strong> Your grade. If it says Low or Bad, you now know why the quotes are vanishing — and the spam-rate chart above will usually show you when it started sliding.</p>
+      <p><strong>Authentication third.</strong> SPF, DKIM, DMARC pass rates. Anything meaningfully below 100% is a configuration problem on your end, and it is the cheapest thing on this list to fix.</p>
+      <p><strong>Delivery errors fourth.</strong> This is Gmail's list of <em>why</em> your mail bounced or got deferred — rate limits, policy rejections, suspected spam. The reasons are in plain categories; if one category dominates, that is your lead.</p>
+      <p><strong>Encryption fifth.</strong> Whether your mail travels over an encrypted connection (TLS). Most modern senders pass this without thinking about it; if yours fails, it is a mail-provider configuration issue.</p>
+      <h2>6. The three things that actually raise the grade</h2>
+      <p><strong>Fix authentication completely.</strong> SPF, DKIM, and DMARC, all passing, on every mail stream — your office mail, your invoices, your newsletter tool. A domain whose own mail fails its ID checks cannot earn trust. Run our free email check first: it reads your public records in ten seconds and tells you exactly which record is missing.</p>
+      <p><strong>Stop emailing people who don't want it.</strong> Every spam complaint is a vote against your grade, and the fastest way to collect complaints is mailing stale lists. If someone hasn't opened your last dozen emails, take them off the list — <a href="why-do-my-newsletters-land-in-the-promotions-tab.html">the same disengagement that lands newsletters in the Promotions tab</a> is what drags your reputation down here. <a href="should-i-buy-an-email-list-for-my-business.html">And never, ever buy a list</a> — a purchased list is a complaint bomb with your domain's name on it, and it can undo months of clean sending in a single campaign.</p>
+      <p><strong>Check the grade monthly, not once.</strong> Reputation moves slowly in both directions — which is good news on the way up and bad news on the way down. A five-minute monthly look at the spam-rate trend catches a slide while it is still a Medium-grade warning instead of a Low-grade emergency. That is also the rhythm a monitoring service would keep for you — one more thing the monthly plan watches so you don't have to remember.</p>
+      <p class="note"><strong>The blocklist distinction:</strong> this grade is Gmail's private opinion of you. <a href="why-are-my-business-emails-being-blacklisted.html">Public blocklists are a separate problem with their own guide</a> — different lists, different fixes, and you can be clean on one while failing the other.</p>
+      <h2>7. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"Gmail keeps a trust score on our domain and we can read it free in Google Postmaster Tools. Five asks: first, get us set up — add our domain and paste the verification TXT record into our DNS. Second, confirm our SPF, DKIM, and DMARC pass rates are at or near 100% in the authentication dashboard. Third, screenshot the spam-rate trend for the last 90 days and our current reputation grade, and tell me what grade we're at. Fourth, if the grade is Medium or worse, pull the delivery-errors dashboard and tell me which category dominates. Fifth, set a monthly calendar reminder for us to check the spam-rate trend — or fold it into the monitoring plan."</em> Five asks, one afternoon, and you will finally see the grade your quotes have been living under.</p>
+      <p class="meta">Verified 2026-10-09. Postmaster Tools is free; requires a Google account plus domain verification via TXT or CNAME record; data typically 1-2 days behind; low-volume days suppressed for privacy; grades the From: header domain; Google Workspace business addresses not covered: documentation.onesignal.com Postmaster Tools guide; folderly.com FAQ, 2026. Google's spam-rate guidance — keep below 0.10%, never reach 0.30%: Google Email Sender Guidelines, via documentation.onesignal.com and lenkastudio.com, 2026. 0.30%+ strips bulk-sender delivery mitigation until under 0.30% for 7 consecutive days: folderly.com, 2026. High/Medium/Low/Bad definitions: Google Postmaster Tools documentation, via documentation.onesignal.com and socketlabs.com. Gmail-only coverage; pair with Microsoft SNDS/JMRP and Yahoo sender tools: emailbouncer.org, 2026. Dashboards (spam rate, domain/IP reputation, authentication, delivery errors, encryption, feedback loop): folderly.com; trulyinbox.com, 2026. Reputation dashboards in the legacy "old Postmaster Tools" view during the v2 transition: docs.eSputnik.com; docs.yespo.io, 2026.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Before you dig into dashboards: paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the ID checks that decide whether your authentication pass rate starts at 100%. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>A bad trust grade hides your quotes in spam folders. The full Site Health Watch audit checks your website's speed, security, mobile experience, and AI visibility too &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+Gmail%27s+trust+score+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
