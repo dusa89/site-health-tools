@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do I Need Email Authentication on a Domain That Never Sends Email?</title>
+<meta name="description" content="The domain you parked 'just in case' may be the one scammers are using right now. Three free DNS records lock a non-sending domain down in 10 minutes - and this is the one case where the strictest setting is safe from day one.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .records{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:24px 0;overflow-x:auto}
+  .records code{font-family:Menlo,Consolas,monospace;font-size:14.5px;white-space:nowrap}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do I Need Email Authentication on a Domain That Never Sends Email?</h1>
+    <p class="lede">You own more domains than you email from. The parked one you bought "just in case" - or the old brand name sitting after your rebrand - might be the one scammers are using right now, precisely because you never look at it. The good news: this is the one domain where the strongest protection is also the safest to turn on. Three records, ten minutes, free.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-13 - not promises about your situation. The three DNS
+      records shown are the published standard pattern for non-sending
+      domains; the "what this costs you" framing is our analysis.</p>
+      <h2>The short answer</h2>
+      <p>Yes - and you are lucky. On your real domain, email
+      authentication has to be rolled out gently: monitor first, tighten
+      later, or you can accidentally block your own invoices. On a domain
+      that never sends mail, there is nothing legitimate to break, so
+      you can go straight to the strictest setting on day one. Three DNS
+      records say, in so many words: this domain accepts no email, no
+      server may send as it, and anything claiming otherwise should be
+      rejected. Every one of your idle domains gets all three.</p>
+      <h2>Why scammers love your quiet domains</h2>
+      <p>Think about it from the attacker's side. Your main domain is
+      guarded: it has authentication records, your provider watches it,
+      and a fake email from it has to get past real defenses. Your
+      parked domain has none of that. No protection records means
+      receiving mail servers have no technical reason to reject a fake
+      that claims to be from it - the fake sails straight into
+      someone's inbox with your old brand name in the From line.
+      Industry guides on parked-domain protection say attackers actively
+      scan for these unprotected domains. And you will never notice on
+      your own, because nobody complains about a fake email that was
+      never supposed to reach you. This is the flip side of the
+      spoofing problem we covered separately: that guide was about fakes
+      of your active domain; this one is about locking the doors you
+      forgot you had.</p>
+      <h2>The three records that lock it down</h2>
+      <p>In your DNS settings (wherever you bought the domain -
+      GoDaddy, Cloudflare, Namecheap, all have a DNS section), add these
+      three records. Replace example.com with your idle domain:</p>
+      <div class="records">
+        <p>1. MX record &mdash; priority <code>0</code>, value
+        <code>.</code> (just a period, nothing else)</p>
+        <p>2. TXT record at the domain itself &mdash;
+        <code>v=spf1 -all</code></p>
+        <p>3. TXT record at <code>_dmarc</code> &mdash;
+        <code>v=DMARC1; p=reject; rua=mailto:reports@your-real-domain.com</code></p>
+      </div>
+      <h2>What each record actually does</h2>
+      <p>The first record is called a "null MX" record, and it is the
+      simplest of the three: it tells the entire internet that this
+      domain accepts no email at all. It is defined in RFC 7505, an
+      internet standard published in June 2015, and it works because a
+      lone period is not a valid server name - so no receiving system
+      can mistake it for a real mail server. This also stops bounce
+      messages piling up when spammers forge your idle domain as a
+      return address: instead of queuing and retrying for days, the
+      sending server learns immediately that delivery is impossible.</p>
+      <p>The second record is an SPF record with a minus-all at the
+      end. In plain terms it says: no server anywhere on earth is
+      authorized to send email for this domain. Not your mail provider,
+      not your newsletter tool, nobody. Any email claiming to come from
+      this domain is therefore, by your own declaration, a fake.</p>
+      <p>The third is a DMARC policy set to reject. DMARC is the record
+      that tells receiving servers what to do with fakes: deliver them,
+      quarantine them, or reject them outright. On your active domain
+      you start with "monitoring only" and tighten slowly. Here you go
+      straight to reject: block everything. The reporting address at the
+      end is a bonus - even with reject in place, you still get
+      aggregate reports showing who tried to spoof your domain, so you
+      can see the attacks you are now stopping.</p>
+      <h2>Why the strict setting is safe here - and risky on your real domain</h2>
+      <p>This deserves emphasis because the advice flips depending on
+      the domain. On the domain you actually email from, jumping
+      straight to "reject everything" is genuinely dangerous: one
+      forgotten invoice tool or a misconfigured record and your own
+      legitimate email gets blocked silently. That is why every guide
+      tells you to start with monitoring, read the reports for weeks,
+      then tighten. On a domain that sends nothing, that whole careful
+      dance is unnecessary - the parking-lot is empty, so you can put
+      up the concrete barriers immediately. Multiple provider guides
+      confirm this: parked domains can go straight to p=reject on day
+      one, no gradual rollout needed, because no legitimate email should
+      ever originate from them.</p>
+      <p>One hard warning, and it matters: never publish the null MX
+      record on a domain you actually send from. The RFC itself warns
+      about this - if a domain with null MX sends email, receiving
+      systems may reject your real messages because the record declares
+      the domain takes no mail. These three records are for idle
+      domains only. Your sending domain keeps its real mail server
+      records and its own, carefully-rolled-out authentication.</p>
+      <h2>The one thing people get wrong: where the reports go</h2>
+      <p>The reporting address in record 3 has to be a mailbox you
+      actually read - on a domain that actually receives email. Reports
+      from Gmail, Yahoo, Microsoft, and every other receiver flow to
+      that address daily. If you point it at an inbox on the idle
+      domain itself, the reports have nowhere to land, because the null
+      MX record you just published tells the world that domain takes no
+      mail. Point it at your real business address, or a dedicated
+      reporting mailbox on your main domain. And if the reporting
+      address sits on a different domain than the policy, DMARC rules
+      require an extra authorization record on that other domain before
+      the reports will be delivered - your provider's docs will show
+      the exact line.</p>
+      <h2>Which of your domains this is for</h2>
+      <p>Walk your domain list and apply the three records to every
+      domain in these buckets: the parked "just in case" domain you
+      bought and never used; the old brand name you kept after a
+      rebrand; the .net or .org variant you bought so nobody else
+      could; campaign microsites from promotions that ended years ago;
+      and any domain that is just a redirect to your main site. The
+      rule is simple: if it never sends email, it gets the three
+      records. Ten minutes per domain, once, and it never needs
+      touching again.</p>
+      <p>Sources for the facts above, all checked 2026-10-13: the null
+      MX record format and meaning - a single MX with preference 0 and
+      exchange "." - plus the warning not to publish it for domains you
+      send from (RFC 7505, published June 2015, via datatracker.ietf.org);
+      the three-record pattern for non-sending domains (null MX, SPF
+      v=spf1 -all, DMARC p=reject with a reporting address) as the
+      published standard (pearpages.com email-authentication guide,
+      2026-10-07; DNSimple's domain-spoofing-protection docs); that
+      parked domains can go straight to p=reject on day one with no
+      gradual rollout, and that aggregate reports still show spoofing
+      attempts under reject (dmarcreport.com parked-DMARC guide;
+      duocircle.com non-sending-domains guide). The "attackers actively
+      scan for unprotected domains" and "quiet domains are the easy
+      targets" framing is the providers' stated rationale, quoted above.</p>
+      <p>Related reading: whether you need <a
+      href="do-i-need-dmarc-if-i-already-have-spf-and-dkim.html">DMARC
+      when you already have SPF and DKIM</a> on your real domain; what
+      <a href="what-is-dmarc.html">DMARC is</a> in plain English; and how
+      <a href="can-someone-send-email-that-looks-like-its-from-my-business.html">someone
+      sends email that looks like it is from your business</a> in the
+      first place.</p>
+      <div class="trybox">
+        <strong>Try it free &mdash; takes about 10 seconds</strong>
+        <p>Paste your domain. Ten seconds later you get one verdict in plain English - whether SPF, DKIM, and DMARC are actually protecting your business email, and exactly what to add if something is missing.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email authentication is check #7 of 40</h2>
+      <p>A parked domain with no authentication is an open door wearing your old brand name - and email is only one of 40 checks. The full Site Health Watch audit covers your website's speed, security, mobile experience, SEO, and AI visibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+do+I+need+email+authentication+on+a+domain+that+never+sends+email+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
