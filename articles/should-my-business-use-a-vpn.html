@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should My Business Use a VPN?</title>
+<meta name="description" content="A VPN encrypts your traffic on public wifi and hides which sites you visit from the network owner - but it will not stop phishing, viruses, or tracking by sites where you are logged in. The honest breakdown for a small business, including the free-VPN trap.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should My Business Use a VPN?</h1>
+    <p class="lede">A VPN is sold as a magic shield: install it and you are safe and private online. The truth is narrower and more useful. A VPN does one job well - it builds a private tunnel for your internet traffic on networks you do not trust - and it does nothing at all about phishing emails, viruses, or the websites that track you because you logged in. Here is what it is, what it is not, who in a small business actually needs one, and how to avoid the free VPNs that make your privacy worse.</p>
+    <div class="article">
+
+      <p>All facts below are reported from the cited sources, checked
+      2026-10-12 - not promises about your situation. VPN companies
+      differ wildly, and the market changes fast. The mechanics below
+      are the same either way.</p>
+      <h2>What a VPN actually does</h2>
+      <p>Think of it as an armored tunnel. When you turn on a VPN, your
+      device builds an encrypted tunnel to the VPN company's server,
+      and everything you do on the internet travels through that
+      tunnel. The coffee shop whose wifi you are sitting on, the hotel
+      network, your internet provider at home - none of them can see
+      which sites you visit or read the contents of your traffic. The
+      websites you visit see the VPN company's address instead of
+      yours, so your real location is masked from them. The FTC's
+      consumer blog has pointed to VPN apps for this job since a February 2018
+      post: protecting your traffic in transit over public
+      networks like coffee shops and airports. That is the real job. It
+      is a good job. It is also the only job.</p>
+      <h2>What it does not do</h2>
+      <p>This is where the marketing gets dishonest. A VPN does not
+      protect you from viruses or malware - it is a tunnel, not an
+      antivirus. It does not stop you from typing your password into a
+      fake bank login page; phishing does not care about your tunnel.
+      (Our <a href="why-am-i-getting-password-reset-emails-i-didnt-ask-for.html">password-reset
+      emails article</a> covers the lures a VPN never touches.) It does
+      not stop websites from tracking you when you are logged in -
+      cookies, browser fingerprinting, and tracking pixels all keep
+      working, because those live in your browser, not your network
+      connection. If you are logged into Google, Google knows it is you
+      no matter which address your traffic comes from. It does not make
+      you anonymous; the FTC itself warns that VPN apps "generally don't
+      make users entirely anonymous." And your traffic does not stay in
+      the tunnel all the way: it pops out at the VPN company's server
+      and travels the regular internet to its destination. Most sites
+      today already encrypt the trip anyway (the padlock in your
+      browser), which is why the FTC notes public wifi is safer than it
+      used to be - a VPN adds a layer on top, not a new foundation.
+      (Our <a href="should-i-turn-on-two-factor-authentication-for-my-website.html">two-factor
+      article</a> and <a href="is-it-safe-to-save-my-business-passwords-in-my-browser.html">browser-passwords
+      article</a> cover the defenses a VPN never replaces.)</p>
+      <h2>The trust shift nobody mentions</h2>
+      <p>Here is the FTC's most important line, paraphrased: a VPN
+      shifts your trust from your internet provider to the VPN company.
+      Every byte of your traffic now flows through their servers
+      instead. If that company is careful, audited, and honest, that is
+      a trade up. If it is shady, you just handed your entire browsing
+      life to someone worse than your internet provider - and paid
+      nothing for the privilege, which should tell you something. A
+      study of 300 VPN apps that the FTC cited found many did not even
+      use encryption, requested sensitive permissions they had no
+      business asking for (like reading your text messages), and sold
+      user information to third parties for advertising and analytics.
+      You do not pick a VPN the way you pick a utility. You pick it the
+      way you pick a business partner who sees everything.</p>
+      <h2>Why "free" is the most expensive option</h2>
+      <p>Running a VPN costs real money: servers around the world,
+      bandwidth, engineers, customer support, lawyers. A company that
+      charges you nothing has to get that money somewhere. Sometimes
+      it is advertising. Sometimes it is a paid tier that subsidizes the
+      free one - that arrangement is fine, and it is how the reputable
+      free plans work. Sometimes, though, the money comes from
+      collecting and selling your data, which is exactly the thing you
+      installed the VPN to prevent. Security researchers at Zimperium
+      found serious flaws in hundreds of free VPN apps and called them
+      the weakest link in a business's security posture. A June 2026
+      investigation went further: of the 390 VPN apps most downloaded in
+      the US, 64 trace back to Chinese companies - 31 of them hiding
+      their ownership behind offshore corporate structures - and dozens
+      were quietly collecting GPS location data on top of the usual
+      advertising trackers. Those apps were downloaded 13.2 million
+      times in a single month. As a CNET senior writer put it: with a
+      strictly free VPN, you are the product. A free plan from a known
+      paid company is a limited version of a real product; a fully free
+      app with no visible way it makes money is the one to distrust.</p>
+      <h2>Who in your business actually needs one</h2>
+      <p>Not everyone, and be suspicious of anyone selling you one
+      license per employee as a blanket rule. The people who genuinely
+      benefit: anyone who works from coffee shops, airports, hotels, or
+      client offices on wifi they do not control; remote workers
+      connecting back to office systems; the owner checking the website
+      admin panel from the road. (Our <a href="is-it-safe-to-update-my-website-from-coffee-shop-wifi.html">coffee-shop-wifi
+      article</a> walks through the public-wifi scenario in detail.)
+      The person sitting at the office desk on the company network?
+      The tunnel adds almost nothing - the network is already trusted,
+      and the sites they visit are already encrypted. A VPN is a tool
+      for untrusted networks, not a general-purpose shield. It also
+      protects nothing on a stolen phone: if someone takes your
+      unlocked device, the tunnel is irrelevant. (That is <a href="if-someone-steals-my-phone-can-they-take-over-my-business.html">the
+      stolen-phone article's</a> territory - and a VPN never prevented
+      an <a href="if-someone-hacks-my-email-can-they-take-over-my-website.html">email
+      takeover</a> either.)</p>
+      <h2>If you get one, pick it like a partner</h2>
+      <p>Buy, do not borrow: a paid plan from a company you can name,
+      with a clear privacy policy that says what it collects, how long
+      it keeps it, and whether it shares anything with advertisers or
+      third parties. Look for independent security audits - not just a
+      marketing claim of "no logs," but a claim someone outside the
+      company has tested. (Consumer Reports flagged both directions of
+      this: one famous VPN handed user logs to Homeland Security in
+      2018 despite a no-logs promise, while another told a court it had
+      no traffic data to hand over. Treat every no-logs claim as a
+      promise you cannot verify from the outside.) Check the app's
+      permissions before installing: a VPN needs network access, not
+      your contacts, your texts, or your location. And read the
+      marketing with cold eyes - "100% anonymous," "zero trace," "military-grade
+      invisibility" are the tells of a company selling a feeling, not a
+      service. The honest ones say what the tunnel does and what it
+      does not.</p>
+      <h2>The bottom line</h2>
+      <p>A VPN is worth it for the people in your business who work on
+      networks they do not control - the road warriors, the remote
+      workers, the owner at the coffee shop. It is not worth it as a
+      blanket purchase for every desk, and it is never a substitute for
+      the defenses that actually stop the attacks small businesses
+      face: phishing awareness, updates, strong unique passwords, and
+      two-factor authentication. Buy it from a company with a real
+      business model and an audited privacy policy, and skip the free
+      ones entirely unless the free plan is the limited version of a
+      paid product you trust. The tunnel is real. Just make sure you
+      know who owns the other end.</p>
+      <p>Sources for the facts above, all checked 2026-10-12: the real
+      job - encrypted tunnel hiding traffic and visited sites from the
+      wifi owner or internet provider, masking the user's IP (FTC
+      consumer blog, February 22, 2018, via Lexology; SC Media coverage
+      of the FTC warning, crawled today; firewallsdontstopdragons.com
+      "What a VPN Is (and Isn't)", crawled ~5 hours ago); what it does
+      not do - no virus/malware protection, no cookie or fingerprint
+      tracking protection, no phishing protection, no anonymity,
+      traffic exits the tunnel onto the open internet
+      (firewallsdontstopdragons; Consumer Reports findings presented at
+      a US Congress hearing, via pcgamer.com); the trust shift - a VPN
+      moves trust from the network provider to the VPN company (FTC
+      blog; SC Media); the 300-app study - many VPN apps without
+      encryption, sensitive or unexpected permission requests including
+      text-message access, user data sold to third parties for ads and
+      analytics (SC Media, crawled today); free-VPN economics - real
+      operating costs must be paid somehow: ads, data collection, or
+      upselling (zmescience.com coverage of Zimperium research, crawled
+      ~20 hours ago; CNET senior writer via zmescience: "with a strictly
+      free VPN, you are the product"); the 2026 ownership research -
+      7,000+ apps analyzed, 390 in the US market, 64 tracing to Chinese
+      companies with 31 hiding ownership via offshore structures, 64
+      collecting GPS data, 13.2 million downloads in June 2026 alone
+      (Gizmodo, crawled ~12 hours ago); freemium vs strictly free -
+      free tier of a known paid product vs opaque fully-free economics
+      (Tom's Guide; writeupcafe.com VPN review, crawled ~3 days ago);
+      who needs one - untrusted networks and remote access; HTTPS
+      already making public wifi safer; VPN adds a layer but does not
+      prevent phishing or fraud; about one in four VPN users cite hiding
+      activity from their ISP, while account/cookie/app tracking
+      continues regardless (security.org 2026 VPN consumer report,
+      crawled 1 day ago); no-logs honesty - IPVanish logs to Homeland
+      Security in 2018 vs Private Internet Access with nothing to hand
+      over (pcgamer.com hearing coverage); what to look for - paid plan,
+      clear privacy policy, independent audits, realistic business
+      model, sane permissions, realistic marketing
+      (writeupcafe.com; zmescience via CNET). The "who needs one" and
+      selection guidance is our reading method, built from the sources
+      above.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>A VPN is one layer. Your website has more: paste your domain and get a plain-English verdict on your security headers, certificate, and the gaps attackers actually use. Takes about a minute, no signup.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>A VPN is one check out of 40. The full Site Health Watch audit checks your website's speed, security, mobile experience, email setup, and AI visibility - every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+VPNs+for+small+business+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
