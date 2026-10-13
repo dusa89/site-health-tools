@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Happens If My Web Person Disappears With the Keys to My Website?</title>
+<meta name="description" content="Your website does not vanish when your web person does - but the keys can. Ownership vs. access, the five logins that are the keys, the 10-minute check that tells you if you are exposed, and the recovery ladder if the worst has already happened - in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Happens If My Web Person Disappears With the Keys to My Website?</h1>
+    <p class="lede">The honest answer: <strong>the website is still there - but the question is whether you can prove it is yours and get back in.</strong> Ownership and access are two different things. You own the business the site represents, and you almost certainly paid for the domain, the hosting, and the design - but what you may not have is the logins (bridgeweb.ca; crawled 2026-10-10). Getting them back is an administrative job with registrars and hosting companies, not a lawsuit: in most cases it takes days, not weeks. The one exception that makes it hard: if your domain was registered in your web person's name instead of yours. Below: the five keys, the 10-minute test that tells you where you stand today, what the recovery actually looks like when someone has already gone silent, and the four-ask script that makes this never happen.</p>
+    <div class="article">
+
+      <h2>1. The sentence that matters: ownership and access are two different things</h2>
+      <p>This is the whole problem in one line. You almost certainly <em>own</em> your website - the business it represents is yours, and you paid for the domain, the hosting, and the design. What you may not have is <em>access</em>: the logins that let you renew, move, or change any of it (bridgeweb.ca; crawled 2026-10-10). And in practice, access is what runs the business. A domain you own but cannot renew is a domain you will lose. A hosting account you paid for but cannot log into is a website you cannot update. So when your web person goes quiet, the real question is never "is it mine?" - it is "can I get in?" (If they are gone but still have keys of their own, <a href="does-my-old-developer-still-have-access-to-my-website.html">the old-developer article</a> is the revoke side of this coin; this article is the recovery side.)</p>
+      <h2>2. The five keys - the complete list</h2>
+      <p>Your entire web presence hangs on five accounts. Miss any one and you have a hole. <strong>Key one: the domain registrar.</strong> The company where your domain name lives. The person listed as the registrant is the legal owner - they control renewal, changes, transfers, and sale (hosting-australia.com, updated ~10 days ago; crawled 2026-10-10). <strong>Key two: the hosting account.</strong> Controlled by whoever opened it - they get the logins, the invoices, and the support access; if your site sits on your designer's hosting, they control your files, your databases, and your email (hosting-australia.com; crawled 2026-10-10). <strong>Key three: the website admin login.</strong> Your own Administrator account in your own name - not a shared login everyone passes around. <strong>Key four: the business email admin.</strong> Whoever controls the email account can reset half of everything else. <strong>Key five: the Google accounts.</strong> Analytics, Search Console, and your Google Business Profile - years of traffic history cannot be recovered if you lose the account, and a Business Profile left in a former agency's hands can still be edited after you have parted ways (buildbyravirai.com, updated ~6 days ago; crawled 2026-10-10). Note what this list is: five accounts, and your web person was probably the one who opened most of them.</p>
+      <h2>3. The 10-minute test - do this today, while everything is fine</h2>
+      <p>You do not need your web person to answer any of these. <strong>One: can you log in to the registrar?</strong> Go to the registrar's website and try a password reset using your own business email. If the reset link arrives, the account is yours. If nothing arrives, the account belongs to somebody else and your domain is sitting inside it (buildbyravirai.com, updated ~6 days ago; crawled 2026-10-10). <strong>Two: who bills the hosting?</strong> If your developer bills you on their own letterhead and you have never once had an email from the hosting company itself, your site is on their account (buildbyravirai.com). <strong>Three: do you have your own admin login?</strong> Try it right now - WordPress admin in your name, Shopify store owner (not staff). <strong>Four: are the Google accounts in your name?</strong> Sign in to Analytics and Search Console with your business email and check your site is listed (buildbyravirai.com). If you pass all four, you are fine no matter who disappears. Every key you fail is a gap to close - see section 8.</p>
+      <h2>4. They are already gone - the recovery ladder</h2>
+      <p>Silence does not mean disaster; it means paperwork. Work the ladder in order. <strong>First: document everything.</strong> Email, phone, project tools, social media - attempt contact through every channel and log every attempt with a timestamp (pixelmattic.com, updated ~17 days ago; crawled 2026-10-10). This is not drama; it is the paper trail most dispute processes ask for first (pixelmattic.com, updated ~17 days ago; crawled 2026-10-10). <strong>Second: assess what you actually have.</strong> Run the section-3 test. Whatever you can log into yourself is already safe. <strong>Third: find the trail without them.</strong> Your bank and credit card statements show the hosting company on the monthly or yearly charge; a public WHOIS lookup shows which registrar holds the domain even when the owner details are hidden (bridgeweb.ca; crawled 2026-10-10). Between the charge and the registrar you can almost always identify both accounts. <strong>Fourth: contact the registrar and the host directly.</strong> Most have ownership-dispute processes - slower than a login, but they exist, and this route works in most cases within days to weeks (bridgeweb.ca; pixelmattic.com; crawled 2026-10-10). <strong>Fifth: bring in a new web person.</strong> They can assess what is recoverable from the hosting account versus what needs rebuilding, even with zero cooperation from the old one (pixelmattic.com). The honest framing: this is an administrative job, not a legal fight - except in the one case in section 5.</p>
+      <h2>5. The hard case: the domain is registered in their name</h2>
+      <p>This is the exception every source names. If your designer registered the domain under their own name because it was convenient at the time, they are the registrant - not you - and if the relationship ends badly, you can be locked out of your own address while your customers land on a parked page (hosting-australia.com, updated ~10 days ago; crawled 2026-10-10). What actually moves this: evidence, not argument. Invoices showing you paid for the domain, business registration matching the name, the documented contact trail from section 4 - registrars deal with this regularly and have a dispute process (bridgeweb.ca; crawled 2026-10-10). Note what this is not: nobody stole anything here - it is a custody fight over who the name is registered to. For the hostile-attack version, where a stranger takes your domain out from under you, <a href="can-someone-steal-my-domain-name.html">the domain-theft article</a> covers that separate problem. If you cannot reach the account email, registrars will ask for government-issued photo ID, billing details (card last four, transaction history), and the domain's creation date - and ICANN complaints exist as the last resort (domaindetails.com, 2025 guide; crawled 2026-10-10). Two clock facts to know: a domain near expiry generally cannot be transferred at all, so keep it renewed while the dispute runs (medium.com @instarenewal, ~93 days ago; crawled 2026-10-10) - and if it expires outright, anyone can grab it: a competitor, a reseller, a bad actor, after which recovery can become impossible (clickmarketing.co.uk, updated ~18 days ago; crawled 2026-10-10). The 60-day lock also binds new registrations, recent transfers, and recent registrant changes - a voted change (early-2025 GNSO Council vote for a shorter 30-day lock) is still not in force as of mid-2026, so plan around the longer one (medium.com @instarenewal; crawled 2026-10-10).</p>
+      <h2>6. The hosting and the files - the part that usually resolves first</h2>
+      <p>Hosting disputes are almost always easier than domain disputes, because money leaves a trail. The host wants to know one thing: who is paying? A bank statement showing the charge is the host's preferred evidence - payment proof is what support reaches for first (bridgeweb.ca; world.siteground.com; crawled 2026-10-10). SiteGround's published version of the process: email their compliance address with the exact subject line they specify, attach a scanned ID matching the name on file and a bank statement showing a payment for the account - without the right subject and both documents the case is not even reviewed (world.siteground.com; crawled 2026-10-10). Once you are in, get a full backup immediately: files and database, and then quarterly (buildbyravirai.com, updated ~6 days ago; crawled 2026-10-10) - and know what the host was keeping for you all along, because most hosts' "backups" are thinner than owners assume (<a href="does-my-web-host-actually-back-up-my-website.html">the web-host-backup article</a> is the full audit of that promise). If the old account is truly unreachable, a new web person can rebuild from the site itself - what the public internet shows is a usable starting point for a rebuild, and it is worth knowing that before you panic (<a href="if-my-website-vanished-tonight-do-i-have-a-copy.html">the backup-copy article</a> is the standing backup question).</p>
+      <h2>7. The three traps</h2>
+      <p><strong>Trap one: "they handle everything, so I don't need the logins."</strong> That is exactly the setup that breaks. Convenience today is the locked door tomorrow. <strong>Trap two: "I have the password, so I'm fine."</strong> A password is not an account. If the registrar account is in their name on their email, a password reset goes to them, transfer confirmations go to them, and the moment they change the password you are out. Test the password reset yourself - section 3, step one. <strong>Trap three: "nothing has gone wrong in five years."</strong> Five quiet years prove the relationship was good, not that the keys were yours. The disappearance stories almost always start with keys nobody ever checked. The cheapest version of this whole article is one afternoon with the section-3 test and the four asks in section 8.</p>
+      <h2>8. What to tell your web person - the four asks</h2>
+      <p>Send your web person this: <em>"I want to make sure the business owns everything, even if you disappear tomorrow. Four asks. First, my domain: move it into a registrar account opened in the business's name, with my business email as the registrant and the account contact. Second, the hosting: open it as a new account in the business's name with my billing and my business email, and add yourself as a user with the access you need - the account stays mine. Third, the site itself: give me my own administrator login in my own name, and make sure the email and the Google accounts - Analytics, Search Console, the Business Profile - are in my name too. Fourth, write down the list: registrar, host, admin login, email, and Google accounts, with the company names and which of my emails each one is on - one page, kept current. This isn't about trust, it's about paperwork."</em> The proof is the section-3 test passing on all four. (And if email is the key you are most worried about losing, <a href="if-someone-hacks-my-email-can-they-take-over-my-website.html">the email-takeover article</a> covers how the whole chain falls; if you are hiring again and want to hand keys out safely, <a href="should-i-give-my-web-developer-my-passwords.html">the passwords article</a> is the other side of this conversation.)</p>
+
+      <p class="meta">Verified 2026-10-10. Ownership vs. access: you paid for the domain, hosting, and design but may lack the logins; recovery is usually an administrative job measured in days, not weeks - the exception is a domain registered in the developer's own name (bridgeweb.ca; crawled 2026-10-10). The registrant controls renewal, changes, transfers, and sale; a designer-registered domain means lockout on a bad split, resolved by weeks of paperwork (hosting-australia.com, updated ~10 days ago; crawled 2026-10-10). The account holder controls the hosting - logins, invoices, support access (hosting-australia.com). Safest setup: the business owns domain and hosting; the designer works with permission, not ownership (hosting-australia.com). Recovery ladder: document contact attempts with timestamps, assess actual access, contact registrar/host directly (dispute processes take time), new developer assesses recoverable vs. rebuild (pixelmattic.com, updated ~17 days ago; crawled 2026-10-10). The 10-minute test: password-reset check on the registrar, identify the hosting biller, confirm your own admin login, verify Google accounts are in your name - lost traffic history is not recoverable (buildbyravirai.com, updated ~6 days ago; crawled 2026-10-10). Paper trails: bank statements identify the host, WHOIS identifies the registrar (bridgeweb.ca). Registrar recovery without email: photo ID, billing details, creation date; ICANN complaint last (domaindetails.com; crawled 2026-10-10). An expired domain can be claimed by anyone - then recovery can become impossible (clickmarketing.co.uk, updated ~18 days ago; crawled 2026-10-10). Transfers need the auth code from the registrar (snapshot.internetx.com, updated ~24 days ago); the 60-day lock still binds; the voted (early-2025 GNSO Council) shorter 30-day replacement is not yet in force as of mid-2026 (medium.com @instarenewal, ~93 days ago; crawled 2026-10-10). All reported figures and timeframes are from the cited sources, not promises about your exact situation. This is general information, not legal advice, and not promises about your exact situation.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free security check scans what the public internet actually sees on your site &mdash; HTTPS, headers, and the common exposures. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>A vanished web person is one of six security checks. The full Site Health Watch audit covers all 40 &mdash; speed, email, mobile, SEO, accessibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+what+happens+if+my+web+person+disappears+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
