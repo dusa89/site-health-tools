@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does &lsquo;Serve Images in Next-Gen Formats&rsquo; Mean on My Speed Test?</title>
+<meta name="description" content="Your speed test says 'serve images in next-gen formats' - it means your JPEG and PNG photos are stored in 1990s file formats. WebP photos are about 30% smaller and AVIF photos about half the size, with the same quality. What the line means, which format to use, and how to fix it.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Does &lsquo;Serve Images in Next-Gen Formats&rsquo; Mean on My Speed Test?</h1>
+    <p class="lede">The short answer: <strong>the speed test is telling you your photos are saved in old file formats.</strong> Your website's photos are almost certainly JPEGs and PNGs - formats designed in the 1990s. Newer formats called WebP and AVIF show the same photo with far less data: WebP files run about 30% smaller than the same JPEG, and AVIF files about 40-50% smaller. Smaller photo files download faster, which is why Google's test flags it. Below: what the line means, why JPEG is the old one, what WebP and AVIF actually are, why this one line can move your whole score, the three ways to fix it without touching your photos, the two gotchas, and what to tell your web person.</p>
+    <div class="article">
+
+      <h2>1. What the line on your report actually means</h2>
+      <p>Google's speed test looks at every image your homepage loads - your logo, your header photo, your product pictures - and checks the file format. If it finds JPEGs and PNGs that could be re-saved as WebP or AVIF, it shows you this line, along with an estimate of how many bytes you would save. The line is not saying your photos are ugly or wrong; it is saying they are packaged inefficiently. Think of it like this: the photo is the same painting, but the box it ships in is twice as big as it needs to be. "Next-gen formats" is just Google's name for the newer, tighter boxes. (This is the third member of the "translate one line of your report" series - the first two decoded the other big image/code lines: <a href="what-does-reduce-unused-javascript-mean-on-my-speed-test.html">the unused JavaScript line</a> and <a href="what-does-eliminate-render-blocking-resources-mean-on-my-speed-test.html">the render-blocking line</a>. Same report, different line, different mechanism.)</p>
+      <h2>2. Why JPEG is the "old" format - and why it is still everywhere</h2>
+      <p>JPEG was standardized in 1992 - the math that squeezes a photo into a JPEG file is more than 30 years old (medium.com AVIF guide, updated 81 days ago; crawled 2026-10-11). It is everywhere because it was first, it works in every device ever made, and camera phones still save JPEGs by default. Nobody is saying JPEG is broken - but compression science did not stop in 1992, and the newer formats pack the same picture into noticeably fewer bytes. That matters because images are the heaviest thing on most websites: Google's own developer docs put images at up to 60%-65% of the bytes on a typical page, and page size is "a major factor in total rendering time" (developers.google.com WebP docs; crawled 2026-10-11). When the heaviest cargo on your page can be repacked 30-50% smaller, that is the line that moves the needle. (The "photos are heavy" fact itself is the WHY sibling's whole subject - <a href="why-do-my-photos-slow-down-my-website.html">why your photos slow down your site</a>. This article is the specific fix the test names.)</p>
+      <h2>3. WebP - Google's newer box, about 30% smaller</h2>
+      <p>WebP is Google's image format, released in 2010, and it is the workhorse answer to this line. Per Google's own developer documentation, WebP images are "typically 30% smaller" than comparable JPEGs and PNGs at equivalent visual quality, with lossless WebP running 26% smaller than PNGs - and Adobe's guide cites Google's developers at 25%-34% smaller than a comparable JPEG (developers.google.com, adobe.com; crawled 2026-10-11). It handles transparency like PNG does - one of WebP's tricks is keeping transparent backgrounds while still compressing hard, which PNG cannot do (developers.google.com; crawled 2026-10-11). It even handles animation, which makes it the modern replacement for those giant animated GIFs - <a href="do-those-animated-gifs-on-my-homepage-slow-down-my-website.html">the GIF article</a> explains why those are so heavy. Browser support is a non-issue in 2026: every current browser reads WebP, and Safari has since version 14 (2020). For most small-business sites, converting everything to WebP clears this line in most cases.</p>
+      <h2>4. AVIF - the newest box, about half the size</h2>
+      <p>AVIF is one generation newer than WebP. It was built by the Alliance for Open Media - a group that includes Google, Apple, Netflix, and Mozilla - out of the AV1 video codec (dev.to AVIF guide, updated ~30 days ago; crawled 2026-10-11). The numbers: roughly 50% smaller than the same JPEG at the same visible quality, and about 20% smaller than WebP itself (dev.to; crawled 2026-10-11). A 1 MB JPEG photo often drops to 400-500 KB as AVIF - a 40-50% saving with no visible difference (medium.com; crawled 2026-10-11). It is not a lab toy: Netflix uses AVIF for its thumbnail images in production (dev.to; crawled 2026-10-11). Browser support reached full coverage in Chrome 94+, Firefox 93+, Safari 16+, and Edge 94+ - roughly 95% of users (dev.to; crawled 2026-10-11). The practical advice from people who do this for a living: serve AVIF first, fall back to WebP, then to JPEG or PNG for the few outliers (blog.fileformat.com; crawled 2026-10-11). You do not have to pick one - the next section shows why.</p>
+      <h2>5. Why one line can move your whole score</h2>
+      <p>Because photos dominate the weight of your page. If images are 60-65% of your page's bytes and you shrink them 30-50%, you have cut roughly a fifth to a third of your page's total weight in one move - which is why this line often comes with the biggest byte-savings number on the whole report. Nobody on a phone in a parking lot notices whether your header photo is a JPEG or a WebP. They notice whether it loaded. (And if the report itself is giving you anxiety generally rather than this one line, the framing sibling - <a href="should-my-website-speed-test-score-worry-me.html">should your speed score worry you</a> - is the read.)</p>
+      <h2>6. How to actually get it done - three routes</h2>
+      <p><strong>Route one: an image plugin (WordPress sites).</strong> Plugins like ShortPixel, Imagify, or WebP Express convert your existing photos to WebP (and some to AVIF) automatically and serve the new file to browsers that understand it. You change nothing by hand; the plugin does the repacking. <strong>Route two: your CDN does it.</strong> If your site sits behind Cloudflare, its image-optimization features convert and serve WebP on the fly with no changes to your site's files. <strong>Route three: convert before you upload.</strong> Google's own free Squoosh tool lets you drag a photo in, pick WebP or AVIF, and compare the original against the result side by side before you download it. The fallback problem solves itself: the plugins and CDNs detect what the visitor's browser understands and hand it the best format - AVIF where it works, WebP where it works, the original JPEG everywhere else. Old browsers never see a broken image. That fallback chain is the whole reason there is no risk in switching.</p>
+      <h2>7. The two gotchas</h2>
+      <p><strong>Gotcha one: outside the browser, the new formats can look broken.</strong> A practical AVIF guide warns that the problem is not browsers - it is everything else: Windows Photos, macOS Preview, and most email clients do not open AVIF natively, and some struggle with WebP too (dev.to; crawled 2026-10-11). That does not affect your website at all - it means: do not email an AVIF file to your accountant and expect her to open it. Keep your originals in the original format; convert copies for the website. <strong>Gotcha two: never convert twice.</strong> Converting a JPEG to WebP to AVIF stacks the compression damage like photocopying a photocopy. Convert once, from the best original you have, and you are done. (The other "when to load" lever is separate and stacks with this one - <a href="what-is-lazy-loading-and-will-it-make-my-website-faster.html">lazy loading</a> controls when images load; next-gen formats control how heavy they are. Do both.)</p>
+      <h2>8. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"Our speed test says 'serve images in next-gen formats.' Three asks. First, run our homepage through Google's speed test and confirm this is the biggest byte-savings line on the report. Second, convert our site's images to WebP (and AVIF if our setup supports it) - plugin, CDN, or manual conversion, whichever fits how our site is built - with automatic fallback to the originals for old browsers. Third, re-run the speed test after and show me the before-and-after on both the score and the total page weight. Plain English, and keep the original photos backed up."</em> The proof is the report: the line disappears, the page is lighter, and the photos look identical. (That last check is what the free speed tool on this site does in ten seconds - <a href="../speed.html">the Plain-English Speed Check</a> names the three biggest things slowing your homepage down.)</p>
+      <p class="meta">Verified 2026-10-11. Images are up to 60%-65% of bytes on most web pages; WebP typically 30% smaller than comparable JPEG/PNG at equivalent quality; lossless WebP 26% smaller than PNG; lossy WebP supports transparency alongside lossy compression (Google for Developers, WebP compression + FAQ docs; crawled 2026-10-11). Adobe cites Google's developers at WebP 25%-34% smaller than comparable JPEG (adobe.com; crawled 2026-10-11). AVIF ~50% smaller than JPEG at equivalent quality, ~20% smaller than WebP; Alliance for Open Media (Google, Apple, Netflix, Mozilla); Netflix uses AVIF for thumbnails; Chrome 94+, Firefox 93+, Safari 16+, Edge 94+; ~95% of users (dev.to, updated ~30 days ago; crawled 2026-10-11). AVIF lossy typically 45-65% smaller than JPEG; WebP lossy 25-35% smaller; serve AVIF first, fall back to WebP, then JPEG/PNG (blog.fileformat.com, updated 184 days ago; crawled 2026-10-11). A 1 MB JPG often drops to 400-500 KB as AVIF, ~40-50% saving; JPEG compression tech dates to 1992 (medium.com, updated 81 days ago; crawled 2026-10-11). Non-browser AVIF/outer-browser support gaps (OS viewers, email clients) (dev.to; crawled 2026-10-11). This is general information, not promises about your exact report - but the format math is the same math on everyone's page.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. A heavy images line like this one is exactly the kind of culprit this check surfaces.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours, including the exact loading-time number for your homepage.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+next-gen+image+formats+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
