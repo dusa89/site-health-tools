@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should My Newsletter Come From a Subdomain Like news.mycompany.com?</title>
+<meta name="description" content="Sending the newsletter from your main domain means one spam-complaint wave can stain everything - invoices, quotes, your personal email. In plain English: how splitting your email into subdomains (news., receipts., the root) keeps the damage in one lane, where the protection stops, and the setup sequence your web person should follow.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should My Newsletter Come From a Subdomain Like news.mycompany.com?</h1>
+    <p class="lede">The honest answer: <strong>yes - a subdomain for the newsletter is a simple, effective reputation protection for small-business email.</strong> The idea is simple: newsletters go out from news.mycompany.com, receipts and order updates from something like notify.mycompany.com, and your everyday company mail stays on plain mycompany.com. Each stream then builds its own reputation with Gmail and friends, so a marketing campaign that annoys people does not take your invoice delivery down with it. This is what the big senders do - Amazon, Netflix, Shopify all split their streams into subdomains. But it is a buffer, not a wall: a truly toxic stream still bleeds into the family name, and a fresh subdomain does not erase a complaint problem. Below: how the splitting works, what the big senders chose and why, the bulk-sender rules that force this at scale, the setup sequence in the right order, and the three traps - including the one that looks like an escape hatch and isn't.</p>
+    <div class="article">
+
+      <h2>1. The core idea - one lane per kind of email</h2>
+      <p>Think of your domain's reputation like a shared credit score, except you can legally open separate accounts. Email comes in streams that behave very differently: <strong>transactional</strong> mail (receipts, password resets, order updates - the stuff customers expect), <strong>marketing</strong> mail (newsletters, promotions - the stuff customers may or may not engage with), and <strong>everyday company mail</strong> (you emailing a client). Put all three on the same address and their reputations are tied together. When a marketing campaign gets a surge of spam complaints, your password-reset emails start getting filtered too - even though they had nothing to do with the problem (fluentsmtp.com, updated ~23 days ago; crawled 2026-10-11). The subdomain answer: newsletters go from <em>news.</em>mycompany.com, transactional from <em>notify.</em>mycompany.com, your own mail from the plain root domain. Each subdomain builds its own reputation, so trouble in one lane stays in one lane (dev.to; elasticemail docs; crawled 2026-10-11). (If you haven't yet asked whether the newsletter should share the same mailbox as your business email at all, <a href="should-i-send-my-newsletter-from-my-business-email.html">that article</a> is the earlier fork in the road - this article assumes the newsletter needs its own stream.)</p>
+      <h2>2. What the big senders actually do</h2>
+      <p>This is not exotic theory; it is the standard shape of professional email. Amazon sends from email.amazon.co, Netflix from info.netflix.com, Shopify from mail.shopify.com, HubSpot from email.hubspot.com - marketing, transactional, and notifications each in their own lane (medium.com @ambreenbasit93, Nov 2025; crawled 2026-10-11). The pattern has stayed stable because the mailboxes evaluate each stream on its own record: a busy newsletter subdomain can absorb its own complaints and warmup period without a receipt email ever noticing. For a small business, the scale is different but the mechanics are identical - and at your scale the setup is a handful of DNS records, not a deliverability team. The other place this same lane logic shows up: <a href="should-i-send-cold-emails-from-my-main-business-domain.html">cold email on the main domain</a> is the same risk with the same answer - don't let one risky stream spend the whole domain's reputation.</p>
+      <h2>3. The bulk-sender rules - why this stops being optional at scale</h2>
+      <p>Gmail, Yahoo, and Microsoft enforce three bulk-sender rules on any domain sending over 5,000 messages a day: DMARC alignment (your mail must cryptographically prove it is really from your domain), one-click unsubscribe, and a spam-complaint rate under 0.3%. Miss any one and the mail is filtered by policy before the content is even scanned (massmailer.io, updated ~13 days ago; crawled 2026-10-11). The standing guidance at that volume: put the marketing on a subdomain like <em>mail.</em>company.com or <em>send.</em>company.com precisely so a reputation hit on marketing does not drag down transactional or corporate mail (massmailer.io; crawled 2026-10-11). At small-business volumes you will not trigger the 5,000-a-day rules, but the structure protects you anyway - reputation is tracked per domain and per subdomain (github.com elasticemail docs), so a newsletter stream that ever spikes stands apart from the mail that runs the business.</p>
+      <h2>4. The setup sequence - in the order that works</h2>
+      <p>Do it in this order and it is boring, which is what you want. <strong>Step one: pick the names.</strong> One subdomain per stream - <em>news.</em> for the newsletter, <em>notify.</em> (or <em>receipts.</em>) for transactional mail, and leave the plain root domain for your own everyday sending. Keep the names obvious; you and the mailboxes both benefit. <strong>Step two: authenticate each subdomain.</strong> Every sending subdomain gets its own SPF, DKIM, and DMARC records. Your main DMARC record can set policy for the subdomains (through the sp tag) or you can publish a separate record for a subdomain that needs different rules (suped.com, updated ~5 days ago; dev.to; crawled 2026-10-11). This is the step people skip, and skipped authentication is exactly why subdomains get treated as suspicious. (<a href="what-is-dmarc.html">The DMARC article</a> explains the protocol itself.) <strong>Step three: move the newsletter platform onto the subdomain.</strong> Whatever sends your newsletter - Mailchimp, ConvertKit, whatever - its sending address becomes <em>you@news.</em>mycompany.com, with its DNS records pointed at the subdomain. <strong>Step four: warm the new subdomain up.</strong> A brand-new subdomain blasting 50,000 messages on day one looks exactly like a hacked account. Start with hundreds of sends a day to your most engaged readers and grow over one to two weeks - bounces and complaints in that window cost far more than they will later (elasticemail docs; hostmycode.com, updated ~18 days ago; crawled 2026-10-11). Each subdomain needs its own warmup even when the parent domain has a good reputation (growleads.io, ~129 days ago; crawled 2026-10-11). Note the warmup rule also explains <a href="how-do-i-check-if-gmail-trusts-my-business-email.html">how Gmail decides whether it trusts a sender</a> - it watches the pattern, not the intent.</p>
+      <h2>5. Where the protection stops - the honest limits</h2>
+      <p>Now the part the guides gloss over. A subdomain is a buffer, not a wall. Subdomain reputations influence the root domain somewhat: Google's Postmaster Tools includes subdomain data in its Compliance view, and if your streams share authentication or infrastructure, delivery on the clean stream can suffer when the dirty one misbehaves (suped.com, updated ~5 days ago; crawled 2026-10-11). The current 2026 picture: Gmail evaluates subdomains and the root domain together - run one suppression list for every team (unspam.email, updated ~2 days ago; crawled 2026-10-11). So the split limits the blast radius; it does not make you bulletproof. A newsletter that chronically gets 2% complaint rates will eventually stain the family name no matter which subdomain it sends from. The split buys you containment of normal fluctuations, not immunity from abuse.</p>
+      <h2>6. The three traps</h2>
+      <p><strong>Trap one: the fresh-subdomain escape hatch.</strong> The most dangerous idea in this article's neighborhood: "our newsletter is getting blocked - just move it to a new subdomain." Moving unchanged complaint-heavy mail to a fresh address does not remove the cause of the complaints. Fix consent, frequency, targeting, and unsubscribe handling first; a new subdomain is where clean mail starts, not where dirty mail hides (suped.com, updated ~5 days ago; crawled 2026-10-11). <strong>Trap two: the cousin domain.</strong> Setting up <em>mycompany-news.com</em> instead of <em>news.mycompany.com</em> looks clever but backfires: it resembles the naming pattern impersonation campaigns use, so both recipients and filters trust it less - and a brand-new domain asks the filters to evaluate new identity, new content, new authentication, and new sending patterns all at once (suped.com, updated ~49 days ago; crawled 2026-10-11). A branded subdomain keeps the trust you already built and the domain relationship obvious. <strong>Trap three: authenticated nowhere.</strong> A subdomain with no SPF/DKIM/DMARC is worse than no subdomain at all - unauthenticated mail from a fresh address is exactly what spam filters are trained to distrust. Every stream, authenticated, before the first real send. (And when something does go wrong, <a href="why-are-my-business-emails-being-blacklisted.html">the blacklist article</a> is the map for which list and how to get off.)</p>
+      <h2>7. The quick verdict</h2>
+      <p>For nearly every small business: <strong>yes, send the newsletter from a subdomain.</strong> It costs you an hour of DNS records, it gives each stream its own reputation lane, it is what every professional sender does, and it keeps a marketing hiccup from staining the mail that runs the business. The full setup: <em>news.</em> for newsletters, a second subdomain for transactional mail, the root domain for your own sending; authenticate all three; warm the new ones up over a couple of weeks; never use a cousin domain; never use a fresh subdomain to dodge a complaint problem. One more frame that decides the whole strategy: <a href="do-i-need-a-dedicated-ip-for-my-business-email.html">the dedicated-IP article</a> covers the IP-level version of the same question (subdomains split the name-level reputation; a dedicated IP splits the server-level one) - for most small businesses the subdomain half delivers most of the protection.</p>
+      <h2>8. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"I want our email split into streams on subdomains. Four asks. First, create a news subdomain of our domain for the newsletter and a notify subdomain for transactional mail - our own everyday mail stays on the plain domain. Second, publish SPF, DKIM, and DMARC records for each subdomain (and confirm the main DMARC policy covers them, or set a separate one where needed) - nothing sends until every stream is authenticated. Third, move the newsletter platform onto the news subdomain's address. Fourth, warm the new subdomains gradually - start with a few hundred sends a day to our most engaged readers, ramp over one to two weeks, and watch for bounces and complaints in that window. No cousin domains, no using a fresh subdomain to dodge existing deliverability problems - we're separating clean streams, not hiding dirty ones. Show me the DNS records and one clean test newsletter in my own inbox before the next real send."</em> The proof is a working newsletter from the new subdomain landing in inboxes, with every record verifiable in DNS. (And if the newsletter content itself keeps ending up in the wrong tab, <a href="why-do-my-newsletters-land-in-the-promotions-tab.html">the promotions-tab article</a> covers that separate question.)</p>
+
+      <p class="meta">Verified 2026-10-11. Stream splitting: each subdomain builds its own reputation, so a marketing complaint wave does not directly poison transactional mail (dev.to; github.com elasticemail docs, updated ~12 days ago; fluentsmtp.com, updated ~23 days ago; crawled 2026-10-11). The buffer is not a wall: subdomain reputations influence the root domain somewhat; Google includes subdomain data in its Compliance view, and shared authentication/infrastructure lets damage cross over (suped.com, updated ~5 days ago; crawled 2026-10-11); current 2026 view - Gmail evaluates subdomains and the root together; one suppression list for every team (unspam.email, updated ~2 days ago; crawled 2026-10-11). Big-sender examples: Amazon email.amazon.co, Netflix info.netflix.com, Shopify mail.shopify.com, HubSpot email.hubspot.com (medium.com, Nov 2025; crawled 2026-10-11). Bulk-sender rules at 5,000+/day: DMARC alignment, one-click unsubscribe, complaint rate under 0.3% (massmailer.io, updated ~13 days ago; crawled 2026-10-11). Warmup: a new subdomain blasting 50,000 messages on day one looks like a compromised account; start with hundreds a day to engaged recipients, grow over 1-2 weeks (elasticemail docs; hostmycode.com, updated ~18 days ago; growleads.io, ~129 days ago; crawled 2026-10-11). Authentication per subdomain: SPF/DKIM/DMARC records scoped to the subdomain; main-domain DMARC can set policy via the sp tag or a separate record (suped.com; dev.to; crawled 2026-10-11). Not an escape hatch: moving unchanged complaint-heavy mail to a fresh subdomain does not remove the cause - fix consent, frequency, targeting, unsubscribe first (suped.com, updated ~5 days ago; crawled 2026-10-11). Cousin domains (example-news.com) resemble impersonation naming patterns and ask filters to evaluate an entirely new identity (suped.com, updated ~49 days ago; crawled 2026-10-11). All numbers are reported figures from the cited sources, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three ID checks that decide whether YOUR mail lands where it should. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>A subdomain keeps a newsletter problem from staining the mail that runs your business - but it is only one of 40 checks. The full Site Health Watch audit checks your email authentication, website speed, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+sending+newsletters+from+a+subdomain+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
