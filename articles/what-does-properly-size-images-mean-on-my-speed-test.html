@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does 'Properly Size Images' Mean on My Speed Test?</title>
+<meta name="description" content="Your speed test says 'Properly size images' - plain English: you are making visitors download a huge photo to show a small picture. What the audit measures, why uploading straight from your phone triggers it, and the three fixes.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Does 'Properly Size Images' Mean on My Speed Test?</h1>
+    <p class="lede">The honest answer: <strong>your website is making visitors download a full-size photo to display a thumbnail.</strong> When your speed test flags "Properly size images," it found pictures on your page whose actual file is much bigger than the space they are shown in - a 4,000-pixel photo squeezed into a 400-pixel slot, for example. The visitor's browser downloads the whole thing anyway. Below: what the line is measuring, why it shows up on so many small-business sites, and the three fixes that clear it.</p>
+    <div class="article">
+
+      <p>All numbers are reported figures from the cited sources, not promises about your
+      situation - audit results differ page to page and change when your site changes.
+      The facts below describe how the audit works in general; your own PageSpeed
+      report is the verdict on your site.</p>
+      <h2>What the line is actually measuring</h2>
+      <p>Google's speed test (Lighthouse, the engine inside PageSpeed
+      Insights) looks at every image on your page and compares two numbers:
+      the size of the image file, and the size the image is actually
+      <em>rendered</em> at on the visitor's screen - factoring in sharper
+      phone screens too. If an image could be shrunk to save at least 4 KB
+      (4 KiB) without changing how it looks on the page, it gets flagged.
+      The report then lists each flagged image with two estimates: how many
+      kilobytes you would save, and roughly how many seconds faster the
+      page would load.</p>
+      <p>This is one of the most common lines on real speed reports - it
+      sits near the top of almost every "most common problems" list,
+      because the cause is so ordinary: somebody uploaded a photo straight
+      from a phone or camera, and nobody resized it.</p>
+      <h2>The 4,000-pixel photo in the 400-pixel frame</h2>
+      <p>Here is what is happening in plain terms. A modern phone takes
+      photos thousands of pixels wide. Your website shows that photo in a
+      slot a few hundred pixels wide - a team headshot, a service image, a
+      banner. When you upload the original straight from the phone, the
+      visitor's browser downloads the ENTIRE original file, then shrinks
+      it down to fit the slot on their screen. You paid for 4,000 pixels
+      of download; the visitor saw 400 pixels of picture.</p>
+      <p>The part that surprises most owners: <strong>shrinking the image
+      with code does not fix this.</strong> If your page's HTML or CSS says
+      "display this at 400 pixels wide," the browser still downloads the
+      full 4,000-pixel file first and resizes it afterward. The download -
+      which is what makes the page slow - happens at full size no matter
+      what the display size is. The fix has to happen to the file itself,
+      not to how it is displayed.</p>
+      <h2>Why this matters more than it sounds</h2>
+      <p>Images are the heaviest thing on a typical page. Recent web-wide
+      measurements put the median mobile page at about 2.6 MB, and images
+      alone account for roughly 0.9 MB of that - more than JavaScript, more
+      than fonts, more than any other single category - the heaviest thing
+      on the page. When several images on a page are all oversized, the waste
+      multiplies: five photos at 3 MB each is 15 MB your visitor downloads
+      on a phone connection, most of it pixels nobody will ever see.</p>
+      <p>And it hits your biggest image hardest. The large photo at the top
+      of your homepage - the one visitors see first - is often the single
+      biggest file on the page, which makes it the biggest lever on the
+      "how fast does this feel" measurement. An oversized hero image is the
+      most expensive version of this problem, which is why our
+      <a href="is-lazy-loading-my-hero-image-slowing-down-my-website.html">hero-image
+      article</a> pairs with this one.</p>
+      <h2>The three fixes, in order of ease</h2>
+      <p><strong>One: resize before you upload.</strong> This is the fix
+      that solves it permanently. Before a photo goes on your site, shrink
+      it to roughly the size it will be displayed - a headshot shown at 300
+      pixels wide does not need to be 4,000 pixels wide. Free tools do this
+      in seconds, and it is the single highest-return habit in this whole
+      article. This pairs with our
+      <a href="why-do-my-photos-slow-down-my-website.html">photos-slowing-you-down
+      article</a>, which covers the file-weight half of the problem.</p>
+      <p><strong>Two: let the platform serve multiple sizes.</strong>
+      WordPress automatically creates several smaller copies of every image
+      you upload and serves each visitor the copy that fits their screen -
+      that is the "responsive images" feature working behind the scenes.
+      Most page builders and themes have an image-size setting per slot;
+      if yours is set to "full size" everywhere, that is the setting
+      undoing the platform's help. Ask your web person which size each
+      image slot is actually using.</p>
+      <p><strong>Three: match the format to the job.</strong> Sizing and
+      format are two halves of the same image problem - a correctly sized
+      JPEG still weighs more than it should next to a modern format. Our
+      <a href="what-does-serve-images-in-next-gen-formats-mean-on-my-speed-test.html">next-gen-formats
+      decoder</a> covers that half, and
+      <a href="do-those-animated-gifs-on-my-homepage-slow-down-my-website.html">the
+      animated-GIF piece</a> covers the special case that eats pages
+      alive.</p>
+      <h2>The three traps</h2>
+      <p><strong>Trap one: "I already shrunk it in the editor."</strong>
+      See above - display size and file size are different things, and the
+      audit only cares about the file. If the original upload is still the
+      full-resolution photo, the flag stays.</p>
+      <p><strong>Trap two: sizing for yesterday's screens.</strong> Phone
+      screens are sharper than they look - a 400-pixel slot on a modern
+      phone can genuinely benefit from an 800-pixel image. The rule of
+      thumb the pros use: serve about twice the displayed size for sharp
+      screens, not eight times. Twice is crisp; eight times is the audit
+      flag.</p>
+      <p><strong>Trap three: "fixing" it by lazy-loading the hero
+      image.</strong> Lazy-loading is for images BELOW the fold - our
+      <a href="what-is-lazy-loading-and-will-it-make-my-website-faster.html">lazy-loading
+      explainer</a> covers when it helps. Lazy-loading the big image at the
+      top of the page trades this audit flag for a different one and can
+      make the page feel slower. Size the hero image correctly instead.</p>
+      <h2>What to ask your web person</h2>
+      <p>Four questions that get a straight answer: (1) "Which of my images
+      are being served at full original size - can you show me the flagged
+      list from my speed report?" (2) "What display size is each image slot
+      actually using, and are the files matched to it?" (3) "Is my theme or
+      page builder overriding the platform's automatic smaller copies with
+      'full size' anywhere?" (4) "After resizing, will you re-run the speed
+      test so I can see the savings number change?" If the answers come
+      back vague, our
+      <a href="how-fast-should-my-website-load.html">how-fast-should-it-load
+      benchmarks article</a> gives you the numbers to hold the conversation
+      to.</p>
+      <p class="meta">Verified 2026-10-11. "Properly size images": Lighthouse
+      compares each image's rendered size (device pixel ratio factored in)
+      against the actual image size and flags images with at least 4 KiB of
+      potential savings, listing estimated savings in KiB and seconds
+      (chemicloud.com PageSpeed Insights deep-dive, crawled ~15 days ago;
+      imagify.io properly-size-images guide, updated ~165 days ago, crawled
+      ~45 days ago). Consistently among the most common opportunities in
+      real audits (loadfocus.com PSI glossary, crawled ~2 days ago).
+      Median mobile page ~2.6 MB, images ~0.9 MB - the heaviest resource
+      type, ahead of JavaScript at ~0.7 MB (colorlib.com 2026 site-speed
+      statistics citing HTTP Archive, September 2026, crawled ~3 hours
+      ago). Web Almanac 2025: images ~911 KB of the median mobile home
+      page, ~36% (colorlib.com web-design statistics, crawled <1 hour
+      ago). Golden rule: size uploads to the dimensions they will be
+      displayed at - the browser downloads the full file even when HTML/CSS
+      shrinks the display (imagify.io). WordPress creates multiple smaller
+      copies of each upload and serves the fitting size automatically
+      (imagify.io WordPress guide). All figures are reported measurements
+      from the cited sources, not promises about any individual site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Wondering which of YOUR images are the oversized ones? Our free speed check scans your site the way the public internet sees it and translates the results into plain English: which images are too big, how much faster the page could load, and what to fix first. No signup, no ads.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>Oversized images are the most common speed problem on small-business sites - and the full Site Health Watch audit finds every one of them, plus your security gaps, mobile issues, SEO problems, and AI visibility. Every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+properly+sizing+images+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
