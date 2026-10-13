@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Does My Website Stutter When I Scroll? — The Scroll-Jank Problem</title>
+<meta name="description" content="Your website loads fine, but scrolling it feels choppy - little hitches and jumps as your finger moves. That is a different problem from slow loading, with different causes: parallax effects, scroll-hijacking code, background video, and animations built the expensive way. What scroll stutter is, why phones suffer most, and the four asks for your web person - in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Does My Website Stutter When I Scroll? — The Scroll-Jank Problem</h1>
+    <p class="lede">The short answer: <strong>your website has a scrolling problem, not a loading problem - and the speed test cannot see it.</strong> Loading is the race to get the page onto the screen; scrolling is what happens after the page arrives, when your visitor's finger is moving. Smooth scrolling is a flipbook: the browser draws about 60 fresh pictures of the page every second, one for each step of the scroll. Every picture gets roughly 16 milliseconds of work time. When the page's code - a parallax effect, an animation library, a background video - cannot finish its work inside that window, the browser drops the picture, and your eye sees a hitch. Developers call it "jank." A site can load in two seconds flat and still stutter like a slideshow on a customer's phone. Below: what is actually happening during those hitches, the five usual suspects in likelihood order, why this is a phone problem first, the 30-second test, and what to tell your web person.</p>
+    <div class="article">
+
+      <h2>1. What stuttering actually is - the 60-pictures flipbook</h2>
+      <p>Forget loading for a minute. Once the page is on the screen, scrolling is a separate performance job, and it runs on a brutal deadline. To look smooth, the browser must redraw the page about <strong>60 times per second</strong> - one new picture for each step of the scroll - which gives the page's code roughly <strong>16 milliseconds</strong> to do all its work per picture. Anything the site wants to do while you scroll - move a background, fade in a section, play a video, run a plugin's scroll code - has to fit inside that window. Miss the window and the browser skips the picture; your eye reads the skip as a hitch, a jump, a moment where the page seems to stick and then lurch forward. That skipped-picture hitch is what developers call <strong>jank</strong>, and a 2026 web-design guide uses exactly that word - "jank (stuttering visual)" - for what happens when a page recalculates positions on every pixel of scroll on a weaker device. Two things follow that most owners never hear. First, <strong>this is invisible to speed tests.</strong> A speed test grades the loading race - how fast the page arrives. Scroll jank starts after the finish line, so a site can score a perfect grade and still feel broken in a customer's hand (the full version of that blind spot lives in <a href="why-does-my-website-feel-slow-when-the-test-says-fast.html">the feels-slow article</a>). Second, the hitches are not random - they come from specific, findable work the page is doing while you scroll. Here are the five usual suspects, likeliest first.</p>
+      <h2>2. The five usual suspects - likeliest first</h2>
+      <p><strong>Suspect one: parallax and scroll-linked animation.</strong> Parallax is the effect where the background moves at a different speed from the text as you scroll - the depth illusion. To pull it off, the page's code recalculates where elements sit on <em>every pixel of scroll</em>. On a strong desktop that math fits inside the 16-millisecond window; on a customer's phone it often does not, and every missed window is a visible hitch. The 2026 guide's rule is blunt: if you must do it, move things with the cheap properties only - and on phones, the honest answer is usually to turn it off entirely (more on that in section 3). If your site has a "wow" scrolling effect anywhere, it is suspect one until proven otherwise. (Homepage sliders are the same family - animation machines that also steal scroll frames; <a href="does-that-homepage-slider-slow-down-my-website.html">the slider article</a> covers what they cost your loading time.)</p>
+      <p><strong>Suspect two: scroll-jacking.</strong> Some sites do not just decorate the scroll - they <em>take it over</em>, replacing the browser's native smooth scrolling with their own scripted version: eased glides, snap-to-section jumps, momentum they invented themselves. A 2026 retrospective on parallax-era mistakes names scroll-jacking as a classic sin - the page stops feeling like the customer's finger is in charge and starts feeling like the site is fighting them. When the takeover code is even slightly too heavy, the fight shows up as stutter. The tell: scrolling your site feels <em>different</em> from scrolling every other site - floaty, delayed, or snap-happy. Native scroll is native for a reason; anything that replaced it is a suspect.</p>
+      <p><strong>Suspect three: the autoplay background video.</strong> A full-screen video playing behind your headline is one of the heaviest things a page can be doing <em>while</em> the visitor scrolls. The browser is decoding video frames and redrawing the scroll at the same time, on the same 16-millisecond budget - on a phone, something has to give, and it is the scroll smoothness. (The video article covers what that video costs your <a href="does-the-video-on-my-website-slow-it-down.html">loading time</a>; this is the second bill it sends, due every time someone scrolls.) If the homepage has a moving background, scroll the page on a mid-range phone and watch what happens to the video and the text together.</p>
+      <p><strong>Suspect four: animations built the expensive way.</strong> There are two ways to move something on a page. The cheap way - sliding and fading with the properties developers call transform and opacity - hands the work to the phone's graphics chip, which was built for exactly this. The expensive way - moving things by changing their width, height, top, or left position - forces the browser to <em>recalculate the entire page layout</em> on every single frame, sixty times a second. Performance references state the rule as an absolute: animate transform and opacity; animating layout properties causes jank. Sticky headers that shrink on scroll, elements that grow as they enter the screen, "reveal on scroll" libraries - if any of them were built the expensive way, every scroll is sixty layout recalculations a second. This one is invisible from the outside; only the web person can check how the animation was built, which is why it is ask number two in section 6.</p>
+      <p><strong>Suspect five: heavy scroll listeners from plugins.</strong> Every plugin that reacts to scrolling - a sticky widget, a reading-progress bar, a "back to top" button with a fade, a chat bubble that reshapes itself - installs a listener: code that runs on every scroll event. Developer references document the raw scroll handler doing per-frame math as the <em>most common</em> source of scroll jank, because a dozen plugins each doing "a little work" on every scroll event adds up past the 16-millisecond budget fast. The page that stutters may not have one big culprit - it may have fifteen small ones, each installed by a different plugin on a different day. (If the plugin count itself worries you, <a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">the plugin-pileup article</a> is the companion read.)</p>
+      <h2>3. Why this is a phone problem first</h2>
+      <p>Almost every scroll-jank complaint follows the same script: fine on the owner's desktop, miserable on a customer's phone. That is not a coincidence - it is physics plus software. Phone processors are weaker than desktop chips, so the same scroll math that fits in 16 milliseconds on a laptop misses the window on a phone. Touch scrolling behaves differently from mouse-wheel scrolling - on iPhones, the momentum glide can actively conflict with scripted scroll effects, producing the glitch-and-jump pattern owners describe. Mobile browsers even disable some desktop tricks outright to save battery: the "fixed background" effect many parallax designs depend on simply does not run on mobile Safari, so the effect either breaks or falls back to something the designer never tested. The industry has quietly admitted this: a 2026 template roundup notes that many modern templates now <em>disable parallax on touch devices entirely</em> and show a static section instead - and warns that the quality of that mobile fallback matters more than how gorgeous the desktop effect is. A second 2026 guide goes further: turn complex parallax off below phone-sized screens, and test on real phones, because desktop testing tools do not accurately simulate a phone's graphics limits. The business translation: <strong>the phone is exactly where scroll effects fail hardest</strong> - so the phone version of your site is the one that decides whether the effect was worth it. A desktop-only "wow" is a customer lost on the device in their pocket. (<a href="why-is-my-website-slow-on-mobile.html">The mobile-slowness article</a> covers the rest of the phone story.)</p>
+      <h2>4. The 30-second test (and the real one, for your web person)</h2>
+      <p>You can run the owner's version in half a minute. Open your homepage on your phone - not your computer, your phone - and scroll it slowly top to bottom, then fast. Do the text and images glide, or do they hitch, stick, and lurch? Now do the same on a friend's or family member's phone, ideally a cheaper or older one. If yours glides and theirs stutters, you have a device-strength problem: assume your customers' phones are closer to theirs than to your flagship. If it stutters on both, the page is doing too much work per scroll frame, full stop. The web person's version is the real measurement: Chrome's developer tools have a Performance recorder - record while scrolling, and the tool marks every frame that missed its ~16-millisecond budget in red, plus a paint-flashing view that shows which parts of the page are being repainted on every frame (on a well-built page: almost none). Developer references put the practical jank threshold at tasks longer than about 50 milliseconds hogging the main thread. You do not need to run this yourself - but "show me the frame recording" is a perfectly reasonable thing to ask for, and it separates a web person who measured from one who guessed.</p>
+      <h2>5. Three things that feel like fixes but aren't</h2>
+      <p>Owners reach for comforting explanations - all three fail. <strong>"The speed test says we're fine."</strong> The test grades loading; jank is a scrolling problem. A perfect score and a stuttering page coexist happily - that is the entire point of this article, and <a href="why-does-my-website-feel-slow-when-the-test-says-fast.html">the feels-slow article</a> explains the blind spot in full. <strong>"It only happens on my phone - customers have better phones."</strong> Do not bet the business on it. The safe assumption is that the customer's phone is weaker than yours - and the 30-second test in section 4 settles it either way. "Only on phones" is not the all-clear it sounds like. <strong>"I'll add a preloader / a nicer loading animation."</strong> A preloader dresses up the loading race; it does nothing for the sixty-frames-a-second job that starts after loading ends. It is makeup on the wrong problem. The honest position: if the page stutters while scrolling, something on the page is doing too much work per frame, and the fix is doing less work - not scoring better on a different test.</p>
+      <h2>6. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"Our website stutters when you scroll it on a phone - little hitches and jumps. I want it fixed as a scrolling problem, not a loading problem. Four asks. First, give me an inventory of everything the page does while someone scrolls: parallax or scroll-linked effects, any scroll-jacking or custom smooth-scroll code, the background video, sticky animated headers, and every plugin with a scroll listener. Second, for anything animated, confirm it was built the cheap way - transform and opacity only, never width, height, top, or left per frame - and show me the frame recording from the browser's performance tool with the red missed frames gone. Third, turn the heavy scroll effects OFF on phones - parallax, scroll-jacking, and the autoplay background video get a static fallback on touch devices, and I want to see the phone version myself. Fourth, respect the reduce-motion setting - visitors who have asked their device for less motion get the calm version of our site, no exceptions. Plain English, and show me the before-and-after on a real phone."</em> The proof is the scroll: slow top-to-bottom on a mid-range phone, no hitches, no lurches. A web person who answers a scrolling complaint by re-running the speed test has diagnosed the wrong race - the loading grade was never the question. (And if the page also rearranges itself <em>while loading</em>, that is the separate problem <a href="why-does-my-website-jump-around-while-it-loads.html">the jump-around article</a> covers; if taps feel delayed too, <a href="why-does-my-website-lag-when-customers-click-the-buttons.html">the lag article</a> is the third member of the family.)</p>
+      <p class="meta">Verified 2026-10-10. Scroll jank defined: the skipped-picture hitch when page code cannot finish its per-frame work inside the ~16-millisecond window of a 60-frames-per-second scroll; "jank (stuttering visual)" is the standard term (getsocialguide.com 2026 parallax web-design guide, updated ~25 days before crawl; GitHub performance-debugging references, crawled 2026-10-10). Parallax risk: recalculating element positions on every scroll pixel causes jank on weaker devices; fix is transform/opacity only, never top/left (getsocialguide.com). Scroll-jacking: overriding native scroll smoothness named as a classic usability sin; the page feels like it is fighting the visitor (webbb.ai 2026 parallax retrospective, crawled 2026-10-10). Animation rule: width/height/top/left/margin force full page-layout recalculation every frame; transform/opacity hand work to the graphics chip (GitHub performance references, crawled 2026-10-10). Scroll listeners: a raw scroll handler doing per-frame math on the main thread is the most commonly documented source of scroll jank; preferred order is native CSS scroll-driven animation, then an optimized library, then a hand-rolled throttled listener last (GitHub performance reference, crawled 2026-10-10). Mobile: weaker phone processors, iOS momentum-scroll conflicts with scripted effects, mobile browsers disabling fixed-background effects to save battery (getsocialguide.com; GitHub scroll-experience reference, crawled 2026-10-10). Industry fallback: many 2026 templates disable parallax on touch devices with static fallbacks; check demos on a real phone (colorlib.com template roundup, updated ~8 days before crawl); disable complex parallax below ~768px and test on real devices since desktop tools do not simulate mobile graphics limits accurately (muffingroup.com 2026 parallax guide). Measurement: Chrome DevTools Performance panel - record while scrolling, frames over ~16.6ms marked red; Rendering tab paint-flashing shows per-frame repaints (should be near zero); ~50ms+ main-thread tasks are the practical jank threshold (GitHub performance-debugging references, crawled 2026-10-10). Accessibility: aggressive parallax can trigger nausea for vestibular-disorder visitors; respecting the OS reduce-motion setting is now described as a WCAG requirement (getsocialguide.com). Honest ceiling: scroll smoothness is not one of Google's three Core Web Vitals scores - speed tests grade loading, not scrolling - so a site can score well and still stutter. All numbers are reported figures from the cited sources, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. Scroll stutter starts after loading ends, so pair this check with the 30-second phone-scroll test in the article.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours, including the exact loading-time number for your homepage.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+websites+that+stutter+when+scrolling+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
