@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Someone Copied My Entire Website &mdash; Can They Steal My Business?</title>
+<meta name="description" content="Your website's words and photos are on someone else's domain, page for page. It is real, and your login and customer data did not go with it. How cloners copy a site in minutes, what they use the copy for, and the evidence-first takedown ladder - in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Someone Copied My Entire Website &mdash; Can They Steal My Business?</h1>
+    <p class="lede">The short answer: <strong>they can steal your customers, not your business itself.</strong> A cloned site is a photocopy of your public pages - someone ran a free downloading tool and put your words, your photos, and your prices on their own domain. What did NOT travel with the copy: your logins, your customer database, your bookings, your checkout. Those stay behind your password. But the copy is still dangerous - a lookalike domain running your exact website can collect payments from people who think they found you, and your own words can quietly stop ranking in Google for YOUR business. Below: how they do it, what they want the copy for, what they can and cannot take, the evidence-first response ladder, and what actually prevents the next one.</p>
+    <div class="article">
+
+      <h2>1. How a clone happens - a free tool, a few minutes, your public pages</h2>
+      <p>Copying a website usually is not hacking. In most cases, nobody broke into your hosting account. Tools like HTTrack are built for exactly one job - downloading a website's public pages in one run - and a full small-business site takes minutes (oflox.com; crawled 2026-10-10). The cloner points the tool at your site, the tool fetches every public page the way any ordinary visitor would, and now they have your words, your photos, your prices, your contact page. This is why cloning "rarely indicates a system compromise," as one legal-team takedown guide puts it - the copy was built from public assets, not from a breach (molawyersmedia.com, ~94 days ago; crawled 2026-10-10). Still, it is worth having your web person confirm your server and logins are clean, just to rule it out before you act. Assume the copy happened because your site is public, not because your site is broken. That distinction decides the whole response. (The other "is it really me?" problem - strangers posing as your business on profiles and social feeds rather than copying the website itself - lives in <a href="someone-is-pretending-to-be-my-business-online.html">the impersonation guide</a>.)</p>
+      <h2>2. What they want the copy for - and why it matters to you</h2>
+      <p>A copy of your site is never the product - it is bait. The three usual purposes. <strong>First: a lookalike shop or payment trap.</strong> Your exact website on a near-identical domain collects payments or inquiries from customers who think they found you. When the clone sells fake products, copyright is only one part of the problem - it is also trademark infringement, counterfeiting, and fraud, and gets reported as fraud alongside the copyright claim (redpoints.com, updated ~80 days ago; crawled 2026-10-10). <strong>Second: a phishing front.</strong> The Anti-Phishing Working Group counted 1,130,393 phishing attacks in a single quarter of 2025 - attacks defined as using "bogus web sites and deceptive domain names" to fool people into divulging financial data (apwg.org, Q2 2025; crawled 2026-10-10). Your cloned homepage is a readymade disguise for a credential-theft page pointed at your customers. (The email version of the same "looks like us" attack - forged messages sent AS your business - is decoded in <a href="can-someone-send-email-that-looks-like-its-from-my-business.html">the email-spoofing guide</a>.) <strong>Third: spam and SEO games.</strong> Scraper networks lift whole sites for ad-spam or to sabotage a competitor's search rankings - scraped content is a documented tactic in negative-SEO attacks (aioseo.com, updated ~9 days ago; crawled 2026-10-10). Whichever purpose, your customers are the target, not your business's inner workings.</p>
+      <h2>3. What they can and cannot take - draw the line now</h2>
+      <p>The copy took your public face: words, photos, prices, reviews, your about page, your service list. It did not take your passwords, your customer database, your booking system, or your checkout - those live behind logins the downloading tool never had. No one can process refunds from your payment account with a photocopy. But do not let "they can't get in" turn into "it can't hurt me." The hurt is outward: a customer searches your business, finds the clone on a lookalike domain, pays the wrong person, and the review they leave says YOUR name was a scam. And there is a quieter hurt - the SEO one. Google does not punish copied content, but when the same text appears on two domains, Google indexes and ranks only the most relevant one, and you cannot control which one it picks (jessewillms.com; crawled 2026-10-10). Your own words can end up ranking for them instead of you, and you might lose rankings and traffic without a single warning. A clone is an outward-facing attack on trust and visibility, not an inward break-in.</p>
+      <h2>4. How to find out it is happening - the 10-minute monthly check</h2>
+      <p>Most businesses learn about their clone from a confused customer. A 10-minute monthly check catches it first (sprintlaw.com.au, ~282 days ago; crawled 2026-10-10). Four moves, cheapest first. <strong>First: Google Alerts on your own words.</strong> Pick a distinctive sentence from your site, put it in quotation marks, exclude your own domain - like <em>"your distinctive sentence" -site:yourdomain.com</em> - and set an alert. If the sentence appears anywhere else, Google emails you. Do this for your top pages, not every page (aioseo.com, updated ~9 days ago; crawled 2026-10-10). <strong>Second: the manual version.</strong> Search that same quoted sentence on Google now and then - exact-phrase search shows who else is carrying your words (digitalagencies.ae; crawled 2026-10-10). <strong>Third: reverse-image-search your key photos.</strong> Your signature photos - the shopfront, the team, the before-and-afters - are the easiest assets to track, and a copy usually travels with them (sprintlaw.com.au). <strong>Fourth: watch your own rankings.</strong> A sudden drop for pages that used to rank can mean your words are now competing with a duplicate elsewhere. Put your business name inside your content somewhere natural - many news and magazine sites do exactly this, because a lifted article carrying your brand name is trivially findable with a Google Alert. (And a side note: a lookalike domain is worth checking for separately - a near-identical domain running YOUR copied site is the payment-trap version, which is why the domain-theft sibling - <a href="can-someone-steal-my-domain-name.html">can someone steal my domain name</a> - is the ownership-side cousin of this problem.)</p>
+      <h2>5. The evidence-first ladder - capture proof before you warn anyone</h2>
+      <p>This is the step people get backwards, and it is the expensive one. The natural move is to email the cloner or click "report" immediately - and all three warn the other side. Once warned, a copier can swap your photos out in minutes and claim the copy never existed. Copyright disputes are won or lost on two questions: can you prove the work is yours, and can you prove how, where, and since when they used it. The second question is the one people forget - and a plain screenshot is an editable image, while a capture with timestamps and hashes is far harder to challenge (getproofanchor.com, updated ~16 days ago; crawled 2026-10-10). So: capture first, report second. Save the full URLs, the dates, screenshots of every copied page with the clone's domain visible, and your proof of authorship - your original files, drafts with dates, photographer invoices, your domain registration record (sprintlaw.com.au; crawled 2026-10-10). THEN climb the ladder: (1) ask the site owner to take it down - some clones are lazy affiliates who comply on a first email; (2) file Google's copyright removal request so the copy stops appearing in search; (3) send a DMCA notice to the clone's host - find the host with a WHOIS lookup on the clone's domain (marketingscoop.com; crawled 2026-10-10). DMCA takedowns work page by page, and the US version only applies to US-hosted sites, so list every copied URL and keep the list organized (jumpstartmag.com; crawled 2026-10-10). The full legal-team version of the ladder adds two parallel moves for malicious clones: report the URL to Google Safe Browsing and Microsoft SmartScreen so browsers themselves warn visitors away, and if the clone takes payments, notify the payment processor to freeze the accounts (molawyersmedia.com, ~94 days ago; crawled 2026-10-10). Document everything as you go - you will need it if the clone resurfaces under a new domain, which scraper networks do as routine.</p>
+      <h2>6. What "preventing" a clone honestly looks like</h2>
+      <p>Straight talk: you cannot prevent copying. The "disable right-click" and "content protection" plugins sold as anti-theft do not stop anyone determined - screenshots, developer tools, and whole-page download tools walk around them, and real customers find them annoying (macrumors forum consensus; crawled 2026-10-10; savethevideo.net; crawled 2026-10-10). Blocking a tool by its announced name - the well-known .htaccess trick that refuses downloads from HTTrack's user-agent (oflox.com; crawled 2026-10-10) - stops only tools that introduce themselves by that name. So what actually helps, in honesty order. <strong>First: watermark your signature photos with your site name.</strong> It will not stop a determined thief - nothing will - but watermarked images identify the copy instantly and point straight back to you, and when your photos travel elsewhere they advertise YOU (sprintlaw.com.au; macrumors; crawled 2026-10-10). <strong>Second: keep proof of authorship lying around.</strong> Dated drafts, original image files, photographer and designer invoices, contracts showing the IP was assigned to you, your domain registration - the paperwork that turns "they copied me" into "we can prove it" (sprintlaw.com.au). <strong>Third: run the monthly 10-minute check from section 4.</strong> Detection is the prevention that actually works - a clone found in week one is a takedown; a clone found in year one is a brand problem. What NOT to do: do not pay for "anti-scraping" that promises the impossible, and do not make your site hostile to real visitors to annoy copiers a little. The copiers are patient. Your customers are not.</p>
+      <h2>7. The three traps that look like action</h2>
+      <p><strong>Trap one: "it is my words, so Google will sort it out."</strong> Google does sort it out - by picking ONE of the two copies to rank. You cannot control which one it picks (jessewillms.com; crawled 2026-10-10). Waiting on Google while your words rank for someone else is how you lose the traffic quietly. <strong>Trap two: threatening the cloner before capturing evidence.</strong> The angry email feels like doing something. It is the most common and most expensive mistake - it warns them, they swap the photos, and your proof evaporates (getproofanchor.com, updated ~16 days ago; crawled 2026-10-10). Capture first, always. (The same evidence-before-contact discipline applies to the scare-mail cousin - <a href="i-got-a-letter-saying-my-domain-is-about-to-expire.html">the domain-expiry letter</a> - where the triage question is also "is this really about my property?") <strong>Trap three: assuming the clone means you were hacked.</strong> A clone built from public pages is not a breach - and chasing a phantom hack burns the week the takedown needed. Have your web person confirm the server and logins are clean (the access-audit sibling - <a href="does-my-old-developer-still-have-access-to-my-website.html">does my old developer still have access</a> - is the right tool for that check), then treat the clone as what it is: a copy of the public face, fought in the open, not in your server. (If the evidence genuinely points to an intrusion rather than a copy, stop and run <a href="what-should-i-do-if-my-website-gets-hacked.html">the break-in playbook</a> instead - different emergency, different ladder.)</p>
+      <h2>8. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"Someone cloned our website - our words and photos are on another domain. Six asks. First, confirm our own server and logins are clean - rule out a breach before we do anything else. Second, capture evidence of every copied page: full URLs, dates, screenshots showing their domain, and our proof of authorship - original files, drafts, photographer invoices, our domain registration. Third, WHOIS their domain and identify the registrar and host. Fourth, email the site owner demanding removal with our evidence. Fifth, file Google's copyright removal request for every copied URL, and send a DMCA takedown to their host listing each copied page. Sixth, if the clone is taking payments or collecting customer info, report the URL to Google Safe Browsing and the host, and tell me immediately so we can notify the payment processor. Plain English, and do not contact the cloner until the evidence is captured."</em> The proof is the capture folder: their URLs, your dates, your originals. (The clone problem is one of the checks folded into the full audit - <a href="../security.html">the free security check</a> looks at what the public internet actually sees on your site.)</p>
+
+      <p class="meta">Verified 2026-10-10. Copyright in your site's words, photos, and design arises automatically when you create them - no registration needed to own it (getproofanchor.com, updated ~16 days ago; crawled 2026-10-10). Free tools like HTTrack download a site's public pages in one run; a .htaccess user-agent block stops only tools that announce themselves (oflox.com; crawled 2026-10-10). Phishing is defined around "bogus web sites and deceptive domain names"; APWG observed 1,130,393 attacks in Q2 2025 (apwg.org; crawled 2026-10-10). Clones selling fakes are also trademark/fraud cases - report both (redpoints.com, updated ~80 days ago; crawled 2026-10-10). Google does not penalize copied content but ranks only one copy - you cannot control which (jessewillms.com; crawled 2026-10-10). Detection: Google Alerts on a quoted distinctive sentence minus your domain ("..." -site:yourdomain.com) for top pages (aioseo.com, updated ~9 days ago; crawled 2026-10-10); manual exact-phrase search (digitalagencies.ae; crawled 2026-10-10); reverse-image-search key photos and keep proof-of-authorship records (sprintlaw.com.au, ~282 days ago; crawled 2026-10-10); Copyscape premium ~$0.05/search (ghacks.net; crawled 2026-10-10). Response order: capture evidence FIRST (screenshots are editable; timestamped forensic captures are not - getproofanchor.com), then owner demand, Google copyright removal, DMCA to host via WHOIS-identified host (marketingscoop.com; jumpstartmag.com; crawled 2026-10-10). Structured takedown ladder: verify no breach, preserve with timestamps, host abuse report + DMCA + search-engine removal, Safe Browsing/SmartScreen reports, payment-processor freeze if the clone takes money (molawyersmedia.com, ~94 days ago; crawled 2026-10-10). Disable-right-click and content-protection plugins do not stop determined copiers (macrumors; savethevideo.net; crawled 2026-10-10). Watermark images with your site name; keep originals/invoices/contracts (sprintlaw.com.au). This is general information, not legal advice, and not promises about your exact clone - but the ladder here is the one legal teams run.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free security check scans what the public internet actually sees on your site &mdash; HTTPS, headers, and the common exposures. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>A cloned copy of your site is one of six security checks. The full Site Health Watch audit covers all 40 &mdash; speed, email, mobile, SEO, accessibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+someone+copying+my+website+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
