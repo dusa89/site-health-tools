@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Does 'Eliminate Render-Blocking Resources' Mean on My Speed Test?</title>
+<meta name="description" content="PageSpeed Insights keeps flagging 'render-blocking resources' on your site. In plain English: what the browser is waiting on before it can show your page, the five places blocking files usually come from on a small-business site, and the fix ladder your web person should walk - without breaking the menus.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>What Does 'Eliminate Render-Blocking Resources' Mean on My Speed Test?</h1>
+    <p class="lede">The plain-English version: <strong>your browser is sitting in a waiting room before it is allowed to show your page.</strong> That line on your speed test means the browser found files - style sheets and scripts, sitting in the top of your page's code - that it has to download and process BEFORE it can paint the first pixel. Every one of those files adds at least one round trip to the server, plus download time, plus processing time. On a fast office computer the delay can be invisible; on a customer's phone over a mobile network it can be seconds of blank screen. The fix is not deleting your stylesheets - it is changing the ORDER: keep what the first screen needs available immediately, and move everything else out of the way. Below: why the browser waits, where blocking files usually come from on a small-business WordPress site, the fix ladder in leverage order, one naming quirk to know, and the three traps that break sites when this fix is done carelessly.</p>
+    <div class="article">
+
+      <h2>1. The waiting room - what the line actually means</h2>
+      <p>When you load a website, the browser reads the page's code from the top down. Near the top it finds references to style sheets (CSS - the files that say what everything looks like) and scripts (JavaScript - the files that add behavior). Here is the rule the browser follows: <strong>a style sheet in the head blocks rendering, and a plain script blocks the reading of the rest of the page.</strong> Render-blocking resources are exactly those files - CSS files and synchronous JavaScript in the head that the browser must fetch and process before it can show anything (getsiteaiaudit.com, updated ~12 days ago; crawled 2026-10-11). Each blocking file adds at least one network round trip, plus its download and processing time (getsiteaiaudit.com; crawled 2026-10-11). So a page with eight blocking files is not slow because the files are big - it is slow because the browser has to take eight sequential trips before the customer sees anything. That is also why the same site can feel fine on your desktop and terrible on a phone: round trips are cheap on a fast connection and brutally expensive on a mobile network. (If your site's scores are confusing in general, <a href="should-my-website-speed-test-score-worry-me.html">the 52/100 article</a> translates the score; if the phone is where it feels slow, <a href="why-is-my-website-slow-on-mobile.html">the mobile article</a> is the map.)</p>
+      <h2>2. Why the browser insists on waiting - it is not being stubborn</h2>
+      <p>The waiting is deliberate, and it protects you. <strong>CSS blocks because the browser needs to know how things look.</strong> If the browser painted before the styles arrived, your customers would see a flash of ugly unstyled text, followed by everything jumping into its final layout when the styles landed (getsiteaiaudit.com; crawled 2026-10-11). Nobody wants that as a first impression, so the browser waits. <strong>JavaScript blocks for a different reason.</strong> A classic script tag - one with no special attributes - might rewrite the page as it loads (the old document.write trick is the textbook example), so the browser stops reading the HTML, downloads the script, runs it, and only then continues with everything below it (getsiteaiaudit.com; crawled 2026-10-11). Every plain script in the head therefore delays everything under it. The point of understanding this: the fix is never "remove the files." The fix is telling the browser which files it is allowed to fetch <em>later</em> - after the first screen is already painted. (The cousin of this question is what the page would look like if the browser did NOT wait - <a href="why-does-my-website-jump-around-while-it-loads.html">the jump-around article</a> covers that layout-shifting problem.)</p>
+      <h2>3. The five usual suspects - where blocking files come from on a small-business site</h2>
+      <p>On a typical small-business WordPress site, the blocking queue is almost always the same crowd. <strong>One: the theme's style sheet.</strong> Your theme ships one big CSS file with the styles for every page template - most of which your homepage does not use. (<a href="does-my-website-theme-make-it-slow.html">The theme article</a> splits this layer from the others.) <strong>Two: the page builder's files.</strong> Elementor, Divi, and friends add their own CSS and JavaScript to the head - and each widget can add more (getsiteaiaudit.com; <a href="is-my-website-slow-because-of-my-page-builder.html">the page-builder article</a> is the full verdict). <strong>Three: plugin scripts.</strong> Contact forms, sliders, chat widgets, popups, review widgets - every plugin that adds something visible or interactive to the page usually adds at least one script to the head, and plain scripts block. (<a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">The plugin-stack article</a> is the full inventory - and yes, <a href="do-those-chat-widgets-and-booking-tools-slow-down-my-website.html">chat widgets</a> and <a href="do-those-popups-on-my-website-slow-it-down.html">popups</a> are repeat offenders.) <strong>Four: Google Fonts (and other web fonts).</strong> The fonts file is a style sheet that must arrive before text can be styled - and web fonts can block text rendering for up to ~3 seconds on slow connections (harlan-zw unlighthouse.dev, updated ~4 days ago; crawled 2026-10-11). (<a href="do-those-pretty-fonts-slow-down-my-website.html">The font article</a> is the deep version.) <strong>Five: jQuery and the old guard.</strong> Older themes and plugins drag in jQuery and friends in the head, in blocking form, on every page - even pages that use none of it. The PageSpeed audit lists the offending files by name, so you do not have to guess which of these five is your case: expand the recommendation and read the filenames. (And one boundary: if your site is slow because the <em>server</em> takes forever to answer at all, that is a different wait - <a href="why-does-my-website-take-forever-to-start-loading.html">the slow-server article</a> covers it.)</p>
+      <h2>4. The fix ladder - in leverage order, none of them are "delete everything"</h2>
+      <p>Work this ladder in order; each rung is cheaper than the next and they stack. <strong>Rung one: defer the scripts.</strong> Adding the <em>defer</em> attribute to a script tag tells the browser: download this in parallel, but do not run it until the page is read. The sister attribute <em>async</em> downloads in parallel and runs the instant it arrives - right for independent scripts like analytics, wrong for code that needs the page or other scripts to be ready (unlighthouse.dev, ~4 days ago; crawled 2026-10-11). Rule of thumb your web person can use: analytics and ads get async; everything that touches the page or depends on another script gets defer. Most speed plugins (WP Rocket and its peers) have a "load JavaScript deferred" switch - switch it on, clear the cache, retest (smartwp.com, ~11 days ago; crawled 2026-10-11). <strong>Rung two: split the CSS.</strong> This is the big one. <em>Critical CSS</em> is the small subset of styles the top of the page actually needs - header, hero, first screen. That slice gets written directly into the page (an inline style block, in the low tens of KB in published examples); the full style sheet then loads asynchronously in the background, so the browser paints the first screen without waiting (drake/specification.website, updated 2026-05-29; unlighthouse.dev; crawled 2026-10-11). Speed plugins generate this automatically under names like "optimize CSS delivery" (smartwp.com). <strong>Rung three: fix the fonts.</strong> Add font-display: swap so the browser shows fallback text immediately instead of a blank hole, preload only the font files the top of the page actually uses, and if you use Google Fonts, add the display=swap parameter to the link (unlighthouse.dev; crawled 2026-10-11). <strong>Rung four: remove what nobody uses.</strong> Scripts and styles for features you do not use are still blocking if they are loaded - deactivate the plugin or the feature, and the file leaves the queue. (<a href="what-does-reduce-unused-javascript-mean-on-my-speed-test.html">The unused-JavaScript article</a> is the weight-side version of this - this article is the order side.) <strong>Rung five: kill @import.</strong> If your CSS files import other CSS files (an @import line inside a style sheet), the browser cannot even discover the second file until the first is fully downloaded - a forced sequential waterfall. Merging the files removes the extra round trip (optiwave.me, ~19 days ago; crawled 2026-10-11). The honest framing for all five rungs, straight from the optimization guides: the goal is not making every file asynchronous - it is keeping the initial rendering path as small and fast as possible (nitropack.io, ~23 days ago; crawled 2026-10-11).</p>
+      <h2>5. One naming quirk - if the line vanished from your report</h2>
+      <p>If you ran your speed test recently and cannot find the words "eliminate render-blocking resources" anywhere, nothing is fixed - <strong>the line was renamed.</strong> As of Lighthouse 13 (the engine inside PageSpeed Insights), the audit is now filed under the "Render-blocking requests" insight. The files it lists and the fixes are the same; only the heading changed (smartwp.com, ~11 days ago; crawled 2026-10-11). So if your web person says "that warning is gone" but the site is unchanged, check under the new name before celebrating. The audit still names the exact files, in the order they block - that list is your work order, not the generic label.</p>
+      <h2>6. The three traps - where this fix breaks sites</h2>
+      <p>Render-blocking fixes deserve extra caution, because you are changing what loads <em>when</em> - and a wrong guess about order breaks things the customer can see. <strong>Trap one: deferring everything.</strong> Flip "defer all JavaScript" and the menus, sliders, or forms can die - deferred scripts run in a different order than the page expects, and inline scripts that assumed a library was already loaded will throw errors on a blank page (getsiteaiaudit.com; smartwp.com; crawled 2026-10-11). The safe sequence: defer in batches, click through the whole site on a phone after each batch, and keep an exclusion list for anything that misbehaves. <strong>Trap two: trusting the auto-critical-CSS button blindly.</strong> Automatic critical-CSS extraction is genuinely useful and genuinely imperfect - automated tools will not capture every case on every page, and the miss shows up as a broken-looking layout for some visitors (webtrainingwheels.com; crawled 2026-10-11). Generate, then look at the site yourself - homepage, a service page, the contact page, a phone - before calling it done. <strong>Trap three: "optimizing" the checkout.</strong> Cart and checkout flows are transactional: deferring or delaying the scripts behind the cart, the payment form, or the booking widget can silently kill sales. Optimization guides name checkout and cart endpoints as the category that stays excluded from script delays (optiwave.me; crawled 2026-10-11). The business rule: speed work happens on marketing pages first; the money pages get the conservative treatment.</p>
+      <h2>7. How your web person finds YOUR list - it is in the report already</h2>
+      <p>You do not need any special tools. Run PageSpeed Insights on your homepage, find "Render-blocking requests" (or the older "Eliminate render-blocking resources" label), expand it: you get the filenames, the size of each, and the estimated time each one costs. Read the filenames like a receipt: <em>theme</em> names mean rung two (critical CSS) and possibly rung four; <em>elementor/divi/et-builder</em> names mean the builder queue (<a href="is-my-website-slow-because-of-my-page-builder.html">that article</a>); <em>plugins/</em> paths mean the plugin scripts (<a href="are-all-my-plugins-and-widgets-slowing-down-my-website.html">that article</a>); <em>fonts.googleapis</em> means rung three. When the file list shows two or three files accounting for most of the delay - typically one giant blocking style sheet plus a queue of plugin scripts - you have found your work order. One more honest note: this fix changes the load ORDER, not the total weight. A 2 MB page still downloads 2 MB - caching is what helps the second visit (<a href="what-is-website-caching.html">the caching article</a>). Render-blocking fixes make the FIRST paint faster, which is what the customer - and the LCP score - feels. (Render-blocking requests are, in fact, one of the named common causes of a poor LCP score - the largest-contentful-paint number Google uses in its rankings - and the documented fix pattern is exactly this one: inline the critical CSS, defer the rest; claude-gamedev-skills core-web-vitals reference, updated ~2 days ago; crawled 2026-10-11.)</p>
+      <h2>8. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"Our speed test flags render-blocking resources - under the new 'Render-blocking requests' heading. Four asks. First, expand that audit and send me the actual file list with the delay each one costs - I want to see whether it's the theme stylesheet, the builder, plugin scripts, or fonts. Second, split the CSS: generate critical CSS for the top of the homepage, inline it, and load the full stylesheet asynchronously - then eyeball the homepage, a service page, and the contact page on a phone before we call it done, because auto-extraction isn't perfect. Third, defer the scripts in batches - analytics async, page-dependent scripts defer - and click-test every menu, slider, form, and the whole checkout on a phone after each batch, with an exclusion list for anything that breaks. Fourth, fix the fonts: font-display swap, preload only the fonts the first screen uses, display=swap on the Google Fonts link. Marketing pages first - the cart and checkout pages stay on the conservative treatment. Show me the before-and-after first-paint number, with everything still working."</em> The proof is the earlier first paint and the working checkout. (And if the underlying question is really "is my site just too heavy overall," <a href="what-does-reduce-unused-javascript-mean-on-my-speed-test.html">the weight-side article</a> is the companion read; if the speed grade itself is what confuses you, <a href="should-my-website-speed-test-score-worry-me.html">the 52/100 article</a> translates it.)</p>
+
+      <p class="meta">Verified 2026-10-11. Render-blocking resources = CSS files and synchronous JavaScript in the head that the browser must download and process before showing anything; on a phone over a mobile network the wait can add seconds of blank screen; each blocking file adds at least one network round trip plus download and processing time (getsiteaiaudit.com, updated ~12 days ago; crawled 2026-10-11). Lighthouse 13 renamed the audit to the "Render-blocking requests" insight - same files, same fixes (smartwp.com, updated ~11 days ago; crawled 2026-10-11). CSS blocks because the browser must know how things look before painting - otherwise a flash of unstyled content then a jump (getsiteaiaudit.com). Plain scripts block because they might rewrite the page - the browser stops reading HTML, downloads, runs, then continues (getsiteaiaudit.com). Fix philosophy: keep the first screen's CSS available immediately, move the rest out of the critical path - the goal is the smallest, fastest initial rendering path, not making everything asynchronous (nitropack.io, ~23 days ago; crawled 2026-10-11). async = downloads in parallel, runs the moment it arrives (analytics, ads); defer = downloads in parallel, runs after HTML parsing, keeps script order (DOM-dependent code) (unlighthouse.dev, ~4 days old; crawled 2026-10-11). Critical CSS = the top-of-page style subset inlined in the head (published examples in the low tens of KB); the full stylesheet loads asynchronously via preload+onload swap with a noscript fallback (drake/specification.website, updated 2026-05-29; unlighthouse.dev; crawled 2026-10-11). CSS @import forces a sequential waterfall - the second file cannot be discovered until the first is fully downloaded (optiwave.me, ~19 days ago; crawled 2026-10-11). Web fonts can block text rendering for up to ~3 seconds on slow connections - font-display: swap, preload the actually-used fonts, Google Fonts display=swap parameter (unlighthouse.dev; crawled 2026-10-11). Traps: deferring the wrong script breaks menus/sliders/forms - batch and retest (getsiteaiaudit.com); inline scripts expecting an already-loaded library break when deferred (smartwp.com); auto critical-CSS extraction is not perfect - visually verify every template (webtrainingwheels.com); cart/checkout flows stay excluded from script delays (optiwave.me). WP Rocket setting names as reported: "Load JavaScript deferred" + "Optimize CSS delivery" with "Remove Unused CSS"/"Load CSS asynchronously" - retest after changes (smartwp.com). Render-blocking requests are a named common cause of poor LCP - the documented fix pattern is inline critical CSS, defer the rest (core-web-vitals reference, ~2 days old; crawled 2026-10-11). All numbers are reported figures from the cited sources, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. Run it, then hand your web person the four asks in this article.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours, including the exact loading-time number for your homepage.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+render-blocking+resources+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
