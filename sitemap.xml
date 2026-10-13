@@ -38,7 +38,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dusa89.github.io/site-health-tools/articles/</loc>
+    <loc>https://dusa89.github.io/site-health-tools/articles/index.html</loc>
     <lastmod>2026-10-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -492,4 +492,72 @@
   <url><loc>https://dusa89.github.io/site-health-tools/articles/can-i-take-back-an-email-i-already-sent.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://dusa89.github.io/site-health-tools/articles/do-those-countdown-timers-slow-down-my-website.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://dusa89.github.io/site-health-tools/articles/why-is-my-contact-form-getting-spammed-by-robots.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/can-someone-send-email-that-looks-like-its-from-my-business.html</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-my-website-slow-because-its-built-on-wix.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/my-web-host-suspended-my-website-what-do-i-do.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/how-do-i-check-if-gmail-trusts-my-business-email.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/do-those-instagram-feeds-on-my-website-slow-it-down.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-my-free-ssl-certificate-as-good-as-a-paid-one.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-does-my-business-email-look-broken-on-my-customers-screen.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/does-having-hundreds-of-pages-make-my-website-slow.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-would-anyone-hack-my-small-business-website.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-am-i-getting-spam-emails-from-my-own-address.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/does-that-homepage-slider-slow-down-my-website.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/can-customers-uploading-files-to-my-website-get-me-hacked.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-do-my-business-emails-arrive-hours-late.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-lazy-loading-my-hero-image-slowing-down-my-website.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/my-website-shows-a-red-deceptive-site-ahead-warning-what-do-i-do.html</loc><lastmod>2026-10-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/do-i-need-a-dedicated-ip-for-my-business-email.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/will-pointing-my-website-at-cloudflare-make-it-faster.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/if-someone-hacks-my-email-can-they-take-over-my-website.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-am-i-getting-every-email-twice.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/will-adding-ssl-slow-down-my-website.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/should-i-turn-on-two-factor-authentication-for-my-website.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-does-my-email-say-via-or-on-behalf-of.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-the-im-not-a-robot-checkbox-slowing-down-my-website.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/should-i-buy-cybersecurity-insurance-for-my-small-business.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/how-do-i-stop-emails-from-a-company-that-wont-let-me-unsubscribe.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/do-those-popups-on-my-website-slow-it-down.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-that-old-test-copy-of-my-website-still-online.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/google-workspace-or-microsoft-365-which-should-my-business-email-live-on.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/do-those-share-buttons-on-my-website-slow-it-down.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-that-free-copy-of-a-paid-plugin-safe.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-does-my-website-stutter-when-i-scroll.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/should-my-business-emails-have-a-signature-and-legal-disclaimer.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/i-keep-getting-calls-saying-my-google-listing-will-be-suspended.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/what-does-reduce-unused-javascript-mean-on-my-speed-test.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/my-contact-form-says-message-sent-but-the-emails-never-arrive.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/someone-copied-my-entire-website.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-my-website-slow-because-of-my-page-builder.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/do-i-need-to-back-up-my-business-email.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/what-happens-if-my-web-person-disappears.html</loc><lastmod>2026-10-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/what-does-eliminate-render-blocking-resources-mean-on-my-speed-test.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/should-my-newsletter-come-from-a-subdomain.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/should-my-website-store-my-customers-credit-card-numbers.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/what-does-serve-images-in-next-gen-formats-mean-on-my-speed-test.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/can-i-use-one-email-inbox-for-two-businesses.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/should-my-business-offer-free-wifi-to-customers.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/what-does-reduce-the-impact-of-third-party-code-mean-on-my-speed-test.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/should-i-delete-newsletter-subscribers-who-never-open-my-emails.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/how-do-i-know-if-my-business-passwords-were-leaked-in-a-data-breach.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/what-does-minimize-main-thread-work-mean-on-my-speed-test.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-does-gmail-stop-me-after-500-emails.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/do-i-have-to-tell-customers-if-my-website-was-hacked.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/what-does-properly-size-images-mean-on-my-speed-test.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-cant-i-trust-my-email-open-rates.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/who-else-has-the-keys-to-my-website.html</loc><lastmod>2026-10-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/how-do-i-know-my-web-person-actually-fixed-my-speed.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/where-did-my-old-business-emails-go.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/does-my-website-legally-need-a-privacy-policy.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-my-backup-plugin-slowing-down-my-website.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-do-my-big-email-attachments-keep-bouncing.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-it-safe-to-save-my-business-passwords-in-my-browser.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-my-website-slow-for-customers-on-bad-wifi.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/is-my-business-email-private-what-the-gmail-lock-icon-means.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/should-my-business-switch-to-passkeys-instead-of-passwords.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/how-do-i-read-the-waterfall-chart-on-my-speed-test.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-does-gmail-clip-my-newsletter.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/should-my-business-use-a-vpn.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/why-didnt-the-caching-plugin-speed-up-my-website.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dusa89.github.io/site-health-tools/articles/i-set-up-spf-dkim-and-dmarc-why-does-the-checker-still-say-fail.html</loc><lastmod>2026-10-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 </urlset>
