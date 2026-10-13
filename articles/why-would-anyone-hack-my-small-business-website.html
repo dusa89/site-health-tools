@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Would Anyone Bother Hacking My Small Business Website?</title>
+<meta name="description" content="Nobody is coming for your plumbing site personally — and that's exactly why it gets hacked. How automated attacks find small sites, the 5 things hackers do with one, and what actually stops it. Plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Would Anyone Bother Hacking My Small Business Website?</h1>
+    <p class="lede">Here's the uncomfortable truth: <strong>nobody is sitting in a dark room choosing your website.</strong> No hacker has your landscaping company on a list. Your site gets hacked the way a car gets rained on — not because the rain wanted that car, but because the car was outside with the windows down. Automated software sweeps the entire internet around the clock, knocking on every digital door it can find, and it walks through whichever ones open. Your business isn't too small to matter. It's exactly the size that gets swept up. If this already happened to you, <a href="what-should-i-do-if-my-website-gets-hacked.html">the response playbook covers what to do next</a>; this is about why it happens at all.</p>
+    <div class="article">
+
+      <h2>1. The scene: the question every owner asks</h2>
+      <p>It usually comes up right after the shock wears off. "We fix air conditioners. We have 14 employees. Why would anyone hack US?" It's the most reasonable question in the world, and it comes from picturing hacking the way movies show it — a person picking a target. Real website hacking doesn't work like that. Almost none of it is targeted. The vast majority is automated: bots crawling the internet 24 hours a day, probing every site they can reach for known weak spots — outdated software, unpatched plugins, default login pages, weak passwords, exposed configuration files. When a bot finds one, it exploits it automatically, instantly, and without caring what your business does (liquidpurple.com). Your site isn't being chosen. It's being discovered.</p>
+      <h2>2. The numbers, told honestly</h2>
+      <p>Verizon's 2026 Data Breach Investigations Report — the biggest annual study of this, built on 31,000+ incidents and 22,000+ confirmed breaches across 145 countries — puts small and midsize businesses at the center of the picture: ransomware was &quot;one of the most dominant threats,&quot; tied to 96% of SMBs in the dataset (Verizon&#8217;s wording), and smaller firms account for roughly a third of all breaches (7,152 of 22,000+) (techrepublic.com; esecurityplanet.com; usecarly.com, updated ~21 days ago). The UK government's own survey found 46% of small businesses and 42% of micro businesses suffered a breach or attack in the previous 12 months (via pandasecurity.com). Two honesty notes, because the internet is full of inflated versions of this: the famous "43% of attacks target small businesses" is a misquote — the original report said 43% of breach <em>victims</em> were small businesses, which is a different thing. And the viral "60% of small businesses close within 6 months of an attack" was disowned in writing by the very organization it was credited to. The real numbers are bad enough without the fairy tales.</p>
+      <h2>3. The 5 things they actually do with a site like yours</h2>
+      <p>Once the automated sweep owns a small site, the people running it put it to work. Here is the short list, in rough order of how common each one is: <strong>1) SEO spam.</strong> They hide spam pages on your domain — fake pharmacies, casino links — to ride on your Google reputation. Your customers never see them; Google does, until it penalizes you (<a href="why-is-my-website-redirecting-to-spam-sites.html">the redirect symptom, explained separately</a>). <strong>2) Phishing pages.</strong> A fake bank or Microsoft login page hosted on your trusted domain, emailed to thousands. Your domain's good name is the weapon. <strong>3) Crypto miners and botnets.</strong> Your server's processor mines cryptocurrency or joins an attack network — your hosting bill goes up, your site slows down, you never see a thing. <strong>4) Card skimmers and ransomware.</strong> If you take payments, a skimmer silently copies customer card numbers. Or they encrypt everything and demand payment to give it back — priced to what a business your size can pay. <strong>5) The stepping stone.</strong> Your site becomes the launchpad into a bigger fish — a customer, a supplier, a partner who trusts email from you (yournucleus.ca, updated 10 days ago). Notice what none of these need: your money, your secrets, or any interest in your business whatsoever. They need a door that opens.</p>
+      <h2>4. Why small is the sweet spot, not the safe spot</h2>
+      <p>Attackers run a business too, and their math favors you for four reasons. First, <strong>automation doesn't check revenue</strong> — a campaign sweeping thousands of targets costs the same whether it lands on a bakery or a bank (blog.yournucleus.ca). Second, <strong>your data is worth the same</strong>: client lists, invoices, employee records, tax files, login credentials — a 15-person accounting firm holds banking details and tax IDs just like a big one does (pandasecurity.com). Third, <strong>weaker defenses, same payout</strong>: no security team, no monitoring, updates months behind — one unpatched plugin or one reused password is all it takes, versus weeks of work to crack a hardened enterprise. Fourth, <strong>ransom economics</strong>: the demand is sized to what you can pay, and enough small payments add up to a business model (yournucleus.ca). Employees at small firms also get hit with 350% more social-engineering attacks than employees at large companies (crowdspring.com). You're not too small to be worth it. You're small enough to be easy.</p>
+      <h2>5. The one change in the threat landscape that matters most to you</h2>
+      <p>For the first time in the Verizon report's 19-year history, exploiting known software vulnerabilities (31%) has overtaken stolen credentials (13%) as the most common way breaches begin (threataft.com, May 2026). Translation: the front door is now an unpatched plugin, not a guessed password. And the window to fix it has collapsed — AI-assisted attackers go from a vulnerability being disclosed to exploiting it in hours, not months, while the median business takes 43 days to patch (threataft.com). That gap is where small sites die. Your update button is not a chore. It's the lock on the door. <a href="i-cleaned-the-malware-off-my-website-why-does-it-keep-coming-back.html">If you've cleaned malware before and it returned, this is usually why</a> — the hole was never closed.</p>
+      <h2>6. "But we don't sell anything online"</h2>
+      <p>Then motives 1, 2, 3, and 5 above apply to you in full — none of them need a checkout page. A brochure site with no store is still a trusted domain, still a server with a processor, still an email address your customers believe. <a href="my-website-doesnt-sell-anything-do-i-still-need-security.html">The no-store security article makes the full case</a>; the short version is that "nothing to steal" was never the point. And <a href="how-do-i-know-if-my-website-has-already-been-hacked.html">the detection article covers the signs you're already owned</a>, because most hacked small sites sit compromised for weeks before anyone notices.</p>
+      <h2>7. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"I learned our site is a target because it's small and automated attacks sweep everything — nobody has to pick us. Five asks: first, when was the last time everything was updated — core, plugins, theme — and what's overdue right now? Second, are there any user accounts, plugins, or themes installed that we don't use — remove them. Third, do we have a real backup that was tested by restoring it, not just a file sitting somewhere? Fourth, is there anything that watches the site for changes — file monitoring or a security plugin that alerts you? Fifth, if the site went down tonight, what's the recovery plan and how long until we're back? No jargon in the answers — plain English."</em> Five asks, and the "why us" question becomes a locked door.</p>
+      <p class="meta">Verified 2026-10-09. Verizon DBIR 2026 — 31,000+ incidents, 22,000+ breaches, 145 countries; vuln exploitation 31% overtook credentials 13% (first time in 19 years); ransomware in 48% of breaches, 96% of SMBs; human element 62%; median time-to-patch 43 days (techrepublic.com; esecurityplanet.com; threataft.com, May 2026). SMBs ~a third of breaches — 7,152 of 22,000+ (usecarly.com, updated ~21 days ago). "43% of attacks" misquote correction + NCSA disowning the 60%-closure claim (usecarly.com). UK Gov Breaches Survey 2025/2026 — 46% of small, 42% of micro businesses breached/attacked in 12 months; attacker motives list (pandasecurity.com). Automation doesn't check revenue; data worth the same at every size; weaker defenses; stepping-stone; ransom priced to pay (blog.yournucleus.ca, updated 10 days ago). Bots scan 24/7 — sites discovered, not chosen (liquidpurple.com). Kaspersky: ~8,500 SMB users targeted Jan–Apr 2025 by malware posing as AI/collab tools (thehackernews.com, Jul 2025). SMB employees face 350% more social engineering (crowdspring.com).</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. About a minute later you get a plain-English verdict &mdash; your Mozilla security grade translated out of engineer-speak, a live HTTPS test, and your certificate's expiry date. Find out which doors are open before the bots do.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Your doors are one check. The full Site Health Watch audit runs all 40 trust signals against your live site &mdash; security headers, email authentication, speed, mobile, and AI visibility &mdash; every finding verified, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+why+hackers+target+small+business+websites+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
