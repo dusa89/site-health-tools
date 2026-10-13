@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Am I Getting Spam Emails From My Own Address?</title>
+<meta name="description" content="An email arrives From: you — but you never sent it. Why spammers forge your own address, the scary 'I've hacked your account' version, the 30-second test that proves whether you were actually hacked, and what really stops it. Plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Why Am I Getting Spam Emails From My Own Address?</h1>
+    <p class="lede">The short answer: <strong>you were almost certainly not hacked — someone typed your address into the 'From' line.</strong> Email lets anyone put any name on a message the way a paper letter lets anyone write any return address. The 30-second test: open your Sent folder. If there is nothing in it you didn't send, nobody is inside your account — and changing your password will not help.</p>
+    <div class="article">
+
+      <h2>1. The scene: an email from you, that you never sent</h2>
+      <p>It lands in your inbox and the From line says your own name, your own address. Sometimes it is obvious junk — a miracle pill, a crypto doubling scheme. Sometimes it is the scary one: "I have bad news. I've hacked your email account," sometimes with a password you actually recognize, and a demand for money or else. Your stomach drops, because the From line is supposed to mean <em>you</em> sent it. It doesn't. Not necessarily. There is a version of this same trick aimed at your customers instead of you — <a href="can-someone-send-email-that-looks-like-its-from-my-business.html">that version has its own article</a>. This one is about when the fake lands in <em>your</em> inbox.</p>
+      <h2>2. The 30-second test: hacked or faked?</h2>
+      <p>Before you do anything else, open your Sent folder and look for mail you didn't write. This is the whole diagnosis, and it takes half a minute (clean.email, 2026; cyberguy.com, 2026):</p>
+      <p><strong>Sent folder is clean — you were faked, not hacked.</strong> Nobody is inside your account. The spammer never touched your password, your phone, or your computer. Keep reading from section 3 — everything below is about stopping forgeries, not intruders.</p>
+      <p><strong>Sent folder has mail you didn't send — you were hacked.</strong> That is a real break-in: change your password right now, turn on two-factor authentication, check which devices are signed in, and look for forwarding rules the intruder may have added to keep reading your mail (tikaj.com, Oct 2026). The full recovery walkthrough — <a href="my-email-is-sending-messages-i-didnt-write.html">what to do when your email really is sending mail you didn't write</a> — covers it step by step.</p>
+      <p>Another tell that it was forgery, not a break-in: bounce-back notices for messages you never sent. Those bounces are the world's mail servers rejecting fakes of your address — annoying, but proof the fakes exist, not proof someone is in your account (gruffygoat.com, Oct 2026).</p>
+      <h2>3. How they fake it: the From line is just typed text</h2>
+      <p>Email was designed in 1982, before spam existed, and the original design never required the sender to prove who they are. The From line on an email is not verified the way a return address on a letter is not verified — anyone can write anything there. As one 2026 guide puts it, forging a From address is "akin to writing a different return address on a letter": the content looks like it came from one address even though it was sent from somewhere else entirely, using the spammer's own mail server (tikaj.com, Oct 2026). "The sender faked the address without ever touching your account" (clean.email, 2026).</p>
+      <p>This is also why the trick works in both directions: the same forgery aimed outward pretends to be your business emailing your customers. If spammers are faking you <em>to</em> you, assume they are faking you to your customers too — section 7 covers the warning to send.</p>
+      <h2>4. Why your own address? Reason 1: your spam filter trusts you</h2>
+      <p>Spammers pick your address deliberately. First, it slips past the junk filter: mail filters are reluctant to flag mail that claims to come from the recipient themselves — after all, you emailing yourself a reminder is a normal thing people do, and as one Microsoft support thread explains it, "most people won't block their own address." The spammer borrows your good reputation with your own filter. The forgery tools that catch mail "sent from a domain other than the one it claims to be from" exist, but your provider has to actually run them, and many setups don't (howtogeek.com).</p>
+      <h2>5. Why your own address? Reason 2: the fear trick</h2>
+      <p>The second reason is psychological, and it powers the nastiest version of this scam. An email arrives From: you, claiming the sender has taken over your account — sometimes claiming to have webcam recordings of you — and demanding payment to keep quiet. The forged From line <em>is</em> the evidence: "see, I'm emailing you from your own account, so I must be inside it." It is theater. One well-documented variant, the "Hello Pervert" email, is built entirely on a spoofed From field (clean.email, 2026).</p>
+      <p>Sometimes the email includes a real password of yours, which makes it terrifyingly convincing. That password almost always comes from an old data breach — a site you used years ago that got hacked and had its password list stolen and sold. It proves a breach happened <em>somewhere</em>, not that anyone controls your email. If you still use that password anywhere, change it there — but the email itself is still a forgery, and paying the demand funds the next thousand copies.</p>
+      <h2>6. What won't help (do not waste your afternoon)</h2>
+      <p><strong>Changing your email password.</strong> This is the instinct, and it does nothing against a forgery: "Changing your password won't help because it's not your account sending the messages" (Microsoft Q&amp;A). Change it only if the Sent-folder test in section 2 showed a real break-in.</p>
+      <p><strong>Replying, clicking links, or opening attachments.</strong> A reply confirms your address is live and monitored — it invites more. Links and attachments in forged mail are the payload; the whole point of the theater is getting you to touch one.</p>
+      <p><strong>Just deleting it.</strong> Deleting is fine, but marking it as spam is better — every "report spam" click trains your provider's filter to catch the next copy, including copies aimed at your customers on the same provider.</p>
+      <h2>7. What actually stops it</h2>
+      <p><strong>Publish the three email ID checks — and turn the last one up.</strong> SPF, DKIM, and DMARC are the records that let receiving servers verify mail claiming to be from your domain. DMARC is the one with teeth: a DMARC policy of reject, backed by SPF and DKIM, "tells Gmail, Outlook, and nearly every other provider to refuse mail falsely claiming to be from you" (gruffygoat.com, Oct 2026). The ladder matters: start at <code>p=none</code> (watch and learn — DMARC reports show you every server trying to send as your domain), move to <code>p=quarantine</code> (fakes go to the spam folder), then <code>p=reject</code> (fakes never arrive). Don't jump straight to reject before confirming your own legitimate mail passes — that is how businesses silently stop receiving their own invoice replies. <a href="what-is-dmarc.html">What DMARC actually is, in plain English</a> covers the mechanics; our free check below tells you where your domain stands today.</p>
+      <p><strong>Check for planted forwarding rules.</strong> In a real break-in, intruders add a hidden rule that forwards a copy of everything to them — check your mail settings for any forwarding address or filter you didn't create (tikaj.com, Oct 2026). In a pure forgery there won't be one, and confirming that is reassuring.</p>
+      <p><strong>Warn your customers — briefly.</strong> The same forgery aimed at your customers is the version where someone loses money: a fake "from you" asking for payment or new bank details. <a href="why-did-my-customer-get-an-email-i-never-sent.html">When customers get email you never sent</a> is the companion piece; one line in your next newsletter — "if you ever get a strange email from us asking for money or gift cards, call us first" — is the whole defense.</p>
+      <h2>8. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"I'm getting spam forged from my own address. Five asks: first, confirm my Sent folder is clean so we know it's forgery, not a break-in. Second, run our domain through the free email deliverability check and send me the SPF, DKIM, and DMARC results. Third, check my mail settings for any forwarding rule I didn't create. Fourth, walk our DMARC policy from none to quarantine to reject, confirming our real mail still passes at each step. Fifth, show me one DMARC report so I can see who's trying to send as our domain."</em> Five asks, and the mystery email from "you" becomes a checklist.</p>
+      <p class="meta">Verified 2026-10-09. From-field forgery needs no account access ("akin to writing a different return address on a letter"; "the sender faked the address without ever touching your account"): tikaj.com, Oct 2026; clean.email, 2026. 30-second Sent-folder test + sign-in check; Sent has unknown mail = real break-in: clean.email, 2026; cyberguy.com, 2026. Filter-bypass reason ("most people won't block their own address"): Microsoft Q&amp;A thread. Sextortion fear-trick, forged From as "proof" of access, breached password as prop, "Hello Pervert" variant: howtogeek.com; clean.email, 2026. "Changing your password won't help because it's not your account sending the messages": Microsoft Q&amp;A. DMARC reject/quarantine/none ladder + reports show spoofing senders + bounce-notice tell: gruffygoat.com, Oct 2026. DMARC alignment (the gap DMARC closes): dev.to explainer, Oct 2026. Malicious forwarding-rule check: tikaj.com, Oct 2026.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your domain and get a plain-English verdict on SPF, DKIM, and DMARC &mdash; the three ID checks that decide whether fakes of your domain get delivered or refused. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../index.html">Run the free email check</a>
+      </div>    <div class="cta">
+      <h2>Email is check #8 of 40</h2>
+      <p>Forged mail is one symptom. The full Site Health Watch audit checks your website's speed, security, mobile experience, and AI visibility too &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_email" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+spam+coming+from+my+own+address+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
