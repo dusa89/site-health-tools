@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do Those Share Buttons on My Website Slow It Down?</title>
+<meta name="description" content="Those little Facebook, X, LinkedIn, and Pinterest share buttons look like nothing - but behind each icon sits a vendor's script kit that phones home before your page finishes. The documented cost: 15-25 extra requests per page and nearly double the load time in one lab test. Plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Do Those Share Buttons on My Website Slow It Down?</h1>
+    <p class="lede">The short answer: <strong>the buttons themselves weigh almost nothing - the invisible engine behind them is the tax.</strong> Every share-button suite (ShareThis, AddToAny, the old AddThis) loads a bundle of scripts from the social networks' servers on every page where the buttons appear, and those scripts are not small: in one documented test, adding buttons for just three networks took a page from 5.7 seconds and 36 requests to 10.1 seconds and 57 requests. Nobody clicks those buttons often enough to justify that. Below: what actually loads, the numbers with honest framing, the dead service some sites are still paying for, and the cheap fix that costs you nothing.</p>
+    <div class="article">
+
+      <h2>1. The button is free; the engine is the tax</h2>
+      <p>A share button is two things wearing one costume. What you SEE is a little icon - Facebook's "f", the X logo, a Pinterest "P". That icon costs almost nothing: a few kilobytes, loaded once. What you DON'T see is the engine the button-suite vendor installs: JavaScript kits from Facebook, X, LinkedIn, Pinterest, and whichever other networks you checked off, all loading on the page whether anyone shares or not. Those kits are real software - Facebook's SDK runs about 50-100 kilobytes, Twitter's widget file about 89 kilobytes plus its stylesheets, Pinterest brings its own kit and image preloading, LinkedIn makes its own calls for data. Add five networks and you are looking at roughly 15-25 external requests just for the buttons - each one a separate trip to a different company's server, each one adding its own delay, each one capable of dragging the whole page if that company's server is having a slow day. Google's own third-party-script guidance names social sharing buttons (Facebook, X, LinkedIn, Mastodon) as a textbook example of this problem: too many requests, too much JavaScript blocking the main work, and a single point of failure when a vendor's server stalls. (The popup suites do the same trick - see <a href="do-those-popups-on-my-website-slow-it-down.html">the popup article</a> - and the Instagram feed is the other social embed taxing your pages: <a href="do-those-instagram-feeds-on-my-website-slow-it-down.html">the feed article</a>.)</p>
+      <h2>2. The numbers, honestly framed</h2>
+      <p>One documented lab test, run on WebPageTest, put buttons for three networks (Twitter, Facebook, Pinterest, via the old AddThis suite) on a page and measured before and after: 5.685 seconds and 36 requests became 10.086 seconds and 57 requests. That is nearly double the load time for three buttons. Treat it as what it is - one controlled test, not a promise about your site - but notice the direction, because a second independent measurement agrees: one site owner tested a five-network setup and saw 1.8 seconds without buttons versus 4.2 seconds with them. Two different tests, the same story: the buttons cost real seconds. Where the seconds go: every button fires off its own DNS lookup (the "what's the address of that server" step - each one can take 200-500 milliseconds on a slow mobile connection), then downloads, then runs its code. On a phone on cellular data, five networks' worth of that is the difference between a page that feels instant and a page your visitor abandons. And the damage is not only in total seconds - it hits Google's scores directly: the heavy JavaScript delays the main content appearing (LCP), the third-party scripts fight your page for responsiveness (INP, the interaction metric that replaced First Input Delay in 2024), and buttons that pop into place after the page already rendered shove content around, hurting your stability score (CLS). This is exactly the gap <a href="why-does-my-website-feel-slow-when-the-test-says-fast.html">the feel-vs-test article</a> describes: the lab number looks okay, the visitor's thumb says otherwise.</p>
+      <h2>3. The AddThis lesson - some sites pay a dead company</h2>
+      <p>AddThis was the biggest name in share buttons for years - at its peak it ran on over 15 million sites. Oracle bought it in 2016 and then, on May 31, 2023, shut every AddThis service down completely. Here is why that matters to you: if your site was built before mid-2023 and nobody has audited the buttons since, there is a real chance your pages are still loading AddThis code - phoning a dead service, waiting on responses that never come, and paying the full speed tax for buttons that may not even work anymore. This is the single most valuable five minutes in this article: ask your web person (or check yourself in the page source) whether the words "addthis" appear anywhere in your site's code. If they do, rip it out this week - it is pure cost with zero function. Its two big free successors are AddToAny and ShareThis, and both are still actively maintained. ShareThis's own plugin page claims its asynchronous loading "will not slow down your website" - that is the vendor's own marketing; weigh it against the measured numbers in section 2. The honest position is: the modern suites are better-built than the old AddThis, and still measurably heavier than buttons that load no vendor scripts at all.</p>
+      <h2>4. The click math nobody runs</h2>
+      <p>Now the business question: what do the buttons earn? For most small-business sites, the honest answer is: almost nothing. Check your own analytics - most sites find that share buttons get clicked a handful of times a month, and often zero, because visitors share by copying your link into their own apps, not by clicking your buttons. You are paying seconds of load time - on every page, for every visitor, including the ones who will never share anything - for a feature almost nobody uses. This is the same cost-vs-earnings frame <a href="does-cheap-hosting-make-my-website-slow.html">the hosting article</a> applies to servers and <a href="do-those-countdown-timers-slow-down-my-website.html">the timer article</a> applies to countdown widgets: if you cannot point to the revenue or the shares, it is a tax, not a feature. The exception is honest too: if you run a blog, a news site, or a content business where sharing IS the product and the buttons measurably drive traffic, keep them - and make them cheap (section 5). Everyone else should run the test in section 6's first ask and be ready to delete.</p>
+      <h2>5. The cheap fix - a share button with no engine</h2>
+      <p>Here is the part most site owners never hear: <strong>a share button does not need any vendor script at all.</strong> Every social network has a plain web address you can link to - a simple link that says "share this page on Facebook" and opens the network's own share page. A plain link costs zero JavaScript, zero extra requests, zero tracking, and works forever - no vendor to shut down, no SDK to update, nothing to slow the page. Your web person can build a row of these in under an hour: same icons, same function, none of the engine. If you would rather keep a plugin, choose a lightweight one: options exist that ship under 30 kilobytes of total code and load no third-party scripts themselves, only the plain links. Four rules either way: <strong>Cut the network list to two or three.</strong> Nobody shares to fifteen networks. Facebook, X or LinkedIn, and one niche network (Pinterest for visual businesses, WhatsApp for service businesses) covers almost every real share - every extra icon is requests for an audience that does not exist. <strong>Kill the share counters.</strong> The "2.4k shares" badges look impressive but each counter is extra calls to extra servers to fetch numbers nobody bases a decision on. <strong>Scope the buttons to content pages.</strong> Share buttons on your contact page, your about page, and your checkout earn nothing - they belong on blog posts and articles, where sharing actually happens. <strong>Test the removal.</strong> Turn the suite off for two weeks and watch your share numbers: if they do not move, the buttons were decoration, and the seconds they cost were pure loss. (A CDN borrows someone else's server to make you faster - <a href="what-is-a-cdn-and-does-my-website-need-one.html">the CDN article</a> - while share suites rent someone else's server to make you slower. Same internet, opposite deal.)</p>
+      <h2>6. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"I want our share buttons audited. Four asks. First, tell me which share-button tool we use, whether any of the code mentions AddThis (if so, remove it immediately - that service died in 2023), and how many external requests the current buttons add - give me the with-buttons vs without-buttons numbers. Second, cut us to two or three networks max, remove the share counters, and scope the buttons to blog posts and articles only - not the contact, about, or checkout pages. Third, replace the vendor suite with plain share links - no JavaScript SDKs, same icons, same function - or install a lightweight option under 30 KB that loads no third-party scripts. Fourth, measure the homepage load time before and after, and track actual share clicks for two weeks - if the clicks are near zero, we keep the plain links off too. Plain English, and show me the numbers."</em> The proof is the before-and-after: request count, load time, and a click count that either justifies the feature or kills it.</p>
+      <p class="meta">Verified 2026-10-10. Button cost: Facebook SDK ~50-100 KB; Twitter widget.js ~89 KB plus CSS; Pinterest own SDK + image preloading; LinkedIn own API calls; five-network setup ~15-25 external HTTP requests for buttons alone (lionwp.com, updated ~82 days ago; crawled 2026-10-10). Lab test: AddThis buttons (Twitter/Facebook/Pinterest) on vs off - 5.685s / 36 requests to 10.086s / 57 requests, one WebPageTest comparison (blogpros.com, updated ~179 days ago; crawled 2026-10-10). Anecdote: 1.8s without vs 4.2s with five-network setup, one site owner's test (lionwp.com) - direction matches the lab test, sample of one. CWV: heavy social JS delays LCP; third-party scripts hurt INP (replaced FID in 2024); async-loaded buttons cause layout shift hurting CLS (blogpros.com; crawled 2026-10-10). Google's third-party-JS guidance names social sharing buttons (Facebook, X, LinkedIn, Mastodon) with risks: too many network requests, main-thread blocking, single-point-of-failure (web.dev; crawled 2026-10-10). Mobile: each social-button DNS lookup 200-500ms on mobile 3G (blogpros.com; crawled 2026-10-10). AddThis: Oracle acquired 2016, all services terminated May 31, 2023; peak 15M+ publishers (en.wikipedia.org; sharethis.com; crawled 2026-10-10). Current suites: AddToAny + ShareThis the remaining big names (blogpros.com; crawled 2026-10-10); ShareThis async-loading "will not slow down your website" is the vendor's own claim (wordpress.org/plugins/sharethis-share-buttons; crawled 2026-10-10). Lightweight option: under 30 KB total CSS+JS, no third-party scripts loaded (github.com/asifansari84/lightshare; crawled 2026-10-10). All numbers are reported measurements from the cited sources, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. A share-button suite's hidden script engine is exactly the kind of culprit this check surfaces.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours, including the exact loading-time number for your homepage.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+share+buttons+slow+down+a+website+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
