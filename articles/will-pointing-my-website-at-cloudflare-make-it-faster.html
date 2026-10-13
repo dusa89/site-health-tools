@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Will Pointing My Website at Cloudflare Make It Faster?</title>
+<meta name="description" content="Your web person says to switch your DNS to Cloudflare. Here is what the nameserver change actually buys (about 50 milliseconds), where the real speed comes from (the free CDN riding along), and the three gotchas that break email, records, and HTTPS during the switch — in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Will Pointing My Website at Cloudflare Make It Faster?</h1>
+    <p class="lede">The short answer: <strong>the DNS switch itself will barely move the needle — but the free extras that come with it can make a real difference.</strong> Changing nameservers is swapping the phone book your visitors look you up in: faster, but the lookup is one small slice of the load. What actually speeds things up is the free global caching and compression Cloudflare puts in front of your site when you make the move. Below is what the switch really buys, what it cannot fix, and the three setup mistakes that break things — so you can tell your web person exactly what you want. (If the concept of a CDN is new, <a href="what-is-a-cdn-and-does-my-website-need-one.html">our CDN guide</a> covers what one is and who genuinely needs one.)</p>
+    <div class="article">
+
+      <h2>1. What "pointing at Cloudflare" actually means</h2>
+      <p>Your domain name is looked up in a phone book called DNS before your site can load. When you point your domain at Cloudflare, two things happen. First, you swap phone books: Cloudflare's nameservers replace your registrar's or host's. Second — and this is the part that matters — you can flip each website record to <strong>orange cloud</strong> (proxied), which puts Cloudflare's global network in front of your site: caching copies of your images, CSS, and JavaScript on servers near your visitors, compressing them, and serving them over modern HTTP/3. The DNS swap is the door you walk through; the caching is the house inside.</p>
+      <h2>2. The honest number: about 50 milliseconds</h2>
+      <p>A first-time visitor's DNS lookup typically costs <strong>20 to 200 milliseconds</strong>, and under 50 is considered healthy. After that first visit the answer is cached and the cost disappears entirely. So switching to faster nameservers might save you around 50 milliseconds on the very first load — real, and twenty such wins add up to a second, but not the rescue it is sold as. DNS is the first slice of the dead time before anything appears (<a href="why-does-my-website-take-forever-to-start-loading.html">the TTFB guide</a> breaks that waiting period down); it is also the smallest slice. If your server itself takes 900 milliseconds to respond, a 50-millisecond saving changes nothing — <a href="does-cheap-hosting-make-my-website-slow.html">a slow origin server</a> is the fix there, not a new phone book.</p>
+      <h2>3. Where the real speed comes from</h2>
+      <p>The free Cloudflare plan (still $0 in 2026) bundles: global CDN caching, Brotli compression, auto-minification of your code files, HTTP/3, free SSL, always-on DDoS protection, and a bot-fight mode. Those are the levers that move your load time. One documented case: a WordPress blog with full-page edge caching on the free plan reached a 76-millisecond global-average server response on a $1.33-a-month shared host. That is the house, not the door — and it is genuinely free. Image optimisation (Polish/Mirage) is the one headline feature the free plan does <em>not</em> include; that starts on the $20-a-month Pro tier, so if your photos are the problem, this switch alone will not shrink them (<a href="why-do-my-photos-slow-down-my-website.html">the photo-weight guide</a>).</p>
+      <h2>4. What it cannot fix</h2>
+      <p>Two limits, stated plainly. First, a CDN can only cache what does not change: pages unique to each visitor — logged-in accounts, shopping carts, checkouts — are still served live from your origin server, at your origin server's speed (<a href="why-is-my-online-stores-checkout-so-slow.html">the checkout guide</a> covers why). Second, switching nameservers does not clean up redirect chains: if your site bounces visitors through several addresses before loading (<a href="why-does-my-website-bounce-through-several-addresses-before-it-loads.html">the redirect guide</a>), the detours survive the DNS switch unchanged. Judge the move against the real target — <a href="how-fast-should-my-website-load.html">about 2.5 seconds to the biggest visible element</a> — not against the feeling that "it should be faster now."</p>
+      <h2>5. Gotcha #1: your email can break</h2>
+      <p>This is the big one. The orange cloud only proxies <strong>web traffic</strong> (HTTP/HTTPS). Email is not web traffic — so every record involved in mail delivery must stay <strong>grey cloud</strong> (DNS-only): your MX records, your mail-server hostname, and the TXT records that authenticate your mail (SPF, DKIM, DMARC). Proxy a mail record and mail simply stops reaching you; there is no security benefit from proxying it, only breakage. MX and TXT records cannot even be proxied — but a mail-server A record <em>can</em> be flipped orange by a careless click, and that is the one that kills inbound email. This is the first question for your web person: "which records are you leaving grey cloud, and why?"</p>
+      <h2>6. Gotcha #2: the auto-import misses records</h2>
+      <p>When you add your domain, Cloudflare scans your old nameservers and tries to copy every DNS record automatically. Helpful — and incomplete. It commonly misses DKIM selectors and secondary TXT records, the quiet little records your email authentication depends on. A dropped DKIM record during migration can get your legitimate mail junked or bounced. The fix is unglamorous: before changing nameservers, your web person exports the full zone from the old provider and checks it against the Cloudflare list line by line. Every line accounted for. Ten minutes of boredom beats a week of "why is our email in spam?"</p>
+      <h2>7. Gotcha #3: the HTTPS mode and the waiting</h2>
+      <p>Two more setup details. Cloudflare's SSL mode should be <strong>Full (Strict)</strong> if your origin server already has a valid certificate (the Let's Encrypt kind) — that encrypts both legs of the journey and verifies the server's certificate. The "Flexible" mode leaves the leg between Cloudflare and your server unencrypted; use it only if the server has no certificate at all. And after the nameservers change, the internet needs up to <strong>24 hours</strong> to fully catch up — Cloudflare emails you when it is active. During that window the site can wobble. Do not judge the speed gains, or panic about the dips, until the dust settles.</p>
+      <h2>8. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>“We are switching DNS to Cloudflare for the free CDN caching, compression, and HTTP/3 — not for the nameserver speed, which I know is about 50 milliseconds. Four requirements. First, every mail-related record — MX, the mail hostname, SPF, DKIM, DMARC — stays grey cloud, DNS-only, and you confirm the list with me before cutover. Second, you export the full zone from the old provider and diff it against Cloudflare's imported list line by line, because the auto-import misses DKIM selectors and secondary TXTs. Third, SSL mode is Full (Strict) since our origin has a valid certificate. Fourth, lower the TTLs a day ahead so any mistake reverts in minutes, and we do not judge speed until 24 hours after propagation completes. If any of those four is a problem, say so before we start.”</em> A good web person nods at all four. One who shrugs at the grey-cloud question has not done this before — and you just found out cheaply.</p>
+      <p class="meta">Verified 2026-10-10. Cold DNS lookups typically cost 20–200ms, under 50ms is healthy, and the answer is cached after the first visit (webzeto.com guide, ~Sep 2026); faster nameservers save roughly 50ms on initial load (webzeto.com; dev.to nameserver comparison). Cloudflare Free plan 2026: global caching, authoritative DNS, universal TLS, HTTP/3, Brotli, unmetered HTTP bandwidth; image optimisation starts at Pro (blog.blazingcdn.com 2026 pricing roundup, updated Oct 2026). Free-plan extras: always-on DDoS protection, auto-minify, Rocket Loader, Bot Fight Mode, up to 5 custom firewall rules (biswashost.com overview). Field case: Cloudflare Free full-page edge caching → 76ms global-average TTFB on a $1.33/month shared host (SpeedVitals blog, Oct 2026); honest caveat: logged-in, cart, and checkout pages stay limited by the origin server (SpeedVitals). Orange-cloud proxy covers HTTP/HTTPS only — mail records must be DNS-only; proxying them breaks delivery (Cloudflare documentation, verified Jul 2026). Auto-import commonly misses DKIM selectors and secondary TXT records — verify line by line (wizrdz DNS-migration guide). Nameserver propagation up to 24 hours (Cloudflare DNS guide). Honesty: 50ms and 76ms figures are reported measurements from the cited sources, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. A slow DNS slice or an uncached origin is exactly the kind of culprit this check surfaces.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours, including the exact loading-time number for your homepage.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+pointing+my+website+at+Cloudflare+will+make+it+faster+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
