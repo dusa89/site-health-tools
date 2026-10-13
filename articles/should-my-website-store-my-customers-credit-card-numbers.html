@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should My Website Store My Customers' Credit Card Numbers?</title>
+<meta name="description" content="Thinking about keeping card numbers on your website for repeat customers or subscriptions? In plain English: what the card brands actually require you to promise (PCI DSS), why storing the numbers yourself drags you into the hardest compliance form, how tokenization gives you the convenience without the vault, and the catch that keeps you in scope even when you tokenize.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Should My Website Store My Customers' Credit Card Numbers?</h1>
+    <p class="lede">The honest answer: <strong>no - do not store card numbers on your website. Let the payment processor hold them, and keep a token instead.</strong> This is not about being careful with a database. The moment your website holds actual card numbers, you sign yourself up for the card industry's heaviest compliance paperwork (a 250-question self-assessment), plus the promise to encrypt, guard, and audit those numbers forever. There is a way to get everything you wanted from storing them - faster checkout, subscriptions, card-on-file convenience - without holding a single number: tokenization. Your site keeps a worthless placeholder; the processor keeps the card. Below: what the card brands require you to promise, the two forms that decide how much paperwork you face, how tokenization works in plain English, the one catch that keeps you fully in scope anyway, and the three traps - including the spreadsheet.</p>
+    <div class="article">
+
+      <h2>1. This is a contract problem, not just a security problem</h2>
+      <p>Start with the frame most guides skip. PCI DSS - the Payment Card Industry Data Security Standard - is not a law. It is a promise you made without reading it: your merchant agreement with your processor or acquiring bank requires you to follow it, and the card brands enforce it through that chain (smallbizhandbook.com, updated 4 days ago; crawled 2026-10-11). Being small does not exempt you. It only changes how you prove compliance - a small merchant files a self-assessment questionnaire instead of hiring an outside auditor, but the underlying rules are the same. So the question is not "can I be careful enough." The question is "which form am I signing up for." That turns out to be the whole decision, because the forms are wildly different sizes.</p>
+      <h2>2. The two forms - 27 questions vs 250</h2>
+      <p>How you handle cards decides which Self-Assessment Questionnaire you file each year. If the payment is fully outsourced - the customer pays on a hosted checkout page or an embedded secure form, and your systems never touch card data - you file <strong>SAQ A: 27 requirements</strong>, one of the shortest forms there is (smallbizhandbook.com; crawled 2026-10-11). If your website stores card numbers electronically and you do not fit another category, you file <strong>SAQ D: 250 requirements</strong> (smallbizhandbook.com; crawled 2026-10-11). One guide for small merchants puts it bluntly: SAQ D is "everything else, including anyone storing cardholder data. Hundreds of questions. Try not to end up here" (equaltechsolutions.com, Sep 2026; crawled 2026-10-11). That is the price of holding the numbers: not just encryption, but documented encryption, key management separated from the encrypted data, minimum-necessary storage with a written business reason, access controls, audits - hundreds of commitments, renewed every year (cyberphore.com, updated ~79 days ago; crawled 2026-10-11). Nobody who wants to run a business rather than a compliance department chooses this voluntarily.</p>
+      <h2>3. What you actually wanted - and the answer that gives it to you</h2>
+      <p>Nobody stores card numbers for fun. You wanted something specific: faster repeat checkout, "keep my card on file," subscriptions that charge monthly, the convenience your customers expect from big stores. All of that is achievable without holding a single card number. The answer is <strong>tokenization</strong>: when a customer pays, the processor returns a token - a stand-in string with no value of its own - and your website stores <em>that</em>. When it is time to charge again, your site hands the token to the processor, which holds the real card in its own vault and runs the charge (xplorpay.com, updated 4 days ago; shift4.com; crawled 2026-10-11). Think of it like a coat check: you hand over the coat (the card number), they hand you a ticket (the token). The ticket gets you your coat back, but if someone steals the ticket, all they have is paper. Subscriptions, one-click checkout, card-on-file - the modern versions of all three run on tokens, not on stored numbers. And the same never-touch-the-numbers logic decides <a href="does-my-web-host-actually-back-up-my-website.html">what your host's backups are actually keeping</a> - a backup of a database full of card numbers is a second vault you did not mean to build.</p>
+      <h2>4. The catch that keeps you in scope even when you tokenize</h2>
+      <p>Here is the line people miss. Tokenization only shrinks your compliance burden <em>if the card number never touches your servers</em> - the customer types it into a hosted checkout page, a client-side script sends it straight to the processor, or an embedded secure iframe collects it. Do it that way and you stay on the short form. But if the raw card number reaches your website's backend even briefly - a form that posts to your server first, a log file that catches the field, an email notification that includes it - you remain fully in PCI scope, even if you tokenize the number right after (medium.com @shejwalhrishikesh, updated ~193 days ago; crawled 2026-10-11). The rule is about what your systems <em>touch</em>, not what they <em>keep</em>. This is the question to put to your web person in section 8: "show me the exact path a card number takes from the customer's keyboard to the processor, and prove it never lands on our server." If they cannot draw that path, you are on the long form until they can.</p>
+      <h2>5. The money side - what noncompliance actually costs</h2>
+      <p>The card brands may fine the acquiring bank $5,000 to $100,000 <em>per month</em> for compliance violations - and the bank passes that cost down the chain until it lands on the merchant (refreshtech.com, updated 6 days ago; crawled 2026-10-11). Before any breach, plain noncompliance fees can start at $10-$100 a month and grow the longer you stay noncompliant (securityjourney.com, ~345 days ago; crawled 2026-10-11). After a breach involving stored numbers, remediation runs from a few thousand dollars to $500,000 depending on severity and how many customers are affected, and a forensic investigation alone can cost $50,000 to over $500,000 (securityjourney.com; crawled 2026-10-11). And the targeting is not what people expect: over 90% of card-data compromises hit the smallest merchants (Level 4), with 91% coming through always-on internet connections - in other words, the standard small-business setup - a website living on an always-on connection (Trustwave figures via optimizedpayments.com; crawled 2026-10-11). The numbers argue for the same architecture twice: don't be the vault; don't even be the hallway the numbers walk through.</p>
+      <h2>6. The three traps</h2>
+      <p><strong>Trap one: the spreadsheet (and the CRM, and the email).</strong> Card numbers do not only live in databases. A phone order typed into a spreadsheet, an invoice email with the full number in the body, a CRM note with "card on file" - each one is stored cardholder data, and each one pulls its container into PCI scope (the paper and side-channel controls live under Requirement 9.4 and the retention rules under 3.2.1; pcidssguide.com, updated ~14 days ago; crawled 2026-10-11). If your team handles cards by phone, they should key them into a hosted virtual terminal - not write them down. <strong>Trap two: "we encrypt it, so we're fine."</strong> Encrypting a database column is one of hundreds of SAQ D requirements, not a substitute for them - key management, access logging, who can decrypt, rotation, documented business need. Encryption without the rest is a lock on a screen door. <strong>Trap three: "the plugin handles it."</strong> Payment plugins collect card details in many shapes - some use hosted fields or iframes (short form), some post the data through your server first (long form). The plugin's marketing page rarely spells out which. Ask the path question from section 4 and get the answer in writing. (When it has already gone wrong, <a href="why-did-my-customers-card-get-stolen-after-buying-from-my-site.html">the card-breach article</a> is the response map.)</p>
+      <h2>7. The quick verdict</h2>
+      <p><strong>Do not store your customers' card numbers on your website.</strong> Store tokens, issued by your payment processor, and let the processor run the vault. The architecture to demand: the card number travels from the customer's keyboard straight to the processor (hosted page, client-side tokenization, or secure iframe), never lands on your server, and your site keeps only the token - which keeps you on the 27-question SAQ A instead of the 250-question SAQ D. The subscription and repeat-checkout features you want all run on tokens. The one thing never allowed, ever: the CVV, magnetic-stripe data, or PIN may not be stored after authorization under any circumstances (cyberphore.com; crawled 2026-10-11). The other security decisions around this one - <a href="do-i-need-a-website-firewall.html">whether a firewall is worth it</a>, <a href="should-i-let-customers-create-accounts-on-my-website.html">customer accounts</a>, and <a href="who-is-responsible-for-my-websites-security.html">who actually owns the security decision</a> - all get simpler once the numbers are out of your hands.</p>
+      <h2>8. What to tell your web person</h2>
+      <p>Send your assistant or web person this: <em>"I don't want our website to store customer card numbers anywhere - not in the database, not in a spreadsheet, not in email, not in the CRM. Four asks. First, draw me the exact path a card number takes from the customer's keyboard to the payment processor, and confirm it never lands on our server - hosted checkout page, client-side tokenization, or a secure embedded form. Second, replace any stored card numbers with processor tokens for repeat billing and subscriptions, and delete the real numbers once the tokens work. Third, confirm nothing else captures card data along the way - no form emails with the number, no logging the field, no phone orders written down. Fourth, tell me which PCI self-assessment form we file now (it should be SAQ A, the short one) and show me the confirmation in writing. Prove it with a test: run a test charge while watching the server logs, and show me the card number never appears. If anything along the path touches the raw number, redesign the path before the next real order."</em> The proof is a test charge with server logs that contain no card number - and a short form, not a long one. (And if your web person is the person who set this up in the first place, <a href="should-i-give-my-web-developer-my-passwords.html">the passwords article</a> and <a href="what-happens-if-my-web-person-disappears.html">the web-person article</a> cover the access side.)</p>
+
+      <p class="meta">Verified 2026-10-11. PCI DSS is not a law - it is required by the card brands through your merchant agreement with your acquirer or processor; size changes how you prove compliance (usually an annual SAQ), not whether it applies (smallbizhandbook.com, updated 4 days ago; crawled 2026-10-11). SAQ A (payment fully outsourced, systems never touch card data): 27 requirements; anyone storing cardholder data electronically who does not fit another SAQ: SAQ D, 250 requirements (smallbizhandbook.com; crawled 2026-10-11). Plain terms: SAQ D = "everything else, including anyone storing cardholder data. Hundreds of questions. Try not to end up here" (equaltechsolutions.com, Sep 2026; crawled 2026-10-11). Storing allowed but strict: strong encryption, key management separate from encrypted data, minimum-necessary storage with documented business reason, access controls; never store CVV, full magnetic-stripe data, or PIN after authorization (cyberphore.com, updated ~79 days ago; crawled 2026-10-11). Tokenization: the processor holds the sensitive data in its vault and issues a stand-in token with no intrinsic or extrinsic value; no code, passkey, or algorithm can convert the token back - only the processor can (xplorpay.com, updated 4 days ago; shift4.com; crawled 2026-10-11). Scope rule: card data never touches your servers (hosted page, client-side tokenization, secure iframe) keeps you on the simplified SAQ; if the raw number reaches your backend even briefly, you remain fully in PCI scope even when you later tokenize (medium.com @shejwalhrishikesh, updated ~193 days ago; crawled 2026-10-11). Penalties: card brands may fine the acquiring bank $5,000-$100,000 per month, passed down to the merchant (refreshtech.com, updated 6 days ago; crawled 2026-10-11); noncompliance fees start $10-$100/month and grow (securityjourney.com, ~345 days ago; crawled 2026-10-11); breach remediation from a few thousand to $500,000; forensic investigations $50,000-$500,000+ (securityjourney.com; crawled 2026-10-11). Targeting: 90%+ of compromises hit Level 4 (smallest) merchants; 91% through always-on internet connections (Trustwave via optimizedpayments.com; crawled 2026-10-11). Side-channel storage (paper, email, CRM notes) falls under Requirement 9.4 media controls and 3.2.1 retention rules (pcidssguide.com, updated ~14 days ago; crawled 2026-10-11). All numbers are reported figures from the cited sources, not promises about your site.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>The free security check scans what the public internet actually sees on your site &mdash; HTTPS, headers, and the common exposures. No signup, about ten seconds.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Card numbers you don't hold can't be stolen from you. The full Site Health Watch audit checks your website's security, speed, email, mobile experience, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+storing+customer+credit+card+numbers+and+I%27d+like+the+full+40-point+audit.+My+website+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
