@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is Lazy-Loading My Hero Image Slowing Down My Website?</title>
+<meta name="description" content="You were told lazy-loading makes your site faster — so why does Google still say your biggest photo loads too slow? Because the one photo that matters most — your hero image — is waiting in line behind everything else. The 30-second check and the free fix, in plain English.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Is Lazy-Loading My Hero Image Slowing Down My Website?</h1>
+    <p class="lede">The short answer: <strong>lazy-loading is for photos people scroll to. Your hero image — the big photo at the top of your homepage — should load first, not last.</strong> Lazy-loading tells the browser to hold a photo back until it's needed. That's brilliant for the twenty photos down the page. But your hero <em>is</em> the first screen, and it's usually the biggest thing Google times when it grades your speed. Hold the hero back and you've held back your grade. If you're new to the idea, <a href="what-is-lazy-loading-and-will-it-make-my-website-faster.html">the lazy-loading explainer covers how the trick works</a>; this article is about the one place you must never use it.</p>
+    <div class="article">
+
+      <h2>1. The scene: the advice that backfired</h2>
+      <p>Somebody — a speed plugin, a blog post, a well-meaning nephew — told you lazy-loading makes websites faster. So you turned it on for everything. Every photo on the site now carries the little <em>loading="lazy"</em> stamp, including the big hero photo at the top of your homepage. Then you ran a speed test and Google still flagged your largest photo as slow. The advice wasn't wrong. It was incomplete: lazy-loading is a waiting line, and somebody put your most important photo at the back of it.</p>
+      <h2>2. The 30-second version of how loading works</h2>
+      <p>Every photo on your page loads in one of two ways. <strong>Eager</strong> means "download this right now" — it's also what the browser does when you say nothing at all. <strong>Lazy</strong> means "hold this back until the visitor is about to see it." For the photos halfway down the page, lazy is the right call: why spend a visitor's data on a photo they may never scroll to? (The full mechanics are in <a href="what-is-lazy-loading-and-will-it-make-my-website-faster.html">the lazy-loading explainer</a>.) The trouble starts when the "hold it back" stamp lands on the photo that's already on screen the moment the page opens.</p>
+      <h2>3. Why the hero photo is special: it's what Google grades</h2>
+      <p>Google's speed grade for your page hinges on one moment: when the biggest thing in the first screen finishes appearing. That metric is called Largest Contentful Paint, and the target is under 2.5 seconds (<a href="how-fast-should-my-website-load.html">what that target means, in plain English</a>). On most homepages the biggest thing in the first screen is the hero photo. So the hero photo isn't just decoration — it's the exam. Lazy-loading the hero is like telling the star runner to wait at the starting line until the crowd looks at him. The race is already being timed.</p>
+      <h2>4. The hidden mechanic: your hero skips the browser's fast lane</h2>
+      <p>Here's the part nobody tells owners. As your page arrives, the browser runs a second, super-fast scan of the raw page and starts downloading the important images immediately — before the page has even finished arriving. But a lazy-loaded image is <em>skipped</em> by that fast scan. For the browser to even decide whether a lazy image is on screen, it first has to download and read all of your page's styling instructions and lay the page out. Only then does the hero photo's download begin. In plain terms: your entire stylesheet becomes a waiting room your biggest photo must sit through. One stamp — <em>loading="lazy"</em> — quietly moved your hero to the back of every line.</p>
+      <h2>5. The WordPress twist: your site may have done this to itself</h2>
+      <p>If your site runs on WordPress, check this even if you never touched a setting. In August 2020, WordPress started stamping <em>loading="lazy"</em> on <strong>every</strong> image automatically — including heroes. The people who build WordPress then discovered the stamp on the hero was slowing down the very grade it was meant to help, so in January 2022 they refined it: the <em>first</em> content image on the page no longer gets the stamp. But that's only the first image in your page content — a hero built by your theme, a slider, or a page builder can still carry the stamp today. Google's own speed tool will actually call this out by name with a warning that the largest photo was lazily loaded. WordPress tested the fix across 50 popular themes: skipping the stamp on the first image made the graded moment about 7% faster in the middle of the pack (their test: 2,020 milliseconds down to 1,877), and up to 33% faster in the best cases. Those are their lab numbers on themes — not a promise for your site — but they show how real the penalty is.</p>
+      <h2>6. The 30-second check: look at your own hero</h2>
+      <p>Open your homepage in Chrome. Right-click the big photo at the top and choose <em>Inspect</em>. A panel opens with one line of code highlighted. Look for the words <em>loading="lazy"</em> in that line. If they're there, you found it — your most important photo is waiting in line. (If you see <em>loading="eager"</em> or nothing at all, your hero is fine and your slowness lives elsewhere — <a href="why-do-my-photos-slow-down-my-website.html">oversized photo files</a> and <a href="does-that-homepage-slider-slow-down-my-website.html">homepage sliders</a> are the next places to look.)</p>
+      <h2>7. The fixes, cheapest first</h2>
+      <p><strong>First, don't nuke the whole thing.</strong> Lazy-loading is still doing good work on the nineteen photos below the fold — it saves your visitors' mobile data. WordPress's own team tested turning it off everywhere and found the refined version (lazy everywhere <em>except</em> the hero) beats both extremes. The fix is a scalpel, not a sledgehammer.</p>
+      <p><strong>The no-code fix:</strong> most speed plugins (and many themes) have a setting to exclude specific images from lazy-loading — usually called "exclude from lazy load" with a box where you paste the hero photo's file name. Add your hero there, clear the site cache, and re-test.</p>
+      <p><strong>The tell-your-web-person fix:</strong> the hero image tag should say <em>loading="eager"</em> instead of <em>loading="lazy"</em>, and it can carry <em>fetchpriority="high"</em> — that's you telling the browser "this photo is the main event, download it first." One step further is a <em>preload</em> hint in the page header for the hero file, which puts it at the very front of the line. While they're in there, make sure the hero has its width and height set — a hero with no reserved space makes the page jump as it loads (<a href="why-does-my-website-jump-around-while-it-loads.html">why that jump happens</a>).</p>
+      <h2>8. What to tell your web person (the exact words)</h2>
+      <p>Send them this: <em>"My homepage hero image is lazy-loaded and I think it's hurting our speed grade. Two asks: first, remove the lazy-loading from the hero image only — set it to eager and add fetchpriority high — and leave lazy-loading on everything below the fold. Second, check whether the theme or a plugin is stamping lazy-load onto the hero automatically, and whether the hero has its width and height set so the page doesn't jump. Then re-run the speed test and tell me what the largest-photo timing did. No jargon in the answer."</em> One stamp removed, and the star runner starts on time.</p>
+      <p class="meta">Verified 2026-10-09. Lazy-loaded images are skipped by the browser's preload scanner; the browser must download and parse all render-blocking CSS and lay the page out before a lazy image's download can begin (corewebvitals.io LCP-image guide, crawled Oct 2026). Eagerly loading the visible LCP element while lazy-loading the rest is listed as one of the most common LCP mistakes to avoid (same source). WordPress 5.5 (Aug 2020) added loading="lazy" to all images by default; WordPress 5.9 (Jan 2022) refined the default to skip the first content image or iframe (make.wordpress.org dev notes, 2021; wptavern.com). WordPress's own tests across 50 popular themes: median LCP improvement 7% (2,020ms to 1,877ms in their test), maximum 33% in some scenarios; skipping the first two images performed worse, and disabling lazy-loading entirely was not the answer (make.wordpress.org, Jul 2021). Honesty: the 7%/33% figures are WordPress's lab results on themes, not a promise for any individual site; the stamp check in section 6 is the ground truth for your page.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Paste your website address. Ten seconds later you get one verdict in plain English &mdash; how many seconds your homepage takes on a typical phone, and the three biggest things slowing it down. A lazy-loaded hero image is one of the classic culprits this check flags.</p>
+        <a class="toolbtn" href="../speed.html">Run the free speed check</a>
+      </div>    <div class="cta">
+      <h2>Speed is check #1 of 40</h2>
+      <p>The full Site Health Watch audit also checks your email authentication, security, mobile experience, and SEO &mdash; every finding verified against your live site, delivered within 24 hours, including the exact loading-time number for your homepage.</p>
+      <a class="btn" data-cta="audit_speed" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+whether+lazy-loading+the+hero+image+slows+down+websites+and+I%27d+like+the+full+40-point+audit.+My+domain+is%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
