@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who Else Has the Keys to My Website?</title>
+<meta name="description" content="Your old web developer, a former employee, the default admin account that came with the install - anyone who ever had a login may still have one. Research finds nearly nine in ten former employees keep access to at least one company system after they leave. The 20-minute key audit every owner should run.">
+<style>
+  :root{
+    --teal:#153A4E; --green:#1E8A57; --amber:#C47B12; --red:#B3261E;
+    --ink:#1E2A32; --slate:#5A636B; --line:#D8DEE2;
+    --green-tint:#E8F3EC; --amber-tint:#FBF3DF; --red-tint:#F9E7E6; --paper:#F4F7F8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);
+       background:#fff;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header.site{border-bottom:1px solid var(--line);padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{flex:0 0 auto}
+  .wordmark{font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--teal)}
+  .tagline{font-size:12px;color:var(--slate);letter-spacing:.02em}
+  .toolsnav{font-size:13px;color:var(--slate);padding:12px 0 0}
+  .toolsnav a{color:var(--teal);font-weight:700}
+  main{padding:34px 0 10px}
+  h1{font-size:30px;line-height:1.25;color:var(--teal);margin:0 0 10px}
+  .lede{font-size:17px;color:var(--slate);margin:0 0 26px;max-width:60ch}
+  .article{font-size:16.5px}
+  .article p{max-width:68ch;margin:0 0 18px}
+  .article h2{font-size:21px;color:var(--teal);margin:30px 0 10px}
+  .trybox{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:28px 0}
+  .trybox strong{font-size:16px}
+  .trybox p{font-size:15px;color:var(--slate);margin:8px 0 14px}
+  .trybox a.toolbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:16px;padding:12px 26px;border-radius:10px}
+  .trybox a.toolbtn:hover{background:#0f2c3c}
+  .cta{margin:34px 0 0;border:2px solid var(--teal);border-radius:12px;padding:26px;text-align:center}
+  .cta h2{color:var(--teal);font-size:21px;margin:0 0 10px}
+  .cta p{font-size:15px;color:var(--slate);margin:0 0 18px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:700;font-size:17px;padding:14px 30px;border-radius:10px}
+  .cta a.btn:hover{background:#0f2c3c}
+  .cards{margin:18px 0 0;padding:0;list-style:none}
+  .cards li{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:14px;background:#fff}
+  .cards a{color:var(--teal);font-weight:700;font-size:17px;text-decoration:none}
+  .cards a:hover{text-decoration:underline}
+  .cards p{margin:8px 0 0;font-size:15px;color:var(--slate)}
+  footer.site{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;
+    font-size:13px;color:var(--slate)}
+  footer.site .disc{font-style:italic;text-align:center;max-width:64ch;margin:0 auto 10px}
+  footer.site .fine{text-align:center}
+  @media (max-width:560px){ h1{font-size:25px} .trybox{padding:18px} }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Site Health Watch logo">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#153A4E"/>
+        <path d="M8 22 L14 22 L17 14 L21 28 L24 19 L27 22 L29 22 L31 19 L33 22" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 19 l3.5 3.5 L36 17" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3.5,0)"/>
+      </svg>
+      <div>
+        <div class="wordmark">SITE HEALTH WATCH</div>
+        <div class="tagline">Measured, not guessed.</div>
+      </div>
+    </div>
+    <nav class="toolsnav" aria-label="Free checks">Free checks: <a href="../speed.html">Website speed</a> &middot; <a href="../index.html">Email deliverability</a> &middot; <a href="../security.html">Website security</a> &middot; <a href="../broken-links.html">Broken links</a> &middot; <a href="../ai-visibility.html">AI visibility</a> &middot; <strong>Guides</strong></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Who Else Has the Keys to My Website?</h1>
+    <p class="lede">The uncomfortable answer: <strong>probably more people than you think.</strong> Your old web developer, the employee who left last year, the default &ldquo;admin&rdquo; account that came with the installer - every one of them may still hold a working key to your website. Research on employee offboarding finds nearly nine in ten former employees keep access to at least one company system after they leave, and one in five businesses has suffered a breach linked to an account nobody remembered to close. Below: how the keys pile up, what the numbers say, and the 20-minute audit that takes them back.</p>
+    <div class="article">
+
+      <p>All numbers are reported figures from the cited sources, not promises about your
+      situation - access habits differ business to business. The facts below describe
+      how the key problem works in general; your own login list is the verdict on
+      your business.</p>
+      <h2>The keys you forgot you handed out</h2>
+      <p>Think of every login that can change your website as a key: the
+      hosting account, the domain registrar, the website's own admin area,
+      the business email, the social accounts, the Google Business Profile.
+      Now list who holds each one. For most small businesses the list is
+      longer than expected: the web developer from three years ago who you
+      do not talk to anymore. The employee who left last spring. The
+      default &ldquo;admin&rdquo; account the installer created and nobody
+      ever deleted. The one password the whole office knows because it was
+      easier than setting everyone up properly. None of these people broke
+      in. You - or someone who worked for you - handed them a key, and
+      nobody ever asked for it back.</p>
+      <p>This is different from deciding whether to share access going
+      forward - our <a href="should-i-give-my-web-developer-my-passwords.html">web-developer-passwords
+      article</a> covers that decision. This is the audit of the keys that
+      are already out there.</p>
+      <h2>What the research says</h2>
+      <p>The numbers are blunt. A 2026 offboarding report from Zimyo found
+      that 89% of former employees retain access to at least one company
+      application after their departure - and one in five businesses has
+      suffered a breach linked to an orphaned account nobody remembered to
+      close. A separate industry survey found 83% of employees kept access
+      to at least one account from a previous employer, and 47% admitted to
+      using old company passwords after leaving, some of them more than two
+      years later.</p>
+      <p>The cleanup side is just as weak. BetterCloud's 2026 report on
+      business software found only 27% of organizations automate offboarding
+      at all - companies put more effort into setting someone up than into
+      locking them out - and 18% of enterprises suffered a breach tied
+      directly to an un-offboarded former employee in the past twelve
+      months. Gartner's research puts a number on the lag: only 44% of
+      companies revoke all access rights within 24 hours of someone's
+      departure. The Ponemon Institute found roughly one in five data
+      breaches involves a former employee accessing systems within six
+      months of leaving.</p>
+      <p>And the famous case makes the mechanism concrete: the 2021 Colonial
+      Pipeline attack - the one that shut down fuel delivery across the US
+      East Coast - started through an old, inactive VPN account that had no
+      second login step. Not a sophisticated break-in. A door that was
+      simply never closed.</p>
+      <p>One honest note from the research: this is rarely a story about a
+      vengeful ex-employee. Most former employees never touch the old
+      access again. The risk is that nobody can say for certain that they
+      will not - because nobody owns confirming the access is actually
+      gone.</p>
+      <h2>Why small businesses are worse at this</h2>
+      <p>Big companies have an IT department and an offboarding checklist.
+      You have a phone full of texted passwords and a web person who was a
+      freelancer with no handover document. When someone leaves a small
+      business, the &ldquo;offboarding&rdquo; is usually a farewell lunch -
+      nobody sits down with the list of logins. Shared passwords make it
+      worse: if the whole office knows the hosting password, one departure
+      means the password is compromised and nobody changes it, because
+      changing it means telling everyone the new one. Our
+      <a href="who-is-responsible-for-my-websites-security.html">responsibility
+      article</a> breaks down whose job each layer of this really is - the
+      short version is that the key list is yours, not your host's and not
+      your old developer's.</p>
+      <h2>The 20-minute key audit</h2>
+      <p>Do this once, then repeat it every time someone with access leaves.
+      It takes about twenty minutes.</p>
+      <p><strong>1. Write down every login that can change the site.</strong>
+      One page: hosting account, domain registrar, website admin, business
+      email, social accounts, business profile. Next to each, write who has
+      the credentials today. You cannot revoke what you have not listed.</p>
+      <p><strong>2. Remove the people who are gone.</strong> Delete or
+      disable their accounts - do not just change the password and leave the
+      account sitting there. A disabled account cannot be logged into, full
+      stop. Start with the old web developer and every ex-employee.</p>
+      <p><strong>3. Kill the defaults.</strong> If your site still has the
+      &ldquo;admin&rdquo; account that came with the installer, delete it or
+      rename it after creating a properly named administrator account. That
+      default name is one of the first things every automated attack tries - our
+      <a href="why-does-my-website-keep-getting-login-attempts.html">login-attempts
+      article</a> explains the knocking you are probably already hearing.</p>
+      <p><strong>4. End the shared passwords.</strong> Anything more than one
+      person knows is not a secret - it is a rumor. Give everyone their own
+      login so that the next departure is one account to disable, not a
+      password the whole office has to relearn.</p>
+      <p><strong>5. Put the second login step on the important ones.</strong>
+      Hosting, domain registrar, and business email at minimum. A stolen
+      password alone should never be enough - our
+      <a href="should-i-turn-on-two-factor-authentication-for-my-website.html">two-factor
+      article</a> walks through what that second step looks like in plain
+      English.</p>
+      <p>One chain to check while you are at it: if someone can get into
+      your business email, they can reset the passwords for nearly
+      everything else. Our <a href="if-someone-hacks-my-email-can-they-take-over-my-website.html">email-to-website-takeover
+      article</a> shows exactly how that chain works - which is why the
+      email account sits at the top of the key list, not the bottom.</p>
+      <h2>What to ask your web person</h2>
+      <p>Four questions that get a straight answer: (1) &ldquo;List every
+      admin-level account on my website and tell me who each one belongs
+      to.&rdquo; (2) &ldquo;Which of these belong to people who no longer
+      work with us - and can you remove them today?&rdquo; (3) &ldquo;Is
+      there still a default admin account from the original install, and can
+      we delete it?&rdquo; (4) &ldquo;The next time someone with access
+      leaves, what is the ten-minute checklist so no key gets left
+      behind?&rdquo; If the answer to the first question takes more than a
+      day to produce, that is itself the finding - and our
+      <a href="how-do-i-know-if-my-website-has-already-been-hacked.html">already-hacked
+      article</a> covers how to check whether any of those old keys were
+      used while you were not looking.</p>
+      <p class="meta">Verified 2026-10-11. Zimyo 2026 Employee Offboarding
+      Process Report: 89% of former employees retain access to at least one
+      company application after departure; one in five businesses suffered a
+      breach linked to an orphaned account nobody remembered to close (via
+      LinkedIn, published ~24 days ago; crawled ~4 days ago). 83% of
+      employees kept access to at least one account from a previous
+      employer; 47% admitted using old company passwords after leaving,
+      some more than two years later (same coverage). BetterCloud 2026 State
+      of SaaS Report: only 27% of organizations automate offboarding; 18%
+      of enterprises suffered a breach tied to an un-offboarded former
+      employee in the past 12 months; 54% of IT teams admit worry about
+      offboarding gaps (via cyberfenceplatform.com, updated ~16 days ago).
+      Gartner: only 44% of companies revoke all access within 24 hours of
+      departure (same article). Ponemon Institute: roughly one in five data
+      breaches involves a former employee accessing systems within six
+      months of leaving (same article). Colonial Pipeline (2021): attackers
+      entered through an old, inactive VPN account with no second login
+      step (thehackernews.com, updated ~250 days ago). All figures are
+      reported measurements from the cited sources, not promises about any
+      individual business.</p>
+      <div class="trybox">
+        <strong>Try it free — takes about 10 seconds</strong>
+        <p>Keys are one half of the problem - the locks are the other. The free security check grades your site's certificate and headers in about ten seconds, in plain English - so you can see the holes a stranger could walk through, not just the keys you already handed out.</p>
+        <a class="toolbtn" href="../security.html">Run the free security check</a>
+      </div>    <div class="cta">
+      <h2>Security is check #3 of 40</h2>
+      <p>Extra keys are what gets used when the front door is locked - the full Site Health Watch audit finds the gaps before someone's old login becomes your breach. We check your site's security posture, speed, mobile experience, SEO, and AI visibility &mdash; every finding verified against your live site, delivered within 24 hours.</p>
+      <a class="btn" data-cta="audit_security" href="mailto:dadusa01@gmail.com?subject=Site+Health+Watch+%E2%80%94+full+audit+request&body=Hi%2C+I+read+your+guide+on+who+has+the+keys+to+my+website+and+I%27d+like+the+full+40-point+audit.+My+domains+are%3A+">$199 — Get the full audit</a>
+    </div>
+    </div>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p class="disc">Prepared by an AI-assisted audit team; every finding verified against live tool output.</p>
+    <p class="fine">&copy; 2026 Site Health Watch &middot; Every small business deserves the truth about its website &mdash; measured, not guessed.</p>
+  </div>
+</footer>
+<script>
+"use strict";
+/* SHW funnel beacon — counts $199 CTA clicks (anonymous aggregate, no cookies, no personal data).
+   Best-effort: the ping never blocks the click. If the counter service is down, the mailto still opens. */
+(function(){
+  var NS='shw_site_health_tools';
+  var BASE='https://abacus.jasoncameron.dev/hit/'+NS+'/';
+  function ping(key){
+    try{
+      var img=new Image();
+      img.src=BASE+key+'?t='+Date.now();
+    }catch(e){}
+  }
+  var els=document.querySelectorAll('[data-cta]');
+  for(var i=0;i<els.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){ping(el.getAttribute('data-cta'));},{once:true});
+    })(els[i]);
+  }
+})();
+</script>
+</body>
+</html>
